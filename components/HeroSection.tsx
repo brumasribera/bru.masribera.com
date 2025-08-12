@@ -1,13 +1,12 @@
 import { Button } from './ui/button'
 import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar'
-import { Mail, MapPin, Linkedin, Github, Download } from 'lucide-react'
-import { useState, useEffect, useRef } from 'react'
+import { Mail, MapPin, Linkedin, Github } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
 export function HeroSection() {
   const [showScrollHint, setShowScrollHint] = useState(true)
   const [scrollProgress, setScrollProgress] = useState(0)
   const [hackText, setHackText] = useState('BRU MAS RIBERA')
-  const lastScrollY = useRef(0)
 
   useEffect(() => {
     const handleScroll = () => {

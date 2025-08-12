@@ -33,7 +33,7 @@ export function ContactSection() {
               <div className="flex items-center gap-3">
                 <MapPin className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                 <span className="text-gray-700 dark:text-gray-300">
-                  Meiringen, Switzerland
+                  Interlaken, Switzerland
                 </span>
               </div>
               <div className="flex items-center gap-3">

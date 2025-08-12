@@ -170,4 +170,4 @@ Personal project - All rights reserved.
 ---
 
 **Built with ❤️ by Bru Mas Ribera**  
-*Frontend & UX Engineer from Barcelona, based in Meiringen, Switzerland*
+*Frontend & UX Engineer from Barcelona, based in Interlaken, Switzerland*

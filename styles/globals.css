@@ -275,13 +275,13 @@ html {
 
 @keyframes flowing-gradient {
   0% {
-    background-position: 0% 50%;
+    background-position: 0% 100%;
   }
   50% {
-    background-position: 100% 50%;
+    background-position: 100% 0%;
   }
   100% {
-    background-position: 0% 50%;
+    background-position: 0% 100%;
   }
 }
 

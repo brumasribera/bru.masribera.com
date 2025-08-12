@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react'
 
 export function HeroSection() {
   const [showScrollHint, setShowScrollHint] = useState(true)
-  const [scrollProgress, setScrollProgress] = useState(0)
   const [hackText, setHackText] = useState('BRU MAS RIBERA')
   const [autoHoveredPill, setAutoHoveredPill] = useState<string | null>(null)
   const [isPaused, setIsPaused] = useState(false)
@@ -13,12 +12,7 @@ export function HeroSection() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY
-      const windowHeight = window.innerHeight
-      const documentHeight = document.documentElement.scrollHeight
-      const progress = Math.min(scrollY / (documentHeight - windowHeight), 1)
-      
-      setScrollProgress(progress)
-      
+      // Hide scroll hint after the user starts scrolling
       if (scrollY > 100) {
         setShowScrollHint(false)
       } else {
@@ -182,11 +176,15 @@ export function HeroSection() {
           </Avatar>
         </div>
 
-        {/* Location Badge - Better breathing room */}
-        <div className="w-full max-w-md mx-auto mb-5 sm:mb-6 lg:mb-8 flex items-center justify-center">
+        {/* Location + Experience Pills */}
+        <div className="w-full max-w-2xl mx-auto mb-5 sm:mb-6 lg:mb-8 flex flex-col items-center gap-3">
           <div className="inline-flex items-center rounded-full bg-white/60 dark:bg-gray-800/60 border border-gray-300 dark:border-gray-600 px-3 py-1.5 sm:px-4 sm:py-2">
             <MapPin className="mr-2 h-3 w-3 sm:h-4 sm:w-4 text-gray-700 dark:text-gray-300" />
             <span className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-medium">Based in Interlaken, Switzerland</span>
+          </div>
+          {/* Prominent total experience pill */}
+          <div className="inline-flex items-center rounded-full px-4 py-2 sm:px-5 sm:py-2.5 shadow-xl ring-1 ring-white/50 dark:ring-white/10 bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500">
+            <span className="text-sm sm:text-base font-bold tracking-wide text-white">15+ years of professional experience</span>
           </div>
         </div>
         

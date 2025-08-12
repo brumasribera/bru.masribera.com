@@ -7,6 +7,7 @@ export function HeroSection() {
   const [showScrollHint, setShowScrollHint] = useState(true)
   const [scrollProgress, setScrollProgress] = useState(0)
   const [hackText, setHackText] = useState('BRU MAS RIBERA')
+  const [autoHoveredPill, setAutoHoveredPill] = useState<string | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -121,6 +122,23 @@ export function HeroSection() {
   // Calculate hack progress for animations
   const hackProgress = Math.max(0, Math.min(1, window.scrollY / 100))
 
+  // Auto-hover effect for pills - simulates hovering one by one in random order
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const skills = ['Cursor', 'React', 'Figma', 'TypeScript', 'Next', 'Vue', 'Node', 'PostgreSQL', 'Docker']
+      const randomSkill = skills[Math.floor(Math.random() * skills.length)]
+      
+      setAutoHoveredPill(randomSkill)
+      
+      // Stop auto-hover after 1.5 seconds
+      setTimeout(() => {
+        setAutoHoveredPill(null)
+      }, 1500)
+    }, 2000) // Change every 2 seconds
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
          <section id="home" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 lg:pb-24">
        {/* Background Image with Overlay */}
@@ -159,12 +177,20 @@ export function HeroSection() {
          
          {/* Name with Dynamic Gradient and Hacking Effect - Better breathing room */}
          <div className="w-full max-w-4xl mx-auto mb-2 sm:mb-3 lg:mb-4 flex items-center justify-center">
-           <h1 className={`text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${getGradientColors()} font-friendly tracking-wide transition-all duration-100`} style={{ paddingBottom: '0.1em', paddingTop: '0.05em' }}>
+                       <h1 className={`text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${getGradientColors()} font-friendly tracking-wide transition-all duration-100`} style={{ 
+              paddingBottom: '0.1em', 
+              paddingTop: '0.05em',
+              backgroundSize: '200% 200%',
+              animation: 'flowing-gradient 8s ease-in-out infinite'
+            }}>
              {hackProgress >= 1 ? (
                <>
-                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-300">
-                   @brumasribera
-                 </span>
+                                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-300" style={{
+                    backgroundSize: '200% 200%',
+                    animation: 'flowing-gradient 8s ease-in-out infinite'
+                  }}>
+                    @brumasribera
+                  </span>
                  <span className="text-cyan-500 dark:text-cyan-300 animate-cursor-blink font-mono" style={{ fontSize: '1.2em', fontWeight: '900', letterSpacing: '0.1em' }}>|</span>
                </>
              ) : (
@@ -214,46 +240,48 @@ export function HeroSection() {
          
          {/* Skills - Wider container, hover effects, emojis, and clickable with pop-out animation */}
          <div className="w-full max-w-4xl mx-auto mb-6 sm:mb-8 flex flex-wrap justify-center gap-2 sm:gap-3 items-center">
-           {[
-             { name: 'Cursor', emoji: '⚡', url: 'https://cursor.sh' },
-             { name: 'React', emoji: '⚛️', url: 'https://react.dev' },
-             { name: 'Figma', emoji: '🎨', url: 'https://figma.com' },
-             { name: 'TypeScript', emoji: '🔷', url: 'https://typescriptlang.org' },
-             { name: 'Next', emoji: '🚀', url: 'https://nextjs.org' },
-             { name: 'Vue', emoji: '💚', url: 'https://vuejs.org' },
-             { name: 'Node', emoji: '🟢', url: 'https://nodejs.org' },
-             { name: 'PostgreSQL', emoji: '🐘', url: 'https://postgresql.org' },
-             { name: 'Docker', emoji: '🐳', url: 'https://docker.com' }
-           ].map((skill) => (
-             <button
-               key={skill.name}
-               onClick={() => window.open(skill.url, '_blank')}
-               className="group relative px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 cursor-pointer overflow-hidden hover:pr-8 sm:hover:pr-10"
-             >
-               {/* Shine effect */}
-               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-               
-               {/* Content */}
-               <span className="relative z-10">{skill.name}</span>
-               
-               {/* Emoji with pop-out animation */}
-               <span className="absolute right-3 sm:right-4 top-0 bottom-0 flex items-center opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 text-xs sm:text-sm">
-                 {skill.emoji}
-               </span>
-             </button>
-           ))}
+                       {[
+              { name: 'Cursor', emoji: '⚡', url: 'https://cursor.sh' },
+              { name: 'React', emoji: '⚛️', url: 'https://react.dev' },
+              { name: 'Figma', emoji: '🎨', url: 'https://figma.com' },
+              { name: 'TypeScript', emoji: '🔷', url: 'https://typescriptlang.org' },
+              { name: 'Next', emoji: '🚀', url: 'https://nextjs.org' },
+              { name: 'Vue', emoji: '💚', url: 'https://vuejs.org' },
+              { name: 'Node', emoji: '🟢', url: 'https://nodejs.org' },
+              { name: 'PostgreSQL', emoji: '🐘', url: 'https://postgresql.org' },
+              { name: 'Docker', emoji: '🐳', url: 'https://docker.com' }
+            ].map((skill) => (
+                             <button
+                 key={skill.name}
+                 onClick={() => window.open(skill.url, '_blank')}
+                 className={`group relative px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 cursor-pointer overflow-hidden hover:pr-8 sm:hover:pr-10 ${
+                   autoHoveredPill === skill.name ? 'scale-110 shadow-lg bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20' : ''
+                 }`}
+               >
+                {/* Shine effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                
+                {/* Content */}
+                <span className="relative z-10">{skill.name}</span>
+                
+                {/* Emoji with pop-out animation */}
+                <span className="absolute right-3 sm:right-4 top-0 bottom-0 flex items-center opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 text-xs sm:text-sm">
+                  {skill.emoji}
+                </span>
+              </button>
+            ))}
          </div>
        </div>
 
-             {/* Scroll Hint - Responsive positioning, never overlaps */}
-       <div className={`absolute bottom-4 sm:bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2 transition-opacity duration-500 z-0 ${showScrollHint ? 'opacity-100' : 'opacity-0'}`}>
-         <div className="flex flex-col items-center">
-           {/* Animated gradient line with wave effect */}
-           <div className="relative w-[2px] sm:w-[3px] h-12 sm:h-16 overflow-hidden">
-             <div className="absolute inset-0 bg-gradient-to-b from-gray-400 via-gray-500 to-transparent rounded-full animate-wave-fade"></div>
-           </div>
-         </div>
-       </div>
+                           {/* Scroll Hint - Responsive positioning, never overlaps */}
+        <div className={`absolute bottom-4 sm:bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2 transition-opacity duration-500 z-0 ${showScrollHint ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="flex flex-col items-center">
+            {/* Animated gradient line with wave effect */}
+            <div className="relative w-[3px] sm:w-[4px] h-16 sm:h-20 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-b from-gray-400 via-gray-500 to-transparent rounded-full animate-wave-fade"></div>
+            </div>
+          </div>
+        </div>
     </section>
   )
 }

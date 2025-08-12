@@ -8,6 +8,7 @@ export function HeroSection() {
   const [scrollProgress, setScrollProgress] = useState(0)
   const [hackText, setHackText] = useState('BRU MAS RIBERA')
   const [autoHoveredPill, setAutoHoveredPill] = useState<string | null>(null)
+  const [isPaused, setIsPaused] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -122,22 +123,40 @@ export function HeroSection() {
   // Calculate hack progress for animations
   const hackProgress = Math.max(0, Math.min(1, window.scrollY / 100))
 
-  // Auto-hover effect for pills - simulates hovering one by one in random order
+  // Auto-hover effect for pills - cycles through all pills randomly every 2 seconds
   useEffect(() => {
+    if (isPaused) return // Don't run when paused
+    
+    const skills = ['Cursor', 'React', 'Figma', 'TypeScript', 'Next', 'Vue', 'Node', 'PostgreSQL', 'Docker']
+    let shuffledSkills = [...skills].sort(() => 0.5 - Math.random()) // Shuffle skills
+    let currentIndex = 0
+    
     const interval = setInterval(() => {
-      const skills = ['Cursor', 'React', 'Figma', 'TypeScript', 'Next', 'Vue', 'Node', 'PostgreSQL', 'Docker']
-      const randomSkill = skills[Math.floor(Math.random() * skills.length)]
+      if (isPaused) return // Check again in case it was paused during execution
       
-      setAutoHoveredPill(randomSkill)
+      // Get current skill to hover
+      const currentSkill = shuffledSkills[currentIndex]
+      setAutoHoveredPill(currentSkill)
       
       // Stop auto-hover after 1.5 seconds
       setTimeout(() => {
-        setAutoHoveredPill(null)
+        if (!isPaused) { // Only clear if still not paused
+          setAutoHoveredPill(null)
+        }
       }, 1500)
+      
+      // Move to next skill
+      currentIndex++
+      
+      // If we've gone through all skills, shuffle again and restart
+      if (currentIndex >= shuffledSkills.length) {
+        shuffledSkills = [...skills].sort(() => 0.5 - Math.random())
+        currentIndex = 0
+      }
     }, 2000) // Change every 2 seconds
 
     return () => clearInterval(interval)
-  }, [])
+  }, [isPaused])
 
   return (
          <section id="home" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 lg:pb-24">
@@ -155,17 +174,26 @@ export function HeroSection() {
 
        {/* Content */}
        <div className="relative z-10 max-w-5xl mx-auto text-center">
-         {/* Profile Picture */}
-         <div className="flex justify-center mb-6 sm:mb-8 lg:mb-10">
-           <Avatar className="w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 xl:w-48 xl:h-48 border border-gray-300 dark:border-gray-600 shadow-lg">
-             <AvatarImage 
-               src="/profile-original.png" 
-               alt="Bru Mas Ribera" 
-               className="object-cover"
-             />
-             <AvatarFallback className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl">b|</AvatarFallback>
-           </Avatar>
-         </div>
+                   {/* Profile Picture - Proper sizing with modern skeleton loading */}
+          <div className="flex justify-center mb-6 sm:mb-8 lg:mb-10">
+            <Avatar className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 border border-gray-300 dark:border-gray-600 shadow-lg relative overflow-hidden">
+              <AvatarImage 
+                src="/profile-original.png" 
+                alt="Bru Mas Ribera" 
+                className="object-cover transition-opacity duration-500"
+                onLoad={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.opacity = '1';
+                }}
+                style={{ opacity: 0 }}
+              />
+              <AvatarFallback className="w-full h-full bg-gray-200 dark:bg-gray-700 animate-pulse">
+                <div className="flex items-center justify-center w-full h-full">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 bg-gray-300 dark:bg-gray-600 rounded-full animate-pulse"></div>
+                </div>
+              </AvatarFallback>
+            </Avatar>
+          </div>
 
          {/* Location Badge - Better breathing room */}
          <div className="w-full max-w-md mx-auto mb-5 sm:mb-6 lg:mb-8 flex items-center justify-center">
@@ -208,14 +236,14 @@ export function HeroSection() {
          
          {/* Contact Buttons - Closer to subtitle with advanced hover animations */}
          <div className="w-full max-w-xl mx-auto mb-5 sm:mb-6 lg:mb-8 flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-5 justify-center items-center">
-                       <Button 
-              size="lg" 
-              className="bg-black dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-200 text-white dark:text-black px-4 sm:px-6 transition-colors duration-200 text-sm sm:text-base"
-              onClick={() => window.open('mailto:bru@masribera.com', '_blank')}
-            >
-              <Mail className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
-              bru@masribera.com
-            </Button>
+                                               <Button 
+               size="lg" 
+               className="group bg-black dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-200 text-white dark:text-black px-4 sm:px-6 transition-colors duration-200 text-sm sm:text-base"
+               onClick={() => window.open('mailto:bru@masribera.com', '_blank')}
+             >
+               <Mail className="mr-2 h-3 w-3 sm:h-4 sm:w-4 transition-all duration-300 group-hover:scale-110 group-hover:scale-100" />
+               bru@masribera.com
+             </Button>
            <div className="flex gap-3 sm:gap-4">
              <Button 
                variant="outline" 
@@ -254,20 +282,31 @@ export function HeroSection() {
                              <button
                  key={skill.name}
                  onClick={() => window.open(skill.url, '_blank')}
-                 className={`group relative px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 cursor-pointer overflow-hidden hover:pr-8 sm:hover:pr-10 ${
-                   autoHoveredPill === skill.name ? 'scale-110 shadow-lg bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20' : ''
-                 }`}
+                 onMouseEnter={() => {
+                   setIsPaused(true)
+                   setAutoHoveredPill(null) // Clear any auto-hover
+                 }}
+                 onMouseLeave={() => {
+                   setIsPaused(false)
+                 }}
+                                   className={`group relative px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-gradient-to-r hover:from-blue-100 hover:to-purple-100 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 cursor-pointer overflow-hidden hover:pr-8 sm:hover:pr-10 ${
+                    autoHoveredPill === skill.name ? 'scale-105 shadow-lg bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 pr-8 sm:pr-10' : ''
+                  }`}
                >
-                {/* Shine effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                                 {/* Shine effect */}
+                 <div className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/60 dark:via-white/30 to-transparent transition-transform duration-700 ${
+                   autoHoveredPill === skill.name ? 'translate-x-full' : '-translate-x-full group-hover:translate-x-full'
+                 }`}></div>
                 
                 {/* Content */}
                 <span className="relative z-10">{skill.name}</span>
                 
-                {/* Emoji with pop-out animation */}
-                <span className="absolute right-3 sm:right-4 top-0 bottom-0 flex items-center opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 text-xs sm:text-sm">
-                  {skill.emoji}
-                </span>
+                                 {/* Emoji with pop-out animation */}
+                 <span className={`absolute right-3 sm:right-4 top-0 bottom-0 flex items-center transition-all duration-300 text-xs sm:text-sm ${
+                   autoHoveredPill === skill.name ? 'opacity-100 scale-110' : 'opacity-0 group-hover:opacity-100 group-hover:scale-110'
+                 }`}>
+                   {skill.emoji}
+                 </span>
               </button>
             ))}
          </div>

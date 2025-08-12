@@ -37,11 +37,10 @@ export function HeroSection() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const updateHackText = (progress: number) => {
-    const originalText = 'BRU MAS RIBERA'
-    const targetText = '@brumasribera'
-    const symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`'
-    const numbers = '0123456789'
+     const updateHackText = (progress: number) => {
+     const originalText = 'BRU MAS RIBERA'
+     const targetText = '@brumasribera'
+     const symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`'
     
     if (progress <= 0) {
       setHackText(originalText)

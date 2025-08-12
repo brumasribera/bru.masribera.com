@@ -124,16 +124,18 @@ export function HeroSection() {
           <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">Based in Meiringen, Switzerland</span>
         </div>
         
-        {/* Name with Dynamic Gradient and Hacking Effect */}
-        <h1 className={`text-4xl sm:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${getGradientColors()} font-friendly tracking-wide mb-4 transition-all duration-100`} style={{ paddingBottom: '0.2em', paddingTop: '0.1em' }}>
-          {hackProgress >= 1 ? (
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-300">
-              @brumasribera<span className="animate-cursor-blink font-mono" style={{ fontSize: '1.2em', fontWeight: '900', letterSpacing: '0.1em' }}>|</span>
-            </span>
-          ) : (
-            hackText
-          )}
-        </h1>
+        {/* Name with Dynamic Gradient and Hacking Effect - Fixed dimensions */}
+        <div className="h-32 sm:h-40 lg:h-48 flex items-center justify-center mb-4">
+          <h1 className={`text-4xl sm:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${getGradientColors()} font-friendly tracking-wide transition-all duration-100`} style={{ paddingBottom: '0.2em', paddingTop: '0.1em' }}>
+            {hackProgress >= 1 ? (
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-300">
+                @brumasribera<span className="animate-cursor-blink font-mono" style={{ fontSize: '1.2em', fontWeight: '900', letterSpacing: '0.1em' }}>|</span>
+              </span>
+            ) : (
+              hackText
+            )}
+          </h1>
+        </div>
         
         {/* Title */}
         <p className="text-xl sm:text-2xl text-gray-700 dark:text-gray-300 mb-8 max-w-4xl mx-auto">

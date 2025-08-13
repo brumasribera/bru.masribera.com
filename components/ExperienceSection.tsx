@@ -1,100 +1,136 @@
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
-import { Badge } from './ui/badge'
-import { MapPin, Calendar, Building2 } from 'lucide-react'
+import { MapPin, Calendar } from 'lucide-react'
 
 const experiences = [
   {
-    company: 'Moodle',
-    position: 'Frontend Developer',
-    location: 'Barcelona, Spain',
-    period: '2023 - Present',
-    description: 'Developing modern web applications using React, TypeScript, and modern frontend technologies.',
-    skills: ['React', 'TypeScript', 'Node.js', 'MongoDB']
-  },
-  {
-    company: 'OpenHuts',
-    position: 'Full Stack Developer',
+    company: 'Open Huts',
+    logo: '/logos/openhuts_logo.jpeg',
+    position: 'Founder & Project Lead',
     location: 'Remote',
-    period: '2022 - 2023',
-    description: 'Built a platform for hikers to discover and book mountain huts across Europe.',
-    skills: ['React', 'Python', 'PostgreSQL', 'Docker']
+    period: '2014 - Present',
+    description: 'Find hidden places to sleep out in the wild. Help protect nature by enjoying it.',
+    skills: ['React', 'Next', 'TypeScript', 'Supabase', 'UX Research', 'Figma']
   },
   {
-    company: 'Wecaw',
-    position: 'UX Engineer',
-    location: 'Barcelona, Spain',
-    period: '2021 - 2022',
-    description: 'Designed and developed user interfaces for web and mobile applications.',
-    skills: ['Figma', 'React', 'UX Design', 'Prototyping']
+    company: 'Moodle',
+    logo: '/logos/moodle_logo.jpeg',
+    position: 'Frontend & UX Engineer',
+    location: 'Remote',
+    period: '2021 - 2024',
+    description: 'Developing MoodleNet, a network to share and curate open educational resources.',
+    skills: ['React', 'Figma', 'UX Design', 'Open Source', 'Educational Technology']
+  },
+  {
+    company: 'Oberalp Group',
+    logo: '/logos/oberalp___salewa_group_logo.jpeg',
+    position: 'User Experience Designer',
+    location: 'Lausanne, Switzerland',
+    period: '2020',
+    description: 'Redesigning the production interfaces of the ski touring skins world leader, Pomoca.',
+    skills: ['Behavioral Interviewing', 'Usability Testing', 'UX Design', 'Production Interfaces']
+  },
+  {
+    company: 'Wegaw',
+    logo: '/logos/wegaw_logo.jpeg',
+    position: 'Solution Architect',
+    location: 'Lausanne, Switzerland',
+    period: '2018',
+    description: 'Developing an European Space Agency project to track snow cover from satellites worldwide.',
+    skills: ['JavaScript', 'Kubernetes', 'Satellite Data', 'ESA Projects', 'Snow Cover Tracking']
   },
   {
     company: 'Pix4D',
-    position: 'Frontend Developer',
+    logo: '/logos/pix4d_logo.jpeg',
+    position: 'Junior Web Developer',
     location: 'Lausanne, Switzerland',
-    period: '2020 - 2021',
-    description: 'Developed 3D mapping and photogrammetry software interfaces.',
-    skills: ['Three.js', 'WebGL', 'React', 'TypeScript']
+    period: '2017 - 2018',
+    description: 'Developing a cloud platform to upload, process and analyze 3D models from drone images.',
+    skills: ['Angular 4', 'RxJS', 'Cloud Platform', '3D Modeling', 'Drone Technology']
   }
 ]
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-green-600 via-emerald-500 to-teal-400 dark:from-green-400 dark:via-emerald-400 dark:to-teal-300 bg-clip-text text-transparent mb-6 leading-tight pb-2">
             Work Experience
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
             My professional journey in software development and UX design
           </p>
         </div>
-        
-        <div className="space-y-8">
-          {experiences.map((experience) => (
-            <Card key={experience.company} className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
-                      <Building2 className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-                    </div>
-                    <div>
-                      <CardTitle className="text-xl text-gray-900 dark:text-white">
-                        {experience.position}
-                      </CardTitle>
-                      <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                        <Building2 className="h-4 w-4" />
-                        <span>{experience.company}</span>
+        {/* Timeline list with logo, content, and right-aligned meta */}
+        <div className="relative">
+          {/* Vertical line */}
+          <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700" />
+
+          <ul className="space-y-8">
+            {experiences.map((experience, idx) => (
+              <li key={experience.company} className="relative pl-16 sm:pl-20">
+                {/* Dot aligned with vertical timeline */}
+                <div className="absolute left-6 sm:left-8 top-6 transform -translate-x-1/2 w-4 h-4 rounded-full bg-emerald-500 shadow-lg transition-all duration-700 ease-in-out group-hover:scale-150 group-hover:shadow-2xl group-hover:shadow-emerald-500/50 z-10" />
+
+                <Card className="group hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 rounded-3xl border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
+                  <CardHeader className="pb-4">
+                    <div className="flex items-start justify-between">
+                      <div className="flex items-center gap-6">
+                        {/* Company logo */}
+                        <img 
+                          src={experience.logo} 
+                          alt={experience.company} 
+                          className="w-16 h-16 rounded-2xl object-cover ring-1 ring-black/5 dark:ring-white/10 bg-white p-2 shadow-lg group-hover:shadow-xl transition-all duration-300"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                            const parent = target.parentElement;
+                            if (parent) {
+                              parent.innerHTML = `<div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl ring-1 ring-black/5 dark:ring-white/10 shadow-lg group-hover:shadow-xl transition-all duration-300">${experience.company.charAt(0)}</div>`;
+                            }
+                          }}
+                        />
+                        <div className="space-y-1">
+                          <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white transition-all duration-300">
+                            {experience.position}
+                          </CardTitle>
+                          <div className="text-lg font-medium text-gray-700 dark:text-white transition-all duration-300">
+                            {experience.company === 'OpenHuts' ? 'Open Huts' : experience.company}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="text-right text-sm text-gray-600 dark:text-gray-400 shrink-0 space-y-2 ml-auto">
+                        <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full w-fit ml-auto">
+                          <MapPin className="h-4 w-4 text-blue-500" />
+                          <span className="font-medium text-sm">{experience.location}</span>
+                        </div>
+                        <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full w-fit ml-auto">
+                          <Calendar className="h-4 w-4 text-green-500" />
+                          <span className="font-medium text-sm">{experience.period}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="text-right text-sm text-gray-600 dark:text-gray-400">
-                    <div className="flex items-center gap-1 mb-1">
-                      <MapPin className="h-4 w-4" />
-                      <span>{experience.location}</span>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <p className="text-gray-600 dark:text-gray-400 mb-6 text-lg leading-relaxed">
+                      {experience.description}
+                    </p>
+                    {/* Skill pills */}
+                    <div className="flex flex-wrap gap-2">
+                      {experience.skills.map((skill, skillIdx) => (
+                        <span
+                          key={skillIdx}
+                          className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium border border-gray-200 dark:border-gray-700"
+                        >
+                          {skill}
+                        </span>
+                      ))}
                     </div>
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-4 w-4" />
-                      <span>{experience.period}</span>
-                    </div>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  {experience.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {experience.skills.map((skill) => (
-                    <Badge key={skill} variant="secondary" className="text-xs">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                  </CardContent>
+                </Card>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

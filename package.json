@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node scripts/switch-favicon.js development && vite",
+    "dev": "node scripts/switch-favicon.js development && vite --port 3000",
     "build": "node scripts/switch-favicon.js production && tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
@@ -47,6 +47,7 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.55.0",
     "react-resizable-panels": "^2.1.7",
+    "react-router-dom": "^7.8.0",
     "recharts": "^2.15.2",
     "sharp": "^0.34.3",
     "sonner": "^2.0.3",

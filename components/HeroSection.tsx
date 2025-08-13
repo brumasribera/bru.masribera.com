@@ -2,6 +2,7 @@ import { Button } from './ui/button'
 import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar'
 import { Mail, MapPin, Linkedin, Github } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { AnimatedGradientTitle } from './AnimatedGradientTitle'
 
 export function HeroSection() {
   const [showScrollHint, setShowScrollHint] = useState(true)
@@ -31,7 +32,7 @@ export function HeroSection() {
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    }, [])
 
   const updateHackText = (progress: number) => {
     const originalText = 'BRU MAS RIBERA'
@@ -157,7 +158,7 @@ export function HeroSection() {
       <div className="relative z-10 max-w-5xl mx-auto text-center">
         {/* Profile Picture - Proper sizing with modern skeleton loading */}
         <div className="flex justify-center mb-6 sm:mb-8 lg:mb-10">
-          <Avatar className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 border border-gray-300 dark:border-gray-600 shadow-lg relative overflow-hidden">
+          <Avatar className="w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 border border-gray-300 dark:border-gray-600 shadow-lg relative overflow-hidden">
             <AvatarImage 
               src="/profile-original.png" 
               alt="Bru Mas Ribera" 
@@ -170,7 +171,7 @@ export function HeroSection() {
             />
             <AvatarFallback className="w-full h-full bg-gray-200 dark:bg-gray-700 animate-pulse">
               <div className="flex items-center justify-center w-full h-full">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 bg-gray-300 dark:bg-gray-600 rounded-full animate-pulse"></div>
+                <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 bg-gray-300 dark:bg-gray-600 rounded-full animate-pulse"></div>
               </div>
             </AvatarFallback>
           </Avatar>
@@ -181,36 +182,32 @@ export function HeroSection() {
           <div className="inline-flex items-center rounded-full bg-white/60 dark:bg-gray-800/60 border border-gray-300 dark:border-gray-600 px-3 py-1.5 sm:px-4 sm:py-2">
             <MapPin className="mr-2 h-3 w-3 sm:h-4 sm:w-4 text-gray-700 dark:text-gray-300" />
             <span className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-medium">Based in Interlaken, Switzerland</span>
-          </div>
-          {/* Prominent total experience pill */}
-          <div className="inline-flex items-center rounded-full px-4 py-2 sm:px-5 sm:py-2.5 shadow-xl ring-1 ring-white/50 dark:ring-white/10 bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500">
-            <span className="text-sm sm:text-base font-bold tracking-wide text-white">15+ years of professional experience</span>
-          </div>
         </div>
+        
         
         {/* Name with Dynamic Gradient and Hacking Effect - Better breathing room */}
         <div className="w-full max-w-4xl mx-auto mb-2 sm:mb-3 lg:mb-4 flex items-center justify-center">
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-300 font-friendly tracking-wide" style={{ 
+          <h1 className="font-friendly tracking-wide" style={{ 
             paddingBottom: '0.1em', 
-            paddingTop: '0.05em',
-            backgroundSize: '200% 200%',
-            animation: 'flowing-gradient 8s ease-in-out infinite'
+            paddingTop: '0.05em'
           }}>
-            {hackProgress >= 1 ? (
-              <>
-                @brumasribera
-                <span className="text-cyan-500 dark:text-cyan-300 animate-cursor-blink font-mono" style={{ fontSize: '1.2em', fontWeight: '900', letterSpacing: '0.1em' }}>|</span>
-              </>
-            ) : (
-              hackText
-            )}
+            <AnimatedGradientTitle size="xl" className="font-bold">
+              {hackProgress >= 1 ? (
+                <>
+                  @brumasribera
+                  <span className="text-cyan-500 dark:text-cyan-300 animate-cursor-blink font-mono" style={{ fontSize: '1.2em', fontWeight: '900', letterSpacing: '0.1em' }}>|</span>
+                </>
+              ) : (
+                hackText
+              )}
+            </AnimatedGradientTitle>
           </h1>
         </div>
         
         {/* Title - Much closer to title, closer to buttons */}
         <div className="w-full max-w-3xl mx-auto mb-2 sm:mb-3 lg:mb-4 flex items-center justify-center">
           <p className="text-lg sm:text-xl lg:text-2xl xl:text-2xl text-gray-700 dark:text-gray-300">
-            Frontend & UX Engineer from Barcelona
+            Frontend & UX Engineer | Remote-friendly
           </p>
         </div>
         
@@ -245,7 +242,7 @@ export function HeroSection() {
             </Button>
           </div>
         </div>
-        
+
         {/* Skills - Wider container, hover effects, emojis, and clickable with pop-out animation */}
         <div className="w-full max-w-4xl mx-auto mb-6 sm:mb-8 flex flex-wrap justify-center gap-2 sm:gap-3 items-center">
           {[
@@ -286,15 +283,20 @@ export function HeroSection() {
                 autoHoveredPill === skill.name ? 'opacity-100 scale-110' : 'opacity-0 group-hover:opacity-100 group-hover:scale-110'
               }`}>
                 {skill.emoji}
-              </span>
+          </span>
             </button>
           ))}
         </div>
-      </div>
+        {/* Prominent total experience pill */}
+        <div className="inline-flex items-center rounded-full px-4 py-2 sm:px-5 sm:py-2.5 shadow-xl ring-1 ring-white/50 dark:ring-white/10 bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500">
+            <span className="text-sm sm:text-base font-bold tracking-wide text-white">8+ years of professional experience</span>
+          </div>
+        </div>
+        </div>
 
       {/* Scroll Hint - Responsive positioning, never overlaps */}
       <div className={`absolute bottom-4 sm:bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2 transition-opacity duration-500 z-0 ${showScrollHint ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center">
           {/* Animated gradient line with wave effect */}
           <div className="relative w-[6px] sm:w-[8px] h-24 sm:h-28 overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-b from-gray-400 via-gray-500 to-transparent rounded-full animate-wave-fade"></div>

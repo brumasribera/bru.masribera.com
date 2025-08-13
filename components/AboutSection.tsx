@@ -9,65 +9,66 @@ export function AboutSection() {
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-5 tracking-tight">
             About Me
           </h2>
-          <p className="text-lg sm:text-xl text-gray-700/90 dark:text-gray-300/90 max-w-4xl mx-auto leading-relaxed">
-            Determined to protect the planet and its richness, I am always open to take on new challenges that aim for the
-            highest positive impact on our Earth.
-          </p>
-          <p className="mt-4 text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-4xl mx-auto">
-            Trained as a Computer Engineer, I specialized in web development. I’ve worked 8 years as a Frontend Engineer,
-            4 years as a User Experience Designer, and 3 years as a Backend Engineer—giving me the ability to build
-            products end‑to‑end: from research and prototyping to production.
+          <p className="text-lg sm:text-xl text-gray-700/90 dark:text-gray-300/90 max-w-3xl mx-auto leading-relaxed">
+            Computer Engineer building user‑centred products. 8y Frontend · 4y UX · 3y Backend. End‑to‑end from research to production —
+            <span className="ml-2 bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-300 bg-clip-text text-transparent font-semibold">
+              impact‑driven
+            </span>.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Card className="text-center p-7 hover:shadow-xl hover:-translate-y-0.5 transition-all rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur">
-            <CardContent className="p-0">
-              <div className="w-16 h-16 bg-blue-100/80 dark:bg-blue-900/40 rounded-2xl flex items-center justify-center mx-auto mb-5">
-                <Code2 className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Frontend Development</h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                Modern, responsive apps with React, TypeScript and high‑quality UI engineering.
-              </p>
-            </CardContent>
-          </Card>
+          {/* Frontend */}
+          <div className="relative group rounded-2xl p-[1px] bg-gradient-to-br from-emerald-500/20 via-teal-500/10 to-cyan-500/20 transition-all">
+            <Card className="relative rounded-2xl bg-white/75 dark:bg-gray-800/70 backdrop-blur-sm p-7 shadow-sm ring-1 ring-black/5 dark:ring-white/10 group-hover:shadow-xl group-hover:-translate-y-1 transition-all">
+              <CardContent className="p-0">
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5 bg-gradient-to-br from-emerald-100 to-teal-100 dark:from-emerald-900/40 dark:to-teal-900/30">
+                  <Code2 className="h-8 w-8 text-emerald-700 dark:text-emerald-300" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Frontend Development</h3>
+                <p className="text-gray-600 dark:text-gray-400">React, TypeScript, performance & polished UI.</p>
+              </CardContent>
+            </Card>
+          </div>
 
-          <Card className="text-center p-7 hover:shadow-xl hover:-translate-y-0.5 transition-all rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur">
-            <CardContent className="p-0">
-              <div className="w-16 h-16 bg-green-100/80 dark:bg-green-900/40 rounded-2xl flex items-center justify-center mx-auto mb-5">
-                <Palette className="h-8 w-8 text-green-600 dark:text-green-400" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">UX Design</h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                Intuitive, accessible experiences informed by research, prototyping and testing.
-              </p>
-            </CardContent>
-          </Card>
+          {/* UX Design */}
+          <div className="relative group rounded-2xl p-[1px] bg-gradient-to-br from-fuchsia-500/20 via-pink-500/10 to-rose-500/20 transition-all">
+            <Card className="relative rounded-2xl bg-white/75 dark:bg-gray-800/70 backdrop-blur-sm p-7 shadow-sm ring-1 ring-black/5 dark:ring-white/10 group-hover:shadow-xl group-hover:-translate-y-1 transition-all">
+              <CardContent className="p-0">
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5 bg-gradient-to-br from-fuchsia-100 to-pink-100 dark:from-fuchsia-900/40 dark:to-pink-900/30">
+                  <Palette className="h-8 w-8 text-fuchsia-700 dark:text-fuchsia-300" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">UX Design</h3>
+                <p className="text-gray-600 dark:text-gray-400">Research‑led, accessible and elegant flows.</p>
+              </CardContent>
+            </Card>
+          </div>
 
-          <Card className="text-center p-7 hover:shadow-xl hover:-translate-y-0.5 transition-all rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur">
-            <CardContent className="p-0">
-              <div className="w-16 h-16 bg-purple-100/80 dark:bg-purple-900/40 rounded-2xl flex items-center justify-center mx-auto mb-5">
-                <Users className="h-8 w-8 text-purple-600 dark:text-purple-400" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">User Research</h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                Interviews, surveys and data to guide product direction and validate decisions.
-              </p>
-            </CardContent>
-          </Card>
+          {/* User Research */}
+          <div className="relative group rounded-2xl p-[1px] bg-gradient-to-br from-violet-500/20 via-purple-500/10 to-indigo-500/20 transition-all">
+            <Card className="relative rounded-2xl bg-white/75 dark:bg-gray-800/70 backdrop-blur-sm p-7 shadow-sm ring-1 ring-black/5 dark:ring-white/10 group-hover:shadow-xl group-hover:-translate-y-1 transition-all">
+              <CardContent className="p-0">
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5 bg-gradient-to-br from-violet-100 to-indigo-100 dark:from-violet-900/40 dark:to-indigo-900/30">
+                  <Users className="h-8 w-8 text-violet-700 dark:text-violet-300" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">User Research</h3>
+                <p className="text-gray-600 dark:text-gray-400">Interviews, surveys and data‑driven insights.</p>
+              </CardContent>
+            </Card>
+          </div>
 
-          <Card className="text-center p-7 hover:shadow-xl hover:-translate-y-0.5 transition-all rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur">
-            <CardContent className="p-0">
-              <div className="w-16 h-16 bg-orange-100/80 dark:bg-orange-900/40 rounded-2xl flex items-center justify-center mx-auto mb-5">
-                <Lightbulb className="h-8 w-8 text-orange-600 dark:text-orange-400" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Innovation</h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                New technologies and methodologies to unlock meaningful, sustainable impact.
-              </p>
-            </CardContent>
-          </Card>
+          {/* Innovation */}
+          <div className="relative group rounded-2xl p-[1px] bg-gradient-to-br from-amber-500/20 via-orange-500/10 to-rose-500/20 transition-all">
+            <Card className="relative rounded-2xl bg-white/75 dark:bg-gray-800/70 backdrop-blur-sm p-7 shadow-sm ring-1 ring-black/5 dark:ring-white/10 group-hover:shadow-xl group-hover:-translate-y-1 transition-all">
+              <CardContent className="p-0">
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5 bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/40 dark:to-orange-900/30">
+                  <Lightbulb className="h-8 w-8 text-amber-700 dark:text-amber-300" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Innovation</h3>
+                <p className="text-gray-600 dark:text-gray-400">New tech and methods for sustainable impact.</p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
     </section>

@@ -7,6 +7,7 @@ import { ContactSection } from './components/ContactSection'
 import { Footer } from './components/Footer'
 import { OpenHutsPage } from './components/OpenHutsPage'
 import { MoodleNetPage } from './components/MoodleNetPage'
+import { ReservePage } from './components/ReservePage'
 import { useState, useEffect } from 'react'
 import { Sun, Moon } from 'lucide-react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
@@ -109,6 +110,7 @@ export default function App() {
           } />
           <Route path="/openhuts" element={<OpenHutsPage />} />
           <Route path="/moodlenet" element={<MoodleNetPage />} />
+          <Route path="/reserve" element={<ReservePage />} />
         </Routes>
       </div>
     </Router>

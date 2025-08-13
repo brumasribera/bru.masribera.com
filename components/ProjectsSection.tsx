@@ -58,6 +58,17 @@ const projects = [
     users: 'Surveyors & engineers',
     featured: false,
     image: '/logos/pix4d_logo.jpeg'
+  },
+  {
+    title: 'Reserve',
+    description: 'Mobile-first app that lets anyone protect nature by funding habitat restoration and protection one square meter at a time.',
+    technologies: ['React', 'TypeScript', 'UX Design', 'Conservation Tech'],
+    github: null,
+    live: 'https://www.instagram.com/reservenatureapp/',
+    impact: 'Fund habitat protection',
+    users: 'Nature supporters',
+    featured: true,
+    image: '/logos/reserve-logo.png'
   }
 ]
 
@@ -163,6 +174,14 @@ export function ProjectsSection() {
                    ) : project.title === 'MoodleNet Platform' ? (
                      <button
                        onClick={() => navigate('/moodlenet')}
+                       className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
+                     >
+                       <TrendingUp className="h-4 w-4" />
+                       <span>Project Details</span>
+                     </button>
+                   ) : project.title === 'Reserve' ? (
+                     <button
+                       onClick={() => navigate('/reserve')}
                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
                      >
                        <TrendingUp className="h-4 w-4" />

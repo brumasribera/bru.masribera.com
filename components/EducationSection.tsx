@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
-import { Calendar, GraduationCap, MapPin } from 'lucide-react'
+import { Calendar, MapPin } from 'lucide-react'
 
 const education = [
   {
@@ -63,7 +63,7 @@ export function EducationSection() {
           <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700" />
 
           <ul className="space-y-8">
-            {education.map((edu, idx) => (
+            {education.map((edu) => (
               <li key={edu.degree} className="relative pl-16 sm:pl-20">
                 {/* Dot aligned with vertical timeline */}
                 <div className="absolute left-6 sm:left-8 top-6 transform -translate-x-1/2 w-4 h-4 rounded-full bg-blue-500 shadow-lg transition-all duration-700 ease-in-out group-hover:scale-150 group-hover:shadow-2xl group-hover:shadow-blue-500/50 z-10" />

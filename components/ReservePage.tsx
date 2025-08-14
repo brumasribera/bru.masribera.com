@@ -1,4 +1,4 @@
-import { ArrowLeft, Users, Shield, Globe2, X, ChevronLeft, ChevronRight, Share2 } from 'lucide-react'
+import { ArrowLeft, Users, Shield, Globe2, Share2 } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Badge } from './ui/badge'
 import { Footer } from './Footer'
@@ -130,7 +130,7 @@ export function ReservePage() {
 						<div className="relative w-[380px] h-[780px] rounded-[3rem] border-8 border-black dark:border-gray-200 shadow-[0_20px_60px_rgba(0,0,0,0.25)] bg-black">
 							<div className="mx-auto mt-2 h-6 w-40 rounded-b-2xl bg-black dark:bg-gray-200" />
 							<div className="relative m-2 mt-3 h-[730px] rounded-[2rem] overflow-hidden bg-white dark:bg-gray-900">
-								<PrototypeScreen step={step} setStep={setStep} selectedCells={selectedCells} setSelectedCells={setSelectedCells} totalM2={totalM2} totalCost={totalCost} />
+								<PrototypeScreen step={step} setStep={setStep} selectedCells={selectedCells} setSelectedCells={setSelectedCells} totalM2={totalM2} totalCost={totalCost} pricePerSquare={pricePerSquare} />
 							</div>
 						</div>
 					</div>
@@ -138,7 +138,7 @@ export function ReservePage() {
 					{/* Mobile full width */}
 					<div className="lg:hidden">
 						<div className="relative h-[85vh] rounded-2xl overflow-hidden shadow-xl bg-white dark:bg-gray-900">
-							<PrototypeScreen step={step} setStep={setStep} selectedCells={selectedCells} setSelectedCells={setSelectedCells} totalM2={totalM2} totalCost={totalCost} />
+							<PrototypeScreen step={step} setStep={setStep} selectedCells={selectedCells} setSelectedCells={setSelectedCells} totalM2={totalM2} totalCost={totalCost} pricePerSquare={pricePerSquare} />
 						</div>
 					</div>
 				</div>
@@ -169,6 +169,7 @@ function PrototypeScreen({
 	setSelectedCells,
 	totalM2,
 	totalCost,
+	pricePerSquare,
 }: {
 	step: Step
 	setStep: (s: Step) => void
@@ -176,6 +177,7 @@ function PrototypeScreen({
 	setSelectedCells: (s: Set<string>) => void
 	totalM2: number
 	totalCost: number
+	pricePerSquare: number
 }) {
 	// Grid config
 	const rows = 14
@@ -296,9 +298,10 @@ function PrototypeScreen({
 								))}
 							</div>
 						</div>
-					<div className="text-center space-y-2">
-						<div className="text-3xl text-gray-700 dark:text-gray-300">${pricePerSquare} m²</div>
-						<div className="text-4xl font-semibold text-gray-900 dark:text-white">${totalCost}</div>
+						<div className="text-center space-y-2">
+							<div className="text-3xl text-gray-700 dark:text-gray-300">${pricePerSquare} m²</div>
+							<div className="text-4xl font-semibold text-gray-900 dark:text-white">${totalCost}</div>
+						</div>
 					</div>
 					<div className="px-6 w-full">
 						<button onClick={() => setStep('success')} className="w-full py-4 rounded-2xl text-white text-xl font-semibold bg-gradient-to-r from-blue-500 via-pink-400 via-orange-300 via-yellow-300 to-lime-400 shadow-lg active:scale-[0.99] transition-transform">

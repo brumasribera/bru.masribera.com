@@ -1,4 +1,4 @@
-import { ArrowLeft, Github, Globe, Users, MapPin, Calendar, TrendingUp, Zap, Mountain, TreePine, Users2, Shield, Award, Route, Compass, Globe2, Star, Heart, MountainSnow, Tent, MapPinOff, Search, X } from 'lucide-react'
+import { ArrowLeft, Users, MapPin, Calendar, Route, Compass, Globe2, MountainSnow, Tent, Search, Users2, X } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Badge } from './ui/badge'
 import { Footer } from './Footer'
@@ -12,11 +12,8 @@ export function OpenHutsPage() {
   // Array of all image paths for navigation
   const imagePaths = [
     '/open-huts/Search View.png',
-    '/open-huts/Detailed View.png',
     '/open-huts/Hut View.png',
-    '/open-huts/Route View.png',
-    '/open-huts/Planning View.png',
-    '/open-huts/Manager Base View.png'
+    '/open-huts/Route View.png'
   ]
   
   // Keyboard navigation for modal
@@ -216,63 +213,6 @@ export function OpenHutsPage() {
                 <img 
                   src="/open-huts/Route View.png" 
                   alt="Open Huts Route Planning Interface"
-                  className="w-full h-48 sm:h-56 lg:h-64 object-cover shadow-lg"
-                />
-              </div>
-            </Card>
-
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
-              <CardHeader className="text-center pb-2">
-                <CardTitle className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-3">
-                  <Calendar className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
-                  Planning Tools
-                </CardTitle>
-              </CardHeader>
-              <div 
-                className="cursor-pointer hover:opacity-90 transition-opacity"
-                onClick={() => setSelectedImage('/open-huts/Planning View.png')}
-              >
-                <img 
-                  src="/open-huts/Planning View.png" 
-                  alt="Open Huts Planning Tools Interface"
-                  className="w-full h-48 sm:h-56 lg:h-64 object-cover shadow-lg"
-                />
-              </div>
-            </Card>
-
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
-              <CardHeader className="text-center pb-2">
-                <CardTitle className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-3">
-                  <Star className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-600" />
-                  Tour Booking
-                </CardTitle>
-              </CardHeader>
-              <div 
-                className="cursor-pointer hover:opacity-90 transition-opacity"
-                onClick={() => setSelectedImage('/open-huts/Detailed View.png')}
-              >
-                <img 
-                  src="/open-huts/Detailed View.png" 
-                  alt="Open Huts Tour Booking Interface"
-                  className="w-full h-48 sm:h-56 lg:h-64 object-cover shadow-lg"
-                />
-              </div>
-            </Card>
-
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
-              <CardHeader className="text-center pb-2">
-                <CardTitle className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-3">
-                  <Users2 className="h-4 w-4 sm:h-5 sm:w-5 text-orange-600" />
-                  Manager Dashboard
-                </CardTitle>
-              </CardHeader>
-              <div 
-                className="cursor-pointer hover:opacity-90 transition-opacity"
-                onClick={() => setSelectedImage('/open-huts/Manager Base View.png')}
-              >
-                <img 
-                  src="/open-huts/Manager Base View.png" 
-                  alt="Open Huts Manager Dashboard Interface"
                   className="w-full h-48 sm:h-56 lg:h-64 object-cover shadow-lg"
                 />
               </div>

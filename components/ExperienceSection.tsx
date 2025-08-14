@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
-import { MapPin, Calendar } from 'lucide-react'
+import { MapPin, Calendar, ArrowRight } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 const experiences = [
   {
@@ -50,6 +51,8 @@ const experiences = [
 ]
 
 export function ExperienceSection() {
+  const navigate = useNavigate()
+  
   return (
     <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -67,7 +70,7 @@ export function ExperienceSection() {
           <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700" />
 
           <ul className="space-y-8">
-            {experiences.map((experience, idx) => (
+            {experiences.map((experience) => (
               <li key={experience.company} className="relative pl-16 sm:pl-20">
                 {/* Dot aligned with vertical timeline */}
                 <div className="absolute left-6 sm:left-8 top-6 transform -translate-x-1/2 w-4 h-4 rounded-full bg-emerald-500 shadow-lg transition-all duration-700 ease-in-out group-hover:scale-150 group-hover:shadow-2xl group-hover:shadow-emerald-500/50 z-10" />
@@ -115,8 +118,9 @@ export function ExperienceSection() {
                     <p className="text-gray-600 dark:text-gray-400 mb-6 text-lg leading-relaxed">
                       {experience.description}
                     </p>
+                    
                     {/* Skill pills */}
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 mb-6">
                       {experience.skills.map((skill, skillIdx) => (
                         <span
                           key={skillIdx}
@@ -125,6 +129,32 @@ export function ExperienceSection() {
                           {skill}
                         </span>
                       ))}
+                    </div>
+                    
+                    {/* Action button */}
+                    <div className="flex justify-end">
+                      {experience.company === 'Open Huts' ? (
+                        <button
+                          onClick={() => navigate('/openhuts')}
+                          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
+                        >
+                          <span>View Project</span>
+                          <ArrowRight className="h-4 w-4" />
+                        </button>
+                      ) : experience.company === 'Moodle' ? (
+                        <button
+                          onClick={() => navigate('/moodlenet')}
+                          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
+                        >
+                          <span>View Project</span>
+                          <ArrowRight className="h-4 w-4" />
+                        </button>
+                      ) : (
+                        <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105">
+                          <span>More Details</span>
+                          <ArrowRight className="h-4 w-4" />
+                        </button>
+                      )}
                     </div>
                   </CardContent>
                 </Card>

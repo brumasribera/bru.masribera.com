@@ -1,19 +1,19 @@
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Badge } from './ui/badge'
-import { ExternalLink, Github, Globe, Users, Star, TrendingUp, Zap } from 'lucide-react'
+import { Github, Globe, Users, Star, TrendingUp, Zap } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 
 const projects = [
   {
-    title: 'MoodleNet Platform',
-    description: 'Led frontend development for MoodleNet, an open-source platform for sharing and curating educational resources. Built with React, Storybook, and modern web technologies.',
-    technologies: ['React', 'TypeScript', 'Storybook', 'UX Design', 'Open Source'],
-    github: 'https://github.com/moodle/moodlenet',
-    live: 'https://moodle.net',
-    impact: 'Global educational platform',
-    users: '100K+ educators',
+    title: 'Reserve',
+    description: 'Mobile-first app that lets anyone protect nature by funding habitat restoration and protection one square meter at a time.',
+    technologies: ['React', 'TypeScript', 'UX Design', 'Conservation Tech'],
+    github: null,
+    live: 'https://www.instagram.com/reservenatureapp/',
+    impact: 'Fund habitat protection',
+    users: 'Nature supporters',
     featured: true,
-    image: '/logos/moodlenet_logo.png'
+    image: '/logos/reserve-logo.png'
   },
   {
     title: 'Open Huts Nature Network',
@@ -25,6 +25,17 @@ const projects = [
     users: 'Research phase',
     featured: true,
     image: '/logos/openhuts_logo.jpeg'
+  },
+  {
+    title: 'MoodleNet Platform',
+    description: 'Led frontend development for MoodleNet, an open-source platform for sharing and curating educational resources. Built with React, Storybook, and modern web technologies.',
+    technologies: ['React', 'TypeScript', 'Storybook', 'UX Design', 'Open Source'],
+    github: 'https://github.com/moodle/moodlenet',
+    live: 'https://moodle.net',
+    impact: 'Global educational platform',
+    users: '100K+ educators',
+    featured: true,
+    image: '/logos/moodlenet_logo.png'
   },
   {
     title: 'Pomoca Production Interface',
@@ -58,17 +69,6 @@ const projects = [
     users: 'Surveyors & engineers',
     featured: false,
     image: '/logos/pix4d_logo.jpeg'
-  },
-  {
-    title: 'Reserve',
-    description: 'Mobile-first app that lets anyone protect nature by funding habitat restoration and protection one square meter at a time.',
-    technologies: ['React', 'TypeScript', 'UX Design', 'Conservation Tech'],
-    github: null,
-    live: 'https://www.instagram.com/reservenatureapp/',
-    impact: 'Fund habitat protection',
-    users: 'Nature supporters',
-    featured: true,
-    image: '/logos/reserve-logo.png'
   }
 ]
 
@@ -89,33 +89,33 @@ export function ProjectsSection() {
           </p>
         </div>
         
-        {/* Featured projects grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          {projects.filter(p => p.featured).map((project) => (
+        {/* All projects grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {projects.map((project) => (
             <Card key={project.title} className="group hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 rounded-3xl border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
               <div className="relative">
-                                 {/* Project image */}
-                 <div className="h-48 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 flex items-center justify-center p-8">
-                   <img 
-                     src={project.image} 
-                     alt={project.title}
-                     className={`h-20 w-20 object-contain rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 ${
-                       project.title === 'MoodleNet Platform' 
-                         ? 'bg-white p-3' 
-                         : project.title === 'Open Huts Nature Network' 
-                         ? 'bg-white p-2' 
-                         : ''
-                     }`}
-                     onError={(e) => {
-                       const target = e.target as HTMLImageElement;
-                       target.style.display = 'none';
-                       const parent = target.parentElement;
-                       if (parent) {
-                         parent.innerHTML = `<div class="h-20 w-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300">${project.title.charAt(0)}</div>`;
-                       }
-                     }}
-                   />
-                 </div>
+                {/* Project image */}
+                <div className="h-48 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 flex items-center justify-center p-8">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className={`h-20 w-20 object-contain rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 ${
+                      project.title === 'MoodleNet Platform' 
+                        ? 'bg-white p-3' 
+                        : project.title === 'Open Huts Nature Network' 
+                        ? 'bg-white p-2' 
+                        : ''
+                    }`}
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const parent = target.parentElement;
+                      if (parent) {
+                        parent.innerHTML = `<div class="h-20 w-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300">${project.title.charAt(0)}</div>`;
+                      }
+                    }}
+                  />
+                </div>
                 
                 {/* Impact badge */}
                 <div className="absolute top-4 right-4">
@@ -152,146 +152,72 @@ export function ProjectsSection() {
               <CardContent className="pt-0">
                 {/* Technology stack */}
                 <div className="mb-6">
-                                       <div className="flex flex-wrap gap-2">
-                       {project.technologies.map((tech) => (
-                         <Badge key={tech} variant="secondary" className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600 hover:border-blue-400 dark:hover:border-blue-500 transition-colors">
-                           {tech}
-                         </Badge>
-                       ))}
-                     </div>
-                </div>
-                
-                                 {/* Action buttons */}
-                 <div className="flex gap-3">
-                   {project.title === 'Open Huts Nature Network' ? (
-                     <button
-                       onClick={() => navigate('/openhuts')}
-                       className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
-                     >
-                       <TrendingUp className="h-4 w-4" />
-                       <span>Project Details</span>
-                     </button>
-                   ) : project.title === 'MoodleNet Platform' ? (
-                     <button
-                       onClick={() => navigate('/moodlenet')}
-                       className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
-                     >
-                       <TrendingUp className="h-4 w-4" />
-                       <span>Project Details</span>
-                     </button>
-                   ) : project.title === 'Reserve' ? (
-                     <button
-                       onClick={() => navigate('/reserve')}
-                       className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
-                     >
-                       <TrendingUp className="h-4 w-4" />
-                       <span>Project Details</span>
-                     </button>
-                   ) : (
-                     <>
-                       {project.github && (
-                         <a
-                           href={project.github}
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           className="flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors font-medium"
-                         >
-                           <Github className="h-4 w-4" />
-                           <span>View Code</span>
-                         </a>
-                       )}
-                       {project.live && (
-                         <a
-                           href={project.live}
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
-                         >
-                           <Globe className="h-4 w-4" />
-                           <span>Live Demo</span>
-                         </a>
-                       )}
-                       {!project.github && !project.live && (
-                         <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-lg">
-                           <Zap className="h-4 w-4" />
-                           <span>Proprietary</span>
-                         </div>
-                       )}
-                     </>
-                   )}
-                 </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-        
-        {/* Additional projects grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.filter(p => !p.featured).map((project) => (
-            <Card key={project.title} className="group hover:shadow-xl hover:scale-[1.02] transition-all duration-300 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden">
-              <CardHeader className="pb-4">
-                <div className="flex items-center gap-3 mb-3">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="h-12 w-12 object-contain rounded-xl"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                      const parent = target.parentElement;
-                      if (parent) {
-                        parent.innerHTML = `<div class="h-12 w-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-lg">${project.title.charAt(0)}</div>`;
-                      }
-                    }}
-                  />
-                  <div>
-                                    <CardTitle className="text-lg font-bold text-gray-900 dark:text-white">
-                  {project.title}
-                </CardTitle>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">{project.impact}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech) => (
+                      <Badge key={tech} variant="secondary" className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600 hover:border-blue-400 dark:hover:border-blue-500 transition-colors">
+                        {tech}
+                      </Badge>
+                    ))}
                   </div>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                  {project.description}
-                </p>
-              </CardHeader>
-              
-              <CardContent className="pt-0">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.slice(0, 4).map((tech) => (
-                    <Badge key={tech} variant="secondary" className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600 hover:border-blue-400 dark:hover:border-blue-500 transition-colors">
-                      {tech}
-                    </Badge>
-                  ))}
-                  {project.technologies.length > 4 && (
-                    <Badge variant="secondary" className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600 hover:border-blue-400 dark:hover:border-blue-500 transition-colors">
-                      +{project.technologies.length - 4} more
-                    </Badge>
-                  )}
-                </div>
                 
-                <div className="flex gap-2">
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-xs text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                {/* Action buttons */}
+                <div className="flex gap-3">
+                  {project.title === 'Open Huts Nature Network' ? (
+                    <button
+                      onClick={() => navigate('/openhuts')}
+                      className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
                     >
-                      <Github className="h-3 w-3" />
-                      <span>Code</span>
-                    </a>
-                  )}
-                  {project.live && (
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-xs text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                      <TrendingUp className="h-4 w-4" />
+                      <span>Project Details</span>
+                    </button>
+                  ) : project.title === 'MoodleNet Platform' ? (
+                    <button
+                      onClick={() => navigate('/moodlenet')}
+                      className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
                     >
-                      <ExternalLink className="h-3 w-3" />
-                      <span>Demo</span>
-                    </a>
+                      <TrendingUp className="h-4 w-4" />
+                      <span>Project Details</span>
+                    </button>
+                  ) : project.title === 'Reserve' ? (
+                    <button
+                      onClick={() => navigate('/reserve')}
+                      className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
+                    >
+                      <TrendingUp className="h-4 w-4" />
+                      <span>Project Details</span>
+                    </button>
+                  ) : (
+                    <>
+                      {project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors font-medium"
+                        >
+                          <Github className="h-4 w-4" />
+                          <span>View Code</span>
+                        </a>
+                      )}
+                      {project.live && (
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
+                        >
+                          <Globe className="h-4 w-4" />
+                          <span>Live Demo</span>
+                        </a>
+                      )}
+                      {!project.github && !project.live && (
+                        <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-lg">
+                          <Zap className="h-4 w-4" />
+                          <span>Proprietary</span>
+                        </div>
+                      )}
+                    </>
                   )}
                 </div>
               </CardContent>

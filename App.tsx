@@ -64,16 +64,7 @@ export default function App() {
     localStorage.setItem('theme', newMode ? 'dark' : 'light')
   }
 
-  const resetToSystemPreference = () => {
-    localStorage.removeItem('theme')
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    setIsDarkMode(systemPrefersDark)
-    if (systemPrefersDark) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }
+  // Removed resetToSystemPreference (not used)
 
   return (
     <Router>

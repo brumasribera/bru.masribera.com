@@ -1,4 +1,4 @@
-import { Mail, Linkedin, Github, MapPin, MessageCircle } from 'lucide-react'
+import { Mail, Linkedin, Github, MessageCircle } from 'lucide-react'
 
 export function ContactSection() {
   return (

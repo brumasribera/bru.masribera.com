@@ -1,4 +1,4 @@
-import { ArrowLeft, Github, Globe, Users, MapPin, Calendar, TrendingUp, Zap, BookOpen, GraduationCap, Share2, Award, Route, Compass, Globe2, Star, Heart, BookMarked, Users2, Shield, Award as AwardIcon, Route as RouteIcon, Compass as CompassIcon, Globe2 as Globe2Icon, X } from 'lucide-react'
+import { ArrowLeft, Github, Globe, Users, MapPin, Calendar, Share2, Globe2, BookMarked, Users2, Shield, GraduationCap, X } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Badge } from './ui/badge'
 import { Footer } from './Footer'

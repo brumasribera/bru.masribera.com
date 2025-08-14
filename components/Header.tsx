@@ -68,6 +68,22 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Handle scrolling to sections after navigation from project pages
+  useEffect(() => {
+    if (location.pathname === '/') {
+      const targetSection = sessionStorage.getItem('scrollToSection')
+      if (targetSection) {
+        sessionStorage.removeItem('scrollToSection')
+        setTimeout(() => {
+          const targetElement = document.getElementById(targetSection)
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'auto' })
+          }
+        }, 100)
+      }
+    }
+  }, [location.pathname])
+
   const navItems = [
     { href: '#home', label: 'Home' },
     { href: '#about', label: 'About' },
@@ -78,7 +94,7 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
   ]
 
   const projectPages = [
-    { path: '/reserve', label: 'Reserve', description: 'Mobile app for restaurant reservations' },
+    { path: '/reserve', label: 'Reserve', description: 'Restaurant reservation platform' },
     { path: '/openhuts', label: 'Open Huts', description: 'Nature network platform' },
     { path: '/moodlenet', label: 'MoodleNet', description: 'Educational platform' },
     { path: '/pix4d', label: 'Pix4D', description: 'Cloud platform & 3D modeling' },
@@ -106,6 +122,25 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
     const targetElement = document.getElementById(targetId)
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: 'auto' })
+    }
+    setIsMenuOpen(false)
+  }
+
+  // New function to handle navigation from project pages
+  const handleNavigationFromProjectPage = (href: string) => {
+    const targetId = href.replace('#', '')
+    
+    if (location.pathname !== '/') {
+      // Navigate to home page first
+      navigate('/')
+      // Store the target section to scroll to after navigation
+      sessionStorage.setItem('scrollToSection', targetId)
+    } else {
+      // Already on home page, scroll directly
+      const targetElement = document.getElementById(targetId)
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'auto' })
+      }
     }
     setIsMenuOpen(false)
   }
@@ -265,7 +300,7 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
                   </div>
                 ) : (
                   <button
-                    onClick={() => scrollToSection(item.href)}
+                    onClick={() => handleNavigationFromProjectPage(item.href)}
                     className={`text-sm font-medium transition-colors ${
                       activeSection === item.href.replace('#', '')
                         ? 'text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400'

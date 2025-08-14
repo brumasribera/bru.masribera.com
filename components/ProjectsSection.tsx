@@ -1,6 +1,6 @@
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+import { Card, CardContent, CardTitle } from './ui/card'
 import { Badge } from './ui/badge'
-import { Github, Globe, Users, Star, TrendingUp, Zap, ArrowRight } from 'lucide-react'
+import { Users, Star, ArrowRight } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 
 const projects = [

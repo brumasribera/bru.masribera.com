@@ -71,8 +71,7 @@ export function ContactSection() {
             Get In Touch
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            I'm always open to meaningful collaborations and exciting opportunities. 
-            Let's build something amazing together.
+            Looking for full-time opportunities to join a team and contribute to meaningful projects.
           </p>
         </div>
         
@@ -86,7 +85,7 @@ export function ContactSection() {
                 Send me a message
               </h3>
               <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-                Let's discuss your next project. Whether it's collaboration, consultation, or just a conversation - I'm here to help.
+                Let's discuss full-time opportunities. I'm looking to join a team where I can grow, contribute, and build amazing products together.
               </p>
             </div>
 
@@ -137,7 +136,7 @@ export function ContactSection() {
                   required
                   rows={5}
                   className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors resize-none"
-                  placeholder="Tell me about your project, collaboration idea, or just say hello!"
+                  placeholder="Tell me about your team, the role you're hiring for, or just say hello!"
                 />
               </div>
 

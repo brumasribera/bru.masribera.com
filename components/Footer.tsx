@@ -16,9 +16,9 @@ export function Footer() {
                 BRU MAS RIBERA
               </AnimatedGradientTitle>
             </h3>
-            <p className="text-gray-600 dark:text-gray-400 text-sm">
-              Frontend & UX Engineer | Remote-friendly
-            </p>
+                         <p className="text-gray-600 dark:text-gray-400 text-sm">
+               Frontend & UX Engineer | Remote-friendly
+             </p>
           </div>
           
           <div className="flex items-center justify-center gap-6 mb-6">
@@ -49,14 +49,17 @@ export function Footer() {
             </a>
           </div>
           
-          <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
-            <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">
-              © {new Date().getFullYear()} Bru Mas Ribera. All rights reserved.
-            </p>
-            <p className="text-gray-500 dark:text-gray-500 text-xs">
-              Made with 🥰 in Switzerland
-            </p>
-          </div>
+                     <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
+             <div className="flex items-center justify-center gap-4">
+               <p className="text-gray-500 dark:text-gray-500 text-lg font-medium">
+                 Made with 🥰 in Switzerland
+               </p>
+               <span className="text-gray-400">•</span>
+               <p className="text-gray-600 dark:text-gray-400 text-base">
+                 © {new Date().getFullYear()} Bru Mas Ribera. All rights reserved.
+               </p>
+             </div>
+           </div>
         </div>
       </div>
     </footer>

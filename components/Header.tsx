@@ -86,7 +86,7 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
 
   const updateHackText = (progress: number) => {
     const originalText = 'BRU MAS RIBERA'
-    const targetText = '@brumasribera |'
+    const targetText = '@brumasribera'
     const symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`'
     
     if (progress <= 0) {
@@ -99,8 +99,8 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
       return
     }
 
-    // Create character-by-character transformation with more symbols
-    const totalChars = originalText.length
+    // Create character-by-character transformation with symbols (same as hero)
+    const totalChars = Math.max(originalText.length, targetText.length)
     const charsToTransform = Math.floor(progress * totalChars)
     
     let transformedText = ''
@@ -108,32 +108,8 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
     for (let i = 0; i < totalChars; i++) {
       if (i < charsToTransform) {
         // This character has been transformed
-        if (i === 0) {
-          transformedText += '@' // First character becomes @
-        } else if (i === 1) {
-          transformedText += 'b' // Second character becomes b
-        } else if (i === 2) {
-          transformedText += 'r' // Third character becomes r
-        } else if (i === 3) {
-          transformedText += 'u' // Fourth character becomes u
-        } else if (i === 4) {
-          transformedText += 'm' // Fifth character becomes m
-        } else if (i === 5) {
-          transformedText += 'a' // Sixth character becomes a
-        } else if (i === 6) {
-          transformedText += 's' // Seventh character becomes s
-        } else if (i === 7) {
-          transformedText += 'r' // Eighth character becomes r
-        } else if (i === 8) {
-          transformedText += 'i' // Ninth character becomes i
-        } else if (i === 9) {
-          transformedText += 'b' // Tenth character becomes b
-        } else if (i === 10) {
-          transformedText += 'e' // Eleventh character becomes e
-        } else if (i === 11) {
-          transformedText += 'r' // Twelfth character becomes r
-        } else if (i === 12) {
-          transformedText += 'a' // Thirteenth character becomes a
+        if (i < targetText.length) {
+          transformedText += targetText[i]
         }
       } else {
         // This character is still in transition - show intermediate symbols
@@ -144,9 +120,14 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
           transformedText += symbols[symbolIndex]
         } else {
           // Keep original character
-          transformedText += originalText[i]
+          transformedText += i < originalText.length ? originalText[i] : ''
         }
       }
+    }
+    
+    // Ensure we always have a valid string
+    if (transformedText.length === 0) {
+      transformedText = originalText
     }
     
     setHackText(transformedText)
@@ -162,13 +143,19 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
               onClick={handleLogoClick}
               onMouseEnter={() => {
                 setIsHovering(true)
-                // Start the encryption animation
+                // Start the encryption animation with same timing as hero section
                 let progress = 0
+                const steps = 20
+                const stepDuration = 50 // 50ms per step for smooth 1-second animation
+                
                 const animate = () => {
                   if (progress < 1 && isHovering) {
-                    progress += 0.1
+                    progress += 1 / steps
                     updateHackText(progress)
-                    requestAnimationFrame(animate)
+                    console.log('Animation progress:', progress, 'Text:', hackText)
+                    if (progress < 1) {
+                      setTimeout(animate, stepDuration)
+                    }
                   }
                 }
                 animate()
@@ -180,11 +167,15 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
               }}
               className="text-xl font-bold transition-all duration-300 hover:scale-105 relative"
             >
-              <span 
-                className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-300 transition-all duration-300"
-              >
-                {hackText}
-              </span>
+                             <span 
+                 className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-300 transition-all duration-300"
+                 style={{ 
+                   backgroundSize: '200% 200%',
+                   animation: 'flowing-gradient 8s ease-in-out infinite'
+                 }}
+               >
+                 {hackText}
+               </span>
             </button>
           </div>
 

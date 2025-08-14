@@ -268,32 +268,31 @@ export function MoodleNetPage() {
             Platform Preview
           </h2>
           
-          {/* Video - Bigger individual card */}
-          <div className="mb-12">
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden max-w-4xl mx-auto">
-              <CardContent className="p-0">
-                <div className="relative w-full" style={{ aspectRatio: '1390/896' }}>
-                  <video
-                    controls
-                    autoPlay
-                    className="w-full h-full object-fill"
-                    poster="/moodlenet/moodle1.png"
-                  >
-                    <source src="/moodlenet/moodle video.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
-                    Platform Demo & Walkthrough
-                  </h3>
-                  <p className="text-lg text-gray-600 dark:text-gray-400">
-                    Watch how MoodleNet transforms educational resource discovery and curation with its intuitive interface and powerful features
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+                     {/* Video - Full width card */}
+           <div className="mb-12">
+             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
+               <CardContent className="p-0">
+                 <video 
+                   controls 
+                   autoPlay 
+                   muted 
+                   playsInline 
+                   className="w-full" 
+                   poster="/moodlenet/moodle1.png">
+                   <source src="/moodlenet/moodle video.mp4" type="video/mp4" />
+                   Your browser does not support the video tag.
+                 </video>
+                 <div className="p-6">
+                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                     Platform Demo & Walkthrough
+                   </h3>
+                   <p className="text-lg text-gray-600 dark:text-gray-400">
+                     Watch how MoodleNet transforms educational resource discovery and curation with its intuitive interface and powerful features
+                   </p>
+                 </div>
+               </CardContent>
+             </Card>
+           </div>
           
           {/* Three Images Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

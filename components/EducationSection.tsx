@@ -59,70 +59,74 @@ export function EducationSection() {
         
         {/* Timeline list with modern card design */}
         <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700" />
+          {/* Vertical line - hidden on small screens */}
+          <div className="hidden sm:block absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700" />
 
           <ul className="space-y-8">
             {education.map((edu) => (
-              <li key={edu.degree} className="relative pl-16 sm:pl-20 group">
-                {/* Dot aligned with vertical timeline */}
-                <div className="absolute left-6 sm:left-8 top-6 transform -translate-x-1/2 w-4 h-4 rounded-full bg-blue-500 shadow-lg transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-blue-500/20 z-10" />
+              <li key={edu.degree} className="relative pl-4 sm:pl-20 group">
+                {/* Dot aligned with vertical timeline - hidden on small screens */}
+                <div className="hidden sm:block absolute left-6 sm:left-8 top-6 transform -translate-x-1/2 w-4 h-4 rounded-full bg-blue-500 shadow-lg transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-blue-500/20 z-10" />
 
                 <Card className="group-hover:shadow-2xl group-hover:scale-[1.02] transition-all duration-300 rounded-3xl border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
                   <CardHeader className="pb-4">
-                    <div className="flex items-start justify-between">
-                      <div className="flex items-center gap-6">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                      <div className="flex items-start gap-4 sm:gap-6">
                         {/* Education logo */}
                         {edu.institution === 'ThePowerMBA' ? (
                           <img 
                             src="/logos/the_power_logo.jpeg"
                             alt={edu.institution}
-                            className="w-16 h-16 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105"
+                            className="w-16 h-16 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 flex-shrink-0"
                           />
                         ) : edu.institution === 'Udacity' ? (
                           <img 
                             src="/logos/udacity_logo.jpeg"
                             alt={edu.institution}
-                            className="w-16 h-16 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105"
+                            className="w-16 h-16 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 flex-shrink-0"
                           />
                         ) : edu.institution === 'Universitat de Barcelona' ? (
                           <img 
                             src="/logos/university_of_barcelona_logo.jpeg"
                             alt={edu.institution}
-                            className="w-16 h-16 rounded-2xl object-cover ring-1 ring-black/5 dark:ring-white/10 bg-white p-2 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105"
+                            className="w-16 h-16 rounded-2xl object-cover ring-1 ring-black/5 dark:ring-white/10 bg-white p-2 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 flex-shrink-0"
                           />
                         ) : edu.institution === 'Universitat Politècnica de Catalunya' ? (
                           <img 
                             src="/logos/upc_logo.jpeg"
                             alt={edu.institution}
-                            className="w-16 h-16 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105"
+                            className="w-16 h-16 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 flex-shrink-0"
                           />
                         ) : edu.institution === 'ICEMP' ? (
                           <img 
                             src="/logos/icemp_logo.jpeg"
                             alt={edu.institution}
-                            className="w-16 h-16 rounded-2xl object-cover ring-1 ring-black/5 dark:ring-white/10 bg-white p-2 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105"
+                            className="w-16 h-16 rounded-2xl object-cover ring-1 ring-black/5 dark:ring-white/10 bg-white p-2 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 flex-shrink-0"
                           />
                         ) : (
-                          <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl ring-1 ring-black/5 dark:ring-white/10 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                          <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl ring-1 ring-black/5 dark:ring-white/10 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 flex-shrink-0">
                             {edu.institution.charAt(0)}
                           </div>
                         )}
-                        <div className="space-y-1">
-                          <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white group-hover:scale-[1.02] transition-all duration-300">
+                        <div className="flex-1 min-w-0">
+                          <CardTitle className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white group-hover:scale-[1.02] transition-all duration-300 leading-tight">
                             {edu.degree}
                           </CardTitle>
-                          <div className="text-lg font-medium text-gray-700 dark:text-gray-300 group-hover:scale-[1.02] transition-all duration-300">{edu.institution}</div>
+                          <div className="text-base sm:text-lg font-medium text-gray-700 dark:text-gray-300 group-hover:scale-[1.02] transition-all duration-300 mt-1">
+                            {edu.institution}
+                          </div>
                         </div>
                       </div>
-                      <div className="text-right text-sm text-gray-600 dark:text-gray-400 shrink-0 space-y-2 ml-auto">
-                        <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full w-fit ml-auto">
-                          <MapPin className="h-4 w-4 text-blue-500" />
-                          <span className="font-medium text-sm">{edu.location}</span>
+                      
+                      {/* Location and dates - now below on small screens */}
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-end gap-2 sm:gap-4 sm:ml-auto">
+                        <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-full w-fit">
+                          <MapPin className="h-4 w-4 text-blue-500 flex-shrink-0" />
+                          <span className="font-medium text-sm text-gray-900 dark:text-gray-300">{edu.location}</span>
                         </div>
-                        <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full w-fit ml-auto">
-                          <Calendar className="h-4 w-4 text-green-500" />
-                          <span className="font-medium text-sm">{edu.period}</span>
+                        <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-full w-fit">
+                          <Calendar className="h-4 w-4 text-green-500 flex-shrink-0" />
+                          <span className="font-medium text-sm text-gray-900 dark:text-gray-300">{edu.period}</span>
                         </div>
                       </div>
                     </div>

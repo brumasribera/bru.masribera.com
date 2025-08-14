@@ -66,50 +66,52 @@ export function ExperienceSection() {
         </div>
         {/* Timeline list with logo, content, and right-aligned meta */}
         <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700" />
+          {/* Vertical line - hidden on small screens */}
+          <div className="hidden sm:block absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700" />
 
           <ul className="space-y-8">
             {experiences.map((experience) => (
-              <li key={experience.company} className="relative pl-16 sm:pl-20 group">
-                {/* Dot aligned with vertical timeline */}
-                <div className="absolute left-6 sm:left-8 top-6 transform -translate-x-1/2 w-4 h-4 rounded-full bg-emerald-500 shadow-lg transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-emerald-500/20 z-10" />
+              <li key={experience.company} className="relative pl-4 sm:pl-20 group">
+                {/* Dot aligned with vertical timeline - hidden on small screens */}
+                <div className="hidden sm:block absolute left-6 sm:left-8 top-6 transform -translate-x-1/2 w-4 h-4 rounded-full bg-emerald-500 shadow-lg transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-emerald-500/20 z-10" />
 
                 <Card className="group-hover:shadow-2xl group-hover:scale-[1.02] transition-all duration-300 rounded-3xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 overflow-hidden">
                   <CardHeader className="pb-4">
-                    <div className="flex items-start justify-between">
-                      <div className="flex items-center gap-6">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                      <div className="flex items-start gap-4 sm:gap-6">
                         {/* Company logo */}
                         <img 
                           src={experience.logo} 
                           alt={experience.company} 
-                          className="w-16 h-16 rounded-2xl object-cover ring-1 ring-black/5 dark:ring-white/10 bg-white p-2 shadow-lg group-hover:shadow-xl transition-all duration-300"
+                          className="w-16 h-16 rounded-2xl object-cover ring-1 ring-black/5 dark:ring-white/10 bg-white p-2 shadow-lg group-hover:shadow-xl transition-all duration-300 flex-shrink-0"
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
                             target.style.display = 'none';
                             const parent = target.parentElement;
                             if (parent) {
-                              parent.innerHTML = `<div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl ring-1 ring-black/5 dark:ring-white/10 shadow-lg group-hover:shadow-xl transition-all duration-300">${experience.company.charAt(0)}</div>`;
+                              parent.innerHTML = `<div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl ring-1 ring-black/5 dark:ring-white/10 shadow-lg group-hover:shadow-xl transition-all duration-300 flex-shrink-0">${experience.company.charAt(0)}</div>`;
                             }
                           }}
                         />
-                        <div className="space-y-1">
-                          <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white transition-all duration-300">
+                        <div className="flex-1 min-w-0">
+                          <CardTitle className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white transition-all duration-300 leading-tight">
                             {experience.position}
                           </CardTitle>
-                          <div className="text-lg font-medium text-gray-700 dark:text-white transition-all duration-300">
+                          <div className="text-base sm:text-lg font-medium text-gray-700 dark:text-white transition-all duration-300 mt-1">
                             {experience.company === 'OpenHuts' ? 'Open Huts' : experience.company}
                           </div>
                         </div>
                       </div>
-                      <div className="text-right text-sm text-gray-600 dark:text-gray-400 shrink-0 space-y-2 ml-auto">
-                        <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full w-fit ml-auto">
-                          <MapPin className="h-4 w-4 text-blue-500" />
-                          <span className="font-medium text-sm">{experience.location}</span>
+                      
+                      {/* Location and dates - now below on small screens */}
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-end gap-2 sm:gap-4 sm:ml-auto">
+                        <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-full w-fit">
+                          <MapPin className="h-4 w-4 text-blue-500 flex-shrink-0" />
+                          <span className="font-medium text-sm text-gray-900 dark:text-gray-300">{experience.location}</span>
                         </div>
-                        <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full w-fit ml-auto">
-                          <Calendar className="h-4 w-4 text-green-500" />
-                          <span className="font-medium text-sm">{experience.period}</span>
+                        <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-full w-fit">
+                          <Calendar className="h-4 w-4 text-green-500 flex-shrink-0" />
+                          <span className="text-sm text-gray-900 dark:text-gray-300">{experience.period}</span>
                         </div>
                       </div>
                     </div>
@@ -180,7 +182,13 @@ export function ExperienceSection() {
                           <ArrowRight className="h-4 w-4" />
                         </button>
                       ) : experience.company === 'Oberalp Group' ? (
-                        <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105">
+                        <button
+                          onClick={() => {
+                            navigate('/pomoca')
+                            window.scrollTo(0, 0)
+                          }}
+                          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
+                        >
                           <span>More Details</span>
                           <ArrowRight className="h-4 w-4" />
                         </button>

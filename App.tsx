@@ -13,6 +13,7 @@ import { MoodleNetPage } from './components/MoodleNetPage'
 import { ReservePage } from './components/ReservePage'
 import { Pix4DPage } from './components/Pix4DPage'
 import { WegawPage } from './components/WeGawPage'
+import { PomocaPage } from './components/PomocaPage'
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -63,6 +64,7 @@ function App() {
           <Route path="/reserve" element={<ReservePage />} />
           <Route path="/pix4d" element={<Pix4DPage />} />
           <Route path="/wegaw" element={<WegawPage />} />
+          <Route path="/pomoca" element={<PomocaPage />} />
         </Routes>
       </div>
     </BrowserRouter>

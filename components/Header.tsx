@@ -17,6 +17,32 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
   const location = useLocation()
   const navigate = useNavigate()
 
+  // Close projects menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element
+      if (!target.closest('[data-projects-menu]')) {
+        setIsProjectsOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element
+      if (!target.closest('[data-mobile-menu]')) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
   // Track active section for navigation highlighting
   useEffect(() => {
     const handleScroll = () => {
@@ -56,7 +82,8 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
     { path: '/openhuts', label: 'Open Huts', description: 'Nature network platform' },
     { path: '/moodlenet', label: 'MoodleNet', description: 'Educational platform' },
     { path: '/pix4d', label: 'Pix4D', description: 'Cloud platform & 3D modeling' },
-    { path: '/wegaw', label: 'Wegaw', description: 'Snow monitoring for outdoor activities' }
+    { path: '/wegaw', label: 'Wegaw', description: 'Snow monitoring for outdoor activities' },
+    { path: '/pomoca', label: 'Pomoca', description: 'Production interface for manufacturing' }
   ]
 
   const scrollToSection = (href: string) => {
@@ -64,14 +91,21 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
     
     // If we're on a project page, navigate to home page first
     if (location.pathname !== '/') {
-      navigate(`/${href}`)
+      navigate('/')
+      // Use setTimeout to ensure navigation completes before scrolling
+      setTimeout(() => {
+        const targetElement = document.getElementById(targetId)
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'auto' })
+        }
+      }, 100)
       return
     }
     
     // On home page, scroll to section without animation
     const targetElement = document.getElementById(targetId)
     if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'auto' }) // Changed to 'auto'
+      targetElement.scrollIntoView({ behavior: 'auto' })
     }
     setIsMenuOpen(false)
   }
@@ -184,7 +218,7 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
             {navItems.map((item) => (
               <div key={item.href} className="relative">
                 {item.hasDropdown ? (
-                  <div className="relative">
+                  <div className="relative" data-projects-menu>
                     <button
                       onClick={() => {
                         // Click navigates directly to projects section
@@ -271,12 +305,12 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 dark:border-gray-700">
+          <div className="md:hidden border-t border-gray-200 dark:border-gray-700" data-mobile-menu>
             <nav className="py-4 space-y-2">
               {navItems.map((item) => (
                 <div key={item.href}>
                   {item.hasDropdown ? (
-                    <div>
+                    <div data-projects-menu>
                       <button
                         onClick={() => {
                           // Click navigates directly to projects section

@@ -128,7 +128,7 @@ export function ProjectsSection() {
                     </div>
                     <div className="flex items-center gap-2">
                       <Star className="h-4 w-4" />
-                      <span>{project.github ? 'Open Source' : 'Proprietary'}</span>
+                      <span>{project.github ? 'Open Source' : 'Enterprise Solution'}</span>
                     </div>
                   </div>
                 </div>

@@ -11,7 +11,9 @@ export function MoodleNetPage() {
   
   // Array of all image paths for navigation (placeholder for now)
   const imagePaths = [
-    '/logos/moodlenet_logo.png'
+    '/moodlenet/moodle1.png',
+    '/moodlenet/moodle2.png',
+    '/moodlenet/moodle3.png'
   ]
   
   // Keyboard navigation for modal
@@ -91,25 +93,27 @@ export function MoodleNetPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Project Overview */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
-          <Card className="lg:col-span-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg">
+          <Card className="lg:col-span-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg flex flex-col">
             <CardHeader>
               <CardTitle className="text-3xl font-bold text-gray-900 dark:text-white">
                 Project Vision
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-                MoodleNet transforms how educators discover, share, and curate educational resources. 
-                As a frontend developer, I contributed to building a comprehensive ecosystem for 
-                collaborative curation and discovery of high-quality educational content.
-              </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-                The platform addresses the need for accessible, well-curated educational materials 
-                while promoting open education and supporting the global teaching community.
-              </p>
+            <CardContent className="flex-1 flex flex-col space-y-4">
+              <div className="flex-1">
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
+                  MoodleNet transforms how educators discover, share, and curate educational resources. 
+                  As a frontend developer, I contributed to building a comprehensive ecosystem for 
+                  collaborative curation and discovery of high-quality educational content.
+                </p>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
+                  The platform addresses the need for accessible, well-curated educational materials 
+                  while promoting open education and supporting the global teaching community.
+                </p>
+              </div>
               
               {/* Action buttons */}
-              <div className="flex gap-3 pt-4">
+              <div className="flex gap-3 pt-4 mt-auto">
                 <a
                   href="https://moodle.net"
                   target="_blank"
@@ -253,6 +257,103 @@ export function MoodleNetPage() {
                   Community-driven quality control and peer review systems. 
                   Verified resources and trusted contributor programs.
                 </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* Media Showcase */}
+        <div className="mb-20">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">
+            Platform Preview
+          </h2>
+          
+          {/* Video - Bigger individual card */}
+          <div className="mb-12">
+            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden max-w-4xl mx-auto">
+              <CardContent className="p-0">
+                <div className="relative w-full" style={{ aspectRatio: '1390/896' }}>
+                  <video
+                    controls
+                    autoPlay
+                    className="w-full h-full object-fill"
+                    poster="/moodlenet/moodle1.png"
+                  >
+                    <source src="/moodlenet/moodle video.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                    Platform Demo & Walkthrough
+                  </h3>
+                  <p className="text-lg text-gray-600 dark:text-gray-400">
+                    Watch how MoodleNet transforms educational resource discovery and curation with its intuitive interface and powerful features
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Three Images Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* First Image */}
+            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <CardContent className="p-0 pb-0">
+                <img
+                  src="/moodlenet/moodle1.png"
+                  alt="MoodleNet Platform Interface"
+                  className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity rounded-b-2xl"
+                  onClick={() => setSelectedImage('/moodlenet/moodle1.png')}
+                />
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    User Interface Design
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    Modern, intuitive design for seamless educational resource discovery and navigation
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Second Image */}
+            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <CardContent className="p-0 pb-0">
+                <img
+                  src="/moodlenet/moodle2.png"
+                  alt="MoodleNet Platform Features"
+                  className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity rounded-b-2xl"
+                  onClick={() => setSelectedImage('/moodlenet/moodle2.png')}
+                />
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    Core Platform Features
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    Advanced curation tools and collaborative learning features for educators
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Third Image - New */}
+            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <CardContent className="p-0 pb-0">
+                <img
+                  src="/moodlenet/moodle3.png"
+                  alt="MoodleNet Platform Capabilities"
+                  className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity rounded-b-2xl"
+                  onClick={() => setSelectedImage('/moodlenet/moodle3.png')}
+                />
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    Gamification
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    Interactive challenges, achievements, and rewards to boost educator engagement and learning motivation
+                  </p>
+                </div>
               </CardContent>
             </Card>
           </div>

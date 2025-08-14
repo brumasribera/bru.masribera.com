@@ -12,7 +12,7 @@ export function Pix4DPage() {
       {/* Hero Header */}
       <div className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-8">
+          <div className="flex items-center gap-4 mb-8 pt-8">
             <button 
               onClick={() => navigate('/#projects')}
               className="flex items-center gap-2 text-blue-100 hover:text-white transition-colors"
@@ -47,29 +47,31 @@ export function Pix4DPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Project Overview */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
-          <Card className="lg:col-span-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg">
+          <Card className="lg:col-span-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg flex flex-col">
             <CardHeader>
               <CardTitle className="text-3xl font-bold text-gray-900 dark:text-white">
                 Project Vision
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4 pb-6">
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-                Pix4D Cloud Platform revolutionizes photogrammetry processing with cloud-native architecture. 
-                As a frontend developer, I contributed to building a comprehensive ecosystem for processing 
-                drone imagery into high-precision 3D models and point clouds.
-              </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-                The platform addresses the need for scalable, accessible photogrammetry processing while 
-                maintaining Pix4D's industry-leading accuracy and performance standards.
-              </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-                Our work on the Matterhorn project demonstrated the platform's capabilities, processing 
-                2,188 drone images into a 300-million point cloud at 20cm ground sampling distance.
-              </p>
+            <CardContent className="flex-1 flex flex-col">
+              <div className="flex-1 space-y-4">
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
+                  Pix4D Cloud Platform revolutionizes photogrammetry processing with cloud-native architecture. 
+                  As a frontend developer, I contributed to building a comprehensive ecosystem for processing 
+                  drone imagery into high-precision 3D models and point clouds.
+                </p>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
+                  The platform addresses the need for scalable, accessible photogrammetry processing while 
+                  maintaining Pix4D's industry-leading accuracy and performance standards.
+                </p>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
+                  Our work on the Matterhorn project demonstrated the platform's capabilities, processing 
+                  2,188 drone images into a 300-million point cloud at 20cm ground sampling distance.
+                </p>
+              </div>
               
-              {/* Action buttons */}
-              <div className="flex gap-3 pt-4">
+              {/* Action buttons - always at bottom */}
+              <div className="flex gap-3 pt-6 mt-auto">
                 <a
                   href="https://www.pix4d.com"
                   target="_blank"
@@ -131,24 +133,22 @@ export function Pix4DPage() {
           </div>
         </div>
 
-        {/* Cloud Platform Demo */}
+                {/* Cloud Platform Demo */}
         <div className="mb-20">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">
-            Cloud Platform Demo
-          </h2>
+          <div className="text-center mb-20">
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+              Pix4D Cloud Platform
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-400">
+              Platform walkthrough and demonstration of key features
+            </p>
+          </div>
           <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
-            <CardHeader className="text-center pb-0">
-              <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">
-                Pix4D Cloud Platform
-              </CardTitle>
-              <p className="text-gray-600 dark:text-gray-400">
-                Platform walkthrough and demonstration of key features
-              </p>
-            </CardHeader>
-            <CardContent className="p-0">
+            <CardContent className="p-0 !pb-0">
               <video
-                className="w-full h-auto rounded-b-3xl"
+                className="w-full h-auto"
                 controls
+                autoPlay
                 preload="metadata"
               >
                 <source src="/pix4d/Recording pix4d.mp4" type="video/mp4" />
@@ -160,19 +160,16 @@ export function Pix4DPage() {
 
         {/* 3D Model Showcase */}
         <div id="3d-model-showcase" className="mb-20">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">
-            3D Model Showcase
-          </h2>
-          <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
-            <CardHeader className="text-center pb-0">
-              <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">
-                Matterhorn (Cervin) - 3D Model
-              </CardTitle>
-              <p className="text-gray-600 dark:text-gray-400">
-                Interactive 3D model demonstrating Pix4D's photogrammetry capabilities
-              </p>
-            </CardHeader>
-            <CardContent className="p-0">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+              Matterhorn (Cervin) - 3D Model
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-400">
+              Interactive 3D model demonstrating Pix4D's photogrammetry capabilities
+            </p>
+          </div>
+          <Card className="bg-white dark:bg-gray-800 border border-gray-700 rounded-3xl shadow-lg overflow-hidden">
+            <CardContent className="p-0 !pb-0">
               <div className="w-full h-96 sm:h-[500px] lg:h-[600px]">
                 <iframe
                   title="3D Matterhorn (Cervin) Model"
@@ -204,11 +201,11 @@ export function Pix4DPage() {
                   Professional mapping drone with 50-minute flight time
                 </p>
               </CardHeader>
-              <CardContent className="p-0">
+              <CardContent className="p-0 pb-0">
                 <img
                   src="/pix4d/ebeematterhorn-3.jpg"
                   alt="senseFly eBee Drone mapping the Matterhorn"
-                  className="w-full h-auto rounded-b-3xl"
+                  className="w-full h-64 object-cover rounded-b-3xl"
                 />
               </CardContent>
             </Card>
@@ -222,11 +219,11 @@ export function Pix4DPage() {
                   Autonomous flight paths from 4,478m summit
                 </p>
               </CardHeader>
-              <CardContent className="p-0">
+              <CardContent className="p-0 pb-0">
                 <img
                   src="/pix4d/ebeematterhorn-12.jpg"
                   alt="Flight planning over the Matterhorn"
-                  className="w-full h-auto rounded-b-3xl"
+                  className="w-full h-64 object-cover rounded-b-3xl"
                 />
               </CardContent>
             </Card>
@@ -240,11 +237,11 @@ export function Pix4DPage() {
                   High-density point cloud with 300 million points at 20cm GSD
                 </p>
               </CardHeader>
-              <CardContent className="p-0">
+              <CardContent className="p-0 pb-0">
                 <img
                   src="/pix4d/matterhorn-cervin-pix4d-pix4dmapper-switzerland.jpg"
                   alt="Matterhorn 3D point cloud reconstruction"
-                  className="w-full h-auto rounded-b-3xl"
+                  className="w-full h-64 object-cover rounded-b-3xl"
                 />
               </CardContent>
             </Card>

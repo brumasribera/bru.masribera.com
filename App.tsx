@@ -12,6 +12,7 @@ import { OpenHutsPage } from './components/OpenHutsPage'
 import { MoodleNetPage } from './components/MoodleNetPage'
 import { ReservePage } from './components/ReservePage'
 import { Pix4DPage } from './components/Pix4DPage'
+import { WegawPage } from './components/WeGawPage'
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -61,6 +62,7 @@ function App() {
           <Route path="/moodlenet" element={<MoodleNetPage />} />
           <Route path="/reserve" element={<ReservePage />} />
           <Route path="/pix4d" element={<Pix4DPage />} />
+          <Route path="/wegaw" element={<WegawPage />} />
         </Routes>
       </div>
     </BrowserRouter>

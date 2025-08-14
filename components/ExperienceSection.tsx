@@ -71,11 +71,11 @@ export function ExperienceSection() {
 
           <ul className="space-y-8">
             {experiences.map((experience) => (
-              <li key={experience.company} className="relative pl-16 sm:pl-20">
+              <li key={experience.company} className="relative pl-16 sm:pl-20 group">
                 {/* Dot aligned with vertical timeline */}
-                <div className="absolute left-6 sm:left-8 top-6 transform -translate-x-1/2 w-4 h-4 rounded-full bg-emerald-500 shadow-lg transition-all duration-700 ease-in-out group-hover:scale-150 group-hover:shadow-2xl group-hover:shadow-emerald-500/50 z-10" />
+                <div className="absolute left-6 sm:left-8 top-6 transform -translate-x-1/2 w-4 h-4 rounded-full bg-emerald-500 shadow-lg transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-emerald-500/20 z-10" />
 
-                <Card className="group hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 rounded-3xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
+                <Card className="group-hover:shadow-2xl group-hover:scale-[1.02] transition-all duration-300 rounded-3xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 overflow-hidden">
                   <CardHeader className="pb-4">
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-6">
@@ -135,7 +135,11 @@ export function ExperienceSection() {
                     <div className="flex justify-end">
                       {experience.company === 'Open Huts' ? (
                         <button
-                          onClick={() => navigate('/openhuts')}
+                          onClick={() => {
+                            navigate('/openhuts')
+                            // Scroll to top instantly when navigating to project page
+                            window.scrollTo(0, 0)
+                          }}
                           className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
                         >
                           <span>More Details</span>
@@ -143,9 +147,40 @@ export function ExperienceSection() {
                         </button>
                       ) : experience.company === 'Moodle' ? (
                         <button
-                          onClick={() => navigate('/moodlenet')}
+                          onClick={() => {
+                            navigate('/moodlenet')
+                            // Scroll to top instantly when navigating to project page
+                            window.scrollTo(0, 0)
+                          }}
                           className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
                         >
+                          <span>More Details</span>
+                          <ArrowRight className="h-4 w-4" />
+                        </button>
+                      ) : experience.company === 'Wegaw' ? (
+                        <button
+                          onClick={() => {
+                            navigate('/wegaw')
+                            window.scrollTo(0, 0)
+                          }}
+                          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
+                        >
+                          <span>More Details</span>
+                          <ArrowRight className="h-4 w-4" />
+                        </button>
+                      ) : experience.company === 'Pix4D' ? (
+                        <button
+                          onClick={() => {
+                            navigate('/pix4d')
+                            window.scrollTo(0, 0)
+                          }}
+                          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
+                        >
+                          <span>More Details</span>
+                          <ArrowRight className="h-4 w-4" />
+                        </button>
+                      ) : experience.company === 'Oberalp Group' ? (
+                        <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105">
                           <span>More Details</span>
                           <ArrowRight className="h-4 w-4" />
                         </button>

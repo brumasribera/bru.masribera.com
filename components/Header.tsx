@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Moon, Sun, Menu, X } from 'lucide-react'
+import { Moon, Sun, Menu, X, ChevronDown } from 'lucide-react'
 import { Button } from './ui/button'
 import { useLocation, useNavigate } from 'react-router-dom'
 
@@ -12,7 +12,8 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
   const [isHovering, setIsHovering] = useState(false)
-  const [hackText, setHackText] = useState('BRU MAS RIBERA')
+  const [hackText, setHackText] = useState('BRU MAS RIBERA') // Added for animation
+  const [isProjectsOpen, setIsProjectsOpen] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -46,8 +47,16 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
     { href: '#about', label: 'About' },
     { href: '#experience', label: 'Experience' },
     { href: '#education', label: 'Education' },
-    { href: '#projects', label: 'Projects' },
+    { href: '#projects', label: 'Projects', hasDropdown: true },
     { href: '#contact', label: 'Contact' }
+  ]
+
+  const projectPages = [
+    { path: '/reserve', label: 'Reserve', description: 'Mobile app for restaurant reservations' },
+    { path: '/openhuts', label: 'Open Huts', description: 'Nature network platform' },
+    { path: '/moodlenet', label: 'MoodleNet', description: 'Educational platform' },
+    { path: '/pix4d', label: 'Pix4D', description: 'Cloud platform & 3D modeling' },
+    { path: '/wegaw', label: 'Wegaw', description: 'Snow monitoring for outdoor activities' }
   ]
 
   const scrollToSection = (href: string) => {
@@ -59,10 +68,10 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
       return
     }
     
-    // On home page, scroll to section
+    // On home page, scroll to section without animation
     const targetElement = document.getElementById(targetId)
     if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' })
+      targetElement.scrollIntoView({ behavior: 'auto' }) // Changed to 'auto'
     }
     setIsMenuOpen(false)
   }
@@ -182,17 +191,66 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => scrollToSection(item.href)}
-                className={`text-sm font-medium transition-colors ${
-                  activeSection === item.href.replace('#', '')
-                    ? 'text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
-                }`}
-              >
-                {item.label}
-              </button>
+              <div key={item.href} className="relative">
+                {item.hasDropdown ? (
+                  <div className="relative">
+                    <button
+                      onClick={() => {
+                        // Click navigates directly to projects section
+                        if (location.pathname !== '/') {
+                          navigate('/#projects')
+                        } else {
+                          scrollToSection('#projects')
+                        }
+                      }}
+                      onMouseEnter={() => setIsProjectsOpen(true)}
+                      className={`text-sm font-medium transition-colors flex items-center gap-1 ${
+                        activeSection === item.href.replace('#', '')
+                          ? 'text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400'
+                          : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+                      }`}
+                    >
+                      {item.label}
+                      <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isProjectsOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    
+                    {/* Projects Dropdown */}
+                    {isProjectsOpen && (
+                      <div 
+                        className="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-50"
+                        onMouseEnter={() => setIsProjectsOpen(true)}
+                        onMouseLeave={() => setIsProjectsOpen(false)}
+                      >
+                        {projectPages.map((project) => (
+                          <button
+                            key={project.path}
+                            onClick={() => {
+                              navigate(project.path)
+                              setIsProjectsOpen(false)
+                              window.scrollTo(0, 0)
+                            }}
+                            className="w-full text-left px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                          >
+                            <div className="font-medium text-gray-900 dark:text-white">{project.label}</div>
+                            <div className="text-sm text-gray-600 dark:text-gray-400">{project.description}</div>
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => scrollToSection(item.href)}
+                    className={`text-sm font-medium transition-colors ${
+                      activeSection === item.href.replace('#', '')
+                        ? 'text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400'
+                        : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                )}
+              </div>
             ))}
           </nav>
 
@@ -225,17 +283,56 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
           <div className="md:hidden border-t border-gray-200 dark:border-gray-700">
             <nav className="py-4 space-y-2">
               {navItems.map((item) => (
-                <button
-                  key={item.href}
-                  onClick={() => scrollToSection(item.href)}
-                  className={`block w-full text-left px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
-                    activeSection === item.href.replace('#', '')
-                      ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
-                      : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800'
-                  }`}
-                >
-                  {item.label}
-                </button>
+                <div key={item.href}>
+                  {item.hasDropdown ? (
+                    <div>
+                      <button
+                        onClick={() => {
+                          // Click navigates directly to projects section
+                          if (location.pathname !== '/') {
+                            navigate('/#projects')
+                          } else {
+                            scrollToSection('#projects')
+                          }
+                        }}
+                        onMouseEnter={() => setIsProjectsOpen(true)}
+                        className="w-full text-left px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg flex items-center justify-between"
+                      >
+                        {item.label}
+                        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isProjectsOpen ? 'rotate-180' : ''}`} />
+                      </button>
+                      {isProjectsOpen && (
+                        <div className="ml-4 mt-2 space-y-1">
+                          {projectPages.map((project) => (
+                            <button
+                              key={project.path}
+                              onClick={() => {
+                                navigate(project.path)
+                                setIsMenuOpen(false)
+                                setIsProjectsOpen(false)
+                                window.scrollTo(0, 0)
+                              }}
+                              className="w-full text-left px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg"
+                            >
+                              {project.label}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => scrollToSection(item.href)}
+                      className={`block w-full text-left px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
+                        activeSection === item.href.replace('#', '')
+                          ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
+                          : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800'
+                      }`}
+                    >
+                      {item.label}
+                    </button>
+                  )}
+                </div>
               ))}
             </nav>
           </div>

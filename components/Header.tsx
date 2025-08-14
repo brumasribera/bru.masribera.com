@@ -94,12 +94,12 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
   ]
 
   const projectPages = [
-    { path: '/reserve', label: 'Reserve', description: 'Restaurant reservation platform' },
-    { path: '/openhuts', label: 'Open Huts', description: 'Nature network platform' },
-    { path: '/moodlenet', label: 'MoodleNet', description: 'Educational platform' },
-    { path: '/pix4d', label: 'Pix4D', description: 'Cloud platform & 3D modeling' },
-    { path: '/wegaw', label: 'Wegaw', description: 'Snow monitoring for outdoor activities' },
-    { path: '/pomoca', label: 'Pomoca', description: 'Production interface for manufacturing' }
+    { path: '/reserve', label: 'Reserve', description: 'Nature crowdfunding platform' },
+    { path: '/openhuts', label: 'Open Huts', description: 'Mountain refuge network' },
+    { path: '/moodlenet', label: 'MoodleNet', description: 'Learning platform' },
+    { path: '/pix4d', label: 'Pix4D', description: '3D mapping platform' },
+    { path: '/wegaw', label: 'Wegaw', description: 'Snow monitoring system' },
+    { path: '/pomoca', label: 'Pomoca', description: 'Manufacturing interface' }
   ]
 
   const scrollToSection = (href: string) => {

@@ -49,8 +49,8 @@ export function ReservePage() {
 						</div>
 						<h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">Reserve</h1>
 						<p className="text-2xl text-emerald-100 max-w-4xl mx-auto leading-relaxed">
-							An app to fund habitat and ecosystem restoration and protection, making it effortless
-							for anyone to protect nature, one square meter at a time.
+							A crowdfunding platform to protect regions, reforest areas, and restore natural habitats, 
+							making it effortless for anyone to contribute to nature conservation, one square meter at a time.
 						</p>
 					</div>
 				</div>
@@ -65,20 +65,20 @@ export function ReservePage() {
 						</CardHeader>
 						<CardContent className="space-y-4">
 							<p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-								Reserve helps individuals and organizations directly fund conservation actions.
-								Choose an area on a map, see its size and price, and fund protection or restoration
-								with transparent impact tracking.
+								Reserve is a nature crowdfunding platform that enables individuals and organizations to 
+								directly fund conservation actions. Choose a region on a map, see its size and restoration cost, 
+								and contribute to protecting, reforesting, or restoring natural habitats with transparent impact tracking.
 							</p>
 							<p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-								The prototype showcases key flows: selecting a grid area, calculating protected m² and
-								cost, confirming, and sharing progress. Designed with calm visuals and a signature
-								rainbow gradient celebrating biodiversity.
+								The prototype showcases key flows: selecting a grid area for conservation, calculating protected m² and 
+								cost, confirming your contribution, and sharing progress. Designed with calm visuals and a signature 
+								rainbow gradient celebrating biodiversity and the variety of conservation projects available.
 							</p>
 
 							<div className="flex flex-wrap gap-3 pt-2">
+								<Badge className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">Nature Crowdfunding</Badge>
+								<Badge className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">Habitat Restoration</Badge>
 								<Badge className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">Conservation Tech</Badge>
-								<Badge className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">Impact Transparency</Badge>
-								<Badge className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">UX Design</Badge>
 								<Badge className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">React</Badge>
 							</div>
 						</CardContent>
@@ -91,9 +91,9 @@ export function ReservePage() {
 									<Users className="h-6 w-6 text-emerald-600" />
 									<h3 className="text-lg font-semibold text-gray-900 dark:text-white">Target Users</h3>
 								</div>
-								<p className="text-gray-600 dark:text-gray-400">Nature supporters</p>
-								<p className="text-gray-600 dark:text-gray-400">Conservation NGOs</p>
-								<p className="text-gray-600 dark:text-gray-400">Corporate impact programs</p>
+								<p className="text-gray-600 dark:text-gray-400">Nature enthusiasts</p>
+								<p className="text-gray-600 dark:text-gray-400">Conservation organizations</p>
+								<p className="text-gray-600 dark:text-gray-400">Corporate sustainability programs</p>
 							</CardContent>
 						</Card>
 
@@ -103,9 +103,9 @@ export function ReservePage() {
 									<Shield className="h-6 w-6 text-green-600" />
 									<h3 className="text-lg font-semibold text-gray-900 dark:text-white">Impact</h3>
 								</div>
-								<p className="text-gray-600 dark:text-gray-400">Protect blocks of land in m²</p>
-								<p className="text-gray-600 dark:text-gray-400">Track and share contributions</p>
-								<p className="text-gray-600 dark:text-gray-400">Transparent pricing per m²</p>
+								<p className="text-gray-600 dark:text-gray-400">Protect and restore natural regions</p>
+								<p className="text-gray-600 dark:text-gray-400">Reforest degraded areas</p>
+								<p className="text-gray-600 dark:text-gray-400">Transparent cost per m²</p>
 							</CardContent>
 						</Card>
 
@@ -123,7 +123,7 @@ export function ReservePage() {
 
 				{/* Prototype */}
 				<div id="interactive-prototype" className="mb-20">
-					<h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-12">Interactive Prototype</h2>
+					<h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-12">Conservation Prototype</h2>
 
 					{/* Desktop phone frame */}
 					<div className="hidden lg:flex items-center justify-center">
@@ -194,7 +194,7 @@ function PrototypeScreen({
 	const reset = () => setSelectedCells(new Set())
 
 	const handleShare = async () => {
-		const text = `I just protected ${totalM2} m² with Reserve!`
+		const text = `I just conserved ${totalM2} m² with Reserve!`
 		try {
 			// @ts-ignore
 			if (navigator.share) {
@@ -223,7 +223,7 @@ function PrototypeScreen({
 					</div>
 					<div className="px-6 w-full">
 						<button onClick={() => setStep('select')} className="w-full py-4 rounded-2xl text-white text-xl font-semibold bg-gradient-to-r from-blue-500 via-pink-400 via-orange-300 via-yellow-300 to-lime-400 shadow-lg active:scale-[0.99] transition-transform">
-							Protect
+							Conserve
 						</button>
 					</div>
 				</div>
@@ -305,7 +305,7 @@ function PrototypeScreen({
 					</div>
 					<div className="px-6 w-full">
 						<button onClick={() => setStep('success')} className="w-full py-4 rounded-2xl text-white text-xl font-semibold bg-gradient-to-r from-blue-500 via-pink-400 via-orange-300 via-yellow-300 to-lime-400 shadow-lg active:scale-[0.99] transition-transform">
-							Protect
+							Conserve
 						</button>
 						<div className="mt-3 text-center">
 							<button onClick={() => setStep('select')} className="text-sm text-gray-500 dark:text-gray-400 underline">Edit selection</button>
@@ -318,7 +318,7 @@ function PrototypeScreen({
 				<div className="h-full flex flex-col items-center justify-between py-10">
 					<div className="text-center space-y-6">
 						<div className="text-5xl font-bold text-gray-900 dark:text-white">Amazing!</div>
-						<div className="text-2xl text-gray-700 dark:text-gray-300">You just protected</div>
+						<div className="text-2xl text-gray-700 dark:text-gray-300">You just conserved</div>
 						<div className="text-[120px] leading-none font-bold text-gray-900 dark:text-white">{totalM2}</div>
 						<div className="text-4xl text-gray-700 dark:text-gray-300 -mt-6">m²</div>
 						<div className="mt-4 w-[80%] mx-auto aspect-[5/2] rounded-xl overflow-hidden relative">
@@ -340,7 +340,7 @@ function PrototypeScreen({
 						<button onClick={handleShare} className="w-full py-4 rounded-2xl text-white text-xl font-semibold bg-gradient-to-r from-blue-500 via-pink-400 via-orange-300 via-yellow-300 to-lime-400 shadow-lg active:scale-[0.99] transition-transform">
 							Share
 						</button>
-						<button onClick={() => { reset(); setStep('select') }} className="block w-full text-center text-gray-600 dark:text-gray-400">Protect more</button>
+						<button onClick={() => { reset(); setStep('select') }} className="block w-full text-center text-gray-600 dark:text-gray-400">Conserve more</button>
 					</div>
 				</div>
 			)}

@@ -146,42 +146,69 @@ export function ProjectsSection() {
                   </div>
                   
                   {/* Action buttons - always at bottom */}
-                  <div className="flex gap-3">
+                  <div className="flex justify-center gap-3">
                     {project.title === 'Pix4D Cloud Platform' ? (
                       <button
-                        onClick={() => navigate('/pix4d')}
+                        onClick={() => {
+                          navigate('/pix4d')
+                          // Scroll to top instantly when navigating to project page
+                          window.scrollTo(0, 0)
+                        }}
                         className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
                       >
-                        <span>Project Details</span>
+                        <span>More Details</span>
                         <ArrowRight className="h-4 w-4" />
                       </button>
                     ) : project.title === 'Open Huts Nature Network' ? (
                       <button
-                        onClick={() => navigate('/openhuts')}
+                        onClick={() => {
+                          navigate('/openhuts')
+                          // Scroll to top instantly when navigating to project page
+                          window.scrollTo(0, 0)
+                        }}
                         className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
                       >
-                        <span>Project Details</span>
+                        <span>More Details</span>
                         <ArrowRight className="h-4 w-4" />
                       </button>
                     ) : project.title === 'MoodleNet Platform' ? (
                       <button
-                        onClick={() => navigate('/moodlenet')}
+                        onClick={() => {
+                          navigate('/moodlenet')
+                          // Scroll to top instantly when navigating to project page
+                          window.scrollTo(0, 0)
+                        }}
                         className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
                       >
-                        <span>Project Details</span>
+                        <span>More Details</span>
                         <ArrowRight className="h-4 w-4" />
                       </button>
                     ) : project.title === 'Reserve' ? (
                       <button
-                        onClick={() => navigate('/reserve')}
+                        onClick={() => {
+                          navigate('/reserve')
+                          // Scroll to top instantly when navigating to project page
+                          window.scrollTo(0, 0)
+                        }}
                         className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
                       >
-                        <span>Project Details</span>
+                        <span>More Details</span>
+                        <ArrowRight className="h-4 w-4" />
+                      </button>
+                    ) : project.title === 'DeFROST Snow Monitoring' ? (
+                      <button
+                        onClick={() => {
+                          navigate('/wegaw')
+                          window.scrollTo(0, 0)
+                        }}
+                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
+                      >
+                        <span>More Details</span>
                         <ArrowRight className="h-4 w-4" />
                       </button>
                     ) : (
                       <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105">
-                        <span>Project Details</span>
+                        <span>More Details</span>
                         <ArrowRight className="h-4 w-4" />
                       </button>
                     )}

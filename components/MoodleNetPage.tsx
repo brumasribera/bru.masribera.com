@@ -97,18 +97,15 @@ export function MoodleNetPage() {
                 Project Vision
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-4">
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-                MoodleNet is a pioneering open-source platform that transforms how educators discover, 
-                share, and curate educational resources. As a frontend developer on this project, I've 
-                contributed to building a comprehensive ecosystem that goes beyond simple resource sharing 
-                to enable collaborative curation and discovery of high-quality educational content.
+                MoodleNet transforms how educators discover, share, and curate educational resources. 
+                As a frontend developer, I contributed to building a comprehensive ecosystem for 
+                collaborative curation and discovery of high-quality educational content.
               </p>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-                The platform addresses the growing need for accessible, well-curated educational materials 
-                while promoting open education and supporting the global teaching community. It serves 
-                educators, instructional designers, and learners of all levels, providing detailed information 
-                about each resource with advanced discovery and curation capabilities.
+                The platform addresses the need for accessible, well-curated educational materials 
+                while promoting open education and supporting the global teaching community.
               </p>
               
               {/* Action buttons */}
@@ -175,7 +172,7 @@ export function MoodleNetPage() {
         </div>
 
         {/* Key Features */}
-        <div className="mb-20">
+        <div id="core-capabilities" className="mb-20">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">
             Core Capabilities
           </h2>
@@ -262,7 +259,7 @@ export function MoodleNetPage() {
         </div>
 
         {/* Technology Overview */}
-        <div className="mb-20">
+        <div id="technology-architecture" className="mb-20">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">
             Technology Architecture
           </h2>
@@ -319,7 +316,7 @@ export function MoodleNetPage() {
         </div>
 
         {/* User Experience Focus */}
-        <div className="mb-20">
+        <div id="user-experience" className="mb-20">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">
             User Experience Design
           </h2>

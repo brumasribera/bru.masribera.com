@@ -63,7 +63,7 @@ export function ReservePage() {
 						<CardHeader>
 							<CardTitle className="text-3xl font-bold text-gray-900 dark:text-white">Project Vision</CardTitle>
 						</CardHeader>
-						<CardContent className="space-y-6">
+						<CardContent className="space-y-4">
 							<p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
 								Reserve helps individuals and organizations directly fund conservation actions.
 								Choose an area on a map, see its size and price, and fund protection or restoration
@@ -122,13 +122,13 @@ export function ReservePage() {
 				</div>
 
 				{/* Prototype */}
-				<div className="mb-20">
+				<div id="interactive-prototype" className="mb-20">
 					<h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-12">Interactive Prototype</h2>
 
 					{/* Desktop phone frame */}
 					<div className="hidden lg:flex items-center justify-center">
-						<div className="relative w-[380px] h-[780px] rounded-[3rem] border-8 border-black dark:border-gray-200 shadow-[0_20px_60px_rgba(0,0,0,0.25)] bg-black">
-							<div className="mx-auto mt-2 h-6 w-40 rounded-b-2xl bg-black dark:bg-gray-200" />
+						<div className="relative w-[380px] h-[780px] rounded-[3rem] border-8 border-gray-900 dark:border-gray-200 shadow-[0_20px_60px_rgba(0,0,0,0.25)] bg-gray-900">
+							<div className="mx-auto mt-2 h-6 w-40 rounded-b-2xl bg-gray-900 dark:bg-gray-200" />
 							<div className="relative m-2 mt-3 h-[730px] rounded-[2rem] overflow-hidden bg-white dark:bg-gray-900">
 								<PrototypeScreen step={step} setStep={setStep} selectedCells={selectedCells} setSelectedCells={setSelectedCells} totalM2={totalM2} totalCost={totalCost} pricePerSquare={pricePerSquare} />
 							</div>

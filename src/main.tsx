@@ -3,8 +3,68 @@ import ReactDOM from 'react-dom/client'
 import App from '../App.tsx'
 import '../styles/globals.css'
 
+// Custom hook for automatic URL updates based on scroll position
+function useScrollBasedNavigation() {
+  const [currentSection, setCurrentSection] = React.useState<string>('')
+
+  React.useEffect(() => {
+    const sections = document.querySelectorAll('section[id], div[id]')
+    const sectionIds = Array.from(sections).map(section => section.id).filter(Boolean)
+    
+    const updateCurrentSection = () => {
+      const scrollPosition = window.scrollY + window.innerHeight / 3
+      
+      let activeSection = ''
+      for (const sectionId of sectionIds) {
+        const element = document.getElementById(sectionId)
+        if (element) {
+          const { offsetTop, offsetHeight } = element
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            activeSection = sectionId
+            break
+          }
+        }
+      }
+      
+      if (activeSection && activeSection !== currentSection) {
+        setCurrentSection(activeSection)
+        // Update URL without triggering scroll
+        const newUrl = activeSection === 'home' ? '/' : `/#${activeSection}`
+        if (window.location.hash !== `#${activeSection}`) {
+          window.history.replaceState(null, '', newUrl)
+        }
+      }
+    }
+
+    // Throttle scroll events for better performance
+    let ticking = false
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateCurrentSection()
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    updateCurrentSection() // Initial check
+    
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [currentSection])
+
+  return currentSection
+}
+
+// Wrap the App with the navigation hook
+function AppWithNavigation() {
+  useScrollBasedNavigation()
+  return <App />
+}
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <AppWithNavigation />
   </React.StrictMode>,
 )

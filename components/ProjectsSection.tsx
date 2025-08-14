@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Badge } from './ui/badge'
-import { Github, Globe, Users, Star, TrendingUp, Zap } from 'lucide-react'
+import { Github, Globe, Users, Star, TrendingUp, Zap, ArrowRight } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 
 const projects = [
@@ -92,133 +92,100 @@ export function ProjectsSection() {
         {/* All projects grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {projects.map((project) => (
-            <Card key={project.title} className="group hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 rounded-3xl border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
-              <div className="relative">
-                {/* Project image */}
-                <div className="h-48 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 flex items-center justify-center p-8">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className={`h-20 w-20 object-contain rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 ${
-                      project.title === 'MoodleNet Platform' 
-                        ? 'bg-white p-3' 
-                        : project.title === 'Open Huts Nature Network' 
-                        ? 'bg-white p-2' 
-                        : ''
-                    }`}
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                      const parent = target.parentElement;
-                      if (parent) {
-                        parent.innerHTML = `<div class="h-20 w-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300">${project.title.charAt(0)}</div>`;
-                      }
-                    }}
-                  />
-                </div>
-                
-                {/* Impact badge */}
-                <div className="absolute top-4 right-4">
-                  <Badge className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white border-0 px-3 py-1 text-sm font-medium">
-                    <TrendingUp className="h-3 w-3 mr-1" />
-                    {project.impact}
-                  </Badge>
-                </div>
-              </div>
-              
-              <CardHeader className="pb-4">
-                <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
-                  {project.title}
-                </CardTitle>
-                <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-4">
-                  {project.description}
-                </p>
-                
-                {/* User metrics */}
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                    <Users className="h-4 w-4" />
-                    <span>{project.users}</span>
+            <Card key={project.title} className="group hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 rounded-3xl border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden flex flex-col">
+              {/* Card content with flex-grow to push action elements to bottom */}
+              <CardContent className="pt-6 flex-1 flex flex-col">
+                <div className="flex-1">
+                  {/* Project logo */}
+                  <div className="flex justify-center mb-4">
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-16 h-16 rounded-2xl object-cover ring-1 ring-black/5 dark:ring-white/10 bg-white p-2 shadow-lg group-hover:shadow-xl transition-all duration-300"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent) {
+                          parent.innerHTML = `<div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl ring-1 ring-black/5 dark:ring-white/10 shadow-lg group-hover:shadow-xl transition-all duration-300">${project.title.charAt(0)}</div>`;
+                        }
+                      }}
+                    />
                   </div>
-                  {project.github && (
-                    <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                      <Star className="h-4 w-4" />
-                      <span>Open Source</span>
+                  
+                  <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white mb-3 text-center">
+                    {project.title}
+                  </CardTitle>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                    {project.description}
+                  </p>
+                  
+                  {/* Metrics */}
+                  <div className="flex items-center gap-4 mb-4 text-sm text-gray-600 dark:text-gray-400 justify-center">
+                    <div className="flex items-center gap-2">
+                      <Users className="h-4 w-4" />
+                      <span>{project.users}</span>
                     </div>
-                  )}
-                </div>
-              </CardHeader>
-              
-              <CardContent className="pt-0">
-                {/* Technology stack */}
-                <div className="mb-6">
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
-                      <Badge key={tech} variant="secondary" className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600 hover:border-blue-400 dark:hover:border-blue-500 transition-colors">
-                        {tech}
-                      </Badge>
-                    ))}
+                    <div className="flex items-center gap-2">
+                      <Star className="h-4 w-4" />
+                      <span>{project.github ? 'Open Source' : 'Proprietary'}</span>
+                    </div>
                   </div>
                 </div>
-                
-                {/* Action buttons */}
-                <div className="flex gap-3">
-                  {project.title === 'Open Huts Nature Network' ? (
-                    <button
-                      onClick={() => navigate('/openhuts')}
-                      className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
-                    >
-                      <TrendingUp className="h-4 w-4" />
-                      <span>Project Details</span>
-                    </button>
-                  ) : project.title === 'MoodleNet Platform' ? (
-                    <button
-                      onClick={() => navigate('/moodlenet')}
-                      className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
-                    >
-                      <TrendingUp className="h-4 w-4" />
-                      <span>Project Details</span>
-                    </button>
-                  ) : project.title === 'Reserve' ? (
-                    <button
-                      onClick={() => navigate('/reserve')}
-                      className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
-                    >
-                      <TrendingUp className="h-4 w-4" />
-                      <span>Project Details</span>
-                    </button>
-                  ) : (
-                    <>
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors font-medium"
-                        >
-                          <Github className="h-4 w-4" />
-                          <span>View Code</span>
-                        </a>
-                      )}
-                      {project.live && (
-                        <a
-                          href={project.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
-                        >
-                          <Globe className="h-4 w-4" />
-                          <span>Live Demo</span>
-                        </a>
-                      )}
-                      {!project.github && !project.live && (
-                        <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-lg">
-                          <Zap className="h-4 w-4" />
-                          <span>Proprietary</span>
-                        </div>
-                      )}
-                    </>
-                  )}
+
+                {/* Technology pills - positioned at bottom */}
+                <div className="mt-auto">
+                  <div className="mb-6">
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech) => (
+                        <Badge key={tech} variant="secondary" className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600 hover:border-blue-400 dark:hover:border-blue-500 transition-colors">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Action buttons - always at bottom */}
+                  <div className="flex gap-3">
+                    {project.title === 'Pix4D Cloud Platform' ? (
+                      <button
+                        onClick={() => navigate('/pix4d')}
+                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
+                      >
+                        <span>Project Details</span>
+                        <ArrowRight className="h-4 w-4" />
+                      </button>
+                    ) : project.title === 'Open Huts Nature Network' ? (
+                      <button
+                        onClick={() => navigate('/openhuts')}
+                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
+                      >
+                        <span>Project Details</span>
+                        <ArrowRight className="h-4 w-4" />
+                      </button>
+                    ) : project.title === 'MoodleNet Platform' ? (
+                      <button
+                        onClick={() => navigate('/moodlenet')}
+                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
+                      >
+                        <span>Project Details</span>
+                        <ArrowRight className="h-4 w-4" />
+                      </button>
+                    ) : project.title === 'Reserve' ? (
+                      <button
+                        onClick={() => navigate('/reserve')}
+                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
+                      >
+                        <span>Project Details</span>
+                        <ArrowRight className="h-4 w-4" />
+                      </button>
+                    ) : (
+                      <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105">
+                        <span>Project Details</span>
+                        <ArrowRight className="h-4 w-4" />
+                      </button>
+                    )}
+                  </div>
                 </div>
               </CardContent>
             </Card>

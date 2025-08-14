@@ -99,18 +99,15 @@ export function OpenHutsPage() {
                 Project Vision
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-4">
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-                Open Huts Nature Network is a pioneering platform that revolutionizes how outdoor enthusiasts 
-                discover, book, and plan their mountain adventures. As the founder and lead developer, I've 
-                created a comprehensive ecosystem that goes beyond simple hut booking to enable complex 
-                multi-hut route planning across the world's most beautiful mountain regions.
+                Open Huts Nature Network revolutionizes how outdoor enthusiasts discover, book, and plan 
+                mountain adventures. As founder and lead developer, I created a comprehensive ecosystem 
+                for multi-hut route planning across the world's most beautiful mountain regions.
               </p>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-                The platform addresses the growing need for accessible, well-maintained mountain accommodations 
-                while promoting sustainable outdoor tourism and supporting local mountain communities. It serves 
-                hikers, trail runners, climbers, and adventurers of all levels, providing detailed information 
-                about each hut and route with advanced booking capabilities.
+                The platform addresses the need for accessible mountain accommodations while promoting 
+                sustainable outdoor tourism and supporting local mountain communities.
               </p>
             </CardContent>
           </Card>
@@ -155,14 +152,14 @@ export function OpenHutsPage() {
         </div>
 
         {/* Platform Screenshots */}
-        <div className="mb-20">
+        <div id="platform-preview" className="mb-20">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">
             Platform Preview
           </h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 lg:gap-8">
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
-              <CardHeader className="text-center pb-2">
+              <CardHeader className="text-center pb-0">
                 <CardTitle className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-3">
                   <Search className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
                   Search & Discovery
@@ -181,7 +178,7 @@ export function OpenHutsPage() {
             </Card>
 
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
-              <CardHeader className="text-center pb-2">
+              <CardHeader className="text-center pb-0">
                 <CardTitle className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-3">
                   <Tent className="h-4 w-4 sm:h-5 sm:w-5 text-green-600" />
                   Hut Details
@@ -200,7 +197,7 @@ export function OpenHutsPage() {
             </Card>
 
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
-              <CardHeader className="text-center pb-2">
+              <CardHeader className="text-center pb-0">
                 <CardTitle className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-3">
                   <Route className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600" />
                   Route Planning
@@ -221,7 +218,7 @@ export function OpenHutsPage() {
         </div>
 
         {/* Key Features */}
-        <div className="mb-20">
+        <div id="core-capabilities" className="mb-20">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">
             Core Capabilities
           </h2>

@@ -54,7 +54,7 @@ export function ExperienceSection() {
   const navigate = useNavigate()
   
   return (
-    <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-green-600 via-emerald-500 to-teal-400 dark:from-green-400 dark:via-emerald-400 dark:to-teal-300 bg-clip-text text-transparent mb-6 leading-tight pb-2">
@@ -75,7 +75,7 @@ export function ExperienceSection() {
                 {/* Dot aligned with vertical timeline */}
                 <div className="absolute left-6 sm:left-8 top-6 transform -translate-x-1/2 w-4 h-4 rounded-full bg-emerald-500 shadow-lg transition-all duration-700 ease-in-out group-hover:scale-150 group-hover:shadow-2xl group-hover:shadow-emerald-500/50 z-10" />
 
-                <Card className="group hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 rounded-3xl border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
+                <Card className="group hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 rounded-3xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
                   <CardHeader className="pb-4">
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-6">
@@ -138,7 +138,7 @@ export function ExperienceSection() {
                           onClick={() => navigate('/openhuts')}
                           className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
                         >
-                          <span>View Project</span>
+                          <span>More Details</span>
                           <ArrowRight className="h-4 w-4" />
                         </button>
                       ) : experience.company === 'Moodle' ? (
@@ -146,7 +146,7 @@ export function ExperienceSection() {
                           onClick={() => navigate('/moodlenet')}
                           className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
                         >
-                          <span>View Project</span>
+                          <span>More Details</span>
                           <ArrowRight className="h-4 w-4" />
                         </button>
                       ) : (

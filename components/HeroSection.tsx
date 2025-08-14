@@ -141,7 +141,7 @@ export function HeroSection() {
   }, [isPaused])
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 lg:pb-24">
+    <section id="home" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <div 
@@ -151,7 +151,7 @@ export function HeroSection() {
           }}
         />
         {/* Gradient overlay for better readability and effect */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-white/70 dark:from-gray-900/90 dark:via-gray-900/80 dark:to-gray-900/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/90 to-white/85 dark:from-gray-900/90 dark:from-gray-900/80 dark:to-gray-900/70"></div>
       </div>
 
       {/* Content */}
@@ -187,7 +187,7 @@ export function HeroSection() {
         
         {/* Name with Dynamic Gradient and Hacking Effect - Better breathing room */}
         <div className="w-full max-w-4xl mx-auto mb-2 sm:mb-3 lg:mb-4 flex items-center justify-center">
-          <h1 className="font-friendly tracking-wide" style={{ 
+          <h1 className="font-friendly tracking-wide whitespace-nowrap" style={{ 
             paddingBottom: '0.1em', 
             paddingTop: '0.05em'
           }}>
@@ -215,7 +215,7 @@ export function HeroSection() {
         <div className="w-full max-w-xl mx-auto mb-5 sm:mb-6 lg:mb-8 flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-5 justify-center items-center">
           <Button 
             size="lg" 
-            className="group bg-black dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-200 text-white dark:text-black px-4 sm:px-6 transition-colors duration-200 text-sm sm:text-base"
+            className="group bg-gray-900 dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-200 text-white dark:text-black px-4 sm:px-6 transition-colors duration-200 text-sm sm:text-base"
             onClick={() => window.open('mailto:bru@masribera.com', '_blank')}
           >
             <Mail className="mr-2 h-3 w-3 sm:h-4 sm:w-4 transition-all duration-300 group-hover:scale-110 group-hover:scale-100" />

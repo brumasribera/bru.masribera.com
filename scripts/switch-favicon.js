@@ -15,12 +15,10 @@ if (env === 'production') {
     join(publicDir, 'favicon-prod.svg'),
     join(publicDir, 'favicon.svg')
   );
-  console.log('✅ Switched to PRODUCTION favicon (green gradient)');
 } else {
   // Copy development favicon
   copyFileSync(
     join(publicDir, 'favicon-dev.svg'),
     join(publicDir, 'favicon.svg')
   );
-  console.log('🔵 Switched to DEVELOPMENT favicon (blue/purple gradient)');
 }

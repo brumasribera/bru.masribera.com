@@ -33,7 +33,7 @@ export function ContactSection() {
               {/* Email */}
               <button 
                 onClick={() => window.open('mailto:bru@masribera.com','_blank')}
-                className="group bg-black dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-200 text-white dark:text-black px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2"
+                className="group bg-gray-900 dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-200 text-white dark:text-gray-900 px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2"
               >
                 <Mail className="h-4 w-4" />
                 bru@masribera.com

@@ -27,7 +27,7 @@ export function ImageModal({ selectedImage, setSelectedImage, imagePaths, altTex
           setSelectedImage(imagePaths[prevIndex])
         } else if (e.key === 'ArrowRight') {
           const currentIndex = imagePaths.indexOf(selectedImage)
-          const nextIndex = currentIndex === 0 ? imagePaths.length - 1 : currentIndex + 1
+          const nextIndex = currentIndex === imagePaths.length - 1 ? 0 : currentIndex + 1
           setSelectedImage(imagePaths[nextIndex])
         }
         
@@ -51,7 +51,7 @@ export function ImageModal({ selectedImage, setSelectedImage, imagePaths, altTex
   const goToNextImage = () => {
     if (!selectedImage) return
     const currentIndex = imagePaths.indexOf(selectedImage)
-    const nextIndex = currentIndex === 0 ? imagePaths.length - 1 : currentIndex + 1
+    const nextIndex = currentIndex === imagePaths.length - 1 ? 0 : currentIndex + 1
     setSelectedImage(imagePaths[nextIndex])
   }
 

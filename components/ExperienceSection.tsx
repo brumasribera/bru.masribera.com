@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
-import { MapPin, Calendar, ArrowRight } from 'lucide-react'
+import { MapPin, Calendar, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 const experiences = [
   {
@@ -52,9 +53,13 @@ const experiences = [
 
 export function ExperienceSection() {
   const navigate = useNavigate()
+  const [showAll, setShowAll] = useState(false)
+  
+  const visibleExperiences = showAll ? experiences : experiences.slice(0, 3)
+  const hasMore = experiences.length > 2.5
   
   return (
-    <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+    <section id="experience" className="py-12 sm:py-24 px-8 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-green-600 via-emerald-500 to-teal-400 dark:from-green-400 dark:via-emerald-400 dark:to-teal-300 bg-clip-text text-transparent mb-6 leading-tight pb-2">
@@ -67,16 +72,39 @@ export function ExperienceSection() {
         {/* Timeline list with logo, content, and right-aligned meta */}
         <div className="relative">
           {/* Vertical line - hidden on small screens */}
-          <div className="hidden sm:block absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700" />
+          <div className={`hidden sm:block absolute left-6 sm:left-8 w-px transition-all duration-700 ease-in-out ${
+            !showAll ? 'h-[calc(100%-4rem)]' : 'h-[calc(100%-5rem)]'
+          } bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700`} />
+          
+          {/* Timeline fade-out overlay when collapsed */}
+          {!showAll && (
+            <div className="hidden sm:block absolute left-6 sm:left-8 w-px h-16 bg-gradient-to-t from-white via-white/90 to-transparent dark:from-gray-900 dark:via-gray-900/90 pointer-events-none" 
+                 style={{ top: 'calc(100% - 4rem)' }} />
+          )}
 
-          <ul className="space-y-8">
-            {experiences.map((experience) => (
-              <li key={experience.company} className="relative pl-4 sm:pl-20 group">
+          <div className="transition-all duration-700 ease-in-out relative pt-4 pb-4 px-4 sm:pl-4 sm:pr-16">
+            <ul className="space-y-8">
+            {visibleExperiences.map((experience, index) => (
+              <li 
+                key={experience.company} 
+                className={`relative pl-0 sm:pl-20 group transition-all duration-700 ease-in-out ${
+                  !showAll && index === 2 ? 'cursor-pointer' : ''
+                }`}
+                style={{
+                  height: !showAll && index === 2 ? '80px' : 'auto'
+                }}
+                onClick={!showAll && index === 2 ? () => setShowAll(true) : undefined}
+              >
                 {/* Dot aligned with vertical timeline - hidden on small screens */}
-                <div className="hidden sm:block absolute left-6 sm:left-8 top-6 transform -translate-x-1/2 w-4 h-4 rounded-full bg-emerald-500 shadow-lg transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-emerald-500/20 z-10" />
+                <div className="hidden sm:block absolute left-2 sm:left-4 top-6 transform -translate-x-1/2 w-4 h-4 rounded-full bg-emerald-500 shadow-lg transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-emerald-500/20 z-10" />
 
-                <Card className="group-hover:shadow-2xl group-hover:scale-[1.02] transition-all duration-300 rounded-3xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 overflow-hidden">
-                  <CardHeader className="pb-4">
+                <div className="overflow-visible">
+                                  <Card className={`group-hover:shadow-2xl group-hover:scale-[1.02] transition-all duration-300 rounded-3xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 relative ${
+                  !showAll && index === 2 ? 'shadow-none group-hover:shadow-none hover:shadow-[0_-8px_25px_-12px_rgba(0,0,0,0.25),8px_0_25px_-12px_rgba(0,0,0,0.25)] hover:scale-[1.01] hover:shadow-emerald-500/20 overflow-hidden h-20' : ''
+                } ${showAll && index === experiences.length - 1 ? 'mb-16' : ''}`}>
+                  
+                  <div className={!showAll && index === 2 ? 'overflow-hidden h-20' : ''}>
+                    <CardHeader className="pb-4">
                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                       <div className="flex items-start gap-4 sm:gap-6">
                         {/* Company logo */}
@@ -200,10 +228,51 @@ export function ExperienceSection() {
                       )}
                     </div>
                   </CardContent>
+                    </div>
                 </Card>
+                  </div>
               </li>
             ))}
-          </ul>
+            </ul>
+            
+            {/* Comprehensive fade-out overlay for entire container when collapsed */}
+            {!showAll && (
+              <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white via-white/90 to-transparent dark:from-gray-900 dark:via-gray-900/90 pointer-events-none z-20" />
+            )}
+          </div>
+          
+          {/* Show More/Less Button */}
+          {hasMore && (
+            <div className={`text-center transition-all duration-700 ease-in-out ${
+              !showAll ? 'mt-2' : '-mt-6'
+            }`}>
+              <button
+                onClick={() => {
+                  setShowAll(!showAll);
+                  if (showAll) {
+                    // When showing less, scroll to start of section
+                    document.getElementById('experience')?.scrollIntoView({ 
+                      behavior: 'smooth',
+                      block: 'start'
+                    });
+                  }
+                }}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                {showAll ? (
+                  <>
+                    <ChevronUp className="h-5 w-5" />
+                    Show Less
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown className="h-5 w-5" />
+                    Show More
+                  </>
+                )}
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </section>

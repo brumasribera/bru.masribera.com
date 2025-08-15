@@ -11,13 +11,14 @@ import { useState } from 'react'
 export function OpenHutsPage() {
   const { navigateToProject, navigateToHome } = useProjectNavigation()
   
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  
   // Enable keyboard navigation
   useKeyboardNavigation({
     prevProjectPath: '/reserve',
-    nextProjectPath: '/clathes'
+    nextProjectPath: '/clathes',
+    disableNavigation: selectedImage !== null
   })
-  
-  const [selectedImage, setSelectedImage] = useState<string | null>(null)
   
   // Array of all image paths for navigation
   const imagePaths = [

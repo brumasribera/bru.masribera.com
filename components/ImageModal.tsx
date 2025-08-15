@@ -14,26 +14,29 @@ export function ImageModal({ selectedImage, setSelectedImage, imagePaths, altTex
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!selectedImage) return
       
-      // Prevent default behavior for arrow keys when modal is open
+      // Handle all navigation keys when modal is open
       if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === 'Escape') {
         e.preventDefault()
         e.stopPropagation()
-      }
-      
-      if (e.key === 'Escape') {
-        setSelectedImage(null)
-      } else if (e.key === 'ArrowLeft') {
-        const currentIndex = imagePaths.indexOf(selectedImage)
-        const prevIndex = currentIndex === 0 ? imagePaths.length - 1 : currentIndex - 1
-        setSelectedImage(imagePaths[prevIndex])
-      } else if (e.key === 'ArrowRight') {
-        const currentIndex = imagePaths.indexOf(selectedImage)
-        const nextIndex = currentIndex === 0 ? imagePaths.length - 1 : currentIndex + 1
-        setSelectedImage(imagePaths[nextIndex])
+        
+        if (e.key === 'Escape') {
+          setSelectedImage(null)
+        } else if (e.key === 'ArrowLeft') {
+          const currentIndex = imagePaths.indexOf(selectedImage)
+          const prevIndex = currentIndex === 0 ? imagePaths.length - 1 : currentIndex - 1
+          setSelectedImage(imagePaths[prevIndex])
+        } else if (e.key === 'ArrowRight') {
+          const currentIndex = imagePaths.indexOf(selectedImage)
+          const nextIndex = currentIndex === 0 ? imagePaths.length - 1 : currentIndex + 1
+          setSelectedImage(imagePaths[nextIndex])
+        }
+        
+        return // Exit early to prevent other handlers from processing
       }
     }
     
-    document.addEventListener('keydown', handleKeyDown, true) // Use capture phase
+    // Use capture phase and make sure we handle the event first
+    document.addEventListener('keydown', handleKeyDown, true)
     return () => document.removeEventListener('keydown', handleKeyDown, true)
   }, [selectedImage, imagePaths, setSelectedImage])
   

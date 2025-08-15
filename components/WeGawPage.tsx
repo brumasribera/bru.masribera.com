@@ -7,16 +7,26 @@ import { useState } from 'react'
 import { ProjectNavigationButton } from './ProjectNavigationButton'
 import { useProjectNavigation } from './hooks/useProjectNavigation'
 import { useKeyboardNavigation } from './hooks/useKeyboardNavigation'
+import { ImageModal } from './ImageModal'
 
 export function WegawPage() {
-  // Component for Wegaw project page
+  // Component for Wegaw project page - Fixed case sensitivity
   const navigate = useNavigate()
   const { navigateToProject } = useProjectNavigation()
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  
+  // Array of all image paths for navigation
+  const imagePaths = [
+    '/wegaw/DeFROST1.jpg',
+    '/wegaw/2_defrost.png',
+    '/wegaw/3_defrost.png',
+    '/wegaw/DeFROST_SpaceValueAdded_01.png'
+  ]
 
   useKeyboardNavigation({
     prevProjectPath: '/pomoca',
-    nextProjectPath: '/pix4d'
+    nextProjectPath: '/pix4d',
+    disableNavigation: selectedImage !== null
   })
 
   return (
@@ -506,26 +516,13 @@ export function WegawPage() {
         </div>
       </div>
       
-      {/* Full Screen Image Modal */}
-      {selectedImage && (
-        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
-          <div className="relative max-w-7xl max-h-full overflow-auto">
-            {/* Close button */}
-            <button
-              onClick={() => setSelectedImage(null)}
-              className="fixed top-4 right-4 text-white hover:text-gray-300 transition-colors bg-black/50 hover:bg-black/70 rounded-full p-3 z-10"
-            >
-              <span className="text-2xl">×</span>
-            </button>
-            
-            <img 
-              src={selectedImage} 
-              alt="DeFROST Project"
-              className="max-w-full object-contain rounded-lg"
-            />
-          </div>
-        </div>
-      )}
+             {/* Image Modal */}
+       <ImageModal
+         selectedImage={selectedImage}
+         setSelectedImage={setSelectedImage}
+         imagePaths={imagePaths}
+         altText="DeFROST Project"
+       />
       
       <Footer />
     </div>

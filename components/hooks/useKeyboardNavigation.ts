@@ -4,13 +4,19 @@ import { useProjectNavigation } from './useProjectNavigation'
 interface UseKeyboardNavigationProps {
   prevProjectPath: string
   nextProjectPath: string
+  disableNavigation?: boolean
 }
 
-export function useKeyboardNavigation({ prevProjectPath, nextProjectPath }: UseKeyboardNavigationProps) {
+export function useKeyboardNavigation({ prevProjectPath, nextProjectPath, disableNavigation = false }: UseKeyboardNavigationProps) {
   const { navigateToProject } = useProjectNavigation()
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      // Don't handle navigation if disabled (e.g., when modal is open)
+      if (disableNavigation) {
+        return
+      }
+      
       // Only handle arrow keys if not typing in an input field
       if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) {
         return
@@ -33,5 +39,5 @@ export function useKeyboardNavigation({ prevProjectPath, nextProjectPath }: UseK
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [navigateToProject, prevProjectPath, nextProjectPath])
+  }, [navigateToProject, prevProjectPath, nextProjectPath, disableNavigation])
 }

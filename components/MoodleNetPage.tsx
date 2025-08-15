@@ -56,7 +56,7 @@ export function MoodleNetPage() {
               MoodleNet Platform
             </h1>
             <p className="text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
-              An open-source platform revolutionizing how educators discover and share educational resources.
+              An open-source platform revolutionizing how educators discover and share educational resources worldwide, promoting open education and collaborative learning.
             </p>
           </div>
         </div>

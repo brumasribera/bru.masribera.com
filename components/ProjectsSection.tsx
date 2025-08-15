@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 const projects = [
   {
     title: 'Reserve',
-    description: 'Mobile-first app that lets anyone protect nature by funding habitat restoration and protection one square meter at a time.',
+    description: 'Mobile-first app that lets anyone protect nature by funding habitat restoration and protection one square meter at a time with transparent impact tracking.',
     technologies: ['React Native', 'TypeScript', 'Stripe', 'MongoDB', 'Node.js'],
     github: null,
     live: 'https://reserve.org',
@@ -17,7 +17,7 @@ const projects = [
   },
   {
     title: 'Open Huts',
-    description: 'Platform connecting hikers with mountain refuges, promoting sustainable tourism and outdoor exploration.',
+    description: 'Platform connecting hikers with mountain refuges worldwide, promoting sustainable tourism and outdoor exploration across global mountain regions.',
     technologies: ['React', 'TypeScript', 'Mapbox', 'Node.js', 'PostgreSQL'],
     github: null,
     live: 'https://openhuts.org',
@@ -28,7 +28,7 @@ const projects = [
   },
   {
     title: 'Clathes',
-    description: 'Clothes for a Cause - Protecting endangered species through sustainable fashion. First project: Saving the vaquita porpoise from extinction through strategic conservation efforts.',
+    description: 'Protecting endangered species through sustainable fashion, creating global impact with every purchase and strategic conservation initiative worldwide.',
     technologies: ['Conservation Tech', 'Strategic Planning', 'Sustainable Fashion', 'Wildlife Protection'],
     github: null,
     live: 'https://www.instagram.com/clathesofficial/',
@@ -39,7 +39,7 @@ const projects = [
   },
   {
     title: 'MoodleNet Platform',
-    description: 'Decentralized learning platform enabling educators to share and discover open educational resources.',
+    description: 'Decentralized learning platform enabling educators to share and discover open educational resources worldwide, promoting collaborative learning.',
     technologies: ['React', 'TypeScript', 'ActivityPub', 'Node.js', 'PostgreSQL'],
     github: null,
     live: 'https://moodle.net',
@@ -50,7 +50,7 @@ const projects = [
   },
   {
     title: 'Pomoca Production Interface',
-    description: 'Manufacturing control system for ski equipment production, optimizing workflow and quality assurance.',
+    description: 'Manufacturing control system for ski equipment production, optimizing workflow and quality assurance with modern digital interfaces.',
     technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'IoT'],
     github: null,
     live: null,
@@ -61,7 +61,7 @@ const projects = [
   },
   {
     title: 'DeFROST Snow Monitoring',
-    description: 'Advanced snow monitoring and avalanche prediction system using satellite data and AI.',
+    description: 'Advanced snow monitoring and avalanche prediction system using satellite data and AI, providing real-time environmental intelligence for safety.',
     technologies: ['Python', 'AI/ML', 'Satellite Data', 'React', 'Node.js'],
     github: null,
     live: 'https://wegaw.com',

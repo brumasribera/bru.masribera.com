@@ -44,7 +44,7 @@ export function PomocaPage() {
               Pomoca Production Interface
             </h1>
                          <p className="text-2xl text-pink-100 max-w-4xl mx-auto leading-relaxed">
-               UX design project for digital transformation of ski touring skin manufacturing.
+               UX design project for digital transformation of ski touring skin manufacturing, creating modern production interfaces for Swiss precision manufacturing.
              </p>
           </div>
         </div>

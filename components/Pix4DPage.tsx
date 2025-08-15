@@ -45,7 +45,7 @@ export function Pix4DPage() {
               Pix4D Cloud Platform
             </h1>
             <p className="text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
-              Cloud platform for processing and analyzing 3D models from drone images.
+              Cloud platform for processing and analyzing 3D models from drone images, delivering high-precision photogrammetry with scalable cloud architecture.
             </p>
           </div>
         </div>

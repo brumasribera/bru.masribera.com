@@ -49,7 +49,7 @@ export function ClathesPage() {
               Clathes
             </h1>
                          <p className="text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
-               Protecting species, ecosystems, and human rights through sustainable fashion.
+               Protecting species, ecosystems, and human rights through sustainable fashion, creating global impact with every purchase and conservation initiative.
              </p>
           </div>
         </div>

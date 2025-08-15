@@ -9,6 +9,7 @@ import { useProjectNavigation } from './hooks/useProjectNavigation'
 import { useKeyboardNavigation } from './hooks/useKeyboardNavigation'
 
 export function WegawPage() {
+  // Component for Wegaw project page
   const navigate = useNavigate()
   const { navigateToProject } = useProjectNavigation()
   const [selectedImage, setSelectedImage] = useState<string | null>(null)

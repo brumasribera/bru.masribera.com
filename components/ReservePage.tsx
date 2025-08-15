@@ -1,14 +1,22 @@
-import { ArrowLeft, Users, Shield, Globe2, Share2 } from 'lucide-react'
+import { ArrowLeft, Users, Shield, Globe2, Instagram } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Badge } from './ui/badge'
 import { Footer } from './Footer'
-import { useNavigate } from 'react-router-dom'
+import { useProjectNavigation } from './hooks/useProjectNavigation'
+import { ProjectNavigationButton } from './ProjectNavigationButton'
+import { useKeyboardNavigation } from './hooks/useKeyboardNavigation'
 import { useEffect, useMemo, useState } from 'react'
 
 type Step = 'home' | 'select' | 'summary' | 'success'
 
 export function ReservePage() {
-	const navigate = useNavigate()
+	const { navigateToProject, navigateToHome } = useProjectNavigation()
+	
+	// Enable keyboard navigation
+	useKeyboardNavigation({
+		prevProjectPath: '/pix4d',
+		nextProjectPath: '/openhuts'
+	})
 
 	// Prototype state
 	const [step, setStep] = useState<Step>('home')
@@ -35,7 +43,7 @@ export function ReservePage() {
 			<div className="bg-gradient-to-br from-emerald-600 via-green-600 to-lime-600 text-white py-20">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex items-center gap-4 mb-8">
-						<button onClick={() => navigate('/#projects')} className="flex items-center gap-2 text-emerald-100 hover:text-white transition-colors">
+						<button onClick={navigateToHome} className="flex items-center gap-2 text-emerald-100 hover:text-white transition-colors">
 							<ArrowLeft className="h-5 w-5" />
 							<span>Back to Projects</span>
 						</button>
@@ -49,8 +57,7 @@ export function ReservePage() {
 						</div>
 						<h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">Reserve</h1>
 						<p className="text-2xl text-emerald-100 max-w-4xl mx-auto leading-relaxed">
-							A crowdfunding platform to protect regions, reforest areas, and restore natural habitats, 
-							making it effortless for anyone to contribute to nature conservation, one square meter at a time.
+							A crowdfunding platform to protect regions, reforest areas, and restore natural habitats.
 						</p>
 					</div>
 				</div>
@@ -115,7 +122,15 @@ export function ReservePage() {
 									<Globe2 className="h-6 w-6 text-lime-600" />
 									<h3 className="text-lg font-semibold text-gray-900 dark:text-white">Channels</h3>
 								</div>
-								<a href="https://www.instagram.com/reservenatureapp/" target="_blank" rel="noopener noreferrer" className="text-emerald-700 dark:text-emerald-300 underline">Instagram</a>
+								<p className="text-gray-600 dark:text-gray-400 mb-4">Follow the project on social media</p>
+								<a href="https://www.instagram.com/reservenatureapp/" target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 hover:from-purple-500 hover:via-pink-400 hover:to-orange-400 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] overflow-hidden text-sm">
+									{/* Shiny overlay effect */}
+									<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+									
+									{/* Instagram icon with hover effect */}
+									<Instagram className="h-4 w-4 group-hover:scale-110 transition-transform duration-200 relative z-10" />
+									<span className="relative z-10">Follow on Instagram</span>
+								</a>
 							</CardContent>
 						</Card>
 					</div>
@@ -143,13 +158,36 @@ export function ReservePage() {
 					</div>
 				</div>
 
-				{/* CTA */}
-				<div className="text-center">
-					<div className="inline-flex gap-3">
-						<a href="https://www.instagram.com/reservenatureapp/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-full font-medium">
-							<Share2 className="h-5 w-5" />
-							<span>Follow the project</span>
-						</a>
+
+
+								{/* Navigation Buttons */}
+				<div className="relative">
+					{/* Previous Project Button - Left Side */}
+					<ProjectNavigationButton
+						direction="prev"
+						projectName="Clathes"
+						onClick={() => navigateToProject('/clathes')}
+					/>
+
+					{/* Next Project Button - Right Side */}
+					<ProjectNavigationButton
+						direction="next"
+						projectName="Open Huts"
+						onClick={() => navigateToProject('/openhuts')}
+					/>
+
+					{/* Back to Projects Button - Center */}
+					<div className="text-center mt-20">
+						<button
+							onClick={navigateToHome}
+							className="group relative inline-flex items-center gap-2 px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl text-lg overflow-hidden"
+						>
+							{/* Shiny overlay effect */}
+							<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+							
+							<ArrowLeft className="h-5 w-5 group-hover:scale-110 transition-transform duration-200 relative z-10" />
+							<span className="relative z-10">Back to All Projects</span>
+						</button>
 					</div>
 				</div>
 			</div>

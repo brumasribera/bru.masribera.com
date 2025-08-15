@@ -63,7 +63,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-12 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+    <section id="contact" className="py-8 sm:py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
       <div className="max-w-4xl mx-auto">
         {/* Professional header */}
         <div className="text-center mb-16">
@@ -143,19 +143,28 @@ export function ContactSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 disabled:from-gray-400 disabled:to-gray-500 text-white rounded-lg font-medium transition-all duration-300 hover:scale-105 disabled:hover:scale-100 disabled:cursor-not-allowed"
+                className="group relative w-full flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 hover:from-green-300 hover:via-emerald-400 hover:to-teal-400 disabled:from-gray-400 disabled:to-gray-500 text-white rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl disabled:shadow-none transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:hover:scale-100 disabled:cursor-not-allowed overflow-hidden"
               >
-                {isSubmitting ? (
-                  <>
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    <span>Sending...</span>
-                  </>
-                ) : (
-                  <>
-                    <Send className="h-4 w-4" />
-                    <span>Send Message</span>
-                  </>
-                )}
+                {/* Shiny overlay effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                
+                {/* Drop shadow effect on click */}
+                <div className="absolute inset-0 bg-gradient-to-r from-green-600 via-emerald-700 to-teal-600 rounded-xl opacity-0 group-active:opacity-100 transition-opacity duration-150"></div>
+                
+                {/* Button content */}
+                <div className="relative z-10 flex items-center gap-3">
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
+                      <span>Send Message</span>
+                    </>
+                  )}
+                </div>
               </button>
 
               {/* Status Messages */}

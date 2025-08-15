@@ -3,17 +3,17 @@ import { Code2, Palette, Users, Lightbulb } from 'lucide-react'
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-12 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+    <section id="about" className="py-8 sm:py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent mb-6 leading-tight pb-2">
             About Me
           </h2>
           <p className="text-lg sm:text-xl text-gray-700/90 dark:text-gray-300/90 max-w-3xl mx-auto leading-relaxed">
-            Computer Engineer building user‑centred products. 8y Frontend · 4y UX · 3y Backend. End‑to‑end from research to production —
+            End‑to‑end product development from research to production, with a focus on creating 
             <span className="ml-2 bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-300 bg-clip-text text-transparent font-semibold">
               impact‑driven
-            </span>.
+            </span> solutions that users love.
           </p>
         </div>
 

@@ -1,10 +1,18 @@
 import { ArrowLeft, Globe, ExternalLink, Factory, Settings, Zap, CheckCircle } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Footer } from './Footer'
-import { useNavigate } from 'react-router-dom'
+import { useProjectNavigation } from './hooks/useProjectNavigation'
+import { ProjectNavigationButton } from './ProjectNavigationButton'
+import { useKeyboardNavigation } from './hooks/useKeyboardNavigation'
 
 export function PomocaPage() {
-  const navigate = useNavigate()
+  const { navigateToProject, navigateToHome } = useProjectNavigation()
+  
+  // Enable keyboard navigation
+  useKeyboardNavigation({
+    prevProjectPath: '/moodlenet',
+    nextProjectPath: '/wegaw'
+  })
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
@@ -12,13 +20,13 @@ export function PomocaPage() {
       <div className="bg-gradient-to-br from-pink-600 via-pink-700 to-pink-800 text-white py-20" style={{ background: 'linear-gradient(135deg, #d61c94 0%, #be185d 50%, #9d174d 100%)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-8 pt-8">
-            <button 
-              onClick={() => navigate('/#projects')}
-              className="flex items-center gap-2 text-pink-100 hover:text-white transition-colors"
-            >
-              <ArrowLeft className="h-5 w-5" />
-              <span>Back to Projects</span>
-            </button>
+                         <button 
+               onClick={navigateToHome}
+               className="flex items-center gap-2 text-pink-100 hover:text-white transition-colors"
+             >
+               <ArrowLeft className="h-5 w-5" />
+               <span>Back to Projects</span>
+             </button>
           </div>
           
           <div className="text-center">
@@ -36,8 +44,7 @@ export function PomocaPage() {
               Pomoca Production Interface
             </h1>
                          <p className="text-2xl text-pink-100 max-w-4xl mx-auto leading-relaxed">
-               UX design project for digital transformation of ski touring skin manufacturing. Designed new production monitoring 
-               and quality control interfaces for the world's leading manufacturer since 1933.
+               UX design project for digital transformation of ski touring skin manufacturing.
              </p>
           </div>
         </div>
@@ -144,187 +151,187 @@ export function PomocaPage() {
               Manufacturing Process
             </h2>
                          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-               Our interface designs monitor and control the complete manufacturing workflow 
+               The interface designs monitor and control the complete manufacturing workflow 
                from material reception to final quality assurance
              </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-8 gap-4">
-            {/* Material Reception - Step 1 */}
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg text-center relative">
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-pink-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                1
-              </div>
-              <CardContent className="p-4">
-                <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-3 p-2 bg-white">
-                  <img 
-                    src="/pomoca/steps/material-reception.png" 
-                    alt="Material Reception"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                  Material Reception
-                </h3>
-                <p className="text-xs text-gray-600 dark:text-gray-400">
-                  Raw material intake and initial inspection
-                </p>
-              </CardContent>
-            </Card>
+                     <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-8 gap-3 sm:gap-4 md:gap-6">
+                         {/* Material Reception - Step 1 */}
+             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-xl md:rounded-2xl shadow-lg text-center relative">
+               <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-pink-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                 1
+               </div>
+               <CardContent className="p-2 sm:p-3 md:p-4">
+                 <div className="w-10 h-10 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-2 md:mb-3 p-1 sm:p-1.5 md:p-2 bg-white">
+                   <img 
+                     src="/pomoca/steps/material-reception.png" 
+                     alt="Material Reception"
+                     className="w-full h-full object-contain"
+                   />
+                 </div>
+                 <h3 className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white mb-1 sm:mb-1.5 md:mb-2">
+                   Material Reception
+                 </h3>
+                 <p className="text-xs text-gray-600 dark:text-gray-400 leading-tight">
+                   Raw material intake and initial inspection
+                 </p>
+               </CardContent>
+             </Card>
 
-            {/* Storage - Step 2 */}
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg text-center relative">
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-pink-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                2
-              </div>
-              <CardContent className="p-4">
-                <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-3 p-2 bg-white">
-                  <img 
-                    src="/pomoca/steps/storage.png" 
-                    alt="Storage"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                  Storage
-                </h3>
-                <p className="text-xs text-gray-600 dark:text-gray-400">
-                  Inventory management and storage
-                </p>
-              </CardContent>
-            </Card>
+                         {/* Storage - Step 2 */}
+             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-xl md:rounded-2xl shadow-lg text-center relative">
+               <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-pink-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                 2
+               </div>
+               <CardContent className="p-2 sm:p-3 md:p-4">
+                 <div className="w-10 h-10 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-2 md:mb-3 p-1 sm:p-1.5 md:p-2 bg-white">
+                   <img 
+                     src="/pomoca/steps/storage.png" 
+                     alt="Storage"
+                     className="w-full h-full object-contain"
+                   />
+                 </div>
+                 <h3 className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white mb-1 sm:mb-1.5 md:mb-2">
+                   Storage
+                 </h3>
+                 <p className="text-xs text-gray-600 dark:text-gray-400 leading-tight">
+                   Inventory management and storage
+                 </p>
+               </CardContent>
+             </Card>
 
-            {/* Cutting - Step 3 */}
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg text-center relative">
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-pink-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                3
-              </div>
-              <CardContent className="p-4">
-                <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-3 p-2 bg-white">
-                  <img 
-                    src="/pomoca/steps/cutting.png" 
-                    alt="Cutting"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                  Cutting
-                </h3>
-                <p className="text-xs text-gray-600 dark:text-gray-400">
-                  Precision cutting and sizing
-                </p>
-              </CardContent>
-            </Card>
+                         {/* Cutting - Step 3 */}
+             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-xl md:rounded-2xl shadow-lg text-center relative">
+               <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-pink-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                 3
+               </div>
+               <CardContent className="p-2 sm:p-3 md:p-4">
+                 <div className="w-10 h-10 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-2 md:mb-3 p-1 sm:p-1.5 md:p-2 bg-white">
+                   <img 
+                     src="/pomoca/steps/cutting.png" 
+                     alt="Cutting"
+                     className="w-full h-full object-contain"
+                   />
+                 </div>
+                 <h3 className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white mb-1 sm:mb-1.5 md:mb-2">
+                   Cutting
+                 </h3>
+                 <p className="text-xs text-gray-600 dark:text-gray-400 leading-tight">
+                   Precision cutting and sizing
+                 </p>
+               </CardContent>
+             </Card>
 
-            {/* Gliding - Step 4 */}
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg text-center relative">
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-pink-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                4
-              </div>
-              <CardContent className="p-4">
-                <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-3 p-2 bg-white">
-                  <img 
-                    src="/pomoca/steps/gliding.png" 
-                    alt="Gliding"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                  Gliding
-                </h3>
-                <p className="text-xs text-gray-600 dark:text-gray-400">
-                  Surface treatment and gliding
-                </p>
-              </CardContent>
-            </Card>
+                         {/* Gliding - Step 4 */}
+             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-xl md:rounded-2xl shadow-lg text-center relative">
+               <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-pink-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                 4
+               </div>
+               <CardContent className="p-2 sm:p-3 md:p-4">
+                 <div className="w-10 h-10 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-2 md:mb-3 p-1 sm:p-1.5 md:p-2 bg-white">
+                   <img 
+                     src="/pomoca/steps/gliding.png" 
+                     alt="Gliding"
+                     className="w-full h-full object-contain"
+                   />
+                 </div>
+                 <h3 className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white mb-1 sm:mb-1.5 md:mb-2">
+                   Gliding
+                 </h3>
+                 <p className="text-xs text-gray-600 dark:text-gray-400 leading-tight">
+                   Surface treatment and gliding
+                 </p>
+               </CardContent>
+             </Card>
 
-            {/* Marking - Step 5 */}
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg text-center relative">
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-pink-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                5
-              </div>
-              <CardContent className="p-4">
-                <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-3 p-2 bg-white">
-                  <img 
-                    src="/pomoca/steps/marking.png" 
-                    alt="Marking"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                  Marking
-                </h3>
-                <p className="text-xs text-gray-600 dark:text-gray-400">
-                  Branding and identification
-                </p>
-              </CardContent>
-            </Card>
+                         {/* Marking - Step 5 */}
+             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-xl md:rounded-2xl shadow-lg text-center relative">
+               <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-pink-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                 5
+               </div>
+               <CardContent className="p-2 sm:p-3 md:p-4">
+                 <div className="w-10 h-10 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-2 md:mb-3 p-1 sm:p-1.5 md:p-2 bg-white">
+                   <img 
+                     src="/pomoca/steps/marking.png" 
+                     alt="Marking"
+                     className="w-full h-full object-contain"
+                   />
+                 </div>
+                 <h3 className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white mb-1 sm:mb-1.5 md:mb-2">
+                   Marking
+                 </h3>
+                 <p className="text-xs text-gray-600 dark:text-gray-400 leading-tight">
+                   Branding and identification
+                 </p>
+               </CardContent>
+             </Card>
 
-            {/* Adhesive Application - Step 6 */}
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg text-center relative">
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-pink-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                6
-              </div>
-              <CardContent className="p-4">
-                <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-3 p-2 bg-white">
-                  <img 
-                    src="/pomoca/steps/adhesive-application.png" 
-                    alt="Adhesive Application"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                  Adhesive Application
-                </h3>
-                <p className="text-xs text-gray-600 dark:text-gray-400">
-                  Adhesive application and bonding
-                </p>
-              </CardContent>
-            </Card>
+                         {/* Adhesive Application - Step 6 */}
+             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-xl md:rounded-2xl shadow-lg text-center relative">
+               <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-pink-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                 6
+               </div>
+               <CardContent className="p-2 sm:p-3 md:p-4">
+                 <div className="w-10 h-10 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-2 md:mb-3 p-1 sm:p-1.5 md:p-2 bg-white">
+                   <img 
+                     src="/pomoca/steps/adhesive-application.png" 
+                     alt="Adhesive Application"
+                     className="w-full h-full object-contain"
+                   />
+                 </div>
+                 <h3 className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white mb-1 sm:mb-1.5 md:mb-2">
+                   Adhesive Application
+                 </h3>
+                 <p className="text-xs text-gray-600 dark:text-gray-400 leading-tight">
+                   Adhesive application and bonding
+                 </p>
+               </CardContent>
+             </Card>
 
-            {/* Quality Assurance - Step 7 */}
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg text-center relative">
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-pink-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                7
-              </div>
-              <CardContent className="p-4">
-                <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-3 p-2 bg-white">
-                  <img 
-                    src="/pomoca/steps/qa.png" 
-                    alt="Quality Assurance"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                  Quality Assurance
-                </h3>
-                <p className="text-xs text-gray-600 dark:text-gray-400">
-                  Quality assurance and testing
-                </p>
-              </CardContent>
-            </Card>
+                         {/* Quality Assurance - Step 7 */}
+             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-xl md:rounded-2xl shadow-lg text-center relative">
+               <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-pink-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                 7
+               </div>
+               <CardContent className="p-2 sm:p-3 md:p-4">
+                 <div className="w-10 h-10 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-2 md:mb-3 p-1 sm:p-1.5 md:p-2 bg-white">
+                   <img 
+                     src="/pomoca/steps/qa.png" 
+                     alt="Quality Assurance"
+                     className="w-full h-full object-contain"
+                   />
+                 </div>
+                 <h3 className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white mb-1 sm:mb-1.5 md:mb-2">
+                   Quality Assurance
+                 </h3>
+                 <p className="text-xs text-gray-600 dark:text-gray-400 leading-tight">
+                   Quality assurance and testing
+                 </p>
+               </CardContent>
+             </Card>
 
-            {/* Laser Cutting - Step 8 */}
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg text-center relative">
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-pink-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                8
-              </div>
-              <CardContent className="p-4">
-                <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-3 p-2 bg-white">
-                  <img 
-                    src="/pomoca/steps/laser-cutting.png" 
-                    alt="Laser Cutting"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                  Laser Cutting
-                </h3>
-                <p className="text-xs text-gray-600 dark:text-gray-400">
-                  Final precision laser cutting
-                </p>
-              </CardContent>
-            </Card>
+                         {/* Laser Cutting - Step 8 */}
+             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-xl md:rounded-2xl shadow-lg text-center relative">
+               <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-pink-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                 8
+               </div>
+               <CardContent className="p-2 sm:p-3 md:p-4">
+                 <div className="w-10 h-10 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-2 md:mb-3 p-1 sm:p-1.5 md:p-2 bg-white">
+                   <img 
+                     src="/pomoca/steps/laser-cutting.png" 
+                     alt="Laser Cutting"
+                     className="w-full h-full object-contain"
+                   />
+                 </div>
+                 <h3 className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white mb-1 sm:mb-1.5 md:mb-2">
+                   Laser Cutting
+                 </h3>
+                 <p className="text-xs text-gray-600 dark:text-gray-400 leading-tight">
+                   Final precision laser cutting
+                 </p>
+               </CardContent>
+             </Card>
           </div>
         </div>
 
@@ -471,6 +478,37 @@ export function PomocaPage() {
             </CardContent>
           </Card>
         </div>
+
+                 {/* Navigation Buttons */}
+         <div className="relative">
+           {/* Previous Project Button - Left Side */}
+           <ProjectNavigationButton
+             direction="prev"
+             projectName="MoodleNet"
+             onClick={() => navigateToProject('/moodlenet')}
+           />
+
+           {/* Next Project Button - Right Side */}
+           <ProjectNavigationButton
+             direction="next"
+             projectName="Wegaw"
+             onClick={() => navigateToProject('/wegaw')}
+           />
+
+           {/* Back to Projects Button - Center */}
+           <div className="text-center mb-20">
+             <button
+               onClick={navigateToHome}
+               className="group relative inline-flex items-center gap-2 px-8 py-4 bg-pink-600 hover:bg-pink-700 text-white rounded-full font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl text-lg overflow-hidden"
+             >
+               {/* Shiny overlay effect */}
+               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+               
+               <ArrowLeft className="h-5 w-5 group-hover:scale-110 transition-transform duration-200 relative z-10" />
+               <span className="relative z-10">Back to All Projects</span>
+             </button>
+           </div>
+         </div>
       </div>
 
       <Footer />

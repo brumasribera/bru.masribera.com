@@ -1,12 +1,22 @@
-import { ArrowLeft, Users, MapPin, Calendar, Route, Compass, Globe2, MountainSnow, Tent, Search, Users2, X } from 'lucide-react'
+import { ArrowLeft, Users, Calendar, Route, Compass, Globe2, MountainSnow, Tent, Search, Users2 } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Badge } from './ui/badge'
 import { Footer } from './Footer'
-import { useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useProjectNavigation } from './hooks/useProjectNavigation'
+import { ProjectNavigationButton } from './ProjectNavigationButton'
+import { useKeyboardNavigation } from './hooks/useKeyboardNavigation'
+import { ImageModal } from './ImageModal'
+import { useState } from 'react'
 
 export function OpenHutsPage() {
-  const navigate = useNavigate()
+  const { navigateToProject, navigateToHome } = useProjectNavigation()
+  
+  // Enable keyboard navigation
+  useKeyboardNavigation({
+    prevProjectPath: '/reserve',
+    nextProjectPath: '/clathes'
+  })
+  
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   
   // Array of all image paths for navigation
@@ -16,43 +26,6 @@ export function OpenHutsPage() {
     '/open-huts/Route View.png'
   ]
   
-  // Keyboard navigation for modal
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!selectedImage) return
-      
-      if (e.key === 'Escape') {
-        setSelectedImage(null)
-      } else if (e.key === 'ArrowLeft') {
-        const currentIndex = imagePaths.indexOf(selectedImage)
-        const prevIndex = currentIndex === 0 ? imagePaths.length - 1 : currentIndex - 1
-        setSelectedImage(imagePaths[prevIndex])
-      } else if (e.key === 'ArrowRight') {
-        const currentIndex = imagePaths.indexOf(selectedImage)
-        const nextIndex = currentIndex === imagePaths.length - 1 ? 0 : currentIndex + 1
-        setSelectedImage(imagePaths[nextIndex])
-      }
-    }
-    
-    document.addEventListener('keydown', handleKeyDown)
-    return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [selectedImage])
-  
-  // Navigation functions for modal
-  const goToPreviousImage = () => {
-    if (!selectedImage) return
-    const currentIndex = imagePaths.indexOf(selectedImage)
-    const prevIndex = currentIndex === 0 ? imagePaths.length - 1 : currentIndex - 1
-    setSelectedImage(imagePaths[prevIndex])
-  }
-  
-  const goToNextImage = () => {
-    if (!selectedImage) return
-    const currentIndex = imagePaths.indexOf(selectedImage)
-    const nextIndex = currentIndex === imagePaths.length - 1 ? 0 : currentIndex + 1
-    setSelectedImage(imagePaths[nextIndex])
-  }
-  
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Hero Header */}
@@ -60,7 +33,7 @@ export function OpenHutsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-8">
             <button 
-              onClick={() => navigate('/#projects')}
+              onClick={navigateToHome}
               className="flex items-center gap-2 text-green-100 hover:text-white transition-colors"
             >
               <ArrowLeft className="h-5 w-5" />
@@ -80,11 +53,10 @@ export function OpenHutsPage() {
             </div>
             
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
-              Open Huts Nature Network
+              Open Huts
             </h1>
             <p className="text-2xl text-green-100 max-w-4xl mx-auto leading-relaxed">
-              A revolutionary platform connecting nature enthusiasts with mountain huts worldwide, 
-              enabling seamless booking and route planning for unforgettable outdoor adventures.
+              A revolutionary platform connecting nature enthusiasts with mountain huts worldwide.
             </p>
           </div>
         </div>
@@ -140,99 +112,32 @@ export function OpenHutsPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <MapPin className="h-6 w-6 text-red-600" />
+                  <Globe2 className="h-6 w-6 text-purple-600" />
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Global Reach</h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400">Worldwide Coverage</p>
-                <p className="text-gray-600 dark:text-gray-400">Mountain Regions</p>
-                <p className="text-gray-600 dark:text-gray-400">Remote Locations</p>
+                <p className="text-gray-600 dark:text-gray-400">European Alps</p>
+                <p className="text-gray-600 dark:text-gray-400">North American Rockies</p>
+                <p className="text-gray-600 dark:text-gray-400">Himalayan Region</p>
               </CardContent>
             </Card>
           </div>
         </div>
 
-        {/* Platform Screenshots */}
-        <div id="platform-preview" className="mb-20">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">
-            Platform Preview
-          </h2>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 lg:gap-8">
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
-              <CardHeader className="text-center pb-0">
-                <CardTitle className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-3">
-                  <Search className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
-                  Search & Discovery
-                </CardTitle>
-              </CardHeader>
-              <div 
-                className="cursor-pointer hover:opacity-90 transition-opacity"
-                onClick={() => setSelectedImage('/open-huts/Search View.png')}
-              >
-                <img 
-                  src="/open-huts/Search View.png" 
-                  alt="Open Huts Search Interface"
-                  className="w-full h-48 sm:h-56 lg:h-64 object-cover shadow-lg"
-                />
-              </div>
-            </Card>
-
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
-              <CardHeader className="text-center pb-0">
-                <CardTitle className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-3">
-                  <Tent className="h-4 w-4 sm:h-5 sm:w-5 text-green-600" />
-                  Hut Details
-                </CardTitle>
-              </CardHeader>
-              <div 
-                className="cursor-pointer hover:opacity-90 transition-opacity"
-                onClick={() => setSelectedImage('/open-huts/Hut View.png')}
-              >
-                <img 
-                  src="/open-huts/Hut View.png" 
-                  alt="Open Huts Hut Details Interface"
-                  className="w-full h-48 sm:h-56 lg:h-64 object-cover shadow-lg"
-                />
-              </div>
-            </Card>
-
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
-              <CardHeader className="text-center pb-0">
-                <CardTitle className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white flex items-center justify-center gap-3">
-                  <Route className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600" />
-                  Route Planning
-                </CardTitle>
-              </CardHeader>
-              <div 
-                className="cursor-pointer hover:opacity-90 transition-opacity"
-                onClick={() => setSelectedImage('/open-huts/Route View.png')}
-              >
-                <img 
-                  src="/open-huts/Route View.png" 
-                  alt="Open Huts Route Planning Interface"
-                  className="w-full h-48 sm:h-56 lg:h-64 object-cover shadow-lg"
-                />
-              </div>
-            </Card>
-          </div>
-        </div>
-
         {/* Key Features */}
-        <div id="core-capabilities" className="mb-20">
+        <div className="mb-20">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">
-            Core Capabilities
+            Key Features
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <Tent className="h-8 w-8 text-green-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Single Hut Booking</h3>
+                  <Search className="h-8 w-8 text-blue-600" />
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Smart Search</h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Book individual mountain huts with flexible options for meals, dates, and group sizes. 
-                  View detailed availability, weather forecasts, and access information.
+                  Advanced filtering by location, amenities, availability, and user preferences
                 </p>
               </CardContent>
             </Card>
@@ -240,12 +145,11 @@ export function OpenHutsPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <Route className="h-8 w-8 text-blue-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Multi-Hut Routes</h3>
+                  <Route className="h-8 w-8 text-green-600" />
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Route Planning</h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Plan complex multi-day adventures with connected hut networks. 
-                  Customize routes, add professional guides, and manage group bookings seamlessly.
+                  Multi-hut route planning with elevation profiles and difficulty ratings
                 </p>
               </CardContent>
             </Card>
@@ -253,25 +157,11 @@ export function OpenHutsPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <Compass className="h-8 w-8 text-purple-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Advanced Planning</h3>
+                  <Tent className="h-8 w-8 text-purple-600" />
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Hut Management</h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Interactive maps, elevation profiles, and detailed route information. 
-                  Plan your adventure with confidence using comprehensive planning tools.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <MountainSnow className="h-8 w-8 text-emerald-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Mountain Safety</h3>
-                </div>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Real-time weather updates, safety information, and emergency protocols. 
-                  Stay informed about mountain conditions and access requirements.
+                  Comprehensive hut profiles with photos, amenities, and availability
                 </p>
               </CardContent>
             </Card>
@@ -280,11 +170,10 @@ export function OpenHutsPage() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Users2 className="h-8 w-8 text-orange-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Community Features</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Community</h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400">
-                  User reviews, photos, and recommendations. Connect with fellow adventurers 
-                  and share your mountain experiences with the community.
+                  User reviews, ratings, and community-driven content
                 </p>
               </CardContent>
             </Card>
@@ -292,35 +181,115 @@ export function OpenHutsPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <Globe2 className="h-8 w-8 text-cyan-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Global Coverage</h3>
+                  <Compass className="h-8 w-8 text-red-600" />
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Navigation</h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Access mountain huts and routes worldwide. From the Alps to the Himalayas, 
-                  discover hidden gems and plan your next adventure anywhere on Earth.
+                  Offline maps and GPS integration for remote areas
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <MountainSnow className="h-8 w-8 text-cyan-600" />
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Weather Integration</h3>
+                </div>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Real-time weather data and seasonal considerations
                 </p>
               </CardContent>
             </Card>
           </div>
         </div>
 
-        {/* Technology Overview */}
+        {/* Platform Preview */}
         <div className="mb-20">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">
-            Technology Architecture
+            Platform Preview
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <CardContent className="p-0">
+                <img
+                  src="/open-huts/Search View.png"
+                  alt="Search Interface"
+                  className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                  onClick={() => setSelectedImage('/open-huts/Search View.png')}
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                    Search Interface
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Advanced search functionality with filters for location, amenities, and availability. 
+                    Users can find the perfect mountain hut based on their specific requirements.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <CardContent className="p-0">
+                <img
+                  src="/open-huts/Hut View.png"
+                  alt="Hut Details"
+                  className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                  onClick={() => setSelectedImage('/open-huts/Hut View.png')}
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                    Hut Details
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Comprehensive hut profiles with photos, amenities, availability, and user reviews. 
+                    Detailed information to help users make informed decisions.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <CardContent className="p-0">
+                <img
+                  src="/open-huts/Route View.png"
+                  alt="Route Planning"
+                  className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                  onClick={() => setSelectedImage('/open-huts/Route View.png')}
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                    Route Planning
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Multi-hut route planning with interactive maps, elevation profiles, and difficulty ratings. 
+                    Plan your perfect mountain adventure with multiple stops.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* Technology Stack */}
+        <div className="mb-20">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">
+            Technology Stack
           </h2>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Frontend & User Experience
+                  Frontend
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-3">
                   <Badge className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">
-                    Next.js
+                    React
                   </Badge>
                   <Badge className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">
                     TypeScript
@@ -329,7 +298,7 @@ export function OpenHutsPage() {
                     Tailwind CSS
                   </Badge>
                   <Badge className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">
-                    Interactive Maps
+                    Mapbox
                   </Badge>
                 </div>
               </CardContent>
@@ -338,69 +307,27 @@ export function OpenHutsPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Backend & Infrastructure
+                  Backend
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-3">
                   <Badge className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">
+                    Node.js
+                  </Badge>
+                  <Badge className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">
+                    Express
+                  </Badge>
+                  <Badge className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">
                     PostgreSQL
                   </Badge>
                   <Badge className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">
-                    Geospatial Data
-                  </Badge>
-                  <Badge className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">
-                    Real-time Updates
-                  </Badge>
-                  <Badge className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">
-                    Secure APIs
+                    Redis
                   </Badge>
                 </div>
               </CardContent>
             </Card>
           </div>
-        </div>
-
-        {/* User Experience Focus */}
-        <div className="mb-20">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">
-            User Experience Design
-          </h2>
-          
-          <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg">
-            <CardContent className="p-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div>
-                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                    Mobile-First Approach
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-                    Recognizing that most users access the platform from mobile devices while on the trail, 
-                    the entire experience is optimized for mobile use with offline capabilities and intuitive 
-                    touch interfaces.
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Responsive design ensures seamless experience across all devices, from smartphones 
-                    to tablets and desktop computers.
-                  </p>
-                </div>
-                
-                <div>
-                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                    Adventure-Centric Design
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-                    The platform is designed through extensive research with hikers, mountaineers, 
-                    and hut owners to understand their needs, pain points, and desired features.
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Key design principles focus on accessibility, intuitive navigation, and providing 
-                    essential information at the right moment during the user journey.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
         </div>
 
         {/* Future Vision */}
@@ -423,52 +350,47 @@ export function OpenHutsPage() {
           </Card>
           
           <div className="mt-12">
-            <button
-              onClick={() => navigate('/#projects')}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-green-600 hover:bg-green-700 text-white rounded-full font-medium transition-colors text-lg"
-            >
-              <ArrowLeft className="h-5 w-5" />
-              Back to All Projects
-            </button>
+            {/* Navigation Buttons */}
+            <div className="relative">
+              {/* Previous Project Button - Left Side */}
+              <ProjectNavigationButton
+                direction="prev"
+                projectName="Reserve"
+                onClick={() => navigateToProject('/reserve')}
+              />
+
+              {/* Next Project Button - Right Side */}
+              <ProjectNavigationButton
+                direction="next"
+                projectName="MoodleNet"
+                onClick={() => navigateToProject('/moodlenet')}
+              />
+
+              {/* Back to Projects Button - Center */}
+              <div className="text-center mb-20">
+                <button
+                  onClick={navigateToHome}
+                  className="group relative inline-flex items-center gap-2 px-8 py-4 bg-green-600 hover:bg-green-700 text-white rounded-full font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl text-lg overflow-hidden"
+                >
+                  {/* Shiny overlay effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                  
+                  <ArrowLeft className="h-5 w-5 group-hover:scale-110 transition-transform duration-200 relative z-10" />
+                  <span className="relative z-10">Back to All Projects</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       
-      {/* Full Screen Image Modal */}
-      {selectedImage && (
-        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
-          <div className="relative max-w-7xl max-h-full overflow-auto">
-            {/* Close button - always visible */}
-            <button
-              onClick={() => setSelectedImage(null)}
-              className="fixed top-4 right-4 text-white hover:text-gray-300 transition-colors bg-black/50 hover:bg-black/70 rounded-full p-3 z-10"
-            >
-              <X className="h-6 w-6" />
-            </button>
-            
-            {/* Navigation arrows */}
-            <button
-              onClick={goToPreviousImage}
-              className="fixed left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors bg-black/50 hover:bg-black/70 rounded-full p-3 z-10"
-            >
-              <ArrowLeft className="h-6 w-6" />
-            </button>
-            
-            <button
-              onClick={goToNextImage}
-              className="fixed right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors bg-black/50 hover:bg-black/70 rounded-full p-3 z-10"
-            >
-              <ArrowLeft className="h-6 w-6 rotate-180" />
-            </button>
-            
-            <img 
-              src={selectedImage} 
-              alt="Platform Preview"
-              className="max-w-full object-contain rounded-lg"
-            />
-          </div>
-        </div>
-      )}
+      {/* Image Modal */}
+      <ImageModal
+        selectedImage={selectedImage}
+        setSelectedImage={setSelectedImage}
+        imagePaths={imagePaths}
+        altText="Platform Preview"
+      />
       
       <Footer />
     </div>

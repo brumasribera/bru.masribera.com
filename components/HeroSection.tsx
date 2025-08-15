@@ -211,6 +211,11 @@ export function HeroSection() {
           </p>
         </div>
         
+        {/* Prominent total experience pill */}
+        <div className="inline-flex items-center rounded-full px-4 py-2 sm:px-5 sm:py-2.5 shadow-xl ring-1 ring-white/50 dark:ring-white/10 bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 mb-5 sm:mb-6 lg:mb-8">
+            <span className="text-sm sm:text-base font-bold tracking-wide text-white">8+ years of professional experience</span>
+        </div>
+
         {/* Contact Buttons - Closer to subtitle with advanced hover animations */}
         <div className="w-full max-w-xl mx-auto mb-5 sm:mb-6 lg:mb-8 flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-5 justify-center items-center">
           <Button 
@@ -287,15 +292,11 @@ export function HeroSection() {
             </button>
           ))}
         </div>
-        {/* Prominent total experience pill */}
-        <div className="inline-flex items-center rounded-full px-4 py-2 sm:px-5 sm:py-2.5 shadow-xl ring-1 ring-white/50 dark:ring-white/10 bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500">
-            <span className="text-sm sm:text-base font-bold tracking-wide text-white">8+ years of professional experience</span>
-          </div>
         </div>
         </div>
 
-      {/* Scroll Hint - Responsive positioning, never overlaps */}
-      <div className={`absolute bottom-4 sm:bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2 transition-opacity duration-500 z-0 ${showScrollHint ? 'opacity-100' : 'opacity-0'}`}>
+      {/* Scroll Hint - Only visible on very big screens (2xl and up) */}
+      <div className={`hidden 2xl:block absolute bottom-4 sm:bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2 transition-opacity duration-500 z-0 ${showScrollHint ? 'opacity-100' : 'opacity-0'}`}>
           <div className="flex flex-col items-center">
           {/* Animated gradient line with wave effect */}
           <div className="relative w-[6px] sm:w-[8px] h-24 sm:h-28 overflow-hidden">

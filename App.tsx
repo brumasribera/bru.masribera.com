@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { Header } from './components/Header'
 import { HeroSection } from './components/HeroSection'
 import { AboutSection } from './components/AboutSection'
@@ -11,8 +11,9 @@ import { Footer } from './components/Footer'
 import { OpenHutsPage } from './components/OpenHutsPage'
 import { MoodleNetPage } from './components/MoodleNetPage'
 import { ReservePage } from './components/ReservePage'
+import { ClathesPage } from './components/ClathesPage'
 import { Pix4DPage } from './components/Pix4DPage'
-import { WegawPage } from './components/WeGawPage'
+import { WegawPage } from './components/WegawPage'
 import { PomocaPage } from './components/PomocaPage'
 
 function App() {
@@ -44,30 +45,44 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
-        <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-        
-        <Routes>
-          <Route path="/" element={
-            <>
-              <HeroSection />
-              <AboutSection />
-              <ExperienceSection />
-              <EducationSection />
-              <ProjectsSection />
-              <ContactSection />
-              <Footer />
-            </>
-          } />
-          <Route path="/openhuts" element={<OpenHutsPage />} />
-          <Route path="/moodlenet" element={<MoodleNetPage />} />
-          <Route path="/reserve" element={<ReservePage />} />
-          <Route path="/pix4d" element={<Pix4DPage />} />
-          <Route path="/wegaw" element={<WegawPage />} />
-          <Route path="/pomoca" element={<PomocaPage />} />
-        </Routes>
-      </div>
+      <AppContent darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
     </BrowserRouter>
+  )
+}
+
+// Separate component to use useLocation hook
+function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDarkMode: () => void }) {
+  const location = useLocation()
+  
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location.pathname])
+  
+  return (
+    <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
+      <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      
+      <Routes>
+        <Route path="/" element={
+          <>
+            <HeroSection />
+            <AboutSection />
+            <ExperienceSection />
+            <ProjectsSection />
+            <EducationSection />
+            <ContactSection />
+            <Footer />
+          </>
+        } />
+        <Route path="/openhuts" element={<OpenHutsPage />} />
+        <Route path="/moodlenet" element={<MoodleNetPage />} />
+        <Route path="/reserve" element={<ReservePage />} />
+        <Route path="/clathes" element={<ClathesPage />} />
+        <Route path="/pix4d" element={<Pix4DPage />} />
+        <Route path="/wegaw" element={<WegawPage />} />
+        <Route path="/pomoca" element={<PomocaPage />} />
+      </Routes>
+    </div>
   )
 }
 

@@ -43,8 +43,10 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-  // Track active section for navigation highlighting
+  // Track active section for navigation highlighting (only on home page)
   useEffect(() => {
+    if (location.pathname !== '/') return
+
     const handleScroll = () => {
       const sections = document.querySelectorAll('section[id], div[id]')
       const scrollPosition = window.scrollY + window.innerHeight / 3
@@ -66,90 +68,51 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
     handleScroll() // Initial check
     
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  // Handle scrolling to sections after navigation from project pages
-  useEffect(() => {
-    if (location.pathname === '/') {
-      const targetSection = sessionStorage.getItem('scrollToSection')
-      if (targetSection) {
-        sessionStorage.removeItem('scrollToSection')
-        setTimeout(() => {
-          const targetElement = document.getElementById(targetSection)
-          if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'auto' })
-          }
-        }, 100)
-      }
-    }
   }, [location.pathname])
 
   const navItems = [
     { href: '#home', label: 'Home' },
     { href: '#about', label: 'About' },
     { href: '#experience', label: 'Experience' },
-    { href: '#education', label: 'Education' },
     { href: '#projects', label: 'Projects', hasDropdown: true },
+    { href: '#education', label: 'Education' },
     { href: '#contact', label: 'Contact' }
   ]
 
   const projectPages = [
     { path: '/reserve', label: 'Reserve', description: 'Nature crowdfunding platform' },
     { path: '/openhuts', label: 'Open Huts', description: 'Mountain refuge network' },
+    { path: '/clathes', label: 'Clathes', description: 'Clothes for a Cause - Vaquita protection' },
     { path: '/moodlenet', label: 'MoodleNet', description: 'Learning platform' },
-    { path: '/pix4d', label: 'Pix4D', description: '3D mapping platform' },
+    { path: '/pomoca', label: 'Pomoca', description: 'Manufacturing interface' },
     { path: '/wegaw', label: 'Wegaw', description: 'Snow monitoring system' },
-    { path: '/pomoca', label: 'Pomoca', description: 'Manufacturing interface' }
+    { path: '/pix4d', label: 'Pix4D', description: '3D mapping platform' }
   ]
 
-  const scrollToSection = (href: string) => {
-    const targetId = href.replace('#', '')
-    
-    // If we're on a project page, navigate to home page first
-    if (location.pathname !== '/') {
-      navigate('/')
-      // Use setTimeout to ensure navigation completes before scrolling
-      setTimeout(() => {
-        const targetElement = document.getElementById(targetId)
-        if (targetElement) {
-          targetElement.scrollIntoView({ behavior: 'auto' })
-        }
-      }, 100)
-      return
-    }
-    
-    // On home page, scroll to section without animation
-    const targetElement = document.getElementById(targetId)
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'auto' })
-    }
-    setIsMenuOpen(false)
-  }
-
-  // New function to handle navigation from project pages
-  const handleNavigationFromProjectPage = (href: string) => {
+  // Simple navigation function - no scroll effects for cross-page navigation
+  const handleNavigation = (href: string) => {
     const targetId = href.replace('#', '')
     
     if (location.pathname !== '/') {
-      // Navigate to home page first
+      // If on a project page, just navigate to home page
       navigate('/')
-      // Store the target section to scroll to after navigation
-      sessionStorage.setItem('scrollToSection', targetId)
     } else {
-      // Already on home page, scroll directly
+      // If already on home page, scroll to section smoothly
       const targetElement = document.getElementById(targetId)
       if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'auto' })
+        targetElement.scrollIntoView({ behavior: 'smooth' })
       }
     }
     setIsMenuOpen(false)
+    setIsProjectsOpen(false)
   }
 
   const handleLogoClick = () => {
     if (location.pathname !== '/') {
       navigate('/')
     } else {
-      scrollToSection('#home')
+      // On home page, scroll to top smoothly
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
 
@@ -255,14 +218,7 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
                 {item.hasDropdown ? (
                   <div className="relative" data-projects-menu>
                     <button
-                      onClick={() => {
-                        // Click navigates directly to projects section
-                        if (location.pathname !== '/') {
-                          navigate('/#projects')
-                        } else {
-                          scrollToSection('#projects')
-                        }
-                      }}
+                      onClick={() => handleNavigation('#projects')}
                       onMouseEnter={() => setIsProjectsOpen(true)}
                       className={`text-sm font-medium transition-colors flex items-center gap-1 ${
                         activeSection === item.href.replace('#', '')
@@ -287,6 +243,7 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
                             onClick={() => {
                               navigate(project.path)
                               setIsProjectsOpen(false)
+                              // Scroll to top instantly when navigating to project page
                               window.scrollTo(0, 0)
                             }}
                             className="w-full text-left px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
@@ -300,7 +257,7 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
                   </div>
                 ) : (
                   <button
-                    onClick={() => handleNavigationFromProjectPage(item.href)}
+                    onClick={() => handleNavigation(item.href)}
                     className={`text-sm font-medium transition-colors ${
                       activeSection === item.href.replace('#', '')
                         ? 'text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400'
@@ -347,14 +304,7 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
                   {item.hasDropdown ? (
                     <div data-projects-menu>
                       <button
-                        onClick={() => {
-                          // Click navigates directly to projects section
-                          if (location.pathname !== '/') {
-                            navigate('/#projects')
-                          } else {
-                            scrollToSection('#projects')
-                          }
-                        }}
+                        onClick={() => handleNavigation('#projects')}
                         onMouseEnter={() => setIsProjectsOpen(true)}
                         className="w-full text-left px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg flex items-center justify-between"
                       >
@@ -370,6 +320,7 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
                                 navigate(project.path)
                                 setIsMenuOpen(false)
                                 setIsProjectsOpen(false)
+                                // Scroll to top instantly when navigating to project page
                                 window.scrollTo(0, 0)
                               }}
                               className="w-full text-left px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg"
@@ -382,7 +333,7 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
                     </div>
                   ) : (
                     <button
-                      onClick={() => scrollToSection(item.href)}
+                      onClick={() => handleNavigation(item.href)}
                       className={`block w-full text-left px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
                         activeSection === item.href.replace('#', '')
                           ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'

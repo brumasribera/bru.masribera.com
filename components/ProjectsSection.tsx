@@ -7,68 +7,68 @@ const projects = [
   {
     title: 'Reserve',
     description: 'Mobile-first app that lets anyone protect nature by funding habitat restoration and protection one square meter at a time.',
-    technologies: ['React', 'TypeScript', 'UX Design', 'Conservation Tech'],
+    technologies: ['React Native', 'TypeScript', 'Stripe', 'MongoDB', 'Node.js'],
     github: null,
-    live: 'https://www.instagram.com/reservenatureapp/',
-    impact: 'Fund habitat protection',
-    users: 'Nature supporters',
+    live: 'https://reserve.org',
+    impact: 'Nature protection',
+    users: 'Nature enthusiasts',
     featured: true,
     image: '/logos/reserve-logo.png'
   },
   {
-    title: 'Open Huts Nature Network',
-    description: 'Founder and lead developer of a comprehensive platform for discovering and booking mountain huts across Europe. Features real-time availability, user reviews, and integrated booking.',
-    technologies: ['React', 'Next.js', 'TypeScript', 'Supabase', 'UX Research', 'Figma'],
+    title: 'Open Huts',
+    description: 'Platform connecting hikers with mountain refuges, promoting sustainable tourism and outdoor exploration.',
+    technologies: ['React', 'TypeScript', 'Mapbox', 'Node.js', 'PostgreSQL'],
     github: null,
-    live: null,
-    impact: 'Mindful outdoors platform',
-    users: 'Research phase',
+    live: 'https://openhuts.org',
+    impact: 'Sustainable tourism',
+    users: 'Hikers & outdoor enthusiasts',
     featured: true,
     image: '/logos/openhuts_logo.jpeg'
   },
   {
+    title: 'Clathes',
+    description: 'Clothes for a Cause - Protecting endangered species through sustainable fashion. First project: Saving the vaquita porpoise from extinction through strategic conservation efforts.',
+    technologies: ['Conservation Tech', 'Strategic Planning', 'Sustainable Fashion', 'Wildlife Protection'],
+    github: null,
+    live: 'https://www.instagram.com/clathesofficial/',
+    impact: 'Endangered species protection',
+    users: 'Conservation community',
+    featured: true,
+    image: '/clathes/Vaquita - profile logo.png'
+  },
+  {
     title: 'MoodleNet Platform',
-    description: 'Led frontend development for MoodleNet, an open-source platform for sharing and curating educational resources. Built with React, Storybook, and modern web technologies.',
-    technologies: ['React', 'TypeScript', 'Storybook', 'UX Design', 'Open Source'],
-    github: 'https://github.com/moodle/moodlenet',
+    description: 'Decentralized learning platform enabling educators to share and discover open educational resources.',
+    technologies: ['React', 'TypeScript', 'ActivityPub', 'Node.js', 'PostgreSQL'],
+    github: null,
     live: 'https://moodle.net',
-    impact: 'Global educational platform',
-    users: '100K+ educators',
+    impact: 'Open education',
+    users: 'Educators & learners',
     featured: true,
     image: '/logos/moodlenet_logo.png'
   },
   {
     title: 'Pomoca Production Interface',
-    description: 'Redesigned production interfaces for the world leader in ski touring skins. Conducted user research, usability testing, and implemented modern UX patterns.',
-    technologies: ['UX Design', 'User Research', 'Usability Testing', 'Figma', 'Prototyping'],
+    description: 'Manufacturing control system for ski equipment production, optimizing workflow and quality assurance.',
+    technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'IoT'],
     github: null,
     live: null,
     impact: 'Manufacturing efficiency',
-    users: 'Production teams',
-    featured: false,
+    users: 'Production staff',
+    featured: true,
     image: '/logos/oberalp___salewa_group_logo.jpeg'
   },
   {
     title: 'DeFROST Snow Monitoring',
-    description: 'Developed an ESA-funded project for tracking snow cover from satellites worldwide. Built cloud infrastructure and data processing pipelines.',
-    technologies: ['Python', 'Django', 'Docker', 'Kubernetes', 'Satellite Data', 'GCP'],
-    github: 'https://github.com/wegaw/defrost',
-    live: 'https://defrost.io',
-    impact: 'Climate research platform',
-    users: 'Scientists & researchers',
-    featured: false,
-    image: '/logos/wegaw_logo.jpeg'
-  },
-  {
-    title: 'Pix4D Cloud Platform',
-    description: 'Developed cloud platform for processing and analyzing 3D models from drone images. Built scalable architecture for photogrammetry workflows.',
-    technologies: ['Angular', 'RxJS', 'Cloud Platform', '3D Modeling', 'Drone Technology'],
+    description: 'Advanced snow monitoring and avalanche prediction system using satellite data and AI.',
+    technologies: ['Python', 'AI/ML', 'Satellite Data', 'React', 'Node.js'],
     github: null,
-    live: 'https://pix4d.com',
-    impact: 'Professional photogrammetry',
-    users: 'Surveyors & engineers',
-    featured: false,
-    image: '/logos/pix4d_logo.jpeg'
+    live: 'https://wegaw.com',
+    impact: 'Safety & research',
+    users: 'Ski resorts & researchers',
+    featured: true,
+    image: '/logos/wegaw_logo.jpeg'
   }
 ]
 
@@ -76,11 +76,11 @@ export function ProjectsSection() {
   const navigate = useNavigate()
   
   return (
-    <section id="projects" className="py-12 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+    <section id="projects" className="py-8 sm:py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto">
         {/* Enhanced header with gradient title */}
         <div className="text-center mb-20">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400 dark:from-purple-400 dark:via-blue-400 dark:to-cyan-300 bg-clip-text text-transparent mb-6 leading-tight pb-2">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 dark:from-indigo-400 dark:via-purple-400 dark:to-violet-400 bg-clip-text text-transparent mb-6 leading-tight pb-2">
             Featured Projects
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
@@ -147,80 +147,79 @@ export function ProjectsSection() {
                   
                   {/* Action buttons - always at bottom */}
                   <div className="flex justify-center gap-3">
-                    {project.title === 'Pix4D Cloud Platform' ? (
+                    {project.title === 'Clathes' ? (
                       <button
-                        onClick={() => {
-                          navigate('/pix4d')
-                          // Scroll to top instantly when navigating to project page
-                          window.scrollTo(0, 0)
-                        }}
-                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
+                        onClick={() => navigate('/clathes')}
+                        className="group relative flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105 shadow-lg hover:shadow-xl overflow-hidden"
                       >
-                        <span>More Details</span>
-                        <ArrowRight className="h-4 w-4" />
+                        {/* Shiny overlay effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                        
+                        <span className="relative z-10">More Details</span>
+                        <ArrowRight className="h-4 w-4 group-hover:scale-110 transition-transform duration-200 relative z-10" />
                       </button>
-                    ) : project.title === 'Open Huts Nature Network' ? (
+                    ) : project.title === 'Open Huts' ? (
                       <button
-                        onClick={() => {
-                          navigate('/openhuts')
-                          // Scroll to top instantly when navigating to project page
-                          window.scrollTo(0, 0)
-                        }}
-                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
+                        onClick={() => navigate('/openhuts')}
+                        className="group relative flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105 shadow-lg hover:shadow-xl overflow-hidden"
                       >
-                        <span>More Details</span>
-                        <ArrowRight className="h-4 w-4" />
+                        {/* Shiny overlay effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                        
+                        <span className="relative z-10">More Details</span>
+                        <ArrowRight className="h-4 w-4 group-hover:scale-110 transition-transform duration-200 relative z-10" />
                       </button>
                     ) : project.title === 'MoodleNet Platform' ? (
                       <button
-                        onClick={() => {
-                          navigate('/moodlenet')
-                          // Scroll to top instantly when navigating to project page
-                          window.scrollTo(0, 0)
-                        }}
-                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
+                        onClick={() => navigate('/moodlenet')}
+                        className="group relative flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105 shadow-lg hover:shadow-xl overflow-hidden"
                       >
-                        <span>More Details</span>
-                        <ArrowRight className="h-4 w-4" />
+                        {/* Shiny overlay effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                        
+                        <span className="relative z-10">More Details</span>
+                        <ArrowRight className="h-4 w-4 group-hover:scale-110 transition-transform duration-200 relative z-10" />
                       </button>
                     ) : project.title === 'Reserve' ? (
                       <button
-                        onClick={() => {
-                          navigate('/reserve')
-                          // Scroll to top instantly when navigating to project page
-                          window.scrollTo(0, 0)
-                        }}
-                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
+                        onClick={() => navigate('/reserve')}
+                        className="group relative flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105 shadow-lg hover:shadow-xl overflow-hidden"
                       >
-                        <span>More Details</span>
-                        <ArrowRight className="h-4 w-4" />
+                        {/* Shiny overlay effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                        
+                        <span className="relative z-10">More Details</span>
+                        <ArrowRight className="h-4 w-4 group-hover:scale-110 transition-transform duration-200 relative z-10" />
                       </button>
                     ) : project.title === 'DeFROST Snow Monitoring' ? (
                       <button
-                        onClick={() => {
-                          navigate('/wegaw')
-                          window.scrollTo(0, 0)
-                        }}
-                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
+                        onClick={() => navigate('/wegaw')}
+                        className="group relative flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105 shadow-lg hover:shadow-xl overflow-hidden"
                       >
-                        <span>More Details</span>
-                        <ArrowRight className="h-4 w-4" />
+                        {/* Shiny overlay effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                        
+                        <span className="relative z-10">More Details</span>
+                        <ArrowRight className="h-4 w-4 group-hover:scale-110 transition-transform duration-200 relative z-10" />
                       </button>
                     ) : project.title === 'Pomoca Production Interface' ? (
                       <button
-                        onClick={() => {
-                          navigate('/pomoca')
-                          window.scrollTo(0, 0)
-                        }}
-                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
+                        onClick={() => navigate('/pomoca')}
+                        className="group relative flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105 shadow-lg hover:shadow-xl overflow-hidden"
                       >
-                        <span>More Details</span>
-                        <ArrowRight className="h-4 w-4" />
+                        {/* Shiny overlay effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                        
+                        <span className="relative z-10">More Details</span>
+                        <ArrowRight className="h-4 w-4 group-hover:scale-110 transition-transform duration-200 relative z-10" />
                       </button>
                     ) : (
-                      <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105">
-                        <span>More Details</span>
-                        <ArrowRight className="h-4 w-4" />
+                      <button className="group relative flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105 shadow-lg hover:shadow-xl overflow-hidden">
+                        {/* Shiny overlay effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                        
+                        <span className="relative z-10">More Details</span>
+                        <ArrowRight className="h-4 w-4 group-hover:scale-110 transition-transform duration-200 relative z-10" />
                       </button>
                     )}
                   </div>

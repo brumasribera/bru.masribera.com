@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
-import { MapPin, Calendar, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react'
+import { MapPin, Calendar, ArrowRight, ChevronDown } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
@@ -59,7 +59,7 @@ export function ExperienceSection() {
   const hasMore = experiences.length > 2.5
   
   return (
-    <section id="experience" className="py-12 sm:py-24 px-8 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+    <section id="experience" className="py-8 sm:py-16 px-8 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-green-600 via-emerald-500 to-teal-400 dark:from-green-400 dark:via-emerald-400 dark:to-teal-300 bg-clip-text text-transparent mb-6 leading-tight pb-2">
@@ -100,8 +100,8 @@ export function ExperienceSection() {
 
                 <div className="overflow-visible">
                                   <Card className={`group-hover:shadow-2xl group-hover:scale-[1.02] transition-all duration-300 rounded-3xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 relative ${
-                  !showAll && index === 2 ? 'shadow-none group-hover:shadow-none hover:shadow-[0_-8px_25px_-12px_rgba(0,0,0,0.25),8px_0_25px_-12px_rgba(0,0,0,0.25)] hover:scale-[1.01] hover:shadow-emerald-500/20 overflow-hidden h-20' : ''
-                } ${showAll && index === experiences.length - 1 ? 'mb-16' : ''}`}>
+                  !showAll && index === 2 ? 'shadow-none group-hover:shadow-none hover:shadow-[0_-8px_25px_-12px_rgba(0,0,0,0.25),8px_0_25px_-12px_rgba(0,0,0,0.25)] hover:scale-[1.01] hover:shadow-blue-500/20 overflow-hidden h-20' : ''
+                } ${showAll && index === experiences.length - 1 ? 'mb-8' : ''}`}>
                   
                   <div className={!showAll && index === 2 ? 'overflow-hidden h-20' : ''}>
                     <CardHeader className="pb-4">
@@ -242,34 +242,14 @@ export function ExperienceSection() {
           </div>
           
           {/* Show More/Less Button */}
-          {hasMore && (
-            <div className={`text-center transition-all duration-700 ease-in-out ${
-              !showAll ? 'mt-2' : '-mt-6'
-            }`}>
+          {hasMore && !showAll && (
+            <div className="text-center transition-all duration-700 ease-in-out mt-2">
               <button
-                onClick={() => {
-                  setShowAll(!showAll);
-                  if (showAll) {
-                    // When showing less, scroll to start of section
-                    document.getElementById('experience')?.scrollIntoView({ 
-                      behavior: 'smooth',
-                      block: 'start'
-                    });
-                  }
-                }}
+                onClick={() => setShowAll(true)}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105 shadow-lg hover:shadow-xl"
               >
-                {showAll ? (
-                  <>
-                    <ChevronUp className="h-5 w-5" />
-                    Show Less
-                  </>
-                ) : (
-                  <>
-                    <ChevronDown className="h-5 w-5" />
-                    Show More
-                  </>
-                )}
+                <ChevronDown className="h-5 w-5" />
+                Show More
               </button>
             </div>
           )}

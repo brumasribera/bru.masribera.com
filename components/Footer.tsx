@@ -50,15 +50,14 @@ export function Footer() {
           </div>
           
                      <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
-             <div className="flex items-center justify-center gap-4">
-               <p className="text-gray-500 dark:text-gray-500 text-lg font-medium">
-                 Made with 🥰 in Switzerland
-               </p>
-               <span className="text-gray-400">•</span>
-               <p className="text-gray-600 dark:text-gray-400 text-base">
-                 © {new Date().getFullYear()} Bru Mas Ribera. All rights reserved.
-               </p>
-             </div>
+                                                       <div className="flex flex-col sm:grid sm:grid-cols-2 items-center justify-center gap-2 sm:gap-5">
+                <p className="text-gray-500 dark:text-gray-500 text-lg font-medium text-center">
+                  Made with 🥰 in Switzerland
+                </p>
+                <p className="text-gray-600 dark:text-gray-400 text-base text-center">
+                  © {new Date().getFullYear()} Bru Mas Ribera. All rights reserved.
+                </p>
+              </div>
            </div>
         </div>
       </div>

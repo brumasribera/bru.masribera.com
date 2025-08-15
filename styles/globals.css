@@ -202,7 +202,7 @@
 
 html {
   font-size: var(--font-size);
-  scroll-behavior: smooth;
+  /* Removed scroll-behavior: smooth to fix React Router navigation issues */
 }
 
 /* Custom scrollbar styling */

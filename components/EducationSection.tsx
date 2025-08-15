@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
-import { Calendar, MapPin, ChevronDown, ChevronUp } from 'lucide-react'
+import { Calendar, MapPin, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 
 const education = [
@@ -52,7 +52,7 @@ export function EducationSection() {
   const hasMore = education.length > 2.5
   
   return (
-    <section id="education" className="py-12 sm:py-24 px-8 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+    <section id="education" className="py-8 sm:py-16 px-8 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#005aeb] to-[#9EE2FF] bg-clip-text text-transparent mb-6 leading-tight">
@@ -96,7 +96,7 @@ export function EducationSection() {
                 <div className="overflow-visible">
                   <Card className={`group-hover:shadow-2xl group-hover:scale-[1.02] transition-all duration-300 rounded-3xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 relative ${
                     !showAll && index === 2 ? 'shadow-none group-hover:shadow-none hover:shadow-[0_-8px_25px_-12px_rgba(0,0,0,0.25),8px_0_25px_-12px_rgba(0,0,0,0.25)] hover:scale-[1.01] hover:shadow-blue-500/20 overflow-hidden h-20 !flex !flex-col' : ''
-                  } ${showAll && index === education.length - 1 ? 'mb-16' : ''}`}>
+                  } ${showAll && index === education.length - 1 ? 'mb-8' : ''}`}>
                     
                     <div className={!showAll && index === 2 ? 'overflow-hidden h-20' : ''}>
                       <CardHeader className="pb-4">
@@ -194,34 +194,14 @@ export function EducationSection() {
           </div>
           
           {/* Show More/Less Button */}
-          {hasMore && (
-            <div className={`text-center transition-all duration-700 ease-in-out ${
-              !showAll ? 'mt-2' : '-mt-6'
-            }`}>
+          {hasMore && !showAll && (
+            <div className="text-center transition-all duration-700 ease-in-out mt-2">
               <button
-                onClick={() => {
-                  setShowAll(!showAll);
-                  if (showAll) {
-                    // When showing less, scroll to start of section
-                    document.getElementById('education')?.scrollIntoView({ 
-                      behavior: 'smooth',
-                      block: 'start'
-                    });
-                  }
-                }}
+                onClick={() => setShowAll(true)}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105 shadow-lg hover:shadow-xl"
               >
-                {showAll ? (
-                  <>
-                    <ChevronUp className="h-5 w-5" />
-                    Show Less
-                  </>
-                ) : (
-                  <>
-                    <ChevronDown className="h-5 w-5" />
-                    Show More
-                  </>
-                )}
+                <ChevronDown className="h-5 w-5" />
+                Show More
               </button>
             </div>
           )}

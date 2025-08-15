@@ -2,10 +2,18 @@ import { ArrowLeft, Globe, Github, ExternalLink, Users, Globe2, TrendingUp } fro
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Badge } from './ui/badge'
 import { Footer } from './Footer'
-import { useNavigate } from 'react-router-dom'
+import { useProjectNavigation } from './hooks/useProjectNavigation'
+import { ProjectNavigationButton } from './ProjectNavigationButton'
+import { useKeyboardNavigation } from './hooks/useKeyboardNavigation'
 
 export function Pix4DPage() {
-  const navigate = useNavigate()
+  const { navigateToProject, navigateToHome } = useProjectNavigation()
+  
+  // Enable keyboard navigation
+  useKeyboardNavigation({
+    prevProjectPath: '/wegaw',
+    nextProjectPath: '/reserve'
+  })
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
@@ -14,7 +22,7 @@ export function Pix4DPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-8 pt-8">
             <button 
-              onClick={() => navigate('/#projects')}
+              onClick={navigateToHome}
               className="flex items-center gap-2 text-blue-100 hover:text-white transition-colors"
             >
               <ArrowLeft className="h-5 w-5" />
@@ -37,8 +45,7 @@ export function Pix4DPage() {
               Pix4D Cloud Platform
             </h1>
             <p className="text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
-              Developed cloud platform for processing and analyzing 3D models from drone images. 
-              Built scalable architecture for photogrammetry workflows.
+              Cloud platform for processing and analyzing 3D models from drone images.
             </p>
           </div>
         </div>
@@ -65,7 +72,7 @@ export function Pix4DPage() {
                   maintaining Pix4D's industry-leading accuracy and performance standards.
                 </p>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-                  Our work on the Matterhorn project demonstrated the platform's capabilities, processing 
+                  The Matterhorn project demonstrated the platform's capabilities, processing 
                   2,188 drone images into a 300-million point cloud at 20cm ground sampling distance.
                 </p>
               </div>
@@ -356,15 +363,35 @@ export function Pix4DPage() {
           </div>
         </div>
 
-        {/* Back to Projects */}
-        <div className="text-center">
-          <button
-            onClick={() => navigate('/#projects')}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-colors text-lg"
-          >
-            <ArrowLeft className="h-5 w-5" />
-            Back to All Projects
-          </button>
+        {/* Navigation Buttons */}
+        <div className="relative">
+              {/* Previous Project Button - Left Side */}
+              <ProjectNavigationButton 
+                direction="prev" 
+                projectName="Wegaw" 
+                onClick={() => navigateToProject('/wegaw')} 
+              />
+
+              {/* Next Project Button - Right Side */}
+              <ProjectNavigationButton 
+                direction="next" 
+                projectName="Reserve" 
+                onClick={() => navigateToProject('/reserve')} 
+              />
+
+          {/* Back to Projects Button - Center */}
+          <div className="text-center mb-20">
+            <button
+              onClick={navigateToHome}
+              className="group relative inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl text-lg overflow-hidden"
+            >
+              {/* Shiny overlay effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+              
+              <ArrowLeft className="h-5 w-5 group-hover:scale-110 transition-transform duration-200 relative z-10" />
+              <span className="relative z-10">Back to All Projects</span>
+            </button>
+          </div>
         </div>
       </div>
       

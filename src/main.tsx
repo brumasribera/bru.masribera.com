@@ -8,6 +8,9 @@ function useScrollBasedNavigation() {
   const [currentSection, setCurrentSection] = React.useState<string>('')
 
   React.useEffect(() => {
+    // Only run on home page
+    if (window.location.pathname !== '/') return
+
     const sections = document.querySelectorAll('section[id], div[id]')
     const sectionIds = Array.from(sections).map(section => section.id).filter(Boolean)
     
@@ -28,7 +31,7 @@ function useScrollBasedNavigation() {
       
       if (activeSection && activeSection !== currentSection) {
         setCurrentSection(activeSection)
-        // Update URL without triggering scroll
+        // Update URL without triggering scroll, but only if we're not already at that hash
         const newUrl = activeSection === 'home' ? '/' : `/#${activeSection}`
         if (window.location.hash !== `#${activeSection}`) {
           window.history.replaceState(null, '', newUrl)
@@ -66,5 +69,5 @@ function AppWithNavigation() {
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <AppWithNavigation />
-  </React.StrictMode>,
+  </React.StrictMode>
 )

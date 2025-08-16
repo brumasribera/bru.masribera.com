@@ -64,7 +64,7 @@ export function WegawPage() {
          
          {/* Content */}
          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="flex items-center gap-4 mb-8 pt-8">
+           <div className="flex items-center gap-4 mb-8">
              <button 
                onClick={() => navigate('/#projects')}
                className="flex items-center gap-2 text-blue-100 hover:text-white transition-colors"
@@ -89,7 +89,7 @@ export function WegawPage() {
                Wegaw
              </h1>
              <p className="text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
-               Advanced snow monitoring and avalanche prediction system using satellite data and AI. The DeFROST project demonstrates environmental monitoring capabilities.
+               Advanced snow monitoring and avalanche prediction system using satellite data and AI. The DeFROST project demonstrates environmental monitoring capabilities
              </p>
            </div>
          </div>

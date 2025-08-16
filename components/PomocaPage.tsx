@@ -19,14 +19,14 @@ export function PomocaPage() {
       {/* Hero Header */}
       <div className="bg-gradient-to-br from-pink-600 via-pink-700 to-pink-800 text-white py-20" style={{ background: 'linear-gradient(135deg, #d61c94 0%, #be185d 50%, #9d174d 100%)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-8 pt-8">
-                         <button 
-               onClick={navigateToHome}
-               className="flex items-center gap-2 text-pink-100 hover:text-white transition-colors"
-             >
-               <ArrowLeft className="h-5 w-5" />
-               <span>Back to Projects</span>
-             </button>
+          <div className="flex items-center gap-4 mb-8">
+            <button 
+              onClick={navigateToHome}
+              className="flex items-center gap-2 text-pink-100 hover:text-white transition-colors"
+            >
+              <ArrowLeft className="h-5 w-5" />
+              <span>Back to Projects</span>
+            </button>
           </div>
           
           <div className="text-center">
@@ -44,7 +44,7 @@ export function PomocaPage() {
               Pomoca Production Interface
             </h1>
                          <p className="text-2xl text-pink-100 max-w-4xl mx-auto leading-relaxed">
-               UX design project for digital transformation of ski touring skin manufacturing, creating modern production interfaces for Swiss precision manufacturing.
+               UX design project for digital transformation of ski touring skin manufacturing, creating modern production interfaces for Swiss precision manufacturing
              </p>
           </div>
         </div>

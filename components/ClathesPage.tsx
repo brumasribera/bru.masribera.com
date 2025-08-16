@@ -24,7 +24,7 @@ export function ClathesPage() {
         
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-8 pt-8">
+          <div className="flex items-center gap-4 mb-8">
             <button 
               onClick={navigateToHome}
               className="flex items-center gap-2 text-blue-100 hover:text-white transition-colors"
@@ -40,7 +40,7 @@ export function ClathesPage() {
                 <img 
                   src="/clathes/Vaquita - profile logo.png" 
                   alt="Clathes - Vaquita Protection"
-                  className="w-24 h-24 object-contain rounded-2xl"
+                  className="h-24 w-24 object-contain rounded-2xl"
                 />
               </div>
             </div>
@@ -48,9 +48,9 @@ export function ClathesPage() {
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
               Clathes
             </h1>
-                         <p className="text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
-               Protecting species, ecosystems, and human rights through sustainable fashion, creating global impact with every purchase and conservation initiative.
-             </p>
+            <p className="text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
+              Protecting species, ecosystems, and human rights through sustainable fashion, creating global impact with every purchase and conservation initiative
+            </p>
           </div>
         </div>
       </div>

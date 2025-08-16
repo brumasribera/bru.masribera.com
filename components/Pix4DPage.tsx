@@ -20,7 +20,7 @@ export function Pix4DPage() {
       {/* Hero Header */}
       <div className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-8 pt-8">
+          <div className="flex items-center gap-4 mb-8">
             <button 
               onClick={navigateToHome}
               className="flex items-center gap-2 text-blue-100 hover:text-white transition-colors"
@@ -45,7 +45,7 @@ export function Pix4DPage() {
               Pix4D Cloud Platform
             </h1>
             <p className="text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
-              Cloud platform for processing and analyzing 3D models from drone images, delivering high-precision photogrammetry with scalable cloud architecture.
+              Cloud platform for processing and analyzing 3D models from drone images, delivering high-precision photogrammetry with scalable cloud architecture
             </p>
           </div>
         </div>

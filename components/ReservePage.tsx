@@ -57,7 +57,7 @@ export function ReservePage() {
 						</div>
 						<h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">Reserve</h1>
 						<p className="text-2xl text-emerald-100 max-w-4xl mx-auto leading-relaxed">
-							A crowdfunding platform to protect regions, reforest areas, and restore natural habitats with transparent impact tracking and cost per square meter.
+							A crowdfunding platform to protect regions, reforest areas, and restore natural habitats with transparent impact tracking and cost per square meter
 						</p>
 					</div>
 				</div>

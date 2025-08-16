@@ -57,7 +57,7 @@ export function OpenHutsPage() {
               Open Huts
             </h1>
             <p className="text-2xl text-green-100 max-w-4xl mx-auto leading-relaxed">
-              A revolutionary platform connecting nature enthusiasts with mountain huts worldwide, enabling sustainable outdoor tourism and adventure planning across the globe.
+              A revolutionary platform connecting nature enthusiasts with mountain huts worldwide, enabling sustainable outdoor tourism and adventure planning
             </p>
           </div>
         </div>

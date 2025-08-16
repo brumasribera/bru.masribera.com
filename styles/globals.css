@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CV PDF Page Break Control */
+@media print {
+  #a4-sheet {
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+    break-after: avoid !important;
+    break-inside: avoid !important;
+    height: 297mm !important;
+    max-height: 297mm !important;
+    overflow: hidden !important;
+  }
+  
+  body {
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}
+
 @custom-variant dark (&:is(.dark *));
 
 /* System preference detection - applies before JavaScript loads */

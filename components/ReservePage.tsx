@@ -269,7 +269,7 @@ function PrototypeScreen({
 
 			{step === 'select' && (
 				<div className="relative h-full">
-					<img src="/forest-background.jpg" alt="forest" className="absolute inset-0 h-full w-full object-cover" />
+					        <img src="/backgrounds/forest-background.jpg" alt="forest" className="absolute inset-0 h-full w-full object-cover" />
 					<div className="absolute inset-0 bg-emerald-900/20" />
 					{/* Header values */}
 					<div className="absolute top-6 left-1/2 -translate-x-1/2 text-white text-[72px] font-bold drop-shadow-lg">
@@ -323,7 +323,7 @@ function PrototypeScreen({
 					<div className="text-center">
 						<div className="text-[96px] leading-none font-bold text-gray-900 dark:text-white">{totalM2}<span className="align-top text-4xl ml-2">m²</span></div>
 						<div className="mt-8 w-[80%] mx-auto aspect-[5/2] rounded-xl overflow-hidden relative">
-							<img src="/forest-background.jpg" alt="preview" className="absolute inset-0 h-full w-full object-cover" />
+							<img src="/backgrounds/forest-background.jpg" alt="preview" className="absolute inset-0 h-full w-full object-cover" />
 							<div className="absolute inset-0 grid" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}>
 								{Array.from({ length: rows }).map((_, r) => (
 									<div key={r} className="contents">
@@ -360,7 +360,7 @@ function PrototypeScreen({
 						<div className="text-[120px] leading-none font-bold text-gray-900 dark:text-white">{totalM2}</div>
 						<div className="text-4xl text-gray-700 dark:text-gray-300 -mt-6">m²</div>
 						<div className="mt-4 w-[80%] mx-auto aspect-[5/2] rounded-xl overflow-hidden relative">
-							<img src="/forest-background.jpg" alt="preview" className="absolute inset-0 h-full w-full object-cover" />
+							<img src="/backgrounds/forest-background.jpg" alt="preview" className="absolute inset-0 h-full w-full object-cover" />
 							<div className="absolute inset-0 grid" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}>
 								{Array.from({ length: rows }).map((_, r) => (
 									<div key={r} className="contents">

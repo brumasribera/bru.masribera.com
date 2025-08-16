@@ -12,13 +12,13 @@ const publicDir = join(__dirname, '..', 'public');
 if (env === 'production') {
   // Copy production favicon
   copyFileSync(
-    join(publicDir, 'favicon-prod.svg'),
+    join(publicDir, 'favicons', 'favicon-prod.svg'),
     join(publicDir, 'favicon.svg')
   );
 } else {
   // Copy development favicon
   copyFileSync(
-    join(publicDir, 'favicon-dev.svg'),
+    join(publicDir, 'favicons', 'favicon-dev.svg'),
     join(publicDir, 'favicon.svg')
   );
 }

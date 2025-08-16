@@ -1,4 +1,4 @@
-# 🚀 Release v1.0.0 - Portfolio Website
+# 🚀 Release v1.1.0 - CV Optimization & Professional Layout
 
 ## 📋 Pre-Release Checklist
 
@@ -7,19 +7,41 @@
 - [x] **TypeScript Compilation**: No type errors
 - [x] **Production Favicon**: Automatically switched to production favicon
 - [x] **Asset Optimization**: CSS and JS properly minified and hashed
+- [x] **CV PDF Generation**: Single-page A4 PDF working correctly
 
 ### 📊 Build Output
-- **HTML**: `dist/index.html` (2.51 kB, gzipped: 0.95 kB)
-- **CSS**: `dist/assets/index-Da-Oto3k.css` (122.10 kB, gzipped: 18.96 kB)
-- **JavaScript**: `dist/assets/index-Bp15w2Es.js` (395.33 kB, gzipped: 99.72 kB)
-- **Total Build Time**: 5.72s
+- **HTML**: `dist/index.html` (optimized and minified)
+- **CSS**: `dist/assets/index-*.css` (optimized with Tailwind)
+- **JavaScript**: `dist/assets/index-*.js` (React + TypeScript bundle)
+- **CV PDF**: `public/documents/cv.pdf` (single-page A4 format)
 
 ### 🎯 Release Features
-- **Dynamic Title Transformation**: Scroll-linked "BRU MAS RIBERA" → "@brumasribera|"
-- **Responsive Gradient System**: Emerald → Purple → Orange → Indigo progression
-- **Optimized Images**: Profile picture optimized from 4.3MB to 9KB (99.8% reduction)
-- **Mobile-First Design**: Responsive across all devices
-- **Performance Optimized**: Lighthouse score 95+ across all categories
+
+#### ✨ CV Page Enhancements
+- **Professional A4 Layout**: Optimized for single-page PDF output
+- **Timeline Design**: Vertical timeline with enhanced chronological dots
+- **Balanced Column Layout**: Education (left) and Skills/Languages/Contact (right) with equal heights
+- **Improved Typography**: Better font sizing and spacing for readability
+- **No Horizontal Lines**: Clean section headers without border decorations
+
+#### 🎨 Visual Improvements
+- **Enhanced Spacing**: Professional breathing room between all sections
+- **Larger Chronological Dots**: Increased from 8px to 12px for better visibility
+- **Optimized Margins**: Strategic spacing adjustments for A4 page fit
+- **Professional Color Scheme**: Emerald green accents with clean gray text
+
+#### 📄 PDF Generation
+- **Single Page Enforcement**: Strict A4 height constraints prevent overflow
+- **Automatic Optimization**: Dynamic spacing reduction for perfect fit
+- **Print-Ready Format**: Professional margins and layout
+- **No UI Elements**: Action buttons hidden in PDF output
+
+#### 🗂️ File Organization
+- **Structured Public Folder**: Organized assets into logical subdirectories
+- **Background Images**: `/backgrounds/` folder for landscape images
+- **Profile Images**: `/profile/` folder for user photos
+- **Documents**: `/documents/` folder for CV and other PDFs
+- **Favicons**: `/favicons/` folder for dev/prod icons
 
 ## 🚀 Deployment Options
 
@@ -57,6 +79,7 @@ npm run deploy
 - [ ] **Mobile Performance**: Test on various mobile devices
 - [ ] **Image Loading**: Verify all images load correctly
 - [ ] **Animation Smoothness**: Check 60fps animations
+- [ ] **CV PDF Generation**: Test PDF download functionality
 
 ### ✅ Cross-Browser Testing
 - [ ] **Chrome**: Latest version
@@ -67,6 +90,7 @@ npm run deploy
 
 ### ✅ Functionality Testing
 - [ ] **Navigation**: All sections accessible
+- [ ] **CV Page**: Professional layout and PDF generation
 - [ ] **Contact Form**: EmailJS integration working
 - [ ] **Responsive Design**: All breakpoints working
 - [ ] **Animations**: Smooth scroll animations
@@ -115,48 +139,31 @@ jobs:
       - run: npm run deploy
 ```
 
-## 📈 Monitoring & Analytics
+## 📈 Version History
 
-### Performance Monitoring
-- [ ] **Core Web Vitals**: Monitor LCP, FID, CLS
-- [ ] **Error Tracking**: Set up error monitoring
-- [ ] **Analytics**: Google Analytics or similar
-- [ ] **Uptime Monitoring**: Pingdom or UptimeRobot
+### v1.1.0 (Current)
+- ✨ CV page optimization and professional layout
+- 🎨 Enhanced visual design and spacing
+- 📄 Single-page PDF generation
+- 🗂️ Improved file organization
+- 🔧 Better responsive design
 
-## 🎉 Release Notes
+### v1.0.0
+- 🚀 Initial portfolio website release
+- 📱 Mobile-first responsive design
+- ⚡ Performance optimization
+- 🎭 Smooth animations and interactions
 
-### What's New in v1.0.0
-- **Initial Release**: Complete portfolio website
-- **Modern Tech Stack**: React 18, TypeScript, Vite, Tailwind CSS
-- **Responsive Design**: Mobile-first approach
-- **Performance Optimized**: Fast loading and smooth animations
-- **Professional UI**: Clean, modern design with smooth interactions
+## 🌟 Next Steps
 
-### Technical Improvements
-- **Build Optimization**: Efficient Vite build process
-- **Image Optimization**: Sharp-based image processing
-- **CSS Optimization**: Tailwind with custom animations
-- **Type Safety**: Full TypeScript coverage
-
-## 🚨 Rollback Plan
-
-If issues are discovered:
-1. **Immediate**: Revert to previous deployment
-2. **Investigation**: Check build logs and performance metrics
-3. **Fix**: Address issues in development
-4. **Re-deploy**: New build with fixes
-
-## 📞 Support
-
-For deployment issues or questions:
-- Check build logs in terminal
-- Verify all dependencies are installed
-- Ensure Node.js version 18+ is used
-- Check file permissions in dist folder
+1. **Deploy** using one of the methods above
+2. **Test** CV page and PDF generation thoroughly
+3. **Verify** all images and assets load correctly
+4. **Monitor** performance and user experience
+5. **Plan** v1.2.0 features
 
 ---
 
-**Release Date**: $(date)
-**Version**: 1.0.0
-**Build Status**: ✅ Ready for Deployment
-**Next Release**: Plan for v1.1.0 with additional features
+**🎊 Congratulations! Your optimized portfolio with professional CV is ready to go live! 🎊**
+
+*Built with React, TypeScript, Vite, Tailwind CSS, and Puppeteer for PDF generation*

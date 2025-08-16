@@ -147,7 +147,7 @@ export function HeroSection() {
         <div 
           className="w-full h-full bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url("/mountain-background.jpg")'
+            backgroundImage: 'url("/backgrounds/mountain-background.jpg")'
           }}
         />
         {/* Gradient overlay for better readability and effect */}
@@ -160,7 +160,7 @@ export function HeroSection() {
         <div className="flex justify-center mb-6 sm:mb-8 lg:mb-10">
           <Avatar className="w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 border border-gray-300 dark:border-gray-600 shadow-lg relative overflow-hidden">
             <AvatarImage 
-              src="/profile-original.png" 
+                              src="/profile/profile-original.png" 
               alt="Bru Mas Ribera" 
               className="object-cover transition-opacity duration-500"
               onLoad={(e) => {
@@ -249,7 +249,7 @@ export function HeroSection() {
               variant="outline" 
               size="lg" 
               className="group bg-white dark:bg-gray-800 text-black dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 text-sm sm:text-base"
-              onClick={() => window.open('/cv', '_blank')}
+                              onClick={() => window.open('/documents/cv.pdf', '_blank')}
             >
               <svg className="mr-2 h-3 w-3 sm:h-4 sm:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />

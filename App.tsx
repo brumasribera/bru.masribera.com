@@ -7,6 +7,7 @@ import { ExperienceSection } from './components/ExperienceSection'
 import { EducationSection } from './components/EducationSection'
 import { ProjectsSection } from './components/ProjectsSection'
 import { ContactSection } from './components/ContactSection'
+import { LanguagesBar } from './components/LanguagesBar'
 import { Footer } from './components/Footer'
 import { OpenHutsPage } from './components/OpenHutsPage'
 import { MoodleNetPage } from './components/MoodleNetPage'
@@ -15,7 +16,7 @@ import { ClathesPage } from './components/ClathesPage'
 import { Pix4DPage } from './components/Pix4DPage'
 import { WegawPage } from './components/WeGawPage'
 import { PomocaPage } from './components/PomocaPage'
-import { CVPage } from './components/CVPage'
+import CVPage from './components/CVPage'
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -61,7 +62,8 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
   
   return (
     <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
-      <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      {/* Hide header on CV page for print/download */}
+      {location.pathname !== '/cv' && <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}
       
       <Routes>
         <Route path="/" element={
@@ -71,6 +73,7 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
             <ExperienceSection />
             <ProjectsSection />
             <EducationSection />
+            <LanguagesBar />
             <ContactSection />
             <Footer />
           </>

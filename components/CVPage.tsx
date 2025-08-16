@@ -31,25 +31,41 @@ const CVPage: React.FC = () => {
           }}
         >
                           {/* Header - Professional with breathing room */}
-              <div className="text-center mb-6">
-                <h1 className="text-3xl font-bold text-gray-900 mb-3">BRU MAS RIBERA</h1>
-                <p className="text-base text-gray-600 mb-3">Frontend & UX Engineer from Barcelona. Based in Meiringen, Switzerland</p>
-                
-                {/* Professional badges */}
-                <div className="flex justify-center gap-3 mb-4">
-                <div className="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                  8+ years of professional experience
+              <div className="mb-6">
+                <div className="flex items-start gap-3">
+                  {/* Profile Picture - Left Side */}
+                  <div className="flex-shrink-0">
+                    <div className="w-28 h-28 rounded-full p-1 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 shadow-lg">
+                      <img 
+                        src="/profile/profile-cropped.jpg" 
+                        alt="Bru Mas Ribera" 
+                        className="w-full h-full rounded-full object-cover"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Title, Subtitle & Badges - Right Side */}
+                  <div className="flex-1">
+                    <h1 className="text-3xl font-bold text-gray-900 mb-3">BRU MAS RIBERA</h1>
+                    <p className="text-base text-gray-600 mb-3">Frontend & UX Engineer from Barcelona. Based in Meiringen, Switzerland</p>
+                    
+                    {/* Professional badges */}
+                    <div className="flex flex-wrap gap-3">
+                      <div className="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                        8+ years of professional experience
+                      </div>
+                      <a 
+                        href="https://bru.masribera.com" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold hover:bg-blue-200 transition-colors"
+                      >
+                        Website
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <a 
-                  href="https://bru.masribera.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold hover:bg-blue-200 transition-colors"
-                >
-                  Website
-                </a>
               </div>
-            </div>
 
             {/* Skills & Tools | About - Professional spacing */}
             <div className="grid grid-cols-2 gap-6 mb-8 mt-8">

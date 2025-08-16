@@ -1,3 +1,4 @@
+// WegawPage component - Snow monitoring and avalanche prediction system
 import { ArrowLeft, Globe, ExternalLink, Snowflake, Satellite, Database, BarChart3, Shield, Mountain, Activity, Thermometer, MountainSnow } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Badge } from './ui/badge'

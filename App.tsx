@@ -13,7 +13,7 @@ import { MoodleNetPage } from './components/MoodleNetPage'
 import { ReservePage } from './components/ReservePage'
 import { ClathesPage } from './components/ClathesPage'
 import { Pix4DPage } from './components/Pix4DPage'
-import { WegawPage } from './components/WegawPage'
+import { WegawPage } from './components/WeGawPage'
 import { PomocaPage } from './components/PomocaPage'
 
 function App() {

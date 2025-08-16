@@ -53,30 +53,34 @@ export function CVPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 mt-8">
               <div>
                 <h2 className="text-sm font-semibold tracking-widest text-emerald-700">SKILLS & TOOLS</h2>
-                <div className="mt-3 space-y-2 text-sm">
+                <div className="mt-3 space-y-3 text-sm">
                   <div className="grid grid-cols-[110px_1fr] gap-2">
                     <div className="font-semibold text-gray-800">Languages</div>
-                    <div>Typescript, JavaScript, Python</div>
+                    <div>TypeScript, JavaScript, Python, HTML/CSS</div>
                   </div>
                   <div className="grid grid-cols-[110px_1fr] gap-2">
-                    <div className="font-semibold text-gray-800">Web Dev</div>
-                    <div>React, Vue, Django, Angular, Node</div>
+                    <div className="font-semibold text-gray-800">Frontend</div>
+                    <div>React, Next.js, Vue, Angular, Tailwind CSS</div>
+                  </div>
+                  <div className="grid grid-cols-[110px_1fr] gap-2">
+                    <div className="font-semibold text-gray-800">Backend</div>
+                    <div>Node.js, Django, Express, Supabase</div>
                   </div>
                   <div className="grid grid-cols-[110px_1fr] gap-2">
                     <div className="font-semibold text-gray-800">DevOps</div>
-                    <div>Docker, Kubernetes, GCP, Heroku</div>
+                    <div>Docker, Kubernetes, GCP, Heroku, Vercel</div>
                   </div>
                   <div className="grid grid-cols-[110px_1fr] gap-2">
                     <div className="font-semibold text-gray-800">Database</div>
-                    <div>MySQL, PostgreSQL, MongoDB</div>
+                    <div>PostgreSQL, MySQL, MongoDB, Firebase</div>
                   </div>
                   <div className="grid grid-cols-[110px_1fr] gap-2">
-                    <div className="font-semibold text-gray-800">UX</div>
-                    <div>Figma, InVision, Adobe XD</div>
+                    <div className="font-semibold text-gray-800">UX Tools</div>
+                    <div>Figma, Storybook, User Research, Prototyping</div>
                   </div>
                   <div className="grid grid-cols-[110px_1fr] gap-2">
                     <div className="font-semibold text-gray-800">Practices</div>
-                    <div>Scrum, Lean Startup, Design Sprints</div>
+                    <div>Scrum, Lean Startup, Design Sprints, User Testing</div>
                   </div>
                 </div>
               </div>
@@ -85,16 +89,19 @@ export function CVPage() {
                 <h2 className="text-sm font-semibold tracking-widest text-emerald-700">PERSONAL DETAILS</h2>
                 <div className="mt-3 space-y-3 text-sm text-gray-800">
                   <p>
-                    Computer Engineer specialized in Web Development, 3 years of experience as a Backend Engineer, 6 years as a Frontend
+                    Computer Engineer specialized in Web Development with 6 years of Frontend experience and 3 years as a Backend Engineer
                   </p>
                   <p>
-                    Starting to work as a UX Designer with strong interest in user research, prototyping, user testing and hi‑fi interfaces
+                    UX Designer with 3 years of experience in user research, prototyping, user testing and hi‑fi interfaces using modern design tools
                   </p>
                   <p>
-                    In charge of successfully delivering a Proof of Concept for a project funded by the European Space Agency
+                    Successfully delivered a Proof of Concept for a project funded by the European Space Agency, coordinating international consortiums
                   </p>
                   <p>
-                    Capable of working on products end to end, from concept, research, prototyping to production
+                    Capable of working on products end-to-end, from concept and research through prototyping to production deployment
+                  </p>
+                  <p>
+                    Passionate about creating intuitive user experiences and bridging the gap between design and development
                   </p>
                 </div>
               </div>
@@ -108,32 +115,39 @@ export function CVPage() {
                 <ul className="space-y-6">
                   {[
                     {
+                      period: '2014 – Present',
+                      place: 'Remote',
+                      title: 'Founder & Project Lead | Open Huts, Booking Platform for Nature Huts',
+                      text:
+                        'Find hidden places to sleep out in the wild. Help protect nature by enjoying it. User research, prototyping, user testing, hi‑fi interfaces with Figma and implementation with React, Next.js, TypeScript, Supabase'
+                    },
+                    {
                       period: '2021 – 2024',
                       place: 'Remote',
                       title: 'Frontend & UX Engineer | Moodle, Open Learning Platform',
                       text:
-                        'Deliver the frontend of the open source MoodleNet, using React and Storybook. Benchmarking and designing to develop new features'
+                        'Developing MoodleNet, a network to share and curate open educational resources. Using React, Figma, UX Design, Open Source, Educational Technology'
                     },
                     {
-                      period: '2014 – Present',
-                      place: 'Remote',
-                      title: 'Founder | Open Huts, Booking Platform for Nature Huts',
+                      period: '2020',
+                      place: 'Lausanne, Switzerland',
+                      title: 'User Experience Designer | Oberalp Group, Pomoca',
                       text:
-                        'User research, prototyping, user testing, hi‑fi interfaces with Figma and implementation with Django, Docker, Heroku, Vue and Firebase'
+                        'Redesigning the production interfaces of the ski touring skins world leader, Pomoca. Behavioral Interviewing, Usability Testing, UX Design, Production Interfaces'
                     },
                     {
                       period: '2018',
                       place: 'Lausanne, Switzerland',
                       title: 'Solution Architect | Wegaw, Terrain Monitoring for Outdoor Planning',
                       text:
-                        'Analyze, develop and deliver a PoC, coordinating a consortium with SLF and ExoLabs. Django, Docker, Kubernetes'
+                        'Developing an European Space Agency project to track snow cover from satellites worldwide. JavaScript, Kubernetes, Satellite Data, ESA Projects, Snow Cover Tracking'
                     },
                     {
                       period: '2017 – 2018',
                       place: 'Lausanne, Switzerland',
-                      title: 'Web Developer | Pix4D, Photogrammetry for Construction and Agriculture',
+                      title: 'Junior Web Developer | Pix4D, Photogrammetry for Construction and Agriculture',
                       text:
-                        'Develop the new frontend, transforming UX designs to functional web apps. Angular 5, Django, RxJS, Redux'
+                        'Developing a cloud platform to upload, process and analyze 3D models from drone images. Angular 4, RxJS, Cloud Platform, 3D Modeling, Drone Technology'
                     }
                   ].map((item, idx) => (
                     <li key={idx} className="relative pl-10 md:pl-14">
@@ -159,11 +173,10 @@ export function CVPage() {
                   <div className="absolute left-4 md:left-6 top-0 bottom-0 w-px bg-gray-300" />
                   <ul className="space-y-6">
                     {[
-                      { period: '2011 – 2016', title: "Engineer's Degree, Computer Engineering", place: 'Universitat de Barcelona' },
-                      { period: '2020 – 2020', title: 'UX Designer Nanodegree', place: 'Udacity' },
-                      { period: '2019 – 2021', title: 'UIMLA Mountain Leader, Alpine Hiking Guide', place: 'ICEMP' },
-                      { period: '2020 – 2021', title: 'ThePowerMBA, MBA', place: 'ThePowerMBA' },
-                      { period: '2009 – 2011', title: 'Architecture', place: 'Universitat Politècnica de Catalunya' }
+                      { period: '2020 – 2021', title: 'MBA', place: 'ThePowerMBA' },
+                      { period: '2020', title: 'User Experience Design', place: 'Udacity' },
+                      { period: '2011 – 2016', title: 'BA Computer Engineering', place: 'Barcelona University' },
+                      { period: '2009 – 2011', title: 'Architecture', place: 'UPC, Barcelona' }
                     ].map((edu, idx) => (
                       <li key={idx} className="relative pl-10 md:pl-14">
                         <div className="absolute left-4 md:left-6 top-2 -translate-x-1/2 w-3 h-3 rounded-full bg-emerald-500 shadow" />

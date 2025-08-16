@@ -245,6 +245,14 @@ export function HeroSection() {
               <Github className="mr-2 h-3 w-3 sm:h-4 sm:w-4 transition-all duration-500 group-hover:fill-current group-hover:scale-110" />
               GitHub
             </Button>
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="group bg-emerald-600 hover:bg-emerald-700 text-white border-emerald-600 hover:border-emerald-700 transition-colors duration-200 text-sm sm:text-base"
+              onClick={() => window.open('/cv', '_blank')}
+            >
+              📄 CV
+            </Button>
           </div>
         </div>
 

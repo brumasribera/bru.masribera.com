@@ -216,6 +216,14 @@ export function ContactSection() {
                   <Github className="h-4 w-4" />
                   GitHub
                 </button>
+                
+                {/* CV */}
+                <button 
+                  onClick={() => window.open('/cv','_blank')}
+                  className="group bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2"
+                >
+                  📄 CV
+                </button>
               </div>
             </div>
           </div>

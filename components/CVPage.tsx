@@ -32,14 +32,18 @@ export function CVPage() {
           style={{ width: '210mm', minHeight: '297mm' }}
         >
           <div className="p-8 md:p-10">
-            {/* Header */}
-            <div className="flex items-baseline justify-between gap-4">
-              <div>
-                <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">BRU MAS RIBERA</h1>
-                <p className="text-sm md:text-base text-gray-700 mt-1">
-                  Frontend & UX Engineer from Barcelona. Based in Meiringen, Switzerland
-                </p>
-              </div>
+                         {/* Header */}
+             <div className="flex items-baseline justify-between gap-4">
+               <div>
+                 <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">BRU MAS RIBERA</h1>
+                 <p className="text-sm md:text-base text-gray-700 mt-1">
+                   Frontend & UX Engineer from Barcelona. Based in Meiringen, Switzerland
+                 </p>
+                 {/* Experience highlight */}
+                 <div className="inline-flex items-center rounded-full px-3 py-1.5 mt-3 shadow-lg bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500">
+                   <span className="text-xs font-bold tracking-wide text-white">8+ years of professional experience</span>
+                 </div>
+               </div>
               <button
                 onClick={() => window.print()}
                 className="print:hidden inline-flex items-center gap-2 px-3 py-2 rounded-lg text-white text-sm font-medium"
@@ -188,18 +192,20 @@ export function CVPage() {
               </div>
             </div>
 
-            {/* Footer contacts */}
-            <div className="mt-10 pt-6 border-t border-gray-200">
-              <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
-                <div className="text-gray-800">bru@masribera.com</div>
-                <div className="flex items-center gap-4 text-gray-700">
-                  <a href="mailto:bru@masribera.com" className="inline-flex items-center gap-1 hover:text-emerald-700"><Mail className="w-4 h-4" /> Email</a>
-                  <a href="https://www.linkedin.com/in/brumasribera" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:text-emerald-700"><Linkedin className="w-4 h-4" /> LinkedIn</a>
-                  <a href="https://github.com/brumasribera" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:text-emerald-700"><Github className="w-4 h-4" /> GitHub</a>
-                  <a href="https://bru.masribera.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:text-emerald-700">bru.masribera.com</a>
-                </div>
-              </div>
-            </div>
+                         {/* Footer contacts */}
+             <div className="mt-10 pt-6 border-t border-gray-200">
+               <div className="flex flex-wrap items-center justify-center gap-4 text-sm">
+                 <a href="mailto:bru@masribera.com" className="inline-flex items-center gap-1 hover:text-emerald-700"><Mail className="w-4 h-4" /> Email</a>
+                 <a href="https://www.linkedin.com/in/brumasribera" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:text-emerald-700"><Linkedin className="w-4 h-4" /> LinkedIn</a>
+                 <a href="https://github.com/brumasribera" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:text-emerald-700"><Github className="w-4 h-4" /> GitHub</a>
+                 <a href="https://bru.masribera.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:text-emerald-700">
+                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                   </svg>
+                   bru.masribera.com
+                 </a>
+               </div>
+             </div>
           </div>
         </div>
       </div>

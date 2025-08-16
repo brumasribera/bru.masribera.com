@@ -53,41 +53,29 @@ export function CVPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 mt-8">
               <div>
                 <h2 className="text-sm font-semibold tracking-widest text-emerald-700">SKILLS & TOOLS</h2>
-                <div className="mt-3 space-y-2 text-sm">
+                <div className="mt-3 space-y-1.5 text-sm">
                   <div className="grid grid-cols-[110px_1fr] gap-2">
                     <div className="font-semibold text-gray-800">Languages</div>
-                    <div>TypeScript, JavaScript, Python, HTML/CSS</div>
+                    <div>TypeScript, JavaScript, Python</div>
                   </div>
                   <div className="grid grid-cols-[110px_1fr] gap-2">
                     <div className="font-semibold text-gray-800">Frontend</div>
-                    <div>React, Next.js, Vue, Angular, Tailwind CSS</div>
+                    <div>React, Next.js, Vue, Tailwind CSS</div>
                   </div>
                   <div className="grid grid-cols-[110px_1fr] gap-2">
                     <div className="font-semibold text-gray-800">Backend</div>
-                    <div>Node.js, Django, Express, Supabase</div>
-                  </div>
-                  <div className="grid grid-cols-[110px_1fr] gap-2">
-                    <div className="font-semibold text-gray-800">DevOps</div>
-                    <div>Docker, Kubernetes, GCP, Heroku, Vercel</div>
-                  </div>
-                  <div className="grid grid-cols-[110px_1fr] gap-2">
-                    <div className="font-semibold text-gray-800">Database</div>
-                    <div>PostgreSQL, MySQL, MongoDB, Firebase</div>
+                    <div>Node.js, Django, Supabase</div>
                   </div>
                   <div className="grid grid-cols-[110px_1fr] gap-2">
                     <div className="font-semibold text-gray-800">UX Tools</div>
-                    <div>Figma, Storybook, User Research, Prototyping</div>
-                  </div>
-                  <div className="grid grid-cols-[110px_1fr] gap-2">
-                    <div className="font-semibold text-gray-800">Practices</div>
-                    <div>Scrum, Lean Startup, Design Sprints, User Testing</div>
+                    <div>Figma, Storybook, User Research</div>
                   </div>
                 </div>
               </div>
 
               <div>
                 <h2 className="text-sm font-semibold tracking-widest text-emerald-700">PERSONAL DETAILS</h2>
-                <div className="mt-3 space-y-2 text-sm text-gray-800">
+                <div className="mt-3 space-y-1.5 text-sm text-gray-800">
                   <p>
                     Computer Engineer specialized in Web Development with 6 years Frontend and 3 years Backend experience
                   </p>
@@ -96,12 +84,6 @@ export function CVPage() {
                   </p>
                   <p>
                     Successfully delivered ESA-funded Proof of Concept, coordinating international consortiums
-                  </p>
-                  <p>
-                    End-to-end product development from concept through prototyping to production deployment
-                  </p>
-                  <p>
-                    Passionate about intuitive user experiences and bridging design-development gaps
                   </p>
                 </div>
               </div>

@@ -23,6 +23,9 @@ export function Globe3D({ onPick }: Globe3DProps) {
     el.style.zIndex = '1000';
     el.style.pointerEvents = 'auto';
     el.style.filter = 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))';
+    el.style.touchAction = 'manipulation'; // Optimize for touch
+    el.style.userSelect = 'none'; // Prevent text selection on mobile
+    el.style.webkitUserSelect = 'none'; // Safari support
 
     // Create the dialog box container
     const dialogBox = document.createElement('div');
@@ -93,14 +96,33 @@ export function Globe3D({ onPick }: Globe3DProps) {
       el.style.filter = 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))';
     };
     
-    // Use addEventListener for better compatibility
-    el.addEventListener('click', (e) => {
+    // Use both click and touch events for better mobile compatibility
+    const handleClick = (e: Event) => {
       e.preventDefault();
       e.stopPropagation();
       console.log('Marker clicked:', d.project.name);
       navigateToProtectedArea(d.project);
+    };
+
+    // Add click event
+    el.addEventListener('click', handleClick);
+    
+    // Add touch events for mobile
+    el.addEventListener('touchstart', (e) => {
+      console.log('Touch start on marker:', d.project.name);
+      e.preventDefault();
+      el.style.transform = 'translate(-50%, -50%) scale(1.05)';
+    });
+    
+    el.addEventListener('touchend', (e) => {
+      console.log('Touch end on marker:', d.project.name);
+      e.preventDefault();
+      el.style.transform = 'translate(-50%, -50%) scale(1)';
+      // Small delay to ensure touch is complete before triggering action
+      setTimeout(() => handleClick(e), 100);
     });
 
+    console.log('Marker created for:', d.project.name, 'with events attached');
     return el;
   };
 

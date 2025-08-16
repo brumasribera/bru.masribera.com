@@ -53,7 +53,7 @@ export function CVPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 mt-8">
               <div>
                 <h2 className="text-sm font-semibold tracking-widest text-emerald-700">SKILLS & TOOLS</h2>
-                <div className="mt-3 space-y-3 text-sm">
+                <div className="mt-3 space-y-2 text-sm">
                   <div className="grid grid-cols-[110px_1fr] gap-2">
                     <div className="font-semibold text-gray-800">Languages</div>
                     <div>TypeScript, JavaScript, Python, HTML/CSS</div>
@@ -87,21 +87,21 @@ export function CVPage() {
 
               <div>
                 <h2 className="text-sm font-semibold tracking-widest text-emerald-700">PERSONAL DETAILS</h2>
-                <div className="mt-3 space-y-3 text-sm text-gray-800">
+                <div className="mt-3 space-y-2 text-sm text-gray-800">
                   <p>
-                    Computer Engineer specialized in Web Development with 6 years of Frontend experience and 3 years as a Backend Engineer
+                    Computer Engineer specialized in Web Development with 6 years Frontend and 3 years Backend experience
                   </p>
                   <p>
-                    UX Designer with 3 years of experience in user research, prototyping, user testing and hi‑fi interfaces using modern design tools
+                    UX Designer with 3 years experience in user research, prototyping, and hi‑fi interfaces
                   </p>
                   <p>
-                    Successfully delivered a Proof of Concept for a project funded by the European Space Agency, coordinating international consortiums
+                    Successfully delivered ESA-funded Proof of Concept, coordinating international consortiums
                   </p>
                   <p>
-                    Capable of working on products end-to-end, from concept and research through prototyping to production deployment
+                    End-to-end product development from concept through prototyping to production deployment
                   </p>
                   <p>
-                    Passionate about creating intuitive user experiences and bridging the gap between design and development
+                    Passionate about intuitive user experiences and bridging design-development gaps
                   </p>
                 </div>
               </div>

@@ -4,15 +4,25 @@ import { Footer } from './Footer'
 import { useProjectNavigation } from './hooks/useProjectNavigation'
 import { ProjectNavigationButton } from './ProjectNavigationButton'
 import { useKeyboardNavigation } from './hooks/useKeyboardNavigation'
+import { ImageModal } from './ImageModal'
+import { useState } from 'react'
 
 export function PomocaPage() {
   const { navigateToProject, navigateToHome } = useProjectNavigation()
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
   
   // Enable keyboard navigation
   useKeyboardNavigation({
     prevProjectPath: '/moodlenet',
-    nextProjectPath: '/wegaw'
+    nextProjectPath: '/wegaw',
+    disableNavigation: selectedImage !== null
   })
+  
+  const prototypeImages = [
+    '/pomoca/prototypes/GLR Cutting step.png',
+    '/pomoca/prototypes/QA step.png',
+    '/pomoca/prototypes/Product refinements .png'
+  ]
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
@@ -354,7 +364,8 @@ export function PomocaPage() {
                 <img 
                   src="/pomoca/prototypes/GLR Cutting step.png" 
                   alt="Pomoca Production Interface - Cutting Step"
-                  className="w-full h-64 object-cover"
+                  className="w-full h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                  onClick={() => setSelectedImage('/pomoca/prototypes/GLR Cutting step.png')}
                 />
                 <div className="p-6">
                                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
@@ -378,7 +389,8 @@ export function PomocaPage() {
                 <img 
                   src="/pomoca/prototypes/QA step.png" 
                   alt="Pomoca Production Interface - QA Step"
-                  className="w-full h-64 object-cover"
+                  className="w-full h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                  onClick={() => setSelectedImage('/pomoca/prototypes/QA step.png')}
                 />
                 <div className="p-6">
                                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
@@ -402,7 +414,8 @@ export function PomocaPage() {
                 <img 
                   src="/pomoca/prototypes/Product refinements .png" 
                   alt="Pomoca Production Interface - Product Refinements"
-                  className="w-full h-64 object-cover"
+                  className="w-full h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                  onClick={() => setSelectedImage('/pomoca/prototypes/Product refinements .png')}
                 />
                 <div className="p-6">
                                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
@@ -511,7 +524,13 @@ export function PomocaPage() {
          </div>
       </div>
 
-      <Footer />
-    </div>
-  )
-}
+              <Footer />
+        <ImageModal
+          selectedImage={selectedImage}
+          setSelectedImage={setSelectedImage}
+          imagePaths={prototypeImages}
+          altText="Pomoca Production Interface Prototype"
+        />
+      </div>
+    )
+  }

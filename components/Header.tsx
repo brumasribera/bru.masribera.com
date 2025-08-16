@@ -283,6 +283,21 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
               {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
 
+            {/* CV buttons */}
+            <button
+              onClick={() => navigate('/cv')}
+              className="hidden md:inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 transition-colors"
+            >
+              CV
+            </button>
+            <button
+              onClick={() => navigate('/cv?download=1')}
+              className="hidden md:inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium text-emerald-700 border border-emerald-600 hover:bg-emerald-50 transition-colors"
+              title="Download CV (PDF)"
+            >
+              Download
+            </button>
+
             {/* Mobile menu button */}
             <Button
               variant="ghost"

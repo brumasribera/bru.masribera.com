@@ -15,6 +15,7 @@ import { ClathesPage } from './components/ClathesPage'
 import { Pix4DPage } from './components/Pix4DPage'
 import { WegawPage } from './components/WeGawPage'
 import { PomocaPage } from './components/PomocaPage'
+import { CVPage } from './components/CVPage'
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -81,6 +82,7 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
         <Route path="/pix4d" element={<Pix4DPage />} />
         <Route path="/wegaw" element={<WegawPage />} />
         <Route path="/pomoca" element={<PomocaPage />} />
+        <Route path="/cv" element={<CVPage />} />
       </Routes>
     </div>
   )

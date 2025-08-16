@@ -248,7 +248,7 @@ export function HeroSection() {
             <Button 
               variant="outline" 
               size="lg" 
-              className="group bg-emerald-600 hover:bg-emerald-700 text-white border-emerald-600 hover:border-emerald-700 transition-colors duration-200 text-sm sm:text-base"
+              className="group bg-white dark:bg-gray-800 text-black dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 text-sm sm:text-base"
               onClick={() => window.open('/cv', '_blank')}
             >
               📄 CV

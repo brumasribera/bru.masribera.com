@@ -10,7 +10,6 @@ interface Globe3DProps {
 
 export function Globe3D({ onPick }: Globe3DProps) {
   const [isGlobeReady, setIsGlobeReady] = useState(false);
-  const [globeError, setGlobeError] = useState<string | null>(null);
 
   // Real 3D globe using Three.js via react-globe.gl with NASA Blue Marble textures
   const markers = useMemo(() => PROJECTS.map(p => ({ lat: p.lat, lng: p.lon, project: p })), []);
@@ -119,24 +118,6 @@ export function Globe3D({ onPick }: Globe3DProps) {
 
     return () => clearTimeout(timer);
   }, []);
-
-  if (globeError) {
-    return (
-      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-red-50 to-red-100">
-        <div className="text-center">
-          <Earth className="w-12 h-12 text-red-500 mx-auto mb-4"/>
-          <h3 className="text-xl font-semibold text-red-600 mb-2">Globe Error</h3>
-          <p className="text-red-500 mb-4">{globeError}</p>
-          <button 
-            onClick={() => window.location.reload()} 
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-          >
-            Reload Page
-          </button>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="w-full h-full relative">

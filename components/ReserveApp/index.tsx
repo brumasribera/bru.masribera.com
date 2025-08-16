@@ -3,7 +3,6 @@ import { AppShell } from "./AppShell";
 import { Globe3D } from "./Globe3D";
 import { ProtectedAreaPage } from "./ProtectedAreaPage";
 import { Project, CartItem } from "./types";
-import { PROJECTS } from "./data";
 
 /**
  * Reserve – Happy Nature (Mobile-first prototype)
@@ -20,10 +19,6 @@ export default function ReserveMobileApp() {
   const [cart, setCart] = useState<CartItem[]>([]);
 
   const openProject = (p: Project) => setActiveProject(p);
-  const addToCart = (item: CartItem) => { 
-    if(item.m2) setCart([...cart, item]); 
-    setActiveProject(null); 
-  };
 
   return (
     <AppShell cartCount={cart.length} onOpenCart={() => {}}>

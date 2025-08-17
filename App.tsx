@@ -12,6 +12,7 @@ import { Footer } from './components/Footer'
 import { OpenHutsPage } from './components/OpenHutsPage'
 import { MoodleNetPage } from './components/MoodleNetPage'
 import { ReservePage } from './components/ReservePage'
+import { ReserveFullScreenPage } from './components/ReserveFullScreenPage'
 import { ClathesPage } from './components/ClathesPage'
 import { Pix4DPage } from './components/Pix4DPage'
 import { WegawPage } from './components/WeGawPage'
@@ -62,8 +63,8 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
   
   return (
     <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
-      {/* Hide header on CV page for print/download */}
-      {location.pathname !== '/cv' && <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}
+      {/* Hide header on CV page for print/download and on reserve-app for fullscreen */}
+      {location.pathname !== '/cv' && location.pathname !== '/reserve-app' && <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}
       
       <Routes>
         <Route path="/" element={
@@ -81,6 +82,7 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
         <Route path="/openhuts" element={<OpenHutsPage />} />
         <Route path="/moodlenet" element={<MoodleNetPage />} />
         <Route path="/reserve" element={<ReservePage />} />
+        <Route path="/reserve-app" element={<ReserveFullScreenPage />} />
         <Route path="/clathes" element={<ClathesPage />} />
         <Route path="/pix4d" element={<Pix4DPage />} />
         <Route path="/wegaw" element={<WegawPage />} />

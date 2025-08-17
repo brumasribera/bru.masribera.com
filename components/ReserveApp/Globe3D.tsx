@@ -10,6 +10,50 @@ interface Globe3DProps {
 
 export function Globe3D({ onPick }: Globe3DProps) {
   const [isGlobeReady, setIsGlobeReady] = useState(false);
+  const [dimensions, setDimensions] = useState({ width: 380, height: 680 });
+
+  // Handle responsive sizing
+  useEffect(() => {
+    const updateDimensions = () => {
+      // Get the container dimensions or fall back to viewport
+      const container = document.querySelector('.globe-container');
+      if (container) {
+        const rect = container.getBoundingClientRect();
+        setDimensions({
+          width: rect.width,
+          height: rect.height
+        });
+      } else {
+        // Fallback to viewport dimensions
+        setDimensions({
+          width: window.innerWidth,
+          height: window.innerHeight
+        });
+      }
+    };
+
+    // Set initial dimensions
+    updateDimensions();
+
+    // Add resize listener
+    window.addEventListener('resize', updateDimensions);
+    
+    // Use ResizeObserver for more accurate container size changes
+    const container = document.querySelector('.globe-container');
+    if (container) {
+      const resizeObserver = new ResizeObserver(updateDimensions);
+      resizeObserver.observe(container);
+      
+      // Cleanup
+      return () => {
+        window.removeEventListener('resize', updateDimensions);
+        resizeObserver.disconnect();
+      };
+    }
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
 
   // Real 3D globe using Three.js via react-globe.gl with NASA Blue Marble textures
   const markers = useMemo(() => PROJECTS.map(p => ({ lat: p.lat, lng: p.lon, project: p })), []);
@@ -142,38 +186,163 @@ export function Globe3D({ onPick }: Globe3DProps) {
   }, []);
 
   return (
-    <div className="w-full h-full relative">
+    <div className="globe-container w-full h-full flex flex-col relative bg-black">
+      {/* Custom CSS for shooting star animation */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes shooting-star-trail {
+            0% {
+              transform: translateX(0) translateY(0) rotate(45deg) scale(1);
+              opacity: 0.8;
+            }
+            50% {
+              opacity: 0.4;
+            }
+            100% {
+              transform: translateX(80px) translateY(-80px) rotate(45deg) scale(0.5);
+              opacity: 0;
+            }
+          }
+        `
+      }} />
+      
+      {/* Shooting stars background effect */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div key={i} className="absolute">
+            {/* Main shooting star */}
+            <div
+              className="absolute w-1 h-1 bg-white rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animation: `shooting-star-trail ${3 + Math.random() * 4}s linear infinite`,
+                animationDelay: `${Math.random() * 5}s`
+              }}
+            />
+            
+            {/* Additional trail elements for longer trace */}
+            <div
+              className="absolute w-0.5 h-0.5 bg-blue-100 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animation: `shooting-star-trail ${3 + Math.random() * 4}s linear infinite`,
+                animationDelay: `${(Math.random() * 5) + 0.1}s`
+              }}
+            />
+          </div>
+        ))}
+      </div>
+      
       {/* Header overlay */}
-      <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/20 to-transparent p-4">
+      <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/40 to-transparent p-4 flex-shrink-0">
         <div className="flex items-center gap-2 text-white">
           <Earth className="w-5 h-5"/>
-          <h3 className="font-semibold">Explore Projects (3D)</h3>
+          <h3 className="font-semibold">Explore Projects</h3>
         </div>
         <p className="text-white/80 text-sm">
           {isGlobeReady ? "Spin, pinch to zoom, and tap a marker to open." : "Loading 3D globe..."}
         </p>
       </div>
 
-      {/* Globe container */}
-      <div className="w-full h-full">
+      {/* Globe container - Takes remaining height and centers the globe */}
+      <div className="flex-1 relative flex items-center justify-center">
         {!isGlobeReady && (
-          <div className="w-full h-full flex items-center justify-center bg-white overflow-hidden">
-            <div className="text-center flex flex-col items-center justify-center h-full">
-              <div className="relative w-32 h-32 mx-auto mb-8">
-                <img 
-                  src="/logos/reserve-logo.png" 
-                  alt="Reserve" 
-                  className="w-full h-full object-contain animate-pulse"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
+          <div className="absolute inset-0 flex items-center justify-center bg-black z-50">
+            <div className="text-center relative">
+              <div className="relative">
+                {/* Reserve Logo */}
+                <div className="w-32 h-32 mx-auto mb-6 relative">
+                  <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-2xl mx-auto relative z-20">
+                    <img src="/logos/reserve-logo.png" alt="Reserve" className="w-16 h-16 object-contain" />
+                  </div>
+                  
+                  {/* Particles that get absorbed by the logo */}
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <div
+                      key={`particle-${i}`}
+                      className="absolute w-2 h-2 bg-emerald-400 rounded-full animate-pulse"
+                      style={{
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        zIndex: 15,
+                        animationDelay: `${i * 0.6}s`,
+                        animationDuration: '3s',
+                        animation: isGlobeReady ? 'none' : `particle-absorb-${i} 6s ease-out forwards`
+                      }}
+                    />
+                  ))}
+                </div>
+                
+                {/* Loading Bar */}
+                <div className="w-64 h-3 bg-gray-700 rounded-full mx-auto mb-4 overflow-hidden">
+                  <div 
+                    className="h-full bg-gradient-to-r from-emerald-500 to-green-500 rounded-full transition-all duration-1000 ease-out"
+                    style={{
+                      width: isGlobeReady ? '100%' : '0%',
+                      animation: isGlobeReady ? 'none' : 'loading-grow 6s ease-out forwards'
+                    }}
+                  />
+                </div>
+                
+                {/* Loading Text */}
+                <p className="text-white text-2xl font-bold mb-3">Connecting to Earth</p>
+                <p className="text-emerald-400 text-lg font-medium">
+                  {isGlobeReady ? "Ready to explore!" : "Loading conservation projects..."}
+                </p>
               </div>
-              <p className="text-gray-600 text-2xl font-medium mb-2">Loading 3D Globe...</p>
-              <p className="text-gray-500 text-lg">Preparing conservation projects</p>
             </div>
+            
+            {/* Custom CSS for particle absorption and loading bar */}
+            <style dangerouslySetInnerHTML={{
+              __html: `
+                @keyframes loading-grow {
+                  0% { width: 0%; }
+                  100% { width: 100%; }
+                }
+                
+                ${Array.from({ length: 8 }).map((_, i) => `
+                  @keyframes particle-absorb-${i} {
+                    0% {
+                      transform: translate(-50%, -50%) translate(${Math.random() * 120 - 60}px, ${Math.random() * 120 - 60}px);
+                      opacity: 1;
+                      scale: 1;
+                    }
+                    ${Math.max(15, i * 10)}% {
+                      transform: translate(-50%, -50%) translate(${Math.random() * 120 - 60}px, ${Math.random() * 120 - 60}px);
+                      opacity: 1;
+                      scale: 1;
+                    }
+                    ${Math.max(40, i * 10 + 30)}% {
+                      transform: translate(-50%, -50%) translate(${Math.random() * 80 - 40}px, ${Math.random() * 80 - 40}px);
+                      opacity: 0.8;
+                      scale: 0.8;
+                    }
+                    ${Math.max(65, i * 10 + 55)}% {
+                      transform: translate(-50%, -50%) translate(${Math.random() * 40 - 20}px, ${Math.random() * 40 - 20}px);
+                      opacity: 0.6;
+                      scale: 0.6;
+                    }
+                    ${Math.max(85, i * 10 + 75)}% {
+                      transform: translate(-50%, -50%) translate(${Math.random() * 20 - 10}px, ${Math.random() * 20 - 10}px);
+                      opacity: 0.3;
+                      scale: 0.3;
+                    }
+                    100% {
+                      transform: translate(-50%, -50%) translate(0px, 0px);
+                      opacity: 0;
+                      scale: 0.1;
+                    }
+                  }
+                `).join('')}
+              `
+            }} />
           </div>
         )}
-        <GlobeGL
-          backgroundColor="#ffffff00"
+        <GlobeGL 
+          backgroundColor="#00000000" 
           globeImageUrl="https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
           bumpImageUrl="https://unpkg.com/three-globe/example/img/earth-topology.png"
           showAtmosphere
@@ -183,12 +352,9 @@ export function Globe3D({ onPick }: Globe3DProps) {
           htmlLat={(d: any) => d.lat}
           htmlLng={(d: any) => d.lng}
           htmlElement={makeMarker}
-          onGlobeReady={() => {
-            console.log('Globe ready, markers created:', markers.length);
-            setIsGlobeReady(true);
-          }}
-          width={380}
-          height={730}
+          onGlobeReady={() => setIsGlobeReady(true)}
+          width={dimensions.width}
+          height={dimensions.height}
         />
       </div>
     </div>

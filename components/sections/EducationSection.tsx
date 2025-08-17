@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
 import { Calendar, MapPin, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 

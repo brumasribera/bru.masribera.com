@@ -1,23 +1,32 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import { Header } from './components/Header'
-import { HeroSection } from './components/HeroSection'
-import { AboutSection } from './components/AboutSection'
-import { ExperienceSection } from './components/ExperienceSection'
-import { EducationSection } from './components/EducationSection'
-import { ProjectsSection } from './components/ProjectsSection'
-import { ContactSection } from './components/ContactSection'
-import { LanguagesBar } from './components/LanguagesBar'
-import { Footer } from './components/Footer'
-import { OpenHutsPage } from './components/OpenHutsPage'
-import { MoodleNetPage } from './components/MoodleNetPage'
-import { ReservePage } from './components/ReservePage'
-import { ReserveFullScreenPage } from './components/ReserveFullScreenPage'
-import { ClathesPage } from './components/ClathesPage'
-import { Pix4DPage } from './components/Pix4DPage'
-import { WegawPage } from './components/WeGawPage'
-import { PomocaPage } from './components/PomocaPage'
-import CVPage from './components/CVPage'
+import { Header } from './components/layout/Header'
+import { HeroSection } from './components/sections/HeroSection'
+import { AboutSection } from './components/sections/AboutSection'
+import { ExperienceSection } from './components/sections/ExperienceSection'
+import { EducationSection } from './components/sections/EducationSection'
+import { ProjectsSection } from './components/sections/ProjectsSection'
+import { ContactSection } from './components/sections/ContactSection'
+import { LanguagesBar } from './components/ui/LanguagesBar'
+import { Footer } from './components/layout/Footer'
+import CVPage from './components/pages/CVPage'
+
+// Lazy load project pages to reduce initial bundle size
+const OpenHutsPage = lazy(() => import('./components/pages/OpenHutsPage').then(module => ({ default: module.OpenHutsPage })))
+const MoodleNetPage = lazy(() => import('./components/pages/MoodleNetPage').then(module => ({ default: module.MoodleNetPage })))
+const ReservePage = lazy(() => import('./components/pages/ReservePage').then(module => ({ default: module.ReservePage })))
+const ReserveFullScreenPage = lazy(() => import('./components/pages/ReserveFullScreenPage').then(module => ({ default: module.ReserveFullScreenPage })))
+const ClathesPage = lazy(() => import('./components/pages/ClathesPage').then(module => ({ default: module.ClathesPage })))
+const Pix4DPage = lazy(() => import('./components/pages/Pix4DPage').then(module => ({ default: module.Pix4DPage })))
+const WegawPage = lazy(() => import('./components/pages/WeGawPage').then(module => ({ default: module.WegawPage })))
+const PomocaPage = lazy(() => import('./components/pages/PomocaPage').then(module => ({ default: module.PomocaPage })))
+
+// Loading component for lazy-loaded pages
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center">
+    <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
+  </div>
+)
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -79,14 +88,46 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
             <Footer />
           </>
         } />
-        <Route path="/openhuts" element={<OpenHutsPage />} />
-        <Route path="/moodlenet" element={<MoodleNetPage />} />
-        <Route path="/reserve" element={<ReservePage />} />
-        <Route path="/reserve-app" element={<ReserveFullScreenPage />} />
-        <Route path="/clathes" element={<ClathesPage />} />
-        <Route path="/pix4d" element={<Pix4DPage />} />
-        <Route path="/wegaw" element={<WegawPage />} />
-        <Route path="/pomoca" element={<PomocaPage />} />
+        <Route path="/openhuts" element={
+          <Suspense fallback={<PageLoader />}>
+            <OpenHutsPage />
+          </Suspense>
+        } />
+        <Route path="/moodlenet" element={
+          <Suspense fallback={<PageLoader />}>
+            <MoodleNetPage />
+          </Suspense>
+        } />
+        <Route path="/reserve" element={
+          <Suspense fallback={<PageLoader />}>
+            <ReservePage />
+          </Suspense>
+        } />
+        <Route path="/reserve-app" element={
+          <Suspense fallback={<PageLoader />}>
+            <ReserveFullScreenPage />
+          </Suspense>
+        } />
+        <Route path="/clathes" element={
+          <Suspense fallback={<PageLoader />}>
+            <ClathesPage />
+          </Suspense>
+        } />
+        <Route path="/pix4d" element={
+          <Suspense fallback={<PageLoader />}>
+            <Pix4DPage />
+          </Suspense>
+        } />
+        <Route path="/wegaw" element={
+          <Suspense fallback={<PageLoader />}>
+            <WegawPage />
+          </Suspense>
+        } />
+        <Route path="/pomoca" element={
+          <Suspense fallback={<PageLoader />}>
+            <PomocaPage />
+          </Suspense>
+        } />
         <Route path="/cv" element={<CVPage />} />
       </Routes>
     </div>

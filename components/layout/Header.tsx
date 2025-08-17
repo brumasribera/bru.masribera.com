@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Moon, Sun, Menu, X, ChevronDown } from 'lucide-react'
-import { Button } from './ui/button'
+import { Button } from '../ui/button'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 interface HeaderProps {

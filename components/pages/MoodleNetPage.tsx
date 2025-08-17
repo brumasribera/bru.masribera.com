@@ -1,41 +1,41 @@
-import { ArrowLeft, Users, Calendar, Route, Compass, Globe2, MountainSnow, Tent, Search, Users2 } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
-import { Badge } from './ui/badge'
-import { Footer } from './Footer'
-import { useProjectNavigation } from './hooks/useProjectNavigation'
-import { ProjectNavigationButton } from './ProjectNavigationButton'
-import { useKeyboardNavigation } from './hooks/useKeyboardNavigation'
-import { ImageModal } from './ImageModal'
+import { ArrowLeft, Github, Globe, Users, Calendar, Share2, Globe2, BookMarked, Users2, Shield, GraduationCap, Search } from 'lucide-react'
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
+import { Badge } from '../ui/badge'
+import { Footer } from '../layout/Footer'
+import { useProjectNavigation } from '../hooks/useProjectNavigation'
+import { ProjectNavigationButton } from '../navigation/ProjectNavigationButton'
+import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation'
+import { ImageModal } from '../modals/ImageModal'
 import { useState } from 'react'
 
-export function OpenHutsPage() {
+export function MoodleNetPage() {
   const { navigateToProject, navigateToHome } = useProjectNavigation()
   
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   
   // Enable keyboard navigation
   useKeyboardNavigation({
-    prevProjectPath: '/reserve',
-    nextProjectPath: '/clathes',
+    prevProjectPath: '/clathes',
+    nextProjectPath: '/pomoca',
     disableNavigation: selectedImage !== null
   })
   
   // Array of all image paths for navigation
   const imagePaths = [
-    '/open-huts/Search View.png',
-    '/open-huts/Hut View.png',
-    '/open-huts/Route View.png'
+    '/moodlenet/moodle1.png',
+    '/moodlenet/moodle2.png',
+    '/moodlenet/moodle3.png'
   ]
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Hero Header */}
-      <div className="bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 text-white py-20">
+      <div className="bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-8">
             <button 
               onClick={navigateToHome}
-              className="flex items-center gap-2 text-green-100 hover:text-white transition-colors"
+              className="flex items-center gap-2 text-blue-100 hover:text-white transition-colors"
             >
               <ArrowLeft className="h-5 w-5" />
               <span>Back to Projects</span>
@@ -46,18 +46,18 @@ export function OpenHutsPage() {
             <div className="flex justify-center mb-8">
               <div className="bg-white p-4 rounded-3xl shadow-xl">
                 <img 
-                  src="/logos/openhuts_logo.jpeg" 
-                  alt="Open Huts Nature Network"
+                  src="/logos/moodlenet_logo.png" 
+                  alt="MoodleNet Platform"
                   className="h-24 w-24 object-contain rounded-2xl"
                 />
               </div>
             </div>
             
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
-              Open Huts
+              MoodleNet Platform
             </h1>
-            <p className="text-2xl text-green-100 max-w-4xl mx-auto leading-relaxed">
-              A revolutionary platform connecting nature enthusiasts with mountain huts worldwide, enabling sustainable outdoor tourism and adventure planning
+            <p className="text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
+              An open-source platform revolutionizing how educators discover and share educational resources worldwide, promoting open education
             </p>
           </div>
         </div>
@@ -66,22 +66,46 @@ export function OpenHutsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Project Overview */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
-          <Card className="lg:col-span-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg">
+          <Card className="lg:col-span-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg flex flex-col">
             <CardHeader>
               <CardTitle className="text-3xl font-bold text-gray-900 dark:text-white">
                 Project Vision
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-                Open Huts Nature Network revolutionizes how outdoor enthusiasts discover, book, and plan 
-                mountain adventures. As founder and lead developer, I created a comprehensive ecosystem 
-                for multi-hut route planning across the world's most beautiful mountain regions.
-              </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-                The platform addresses the need for accessible mountain accommodations while promoting 
-                sustainable outdoor tourism and supporting local mountain communities.
-              </p>
+            <CardContent className="flex-1 flex flex-col space-y-4">
+              <div className="flex-1">
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
+                  MoodleNet transforms how educators discover, share, and curate educational resources. 
+                  As a frontend developer, I contributed to building a comprehensive ecosystem for 
+                  collaborative curation and discovery of high-quality educational content.
+                </p>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
+                  The platform addresses the need for accessible, well-curated educational materials 
+                  while promoting open education and supporting the global teaching community.
+                </p>
+              </div>
+              
+              {/* Action buttons */}
+              <div className="flex gap-3 pt-4 mt-auto">
+                <a
+                  href="https://moodle.net"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
+                >
+                  <Globe className="h-4 w-4" />
+                  <span>Visit MoodleNet</span>
+                </a>
+                <a
+                  href="https://github.com/moodle/moodle"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors font-medium"
+                >
+                  <Github className="h-4 w-4" />
+                  <span>GitHub</span>
+                </a>
+              </div>
             </CardContent>
           </Card>
 
@@ -89,24 +113,24 @@ export function OpenHutsPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <Users className="h-6 w-6 text-green-600" />
+                  <Users className="h-6 w-6 text-blue-600" />
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Target Users</h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400">Hikers & Trail Runners</p>
-                <p className="text-gray-600 dark:text-gray-400">Climbers & Mountaineers</p>
-                <p className="text-gray-600 dark:text-gray-400">Nature Enthusiasts</p>
+                <p className="text-gray-600 dark:text-gray-400">Educators & Teachers</p>
+                <p className="text-gray-600 dark:text-gray-400">Students & Learners</p>
+                <p className="text-gray-600 dark:text-gray-400">Institutions</p>
               </CardContent>
             </Card>
 
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <Calendar className="h-6 w-6 text-blue-600" />
+                  <Calendar className="h-6 w-6 text-green-600" />
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Development Status</h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400">Research & Prototyping</p>
-                <p className="text-gray-600 dark:text-gray-400">Core Architecture Design</p>
-                <p className="text-gray-600 dark:text-gray-400">MVP Development</p>
+                <p className="text-gray-600 dark:text-gray-400">Active Development</p>
+                <p className="text-gray-600 dark:text-gray-400">Open Source</p>
+                <p className="text-gray-600 dark:text-gray-400">Community Driven</p>
               </CardContent>
             </Card>
 
@@ -116,9 +140,9 @@ export function OpenHutsPage() {
                   <Globe2 className="h-6 w-6 text-purple-600" />
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Global Reach</h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400">European Alps</p>
-                <p className="text-gray-600 dark:text-gray-400">North American Rockies</p>
-                <p className="text-gray-600 dark:text-gray-400">Himalayan Region</p>
+                <p className="text-gray-600 dark:text-gray-400">Worldwide Coverage</p>
+                <p className="text-gray-600 dark:text-gray-400">Multi-language</p>
+                <p className="text-gray-600 dark:text-gray-400">Open Standards</p>
               </CardContent>
             </Card>
           </div>
@@ -135,10 +159,10 @@ export function OpenHutsPage() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Search className="h-8 w-8 text-blue-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Smart Search</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Resource Discovery</h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Advanced filtering by location, amenities, availability, and user preferences
+                  Advanced search and filtering for educational resources across multiple formats
                 </p>
               </CardContent>
             </Card>
@@ -146,11 +170,11 @@ export function OpenHutsPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <Route className="h-8 w-8 text-green-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Route Planning</h3>
+                  <BookMarked className="h-8 w-8 text-green-600" />
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Content Curation</h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Multi-hut route planning with elevation profiles and difficulty ratings
+                  Collaborative curation tools for educators to organize and share resources
                 </p>
               </CardContent>
             </Card>
@@ -158,23 +182,11 @@ export function OpenHutsPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <Tent className="h-8 w-8 text-purple-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Hut Management</h3>
-                </div>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Comprehensive hut profiles with photos, amenities, and availability
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <Users2 className="h-8 w-8 text-orange-600" />
+                  <Users2 className="h-8 w-8 text-purple-600" />
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Community</h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400">
-                  User reviews, ratings, and community-driven content
+                  Social learning features and community-driven content sharing
                 </p>
               </CardContent>
             </Card>
@@ -182,11 +194,11 @@ export function OpenHutsPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <Compass className="h-8 w-8 text-red-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Navigation</h3>
+                  <Shield className="h-8 w-8 text-orange-600" />
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Quality Control</h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Offline maps and GPS integration for remote areas
+                  Peer review and rating systems for educational content quality
                 </p>
               </CardContent>
             </Card>
@@ -194,11 +206,23 @@ export function OpenHutsPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <MountainSnow className="h-8 w-8 text-cyan-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Weather Integration</h3>
+                  <GraduationCap className="h-8 w-8 text-red-600" />
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Learning Paths</h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Real-time weather data and seasonal considerations
+                  Structured learning sequences and curriculum planning tools
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <Share2 className="h-8 w-8 text-cyan-600" />
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Open Sharing</h3>
+                </div>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Open licensing and sharing mechanisms for educational resources
                 </p>
               </CardContent>
             </Card>
@@ -215,18 +239,18 @@ export function OpenHutsPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <CardContent className="p-0">
                 <img
-                  src="/open-huts/Search View.png"
-                  alt="Search Interface"
+                  src="/moodlenet/moodle1.png"
+                  alt="MoodleNet Interface 1"
                   className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
-                  onClick={() => setSelectedImage('/open-huts/Search View.png')}
+                  onClick={() => setSelectedImage('/moodlenet/moodle1.png')}
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                    Search Interface
+                    Main Interface
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Advanced search functionality with filters for location, amenities, and availability. 
-                    Users can find the perfect mountain hut based on their specific requirements.
+                    Clean and intuitive main interface for discovering educational resources. 
+                    Advanced search capabilities with multiple filter options.
                   </p>
                 </div>
               </CardContent>
@@ -235,18 +259,18 @@ export function OpenHutsPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <CardContent className="p-0">
                 <img
-                  src="/open-huts/Hut View.png"
-                  alt="Hut Details"
+                  src="/moodlenet/moodle2.png"
+                  alt="MoodleNet Interface 2"
                   className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
-                  onClick={() => setSelectedImage('/open-huts/Hut View.png')}
+                  onClick={() => setSelectedImage('/moodlenet/moodle2.png')}
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                    Hut Details
+                    Resource Details
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Comprehensive hut profiles with photos, amenities, availability, and user reviews. 
-                    Detailed information to help users make informed decisions.
+                    Detailed resource view with metadata, ratings, and community feedback. 
+                    Comprehensive information for educators to evaluate content.
                   </p>
                 </div>
               </CardContent>
@@ -255,18 +279,18 @@ export function OpenHutsPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <CardContent className="p-0">
                 <img
-                  src="/open-huts/Route View.png"
-                  alt="Route Planning"
+                  src="/moodlenet/moodle3.png"
+                  alt="MoodleNet Interface 3"
                   className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
-                  onClick={() => setSelectedImage('/open-huts/Route View.png')}
+                  onClick={() => setSelectedImage('/moodlenet/moodle3.png')}
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                    Route Planning
+                    Community Features
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Multi-hut route planning with interactive maps, elevation profiles, and difficulty ratings. 
-                    Plan your perfect mountain adventure with multiple stops.
+                    Community-driven features including reviews, ratings, and collaborative curation. 
+                    Social learning elements for enhanced engagement.
                   </p>
                 </div>
               </CardContent>
@@ -299,7 +323,7 @@ export function OpenHutsPage() {
                     Tailwind CSS
                   </Badge>
                   <Badge className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">
-                    Mapbox
+                    Material-UI
                   </Badge>
                 </div>
               </CardContent>
@@ -314,16 +338,16 @@ export function OpenHutsPage() {
               <CardContent>
                 <div className="flex flex-wrap gap-3">
                   <Badge className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">
-                    Node.js
+                    PHP
                   </Badge>
                   <Badge className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">
-                    Express
+                    MySQL
                   </Badge>
                   <Badge className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">
-                    PostgreSQL
+                    REST APIs
                   </Badge>
                   <Badge className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">
-                    Redis
+                    OAuth
                   </Badge>
                 </div>
               </CardContent>
@@ -336,16 +360,17 @@ export function OpenHutsPage() {
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
             Vision for the Future
           </h2>
-          <Card className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-700 rounded-3xl shadow-lg">
+          <Card className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border border-blue-200 dark:border-blue-700 rounded-3xl shadow-lg">
             <CardContent className="p-8">
               <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                Open Huts Nature Network is evolving into a comprehensive ecosystem for sustainable outdoor tourism. 
-                Future plans include AI-powered route recommendations, community-driven conservation initiatives, 
-                and partnerships with environmental organizations to protect mountain ecosystems worldwide.
+                MoodleNet is evolving into a comprehensive ecosystem for open education and resource sharing. 
+                Future plans include AI-powered content recommendations, advanced learning analytics, 
+                and partnerships with educational institutions worldwide to expand the platform's reach.
               </p>
               <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                The platform aims to become the global standard for mountain hut booking and route planning, 
-                connecting adventurers with the world's most beautiful and remote mountain destinations.
+                The platform aims to become the global standard for educational resource discovery and curation, 
+                connecting educators with the world's best open educational resources and fostering 
+                collaborative learning communities.
               </p>
             </CardContent>
           </Card>
@@ -356,22 +381,22 @@ export function OpenHutsPage() {
               {/* Previous Project Button - Left Side */}
               <ProjectNavigationButton
                 direction="prev"
-                projectName="Reserve"
-                onClick={() => navigateToProject('/reserve')}
+                projectName="Clathes"
+                onClick={() => navigateToProject('/clathes')}
               />
 
               {/* Next Project Button - Right Side */}
               <ProjectNavigationButton
                 direction="next"
-                projectName="MoodleNet"
-                onClick={() => navigateToProject('/moodlenet')}
+                projectName="Pomoca"
+                onClick={() => navigateToProject('/pomoca')}
               />
 
               {/* Back to Projects Button - Center */}
               <div className="text-center mb-20">
                 <button
                   onClick={navigateToHome}
-                  className="group relative inline-flex items-center gap-2 px-8 py-4 bg-green-600 hover:bg-green-700 text-white rounded-full font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl text-lg overflow-hidden"
+                  className="group relative inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl text-lg overflow-hidden"
                 >
                   {/* Shiny overlay effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>

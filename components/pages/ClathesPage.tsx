@@ -1,10 +1,10 @@
 import { ArrowLeft, Globe, Heart, Shield, Activity, Camera, Satellite, AlertTriangle, Instagram } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
 
-import { Footer } from './Footer'
-import { useProjectNavigation } from './hooks/useProjectNavigation'
-import { ProjectNavigationButton } from './ProjectNavigationButton'
-import { useKeyboardNavigation } from './hooks/useKeyboardNavigation'
+import { Footer } from '../layout/Footer'
+import { useProjectNavigation } from '../hooks/useProjectNavigation'
+import { ProjectNavigationButton } from '../navigation/ProjectNavigationButton'
+import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation'
 
 export function ClathesPage() {
   const { navigateToProject, navigateToHome } = useProjectNavigation()

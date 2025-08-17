@@ -1,4 +1,4 @@
-import { Card, CardContent } from './ui/card'
+import { Card, CardContent } from '../ui/card'
 import { Code2, Palette, Users, Lightbulb } from 'lucide-react'
 
 export function AboutSection() {

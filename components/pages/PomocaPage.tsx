@@ -1,10 +1,10 @@
 import { ArrowLeft, Globe, ExternalLink, Factory, Settings, Zap, CheckCircle } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
-import { Footer } from './Footer'
-import { useProjectNavigation } from './hooks/useProjectNavigation'
-import { ProjectNavigationButton } from './ProjectNavigationButton'
-import { useKeyboardNavigation } from './hooks/useKeyboardNavigation'
-import { ImageModal } from './ImageModal'
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
+import { Footer } from '../layout/Footer'
+import { useProjectNavigation } from '../hooks/useProjectNavigation'
+import { ProjectNavigationButton } from '../navigation/ProjectNavigationButton'
+import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation'
+import { ImageModal } from '../modals/ImageModal'
 import { useState } from 'react'
 
 export function PomocaPage() {

@@ -1,5 +1,5 @@
-import { Card, CardContent, CardTitle } from './ui/card'
-import { Badge } from './ui/badge'
+import { Card, CardContent, CardTitle } from '../ui/card'
+import { Badge } from '../ui/badge'
 import { Users, Star, ArrowRight } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 

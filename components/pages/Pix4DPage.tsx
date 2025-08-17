@@ -1,10 +1,10 @@
 import { ArrowLeft, Globe, Github, ExternalLink, Users, Globe2, TrendingUp } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
-import { Badge } from './ui/badge'
-import { Footer } from './Footer'
-import { useProjectNavigation } from './hooks/useProjectNavigation'
-import { ProjectNavigationButton } from './ProjectNavigationButton'
-import { useKeyboardNavigation } from './hooks/useKeyboardNavigation'
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
+import { Badge } from '../ui/badge'
+import { Footer } from '../layout/Footer'
+import { useProjectNavigation } from '../hooks/useProjectNavigation'
+import { ProjectNavigationButton } from '../navigation/ProjectNavigationButton'
+import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation'
 
 export function Pix4DPage() {
   const { navigateToProject, navigateToHome } = useProjectNavigation()

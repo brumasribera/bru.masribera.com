@@ -10,4 +10,8 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./"),
     },
   },
+  build: {
+    chunkSizeWarningLimit: 2000, // Increase warning limit to 2MB
+    target: 'es2015' // Target modern browsers for better tree-shaking
+  }
 })

@@ -1,8 +1,8 @@
-import { Button } from './ui/button'
-import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar'
+import { Button } from '../ui/button'
+import { Avatar, AvatarImage, AvatarFallback } from '../ui/avatar'
 import { Mail, MapPin, Linkedin, Github } from 'lucide-react'
 import { useState, useEffect } from 'react'
-import { AnimatedGradientTitle } from './AnimatedGradientTitle'
+import { AnimatedGradientTitle } from '../ui/AnimatedGradientTitle'
 
 export function HeroSection() {
   const [showScrollHint, setShowScrollHint] = useState(true)

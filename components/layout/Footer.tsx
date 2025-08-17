@@ -1,5 +1,5 @@
 import { Mail, Linkedin, Github } from 'lucide-react';
-import { AnimatedGradientTitle } from './AnimatedGradientTitle';
+import { AnimatedGradientTitle } from '../ui/AnimatedGradientTitle';
 
 export function Footer() {
   return (

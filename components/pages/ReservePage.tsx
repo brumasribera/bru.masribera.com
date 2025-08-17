@@ -1,11 +1,11 @@
 import { ArrowLeft, Users, Shield, Globe2, Instagram, ExternalLink } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
-import { Badge } from './ui/badge'
-import { Footer } from './Footer'
-import { useProjectNavigation } from './hooks/useProjectNavigation'
-import { ProjectNavigationButton } from './ProjectNavigationButton'
-import { useKeyboardNavigation } from './hooks/useKeyboardNavigation'
-import ReserveMobileApp from './ReserveApp'
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
+import { Badge } from '../ui/badge'
+import { Footer } from '../layout/Footer'
+import { useProjectNavigation } from '../hooks/useProjectNavigation'
+import { ProjectNavigationButton } from '../navigation/ProjectNavigationButton'
+import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation'
+import ReserveMobileApp from '../ReserveApp'
 
 export function ReservePage() {
 	const { navigateToProject, navigateToHome } = useProjectNavigation()

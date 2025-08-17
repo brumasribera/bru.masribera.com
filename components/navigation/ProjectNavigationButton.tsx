@@ -1,5 +1,5 @@
 import { ArrowLeft } from 'lucide-react'
-import { useFirstHoverTooltip } from './hooks/useFirstHoverTooltip'
+import { useFirstHoverTooltip } from '../hooks/useFirstHoverTooltip'
 
 interface ProjectNavigationButtonProps {
   direction: 'prev' | 'next'

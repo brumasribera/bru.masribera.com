@@ -1,14 +1,14 @@
 // WegawPage component - Snow monitoring and avalanche prediction system
 import { ArrowLeft, Globe, ExternalLink, Snowflake, Satellite, Database, BarChart3, Shield, Mountain, Activity, Thermometer, MountainSnow } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
-import { Badge } from './ui/badge'
-import { Footer } from './Footer'
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
+import { Badge } from '../ui/badge'
+import { Footer } from '../layout/Footer'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import { ProjectNavigationButton } from './ProjectNavigationButton'
-import { useProjectNavigation } from './hooks/useProjectNavigation'
-import { useKeyboardNavigation } from './hooks/useKeyboardNavigation'
-import { ImageModal } from './ImageModal'
+import { ProjectNavigationButton } from '../navigation/ProjectNavigationButton'
+import { useProjectNavigation } from '../hooks/useProjectNavigation'
+import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation'
+import { ImageModal } from '../modals/ImageModal'
 
 export function WegawPage() {
   // Component for Wegaw project page - Fixed case sensitivity

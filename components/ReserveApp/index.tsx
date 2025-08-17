@@ -20,7 +20,7 @@ export default function ReserveMobileApp() {
   const openProject = (p: Project) => setActiveProject(p);
 
   return (
-    <AppShell cartCount={0} onOpenCart={() => {}}>
+    <AppShell>
       {!activeProject ? (
         <Globe3D onPick={openProject} />
       ) : (

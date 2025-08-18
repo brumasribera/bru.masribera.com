@@ -1,0 +1,93 @@
+{
+  "header": {
+    "title": "Pomoca",
+    "tagline": "Projecte de disseny UX per a la transformació digital de la fabricació de pells d'esquí de muntanya, creant interfícies modernes per a la precisió suïssa i innovació",
+    "back": "Tornar als projectes"
+  },
+  "overview": {
+    "title": "Visió del projecte",
+    "p1": "Pomoca és una empresa suïssa líder en el desenvolupament d'adhesius d'alta qualitat per a equipament d'esquí i muntanya. El projecte se centra en la innovació tecnològica per crear adhesius que ofereixin un rendiment òptim en condicions extremes.",
+    "p2": "La companyia col·labora estretament amb atletes professionals i equips de competició per desenvolupar solucions que superin els estàndards de la indústria.",
+    "p3": "Pomoca implementa processos de fabricació avançats i control de qualitat rigorós per garantir la consistència i fiabilitat de cada producte.",
+    "visitSite": "Visitar Pomoca",
+    "products": "Productes"
+  },
+  "quick": {
+    "performance": {
+      "title": "Rendiment",
+      "items": ["Alta Adhesió", "Durabilitat", "Resistència a Condicions Extremes"]
+    },
+    "applications": {
+      "title": "Aplicacions",
+      "items": ["Esquí", "Muntanya", "Esports d'Hivern"]
+    },
+    "technology": {
+      "title": "Tecnologia",
+      "items": ["Adhesius Avançats", "Materials Compostos", "Fabricació de Precisió"]
+    }
+  },
+  "features": {
+    "title": "Característiques Principals",
+    "items": [
+      { "title": "Adhesió Superior", "desc": "Adhesius que ofereixen una adherència excepcional en superfícies diverses" },
+      { "title": "Durabilitat Extrema", "desc": "Productes dissenyats per resistir condicions climàtiques adverses" },
+      { "title": "Rendiment Consistent", "desc": "Qualitat uniforme en cada lot de producció" },
+      { "title": "Aplicació Fàcil", "desc": "Processos d'aplicació simplificats per a usuaris professionals i aficionats" },
+      { "title": "Resistència Química", "desc": "Protecció contra agents químics i ambientals" },
+      { "title": "Certificació de Qualitat", "desc": "Productes que compleixen els estàndards internacionals més estrictes" }
+    ]
+  },
+  "technology": {
+    "title": "Arquitectura Tecnològica",
+    "adhesives": {
+      "title": "Tecnologia d'Adhesius",
+      "badges": ["Polímers Avançats", "Nanotecnologia", "Adhesió Molecular", "Resistència Tèrmica"]
+    },
+    "materials": {
+      "title": "Materials i Composició",
+      "badges": ["Materials Compostos", "Fibres de Carboni", "Resines Epoxi", "Additius Especials"]
+    },
+    "manufacturing": {
+      "title": "Fabricació",
+      "badges": ["Control de Qualitat", "Processos Automatitzats", "Tractament Tèrmic", "Inspecció Òptica"]
+    }
+  },
+  "applications": {
+    "title": "Aplicacions i Sectors",
+    "skiing": {
+      "title": "Esquí i Esports d'Hivern",
+      "items": [
+        { "title": "Fixació d'Esquís", "desc": "Adhesius per a la instal·lació segura de fixacions" },
+        { "title": "Reparació d'Equipament", "desc": "Solucions per a la reparació ràpida i efectiva" },
+        { "title": "Manteniment Preventiu", "desc": "Productes per a la conservació a llarg termini" }
+      ]
+    },
+    "mountaineering": {
+      "title": "Muntanya i Alpinisme",
+      "items": [
+        { "title": "Equipament d'Escalada", "desc": "Adhesius per a materials tècnics d'escalada" },
+        { "title": "Protecció Personal", "desc": "Solucions per a equipament de seguretat" },
+        { "title": "Reparació de Camp", "desc": "Adhesius per a condicions de camp extremes" }
+      ]
+    }
+  },
+  "impact": {
+    "title": "Impacte i Resultats",
+    "metrics": [
+      { "title": "Qualitat", "desc": "99.9% de productes compleixen especificacions de qualitat" },
+      { "title": "Durabilitat", "desc": "Vida útil 3x superior a la mitjana de la indústria" },
+      { "title": "Satisfacció", "desc": "98% de clients satisfets amb el rendiment dels productes" },
+      { "title": "Innovació", "desc": "Més de 20 patents registrades en tecnologia d'adhesius" }
+    ]
+  },
+  "future": {
+    "title": "Visió de futur",
+    "p1": "Pomoca té com a objectiu expandir-se a nous mercats i sectors, aplicant la seva tecnologia d'adhesius a indústries emergents.",
+    "p2": "Els plans futurs inclouen el desenvolupament de adhesius biodegradables i la integració de sensors intel·ligents per a monitoratge de rendiment.",
+    "backToAll": "Tornar a tots els projectes"
+  },
+  "nav": {
+    "prev": "Pix4D",
+    "next": "Wegaw"
+  }
+}

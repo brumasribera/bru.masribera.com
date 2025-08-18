@@ -1,0 +1,59 @@
+{
+  "header": {
+    "title": "MoodleNet Platform",
+    "tagline": "Open‑Source‑Plattform, die revolutioniert, wie Lehrkräfte weltweit Bildungsressourcen finden und teilen – für offene Bildung und umfassende Zusammenarbeit"
+  },
+  "overview": {
+    "title": "Projektvision",
+    "p1": "MoodleNet verändert, wie Lehrkräfte Bildungsressourcen entdecken, teilen und kuratieren. Als Frontend‑Entwickler trug ich zum Aufbau eines umfassenden Ökosystems für kollaborative Kuration und das Auffinden hochwertiger Inhalte bei.",
+    "p2": "Die Plattform adressiert den Bedarf an zugänglichen, gut kuratierten Materialien, fördert offene Bildung und unterstützt die globale Lehrcommunity."
+  },
+  "cards": {
+    "targetUsers": {
+      "title": "Zielnutzer",
+      "items": ["Lehrkräfte & Pädagogen", "Studierende & Lernende", "Institutionen"]
+    },
+    "developmentStatus": {
+      "title": "Entwicklungsstatus",
+      "items": ["Aktive Entwicklung", "Open‑Source", "Community‑getrieben"]
+    },
+    "globalReach": {
+      "title": "Globale Reichweite",
+      "items": ["Weltweite Abdeckung", "Mehrsprachig", "Offene Standards"]
+    }
+  },
+  "features": {
+    "title": "Kernfunktionen",
+    "discovery": { "title": "Ressourcen‑Suche", "desc": "Erweiterte Suche und Filterung für Bildungsressourcen in mehreren Formaten" },
+    "curation": { "title": "Inhaltskuratierung", "desc": "Kollaborative Werkzeuge zum Organisieren und Teilen von Ressourcen" },
+    "community": { "title": "Community", "desc": "Soziales Lernen und Community‑basiertes Teilen" },
+    "quality": { "title": "Qualitätssicherung", "desc": "Peer‑Review und Bewertungssysteme für Inhalte" },
+    "learningPaths": { "title": "Lernpfade", "desc": "Strukturierte Lernsequenzen und Curriculum‑Planungstools" },
+    "sharing": { "title": "Offenes Teilen", "desc": "Offene Lizenzen und Sharing‑Mechanismen" }
+  },
+  "preview": {
+    "title": "Plattform‑Vorschau",
+    "main": { "title": "Hauptoberfläche", "desc": "Aufgeräumte, intuitive Oberfläche mit erweiterter Suche und Filtern." },
+    "details": { "title": "Ressourcendetails", "desc": "Detailansicht mit Metadaten, Bewertungen und Community‑Feedback." },
+    "community": { "title": "Community‑Funktionen", "desc": "Bewertungen, Rezensionen und kollaborative Kuratierung." }
+  },
+  "tech": {
+    "title": "Technologie‑Stack",
+    "frontend": "Frontend",
+    "backend": "Backend"
+  },
+  "future": {
+    "title": "Zukunftsvision",
+    "p1": "MoodleNet entwickelt sich zu einem umfassenden Ökosystem für offene Bildung und Ressourcenteilung. Geplant sind KI‑Empfehlungen, fortgeschrittene Lernanalytik und Partnerschaften mit Bildungseinrichtungen weltweit.",
+    "p2": "Die Plattform will Standard für Entdeckung und Kuratierung von Bildungsressourcen werden und Lehrkräfte mit den besten OER verbinden."
+  },
+  "nav": {
+    "prev": "Clathes",
+    "next": "Pomoca",
+    "backToAll": "Zurück zu allen Projekten"
+  },
+  "links": {
+    "visitSite": "MoodleNet besuchen",
+    "github": "GitHub"
+  }
+}

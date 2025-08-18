@@ -1,0 +1,93 @@
+{
+  "header": {
+    "title": "Pomoca",
+    "tagline": "Innovaziun en la producziun da pels per ski e equipaments outdoor, sviluppond soluziuns avanzadas per la producziun da pels da ski d'aulta qualitad",
+    "back": "Turnar als projects"
+  },
+  "overview": {
+    "title": "Visiun dal project",
+    "p1": "Pomoca è ina interpresa svizra specialisada en la producziun da pels per ski e equipaments outdoor da qualitad auta. Il project sa concentrescha sin l'optimisaziun dals process da producziun e l'innovaziun dals materials.",
+    "p2": "L'objectiv è da meglierar la durabilitad, performanza e durabilitad dals products tras l'utilisaziun da materials avanzads e process da producziun efficients.",
+    "p3": "Pomoca integrescha tecnologias modernas per garantir la qualitad e consistenza dals products en mintga lot da producziun.",
+    "visitSite": "Visitar Pomoca",
+    "demo": "Demo"
+  },
+  "quick": {
+    "materials": {
+      "title": "Materials",
+      "items": ["Pels Sinteticas", "Adhesivs", "Tessuts Tecnics"]
+    },
+    "applications": {
+      "title": "Applicaziuns",
+      "items": ["Ski", "Outdoor", "Sports d'Envarn"]
+    },
+    "technology": {
+      "title": "Tecnologia",
+      "items": ["Producziun", "Controlla Qualitad", "Innovaziun Materials"]
+    }
+  },
+  "features": {
+    "title": "Caracteristicas Principalas",
+    "items": [
+      { "title": "Materials Avanzads", "desc": "Svilup da pels sinteticas d'aut prestaziun" },
+      { "title": "Process Optimads", "desc": "Metodologias da producziun efficients e duradaivels" },
+      { "title": "Controlla da Qualitad", "desc": "Sistems rigorus per garantir la qualitad dal product" },
+      { "title": "Innovaziun Contina", "desc": "Retschertga e svilup constants per meglierar products" },
+      { "title": "Durabilitad", "desc": "Focus sin materials e process eco-friendly" },
+      { "title": "Personalisaziun", "desc": "Soluziuns su mesa per differentas applicaziuns e clients" }
+    ]
+  },
+  "technology": {
+    "title": "Architectura Tecnologica",
+    "materials": {
+      "title": "Materials",
+      "badges": ["Pels Sinteticas", "Adhesivs", "Tessuts", "Composits"]
+    },
+    "production": {
+      "title": "Producziun",
+      "badges": ["Automatisaziun", "Controlla Qualitad", "Optimisaziun", "Durabilitad"]
+    },
+    "innovation": {
+      "title": "Innovaziun",
+      "badges": ["R&D", "Tests", "Prototipaziun", "Validaziun"]
+    }
+  },
+  "applications": {
+    "title": "Applicaziuns e Secturs",
+    "winterSports": {
+      "title": "Sports d'Envarn",
+      "items": [
+        { "title": "Ski Alpin", "desc": "Pels d'aut prestaziun per montadas e descendidas" },
+        { "title": "Ski da Fund", "desc": "Soluziuns optimadas per differentas cundiziuns da neiv" },
+        { "title": "Alpinissem", "desc": "Equipaments fidabels per activitads en la muntogna" }
+      ]
+    },
+    "outdoor": {
+      "title": "Equipaments Outdoor",
+      "items": [
+        { "title": "Equipament", "desc": "Materials duraders per utilisaziun intensiva" },
+        { "title": "Accessoris", "desc": "Components da qualitad per equipaments professiunals" },
+        { "title": "Mantegniment", "desc": "Products per tgira e mantegniment da l'equipament" }
+      ]
+    }
+  },
+  "impact": {
+    "title": "Impact e Resultats",
+    "metrics": [
+      { "title": "Qualitad", "desc": "Products da qualitad auta renconuschids internaziunalmain" },
+      { "title": "Innovaziun", "desc": "Leader en l'innovaziun da materials per sports d'envarn" },
+      { "title": "Durabilitad", "desc": "Process da producziun eco-friendly e materials duradaivels" },
+      { "title": "Mercat", "desc": "Presenza globala en dapli che 30 pajais" }
+    ]
+  },
+  "future": {
+    "title": "Visiun dal futur",
+    "p1": "Pomoca visa da s'expander en sia gamma da products e integrar tecnologias emergentas per meglierar anc dapli il prestaziun e durabilitad.",
+    "p2": "Ils plans futurs includan il svilup da novs materials e process da producziun pli efficients, mantegnend il committimaint cun la qualitad e innovaziun.",
+    "backToAll": "Turnar a tut ils projects"
+  },
+  "nav": {
+    "prev": "Pix4D",
+    "next": "Clathes"
+  }
+}

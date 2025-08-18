@@ -1,0 +1,90 @@
+{
+  "header": {
+    "title": "Wegaw",
+    "tagline": "Système avancé de surveillance de la neige et de prédiction des avalanches utilisant des données satellitaires et l'IA. Le projet DeFROST démontre les capacités complètes de surveillance environnementale",
+    "back": "Retour aux projets"
+  },
+  "overview": {
+    "title": "Vision du projet",
+    "p1": "Wegaw révolutionne la surveillance de la neige avec le projet DeFROST, fournissant des données de couverture et de profondeur de neige quasi en temps réel avec une résolution de 20m. Leur service aide les plateformes de plein air, les offices de tourisme et les passionnés d'aventure à prendre des décisions éclairées.",
+    "p2": "Comme le changement climatique raccourcit les hivers, les destinations ont besoin d'aperçus précis des conditions de neige pour développer un tourisme hors saison sûr. DeFROST combine les données satellitaires et terrestres pour fournir les informations complètes dont ils ont besoin.",
+    "p3": "L'entreprise s'étend au marché de l'énergie, spécifiquement pour les opérateurs de centrales hydroélectriques, démontrant la valeur des données de neige quasi en temps réel dans la prévision des afflux d'eau.",
+    "visitSite": "Visiter Wegaw",
+    "esa": "Projet ESA"
+  },
+  "quick": {
+    "resolution": {
+      "title": "Résolution",
+      "items": ["Résolution Spatiale de 20m", "Mises à Jour Quotidiennes", "Couverture Globale"]
+    },
+    "applications": {
+      "title": "Applications",
+      "items": ["Tourisme et Sécurité", "Plateformes Numériques", "Marchés Énergétiques"]
+    },
+    "technology": {
+      "title": "Technologie",
+      "items": ["Satellites Sentinel", "Capteurs NASA", "Analyse IA"]
+    }
+  },
+  "capabilities": {
+    "title": "Capacités Principales",
+    "items": [
+      { "title": "Cartographie de Couverture de Neige", "desc": "Données quotidiennes de couverture de neige avec une résolution de 20m utilisant les satellites européens Sentinel et les capteurs NASA" },
+      { "title": "Estimation de Profondeur de Neige", "desc": "Mesures précises de profondeur depuis les stations terrestres combinées aux données satellitaires" },
+      { "title": "Évaluation des Risques d'Avalanches", "desc": "Évaluations officielles des risques à l'échelle nationale en collaboration avec l'Institut SLF" },
+      { "title": "Intégration Météorologique", "desc": "Combiné aux prévisions météorologiques et à la logique probabiliste pour une analyse complète" },
+      { "title": "Intégration API", "desc": "Options d'intégration flexibles pour les applications mobiles et web avec des données en temps réel" },
+      { "title": "Analyse Propulsée par IA", "desc": "Algorithmes avancés pour prédire la couverture de neige sous la couverture nuageuse persistante" }
+    ]
+  },
+  "defrost": {
+    "title": "Développement du Projet DeFROST",
+    "intro": "DeFROST représente une approche complète pour la surveillance opérationnelle de la neige, combinant la télédétection satellitaire, la validation terrestre et l'analyse avancée pour fournir une intelligence environnementale actionnable.",
+    "stages": [
+      { "title": "Phase de Recherche et Validation", "desc": "Analyse complète des sources de données satellitaires et des méthodologies de validation de vérité terrain. Établissement de partenariats avec l'Institut WSL pour la Recherche sur la Neige et les Avalanches (SLF) pour les protocoles de validation scientifique et d'assurance qualité." },
+      { "title": "Implémentation Technique", "desc": "Développement d'algorithmes de fusion multi-capteurs intégrant les flux de données Sentinel-2, VIIRS et MODIS. Implémentation de techniques de détection des nuages et d'interpolation propulsée par IA pour une couverture continue malgré les interférences atmosphériques." },
+      { "title": "Déploiement Commercial", "desc": "Déploiement réussi du service opérationnel avec l'Organisation de Marketing des Destinations Suisses, démontrant une précision de 95% dans la détection de la couverture de neige. Établissement de l'infrastructure API pour une intégration transparente avec les plateformes de plein air et les applications touristiques." },
+      { "title": "Expansion du Marché", "desc": "Expansion vers les applications du secteur énergétique, particulièrement les opérations hydroélectriques. Conduite d'études de preuve de concept avec les principales entreprises publiques européennes pour démontrer la valeur dans la gestion des ressources en eau et la prévision des afflux." }
+    ]
+  },
+  "technology": {
+    "title": "Architecture Technologique",
+    "satellite": {
+      "title": "Sources de Données Satellitaires",
+      "badges": ["Sentinel-2", "VIIRS", "MODIS", "ESA"]
+    },
+    "ai": {
+      "title": "IA et Traitement",
+      "badges": ["Apprentissage Automatique", "Logique Probabiliste", "Détection des Nuages", "Traitement en Temps Réel"]
+    }
+  },
+  "partners": {
+    "title": "Partenaires et Intégration",
+    "research": {
+      "title": "Partenaires de Recherche",
+      "items": [
+        { "title": "Institut WSL pour la Recherche sur la Neige et les Avalanches (SLF)", "desc": "Institut leader de Suisse pour la recherche sur la neige et les avalanches" },
+        { "title": "Agence Spatiale Européenne (ESA)", "desc": "Soutien du projet DeFROST à travers le programme d'Applications Commerciales" },
+        { "title": "Exolabs", "desc": "Partenaire innovant de recherche et développement pour les solutions de surveillance environnementale" }
+      ]
+    },
+    "platform": {
+      "title": "Intégration de Plateforme",
+      "items": [
+        { "title": "Strava", "desc": "Plateforme leader mondiale de suivi de fitness" },
+        { "title": "Swisstopo", "desc": "Agence nationale de cartographie de Suisse" },
+        { "title": "Skitourenguru", "desc": "Plateforme leader de ski de randonnée et d'aventure en plein air" }
+      ]
+    }
+  },
+  "future": {
+    "title": "Vision d'avenir",
+    "p1": "Wegaw s'étend au marché de l'énergie, spécifiquement pour les opérateurs de centrales hydroélectriques. Les capacités actuelles du produit permettent des Preuves de Concept qui démontrent la valeur des données de neige quasi en temps réel dans la prévision des afflux d'eau.",
+    "p2": "L'objectif est de convertir les Preuves de Concept réussies en accords commerciaux à long terme et de continuer à étendre la présence de Wegaw sur le marché de l'énergie tout en maintenant leur leadership dans les applications de récréation de plein air et touristiques.",
+    "backToAll": "Retour à tous les projets"
+  },
+  "nav": {
+    "prev": "Pomoca",
+    "next": "Pix4D"
+  }
+}

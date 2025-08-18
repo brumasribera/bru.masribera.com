@@ -1,0 +1,92 @@
+{
+  "header": {
+    "title": "Pomoca",
+    "tagline": "Innovation in Klebstoffen für Ski- und Bergausrüstung, Entwicklung fortschrittlicher Lösungen für die Produktion hochwertiger Skitouren-Haut"
+  },
+  "overview": {
+    "title": "Projektvision",
+    "p1": "Pomoca ist ein führendes Schweizer Unternehmen in der Entwicklung hochwertiger Klebstoffe für Ski- und Bergausrüstung. Das Projekt konzentriert sich auf technologische Innovation, um Klebstoffe zu schaffen, die unter extremen Bedingungen optimale Leistung bieten.",
+    "p2": "Das Unternehmen arbeitet eng mit professionellen Athleten und Wettkampfmannschaften zusammen, um Lösungen zu entwickeln, die die Branchenstandards übertreffen.",
+    "p3": "Pomoca implementiert fortschrittliche Fertigungsprozesse und strenge Qualitätskontrolle, um Konsistenz und Zuverlässigkeit jedes Produkts zu gewährleisten.",
+    "visitSite": "Pomoca besuchen",
+    "products": "Produkte"
+  },
+  "quick": {
+    "performance": {
+      "title": "Leistung",
+      "items": ["Hohe Haftung", "Langlebigkeit", "Widerstand gegen extreme Bedingungen"]
+    },
+    "applications": {
+      "title": "Anwendungen",
+      "items": ["Skifahren", "Bergsteigen", "Wintersport"]
+    },
+    "technology": {
+      "title": "Technologie",
+      "items": ["Fortschrittliche Klebstoffe", "Verbundwerkstoffe", "Präzisionsfertigung"]
+    }
+  },
+  "features": {
+    "title": "Hauptmerkmale",
+    "items": [
+      { "title": "Überlegene Haftung", "desc": "Klebstoffe, die außergewöhnliche Haftung auf verschiedenen Oberflächen bieten" },
+      { "title": "Extreme Langlebigkeit", "desc": "Produkte, die für den Widerstand gegen widrige Wetterbedingungen konzipiert sind" },
+      { "title": "Konsistente Leistung", "desc": "Einheitliche Qualität in jeder Produktionscharge" },
+      { "title": "Einfache Anwendung", "desc": "Vereinfachte Anwendungsprozesse für professionelle und Amateur-Benutzer" },
+      { "title": "Chemische Beständigkeit", "desc": "Schutz gegen chemische und umweltbedingte Einflüsse" },
+      { "title": "Qualitätszertifizierung", "desc": "Produkte, die die strengsten internationalen Standards erfüllen" }
+    ]
+  },
+  "technology": {
+    "title": "Technologische Architektur",
+    "adhesives": {
+      "title": "Klebstoff-Technologie",
+      "badges": ["Fortschrittliche Polymere", "Nanotechnologie", "Molekulare Haftung", "Thermische Beständigkeit"]
+    },
+    "materials": {
+      "title": "Materialien und Zusammensetzung",
+      "badges": ["Verbundwerkstoffe", "Kohlefasern", "Epoxidharze", "Spezielle Additive"]
+    },
+    "manufacturing": {
+      "title": "Fertigung",
+      "badges": ["Qualitätskontrolle", "Automatisierte Prozesse", "Thermische Behandlung", "Optische Inspektion"]
+    }
+  },
+  "applications": {
+    "title": "Anwendungen und Sektoren",
+    "skiing": {
+      "title": "Skifahren und Wintersport",
+      "items": [
+        { "title": "Ski-Bindung", "desc": "Klebstoffe für sichere Bindungseinrichtung" },
+        { "title": "Ausrüstungsreparatur", "desc": "Lösungen für schnelle und effektive Reparatur" },
+        { "title": "Vorbeugende Wartung", "desc": "Produkte für langfristige Konservierung" }
+      ]
+    },
+    "mountaineering": {
+      "title": "Bergsteigen und Alpinismus",
+      "items": [
+        { "title": "Kletterausrüstung", "desc": "Klebstoffe für technische Klettermaterialien" },
+        { "title": "Persönlicher Schutz", "desc": "Lösungen für Sicherheitsausrüstung" },
+        { "title": "Feldreparatur", "desc": "Klebstoffe für extreme Feldbedingungen" }
+      ]
+    }
+  },
+  "impact": {
+    "title": "Auswirkungen und Ergebnisse",
+    "metrics": [
+      { "title": "Qualität", "desc": "99,9% der Produkte erfüllen Qualitätsspezifikationen" },
+      { "title": "Langlebigkeit", "desc": "3x längere Lebensdauer im Vergleich zum Branchendurchschnitt" },
+      { "title": "Zufriedenheit", "desc": "98% der Kunden sind mit der Produktleistung zufrieden" },
+      { "title": "Innovation", "desc": "Mehr als 20 Patente in Klebstoff-Technologie registriert" }
+    ]
+  },
+  "future": {
+    "title": "Zukunftsvision",
+    "p1": "Pomoca zielt darauf ab, sich in neue Märkte und Sektoren zu erweitern und seine Klebstoff-Technologie auf aufstrebende Industrien anzuwenden.",
+    "p2": "Zukünftige Pläne umfassen die Entwicklung biologisch abbaubarer Klebstoffe und die Integration intelligenter Sensoren für Leistungsüberwachung.",
+    "backToAll": "Zurück zu allen Projekten"
+  },
+  "nav": {
+    "prev": "Pix4D",
+    "next": "Wegaw"
+  }
+}

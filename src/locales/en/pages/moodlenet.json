@@ -1,0 +1,61 @@
+{
+  "header": {
+    "title": "MoodleNet Platform",
+    "tagline": "Open-source platform revolutionizing how educators discover and share educational resources worldwide, promoting open education and collaboration"
+  },
+  "overview": {
+    "title": "Project vision",
+    "p1": "MoodleNet transforms how educators discover, share, and curate educational resources. As a frontend developer, I contributed to building a comprehensive ecosystem for collaborative curation and discovery of high-quality educational content.",
+    "p2": "The platform addresses the need for accessible, well-curated educational materials while promoting open education and supporting the global teaching community."
+  },
+  "cards": {
+    "targetUsers": {
+      "title": "Target users",
+      "items": ["Educators & teachers", "Students & learners", "Institutions"]
+    },
+    "developmentStatus": {
+      "title": "Development status",
+      "items": ["Active development", "Open source", "Community driven"]
+    },
+    "globalReach": {
+      "title": "Global reach",
+      "items": ["Worldwide coverage", "Multi-language", "Open standards"]
+    }
+  },
+  "features": {
+    "title": "Key features",
+    "discovery": { "title": "Resource discovery", "desc": "Advanced search and filtering for educational resources across multiple formats" },
+    "curation": { "title": "Content curation", "desc": "Collaborative curation tools for educators to organize and share resources" },
+    "community": { "title": "Community", "desc": "Social learning features and community-driven content sharing" },
+    "quality": { "title": "Quality control", "desc": "Peer review and rating systems for educational content quality" },
+    "learningPaths": { "title": "Learning paths", "desc": "Structured learning sequences and curriculum planning tools" },
+    "sharing": { "title": "Open sharing", "desc": "Open licensing and sharing mechanisms for educational resources" }
+  },
+  "preview": {
+    "title": "Platform preview",
+    "main": { "title": "Main interface", "desc": "Clean and intuitive main interface for discovering educational resources. Advanced search capabilities with multiple filter options." },
+    "details": { "title": "Resource details", "desc": "Detailed resource view with metadata, ratings, and community feedback. Comprehensive information for educators to evaluate content." },
+    "community": { "title": "Community features", "desc": "Community-driven features including reviews, ratings, and collaborative curation. Social learning elements for enhanced engagement." }
+  },
+  "tech": {
+    "title": "Technology stack",
+    "frontend": "Frontend",
+    "backend": "Backend"
+  },
+  "future": {
+    "title": "Vision for the future",
+    "p1": "MoodleNet is evolving into a comprehensive ecosystem for open education and resource sharing. Future plans include AI-powered content recommendations, advanced learning analytics, and partnerships with educational institutions worldwide to expand the platform's reach.",
+    "p2": "The platform aims to become the global standard for educational resource discovery and curation, connecting educators with the world's best open educational resources and fostering collaborative learning communities."
+  },
+  "nav": {
+    "prev": "Clathes",
+    "next": "Pomoca",
+    "backToAll": "Back to all projects"
+  },
+  "links": {
+    "visitSite": "Visit MoodleNet",
+    "github": "GitHub"
+  }
+}
+
+

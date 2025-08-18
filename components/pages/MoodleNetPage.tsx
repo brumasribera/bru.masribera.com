@@ -6,10 +6,12 @@ import { useProjectNavigation } from '../hooks/useProjectNavigation'
 import { ProjectNavigationButton } from '../navigation/ProjectNavigationButton'
 import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation'
 import { ImageModal } from '../modals/ImageModal'
+import { useTranslation } from 'react-i18next'
 import { useState } from 'react'
 
 export function MoodleNetPage() {
   const { navigateToProject, navigateToHome } = useProjectNavigation()
+  const { t } = useTranslation(['moodlenet', 'common'])
   
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   
@@ -30,15 +32,23 @@ export function MoodleNetPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Hero Header */}
-      <div className="bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-600 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div 
+        className="text-white py-20 relative overflow-hidden"
+        style={{
+          background: 'linear-gradient(45deg, #3b82f6, #8b5cf6, #a855f7, #7c3aed, #6366f1, #8b5cf6)',
+          backgroundSize: '200% 200%',
+          animation: 'diagonal-gradient 12s ease-in-out infinite'
+        }}
+      >
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-8">
             <button 
               onClick={navigateToHome}
               className="flex items-center gap-2 text-blue-100 hover:text-white transition-colors"
             >
               <ArrowLeft className="h-5 w-5" />
-              <span>Back to Projects</span>
+              <span>{t('common:backToProjects')}</span>
             </button>
           </div>
           
@@ -53,12 +63,8 @@ export function MoodleNetPage() {
               </div>
             </div>
             
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
-              MoodleNet Platform
-            </h1>
-            <p className="text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
-              An open-source platform revolutionizing how educators discover and share educational resources worldwide, promoting open education
-            </p>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">{t('header.title')}</h1>
+            <p className="text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">{t('header.tagline')}</p>
           </div>
         </div>
       </div>
@@ -68,21 +74,12 @@ export function MoodleNetPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
           <Card className="lg:col-span-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg flex flex-col">
             <CardHeader>
-              <CardTitle className="text-3xl font-bold text-gray-900 dark:text-white">
-                Project Vision
-              </CardTitle>
+              <CardTitle className="text-3xl font-bold text-gray-900 dark:text-white">{t('overview.title')}</CardTitle>
             </CardHeader>
             <CardContent className="flex-1 flex flex-col space-y-4">
               <div className="flex-1">
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-                  MoodleNet transforms how educators discover, share, and curate educational resources. 
-                  As a frontend developer, I contributed to building a comprehensive ecosystem for 
-                  collaborative curation and discovery of high-quality educational content.
-                </p>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-                  The platform addresses the need for accessible, well-curated educational materials 
-                  while promoting open education and supporting the global teaching community.
-                </p>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">{t('overview.p1')}</p>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">{t('overview.p2')}</p>
               </div>
               
               {/* Action buttons */}
@@ -94,7 +91,7 @@ export function MoodleNetPage() {
                   className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
                 >
                   <Globe className="h-4 w-4" />
-                  <span>Visit MoodleNet</span>
+                  <span>{t('links.visitSite')}</span>
                 </a>
                 <a
                   href="https://github.com/moodle/moodle"
@@ -103,7 +100,7 @@ export function MoodleNetPage() {
                   className="flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors font-medium"
                 >
                   <Github className="h-4 w-4" />
-                  <span>GitHub</span>
+                  <span>{t('links.github')}</span>
                 </a>
               </div>
             </CardContent>
@@ -114,11 +111,11 @@ export function MoodleNetPage() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Users className="h-6 w-6 text-blue-600" />
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Target Users</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('cards.targetUsers.title')}</h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400">Educators & Teachers</p>
-                <p className="text-gray-600 dark:text-gray-400">Students & Learners</p>
-                <p className="text-gray-600 dark:text-gray-400">Institutions</p>
+                {(t('cards.targetUsers.items', { returnObjects: true }) as string[]).map((item: string) => (
+                  <p key={item} className="text-gray-600 dark:text-gray-400">{item}</p>
+                ))}
               </CardContent>
             </Card>
 
@@ -126,11 +123,11 @@ export function MoodleNetPage() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Calendar className="h-6 w-6 text-green-600" />
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Development Status</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('cards.developmentStatus.title')}</h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400">Active Development</p>
-                <p className="text-gray-600 dark:text-gray-400">Open Source</p>
-                <p className="text-gray-600 dark:text-gray-400">Community Driven</p>
+                {(t('cards.developmentStatus.items', { returnObjects: true }) as string[]).map((item: string) => (
+                  <p key={item} className="text-gray-600 dark:text-gray-400">{item}</p>
+                ))}
               </CardContent>
             </Card>
 
@@ -138,11 +135,11 @@ export function MoodleNetPage() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Globe2 className="h-6 w-6 text-purple-600" />
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Global Reach</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('cards.globalReach.title')}</h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400">Worldwide Coverage</p>
-                <p className="text-gray-600 dark:text-gray-400">Multi-language</p>
-                <p className="text-gray-600 dark:text-gray-400">Open Standards</p>
+                {(t('cards.globalReach.items', { returnObjects: true }) as string[]).map((item: string) => (
+                  <p key={item} className="text-gray-600 dark:text-gray-400">{item}</p>
+                ))}
               </CardContent>
             </Card>
           </div>
@@ -150,20 +147,16 @@ export function MoodleNetPage() {
 
         {/* Key Features */}
         <div className="mb-20">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">
-            Key Features
-          </h2>
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">{t('features.title')}</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Search className="h-8 w-8 text-blue-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Resource Discovery</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{t('features.discovery.title')}</h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Advanced search and filtering for educational resources across multiple formats
-                </p>
+                <p className="text-gray-600 dark:text-gray-400">{t('features.discovery.desc')}</p>
               </CardContent>
             </Card>
 
@@ -171,11 +164,9 @@ export function MoodleNetPage() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <BookMarked className="h-8 w-8 text-green-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Content Curation</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{t('features.curation.title')}</h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Collaborative curation tools for educators to organize and share resources
-                </p>
+                <p className="text-gray-600 dark:text-gray-400">{t('features.curation.desc')}</p>
               </CardContent>
             </Card>
 
@@ -183,11 +174,9 @@ export function MoodleNetPage() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Users2 className="h-8 w-8 text-purple-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Community</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{t('features.community.title')}</h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Social learning features and community-driven content sharing
-                </p>
+                <p className="text-gray-600 dark:text-gray-400">{t('features.community.desc')}</p>
               </CardContent>
             </Card>
 
@@ -195,11 +184,9 @@ export function MoodleNetPage() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Shield className="h-8 w-8 text-orange-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Quality Control</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{t('features.quality.title')}</h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Peer review and rating systems for educational content quality
-                </p>
+                <p className="text-gray-600 dark:text-gray-400">{t('features.quality.desc')}</p>
               </CardContent>
             </Card>
 
@@ -207,11 +194,9 @@ export function MoodleNetPage() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <GraduationCap className="h-8 w-8 text-red-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Learning Paths</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{t('features.learningPaths.title')}</h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Structured learning sequences and curriculum planning tools
-                </p>
+                <p className="text-gray-600 dark:text-gray-400">{t('features.learningPaths.desc')}</p>
               </CardContent>
             </Card>
 
@@ -219,11 +204,9 @@ export function MoodleNetPage() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Share2 className="h-8 w-8 text-cyan-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Open Sharing</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{t('features.sharing.title')}</h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Open licensing and sharing mechanisms for educational resources
-                </p>
+                <p className="text-gray-600 dark:text-gray-400">{t('features.sharing.desc')}</p>
               </CardContent>
             </Card>
           </div>
@@ -231,9 +214,7 @@ export function MoodleNetPage() {
 
         {/* Platform Preview */}
         <div className="mb-20">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">
-            Platform Preview
-          </h2>
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">{t('preview.title')}</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
@@ -246,11 +227,10 @@ export function MoodleNetPage() {
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                    Main Interface
+                    {t('preview.main.title')}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Clean and intuitive main interface for discovering educational resources. 
-                    Advanced search capabilities with multiple filter options.
+                    {t('preview.main.desc')}
                   </p>
                 </div>
               </CardContent>
@@ -266,11 +246,10 @@ export function MoodleNetPage() {
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                    Resource Details
+                    {t('preview.details.title')}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Detailed resource view with metadata, ratings, and community feedback. 
-                    Comprehensive information for educators to evaluate content.
+                    {t('preview.details.desc')}
                   </p>
                 </div>
               </CardContent>
@@ -286,11 +265,10 @@ export function MoodleNetPage() {
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                    Community Features
+                    {t('preview.community.title')}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Community-driven features including reviews, ratings, and collaborative curation. 
-                    Social learning elements for enhanced engagement.
+                    {t('preview.community.desc')}
                   </p>
                 </div>
               </CardContent>
@@ -300,15 +278,13 @@ export function MoodleNetPage() {
 
         {/* Technology Stack */}
         <div className="mb-20">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">
-            Technology Stack
-          </h2>
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">{t('tech.title')}</h2>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Frontend
+                  {t('tech.frontend')}
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -332,7 +308,7 @@ export function MoodleNetPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Backend
+                  {t('tech.backend')}
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -357,20 +333,14 @@ export function MoodleNetPage() {
 
         {/* Future Vision */}
         <div className="text-center">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
-            Vision for the Future
-          </h2>
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">{t('future.title')}</h2>
           <Card className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border border-blue-200 dark:border-blue-700 rounded-3xl shadow-lg">
             <CardContent className="p-8">
               <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                MoodleNet is evolving into a comprehensive ecosystem for open education and resource sharing. 
-                Future plans include AI-powered content recommendations, advanced learning analytics, 
-                and partnerships with educational institutions worldwide to expand the platform's reach.
+                {t('future.p1')}
               </p>
               <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                The platform aims to become the global standard for educational resource discovery and curation, 
-                connecting educators with the world's best open educational resources and fostering 
-                collaborative learning communities.
+                {t('future.p2')}
               </p>
             </CardContent>
           </Card>
@@ -381,14 +351,14 @@ export function MoodleNetPage() {
               {/* Previous Project Button - Left Side */}
               <ProjectNavigationButton
                 direction="prev"
-                projectName="Clathes"
+                projectName={t('nav.prev')}
                 onClick={() => navigateToProject('/clathes')}
               />
 
               {/* Next Project Button - Right Side */}
               <ProjectNavigationButton
                 direction="next"
-                projectName="Pomoca"
+                projectName={t('nav.next')}
                 onClick={() => navigateToProject('/pomoca')}
               />
 
@@ -396,13 +366,13 @@ export function MoodleNetPage() {
               <div className="text-center mb-20">
                 <button
                   onClick={navigateToHome}
-                  className="group relative inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl text-lg overflow-hidden"
+                  className="group relative inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 hover:from-green-300 hover:via-emerald-400 hover:to-teal-400 text-white rounded-xl font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl text-lg overflow-hidden"
                 >
                   {/* Shiny overlay effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
                   
                   <ArrowLeft className="h-5 w-5 group-hover:scale-110 transition-transform duration-200 relative z-10" />
-                  <span className="relative z-10">Back to All Projects</span>
+                  <span className="relative z-10">{t('nav.backToAll')}</span>
                 </button>
               </div>
             </div>

@@ -1,0 +1,57 @@
+{
+  "header": {
+    "title": "Open Huts",
+    "tagline": "Revolutionary platform connecting nature enthusiasts with mountain huts worldwide, enabling sustainable outdoor tourism and comprehensive adventure planning"
+  },
+  "overview": {
+    "title": "Project vision",
+    "p1": "Open Huts Nature Network revolutionizes how outdoor enthusiasts discover, book, and plan mountain adventures. As founder and lead developer, I created a comprehensive ecosystem for multi-hut route planning across the world's most beautiful mountain regions.",
+    "p2": "The platform addresses the need for accessible mountain accommodations while promoting sustainable outdoor tourism and supporting local mountain communities."
+  },
+  "cards": {
+    "targetUsers": {
+      "title": "Target users",
+      "items": ["Hikers & trail runners", "Climbers & mountaineers", "Nature enthusiasts"]
+    },
+    "developmentStatus": {
+      "title": "Development status",
+      "items": ["Research & prototyping", "Core architecture design", "MVP development"]
+    },
+    "globalReach": {
+      "title": "Global reach",
+      "items": ["European Alps", "North American Rockies", "Himalayan region"]
+    }
+  },
+  "features": {
+    "title": "Key features",
+    "search": { "title": "Smart search", "desc": "Advanced filtering by location, amenities, availability, and user preferences" },
+    "route": { "title": "Route planning", "desc": "Multi-hut route planning with elevation profiles and difficulty ratings" },
+    "hut":   { "title": "Hut management", "desc": "Comprehensive hut profiles with photos, amenities, and availability" },
+    "community": { "title": "Community", "desc": "User reviews, ratings, and community-driven content" },
+    "navigation": { "title": "Navigation", "desc": "Offline maps and GPS integration for remote areas" },
+    "weather": { "title": "Weather integration", "desc": "Real-time weather data and seasonal considerations" }
+  },
+  "preview": {
+    "title": "Platform preview",
+    "search": { "title": "Search interface", "desc": "Advanced search functionality with filters for location, amenities, and availability. Users can find the perfect mountain hut based on their specific requirements." },
+    "hut": { "title": "Hut details", "desc": "Comprehensive hut profiles with photos, amenities, availability, and user reviews. Detailed information to help users make informed decisions." },
+    "route": { "title": "Route planning", "desc": "Multi-hut route planning with interactive maps, elevation profiles, and difficulty ratings. Plan your perfect mountain adventure with multiple stops." }
+  },
+  "tech": {
+    "title": "Technology stack",
+    "frontend": "Frontend",
+    "backend": "Backend"
+  },
+  "future": {
+    "title": "Vision for the future",
+    "p1": "Open Huts Nature Network is evolving into a comprehensive ecosystem for sustainable outdoor tourism. Future plans include AI-powered route recommendations, community-driven conservation initiatives, and partnerships with environmental organizations to protect mountain ecosystems worldwide.",
+    "p2": "The platform aims to become the global standard for mountain hut booking and route planning, connecting adventurers with the world's most beautiful and remote mountain destinations."
+  },
+  "nav": {
+    "prev": "Reserve",
+    "next": "MoodleNet",
+    "backToAll": "Back to all projects"
+  }
+}
+
+

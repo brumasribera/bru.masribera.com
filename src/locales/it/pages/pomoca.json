@@ -1,0 +1,92 @@
+{
+  "header": {
+    "title": "Pomoca",
+    "tagline": "Innovazione nella produzione di pelli per sci e attrezzature outdoor, sviluppando soluzioni avanzate per la produzione di pelli da sci di alta qualità"
+  },
+  "overview": {
+    "title": "Visione del progetto",
+    "p1": "Pomoca è un'azienda svizzera specializzata nella produzione di pelli per sci e attrezzature outdoor di alta qualità. Il progetto si concentra sull'ottimizzazione dei processi di produzione e l'innovazione dei materiali.",
+    "p2": "L'obiettivo è migliorare la durabilità, la performance e la sostenibilità dei prodotti attraverso l'uso di materiali avanzati e processi di produzione efficienti.",
+    "p3": "Pomoca integra tecnologie moderne per garantire la qualità e la consistenza dei prodotti in ogni lotto di produzione.",
+    "visitSite": "Visita Pomoca",
+    "demo": "Demo"
+  },
+  "quick": {
+    "materials": {
+      "title": "Materiali",
+      "items": ["Pelli Sintetiche", "Adesivi", "Tessuti Tecnici"]
+    },
+    "applications": {
+      "title": "Applicazioni",
+      "items": ["Sci", "Outdoor", "Sport Invernali"]
+    },
+    "technology": {
+      "title": "Tecnologia",
+      "items": ["Produzione", "Controllo Qualità", "Innovazione Materiali"]
+    }
+  },
+  "features": {
+    "title": "Caratteristiche Principali",
+    "items": [
+      { "title": "Materiali Avanzati", "desc": "Sviluppo di pelli sintetiche ad alte prestazioni" },
+      { "title": "Processi Ottimizzati", "desc": "Metodologie di produzione efficienti e sostenibili" },
+      { "title": "Controllo Qualità", "desc": "Sistemi rigorosi per garantire la qualità del prodotto" },
+      { "title": "Innovazione Continua", "desc": "Ricerca e sviluppo costanti per migliorare i prodotti" },
+      { "title": "Sostenibilità", "desc": "Focus su materiali e processi eco-compatibili" },
+      { "title": "Personalizzazione", "desc": "Soluzioni su misura per diverse applicazioni e clienti" }
+    ]
+  },
+  "technology": {
+    "title": "Architettura Tecnologica",
+    "materials": {
+      "title": "Materiali",
+      "badges": ["Pelli Sintetiche", "Adesivi", "Tessuti", "Compositi"]
+    },
+    "production": {
+      "title": "Produzione",
+      "badges": ["Automazione", "Controllo Qualità", "Ottimizzazione", "Sostenibilità"]
+    },
+    "innovation": {
+      "title": "Innovazione",
+      "badges": ["R&D", "Test", "Prototipazione", "Validazione"]
+    }
+  },
+  "applications": {
+    "title": "Applicazioni e Settori",
+    "winterSports": {
+      "title": "Sport Invernali",
+      "items": [
+        { "title": "Sci Alpino", "desc": "Pelli ad alte prestazioni per salite e discese" },
+        { "title": "Sci di Fondo", "desc": "Soluzioni ottimizzate per diverse condizioni di neve" },
+        { "title": "Alpinismo", "desc": "Attrezzature affidabili per attività in montagna" }
+      ]
+    },
+    "outdoor": {
+      "title": "Attrezzature Outdoor",
+      "items": [
+        { "title": "Equipaggiamento", "desc": "Materiali duraturi per uso intensivo" },
+        { "title": "Accessori", "desc": "Componenti di qualità per attrezzature professionali" },
+        { "title": "Manutenzione", "desc": "Prodotti per la cura e manutenzione dell'attrezzatura" }
+      ]
+    }
+  },
+  "impact": {
+    "title": "Impatto e Risultati",
+    "metrics": [
+      { "title": "Qualità", "desc": "Prodotti di alta qualità riconosciuti a livello internazionale" },
+      { "title": "Innovazione", "desc": "Leader nell'innovazione dei materiali per sport invernali" },
+      { "title": "Sostenibilità", "desc": "Processi di produzione eco-compatibili e materiali sostenibili" },
+      { "title": "Mercato", "desc": "Presenza globale in oltre 30 paesi" }
+    ]
+  },
+  "future": {
+    "title": "Visione del futuro",
+    "p1": "Pomoca mira ad espandere la sua gamma di prodotti e integrare tecnologie emergenti per migliorare ulteriormente le prestazioni e la sostenibilità.",
+    "p2": "I piani futuri includono lo sviluppo di nuovi materiali e processi di produzione più efficienti, mantenendo l'impegno per la qualità e l'innovazione.",
+    "backToAll": "Torna a tutti i progetti"
+  },
+  "nav": {
+    "prev": "Pix4D",
+    "next": "Clathes"
+  }
+}

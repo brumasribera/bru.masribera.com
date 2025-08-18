@@ -1,0 +1,83 @@
+{
+  "header": {
+    "title": "Pomoca",
+    "tagline": "UX design project for digital transformation of ski touring skin manufacturing, creating modern production interfaces for Swiss precision and innovation"
+  },
+  "overview": {
+    "title": "Project vision",
+    "p1": "Pomoca, founded in 1933, is the world's leading manufacturer of ski touring skins. This UX design project focused on creating new digital interfaces for their manufacturing process, designing intuitive production monitoring and control workflows.",
+    "p2": "The design concept integrates with existing manufacturing equipment to provide real-time monitoring, quality assurance, and production optimization interfaces for their Swiss-made ski touring skins.",
+    "p3": "As part of the Oberalp Group, Pomoca needed modern interface designs that could handle their complex manufacturing processes while maintaining their high quality standards and Swiss precision."
+  },
+  "cards": {
+    "manufacturing": {
+      "title": "Manufacturing",
+      "items": ["Swiss made quality", "Since 1933", "World leading"]
+    },
+    "technology": {
+      "title": "Technology",
+      "items": ["Production monitoring", "Quality control", "Real-time data"]
+    },
+    "innovation": {
+      "title": "Innovation",
+      "items": ["Digital transformation", "Smart manufacturing", "Process optimization"]
+    }
+  },
+  "process": {
+    "title": "Manufacturing process",
+    "subtitle": "The interface designs monitor and control the complete manufacturing workflow from material reception to final quality assurance",
+    "steps": [
+      { "title": "Material reception", "desc": "Raw material intake and initial inspection" },
+      { "title": "Storage", "desc": "Inventory management and storage" },
+      { "title": "Cutting", "desc": "Precision cutting and sizing" },
+      { "title": "Gliding", "desc": "Surface treatment and gliding" },
+      { "title": "Marking", "desc": "Branding and identification" },
+      { "title": "Adhesive application", "desc": "Adhesive application and bonding" },
+      { "title": "Quality assurance", "desc": "Quality assurance and testing" },
+      { "title": "Laser cutting", "desc": "Final precision laser cutting" }
+    ]
+  },
+  "prototypes": {
+    "title": "Production interface prototypes",
+    "subtitle": "Three specialized interface designs for production monitoring, each designed for different process stations and manufacturing machines on the factory floor",
+    "items": [
+      { "title": "Cutting process interface design", "desc": "Specialized interface design for the cutting step, providing real-time monitoring of cutting parameters, material tracking, and quality control during the cutting process.", "badge": "Cutting Control" },
+      { "title": "Quality assurance interface design", "desc": "Dedicated QA interface design for quality control processes, featuring automated quality checks, inspection workflows, and compliance monitoring for ski touring skins.", "badge": "Quality Control" },
+      { "title": "Product refinements interface design", "desc": "Advanced interface design for product refinement processes, including surface treatments, finishing touches, and final quality enhancements before product completion.", "badge": "Product Finishing" }
+    ]
+  },
+  "implementation": {
+    "title": "Technical implementation",
+    "approachTitle": "Interface design approach",
+    "approach": [
+      "User-centered design methodology",
+      "Real-time data visualization concepts",
+      "Responsive design for factory floor tablets",
+      "Intuitive operator interface patterns"
+    ],
+    "integrationTitle": "Design integration concepts",
+    "integration": [
+      "Manufacturing equipment interface design",
+      "Quality control system interfaces",
+      "Production planning interface concepts",
+      "Real-time monitoring interface patterns"
+    ],
+    "featuresTitle": "Key design features",
+    "features": [
+      { "title": "Production monitoring interface", "desc": "Interface design for real-time status of all manufacturing equipment and processes" },
+      { "title": "Quality control interface", "desc": "Interface design for automated quality checks and manual inspection workflows" },
+      { "title": "Analytics & reporting interface", "desc": "Interface design for production metrics, efficiency analysis, and predictive insights" }
+    ]
+  },
+  "nav": {
+    "prev": "MoodleNet",
+    "next": "Wegaw",
+    "backToAll": "Back to all projects"
+  },
+  "links": {
+    "visitSite": "Visit Pomoca",
+    "history": "Company history"
+  }
+}
+
+

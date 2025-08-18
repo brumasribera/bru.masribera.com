@@ -1,0 +1,272 @@
+{
+  "navigation": {
+    "home": "Início",
+    "back": "Voltar",
+    "globe": "Globo"
+  },
+  "garden": {
+    "myContributions": "Minhas contribuições",
+    "protectedAreas": "Áreas protegidas",
+    "totalProtected": "Total protegido",
+    "contributed": "Contribuído",
+    "projects": "Projetos",
+    "satelliteView": "Vista de satélite",
+    "yourAreas": "Suas áreas",
+    "clearAndReload": "Limpar e recarregar",
+    "startProtecting": "Comece a proteger uma área para fazer crescer suas reservas."
+  },
+  "projects": {
+    "mx-mangroves": "Manguezais de Yucatán",
+    "br-amazon": "Floresta do Tapajós",
+    "id-seagrass": "Pradarias marinhas de Bali",
+    "ke-savanna": "Savanas de Laikipia",
+    "us-cal-giants": "Florestas de sequoias",
+    "ca-boreal": "Escudo boreal",
+    "ar-wetlands": "Zonas úmidas do Iberá",
+    "pe-cloud": "Floresta de névoa andina",
+    "ng-mangrove": "Manguezais do delta do Níger",
+    "ma-atlas": "Alto Atlas",
+    "es-donana": "Marismas de Doñana",
+    "ro-delta": "Delta do Danúbio",
+    "ua-steppe": "Estepe pôntica",
+    "ru-taiga": "Taiga siberiana",
+    "in-sundarbans": "Sundarbans",
+    "np-terai": "Arco do Terai",
+    "th-coral": "Coral de Andaman",
+    "au-reef": "Grande barreira",
+    "pg-png": "Floresta da Papua Nova Guiné",
+    "za-fynbos": "Fynbos do Cabo",
+    "mg-madagascar": "Florestas de Madagascar",
+    "ma-seagrass": "Pradarias marinhas mediterrâneas",
+    "no-bogs": "Turfeiras nórdicas",
+    "uk-heath": "Charnecas de Dorset",
+    "tr-anatolia": "Estepe da Anatólia",
+    "ir-wetland": "Zonas úmidas da Mesopotâmia",
+    "cn-giantpanda": "Panda de Sichuan",
+    "jp-sea": "Mar interior de Seto",
+    "nz-kelp": "Florestas de algas",
+    "is-highlands": "Terras altas da Islândia",
+    "maurit-corals": "Corais das Mascarenhas",
+    "eg-nile": "Delta do Nilo",
+    "sa-mangrove": "Manguezais da Arábia"
+  },
+  "countries": {
+    "Mexico": "México",
+    "Brazil": "Brasil",
+    "Indonesia": "Indonésia",
+    "Kenya": "Quênia",
+    "USA": "Estados Unidos",
+    "Canada": "Canadá",
+    "Argentina": "Argentina",
+    "Peru": "Peru",
+    "Nigeria": "Nigéria",
+    "Morocco": "Marrocos",
+    "Spain": "Espanha",
+    "Romania": "Romênia",
+    "Ukraine": "Ucrânia",
+    "Russia": "Rússia",
+    "India": "Índia",
+    "Nepal": "Nepal",
+    "Thailand": "Tailândia",
+    "Australia": "Austrália",
+    "Papua New Guinea": "Papua Nova Guiné",
+    "South Africa": "África do Sul",
+    "Madagascar": "Madagascar",
+    "Norway": "Noruega",
+    "UK": "Reino Unido",
+    "Türkiye": "Turquia",
+    "Iraq": "Iraque",
+    "China": "China",
+    "Japan": "Japão",
+    "New Zealand": "Nova Zelândia",
+    "Iceland": "Islândia",
+    "Mauritius": "Maurício",
+    "Egypt": "Egito",
+    "Saudi Arabia": "Arábia Saudita"
+  },
+  "payment": {
+    "payWithCard": "Pagar com cartão",
+    "payWithPayPal": "Pagar com PayPal",
+    "cardNumber": "Número do cartão",
+    "expiry": "MM/AA",
+    "cvc": "CVC",
+    "nameOnCard": "Nome no cartão",
+    "card": "Cartão",
+    "paypal": "PayPal"
+  },
+  "checkout": {
+    "project": "Projeto",
+    "protected": "Protegido",
+    "totalPaid": "Total pago",
+    "method": "Método",
+    "yourImpact": "Seu impacto",
+    "contributionProtects": "Sua contribuição de €{amount} protege aproximadamente",
+    "yourSelectionSummary": "Resumo da sua seleção",
+    "selectedCount": "Selecionado",
+    "selectedArea": "Área",
+    "totalCost": "Total"
+  },
+  "learnMore": {
+    "learnMore": "Saiba mais",
+    "share": "Compartilhar",
+    "contribute": "Contribuir",
+    "selectArea": "Selecionar área",
+    "checkout": "Comprar",
+    "success": "Sucesso"
+  },
+  "impact": {
+    "biodiversity": "Biodiversidade",
+    "carbon": "Carbono",
+    "community": "Comunidade"
+  },
+  "units": {
+    "m2": "m²",
+    "euro": "€",
+    "dollar": "$"
+  },
+  "projectPage": {
+    "projectProgress": "Progresso do projeto",
+    "raised": "Arrecadado",
+    "goal": "Meta",
+    "protected": "Protegido",
+    "total": "Total",
+    "aboutThisProtectedArea": "Sobre esta área protegida",
+    "conservationDescription": "Este projeto de conservação protege ecossistemas vitais e habitats da vida selvagem. Sua contribuição ajuda a manter a biodiversidade, sequestrar carbono e apoiar as comunidades locais através de práticas sustentáveis.",
+    "whyThisMatters": "Por que é importante",
+    "protectsEndangeredSpecies": "• Protege espécies ameaçadas e seus habitats",
+    "absorbsCO2": "• Absorve CO2 equivalente a {cars} carros anualmente",
+    "createsSustainableJobs": "• Cria empregos sustentáveis para as comunidades locais",
+    "preservesNaturalSources": "• Preserva fontes naturais de água e qualidade do solo",
+    "contributeToProtection": "Contribuir para a proteção",
+    "backToProjects": "Voltar aos projetos",
+    "areaLabel": "ha",
+    "satelliteView": "Vista satelital"
+  },
+  "learnMorePage": {
+    "title": "Saber mais",
+    "about": "Sobre {projectName}",
+    "projectDetails": "Detalhes do projeto",
+    "projectDescription1": "Esta área protegida abrange {hectares} hectares de ecossistema crítico, fornecendo habitat para numerosas espécies e contribuindo para os esforços globais de conservação da biodiversidade.",
+    "projectDescription2": "O projeto se concentra em práticas sustentáveis de gestão de terras que equilibram os objetivos de conservação com as necessidades da comunidade, garantindo benefícios ambientais e sociais de longo prazo.",
+    "conservationImpact": "Impacto da conservação",
+    "biodiversityProtection": "Proteção da biodiversidade",
+    "protectingSpecies": "Protegendo {percentage}% das espécies locais",
+    "carbonSequestration": "Sequestro de carbono",
+    "absorbingCO2": "Absorvendo {percentage}% mais de CO2 anualmente",
+    "communitySupport": "Apoio comunitário",
+    "supportingLivelihoods": "Apoiando {percentage}% dos meios de subsistência locais",
+    "scientificResearch": "Pesquisa científica",
+    "researchDescription": "Esta área serve como laboratório vivo para pesquisadores que estudam adaptação às mudanças climáticas, restauração de ecossistemas e práticas de desenvolvimento sustentável.",
+    "researchAreas": "Áreas de pesquisa",
+    "climateChangeAssessment": "• Avaliação do impacto das mudanças climáticas",
+    "biodiversityMonitoring": "• Monitoramento e conservação da biodiversidade",
+    "sustainableLandUse": "• Práticas de uso sustentável da terra",
+    "communityEngagement": "• Estratégias de engajamento comunitário"
+  },
+  "contributePage": {
+    "title": "Contribuir",
+    "supportConservation": "Apoiar a conservação de {projectName}",
+    "chooseAmount": "Escolher valor",
+    "paymentMethod": "Método de pagamento",
+    "creditDebitCard": "Cartão de crédito/débito",
+    "bankTransfer": "Transferência bancária",
+    "mobilePayment": "Pagamento móvel",
+    "yourImpact": "Seu impacto",
+    "contributionProtects": "Sua contribuição de €{amount} protege aproximadamente",
+    "ofThisProtectedArea": "desta área protegida",
+    "cost": "Custo: €{price}/m²",
+    "completeContribution": "Completar contribuição"
+  },
+  "selectAreaPage": {
+    "title": "Selecionar área de proteção",
+    "subtitle": "Escolha quais metros quadrados proteger",
+    "selectYourProtectionZone": "Selecione sua zona de proteção",
+    "selectionDescription": "Toque no mapa para selecionar áreas específicas que você quer proteger. Cada seleção representa um investimento de conservação.",
+    "available": "Disponível",
+    "selected": "Selecionado",
+    "gridCells": "Células da grade",
+    "squareMeters": "Metros quadrados",
+    "totalCost": "Custo total",
+    "quickSelection": "Seleção rápida",
+    "random25": "🎲 Aleatório 25%",
+    "centerArea": "🎯 Área central",
+    "clearAll": "🗑️ Limpar tudo",
+    "continueToCheckout": "Continuar para o checkout",
+    "backToProject": "← Voltar ao projeto"
+  },
+  "checkoutPage": {
+    "title": "Checkout",
+    "subtitle": "Pagamento seguro",
+    "orderSummary": "Resumo do pedido",
+    "total": "Total",
+    "choosePaymentMethod": "Escolher método de pagamento",
+    "cardDetails": "Detalhes do cartão",
+    "processing": "Processando…",
+    "pay": "Pagar €{amount}",
+    "connecting": "Conectando…",
+    "continueWithPayPal": "Continuar com PayPal (Mock)",
+    "redirectedToPayPal": "Você será redirecionado para o PayPal para aprovar seu pagamento.",
+    "taxesIncluded": "Impostos incluídos se aplicável"
+  },
+  "sharePage": {
+    "title": "Compartilhar projeto",
+    "subtitle": "Ajude a espalhar a palavra sobre {projectName}",
+    "shareOptions": "Opções de compartilhamento",
+    "shareOnFacebook": "Compartilhar no Facebook",
+    "shareOnTwitter": "Compartilhar no Twitter",
+    "shareOnWhatsApp": "Compartilhar no WhatsApp",
+    "shareOnLinkedIn": "Compartilhar no LinkedIn",
+    "projectSummary": "Resumo do projeto",
+    "helpProtect": "Ajude a proteger este ecossistema vital e apoie as comunidades locais através de práticas de conservação sustentáveis.",
+    "impactPreview": "Visualização do impacto"
+  },
+  "successPage": {
+    "title": "Obrigado!",
+    "subtitle": "Sua contribuição foi registrada (mock).",
+    "receipt": "Recibo",
+    "backToProject": "Voltar ao projeto"
+  },
+  "page": {
+    "header": {
+      "title": "Reserve",
+      "tagline": "Protegendo a natureza, um metro quadrado por vez"
+    },
+    "nav": {
+      "prev": "Projeto anterior",
+      "next": "Próximo projeto",
+      "backToAll": "Voltar a todos os projetos"
+    },
+    "overview": {
+      "title": "Visão geral do projeto",
+      "p1": "Reserve é uma plataforma de crowdfunding para a natureza que permite que indivíduos e organizações contribuam diretamente para projetos de conservação em todo o mundo.",
+      "p2": "Através de preços transparentes por metro quadrado, os usuários podem selecionar áreas específicas para proteger, rastrear seu impacto e contribuir para a conservação global da biodiversidade."
+    },
+    "cards": {
+      "targetUsers": {
+        "title": "Usuários-alvo",
+        "users": [
+          "Entusiastas da natureza",
+          "Organizações de conservação",
+          "Programas de sustentabilidade corporativa"
+        ]
+      },
+      "impact": {
+        "title": "Impacto",
+        "benefits": [
+          "Proteger e restaurar regiões naturais",
+          "Reflorestar áreas degradadas",
+          "Custo transparente por m²"
+        ]
+      },
+      "channels": {
+        "title": "Canais de distribuição",
+        "subtitle": "Conecte-se com a comunidade Reserve",
+        "instagram": "Seguir no Instagram"
+      }
+    },
+    "prototype": {
+      "ctaTitle": "Experimentar o protótipo interativo",
+      "ctaDesc": "Viva a experiência do app Reserve em primeira mão com nosso protótipo interativo. Navegue pelo processo de conservação e veja como é fácil fazer a diferença."
+    }
+  }
+}

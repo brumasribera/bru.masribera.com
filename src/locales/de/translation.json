@@ -1,0 +1,194 @@
+{
+  "welcome": "Willkommen",
+  "about": "Über uns",
+  "contact": "Kontakt",
+  "home": "Startseite",
+  "experience": "Erfahrung",
+  "education": "Ausbildung",
+  "projects": "Projekte",
+  "cv": "Lebenslauf",
+  "hero": {
+    "title": "Hallo, ich bin Bru Masribera",
+    "subtitle": "Full Stack Entwickler & UI/UX Designer",
+    "description": "Leidenschaftlich für die Erstellung schöner, funktionaler und benutzerzentrierter digitaler Erfahrungen.",
+    "location": "Barcelona, Spanien",
+    "contactMe": "Kontaktiere mich",
+    "downloadCV": "Lebenslauf herunterladen"
+  },
+  "navigation": {
+    "home": "Startseite",
+    "about": "Über mich",
+    "experience": "Erfahrung",
+    "education": "Ausbildung",
+    "projects": "Projekte",
+    "contact": "Kontakt",
+    "cv": "Lebenslauf"
+  },
+  "about": {
+    "title": "Über mich",
+    "description": "Ich bin ein leidenschaftlicher Entwickler, der es liebt, innovative Lösungen und außergewöhnliche Benutzererfahrungen zu schaffen.",
+    "skills": "Fähigkeiten",
+    "interests": "Interessen"
+  },
+  "experience": {
+    "title": "Berufserfahrung",
+    "current": "Aktuell",
+    "previous": "Vorherig",
+    "responsibilities": "Verantwortlichkeiten",
+    "technologies": "Technologien"
+  },
+  "education": {
+    "title": "Ausbildung",
+    "degree": "Abschluss",
+    "university": "Universität",
+    "period": "Zeitraum",
+    "gpa": "Notendurchschnitt"
+  },
+  "projects": {
+    "title": "Meine Projekte",
+    "viewProject": "Projekt anzeigen",
+    "openApp": "App öffnen",
+    "description": "Beschreibung",
+    "technologies": "Verwendete Technologien",
+    "features": "Funktionen"
+  },
+  "contact": {
+    "title": "Kontaktiere mich",
+    "name": "Name",
+    "email": "E-Mail",
+    "message": "Nachricht",
+    "send": "Senden",
+    "sending": "Wird gesendet...",
+    "sent": "Nachricht gesendet!",
+    "error": "Fehler beim Senden der Nachricht"
+  },
+  "footer": {
+    "rights": "Alle Rechte vorbehalten",
+    "madeWith": "Erstellt mit 🥰 in der Schweiz",
+    "tagline": "Frontend & UX Ingenieur | Remote-freundlich",
+    "copyright": "© {{year}} Bru Mas Ribera. Alle Rechte vorbehalten.",
+    "tooltips": {
+      "email": "Mir eine E-Mail senden",
+      "linkedin": "Mein LinkedIn-Profil anzeigen",
+      "github": "Mein GitHub-Profil anzeigen",
+      "cv": "Meinen Lebenslauf anzeigen"
+    }
+  },
+  "languages": {
+    "en": "Englisch",
+    "de": "Deutsch",
+    "fr": "Französisch",
+    "es": "Spanisch",
+    "ca": "Katalanisch",
+    "it": "Italienisch",
+    "pt": "Portugiesisch",
+    "rm": "Rätoromanisch"
+  },
+  "theme": {
+    "light": "Hell",
+    "dark": "Dunkel"
+  },
+  "common": {
+    "loading": "Wird geladen...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "close": "Schließen",
+    "open": "Öffnen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "previous": "Vorherig"
+  },
+  "reserve": {
+    "title": "Reserve",
+    "description": "Reservierungsverwaltungssystem für Outdoor-Aktivitäten.",
+    "openApp": "App öffnen",
+    "openAppSmall": "App öffnen",
+    "prototype": "Prototyp",
+    "loading": "Reserve App wird geladen...",
+    "loadingMessage": "Bereite dein Outdoor-Abenteuer vor...",
+    "features": {
+      "title": "Hauptfunktionen",
+      "reservations": "Reservierungsverwaltung",
+      "calendar": "Interaktiver Kalender",
+      "maps": "Standortkarten",
+      "notifications": "Intelligente Benachrichtigungen"
+    },
+    "technologies": "React, TypeScript, Leaflet, Tailwind CSS"
+  },
+  "clathes": {
+    "title": "Clathes",
+    "description": "Nachhaltige Modeplattform für umweltfreundliche Kleidung.",
+    "viewProject": "Projekt anzeigen",
+    "features": {
+      "title": "Hauptfunktionen",
+      "sustainability": "Nachhaltigkeitsverfolgung",
+      "recommendations": "Umweltfreundliche Empfehlungen",
+      "community": "Community-Funktionen"
+    },
+    "technologies": "React, Node.js, MongoDB, AWS"
+  },
+  "moodleNet": {
+    "title": "MoodleNet",
+    "description": "Offene Bildungsressourcen-Sharing-Plattform.",
+    "viewProject": "Projekt anzeigen",
+    "features": {
+      "title": "Hauptfunktionen",
+      "sharing": "Ressourcen-Sharing",
+      "collaboration": "Kollaboratives Lernen",
+      "discovery": "Inhaltsentdeckung"
+    },
+    "technologies": "PHP, MySQL, JavaScript, Bootstrap"
+  },
+  "openHuts": {
+    "title": "Open Huts",
+    "description": "Berg-Hütten-Buchungsplattform für Outdoor-Enthusiasten.",
+    "viewProject": "Projekt anzeigen",
+    "features": {
+      "title": "Hauptfunktionen",
+      "booking": "Hütten-Buchungssystem",
+      "routes": "Wanderrouten",
+      "weather": "Wetterintegration"
+    },
+    "technologies": "React Native, Firebase, Google Maps API"
+  },
+  "pix4D": {
+    "title": "Pix4D",
+    "description": "Photogrammetrie-Software für 3D-Kartierung.",
+    "viewProject": "Projekt anzeigen",
+    "features": {
+      "title": "Hauptfunktionen",
+      "photogrammetry": "Erweiterte Photogrammetrie",
+      "3dMapping": "3D-Kartierung",
+      "surveying": "Vermessungswerkzeuge"
+    },
+    "technologies": "C++, Python, OpenGL, CUDA"
+  },
+  "pomoca": {
+    "title": "Pomoca",
+    "description": "Innovative Skitouren-Ausrüstung und Zubehör.",
+    "viewProject": "Projekt anzeigen",
+    "features": {
+      "title": "Hauptfunktionen",
+      "products": "Produktkatalog",
+      "customization": "Maßgeschneiderte Lösungen",
+      "support": "Technischer Support"
+    },
+    "technologies": "Shopify, React, Node.js, PostgreSQL"
+  },
+  "wegaw": {
+    "title": "Wegaw",
+    "description": "Wetterintelligenz-Plattform für Outdoor-Aktivitäten.",
+    "viewProject": "Projekt anzeigen",
+    "features": {
+      "title": "Hauptfunktionen",
+      "forecasts": "Wettervorhersagen",
+      "alerts": "Wetterwarnungen",
+      "planning": "Aktivitätsplanung"
+    },
+    "technologies": "Python, Machine Learning, APIs, React"
+  }
+}

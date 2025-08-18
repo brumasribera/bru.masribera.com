@@ -1,0 +1,59 @@
+{
+  "header": {
+    "title": "MoodleNet Platform",
+    "tagline": "Plattafurma open‑source che revoluziunescha co ch'educaturs chattan e cundan parteschan resursas educativas en tut il mund – per educaziun averta e collavuraziun"
+  },
+  "overview": {
+    "title": "Visiun dal project",
+    "p1": "MoodleNet mida co ch’educaturs chattan, cundan parteschan e curan resursas educativas. Sco sviluppader frontend hai jau contribuì a crear in ecosistem cumplett per curaziun collaborativa e scuvrida da cuntegns d’auta qualitad.",
+    "p2": "La plattafurma respunda al basegn da material accessibel e bain curà, promovendo educaziun averta e sustegnendo la communitad d’instrucziun globala."
+  },
+  "cards": {
+    "targetUsers": {
+      "title": "Utilisaders destinads",
+      "items": ["Magisters & pedagogs", "Students & scolars", "Instituziuns"]
+    },
+    "developmentStatus": {
+      "title": "Status da svilupp",
+      "items": ["Svilupp activ", "Open‑source", "Manà da la communitad"]
+    },
+    "globalReach": {
+      "title": "Ravatscha globala",
+      "items": ["Cuverta mundiala", "Pluriling", "Standards averts"]
+    }
+  },
+  "features": {
+    "title": "Funcziunalitads centralas",
+    "discovery": { "title": "Scuvrida da resursas", "desc": "Tschertga avançada e filters per resursas en plirs formats" },
+    "curation": { "title": "Curaziun da cuntegns", "desc": "Utensils collaborativs per ordenar e partir resursas" },
+    "community": { "title": "Comunitad", "desc": "Emprender social e partiziun manada da la comunitad" },
+    "quality": { "title": "Controlla da qualitad", "desc": "Peer‑review e sistems da valitaziun per cuntegns" },
+    "learningPaths": { "title": "Plans d’emprender", "desc": "Sequenzas structuradas ed utensils per planisar il curiculum" },
+    "sharing": { "title": "Partiziun averta", "desc": "Licenzas avertas e mecanissems da partiziun" }
+  },
+  "preview": {
+    "title": "Prevista da la plattafurma",
+    "main": { "title": "Interface principala", "desc": "Interface clera ed intuitiva cun tschertga avançada e plirs filters." },
+    "details": { "title": "Detagls da la resursa", "desc": "Vista detagliada cun metadatas, valitaziuns e resuns da la comunitad." },
+    "community": { "title": "Funcziunalitads da comunitad", "desc": "Resuns, valitaziuns e curaziun collaborativa." }
+  },
+  "tech": {
+    "title": "Stack da tecnologia",
+    "frontend": "Frontend",
+    "backend": "Backend"
+  },
+  "future": {
+    "title": "Visiun futura",
+    "p1": "MoodleNet sa sviluppa ad in ecosistem cumplett per educaziun averta e partiziun da resursas. En previsiun: recumandaziuns cun IA, analisas d’emprender avanzadas e partenaris cun instituziuns dal mund entier.",
+    "p2": "La plattafurma vul daventar il standard global per scuvrir e curar resursas, colliand educaturs cun ils megliers OER e promovendo communitads d’emprender collaborativas."
+  },
+  "nav": {
+    "prev": "Clathes",
+    "next": "Pomoca",
+    "backToAll": "Enavos a tuts ils projects"
+  },
+  "links": {
+    "visitSite": "Visitar MoodleNet",
+    "github": "GitHub"
+  }
+}

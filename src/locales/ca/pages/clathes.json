@@ -1,0 +1,98 @@
+{
+  "header": {
+    "title": "Clathes",
+    "tagline": "Plataforma de moda sostenible que uneix dissenyadors emergents i consumidors conscients, amb traçabilitat completa i impacte social mesurable",
+    "builtWith": "Construït amb Shopify"
+  },
+  "overview": {
+    "title": "Visió del projecte",
+    "p1": "Clathes combina la moda sostenible amb l'impacte global, creant una plataforma única on cada compra contribueix a protegir espècies amenaçades, preservar ecosistemes i donar suport a causes de drets humans arreu del món.",
+    "p2": "El nostre projecte inaugural se centra en la vaquita, el cetaci marí més amenaçat del món. Amb només 10-20 vaquites estimades en llibertat, hem desenvolupat un pla estratègic integral que inclou monitoratge per satèl·lit, detecció de pesca furtiva amb IA i esforços de conservació coordinats al Golf de Califòrnia.",
+    "p3": "Més enllà de les vaquites, Clathes s'ampliarà per abordar altres qüestions ambientals i socials crítiques, des de la preservació de selves tropicals fins a l'accés a aigua potable, convertint la moda sostenible en una força poderosa per al canvi positiu al planeta.",
+    "instagramCta": "Segueix el projecte"
+  },
+  "stats": {
+    "first": { "title": "Primer", "desc": "Projecte: Vaquites" },
+    "global": { "title": "Global", "desc": "Abast d'impacte" },
+    "multiple": { "title": "Múltiples", "desc": "Causes recolzades" }
+  },
+  "strategy": {
+    "title": "Pla estratègic per salvar les vaquites",
+    "subtitle": "El nostre enfocament integral combina tecnologia, col·laboració i acció directa per protegir la població de vaquites",
+    "overviewTitle": "Visió estratègica",
+    "goal": "Objectiu central: que la població de vaquites comenci a augmentar",
+    "columns": {
+      "monitoring": { "title": "Monitoratge", "items": ["Monitoratge per satèl·lit amb IA i xarxes d'acústica submarina"] },
+      "terrain": { "title": "Acció sobre el terreny", "items": ["Intervenció directa i col·laboració amb authorities locals"] },
+      "totoaba": { "title": "Totoaba", "items": ["Abordar l'arrel de les captures accidentals de vaquites"] }
+    },
+    "details": {
+      "title": "Sistemes de monitoratge i detecció",
+      "satelliteTitle": "Planet Labs i Google Earth Engine",
+      "satelliteItems": [
+        "Utilitzar IA per detectar vaixells furtius",
+        "Enviar senyal quan s'apropin a l'àrea de les vaquites",
+        "Autoritats locals i ONG reben l'alerta"
+      ],
+      "acousticTitle": "Xarxa d'acústica submarina",
+      "acousticItems": [
+        "Instal·lar micròfons distribuïts per totes les àrees",
+        "Ajudar a rastrejar els moviments de la vaquita",
+        "Detectar situacions d'estrès"
+      ],
+      "taggingTitle": "Marcatge avançat i sensors",
+      "taggingItems": [
+        "Marcar totes les vaquites trobades",
+        "Millors professionals del món",
+        "Intervencions ràpides i no invasives"
+      ],
+      "transmissionTitle": "Transmissió de dades en temps real",
+      "transmissionItems": [
+        "Enviar posició i ritme cardíac cada 5-15 minuts",
+        "Detectar patrons estranys indicant vaquites atrapades",
+        "Monitorar nivells d'estrès en situacions de risc"
+      ]
+    }
+  },
+  "terrain": {
+    "title": "Acció sobre el terreny i col·laboració",
+    "seaShepherd": "Col·laboració amb Sea Shepherd",
+    "stopPoachers": { "title": "Aturar els furtius", "items": ["Abans de col·locar xarxes", "Col·laboració estreta amb authorities locals"] },
+    "collaboration": { "title": "Garantir la col·laboració adequada", "items": ["Denunciar qualsevol comportament irregular", "Treballar amb el govern per a l'alineament"] },
+    "coordination": {
+      "title": "Coordinació d'actors locals",
+      "cards": [
+        { "title": "Autoritats locals", "desc": "Col·laboració directa i suport" },
+        { "title": "Altres ONG", "desc": "Aliances estratègiques" },
+        { "title": "Comunitats locals", "desc": "Rutes d'observació de vaquites com a benefici econòmic" }
+      ]
+    }
+  },
+  "nextSteps": {
+    "title": "Pròxims passos",
+    "immediate": {
+      "title": "Accions immediates",
+      "items": ["Començar a marcar les vaquites", "Establir col·laboracions per monitorar vaixells via satèl·lit"]
+    },
+    "strategic": {
+      "title": "Coordinació estratègica",
+      "desc": "Coordinar tots els actors mitjançant reunions estratègiques per discutir i refinar l'estratègia de conservació"
+    }
+  },
+  "gallery": {
+    "vaquita": "La vaquita",
+    "hands": "Protecció sobre el terreny",
+    "shirts": "Samarretes bio per finançar l'acció",
+    "learnMore": "Més informació sobre les vaquites",
+    "video1": { "title": "Esforços de conservació de la vaquita", "desc": "Mira aquest vídeo informatiu sobre la situació crítica que afronta la vaquita i els esforços de conservació en marxa." },
+    "video2": { "title": "Protegint la vaquita", "desc": "Aprèn sobre la necessitat urgent de protegir la vaquita i les accions que s'estan duent a terme per salvar aquesta espècie en perill." }
+  },
+  "nav": {
+    "prev": "OpenHuts",
+    "next": "MoodleNet",
+    "backToAll": "Tornar a tots els projectes"
+  },
+  "links": {
+    "backToProjects": "Tornar als projectes"
+  }
+}

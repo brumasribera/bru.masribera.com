@@ -1,0 +1,92 @@
+{
+  "header": {
+    "title": "Open Huts",
+    "tagline": "Plataforma revolucionária para descoberta e reserva de refúgios de montanha em todo o mundo, permitindo turismo sustentável e planejamento completo de aventuras"
+  },
+  "overview": {
+    "title": "Visão do projeto",
+    "p1": "OpenHuts é uma plataforma inovadora que conecta caminhantes e montanhistas com refúgios de montanha em todo o mundo. O projeto facilita a descoberta, reserva e gestão de estadias em refúgios remotos.",
+    "p2": "A plataforma oferece informações detalhadas sobre refúgios, incluindo localização, comodidades, disponibilidade e reservas online. Os utilizadores podem explorar rotas, planear viagens e reservar estadias com facilidade.",
+    "p3": "OpenHuts promove o turismo sustentável e a preservação dos refúgios de montanha, conectando comunidades locais com viajantes globais.",
+    "visitSite": "Visitar OpenHuts",
+    "demo": "Demo"
+  },
+  "quick": {
+    "discovery": {
+      "title": "Descoberta",
+      "items": ["Refúgios", "Rotas", "Destinos"]
+    },
+    "booking": {
+      "title": "Reservas",
+      "items": ["Online", "Gestão", "Confirmação"]
+    },
+    "community": {
+      "title": "Comunidade",
+      "items": ["Avaliações", "Partilha", "Conectividade"]
+    }
+  },
+  "features": {
+    "title": "Características Principais",
+    "items": [
+      { "title": "Catálogo Global", "desc": "Base de dados abrangente de refúgios de montanha em todo o mundo" },
+      { "title": "Sistema de Reservas", "desc": "Plataforma de reservas online integrada com confirmações automáticas" },
+      { "title": "Exploração de Rotas", "desc": "Ferramentas para descobrir e planear rotas de caminhada" },
+      { "title": "Informações Detalhadas", "desc": "Dados completos sobre comodidades, preços e disponibilidade" },
+      { "title": "Avaliações da Comunidade", "desc": "Sistema de feedback e avaliações de utilizadores" },
+      { "title": "Aplicação Mobile", "desc": "Acesso offline para utilização em áreas remotas" }
+    ]
+  },
+  "technology": {
+    "title": "Arquitetura Tecnológica",
+    "platform": {
+      "title": "Plataforma Web",
+      "badges": ["React", "Node.js", "MongoDB", "API RESTful"]
+    },
+    "mobile": {
+      "title": "Aplicação Mobile",
+      "badges": ["React Native", "Offline Sync", "GPS", "Notificações"]
+    },
+    "mapping": {
+      "title": "Sistema de Mapeamento",
+      "badges": ["OpenStreetMap", "Geolocalização", "Rotas", "Terreno"]
+    }
+  },
+  "applications": {
+    "title": "Aplicações e Setores",
+    "tourism": {
+      "title": "Turismo de Montanha",
+      "items": [
+        { "title": "Caminhadas", "desc": "Planificação e reserva de rotas de caminhada" },
+        { "title": "Alpinismo", "desc": "Acesso a refúgios para atividades de escalada" },
+        { "title": "Turismo Sustentável", "desc": "Promoção de práticas responsáveis na montanha" }
+      ]
+    },
+    "community": {
+      "title": "Comunidade de Montanha",
+      "items": [
+        { "title": "Partilha de Experiências", "desc": "Plataforma para viajantes partilharem histórias e dicas" },
+        { "title": "Conectividade", "desc": "Ligação entre caminhantes e gestores de refúgios" },
+        { "title": "Preservação", "desc": "Apoio à manutenção e conservação de refúgios" }
+      ]
+    }
+  },
+  "impact": {
+    "title": "Impacto e Resultados",
+    "metrics": [
+      { "title": "Refúgios", "desc": "Mais de 5.000 refúgios listados em todo o mundo" },
+      { "title": "Utilizadores", "desc": "Mais de 100.000 caminhantes registados na plataforma" },
+      { "title": "Reservas", "desc": "Sistema processa mais de 50.000 reservas anualmente" },
+      { "title": "Países", "desc": "Presente em mais de 30 países com refúgios de montanha" }
+    ]
+  },
+  "future": {
+    "title": "Visão do futuro",
+    "p1": "OpenHuts planeia expandir para novos mercados e integrar tecnologias emergentes como realidade aumentada para visualização de rotas e refúgios.",
+    "p2": "Os planos futuros incluem o desenvolvimento de funcionalidades de inteligência artificial para recomendações personalizadas e a expansão para incluir outros tipos de alojamento outdoor.",
+    "backToAll": "Voltar a todos os projetos"
+  },
+  "nav": {
+    "prev": "Wegaw",
+    "next": "Reserve"
+  }
+}

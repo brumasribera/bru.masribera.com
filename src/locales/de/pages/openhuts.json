@@ -1,0 +1,92 @@
+{
+  "header": {
+    "title": "Open Huts",
+    "tagline": "Revolutionäre Plattform zum Entdecken und Buchen von Berghütten weltweit, die nachhaltigen Outdoor-Tourismus und umfassende Abenteuerplanung ermöglicht"
+  },
+  "overview": {
+    "title": "Projektvision",
+    "p1": "OpenHuts ist eine innovative Plattform, die Wanderer und Alpinisten mit Berghütten weltweit verbindet. Das Projekt konzentriert sich darauf, die Entdeckung und Buchung von Hütten zu erleichtern und bietet detaillierte Informationen über Routen, Bedingungen und Verfügbarkeit.",
+    "p2": "Die Plattform integriert fortschrittliche Technologien für Buchungsverwaltung, GPS-Navigation und Community-Verbindungen zwischen Bergliebhabern.",
+    "p3": "OpenHuts fördert nachhaltigen Tourismus und den Schutz der natürlichen Bergumgebung.",
+    "visitSite": "OpenHuts besuchen",
+    "app": "App herunterladen"
+  },
+  "quick": {
+    "discovery": {
+      "title": "Entdeckung",
+      "items": ["Globale Hütten", "Detaillierte Routen", "Einfache Buchungen"]
+    },
+    "technology": {
+      "title": "Technologie",
+      "items": ["Integriertes GPS", "Echtzeit-Buchungen", "Aktive Community"]
+    },
+    "sustainability": {
+      "title": "Nachhaltigkeit",
+      "items": ["Verantwortungsvoller Tourismus", "Umweltschutz", "Lokale Entwicklung"]
+    }
+  },
+  "features": {
+    "title": "Hauptmerkmale",
+    "items": [
+      { "title": "Globale Datenbank", "desc": "Zugang zu Tausenden von Berghütten weltweit" },
+      { "title": "Integrierte GPS-Navigation", "desc": "Detaillierte Routen und Echtzeit-Navigation" },
+      { "title": "Buchungssystem", "desc": "Sofortige Buchungen mit automatischer Bestätigung" },
+      { "title": "Detaillierte Informationen", "desc": "Wetterbedingungen, Verfügbarkeit und Dienstleistungen" },
+      { "title": "Aktive Community", "desc": "Bewertungen, Fotos und Erfahrungen von Nutzern geteilt" },
+      { "title": "Native Mobile App", "desc": "Vollständige Funktionalität offline für Bergabenteuer verfügbar" }
+    ]
+  },
+  "technology": {
+    "title": "Technologische Architektur",
+    "mapping": {
+      "title": "Kartierung und Navigation",
+      "badges": ["OpenStreetMap", "Integriertes GPS", "Offline-Routen", "3D-Navigation"]
+    },
+    "booking": {
+      "title": "Buchungssystem",
+      "badges": ["Echtzeit-Buchungen", "Automatische Bestätigung", "Verfügbarkeitsverwaltung", "Sichere Zahlungen"]
+    },
+    "mobile": {
+      "title": "Mobile Entwicklung",
+      "badges": ["React Native", "Offline-Funktionalität", "Synchronisation", "Optimierte UX"]
+    }
+  },
+  "destinations": {
+    "title": "Ziele und Hütten",
+    "europe": {
+      "title": "Europa",
+      "items": [
+        { "title": "Alpen", "desc": "Klassische Hütten in der Schweiz, Frankreich, Italien und Österreich" },
+        { "title": "Pyrenäen", "desc": "Umfangreiches Hüttennetzwerk zwischen Spanien und Frankreich" },
+        { "title": "Skandinavien", "desc": "Moderne Hütten in Norwegen, Schweden und Finnland" }
+      ]
+    },
+    "americas": {
+      "title": "Amerika",
+      "items": [
+        { "title": "Rocky Mountains", "desc": "Historische Hütten in den USA und Kanada" },
+        { "title": "Anden", "desc": "Hochgebirgshütten in Chile, Argentinien und Peru" },
+        { "title": "Alaska", "desc": "Abgelegene Hütten für extreme Abenteuer" }
+      ]
+    }
+  },
+  "impact": {
+    "title": "Auswirkungen und Ergebnisse",
+    "metrics": [
+      { "title": "Hütten", "desc": "Mehr als 5.000 Hütten auf der Plattform verfügbar" },
+      { "title": "Nutzer", "desc": "Mehr als 100.000 registrierte Wanderer" },
+      { "title": "Buchungen", "desc": "Mehr als 50.000 erfolgreich verarbeitete Buchungen" },
+      { "title": "Länder", "desc": "In mehr als 30 verschiedenen Ländern vertreten" }
+    ]
+  },
+  "future": {
+    "title": "Zukunftsvision",
+    "p1": "OpenHuts zielt darauf ab, sich in neue Regionen zu erweitern und aufstrebende Technologien wie Augmented Reality für verbesserte Navigationserfahrungen zu integrieren.",
+    "p2": "Zukünftige Pläne umfassen die Integration mit öffentlichen Verkehrssystemen und die Implementierung von Treueprogrammen für häufige Nutzer.",
+    "backToAll": "Zurück zu allen Projekten"
+  },
+  "nav": {
+    "prev": "Pomoca",
+    "next": "Reserve"
+  }
+}

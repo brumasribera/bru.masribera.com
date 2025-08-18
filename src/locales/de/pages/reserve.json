@@ -1,0 +1,272 @@
+{
+  "navigation": {
+    "home": "Startseite",
+    "back": "Zurück",
+    "globe": "Globus"
+  },
+  "garden": {
+    "myContributions": "Meine Beiträge",
+    "protectedAreas": "Geschützte Gebiete",
+    "totalProtected": "Gesamt geschützt",
+    "contributed": "Beigetragen",
+    "projects": "Projekte",
+    "satelliteView": "Satellitenansicht",
+    "yourAreas": "Ihre Gebiete",
+    "clearAndReload": "Löschen und neu laden",
+    "startProtecting": "Beginnen Sie mit dem Schutz eines Gebiets, um Ihre Reserven zu vergrößern."
+  },
+  "projects": {
+    "mx-mangroves": "Yucatán-Mangroven",
+    "br-amazon": "Tapajós-Regenwald",
+    "id-seagrass": "Bali-Seegras",
+    "ke-savanna": "Laikipia-Savanne",
+    "us-cal-giants": "Redwood-Wälder",
+    "ca-boreal": "Borealer Schild",
+    "ar-wetlands": "Iberá-Feuchtgebiete",
+    "pe-cloud": "Anden-Nebelwald",
+    "ng-mangrove": "Niger-Delta-Mangroven",
+    "ma-atlas": "Hoher Atlas",
+    "es-donana": "Doñana-Sümpfe",
+    "ro-delta": "Donaudelta",
+    "ua-steppe": "Pontische Steppe",
+    "ru-taiga": "Sibirische Taiga",
+    "in-sundarbans": "Sundarbans",
+    "np-terai": "Terai-Bogen",
+    "th-coral": "Andaman-Korallen",
+    "au-reef": "Great Barrier",
+    "pg-png": "Papua-Neuguinea-Regenwald",
+    "za-fynbos": "Kap-Fynbos",
+    "mg-madagascar": "Madagaskar-Wälder",
+    "ma-seagrass": "Mittelmeer-Seegras",
+    "no-bogs": "Nordische Moore",
+    "uk-heath": "Dorset-Heide",
+    "tr-anatolia": "Anatolische Steppe",
+    "ir-wetland": "Mesopotamische Feuchtgebiete",
+    "cn-giantpanda": "Sichuan-Panda",
+    "jp-sea": "Seto-Binnenmeer",
+    "nz-kelp": "Tangwälder",
+    "is-highlands": "Isländisches Hochland",
+    "maurit-corals": "Maskarenen-Korallen",
+    "eg-nile": "Nildelta",
+    "sa-mangrove": "Arabische Mangroven"
+  },
+  "countries": {
+    "Mexico": "Mexiko",
+    "Brazil": "Brasilien",
+    "Indonesia": "Indonesien",
+    "Kenya": "Kenia",
+    "USA": "USA",
+    "Canada": "Kanada",
+    "Argentina": "Argentinien",
+    "Peru": "Peru",
+    "Nigeria": "Nigeria",
+    "Morocco": "Marokko",
+    "Spain": "Spanien",
+    "Romania": "Rumänien",
+    "Ukraine": "Ukraine",
+    "Russia": "Russland",
+    "India": "Indien",
+    "Nepal": "Nepal",
+    "Thailand": "Thailand",
+    "Australia": "Australien",
+    "Papua New Guinea": "Papua-Neuguinea",
+    "South Africa": "Südafrika",
+    "Madagascar": "Madagaskar",
+    "Norway": "Norwegen",
+    "UK": "Großbritannien",
+    "Türkiye": "Türkei",
+    "Iraq": "Irak",
+    "China": "China",
+    "Japan": "Japan",
+    "New Zealand": "Neuseeland",
+    "Iceland": "Island",
+    "Mauritius": "Mauritius",
+    "Egypt": "Ägypten",
+    "Saudi Arabia": "Saudi-Arabien"
+  },
+  "payment": {
+    "payWithCard": "Mit Karte bezahlen",
+    "payWithPayPal": "Mit PayPal bezahlen",
+    "cardNumber": "Kartennummer",
+    "expiry": "MM/JJ",
+    "cvc": "CVC",
+    "nameOnCard": "Name auf der Karte",
+    "card": "Karte",
+    "paypal": "PayPal"
+  },
+  "checkout": {
+    "project": "Projekt",
+    "protected": "Geschützt",
+    "totalPaid": "Gesamt bezahlt",
+    "method": "Methode",
+    "yourImpact": "Ihr Einfluss",
+    "contributionProtects": "Ihr Beitrag von €{amount} schützt ungefähr",
+    "yourSelectionSummary": "Zusammenfassung Ihrer Auswahl",
+    "selectedCount": "Ausgewählt",
+    "selectedArea": "Bereich",
+    "totalCost": "Gesamt"
+  },
+  "learnMore": {
+    "learnMore": "Mehr erfahren",
+    "share": "Teilen",
+    "contribute": "Beitragen",
+    "selectArea": "Bereich auswählen",
+    "checkout": "Kaufen",
+    "success": "Erfolg"
+  },
+  "impact": {
+    "biodiversity": "Biodiversität",
+    "carbon": "Kohlenstoff",
+    "community": "Gemeinschaft"
+  },
+  "units": {
+    "m2": "m²",
+    "euro": "€",
+    "dollar": "$"
+  },
+  "projectPage": {
+    "projectProgress": "Projektfortschritt",
+    "raised": "Gesammelt",
+    "goal": "Ziel",
+    "protected": "Geschützt",
+    "total": "Gesamt",
+    "aboutThisProtectedArea": "Über dieses geschützte Gebiet",
+    "conservationDescription": "Dieses Naturschutzprojekt schützt lebenswichtige Ökosysteme und Lebensräume für Wildtiere. Ihr Beitrag hilft dabei, die Artenvielfalt zu erhalten, Kohlenstoff zu binden und lokale Gemeinschaften durch nachhaltige Praktiken zu unterstützen.",
+    "whyThisMatters": "Warum das wichtig ist",
+    "protectsEndangeredSpecies": "• Schützt gefährdete Arten und ihre Lebensräume",
+    "absorbsCO2": "• Bindet CO2-Äquivalent zu {cars} Autos jährlich",
+    "createsSustainableJobs": "• Schafft nachhaltige Arbeitsplätze für lokale Gemeinschaften",
+    "preservesNaturalSources": "• Erhält natürliche Wasserquellen und Bodenqualität",
+    "contributeToProtection": "Zum Schutz beitragen",
+    "backToProjects": "Zurück zu den Projekten",
+    "areaLabel": "ha",
+    "satelliteView": "Satellitenansicht"
+  },
+  "learnMorePage": {
+    "title": "Mehr erfahren",
+    "about": "Über {projectName}",
+    "projectDetails": "Projektdetails",
+    "projectDescription1": "Dieses geschützte Gebiet umfasst {hectares} Hektar kritischer Ökosysteme und bietet Lebensraum für zahlreiche Arten und trägt zu globalen Artenschutzbemühungen bei.",
+    "projectDescription2": "Das Projekt konzentriert sich auf nachhaltige Landmanagementpraktiken, die Naturschutzziele mit den Bedürfnissen der Gemeinschaft in Einklang bringen und langfristige ökologische und soziale Vorteile gewährleisten.",
+    "conservationImpact": "Naturschutzauswirkung",
+    "biodiversityProtection": "Artenschutz",
+    "protectingSpecies": "Schutz von {percentage}% der lokalen Arten",
+    "carbonSequestration": "Kohlenstoffbindung",
+    "absorbingCO2": "Bindung von {percentage}% mehr CO2 jährlich",
+    "communitySupport": "Gemeinschaftsunterstützung",
+    "supportingLivelihoods": "Unterstützung von {percentage}% der lokalen Lebensgrundlagen",
+    "scientificResearch": "Wissenschaftliche Forschung",
+    "researchDescription": "Dieses Gebiet dient als lebendes Labor für Forscher, die sich mit Klimawandelanpassung, Ökosystemrestaurierung und nachhaltigen Entwicklungspraktiken befassen.",
+    "researchAreas": "Forschungsbereiche",
+    "climateChangeAssessment": "• Bewertung der Klimawandelauswirkungen",
+    "biodiversityMonitoring": "• Überwachung und Schutz der Artenvielfalt",
+    "sustainableLandUse": "• Nachhaltige Landnutzungspraktiken",
+    "communityEngagement": "• Strategien zur Einbindung der Gemeinschaft"
+  },
+  "contributePage": {
+    "title": "Beitragen",
+    "supportConservation": "Unterstützen Sie den {projectName} Naturschutz",
+    "chooseAmount": "Betrag wählen",
+    "paymentMethod": "Zahlungsmethode",
+    "creditDebitCard": "Kredit-/Debitkarte",
+    "bankTransfer": "Banküberweisung",
+    "mobilePayment": "Mobile Zahlung",
+    "yourImpact": "Ihr Einfluss",
+    "contributionProtects": "Ihr €{amount} Beitrag schützt ungefähr",
+    "ofThisProtectedArea": "dieses geschützten Gebiets",
+    "cost": "Kosten: €{price}/m²",
+    "completeContribution": "Beitrag abschließen"
+  },
+  "selectAreaPage": {
+    "title": "Schutzgebiet auswählen",
+    "subtitle": "Wählen Sie, welche Quadratmeter geschützt werden sollen",
+    "selectYourProtectionZone": "Wählen Sie Ihre Schutzzone",
+    "selectionDescription": "Tippen Sie auf die Karte, um spezifische Bereiche auszuwählen, die Sie schützen möchten. Jede Auswahl stellt eine Naturschutzinvestition dar.",
+    "available": "Verfügbar",
+    "selected": "Ausgewählt",
+    "gridCells": "Rasterzellen",
+    "squareMeters": "Quadratmeter",
+    "totalCost": "Gesamtkosten",
+    "quickSelection": "Schnellauswahl",
+    "random25": "🎲 Zufällig 25%",
+    "centerArea": "🎯 Zentrumsbereich",
+    "clearAll": "🗑️ Alles löschen",
+    "continueToCheckout": "Zum Checkout",
+    "backToProject": "← Zurück zum Projekt"
+  },
+  "checkoutPage": {
+    "title": "Checkout",
+    "subtitle": "Sichere Zahlung",
+    "orderSummary": "Bestellübersicht",
+    "total": "Gesamt",
+    "choosePaymentMethod": "Zahlungsmethode wählen",
+    "cardDetails": "Kartendetails",
+    "processing": "Verarbeitung…",
+    "pay": "€{amount} bezahlen",
+    "connecting": "Verbinde…",
+    "continueWithPayPal": "Mit PayPal fortfahren (Mock)",
+    "redirectedToPayPal": "Sie werden zu PayPal weitergeleitet, um Ihre Zahlung zu genehmigen.",
+    "taxesIncluded": "Steuern inklusive, falls zutreffend"
+  },
+  "sharePage": {
+    "title": "Projekt teilen",
+    "subtitle": "Helfen Sie dabei, das Wort über {projectName} zu verbreiten",
+    "shareOptions": "Teilen-Optionen",
+    "shareOnFacebook": "Auf Facebook teilen",
+    "shareOnTwitter": "Auf Twitter teilen",
+    "shareOnWhatsApp": "Auf WhatsApp teilen",
+    "shareOnLinkedIn": "Auf LinkedIn teilen",
+    "projectSummary": "Projektzusammenfassung",
+    "helpProtect": "Helfen Sie dabei, dieses lebenswichtige Ökosystem zu schützen und lokale Gemeinschaften durch nachhaltige Naturschutzpraktiken zu unterstützen.",
+    "impactPreview": "Auswirkungsvorschau"
+  },
+  "successPage": {
+    "title": "Vielen Dank!",
+    "subtitle": "Ihr Beitrag wurde aufgezeichnet (Mock).",
+    "receipt": "Quittung",
+    "backToProject": "Zurück zum Projekt"
+  },
+  "page": {
+    "header": {
+      "title": "Reserve",
+      "tagline": "Natur schützen, einen Quadratmeter nach dem anderen"
+    },
+    "nav": {
+      "prev": "Vorheriges Projekt",
+      "next": "Nächstes Projekt",
+      "backToAll": "Zurück zu allen Projekten"
+    },
+    "overview": {
+      "title": "Projektübersicht",
+      "p1": "Reserve ist eine Natur-Crowdfunding-Plattform, die es Einzelpersonen und Organisationen ermöglicht, direkt zu Naturschutzprojekten weltweit beizutragen.",
+      "p2": "Durch transparente Kosten pro Quadratmeter können Benutzer spezifische Bereiche zum Schutz auswählen, ihren Einfluss verfolgen und zu globalen Artenschutzbemühungen beitragen."
+    },
+    "cards": {
+      "targetUsers": {
+        "title": "Zielbenutzer",
+        "users": [
+          "Naturliebhaber",
+          "Naturschutzorganisationen",
+          "Unternehmensnachhaltigkeitsprogramme"
+        ]
+      },
+      "impact": {
+        "title": "Einfluss",
+        "benefits": [
+          "Natürliche Regionen schützen und wiederherstellen",
+          "Degradierte Gebiete wiederaufforsten",
+          "Transparente Kosten pro m²"
+        ]
+      },
+      "channels": {
+        "title": "Vertriebskanäle",
+        "subtitle": "Verbinden Sie sich mit der Reserve-Community",
+        "instagram": "Auf Instagram folgen"
+      }
+    },
+    "prototype": {
+      "ctaTitle": "Probieren Sie den interaktiven Prototyp",
+      "ctaDesc": "Erleben Sie die Reserve-App aus erster Hand mit unserem interaktiven Prototyp. Navigieren Sie durch den Naturschutzprozess und sehen Sie, wie einfach es ist, einen Unterschied zu machen."
+    }
+  }
+}

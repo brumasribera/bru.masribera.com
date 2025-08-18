@@ -1,0 +1,263 @@
+{
+  "hero": {
+    "title": "Ingegner Frontend e UX",
+    "location": "Basà a Meiringen, Svizra",
+    "subtitle": "Ingegner Frontend e UX | Lavur remot",
+    "yearsExperience": "8+ onns d'experientscha professiunala"
+  },
+  "about": {
+    "title": "Davart mai",
+    "description": "Svilup da products da l'entschatta fin la producziun – da la perscrutaziun fin a soluziuns che creeschan impact e che plaschan als utilisaders.",
+    "frontend": { "title": "Svilup Frontend", "desc": "React, TypeScript, prestaziun e UI polida." },
+    "ux": { "title": "Design UX", "desc": "Manà da perscrutaziun, accessibel ed elegant." },
+    "research": { "title": "Perscrutaziun d'utilisaders", "desc": "Intervistas, enquestas e savida orientada a datas." },
+    "innovation": { "title": "Innovaziun", "desc": "Nova tecnologia e metodas per in impact persistent." }
+  },
+  "experience": {
+    "title": "Experientscha professiunala",
+    "subtitle": "In viadi tras differents rollas en la tecnologia, da startups fin interpresas stabilidas, adina cun focus sin experientschas significativas.",
+    "showMore": "Mussar dapli",
+    "showLess": "Mussar damain",
+    "moreDetails": "Dapli detagls",
+    "companies": {
+      "openHuts": {
+        "name": "Open Huts",
+        "position": "Fundatur & Manader dal Project",
+        "location": "Remote",
+        "period": "2014 - Oz",
+        "description": "Chattar lieus zuppads per durmir en la natira. Agiudar a proteger la natira cun gudair d'ella."
+      },
+      "moodle": {
+        "name": "Moodle",
+        "position": "Ingenier Frontend & UX",
+        "location": "Remote",
+        "period": "2021 - 2024",
+        "description": "Svilup da MoodleNet, ina rait per cundivider e curar resursas d'instrucziun avertas."
+      },
+      "oberalp": {
+        "name": "Grupp Oberalp",
+        "position": "Designader d'Experientscha d'Utilisader",
+        "location": "Losanna, Svizra",
+        "period": "2020",
+        "description": "Redesign da las interfatschas da producziun dal schef mundial da paunas da skis da tura, Pomoca."
+      },
+      "wegaw": {
+        "name": "Wegaw",
+        "position": "Architect da Soluziuns",
+        "location": "Losanna, Svizra",
+        "period": "2018",
+        "description": "Svilup d'in project da l'ESA per observar la cuverta da naiv cun satellites en l'entir mund."
+      },
+      "pix4d": {
+        "name": "Pix4D",
+        "position": "Svilupader Web Junior",
+        "location": "Losanna, Svizra",
+        "period": "2017 - 2018",
+        "description": "Svilup d'ina plattafurma cloud per telechargiar, elavurar ed analisar models 3D da maletgs da drogn."
+      }
+    },
+    "skills": {
+      "react": "React",
+      "next": "Next",
+      "typescript": "TypeScript",
+      "supabase": "Supabase",
+      "uxResearch": "Perscrutaziun UX",
+      "figma": "Figma",
+      "uxDesign": "Design UX",
+      "openSource": "Open Source",
+      "educationalTechnology": "Tecnologia d'educaziun",
+      "behavioralInterviewing": "Intervistas cumportamentalas",
+      "usabilityTesting": "Tests d'utilisabladad",
+      "productionInterfaces": "Interfatschas da producziun",
+      "javascript": "JavaScript",
+      "kubernetes": "Kubernetes",
+      "satelliteData": "Datas da satellites",
+      "esaProjects": "Projects ESA",
+      "snowCoverTracking": "Suandament da cuverta da naiv",
+      "angular4": "Angular 4",
+      "rxjs": "RxJS",
+      "cloudPlatform": "Plattafurma da cloud",
+      "3dModeling": "Modelisaziun 3D",
+      "droneTechnology": "Tecnologia da drogn"
+    }
+  },
+  "education": {
+    "title": "Furmaziun & certificaziuns",
+    "subtitle": "Empustaziun continua sur disciplinas tecnicas, da design e d'interpresa per furnir soluziuns cumplettas.",
+    "showMore": "Mussar dapli",
+    "showLess": "Mussar damain",
+    "degrees": {
+      "computerEngineering": {
+        "degree": "Diploma d'ingenier, informatica",
+        "institution": "Universitat da Barcelona",
+        "period": "2011 - 2016",
+        "location": "Barcelona, Catalugna",
+        "description": "Bachelor en informatica cun focus sin svilup web ed architectura da software."
+      },
+      "uxDesigner": {
+        "degree": "Nanodegree UX Designer",
+        "institution": "Udacity",
+        "period": "2020 - 2020",
+        "location": "Remote",
+        "description": "Curs spezialisà en princips da design UX, perscrutaziun d'utilisaders, prototipaziun e metodologias da tests."
+      },
+      "mountainLeader": {
+        "degree": "UIMLA Mountain Leader, gidon d'alp",
+        "institution": "ICEMP",
+        "period": "2019 - 2021",
+        "location": "Pireneas",
+        "description": "Certificaziun professiunala per manar en muntogna e gidar viandaders alpins."
+      },
+      "mba": {
+        "degree": "ThePowerMBA, MBA",
+        "institution": "ThePowerMBA",
+        "period": "2020 - 2021",
+        "location": "Remote",
+        "description": "Master en gestiun d'interpresa cun focus sin strategias modernas ed innoveraziuns digitalas."
+      },
+      "architecture": {
+        "degree": "Architectura",
+        "institution": "Universitat Politècnica de Catalunya",
+        "period": "2009 - 2011",
+        "location": "Barcelona, Catalugna",
+        "description": "Stadis en architectura che furneschan in fundament en design thinking e schliar problems spatials."
+      }
+    },
+    "skills": {
+      "webDevelopment": "Svilup web",
+      "softwareArchitecture": "Architectura da software",
+      "problemSolving": "Schliar problems",
+      "technicalFoundation": "Fundaments tecnics",
+      "systemDesign": "Design da sistems",
+      "userResearch": "Perscrutaziun d'utilisaders",
+      "prototyping": "Prototipaziun",
+      "userTesting": "Tests cun utilisaders",
+      "designThinking": "Design Thinking",
+      "userCenteredDesign": "Design centrà sin l'utilisader",
+      "leadership": "Lideranza",
+      "environmentalAwareness": "Cuscienza ambientala",
+      "riskAssessment": "Valitaziun da ristgs",
+      "teamManagement": "Gestiun da squadra",
+      "sustainability": "Sustenibilitad",
+      "outdoorPlanning": "Planisaziun en liber",
+      "businessStrategy": "Strategia d'interpresa",
+      "digitalTransformation": "Transfurmaziun digitala",
+      "productManagement": "Gestiun da products",
+      "marketAnalysis": "Analisa da martgà",
+      "strategicThinking": "Pensa strategica",
+      "innovation": "Innovaziun",
+      "spatialProblemSolving": "Schliar problems spatials",
+      "creativeDesign": "Design creativ",
+      "visualCommunication": "Communicaziun visuala",
+      "3dModeling": "Modelisaziun 3D"
+    }
+  },
+  "projects": {
+    "featuredTitle": "Projects en evidenza",
+    "featuredSubtitle": "Ina survista da mes lavurs en svilup frontend, design UX ed innovaziun da products. Da plattafurmas open-source fin tecnologia da protecziun da natira.",
+    "moreDetails": "Dapli detagls",
+    "audience": {
+      "natureEnthusiasts": "Amants da la natira",
+      "hikersOutdoor": "Viandaders & amis dal liber",
+      "conservationCommunity": "Comunitad da conservaziun",
+      "educatorsLearners": "Docents & scolars"
+    },
+    "solution": "Soluzion d'interpresa",
+    "openSource": "Open Source",
+    "projects": {
+      "reserve": {
+        "title": "Reserve",
+        "description": "App mobila che pussibilitescha a tuts da proteger la natira cun finanziar restauraziun e protecziun d'abitadis per meter quadrat cun suandament transparent.",
+        "impact": "Protecziun da la natira",
+        "users": "Amants da la natira"
+      },
+      "openHuts": {
+        "title": "Open Huts",
+        "description": "Plattafurma che collia viandaders cun chamonas da muntogna en tut il mund, promotevla per turissem persistent ed exploraziun en regiuns muntagnardas.",
+        "impact": "Turissem persistent",
+        "users": "Viandaders & amis dal liber"
+      },
+      "clathes": {
+        "title": "Clathes",
+        "description": "Proteger spezias periclitadas cun moda persistenta, creando in effect global cun mintga cumpra ed iniziativa da conservaziun.",
+        "impact": "Protecziun da spezias",
+        "users": "Comunitad da conservaziun"
+      },
+      "moodleNet": {
+        "title": "Plattafurma MoodleNet",
+        "description": "Plattafurma da scolaziun decentralisada che pussibilitescha a docents da cundivider e scuvrir resursas avertas sin l'entir mund, promovent l'emprender collectiv.",
+        "impact": "Scolas averta",
+        "users": "Docents & scolars"
+      },
+      "pomoca": {
+        "title": "Interfatscha da producziun Pomoca",
+        "description": "Sistem da controlla da fabricaziun per equipament da skis, optimond il flux da lavur e la qualitad cun interfatschas digitalas modernas.",
+        "impact": "Effizienza da fabricaziun",
+        "users": "Persunal da producziun"
+      },
+      "defrost": {
+        "title": "DeFROST – Observaziun da naiv",
+        "description": "Sistem avanzà per observar naiv e preverir lavinas cun datas da satellites e IA, furnind intelligientscha ambientala en temp real per segirezza.",
+        "impact": "Segirezza & perscrutaziun",
+        "users": "Stations da skis & perscrutaders"
+      }
+    },
+    "technologies": {
+      "reactNative": "React Native",
+      "typescript": "TypeScript",
+      "stripe": "Stripe",
+      "mongodb": "MongoDB",
+      "nodejs": "Node.js",
+      "react": "React",
+      "mapbox": "Mapbox",
+      "postgresql": "PostgreSQL",
+      "conservationTech": "Tecnologia da conservaziun",
+      "strategicPlanning": "Planisaziun strategica",
+      "sustainableFashion": "Moda persistenta",
+      "wildlifeProtection": "Protecziun da selvaschina",
+      "shopify": "Shopify",
+      "activityPub": "ActivityPub",
+      "iot": "IoT",
+      "python": "Python",
+      "aiMl": "IA/ML",
+      "satelliteData": "Datas da satellites"
+    }
+  },
+  "contact": {
+    "title": "Metter en contact",
+    "subtitle": "A la tschertga d'in engaschament a temp plein per sa participar a projects cun muntada.",
+    "formTitle": "Trametta in messadi",
+    "formDescription": "Discutain sur d'opportunitads a temp plein. Jau cerch d'entrar en ina equipa per contribuir, crescher e construir products stupents ensemen.",
+    "name": "Num",
+    "email": "E‑mail",
+    "message": "Messadi",
+    "namePlaceholder": "Tes num",
+    "emailPlaceholder": "tieu.email@example.com",
+    "messagePlaceholder": "Raquenta da tia equipa, dal post u salidain simplicmain!",
+    "send": "Trametter",
+    "sending": "Tramettend…",
+    "success": "Messadi tramess cun success!",
+    "error": "Errur cun trametter. Emprova pli tard."
+  },
+  "languages": {
+    "title": "Linguas che jau sai",
+    "subtitle": "Communicaziun plurilingua tras differentas culturas e contexts.",
+    "proficiency": {
+      "native": "Lingua materna",
+      "c2": "C2",
+      "c1": "C1",
+      "b1": "B1"
+    },
+    "languages": {
+      "english": "Englais",
+      "french": "Franzos",
+      "spanish": "Spagnol",
+      "catalan": "Catalan",
+      "italian": "Talian",
+      "german": "Tudestg",
+      "portuguese": "Portugais",
+      "romansh": "Rumantsch"
+    }
+  }
+}
+

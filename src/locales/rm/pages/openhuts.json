@@ -1,0 +1,93 @@
+{
+  "header": {
+    "title": "Open Huts",
+    "tagline": "Plattafurma digitala revoluziunara per scuprir e reservar refugis da muntogna en tut il mund, abilitond turissem duradaivel e planificaziun cumpletta d'aventuras"
+  },
+  "overview": {
+    "title": "Visiun dal project",
+    "p1": "OpenHuts è ina plattafurma innovativa che connecta pedestras e muntanhers cun refugis da muntogna en tut il mund. Il project facilitescha la scuprida, reservaziun e gestiun da stadas en refugis remots.",
+    "p2": "La plattafurma offrescha infurmaziuns detagliadas davart refugis, inclus la posiziun, cunforts, disponibilitad e reservaziuns online. Ils utilisaders pon explorar rutas, planisar viadis e reservar stadas cun facilitad.",
+    "p3": "OpenHuts promovescha il turissem duradaivel e la preservaziun dals refugis da muntogna, connectond communitads localas cun viagiaders globalas.",
+    "visitSite": "Visitar OpenHuts",
+    "demo": "Demo"
+  },
+  "quick": {
+    "discovery": {
+      "title": "Scuprida",
+      "items": ["Refugis", "Rutas", "Destinaziuns"]
+    },
+    "booking": {
+      "title": "Reservaziuns",
+      "items": ["Online", "Gestiun", "Confermaziun"]
+    },
+    "community": {
+      "title": "Comunitad",
+      "items": ["Emprovas", "Partiziun", "Connectivitad"]
+    }
+  },
+  "features": {
+    "title": "Caracteristicas Principalas",
+    "items": [
+      { "title": "Catalog Global", "desc": "Basa da datas cumpletta da refugis da muntogna en tut il mund" },
+      { "title": "Sistem da Reservaziuns", "desc": "Plattafurma da reservaziuns online integrada cun confermaziuns automaticas" },
+      { "title": "Exploraziun da Rutas", "desc": "Utensils per scuprir e planisar rutas da pedestra" },
+      { "title": "Infurmaziuns Detagliadas", "desc": "Datas cumplets davart cunforts, pretschs e disponibilitad" },
+      { "title": "Emprovas da Comunitad", "desc": "Sistem da feedback e emprovas d'utilisaders" },
+      { "title": "Applicaziun Mobile", "desc": "Access offline per utilisaziun en zonas remotas" }
+    ]
+  },
+  "technology": {
+    "title": "Architectura Tecnologica",
+    "platform": {
+      "title": "Plattafurma Web",
+      "badges": ["React", "Node.js", "MongoDB", "API RESTful"]
+    },
+    "mobile": {
+      "title": "Applicaziun Mobile",
+      "badges": ["React Native", "Offline Sync", "GPS", "Notificaziuns"]
+    },
+    "mapping": {
+      "title": "Sistem da Cartografia",
+      "badges": ["OpenStreetMap", "Geolocalisaziun", "Rutas", "Terren"]
+    }
+  },
+  "applications": {
+    "title": "Applicaziuns e Secturs",
+    "tourism": {
+      "title": "Turissem da Muntogna",
+      "items": [
+        { "title": "Pedestras", "desc": "Planisaziun e reservaziun da rutas da pedestra" },
+        { "title": "Alpinissem", "desc": "Access a refugis per activitads da scalada" },
+        { "title": "Turissem Duradaivel", "desc": "Promoziun da praticas responsablas en la muntogna" }
+      ]
+    },
+    "community": {
+      "title": "Comunitad da Muntogna",
+      "items": [
+        { "title": "Partiziun Experienzas", "desc": "Plattafurma per viagiaders da partir istorgias e tips" },
+        { "title": "Connectivitad", "desc": "Ligaziun tranter pedestras e gesturs da refugis" },
+        { "title": "Preservaziun", "desc": "Sustegn al mantegniment e conservaziun da refugis" }
+      ]
+    }
+  },
+  "impact": {
+    "title": "Impact e Resultats",
+    "metrics": [
+      { "title": "Refugis", "desc": "Dapli che 5.000 refugis enlistads en tut il mund" },
+      { "title": "Utilisaders", "desc": "Dapli che 100.000 pedestras registrads sin la plattafurma" },
+      { "title": "Reservaziuns", "desc": "Sistem processescha dapli che 50.000 reservaziuns annualmain" },
+      { "title": "Pajais", "desc": "Present en dapli che 30 pajais cun refugis da muntogna" }
+    ]
+  },
+  "future": {
+    "title": "Visiun dal futur",
+    "p1": "OpenHuts planisescha da s'expander en novs mercats e integrar tecnologias emergentas sco realitad augmentada per visualisaziun da rutas e refugis.",
+    "p2": "Ils plans futurs includan il svilup da funcziunalitads da intelligenza artificiala per raccomandaziuns personalisadas e l'expansiun per includer auters tips da logier outdoor.",
+    "backToAll": "Turnar a tut ils projects"
+  },
+  "nav": {
+    "prev": "Wegaw",
+    "next": "Reserve"
+  }
+}
+

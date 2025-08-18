@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -12,6 +13,7 @@ interface ProjectDetailProps {
 }
 
 export function ProjectDetail({ project, onBack, onAddToCart }: ProjectDetailProps) {
+  const { t } = useTranslation('reserve');
   const [cellSize] = useState(10);
   const [selected, setSelected] = useState(new Set<number>());
   const grid = useMemo(() => ({ rows: 10, cols: 10, cells: 100 }), []);
@@ -31,9 +33,9 @@ export function ProjectDetail({ project, onBack, onAddToCart }: ProjectDetailPro
   return (
     <Card>
       <CardHeader className="flex items-center justify-between">
-        <Button size="sm" variant="outline" onClick={onBack}>Back</Button>
-        <CardTitle>{project.name}</CardTitle>
-        <Badge>{project.country}</Badge>
+        <Button size="sm" variant="outline" onClick={onBack}>{t('navigation.back')}</Button>
+        <CardTitle>{t(`projects.${project.id}`)}</CardTitle>
+        <Badge>{t(`countries.${project.country}`)}</Badge>
       </CardHeader>
       <CardContent>
         <div className="relative w-full aspect-square rounded-xl overflow-hidden">
@@ -47,8 +49,8 @@ export function ProjectDetail({ project, onBack, onAddToCart }: ProjectDetailPro
         <div className="mt-4 text-center text-xl font-bold">{totalM2} m² · ${totalPrice.toFixed(2)}</div>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button variant="outline" onClick={() => setSelected(new Set())}>Clear</Button>
-        <Button onClick={() => onAddToCart({ project, m2: totalM2, amount: totalPrice })} disabled={totalM2===0}>Add</Button>
+        <Button variant="outline" onClick={() => setSelected(new Set())}>{t('garden.clearAndReload').split(' & ')[0]}</Button>
+        <Button onClick={() => onAddToCart({ project, m2: totalM2, amount: totalPrice })} disabled={totalM2===0}>{t('checkout.totalCost')}</Button>
       </CardFooter>
     </Card>
   );

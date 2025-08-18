@@ -20,9 +20,9 @@ export function ProjectNavigationButton({ direction, projectName, onClick }: Pro
       onClick={onClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`fixed ${buttonPosition} top-1/2 transform -translate-y-1/2 group z-40 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 dark:bg-gray-800/90 hover:bg-gray-100/95 dark:hover:bg-gray-700/95 text-gray-700 dark:text-gray-200 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 hidden sm:flex`}
+      className={`fixed ${buttonPosition} top-1/2 transform -translate-y-1/2 group z-40 w-14 h-14 bg-white/90 dark:bg-gray-800/90 hover:bg-gray-100/95 dark:hover:bg-gray-700/95 text-gray-700 dark:text-gray-200 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 hidden sm:flex`}
     >
-      <ArrowLeft className={`h-5 w-5 sm:h-6 sm:w-6 ${arrowClass}`} />
+      <ArrowLeft className={`h-7 w-7 ${arrowClass}`} />
       
       {/* Tooltip */}
       {shouldShowTooltip && (

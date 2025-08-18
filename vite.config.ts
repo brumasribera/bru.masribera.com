@@ -8,6 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./"),
+      "tslib": path.resolve(__dirname, "node_modules/tslib/tslib.es6.js")
     },
   },
   build: {

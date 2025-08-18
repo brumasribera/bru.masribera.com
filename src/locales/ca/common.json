@@ -1,0 +1,37 @@
+{
+  "backToProjects": "Tornar als projectes",
+  "backToAllProjects": "Tornar a tots els projectes",
+  "moreDetails": "Més detalls",
+  "openApp": "Obrir app",
+  "experience": "Experiència",
+  "education": "Educació",
+  "projects": "Projectes",
+  "contact": "Contacte",
+  "linkedin": "LinkedIn",
+  "github": "GitHub",
+  "cv": "CV",
+  "viewCvInBrowser": "Veure el CV al navegador",
+  "downloadCvPdf": "Descarregar CV PDF",
+  "targetUsers": "Usuaris objectiu",
+  "developmentStatus": "Estat del desenvolupament",
+  "globalReach": "Abast global",
+  "technologyStack": "Tecnologies",
+  "frontend": "Frontend",
+  "backend": "Backend",
+  "languages": {
+    "currentLanguage": "Idioma actual"
+  },
+  "footer": {
+    "tagline": "Enginyer Frontend i UX | Remot-friendly",
+    "madeWith": "Fet amb 🥰 a Suïssa",
+    "copyright": "© {{year}} Bru Mas Ribera. Tots els drets reservats.",
+    "tooltips": {
+      "email": "Enviar-me un email",
+      "linkedin": "Veure el meu perfil de LinkedIn",
+      "github": "Veure el meu perfil de GitHub",
+      "cv": "Veure el meu CV"
+    }
+  }
+}
+
+

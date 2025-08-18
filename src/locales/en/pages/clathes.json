@@ -1,0 +1,100 @@
+{
+  "header": {
+    "title": "Clathes",
+    "tagline": "Protecting species, ecosystems, and human rights through sustainable fashion, creating global impact with every purchase and conservation action worldwide",
+    "builtWith": "Built with Shopify"
+  },
+  "overview": {
+    "title": "Project vision",
+    "p1": "Clathes combines sustainable fashion with global impact, creating a unique platform where every purchase contributes to protecting endangered species, preserving ecosystems, and supporting human rights causes worldwide.",
+    "p2": "Our inaugural project focuses on the vaquita porpoise, the world's most endangered marine mammal. With only an estimated 10-20 vaquitas remaining in the wild, we've developed a comprehensive strategic plan involving satellite monitoring, AI-powered poaching detection, and coordinated conservation efforts in the Gulf of California.",
+    "p3": "Beyond vaquitas, Clathes will expand to address other critical environmental and social issues, from rainforest preservation to clean water access, making sustainable fashion a powerful force for positive change across the planet.",
+    "instagramCta": "Follow the project"
+  },
+  "stats": {
+    "first": { "title": "First", "desc": "Project: Vaquitas" },
+    "global": { "title": "Global", "desc": "Impact reach" },
+    "multiple": { "title": "Multiple", "desc": "Causes supported" }
+  },
+  "strategy": {
+    "title": "Strategic plan to save vaquitas",
+    "subtitle": "Our comprehensive approach combines technology, collaboration, and direct action to protect the vaquita population",
+    "overviewTitle": "Strategic overview",
+    "goal": "Central goal: Vaquitas population starts increasing",
+    "columns": {
+      "monitoring": { "title": "Monitoring", "items": ["AI-powered satellite monitoring and acoustic tracking systems"] },
+      "terrain": { "title": "Terrain action", "items": ["Direct intervention and collaboration with local authorities"] },
+      "totoaba": { "title": "Totoaba", "items": ["Addressing the root cause of vaquita bycatch"] }
+    },
+    "details": {
+      "title": "Monitoring & detection systems",
+      "satelliteTitle": "Planet Labs & Google Earth Engine",
+      "satelliteItems": [
+        "Use AI to detect poaching ships",
+        "Send signal when approaching vaquitas area",
+        "Local authorities and NGO receive alert"
+      ],
+      "acousticTitle": "Acoustic monitoring network",
+      "acousticItems": [
+        "Set up microphones distributed across all areas",
+        "Help track vaquita movements",
+        "Detect stress situations"
+      ],
+      "taggingTitle": "Advanced tagging & sensors",
+      "taggingItems": [
+        "Tag all encountered vaquitas",
+        "Top world professionals",
+        "Fast interventions, non-invasive"
+      ],
+      "transmissionTitle": "Real-time data transmission",
+      "transmissionItems": [
+        "Send position and heart rate every 5-15 min",
+        "Detect weird patterns indicating trapped vaquitas",
+        "Monitor stress levels in dangerous situations"
+      ]
+    }
+  },
+  "terrain": {
+    "title": "Terrain action & collaboration",
+    "seaShepherd": "Sea Shepherd Partnership",
+    "stopPoachers": { "title": "Stop poachers", "items": ["Before setting up nets", "Close collaboration with local authorities"] },
+    "collaboration": { "title": "Ensure proper collaboration", "items": ["Sue any weird behavior", "Work with government for alignment"] },
+    "coordination": {
+      "title": "Coordinate local actors",
+      "cards": [
+        { "title": "Local authorities", "desc": "Direct collaboration and support" },
+        { "title": "Other NGOs", "desc": "Strategic partnerships" },
+        { "title": "Local communities", "desc": "Vaquita watch tours for economic benefit" }
+      ]
+    }
+  },
+  "nextSteps": {
+    "title": "Next steps",
+    "immediate": {
+      "title": "Immediate actions",
+      "items": ["Start tagging vaquitas", "Setup collaborations for satellite ships monitoring"]
+    },
+    "strategic": {
+      "title": "Strategic coordination",
+      "desc": "Coordinate all actors through strategic meetings to discuss and refine our conservation strategy"
+    }
+  },
+  "gallery": {
+    "vaquita": "The vaquita",
+    "hands": "Hands-on protection",
+    "shirts": "Bio T‑shirts funding action",
+    "learnMore": "Learn more about vaquitas",
+    "video1": { "title": "Vaquita conservation efforts", "desc": "Watch this informative video about the critical situation facing vaquitas and ongoing conservation efforts." },
+    "video2": { "title": "Protecting the vaquita", "desc": "Learn about the urgent need to protect vaquitas and the actions being taken to save this endangered species." }
+  },
+  "nav": {
+    "prev": "OpenHuts",
+    "next": "MoodleNet",
+    "backToAll": "Back to all projects"
+  },
+  "links": {
+    "backToProjects": "Back to projects"
+  }
+}
+
+

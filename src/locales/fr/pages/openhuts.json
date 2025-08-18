@@ -1,0 +1,93 @@
+{
+  "header": {
+    "title": "Open Huts",
+    "tagline": "Plateforme révolutionnaire pour découvrir et réserver des refuges de montagne dans le monde entier, favorisant le tourisme durable et l'aventure",
+    "back": "Retour aux projets"
+  },
+  "overview": {
+    "title": "Vision du projet",
+    "p1": "OpenHuts est une plateforme innovante qui connecte randonneurs et alpinistes avec des refuges de montagne du monde entier. Le projet se concentre sur la facilitation de la découverte et de la réservation de refuges, offrant des informations détaillées sur les itinéraires, conditions et disponibilité.",
+    "p2": "La plateforme intègre des technologies avancées pour la gestion des réservations, la navigation GPS et la connexion communautaire entre amateurs de montagne.",
+    "p3": "OpenHuts promeut le tourisme durable et la conservation des environnements naturels de montagne.",
+    "visitSite": "Visiter OpenHuts",
+    "app": "Télécharger l'App"
+  },
+  "quick": {
+    "discovery": {
+      "title": "Découverte",
+      "items": ["Refuges Globaux", "Itinéraires Détaillés", "Réservations Faciles"]
+    },
+    "technology": {
+      "title": "Technologie",
+      "items": ["GPS Intégré", "Réservations en Temps Réel", "Communauté Active"]
+    },
+    "sustainability": {
+      "title": "Durabilité",
+      "items": ["Tourisme Responsable", "Conservation Environnementale", "Développement Local"]
+    }
+  },
+  "features": {
+    "title": "Caractéristiques Principales",
+    "items": [
+      { "title": "Base de Données Globale", "desc": "Accès à des milliers de refuges de montagne dans le monde entier" },
+      { "title": "Navigation GPS Intégrée", "desc": "Itinéraires détaillés et navigation en temps réel" },
+      { "title": "Système de Réservation", "desc": "Réservations instantanées avec confirmation automatique" },
+      { "title": "Informations Détaillées", "desc": "Conditions météorologiques, disponibilité et services" },
+      { "title": "Communauté Active", "desc": "Avis, photos et expériences partagées par les utilisateurs" },
+      { "title": "App Mobile Native", "desc": "Fonctionnalité complète disponible hors ligne pour aventures en montagne" }
+    ]
+  },
+  "technology": {
+    "title": "Architecture Technologique",
+    "mapping": {
+      "title": "Cartographie et Navigation",
+      "badges": ["OpenStreetMap", "GPS Intégré", "Itinéraires Hors Ligne", "Navigation 3D"]
+    },
+    "booking": {
+      "title": "Système de Réservation",
+      "badges": ["Réservations en Temps Réel", "Confirmation Automatique", "Gestion de Disponibilité", "Paiements Sécurisés"]
+    },
+    "mobile": {
+      "title": "Développement Mobile",
+      "badges": ["React Native", "Fonctionnalité Hors Ligne", "Synchronisation", "UX Optimisée"]
+    }
+  },
+  "destinations": {
+    "title": "Destinations et Refuges",
+    "europe": {
+      "title": "Europe",
+      "items": [
+        { "title": "Alpes", "desc": "Refuges classiques en Suisse, France, Italie et Autriche" },
+        { "title": "Pyrénées", "desc": "Réseau étendu de refuges entre Espagne et France" },
+        { "title": "Scandinavie", "desc": "Refuges modernes en Norvège, Suède et Finlande" }
+      ]
+    },
+    "americas": {
+      "title": "Amériques",
+      "items": [
+        { "title": "Rocheuses", "desc": "Refuges historiques aux États-Unis et Canada" },
+        { "title": "Andes", "desc": "Refuges de haute montagne au Chili, Argentine et Pérou" },
+        { "title": "Alaska", "desc": "Refuges éloignés pour aventures extrêmes" }
+      ]
+    }
+  },
+  "impact": {
+    "title": "Impact et Résultats",
+    "metrics": [
+      { "title": "Refuges", "desc": "Plus de 5,000 refuges disponibles sur la plateforme" },
+      { "title": "Utilisateurs", "desc": "Plus de 100,000 randonneurs enregistrés" },
+      { "title": "Réservations", "desc": "Plus de 50,000 réservations traitées avec succès" },
+      { "title": "Pays", "desc": "Présent dans plus de 30 pays différents" }
+    ]
+  },
+  "future": {
+    "title": "Vision d'avenir",
+    "p1": "OpenHuts vise à s'étendre vers de nouvelles régions et intégrer des technologies émergentes comme la réalité augmentée pour des expériences de navigation améliorées.",
+    "p2": "Les plans futurs incluent l'intégration avec systèmes de transport public et l'implémentation de programmes de fidélisation pour utilisateurs fréquents.",
+    "backToAll": "Retour à tous les projets"
+  },
+  "nav": {
+    "prev": "Pomoca",
+    "next": "Reserve"
+  }
+}

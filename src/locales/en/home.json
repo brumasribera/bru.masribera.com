@@ -1,0 +1,263 @@
+{
+  "hero": {
+    "location": "Based in Meiringen, Switzerland",
+    "subtitle": "Frontend & UX Engineer | Remote-friendly",
+    "yearsExperience": "8+ years of professional experience"
+  },
+  "about": {
+    "title": "About me",
+    "description": "End‑to‑end product development from research to production, with a focus on creating impact‑driven solutions that users love.",
+    "frontend": { "title": "Frontend development", "desc": "React, TypeScript, performance & polished UI." },
+    "ux": { "title": "UX design", "desc": "Research‑led, accessible and elegant flows." },
+    "research": { "title": "User research", "desc": "Interviews, surveys and data‑driven insights." },
+    "innovation": { "title": "Innovation", "desc": "New tech and methods for sustainable impact." }
+  },
+  "experience": {
+    "title": "Professional experience",
+    "subtitle": "A journey through diverse roles in tech, from startups to established companies, always focused on creating meaningful user experiences.",
+    "showMore": "Show more",
+    "showLess": "Show less",
+    "moreDetails": "More details",
+    "companies": {
+      "openHuts": {
+        "name": "Open Huts",
+        "position": "Founder & Project Lead",
+        "location": "Remote",
+        "period": "2014 - Present",
+        "description": "Find hidden places to sleep out in the wild. Help protect nature by enjoying it."
+      },
+      "moodle": {
+        "name": "Moodle",
+        "position": "Frontend & UX Engineer",
+        "location": "Remote",
+        "period": "2021 - 2024",
+        "description": "Developing MoodleNet, a network to share and curate open educational resources."
+      },
+      "oberalp": {
+        "name": "Oberalp Group",
+        "position": "User Experience Designer",
+        "location": "Lausanne, Switzerland",
+        "period": "2020",
+        "description": "Redesigning the production interfaces of the ski touring skins world leader, Pomoca."
+      },
+      "wegaw": {
+        "name": "Wegaw",
+        "position": "Solution Architect",
+        "location": "Lausanne, Switzerland",
+        "period": "2018",
+        "description": "Developing an European Space Agency project to track snow cover from satellites worldwide."
+      },
+      "pix4d": {
+        "name": "Pix4D",
+        "position": "Junior Web Developer",
+        "location": "Lausanne, Switzerland",
+        "period": "2017 - 2018",
+        "description": "Developing a cloud platform to upload, process and analyze 3D models from drone images."
+      }
+    },
+    "skills": {
+      "react": "React",
+      "next": "Next",
+      "typescript": "TypeScript",
+      "supabase": "Supabase",
+      "uxResearch": "UX research",
+      "figma": "Figma",
+      "uxDesign": "UX design",
+      "openSource": "Open source",
+      "educationalTechnology": "Educational technology",
+      "behavioralInterviewing": "Behavioral interviewing",
+      "usabilityTesting": "Usability testing",
+      "productionInterfaces": "Production interfaces",
+      "javascript": "JavaScript",
+      "kubernetes": "Kubernetes",
+      "satelliteData": "Satellite data",
+      "esaProjects": "ESA projects",
+      "snowCoverTracking": "Snow cover tracking",
+      "angular4": "Angular 4",
+      "rxjs": "RxJS",
+      "cloudPlatform": "Cloud platform",
+      "3dModeling": "3D modeling",
+      "droneTechnology": "Drone technology"
+    }
+  },
+  "education": {
+    "title": "Education & certifications",
+    "subtitle": "Continuous learning across technical, design, and business disciplines to deliver comprehensive solutions.",
+    "showMore": "Show more",
+    "showLess": "Show less",
+    "degrees": {
+      "computerEngineering": {
+        "degree": "Engineer's Degree, Computer Engineering",
+        "institution": "Universitat de Barcelona",
+        "period": "2011 - 2016",
+        "location": "Barcelona, Catalonia",
+        "description": "Bachelor's degree in Computer Engineering with focus on web development and software architecture."
+      },
+      "uxDesigner": {
+        "degree": "UX Designer Nanodegree",
+        "institution": "Udacity",
+        "period": "2020 - 2020",
+        "location": "Remote",
+        "description": "Specialized course in UX design principles, user research, prototyping, and user testing methodologies."
+      },
+      "mountainLeader": {
+        "degree": "UIMLA Mountain Leader, Alpine Hiking Guide",
+        "institution": "ICEMP",
+        "period": "2019 - 2021",
+        "location": "Pyrenees",
+        "description": "Professional certification for mountain leadership and alpine hiking guidance."
+      },
+      "mba": {
+        "degree": "ThePowerMBA, MBA",
+        "institution": "ThePowerMBA",
+        "period": "2020 - 2021",
+        "location": "Remote",
+        "description": "Master of Business Administration focusing on modern business strategies and digital transformation."
+      },
+      "architecture": {
+        "degree": "Architecture",
+        "institution": "Universitat Politècnica de Catalunya",
+        "period": "2009 - 2011",
+        "location": "Barcelona, Catalonia",
+        "description": "Studies in Architecture providing foundation in design thinking and spatial problem solving."
+      }
+    },
+    "skills": {
+      "webDevelopment": "Web development",
+      "softwareArchitecture": "Software architecture",
+      "problemSolving": "Problem solving",
+      "technicalFoundation": "Technical foundation",
+      "systemDesign": "System design",
+      "userResearch": "User research",
+      "prototyping": "Prototyping",
+      "userTesting": "User testing",
+      "designThinking": "Design thinking",
+      "userCenteredDesign": "User‑centered design",
+      "leadership": "Leadership",
+      "environmentalAwareness": "Environmental awareness",
+      "riskAssessment": "Risk assessment",
+      "teamManagement": "Team management",
+      "sustainability": "Sustainability",
+      "outdoorPlanning": "Outdoor planning",
+      "businessStrategy": "Business strategy",
+      "digitalTransformation": "Digital transformation",
+      "productManagement": "Product management",
+      "marketAnalysis": "Market analysis",
+      "strategicThinking": "Strategic thinking",
+      "innovation": "Innovation",
+      "spatialProblemSolving": "Spatial problem solving",
+      "creativeDesign": "Creative design",
+      "visualCommunication": "Visual communication",
+      "3dModeling": "3D modeling"
+    }
+  },
+  "projects": {
+    "featuredTitle": "Featured projects",
+    "featuredSubtitle": "A showcase of my work across frontend development, UX design, and product innovation. From open-source platforms to nature conservation tech.",
+    "moreDetails": "More details",
+    "audience": {
+      "natureEnthusiasts": "Nature enthusiasts",
+      "hikersOutdoor": "Hikers & outdoor enthusiasts",
+      "conservationCommunity": "Conservation community",
+      "educatorsLearners": "Educators & learners"
+    },
+    "solution": "Enterprise solution",
+    "openSource": "Open source",
+    "projects": {
+      "reserve": {
+        "title": "Reserve",
+        "description": "Mobile-first app that lets anyone protect nature by funding habitat restoration and protection one square meter at a time with transparent impact tracking.",
+        "impact": "Nature protection",
+        "users": "Nature enthusiasts"
+      },
+      "openHuts": {
+        "title": "Open Huts",
+        "description": "Platform connecting hikers with mountain refuges worldwide, promoting sustainable tourism and outdoor exploration across global mountain regions.",
+        "impact": "Sustainable tourism",
+        "users": "Hikers & outdoor enthusiasts"
+      },
+      "clathes": {
+        "title": "Clathes",
+        "description": "Protecting endangered species through sustainable fashion, creating global impact with every purchase and strategic conservation initiative worldwide.",
+        "impact": "Endangered species protection",
+        "users": "Conservation community"
+      },
+      "moodleNet": {
+        "title": "MoodleNet Platform",
+        "description": "Decentralized learning platform enabling educators to share and discover open educational resources worldwide, promoting collaborative learning.",
+        "impact": "Open education",
+        "users": "Educators & learners"
+      },
+      "pomoca": {
+        "title": "Pomoca Production Interface",
+        "description": "Manufacturing control system for ski equipment production, optimizing workflow and quality assurance with modern digital interfaces.",
+        "impact": "Manufacturing efficiency",
+        "users": "Production staff"
+      },
+      "defrost": {
+        "title": "DeFROST Snow Monitoring",
+        "description": "Advanced snow monitoring and avalanche prediction system using satellite data and AI, providing real-time environmental intelligence for safety.",
+        "impact": "Safety & research",
+        "users": "Ski resorts & researchers"
+      }
+    },
+    "technologies": {
+      "reactNative": "React Native",
+      "typescript": "TypeScript",
+      "stripe": "Stripe",
+      "mongodb": "MongoDB",
+      "nodejs": "Node.js",
+      "react": "React",
+      "mapbox": "Mapbox",
+      "postgresql": "PostgreSQL",
+      "conservationTech": "Conservation Tech",
+      "strategicPlanning": "Strategic Planning",
+      "sustainableFashion": "Sustainable Fashion",
+      "wildlifeProtection": "Wildlife Protection",
+      "shopify": "Shopify",
+      "activityPub": "ActivityPub",
+      "iot": "IoT",
+      "python": "Python",
+      "aiMl": "AI/ML",
+      "satelliteData": "Satellite Data"
+    }
+  },
+  "contact": {
+    "title": "Get in touch",
+    "subtitle": "Looking for full-time opportunities to join a team and contribute to meaningful projects.",
+    "formTitle": "Send me a message",
+    "formDescription": "Let's discuss full-time opportunities. I'm looking to join a team where I can grow, contribute, and build amazing products together.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "your.email@example.com",
+    "messagePlaceholder": "Tell me about your team, the role you're hiring for, or just say hello!",
+    "send": "Send message",
+    "sending": "Sending...",
+    "success": "Message sent successfully!",
+    "error": "Error sending message. Please try again."
+  },
+  "languages": {
+    "title": "Languages I know",
+    "subtitle": "Multilingual communication across different cultures and contexts.",
+    "proficiency": {
+      "native": "Native",
+      "c2": "C2",
+      "c1": "C1",
+      "b1": "B1"
+    },
+    "languages": {
+      "english": "English",
+      "french": "French",
+      "spanish": "Spanish",
+      "catalan": "Catalan",
+      "italian": "Italian",
+      "german": "German",
+      "portuguese": "Portuguese",
+      "romansh": "Romansh"
+    }
+  }
+}
+
+

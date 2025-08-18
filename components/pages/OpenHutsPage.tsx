@@ -7,9 +7,14 @@ import { ProjectNavigationButton } from '../navigation/ProjectNavigationButton'
 import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation'
 import { ImageModal } from '../modals/ImageModal'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export function OpenHutsPage() {
   const { navigateToProject, navigateToHome } = useProjectNavigation()
+  const { t } = useTranslation(['openhuts', 'common'])
+  const targetUsers = t('openhuts:cards.targetUsers.items', { returnObjects: true }) as string[]
+  const developmentStatus = t('openhuts:cards.developmentStatus.items', { returnObjects: true }) as string[]
+  const globalReach = t('openhuts:cards.globalReach.items', { returnObjects: true }) as string[]
   
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   
@@ -30,15 +35,23 @@ export function OpenHutsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Hero Header */}
-      <div className="bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div 
+        className="text-white py-20 relative overflow-hidden"
+        style={{
+          background: 'linear-gradient(45deg, #059669, #10b981, #14b8a6, #0d9488, #0891b2, #06b6d4)',
+          backgroundSize: '200% 200%',
+          animation: 'diagonal-gradient 12s ease-in-out infinite'
+        }}
+      >
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-8">
             <button 
               onClick={navigateToHome}
               className="flex items-center gap-2 text-green-100 hover:text-white transition-colors"
             >
               <ArrowLeft className="h-5 w-5" />
-              <span>Back to Projects</span>
+              <span>{t('common:backToProjects')}</span>
             </button>
           </div>
           
@@ -53,11 +66,11 @@ export function OpenHutsPage() {
               </div>
             </div>
             
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
-              Open Huts
+            <h1 className="text-5xl sm:text-6xl lg:text-6xl font-bold mb-6">
+              {t('openhuts:header.title')}
             </h1>
             <p className="text-2xl text-green-100 max-w-4xl mx-auto leading-relaxed">
-              A revolutionary platform connecting nature enthusiasts with mountain huts worldwide, enabling sustainable outdoor tourism and adventure planning
+              {t('openhuts:header.tagline')}
             </p>
           </div>
         </div>
@@ -69,18 +82,15 @@ export function OpenHutsPage() {
           <Card className="lg:col-span-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg">
             <CardHeader>
               <CardTitle className="text-3xl font-bold text-gray-900 dark:text-white">
-                Project Vision
+                {t('overview.title')}
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-                Open Huts Nature Network revolutionizes how outdoor enthusiasts discover, book, and plan 
-                mountain adventures. As founder and lead developer, I created a comprehensive ecosystem 
-                for multi-hut route planning across the world's most beautiful mountain regions.
+                {t('overview.p1')}
               </p>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-                The platform addresses the need for accessible mountain accommodations while promoting 
-                sustainable outdoor tourism and supporting local mountain communities.
+                {t('overview.p2')}
               </p>
             </CardContent>
           </Card>
@@ -90,11 +100,11 @@ export function OpenHutsPage() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Users className="h-6 w-6 text-green-600" />
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Target Users</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('cards.targetUsers.title')}</h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400">Hikers & Trail Runners</p>
-                <p className="text-gray-600 dark:text-gray-400">Climbers & Mountaineers</p>
-                <p className="text-gray-600 dark:text-gray-400">Nature Enthusiasts</p>
+                {targetUsers.map((item) => (
+                  <p key={item} className="text-gray-600 dark:text-gray-400">{item}</p>
+                ))}
               </CardContent>
             </Card>
 
@@ -102,11 +112,11 @@ export function OpenHutsPage() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Calendar className="h-6 w-6 text-blue-600" />
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Development Status</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('cards.developmentStatus.title')}</h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400">Research & Prototyping</p>
-                <p className="text-gray-600 dark:text-gray-400">Core Architecture Design</p>
-                <p className="text-gray-600 dark:text-gray-400">MVP Development</p>
+                {developmentStatus.map((item) => (
+                  <p key={item} className="text-gray-600 dark:text-gray-400">{item}</p>
+                ))}
               </CardContent>
             </Card>
 
@@ -114,11 +124,11 @@ export function OpenHutsPage() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Globe2 className="h-6 w-6 text-purple-600" />
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Global Reach</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('cards.globalReach.title')}</h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400">European Alps</p>
-                <p className="text-gray-600 dark:text-gray-400">North American Rockies</p>
-                <p className="text-gray-600 dark:text-gray-400">Himalayan Region</p>
+                {globalReach.map((item) => (
+                  <p key={item} className="text-gray-600 dark:text-gray-400">{item}</p>
+                ))}
               </CardContent>
             </Card>
           </div>
@@ -127,7 +137,7 @@ export function OpenHutsPage() {
         {/* Key Features */}
         <div className="mb-20">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">
-            Key Features
+            {t('features.title')}
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -135,10 +145,10 @@ export function OpenHutsPage() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Search className="h-8 w-8 text-blue-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Smart Search</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{t('features.search.title')}</h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Advanced filtering by location, amenities, availability, and user preferences
+                  {t('features.search.desc')}
                 </p>
               </CardContent>
             </Card>
@@ -147,10 +157,10 @@ export function OpenHutsPage() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Route className="h-8 w-8 text-green-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Route Planning</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{t('features.route.title')}</h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Multi-hut route planning with elevation profiles and difficulty ratings
+                  {t('features.route.desc')}
                 </p>
               </CardContent>
             </Card>
@@ -159,10 +169,10 @@ export function OpenHutsPage() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Tent className="h-8 w-8 text-purple-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Hut Management</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{t('features.hut.title')}</h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Comprehensive hut profiles with photos, amenities, and availability
+                  {t('features.hut.desc')}
                 </p>
               </CardContent>
             </Card>
@@ -171,10 +181,10 @@ export function OpenHutsPage() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Users2 className="h-8 w-8 text-orange-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Community</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{t('features.community.title')}</h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400">
-                  User reviews, ratings, and community-driven content
+                  {t('features.community.desc')}
                 </p>
               </CardContent>
             </Card>
@@ -183,10 +193,10 @@ export function OpenHutsPage() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Compass className="h-8 w-8 text-red-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Navigation</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{t('features.navigation.title')}</h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Offline maps and GPS integration for remote areas
+                  {t('features.navigation.desc')}
                 </p>
               </CardContent>
             </Card>
@@ -195,10 +205,10 @@ export function OpenHutsPage() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <MountainSnow className="h-8 w-8 text-cyan-600" />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Weather Integration</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{t('features.weather.title')}</h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Real-time weather data and seasonal considerations
+                  {t('features.weather.desc')}
                 </p>
               </CardContent>
             </Card>
@@ -208,7 +218,7 @@ export function OpenHutsPage() {
         {/* Platform Preview */}
         <div className="mb-20">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">
-            Platform Preview
+            {t('preview.title')}
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -222,11 +232,10 @@ export function OpenHutsPage() {
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                    Search Interface
+                    {t('preview.search.title')}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Advanced search functionality with filters for location, amenities, and availability. 
-                    Users can find the perfect mountain hut based on their specific requirements.
+                    {t('preview.search.desc')}
                   </p>
                 </div>
               </CardContent>
@@ -242,11 +251,10 @@ export function OpenHutsPage() {
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                    Hut Details
+                    {t('preview.hut.title')}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Comprehensive hut profiles with photos, amenities, availability, and user reviews. 
-                    Detailed information to help users make informed decisions.
+                    {t('preview.hut.desc')}
                   </p>
                 </div>
               </CardContent>
@@ -262,11 +270,10 @@ export function OpenHutsPage() {
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                    Route Planning
+                    {t('preview.route.title')}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Multi-hut route planning with interactive maps, elevation profiles, and difficulty ratings. 
-                    Plan your perfect mountain adventure with multiple stops.
+                    {t('preview.route.desc')}
                   </p>
                 </div>
               </CardContent>
@@ -277,14 +284,14 @@ export function OpenHutsPage() {
         {/* Technology Stack */}
         <div className="mb-20">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">
-            Technology Stack
+            {t('tech.title')}
           </h2>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Frontend
+                  {t('tech.frontend')}
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -308,7 +315,7 @@ export function OpenHutsPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Backend
+                  {t('tech.backend')}
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -371,7 +378,7 @@ export function OpenHutsPage() {
               <div className="text-center mb-20">
                 <button
                   onClick={navigateToHome}
-                  className="group relative inline-flex items-center gap-2 px-8 py-4 bg-green-600 hover:bg-green-700 text-white rounded-full font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl text-lg overflow-hidden"
+                  className="group relative inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 hover:from-green-300 hover:via-emerald-400 hover:to-teal-400 text-white rounded-xl font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl text-lg overflow-hidden"
                 >
                   {/* Shiny overlay effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>

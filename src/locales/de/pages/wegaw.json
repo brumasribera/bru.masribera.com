@@ -1,0 +1,90 @@
+{
+  "header": {
+    "title": "Wegaw",
+    "tagline": "Fortschrittliches Schneeüberwachungs- und Lawinenvorhersagesystem mit Satellitendaten und KI. Das DeFROST-Projekt demonstriert umfassende Umweltüberwachungsfähigkeiten",
+    "back": "Zurück zu den Projekten"
+  },
+  "overview": {
+    "title": "Projektvision",
+    "p1": "Wegaw revolutioniert die Schneeüberwachung mit dem DeFROST-Projekt und liefert nahezu Echtzeit-Daten über Schneebedeckung und -tiefe mit 20m Auflösung. Ihr Service hilft Outdoor-Plattformen, Tourismusbüros und Abenteuer-Enthusiasten, fundierte Entscheidungen zu treffen.",
+    "p2": "Da der Klimawandel die Winter verkürzt, benötigen Destinationen genaue Übersichten über die Schneebedingungen, um sicheren Nebensaison-Tourismus zu entwickeln. DeFROST kombiniert Satelliten- und Bodendaten, um die umfassenden Einblicke zu liefern, die sie benötigen.",
+    "p3": "Das Unternehmen expandiert in den Energiemarkt, insbesondere für Wasserkraftwerksbetreiber, und demonstriert den Wert von nahezu Echtzeit-Schneedaten bei der Wasserzuflussprognose.",
+    "visitSite": "Wegaw besuchen",
+    "esa": "ESA-Projekt"
+  },
+  "quick": {
+    "resolution": {
+      "title": "Auflösung",
+      "items": ["20m Räumliche Auflösung", "Tägliche Updates", "Globale Abdeckung"]
+    },
+    "applications": {
+      "title": "Anwendungen",
+      "items": ["Tourismus & Sicherheit", "Digitale Plattformen", "Energiemärkte"]
+    },
+    "technology": {
+      "title": "Technologie",
+      "items": ["Sentinel-Satelliten", "NASA-Sensoren", "KI-Analyse"]
+    }
+  },
+  "capabilities": {
+    "title": "Kernfähigkeiten",
+    "items": [
+      { "title": "Schneebedeckungskartierung", "desc": "Tägliche Schneebedeckungsdaten mit 20m Auflösung unter Verwendung europäischer Sentinel-Satelliten und NASA-Sensoren" },
+      { "title": "Schneetiefenschätzung", "desc": "Genaue Tiefenmessungen von Bodenstationen in Kombination mit Satellitendaten" },
+      { "title": "Lawinenrisikobewertung", "desc": "Offizielle landesweite Risikobewertungen in Zusammenarbeit mit dem SLF-Institut" },
+      { "title": "Wetterintegration", "desc": "Kombiniert mit Wetternowcasts und probabilistischer Logik für umfassende Analyse" },
+      { "title": "API-Integration", "desc": "Flexible Integrationsoptionen für mobile und Webanwendungen mit Echtzeitdaten" },
+      { "title": "KI-gestützte Analyse", "desc": "Fortschrittliche Algorithmen zur Vorhersage der Schneebedeckung unter anhaltender Wolkendecke" }
+    ]
+  },
+  "defrost": {
+    "title": "DeFROST-Projektentwicklung",
+    "intro": "DeFROST repräsentiert einen umfassenden Ansatz für die operative Schneeüberwachung, der Satellitenfernerkundung, Bodenvalidierung und fortschrittliche Analysen kombiniert, um handlungsrelevante Umweltintelligenz zu liefern.",
+    "stages": [
+      { "title": "Forschungs- und Validierungsphase", "desc": "Umfassende Analyse von Satellitendatenquellen und Bodenwahrheitsvalidierungsmethoden. Aufbau von Partnerschaften mit dem WSL-Institut für Schnee- und Lawinenforschung (SLF) für wissenschaftliche Validierung und Qualitätssicherungsprotokolle." },
+      { "title": "Technische Implementierung", "desc": "Entwicklung von Multi-Sensor-Fusionsalgorithmen, die Sentinel-2-, VIIRS- und MODIS-Datenströme integrieren. Implementierung von Wolkenerkennung und KI-gestützten Interpolationstechniken für kontinuierliche Abdeckung trotz atmosphärischer Störungen." },
+      { "title": "Kommerzieller Einsatz", "desc": "Erfolgreicher Einsatz des operativen Dienstes mit der Schweizer Destination Marketing Organization, die eine 95%ige Genauigkeit bei der Schneebedeckungserkennung demonstriert. Aufbau der API-Infrastruktur für nahtlose Integration mit Outdoor-Plattformen und Tourismusanwendungen." },
+      { "title": "Marktexpansion", "desc": "Expansion in Energiesektor-Anwendungen, insbesondere Wasserkraftbetriebe. Durchführung von Machbarkeitsstudien mit großen europäischen Versorgungsunternehmen, um den Wert bei der Wasserressourcenverwaltung und Zuflussprognose zu demonstrieren." }
+    ]
+  },
+  "technology": {
+    "title": "Technologiearchitektur",
+    "satellite": {
+      "title": "Satellitendatenquellen",
+      "badges": ["Sentinel-2", "VIIRS", "MODIS", "ESA"]
+    },
+    "ai": {
+      "title": "KI & Verarbeitung",
+      "badges": ["Maschinelles Lernen", "Probabilistische Logik", "Wolkenerkennung", "Echtzeitverarbeitung"]
+    }
+  },
+  "partners": {
+    "title": "Partner & Integration",
+    "research": {
+      "title": "Forschungspartner",
+      "items": [
+        { "title": "WSL-Institut für Schnee- und Lawinenforschung (SLF)", "desc": "Schweizer Spitzeninstitut für Schnee- und Lawinenforschung" },
+        { "title": "Europäische Weltraumorganisation (ESA)", "desc": "Unterstützung des DeFROST-Projekts durch das Business Applications-Programm" },
+        { "title": "Exolabs", "desc": "Innovativer Forschungs- und Entwicklungspartner für Umweltüberwachungslösungen" }
+      ]
+    },
+    "platform": {
+      "title": "Plattformintegration",
+      "items": [
+        { "title": "Strava", "desc": "Weltweit führende Fitness-Tracking-Plattform" },
+        { "title": "Swisstopo", "desc": "Schweizer Bundesamt für Landestopografie" },
+        { "title": "Skitourenguru", "desc": "Führende Ski-Touren- und Outdoor-Abenteuer-Plattform" }
+      ]
+    }
+  },
+  "future": {
+    "title": "Zukunftsvision",
+    "p1": "Wegaw expandiert in den Energiemarkt, insbesondere für Wasserkraftwerksbetreiber. Die aktuellen Produktfähigkeiten ermöglichen Machbarkeitsstudien, die den Wert von nahezu Echtzeit-Schneedaten bei der Wasserzuflussprognose demonstrieren.",
+    "p2": "Das Ziel ist es, erfolgreiche Machbarkeitsstudien in langfristige kommerzielle Vereinbarungen umzuwandeln und die Präsenz von Wegaw im Energiemarkt weiter auszubauen, während ihre Führungsposition bei Outdoor-Freizeit- und Tourismusanwendungen beibehalten wird.",
+    "backToAll": "Zurück zu allen Projekten"
+  },
+  "nav": {
+    "prev": "Pomoca",
+    "next": "Pix4D"
+  }
+}

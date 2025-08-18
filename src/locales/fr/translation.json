@@ -1,0 +1,194 @@
+{
+  "welcome": "Bienvenue",
+  "about": "À propos",
+  "contact": "Contact",
+  "home": "Accueil",
+  "experience": "Expérience",
+  "education": "Formation",
+  "projects": "Projets",
+  "cv": "CV",
+  "hero": {
+    "title": "Salut, je suis Bru Masribera",
+    "subtitle": "Développeur Full Stack & Designer UI/UX",
+    "description": "Passionné par la création d'expériences numériques belles, fonctionnelles et centrées sur l'utilisateur.",
+    "location": "Barcelone, Espagne",
+    "contactMe": "Me Contacter",
+    "downloadCV": "Télécharger CV"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "about": "À propos",
+    "experience": "Expérience",
+    "education": "Formation",
+    "projects": "Projets",
+    "contact": "Contact",
+    "cv": "CV"
+  },
+  "about": {
+    "title": "À propos de moi",
+    "description": "Je suis un développeur passionné qui aime créer des solutions innovantes et des expériences utilisateur exceptionnelles.",
+    "skills": "Compétences",
+    "interests": "Centres d'intérêt"
+  },
+  "experience": {
+    "title": "Expérience professionnelle",
+    "current": "Actuel",
+    "previous": "Précédent",
+    "responsibilities": "Responsabilités",
+    "technologies": "Technologies"
+  },
+  "education": {
+    "title": "Formation",
+    "degree": "Diplôme",
+    "university": "Université",
+    "period": "Période",
+    "gpa": "Moyenne"
+  },
+  "projects": {
+    "title": "Mes Projets",
+    "viewProject": "Voir le projet",
+    "openApp": "Ouvrir l'app",
+    "description": "Description",
+    "technologies": "Technologies utilisées",
+    "features": "Fonctionnalités"
+  },
+  "contact": {
+    "title": "Contactez-moi",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Message",
+    "send": "Envoyer",
+    "sending": "Envoi en cours...",
+    "sent": "Message envoyé !",
+    "error": "Erreur lors de l'envoi"
+  },
+  "footer": {
+    "rights": "Tous droits réservés",
+    "madeWith": "Fait avec 🥰 en Suisse",
+    "tagline": "Ingénieur Frontend et UX | Télétravail-friendly",
+    "copyright": "© {{year}} Bru Mas Ribera. Tous droits réservés.",
+    "tooltips": {
+      "email": "M'envoyer un email",
+      "linkedin": "Voir mon profil LinkedIn",
+      "github": "Voir mon profil GitHub",
+      "cv": "Voir mon CV"
+    }
+  },
+  "languages": {
+    "en": "Anglais",
+    "de": "Allemand",
+    "fr": "Français",
+    "es": "Espagnol",
+    "ca": "Catalan",
+    "it": "Italien",
+    "pt": "Portugais",
+    "rm": "Romanche"
+  },
+  "theme": {
+    "light": "Clair",
+    "dark": "Sombre"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "save": "Sauvegarder",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "close": "Fermer",
+    "open": "Ouvrir",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent"
+  },
+  "reserve": {
+    "title": "Reserve",
+    "description": "Système de gestion des réservations pour activités de plein air.",
+    "openApp": "Ouvrir l'app",
+    "openAppSmall": "Ouvrir l'app",
+    "prototype": "Prototype",
+    "loading": "Chargement de l'app Reserve...",
+    "loadingMessage": "Préparation de votre expérience d'aventure en plein air...",
+    "features": {
+      "title": "Fonctionnalités principales",
+      "reservations": "Gestion des réservations",
+      "calendar": "Calendrier interactif",
+      "maps": "Cartes de localisation",
+      "notifications": "Notifications intelligentes"
+    },
+    "technologies": "React, TypeScript, Leaflet, Tailwind CSS"
+  },
+  "clathes": {
+    "title": "Clathes",
+    "description": "Plateforme de mode durable pour vêtements écologiques.",
+    "viewProject": "Voir le projet",
+    "features": {
+      "title": "Fonctionnalités principales",
+      "sustainability": "Suivi de la durabilité",
+      "recommendations": "Recommandations écologiques",
+      "community": "Fonctionnalités communautaires"
+    },
+    "technologies": "React, Node.js, MongoDB, AWS"
+  },
+  "moodleNet": {
+    "title": "MoodleNet",
+    "description": "Plateforme de partage de ressources éducatives ouvertes.",
+    "viewProject": "Voir le projet",
+    "features": {
+      "title": "Fonctionnalités principales",
+      "sharing": "Partage de ressources",
+      "collaboration": "Apprentissage collaboratif",
+      "discovery": "Découverte de contenu"
+    },
+    "technologies": "PHP, MySQL, JavaScript, Bootstrap"
+  },
+  "openHuts": {
+    "title": "Open Huts",
+    "description": "Plateforme de réservation de refuges pour passionnés de plein air.",
+    "viewProject": "Voir le projet",
+    "features": {
+      "title": "Fonctionnalités principales",
+      "booking": "Système de réservation de refuges",
+      "routes": "Itinéraires de randonnée",
+      "weather": "Intégration météo"
+    },
+    "technologies": "React Native, Firebase, Google Maps API"
+  },
+  "pix4D": {
+    "title": "Pix4D",
+    "description": "Logiciel de photogrammétrie pour cartographie 3D.",
+    "viewProject": "Voir le projet",
+    "features": {
+      "title": "Fonctionnalités principales",
+      "photogrammetry": "Photogrammétrie avancée",
+      "3dMapping": "Cartographie 3D",
+      "surveying": "Outils d'arpentage"
+    },
+    "technologies": "C++, Python, OpenGL, CUDA"
+  },
+  "pomoca": {
+    "title": "Pomoca",
+    "description": "Équipement innovant de ski de randonnée et accessoires.",
+    "viewProject": "Voir le projet",
+    "features": {
+      "title": "Fonctionnalités principales",
+      "products": "Catalogue de produits",
+      "customization": "Solutions personnalisées",
+      "support": "Support technique"
+    },
+    "technologies": "Shopify, React, Node.js, PostgreSQL"
+  },
+  "wegaw": {
+    "title": "Wegaw",
+    "description": "Plateforme d'intelligence météorologique pour activités de plein air.",
+    "viewProject": "Voir le projet",
+    "features": {
+      "title": "Fonctionnalités principales",
+      "forecasts": "Prévisions météo",
+      "alerts": "Alertes météo",
+      "planning": "Planification d'activités"
+    },
+    "technologies": "Python, Machine Learning, APIs, React"
+  }
+}

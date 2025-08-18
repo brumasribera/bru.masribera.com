@@ -1,0 +1,274 @@
+{
+  "navigation": {
+    "home": "Inici",
+    "back": "Enrere",
+    "globe": "Globus"
+  },
+  "garden": {
+    "myContributions": "Les meves contribucions",
+    "protectedAreas": "Àrees protegides",
+    "totalProtected": "Total protegit",
+    "contributed": "Contribuït",
+    "projects": "Projectes",
+    "satelliteView": "Vista satèl·lit",
+    "yourAreas": "Les teves àrees",
+    "clearAndReload": "Netejar i recarregar",
+    "startProtecting": "Comença a protegir una àrea per créixer les teves reserves."
+  },
+  "projects": {
+    "mx-mangroves": "Manglars de Yucatán",
+    "br-amazon": "Selva del Tapajós",
+    "id-seagrass": "Herba marina de Bali",
+    "ke-savanna": "Sabanes de Laikipia",
+    "us-cal-giants": "Boscos de sequoies",
+    "ca-boreal": "Escut boreal",
+    "ar-wetlands": "Aiguamolls de l'Iberá",
+    "pe-cloud": "Bosc de boira andí",
+    "ng-mangrove": "Manglars del delta del Níger",
+    "ma-atlas": "Alt Atlas",
+    "es-donana": "Aiguamolls de Doñana",
+    "ro-delta": "Delta del Danubi",
+    "ua-steppe": "Estepa pòntica",
+    "ru-taiga": "Taigà siberiana",
+    "in-sundarbans": "Sundarbans",
+    "np-terai": "Arc del Terai",
+    "th-coral": "Corall d'Andaman",
+    "au-reef": "Gran barrera",
+    "pg-png": "Selva de Papua Nova Guinea",
+    "za-fynbos": "Fynbos del Cap",
+    "mg-madagascar": "Boscos de Madagascar",
+    "ma-seagrass": "Herba marina mediterrània",
+    "no-bogs": "Torfes nòrdiques",
+    "uk-heath": "Heaths de Dorset",
+    "tr-anatolia": "Estepa d'Anatòlia",
+    "ir-wetland": "Aiguamolls de Mesopotàmia",
+    "cn-giantpanda": "Panda de Sichuan",
+    "jp-sea": "Mar interior de Seto",
+    "nz-kelp": "Boscos de varec",
+    "is-highlands": "Terres altes d'Islàndia",
+    "maurit-corals": "Coralls de Mascarenyes",
+    "eg-nile": "Delta del Nil",
+    "sa-mangrove": "Manglars d'Aràbia"
+  },
+  "countries": {
+    "Mexico": "Mèxic",
+    "Brazil": "Brasil",
+    "Indonesia": "Indonèsia",
+    "Kenya": "Kenya",
+    "USA": "Estats Units",
+    "Canada": "Canadà",
+    "Argentina": "Argentina",
+    "Peru": "Perú",
+    "Nigeria": "Nigèria",
+    "Morocco": "Marroc",
+    "Spain": "Espanya",
+    "Romania": "Romania",
+    "Ukraine": "Ucraïna",
+    "Russia": "Rússia",
+    "India": "Índia",
+    "Nepal": "Nepal",
+    "Thailand": "Tailàndia",
+    "Australia": "Austràlia",
+    "Papua New Guinea": "Papua Nova Guinea",
+    "South Africa": "Sud-àfrica",
+    "Madagascar": "Madagascar",
+    "Norway": "Noruega",
+    "UK": "Regne Unit",
+    "Türkiye": "Turquia",
+    "Iraq": "Iraq",
+    "China": "Xina",
+    "Japan": "Japó",
+    "New Zealand": "Nova Zelanda",
+    "Iceland": "Islàndia",
+    "Mauritius": "Maurici",
+    "Egypt": "Egipte",
+    "Saudi Arabia": "Aràbia Saudita"
+  },
+  "payment": {
+    "payWithCard": "Pagar amb targeta",
+    "payWithPayPal": "Pagar amb PayPal",
+    "cardNumber": "Número de targeta",
+    "expiry": "MM/AA",
+    "cvc": "CVC",
+    "nameOnCard": "Nom a la targeta",
+    "card": "Targeta",
+    "paypal": "PayPal"
+  },
+  "checkout": {
+    "project": "Projecte",
+    "protected": "Protegit",
+    "totalPaid": "Total pagat",
+    "method": "Mètode",
+    "yourImpact": "El teu impacte",
+    "contributionProtects": "La teva contribució de €{amount} protegeix aproximadament",
+    "yourSelectionSummary": "Resum de la teva selecció",
+    "selectedCount": "Seleccionat",
+    "selectedArea": "Àrea",
+    "totalCost": "Total"
+  },
+  "learnMore": {
+    "learnMore": "Més informació",
+    "share": "Compartir",
+    "contribute": "Contribuir",
+    "selectArea": "Seleccionar àrea",
+    "checkout": "Comprar",
+    "success": "Èxit"
+  },
+  "impact": {
+    "biodiversity": "Biodiversitat",
+    "carbon": "Carboni",
+    "community": "Comunitat"
+  },
+  "units": {
+    "m2": "m²",
+    "euro": "€",
+    "dollar": "$"
+  },
+  "projectPage": {
+    "projectProgress": "Progrés del projecte",
+    "raised": "Recaptat",
+    "goal": "Meta",
+    "protected": "Protegit",
+    "total": "Total",
+    "aboutThisProtectedArea": "Sobre aquesta àrea protegida",
+    "conservationDescription": "Aquest projecte de conservació protegeix ecosistemes vitals i hàbitats de vida salvatge. La teva contribució ajuda a mantenir la biodiversitat, seqüestrar carboni i donar suport a les comunitats locals a través de pràctiques sostenibles.",
+    "whyThisMatters": "Per què és important",
+    "protectsEndangeredSpecies": "• Protegeix espècies en perill i els seus hàbitats",
+    "absorbsCO2": "• Absorbeix CO2 equivalent a {cars} cotxes anualment",
+    "createsSustainableJobs": "• Crea llocs de treball sostenibles per a les comunitats locals",
+    "preservesNaturalSources": "• Preserva fonts d'aigua naturals i qualitat del sòl",
+    "contributeToProtection": "Contribuir a la protecció",
+    "backToProjects": "Tornar als projectes",
+    "areaLabel": "ha",
+    "satelliteView": "Vista satel·lital"
+  },
+  "learnMorePage": {
+    "title": "Saber més",
+    "about": "Sobre {projectName}",
+    "projectDetails": "Detalls del projecte",
+    "projectDescription1": "Aquesta àrea protegida abasta {hectares} hectàrees d'ecosistema crític, proporcionant hàbitat per a nombroses espècies i contribuint als esforços globals de conservació de la biodiversitat.",
+    "projectDescription2": "El projecte se centra en pràctiques sostenibles de gestió de terres que equilibren els objectius de conservació amb les necessitats de la comunitat, assegurant beneficis ambientals i socials a llarg termini.",
+    "conservationImpact": "Impacte de la conservació",
+    "biodiversityProtection": "Protecció de la biodiversitat",
+    "protectingSpecies": "Protegint {percentage}% de les espècies locals",
+    "carbonSequestration": "Seqüestrament de carboni",
+    "absorbingCO2": "Absorbint {percentage}% més de CO2 anualment",
+    "communitySupport": "Suport comunitari",
+    "supportingLivelihoods": "Donant suport a {percentage}% dels mitjans de vida locals",
+    "scientificResearch": "Recerca científica",
+    "researchDescription": "Aquesta àrea serveix com a laboratori viu per a investigadors que estudien l'adaptació al canvi climàtic, restauració d'ecosistemes i pràctiques de desenvolupament sostenible.",
+    "researchAreas": "Àrees de recerca",
+    "climateChangeAssessment": "• Avaluació de l'impacte del canvi climàtic",
+    "biodiversityMonitoring": "• Monitoratge i conservació de la biodiversitat",
+    "sustainableLandUse": "• Pràctiques d'ús sostenible de la terra",
+    "communityEngagement": "• Estratègies de participació comunitària"
+  },
+  "contributePage": {
+    "title": "Contribuir",
+    "supportConservation": "Donar suport a la conservació de {projectName}",
+    "chooseAmount": "Triar quantitat",
+    "paymentMethod": "Mètode de pagament",
+    "creditDebitCard": "Targeta de crèdit/dèbit",
+    "bankTransfer": "Transferència bancària",
+    "mobilePayment": "Pagament mòbil",
+    "yourImpact": "El teu impacte",
+    "contributionProtects": "La teva contribució de €{amount} protegeix aproximadament",
+    "ofThisProtectedArea": "d'aquesta àrea protegida",
+    "cost": "Cost: €{price}/m²",
+    "completeContribution": "Completar contribució"
+  },
+  "selectAreaPage": {
+    "title": "Seleccionar àrea de protecció",
+    "subtitle": "Tria quins metres quadrats protegir",
+    "selectYourProtectionZone": "Selecciona la teva zona de protecció",
+    "selectionDescription": "Toca al mapa per seleccionar àrees específiques que vols protegir. Cada selecció representa una inversió de conservació.",
+    "available": "Disponible",
+    "selected": "Seleccionat",
+    "gridCells": "Cel·les de quadrícula",
+    "squareMeters": "Metres quadrats",
+    "totalCost": "Cost total",
+    "quickSelection": "Selecció ràpida",
+    "random25": "🎲 Aleatori 25%",
+    "centerArea": "🎯 Àrea central",
+    "clearAll": "🗑️ Netejar tot",
+    "continueToCheckout": "Continuar al checkout",
+    "backToProject": "← Tornar al projecte"
+  },
+  "checkoutPage": {
+    "title": "Checkout",
+    "subtitle": "Pagament segur",
+    "orderSummary": "Resum de la comanda",
+    "total": "Total",
+    "choosePaymentMethod": "Triar mètode de pagament",
+    "cardDetails": "Detalls de la targeta",
+    "processing": "Processant…",
+    "pay": "Pagar €{amount}",
+    "connecting": "Connectant…",
+    "continueWithPayPal": "Continuar amb PayPal (Mock)",
+    "redirectedToPayPal": "Seràs redirigit a PayPal per aprovar el teu pagament.",
+    "taxesIncluded": "Impostos inclosos si s'aplica"
+  },
+  "sharePage": {
+    "title": "Compartir projecte",
+    "subtitle": "Ajuda a difondre la paraula sobre {projectName}",
+    "shareOptions": "Opcions de compartir",
+    "shareOnFacebook": "Compartir a Facebook",
+    "shareOnTwitter": "Compartir a Twitter",
+    "shareOnWhatsApp": "Compartir a WhatsApp",
+    "shareOnLinkedIn": "Compartir a LinkedIn",
+    "projectSummary": "Resum del projecte",
+    "helpProtect": "Ajuda a protegir aquest ecosistema vital i dona suport a les comunitats locals a través de pràctiques de conservació sostenibles.",
+    "impactPreview": "Vista prèvia de l'impacte"
+  },
+  "successPage": {
+    "title": "Gràcies!",
+    "subtitle": "La teva contribució ha estat registrada (mock).",
+    "receipt": "Rebut",
+    "backToProject": "Tornar al projecte"
+  },
+  "page": {
+    "header": {
+      "title": "Reserve",
+      "tagline": "Protegint la natura, un metre quadrat a la vegada"
+    },
+    "nav": {
+      "prev": "Projecte anterior",
+      "next": "Projecte següent",
+      "backToAll": "Tornar a tots els projectes"
+    },
+    "overview": {
+      "title": "Resum del projecte",
+      "p1": "Reserve és una plataforma de crowdfunding de natura que permet a individus i organitzacions contribuir directament a projectes de conservació a tot el món.",
+      "p2": "A través de preus transparents per metre quadrat, els usuaris poden seleccionar àrees específiques per protegir, rastrejar el seu impacte i contribuir a la conservació global de la biodiversitat."
+    },
+    "cards": {
+      "targetUsers": {
+        "title": "Usuaris objectiu",
+        "users": [
+          "Entusiastes de la natura",
+          "Organització de conservació",
+          "Programes de sostenibilitat corporativa"
+        ]
+      },
+      "impact": {
+        "title": "Impacte",
+        "benefits": [
+          "Protegir i restaurar regions naturals",
+          "Reforestar àrees degradades",
+          "Cost transparent per m²"
+        ]
+      },
+      "channels": {
+        "title": "Canals de distribució",
+        "subtitle": "Connecta't amb la comunitat Reserve",
+        "instagram": "Seguir a Instagram"
+      }
+    },
+    "prototype": {
+      "ctaTitle": "Provar el prototip interactiu",
+      "ctaDesc": "Experimenta l'app Reserve de primera mà amb el nostre prototip interactiu. Navega a través del procés de conservació i veu com de fàcil és fer una diferència."
+    }
+  }
+}
+
+

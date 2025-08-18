@@ -1,0 +1,92 @@
+{
+  "header": {
+    "title": "Pomoca",
+    "tagline": "Inovação na produção de peles para esqui e equipamentos outdoor, desenvolvendo soluções avançadas para a produção de peles de esqui de alta qualidade"
+  },
+  "overview": {
+    "title": "Visão do projeto",
+    "p1": "Pomoca é uma empresa suíça especializada na produção de peles para esqui e equipamentos outdoor de alta qualidade. O projeto concentra-se na otimização dos processos de produção e inovação dos materiais.",
+    "p2": "O objetivo é melhorar a durabilidade, performance e sustentabilidade dos produtos através do uso de materiais avançados e processos de produção eficientes.",
+    "p3": "Pomoca integra tecnologias modernas para garantir a qualidade e consistência dos produtos em cada lote de produção.",
+    "visitSite": "Visitar Pomoca",
+    "demo": "Demo"
+  },
+  "quick": {
+    "materials": {
+      "title": "Materiais",
+      "items": ["Peles Sintéticas", "Adesivos", "Tecidos Técnicos"]
+    },
+    "applications": {
+      "title": "Aplicações",
+      "items": ["Esqui", "Outdoor", "Desportos de Inverno"]
+    },
+    "technology": {
+      "title": "Tecnologia",
+      "items": ["Produção", "Controlo de Qualidade", "Inovação de Materiais"]
+    }
+  },
+  "features": {
+    "title": "Características Principais",
+    "items": [
+      { "title": "Materiais Avançados", "desc": "Desenvolvimento de peles sintéticas de alto desempenho" },
+      { "title": "Processos Otimizados", "desc": "Metodologias de produção eficientes e sustentáveis" },
+      { "title": "Controlo de Qualidade", "desc": "Sistemas rigorosos para garantir a qualidade do produto" },
+      { "title": "Inovação Contínua", "desc": "Investigação e desenvolvimento constantes para melhorar produtos" },
+      { "title": "Sustentabilidade", "desc": "Foco em materiais e processos eco-friendly" },
+      { "title": "Personalização", "desc": "Soluções à medida para diferentes aplicações e clientes" }
+    ]
+  },
+  "technology": {
+    "title": "Arquitetura Tecnológica",
+    "materials": {
+      "title": "Materiais",
+      "badges": ["Peles Sintéticas", "Adesivos", "Tecidos", "Compósitos"]
+    },
+    "production": {
+      "title": "Produção",
+      "badges": ["Automação", "Controlo de Qualidade", "Otimização", "Sustentabilidade"]
+    },
+    "innovation": {
+      "title": "Inovação",
+      "badges": ["I&D", "Testes", "Prototipagem", "Validação"]
+    }
+  },
+  "applications": {
+    "title": "Aplicações e Setores",
+    "winterSports": {
+      "title": "Desportos de Inverno",
+      "items": [
+        { "title": "Esqui Alpino", "desc": "Peles de alto desempenho para subidas e descidas" },
+        { "title": "Esqui de Fundo", "desc": "Soluções otimizadas para diferentes condições de neve" },
+        { "title": "Alpinismo", "desc": "Equipamentos fiáveis para atividades na montanha" }
+      ]
+    },
+    "outdoor": {
+      "title": "Equipamentos Outdoor",
+      "items": [
+        { "title": "Equipamento", "desc": "Materiais duráveis para uso intensivo" },
+        { "title": "Acessórios", "desc": "Componentes de qualidade para equipamentos profissionais" },
+        { "title": "Manutenção", "desc": "Produtos para cuidado e manutenção do equipamento" }
+      ]
+    }
+  },
+  "impact": {
+    "title": "Impacto e Resultados",
+    "metrics": [
+      { "title": "Qualidade", "desc": "Produtos de alta qualidade reconhecidos internacionalmente" },
+      { "title": "Inovação", "desc": "Líder na inovação de materiais para desportos de inverno" },
+      { "title": "Sustentabilidade", "desc": "Processos de produção eco-friendly e materiais sustentáveis" },
+      { "title": "Mercado", "desc": "Presença global em mais de 30 países" }
+    ]
+  },
+  "future": {
+    "title": "Visão do futuro",
+    "p1": "Pomoca visa expandir a sua gama de produtos e integrar tecnologias emergentes para melhorar ainda mais o desempenho e sustentabilidade.",
+    "p2": "Os planos futuros incluem o desenvolvimento de novos materiais e processos de produção mais eficientes, mantendo o compromisso com a qualidade e inovação.",
+    "backToAll": "Voltar a todos os projetos"
+  },
+  "nav": {
+    "prev": "Pix4D",
+    "next": "Clathes"
+  }
+}

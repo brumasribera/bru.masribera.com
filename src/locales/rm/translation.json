@@ -1,0 +1,195 @@
+{
+  "welcome": "Bainvegni",
+  "about": "Davart",
+  "contact": "Contact",
+  "home": "Chasa",
+  "experience": "Experientscha",
+  "education": "Furmaziun",
+  "projects": "Projects",
+  "cv": "CV",
+  "hero": {
+    "title": "Bain legì, jau sun Bru Masribera",
+    "subtitle": "Svilupader Full Stack & Designader UI/UX",
+    "description": "Passiunà da crear experientschas digitalas bellas, funcziunalas e centradas sin l'utilisader.",
+    "location": "Barcelona, Spagna",
+    "contactMe": "Contactar mai",
+    "downloadCV": "Telechargiar il CV"
+  },
+  "navigation": {
+    "home": "Chasa",
+    "about": "Davart",
+    "experience": "Experientscha",
+    "education": "Furmaziun",
+    "projects": "Projects",
+    "contact": "Contact",
+    "cv": "CV"
+  },
+  "about": {
+    "title": "Davart mai",
+    "description": "Jau sun in svilupader passiunà che creescha soluziuns innovativas e experientschas da utilisaders excellentas.",
+    "skills": "Abilitads",
+    "interests": "Interessas"
+  },
+  "experience": {
+    "title": "Experientscha professiunala",
+    "current": "Actual",
+    "previous": "Precedent",
+    "responsibilities": "Responsabilitads",
+    "technologies": "Tecnologias"
+  },
+  "education": {
+    "title": "Furmaziun",
+    "degree": "Titel",
+    "university": "Universitad",
+    "period": "Perioda",
+    "gpa": "GPA"
+  },
+  "projects": {
+    "title": "Mes projects",
+    "viewProject": "Mussar il project",
+    "openApp": "Avrir l'app",
+    "description": "Descripziun",
+    "technologies": "Tecnologias utilisadas",
+    "features": "Funcziunalitads"
+  },
+  "contact": {
+    "title": "Contactar mai",
+    "name": "Num",
+    "email": "E‑mail",
+    "message": "Messadi",
+    "send": "Trametter",
+    "sending": "Tramettend…",
+    "sent": "Messadi tramess!",
+    "error": "Errur cun trametter"
+  },
+  "footer": {
+    "rights": "Tuts dretgs reservads",
+    "madeWith": "Fatschent cun 🥰 en Svizra",
+    "tagline": "Ingegner Frontend e UX | Remote-friendly",
+    "copyright": "© {{year}} Bru Mas Ribera. Tuts dretgs reservads.",
+    "tooltips": {
+      "email": "M'envier in email",
+      "linkedin": "Vesair mia profil LinkedIn",
+      "github": "Vesair mia profil GitHub",
+      "cv": "Vesair mia CV"
+    }
+  },
+  "languages": {
+    "en": "Englais",
+    "de": "Tudestg",
+    "fr": "Franzos",
+    "es": "Spagnol",
+    "ca": "Catalan",
+    "it": "Talian",
+    "pt": "Portugais",
+    "rm": "Rumantsch"
+  },
+  "theme": {
+    "light": "Cler",
+    "dark": "Stgir"
+  },
+  "common": {
+    "loading": "Chargiar…",
+    "error": "Errur",
+    "success": "Success",
+    "cancel": "Interrumper",
+    "save": "Memorisar",
+    "edit": "Modifitgar",
+    "delete": "Stizzar",
+    "close": "Serrar",
+    "open": "Avrir",
+    "back": "Enavos",
+    "next": "Enavant",
+    "previous": "Precedent"
+  },
+  "reserve": {
+    "title": "Reserve",
+    "description": "Sistem da gestiun da reservas per activitads a l'aria libra.",
+    "openApp": "Avrir l'app",
+    "openAppSmall": "Avrir l'app",
+    "prototype": "Prototip",
+    "loading": "Chargiar l'app Reserve…",
+    "loadingMessage": "Preparond tia experientscha d'aventuras a l'aria libra…",
+    "features": {
+      "title": "Funcziunalitads principalas",
+      "reservations": "Gestiun da reservas",
+      "calendar": "Chalender interactiv",
+      "maps": "Charts da posiziun",
+      "notifications": "Notifications intelligentas"
+    },
+    "technologies": "React, TypeScript, Leaflet, Tailwind CSS"
+  },
+  "clathes": {
+    "title": "Clathes",
+    "description": "Plattafurma da moda persistenta per vestgadira ecologica.",
+    "viewProject": "Mussar il project",
+    "features": {
+      "title": "Funcziunalitads principalas",
+      "sustainability": "Seguiment da sustenibilitad",
+      "recommendations": "Recumandaziuns ecologicas",
+      "community": "Funcziuns da comunitad"
+    },
+    "technologies": "React, Node.js, MongoDB, AWS"
+  },
+  "moodleNet": {
+    "title": "MoodleNet",
+    "description": "Plattafurma per cundividir resursas d'instrucziun avertas.",
+    "viewProject": "Mussar il project",
+    "features": {
+      "title": "Funcziunalitads principalas",
+      "sharing": "Cundivisiun da resursas",
+      "collaboration": "Collavuraziun",
+      "discovery": "Scuverta da cuntegn"
+    },
+    "technologies": "PHP, MySQL, JavaScript, Bootstrap"
+  },
+  "openHuts": {
+    "title": "Open Huts",
+    "description": "Plattafurma da reservaziun da chamonas per amants da la muntogna.",
+    "viewProject": "Mussar il project",
+    "features": {
+      "title": "Funcziunalitads principalas",
+      "booking": "Sistem da reservaziun",
+      "routes": "Rutas da viandar",
+      "weather": "Integraziun da l'aura"
+    },
+    "technologies": "React Native, Firebase, Google Maps API"
+  },
+  "pix4D": {
+    "title": "Pix4D",
+    "description": "Software professiunal da fotogrammetria per cartografiar en 3D.",
+    "viewProject": "Mussar il project",
+    "features": {
+      "title": "Funcziunalitads principalas",
+      "photogrammetry": "Fotogrammetria avanzada",
+      "3dMapping": "Cartografiar 3D",
+      "surveying": "Utensils da mesiraziun"
+    },
+    "technologies": "C++, Python, OpenGL, CUDA"
+  },
+  "pomoca": {
+    "title": "Pomoca",
+    "description": "Equipament innovativ per skitouring e supplements.",
+    "viewProject": "Mussar il project",
+    "features": {
+      "title": "Funcziunalitads principalas",
+      "products": "Catalog da products",
+      "customization": "Soluziuns persunalisadas",
+      "support": "Support tecnic"
+    },
+    "technologies": "Shopify, React, Node.js, PostgreSQL"
+  },
+  "wegaw": {
+    "title": "Wegaw",
+    "description": "Plattafurma d'intelligenza meteorologica per activitads a l'aria libra.",
+    "viewProject": "Mussar il project",
+    "features": {
+      "title": "Funcziunalitads principalas",
+      "forecasts": "Previsiuns da l'aura",
+      "alerts": "Avis da l'aura",
+      "planning": "Planisaziun d'activitads"
+    },
+    "technologies": "Python, Machine Learning, APIs, React"
+  }
+}
+

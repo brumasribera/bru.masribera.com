@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react'
 import { Moon, Sun, Menu, X, ChevronDown } from 'lucide-react'
 import { Button } from '../ui/button'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { LanguageSwitcher } from '../ui/LanguageSwitcher'
+import { useTranslation } from 'react-i18next'
+import { useLanguageRouting } from '../hooks/useLanguageRouting'
 
 interface HeaderProps {
   darkMode: boolean
@@ -9,6 +12,8 @@ interface HeaderProps {
 }
 
 export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
+  const { t, i18n } = useTranslation(['translation'])
+  const { getLocalizedPath } = useLanguageRouting()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
   const [isHovering, setIsHovering] = useState(false)
@@ -17,11 +22,24 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
   const location = useLocation()
   const navigate = useNavigate()
 
+  // Debug: Log i18n status and test translations
+  useEffect(() => {
+    console.log('Header i18n status:', {
+      isInitialized: i18n.isInitialized,
+      language: i18n.language,
+      ready: i18n.isInitialized,
+      testTranslation: t('navigation.home')
+    })
+  }, [i18n, t])
+
   // Close projects menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Element
-      if (!target.closest('[data-projects-menu]')) {
+      const projectsMenu = target.closest('[data-projects-menu]')
+      const dropdownMenu = target.closest('.projects-dropdown')
+      
+      if (!projectsMenu && !dropdownMenu) {
         setIsProjectsOpen(false)
       }
     }
@@ -71,45 +89,112 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
   }, [location.pathname])
 
   const navItems = [
-    { href: '#home', label: 'Home' },
-    { href: '#about', label: 'About' },
-    { href: '#experience', label: 'Experience' },
-    { href: '#projects', label: 'Projects', hasDropdown: true },
-    { href: '#education', label: 'Education' },
-    { href: '#contact', label: 'Contact' }
+    { href: '#home', label: t('navigation.home') },
+    { href: '#about', label: t('navigation.about') },
+    { href: '#experience', label: t('navigation.experience') },
+    { href: '#projects', label: t('navigation.projects'), hasDropdown: true },
+    { href: '#education', label: t('navigation.education') },
+    { href: '#contact', label: t('navigation.contact') }
   ]
 
   const projectPages = [
-    { path: '/reserve', label: 'Reserve', description: 'Nature crowdfunding platform' },
-    { path: '/openhuts', label: 'Open Huts', description: 'Mountain refuge network' },
-    { path: '/clathes', label: 'Clathes', description: 'Clothes for a Cause - Vaquita protection' },
-    { path: '/moodlenet', label: 'MoodleNet', description: 'Learning platform' },
-    { path: '/pomoca', label: 'Pomoca', description: 'Manufacturing interface' },
-    { path: '/wegaw', label: 'Wegaw', description: 'Snow monitoring system' },
-    { path: '/pix4d', label: 'Pix4D', description: '3D mapping platform' }
+    { path: '/reserve', label: t('reserve.title'), description: t('reserve.description') },
+    { path: '/openhuts', label: t('openHuts.title'), description: t('openHuts.description') },
+    { path: '/clathes', label: t('clathes.title'), description: t('clathes.description') },
+    { path: '/moodlenet', label: t('moodleNet.title'), description: t('moodleNet.description') },
+    { path: '/pomoca', label: t('pomoca.title'), description: t('pomoca.description') },
+    { path: '/wegaw', label: t('wegaw.title'), description: t('wegaw.description') },
+    { path: '/pix4d', label: t('pix4D.title'), description: t('pix4D.description') }
   ]
 
-  // Simple navigation function - no scroll effects for cross-page navigation
-  const handleNavigation = (href: string) => {
-    const targetId = href.replace('#', '')
+  // Debug: Log project pages to see if translations are working
+  useEffect(() => {
+    console.log('Project pages translations:', projectPages.map(page => ({
+      path: page.path,
+      label: page.label,
+      description: page.description
+    })))
+  }, [projectPages])
+
+  // Debug: Log translation keys to check for missing translations
+  useEffect(() => {
+    const missingKeys: string[] = []
+    const keysToCheck = [
+      'reserve.title', 'reserve.description',
+      'openHuts.title', 'openHuts.description',
+      'clathes.title', 'clathes.description',
+      'moodleNet.title', 'moodleNet.description',
+      'pomoca.title', 'pomoca.description',
+      'wegaw.title', 'wegaw.description',
+      'pix4D.title', 'pix4D.description'
+    ]
     
-    if (location.pathname !== '/') {
-      // If on a project page, just navigate to home page
-      navigate('/')
-    } else {
-      // If already on home page, scroll to section smoothly
-      const targetElement = document.getElementById(targetId)
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth' })
+    keysToCheck.forEach(key => {
+      const translation = t(key)
+      if (translation === key) {
+        missingKeys.push(key)
       }
+    })
+    
+    if (missingKeys.length > 0) {
+      console.warn('Missing translation keys:', missingKeys)
     }
-    setIsMenuOpen(false)
-    setIsProjectsOpen(false)
+    
+    // Also log current language and i18n state
+    console.log('i18n state:', {
+      language: i18n.language,
+      isInitialized: i18n.isInitialized,
+      namespaces: i18n.reportNamespaces?.getUsedNamespaces?.() || 'N/A'
+    })
+    
+    // Test a simple translation
+    console.log('Test translation "navigation.home":', t('navigation.home'))
+    console.log('Test translation "reserve.title":', t('reserve.title'))
+    
+  }, [t, i18n.language])
+
+  // Simple navigation function - no scroll effects for cross-page navigation
+  const handleNavigation = async (href: string) => {
+    try {
+      const targetId = href.replace('#', '')
+      
+      if (location.pathname !== '/') {
+        // If on a project page, navigate to home page first, then scroll to section
+        await navigate(getLocalizedPath('/'))
+        // Wait a bit for the navigation to complete and DOM to update
+        setTimeout(() => {
+          const targetElement = document.getElementById(targetId)
+          if (targetElement) {
+            // Scroll with offset to account for fixed navbar height (64px = h-16)
+            const navbarHeight = 64
+            const elementTop = targetElement.offsetTop - navbarHeight
+            window.scrollTo({ top: elementTop, behavior: 'smooth' })
+          } else {
+            console.warn(`Target element with id '${targetId}' not found after navigation`)
+          }
+        }, 100)
+      } else {
+        // If already on home page, scroll to section smoothly
+        const targetElement = document.getElementById(targetId)
+        if (targetElement) {
+          // Scroll with offset to account for fixed navbar height (64px = h-16)
+          const navbarHeight = 64
+          const elementTop = targetElement.offsetTop - navbarHeight
+          window.scrollTo({ top: elementTop, behavior: 'smooth' })
+        } else {
+          console.warn(`Target element with id '${targetId}' not found`)
+        }
+      }
+      setIsMenuOpen(false)
+      setIsProjectsOpen(false)
+    } catch (error) {
+      console.error('Navigation error:', error)
+    }
   }
 
   const handleLogoClick = () => {
     if (location.pathname !== '/') {
-      navigate('/')
+      navigate(getLocalizedPath('/'))
     } else {
       // On home page, scroll to top smoothly
       window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -184,7 +269,7 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
                   if (progress < 1 && isHovering) {
                     progress += 1 / steps
                     updateHackText(progress)
-                    console.log('Animation progress:', progress, 'Text:', hackText)
+                
                     if (progress < 1) {
                       setTimeout(animate, stepDuration)
                     }
@@ -197,17 +282,9 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
                 // Reset to original text
                 setHackText('BRU MAS RIBERA')
               }}
-              className="text-xl font-bold transition-all duration-300 hover:scale-105 relative"
+              className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-300 transition-all duration-300"
             >
-                             <span 
-                 className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-300 transition-all duration-300"
-                 style={{ 
-                   backgroundSize: '200% 200%',
-                   animation: 'flowing-gradient 8s ease-in-out infinite'
-                 }}
-               >
-                 {hackText}
-               </span>
+              {hackText}
             </button>
           </div>
 
@@ -216,35 +293,49 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
             {navItems.map((item) => (
               <div key={item.href} className="relative">
                 {item.hasDropdown ? (
-                  <div className="relative" data-projects-menu>
+                  <div data-projects-menu>
                     <button
-                      onClick={() => handleNavigation('#projects')}
+                      onClick={() => handleNavigation(item.href)}
                       onMouseEnter={() => setIsProjectsOpen(true)}
-                      className={`text-sm font-medium transition-colors flex items-center gap-1 ${
-                        activeSection === item.href.replace('#', '')
-                          ? 'text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400'
-                          : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
-                      }`}
+                      onMouseLeave={() => {
+                        // Add a small delay to prevent menu from closing too quickly
+                        setTimeout(() => {
+                          if (!document.querySelector('[data-projects-menu]:hover') && !document.querySelector('.projects-dropdown:hover')) {
+                            setIsProjectsOpen(false)
+                          }
+                        }, 100)
+                      }}
+                      className="text-sm font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-1"
                     >
                       {item.label}
                       <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isProjectsOpen ? 'rotate-180' : ''}`} />
                     </button>
-                    
-                    {/* Projects Dropdown */}
                     {isProjectsOpen && (
                       <div 
-                        className="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-50"
+                        className="absolute top-full left-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 py-2 z-50 projects-dropdown"
                         onMouseEnter={() => setIsProjectsOpen(true)}
-                        onMouseLeave={() => setIsProjectsOpen(false)}
+                        onMouseLeave={() => {
+                          // Add a small delay to prevent menu from closing too quickly
+                          setTimeout(() => {
+                            if (!document.querySelector('[data-projects-menu]:hover') && !document.querySelector('.projects-dropdown:hover')) {
+                              setIsProjectsOpen(false)
+                            }
+                          }, 100)
+                        }}
                       >
                         {projectPages.map((project) => (
                           <button
                             key={project.path}
                             onClick={() => {
-                              navigate(project.path)
-                              setIsProjectsOpen(false)
-                              // Scroll to top instantly when navigating to project page
-                              window.scrollTo(0, 0)
+                              try {
+                                
+                                navigate(getLocalizedPath(project.path))
+                                setIsProjectsOpen(false)
+                                // Scroll to top instantly when navigating to project page
+                                window.scrollTo(0, 0)
+                              } catch (error) {
+                                console.error('Project navigation error:', error)
+                              }
                             }}
                             className="w-full text-left px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                           >
@@ -272,7 +363,7 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
           </nav>
 
           {/* Right side controls */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
             {/* Dark mode toggle */}
             <Button
               variant="ghost"
@@ -283,7 +374,8 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
               {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
 
-
+            {/* Language Switcher */}
+            <LanguageSwitcher />
 
             {/* Mobile menu button */}
             <Button
@@ -314,12 +406,12 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
                         <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isProjectsOpen ? 'rotate-180' : ''}`} />
                       </button>
                       {isProjectsOpen && (
-                        <div className="ml-4 mt-2 space-y-1">
+                        <div className="ml-4 mt-2 space-y-1 projects-dropdown">
                           {projectPages.map((project) => (
                             <button
                               key={project.path}
                               onClick={() => {
-                                navigate(project.path)
+                                navigate(getLocalizedPath(project.path))
                                 setIsMenuOpen(false)
                                 setIsProjectsOpen(false)
                                 // Scroll to top instantly when navigating to project page

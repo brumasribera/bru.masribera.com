@@ -1,0 +1,93 @@
+{
+  "header": {
+    "title": "Pomoca",
+    "tagline": "Proyecto de diseño UX para la transformación digital de la fabricación de pieles de esquí de montaña, creando interfaces modernas para la precisión suiza e innovación",
+    "back": "Volver a los proyectos"
+  },
+  "overview": {
+    "title": "Visión del proyecto",
+    "p1": "Pomoca es una empresa suiza líder en el desarrollo de adhesivos de alta calidad para equipamiento de esquí y montaña. El proyecto se centra en la innovación tecnológica para crear adhesivos que ofrezcan un rendimiento óptimo en condiciones extremas.",
+    "p2": "La compañía colabora estrechamente con atletas profesionales y equipos de competición para desarrollar soluciones que superen los estándares de la industria.",
+    "p3": "Pomoca implementa procesos de fabricación avanzados y control de calidad riguroso para garantizar la consistencia y fiabilidad de cada producto.",
+    "visitSite": "Visitar Pomoca",
+    "products": "Productos"
+  },
+  "quick": {
+    "performance": {
+      "title": "Rendimiento",
+      "items": ["Alta Adhesión", "Durabilidad", "Resistencia a Condiciones Extremas"]
+    },
+    "applications": {
+      "title": "Aplicaciones",
+      "items": ["Esquí", "Montaña", "Deportes de Invierno"]
+    },
+    "technology": {
+      "title": "Tecnología",
+      "items": ["Adhesivos Avanzados", "Materiales Compuestos", "Fabricación de Precisión"]
+    }
+  },
+  "features": {
+    "title": "Características Principales",
+    "items": [
+      { "title": "Adhesión Superior", "desc": "Adhesivos que ofrecen una adherencia excepcional en superficies diversas" },
+      { "title": "Durabilidad Extrema", "desc": "Productos diseñados para resistir condiciones climáticas adversas" },
+      { "title": "Rendimiento Consistente", "desc": "Calidad uniforme en cada lote de producción" },
+      { "title": "Aplicación Fácil", "desc": "Procesos de aplicación simplificados para usuarios profesionales y aficionados" },
+      { "title": "Resistencia Química", "desc": "Protección contra agentes químicos y ambientales" },
+      { "title": "Certificación de Calidad", "desc": "Productos que cumplen los estándares internacionales más estrictos" }
+    ]
+  },
+  "technology": {
+    "title": "Arquitectura Tecnológica",
+    "adhesives": {
+      "title": "Tecnología de Adhesivos",
+      "badges": ["Polímeros Avanzados", "Nanotecnología", "Adhesión Molecular", "Resistencia Térmica"]
+    },
+    "materials": {
+      "title": "Materiales y Composición",
+      "badges": ["Materiales Compuestos", "Fibras de Carbono", "Resinas Epoxi", "Aditivos Especiales"]
+    },
+    "manufacturing": {
+      "title": "Fabricación",
+      "badges": ["Control de Calidad", "Procesos Automatizados", "Tratamiento Térmico", "Inspección Óptica"]
+    }
+  },
+  "applications": {
+    "title": "Aplicaciones y Sectores",
+    "skiing": {
+      "title": "Esquí y Deportes de Invierno",
+      "items": [
+        { "title": "Fijación de Esquís", "desc": "Adhesivos para la instalación segura de fijaciones" },
+        { "title": "Reparación de Equipamiento", "desc": "Soluciones para la reparación rápida y efectiva" },
+        { "title": "Mantenimiento Preventivo", "desc": "Productos para la conservación a largo plazo" }
+      ]
+    },
+    "mountaineering": {
+      "title": "Montaña y Alpinismo",
+      "items": [
+        { "title": "Equipamiento de Escalada", "desc": "Adhesivos para materiales técnicos de escalada" },
+        { "title": "Protección Personal", "desc": "Soluciones para equipamiento de seguridad" },
+        { "title": "Reparación de Campo", "desc": "Adhesivos para condiciones de campo extremas" }
+      ]
+    }
+  },
+  "impact": {
+    "title": "Impacto y Resultados",
+    "metrics": [
+      { "title": "Calidad", "desc": "99.9% de productos cumplen especificaciones de calidad" },
+      { "title": "Durabilidad", "desc": "Vida útil 3x superior al promedio de la industria" },
+      { "title": "Satisfacción", "desc": "98% de clientes satisfechos con el rendimiento de los productos" },
+      { "title": "Innovación", "desc": "Más de 20 patentes registradas en tecnología de adhesivos" }
+    ]
+  },
+  "future": {
+    "title": "Visión de futuro",
+    "p1": "Pomoca tiene como objetivo expandirse a nuevos mercados y sectores, aplicando su tecnología de adhesivos a industrias emergentes.",
+    "p2": "Los planes futuros incluyen el desarrollo de adhesivos biodegradables y la integración de sensores inteligentes para monitoreo de rendimiento.",
+    "backToAll": "Volver a todos los proyectos"
+  },
+  "nav": {
+    "prev": "Pix4D",
+    "next": "Wegaw"
+  }
+}

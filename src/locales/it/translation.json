@@ -1,0 +1,195 @@
+{
+  "welcome": "Benvenuto",
+  "about": "Su di me",
+  "contact": "Contatto",
+  "home": "Home",
+  "experience": "Esperienza",
+  "education": "Educazione",
+  "projects": "Progetti",
+  "cv": "CV",
+  "hero": {
+    "title": "Ciao, sono Bru Masribera",
+    "subtitle": "Sviluppatore Full Stack & Designer UI/UX",
+    "description": "Appassionato di creare esperienze digitali belle, funzionali e centrate sull'utente.",
+    "location": "Barcellona, Spagna",
+    "contactMe": "Contattami",
+    "downloadCV": "Scarica CV"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "Su di me",
+    "experience": "Esperienza",
+    "education": "Educazione",
+    "projects": "Progetti",
+    "contact": "Contatto",
+    "cv": "CV"
+  },
+  "about": {
+    "title": "Su di me",
+    "description": "Sono uno sviluppatore appassionato che ama creare soluzioni innovative ed esperienze utente eccezionali.",
+    "skills": "Competenze",
+    "interests": "Interessi"
+  },
+  "experience": {
+    "title": "Esperienza Professionale",
+    "current": "Attuale",
+    "previous": "Precedente",
+    "responsibilities": "Responsabilità",
+    "technologies": "Tecnologie"
+  },
+  "education": {
+    "title": "Educazione",
+    "degree": "Laurea",
+    "university": "Università",
+    "period": "Periodo",
+    "gpa": "Media"
+  },
+  "projects": {
+    "title": "I miei Progetti",
+    "viewProject": "Vedi Progetto",
+    "openApp": "Apri App",
+    "description": "Descrizione",
+    "technologies": "Tecnologie Utilizzate",
+    "features": "Caratteristiche"
+  },
+  "contact": {
+    "title": "Contattami",
+    "name": "Nome",
+    "email": "Email",
+    "message": "Messaggio",
+    "send": "Invia",
+    "sending": "Invio in corso...",
+    "sent": "Messaggio inviato!",
+    "error": "Errore nell'invio del messaggio"
+  },
+  "footer": {
+    "rights": "Tutti i diritti riservati",
+    "madeWith": "Fatto con 🥰 in Svizzera",
+    "tagline": "Ingegnere Frontend e UX | Remote-friendly",
+    "copyright": "© {{year}} Bru Mas Ribera. Tutti i diritti riservati.",
+    "tooltips": {
+      "email": "Inviarmi un'email",
+      "linkedin": "Visualizza il mio profilo LinkedIn",
+      "github": "Visualizza il mio profilo GitHub",
+      "cv": "Visualizza il mio CV"
+    }
+  },
+  "languages": {
+    "en": "Inglese",
+    "de": "Tedesco",
+    "fr": "Francese",
+    "es": "Spagnolo",
+    "ca": "Catalano",
+    "it": "Italiano",
+    "pt": "Portoghese",
+    "rm": "Romancio"
+  },
+  "theme": {
+    "light": "Chiaro",
+    "dark": "Scuro"
+  },
+  "common": {
+    "loading": "Caricamento...",
+    "error": "Errore",
+    "success": "Successo",
+    "cancel": "Annulla",
+    "save": "Salva",
+    "edit": "Modifica",
+    "delete": "Elimina",
+    "close": "Chiudi",
+    "open": "Apri",
+    "back": "Indietro",
+    "next": "Avanti",
+    "previous": "Precedente"
+  },
+  "reserve": {
+    "title": "Reserve",
+    "description": "Sistema di gestione prenotazioni per attività all'aperto.",
+    "openApp": "Apri App",
+    "openAppSmall": "Apri App",
+    "prototype": "Prototipo",
+    "loading": "Caricamento App Reserve...",
+    "loadingMessage": "Preparazione della tua esperienza di avventura all'aperto...",
+    "features": {
+      "title": "Caratteristiche Principali",
+      "reservations": "Gestione Prenotazioni",
+      "calendar": "Calendario Interattivo",
+      "maps": "Mappe di Localizzazione",
+      "notifications": "Notifiche Intelligenti"
+    },
+    "technologies": "React, TypeScript, Leaflet, Tailwind CSS"
+  },
+  "clathes": {
+    "title": "Clathes",
+    "description": "Piattaforma di moda sostenibile per abbigliamento ecologico.",
+    "viewProject": "Vedi Progetto",
+    "features": {
+      "title": "Caratteristiche Principali",
+      "sustainability": "Monitoraggio Sostenibilità",
+      "recommendations": "Raccomandazioni Ecologiche",
+      "community": "Caratteristiche Comunitarie"
+    },
+    "technologies": "React, Node.js, MongoDB, AWS"
+  },
+  "moodleNet": {
+    "title": "MoodleNet",
+    "description": "Piattaforma di condivisione risorse educative aperte.",
+    "viewProject": "Vedi Progetto",
+    "features": {
+      "title": "Caratteristiche Principali",
+      "sharing": "Condivisione Risorse",
+      "collaboration": "Apprendimento Collaborativo",
+      "discovery": "Scoperta Contenuti"
+    },
+    "technologies": "PHP, MySQL, JavaScript, Bootstrap"
+  },
+  "openHuts": {
+    "title": "Open Huts",
+    "description": "Piattaforma di prenotazione rifugi per appassionati di attività all'aperto.",
+    "viewProject": "Vedi Progetto",
+    "features": {
+      "title": "Caratteristiche Principali",
+      "booking": "Sistema Prenotazione Rifugi",
+      "routes": "Percorsi Escursionistici",
+      "weather": "Integrazione Meteo"
+    },
+    "technologies": "React Native, Firebase, Google Maps API"
+  },
+  "pix4D": {
+    "title": "Pix4D",
+    "description": "Software di fotogrammetria per mappatura 3D.",
+    "viewProject": "Vedi Progetto",
+    "features": {
+      "title": "Caratteristiche Principali",
+      "photogrammetry": "Fotogrammetria Avanzata",
+      "3dMapping": "Mappatura 3D",
+      "surveying": "Strumenti Topografici"
+    },
+    "technologies": "C++, Python, OpenGL, CUDA"
+  },
+  "pomoca": {
+    "title": "Pomoca",
+    "description": "Equipaggiamento innovativo per sci alpinismo e accessori.",
+    "viewProject": "Vedi Progetto",
+    "features": {
+      "title": "Caratteristiche Principali",
+      "products": "Catalogo Prodotti",
+      "customization": "Soluzioni Personalizzate",
+      "support": "Supporto Tecnico"
+    },
+    "technologies": "Shopify, React, Node.js, PostgreSQL"
+  },
+  "wegaw": {
+    "title": "Wegaw",
+    "description": "Piattaforma di intelligenza meteorologica per attività all'aperto.",
+    "viewProject": "Vedi Progetto",
+    "features": {
+      "title": "Caratteristiche Principali",
+      "forecasts": "Previsioni Meteo",
+      "alerts": "Allerte Meteorologiche",
+      "planning": "Pianificazione Attività"
+    },
+    "technologies": "Python, Machine Learning, APIs, React"
+  }
+}
+

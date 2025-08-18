@@ -1,0 +1,263 @@
+{
+  "hero": {
+    "title": "Ingénieur Frontend et UX",
+    "location": "Basé à Meiringen, Suisse",
+    "subtitle": "Ingénieur Frontend et UX | Télétravail",
+    "yearsExperience": "8+ années d'expérience professionnelle"
+  },
+  "about": {
+    "title": "À propos de moi",
+    "description": "Développement de produit de bout en bout, de la recherche à la production, avec un focus sur des solutions à impact que les utilisateurs adorent.",
+    "frontend": { "title": "Développement Frontend", "desc": "React, TypeScript, performance et UI soignée." },
+    "ux": { "title": "Design UX", "desc": "Par la recherche, accessible et élégant." },
+    "research": { "title": "Recherche Utilisateur", "desc": "Entretiens, enquêtes et décisions guidées par la donnée." },
+    "innovation": { "title": "Innovation", "desc": "Nouvelles technologies et méthodes pour un impact durable." }
+  },
+  "experience": {
+    "title": "Expérience professionnelle",
+    "subtitle": "Un parcours à travers divers rôles dans la technologie, des startups aux entreprises établies, toujours axé sur la création d'expériences utilisateur significatives.",
+    "showMore": "Afficher plus",
+    "showLess": "Afficher moins",
+    "moreDetails": "Plus de détails",
+    "companies": {
+      "openHuts": {
+        "name": "Open Huts",
+        "position": "Fondateur & Chef de Projet",
+        "location": "Télétravail",
+        "period": "2014 - Présent",
+        "description": "Trouvez des endroits cachés pour dormir dans la nature. Aidez à protéger la nature en l'appréciant."
+      },
+      "moodle": {
+        "name": "Moodle",
+        "position": "Ingénieur Frontend & UX",
+        "location": "Télétravail",
+        "period": "2021 - 2024",
+        "description": "Développement de MoodleNet, un réseau pour partager et organiser des ressources éducatives ouvertes."
+      },
+      "oberalp": {
+        "name": "Groupe Oberalp",
+        "position": "Designer d'Expérience Utilisateur",
+        "location": "Lausanne, Suisse",
+        "period": "2020",
+        "description": "Refonte des interfaces de production du leader mondial des peaux de ski de randonnée, Pomoca."
+      },
+      "wegaw": {
+        "name": "Wegaw",
+        "position": "Architecte de Solutions",
+        "location": "Lausanne, Suisse",
+        "period": "2018",
+        "description": "Développement d'un projet de l'Agence Spatiale Européenne pour suivre la couverture neigeuse depuis les satellites dans le monde entier."
+      },
+      "pix4d": {
+        "name": "Pix4D",
+        "position": "Développeur Web Junior",
+        "location": "Lausanne, Suisse",
+        "period": "2017 - 2018",
+        "description": "Développement d'une plateforme cloud pour télécharger, traiter et analyser des modèles 3D à partir d'images de drones."
+      }
+    },
+    "skills": {
+      "react": "React",
+      "next": "Next",
+      "typescript": "TypeScript",
+      "supabase": "Supabase",
+      "uxResearch": "Recherche UX",
+      "figma": "Figma",
+      "uxDesign": "Design UX",
+      "openSource": "Open Source",
+      "educationalTechnology": "Technologie Éducative",
+      "behavioralInterviewing": "Entretiens Comportementaux",
+      "usabilityTesting": "Tests d'Utilisabilité",
+      "productionInterfaces": "Interfaces de Production",
+      "javascript": "JavaScript",
+      "kubernetes": "Kubernetes",
+      "satelliteData": "Données Satellitaires",
+      "esaProjects": "Projets ESA",
+      "snowCoverTracking": "Suivi de la Couverture Neigeuse",
+      "angular4": "Angular 4",
+      "rxjs": "RxJS",
+      "cloudPlatform": "Plateforme Cloud",
+      "3dModeling": "Modélisation 3D",
+      "droneTechnology": "Technologie de Drones"
+    }
+  },
+  "education": {
+    "title": "Formation et certifications",
+    "subtitle": "Apprentissage continu dans les disciplines techniques, de design et commerciales pour fournir des solutions complètes.",
+    "showMore": "Afficher plus",
+    "showLess": "Afficher moins",
+    "degrees": {
+      "computerEngineering": {
+        "degree": "Diplôme d'Ingénieur, Génie Informatique",
+        "institution": "Universitat de Barcelona",
+        "period": "2011 - 2016",
+        "location": "Barcelone, Catalogne",
+        "description": "Licence en Génie Informatique axée sur le développement web et l'architecture logicielle."
+      },
+      "uxDesigner": {
+        "degree": "Nanodegree Designer UX",
+        "institution": "Udacity",
+        "period": "2020 - 2020",
+        "location": "Télétravail",
+        "description": "Cours spécialisé sur les principes de design UX, la recherche utilisateur, le prototypage et les méthodologies de test utilisateur."
+      },
+      "mountainLeader": {
+        "degree": "Guide de Montagne UIMLA, Guide de Randonnée Alpine",
+        "institution": "ICEMP",
+        "period": "2019 - 2021",
+        "location": "Pyrénées",
+        "description": "Certification professionnelle pour le leadership en montagne et le guidage de randonnées alpines."
+      },
+      "mba": {
+        "degree": "ThePowerMBA, MBA",
+        "institution": "ThePowerMBA",
+        "period": "2020 - 2021",
+        "location": "Télétravail",
+        "description": "Master en Administration des Affaires axé sur les stratégies commerciales modernes et la transformation numérique."
+      },
+      "architecture": {
+        "degree": "Architecture",
+        "institution": "Universitat Politècnica de Catalunya",
+        "period": "2009 - 2011",
+        "location": "Barcelone, Catalogne",
+        "description": "Études en Architecture fournissant des fondements en pensée design et résolution de problèmes spatiaux."
+      }
+    },
+    "skills": {
+      "webDevelopment": "Développement Web",
+      "softwareArchitecture": "Architecture Logicielle",
+      "problemSolving": "Résolution de Problèmes",
+      "technicalFoundation": "Fondements Techniques",
+      "systemDesign": "Conception de Systèmes",
+      "userResearch": "Recherche Utilisateur",
+      "prototyping": "Prototypage",
+      "userTesting": "Tests Utilisateur",
+      "designThinking": "Design Thinking",
+      "userCenteredDesign": "Design Centré Utilisateur",
+      "leadership": "Leadership",
+      "environmentalAwareness": "Conscience Environnementale",
+      "riskAssessment": "Évaluation des Risques",
+      "teamManagement": "Gestion d'Équipe",
+      "sustainability": "Durabilité",
+      "outdoorPlanning": "Planification Extérieure",
+      "businessStrategy": "Stratégie Commerciale",
+      "digitalTransformation": "Transformation Numérique",
+      "productManagement": "Gestion de Produit",
+      "marketAnalysis": "Analyse de Marché",
+      "strategicThinking": "Pensée Stratégique",
+      "innovation": "Innovation",
+      "spatialProblemSolving": "Résolution de Problèmes Spatiaux",
+      "creativeDesign": "Design Créatif",
+      "visualCommunication": "Communication Visuelle",
+      "3dModeling": "Modélisation 3D"
+    }
+  },
+  "projects": {
+    "featuredTitle": "Projets en vedette",
+    "featuredSubtitle": "Un aperçu de mon travail en développement frontend, design UX et innovation produit. Des plateformes open source à la technologie de conservation de la nature.",
+    "moreDetails": "Plus de détails",
+    "audience": {
+      "natureEnthusiasts": "Passionnés de nature",
+      "hikersOutdoor": "Randonneurs et passionnés de plein air",
+      "conservationCommunity": "Communauté de conservation",
+      "educatorsLearners": "Éducateurs et apprenants"
+    },
+    "solution": "Solution d'entreprise",
+    "openSource": "Open Source",
+    "projects": {
+      "reserve": {
+        "title": "Reserve",
+        "description": "Application mobile-first qui permet à quiconque de protéger la nature en finançant la restauration et la protection d'habitats un mètre carré à la fois avec un suivi transparent de l'impact.",
+        "impact": "Protection de la nature",
+        "users": "Passionnés de nature"
+      },
+      "openHuts": {
+        "title": "Open Huts",
+        "description": "Plateforme connectant les randonneurs aux refuges de montagne dans le monde entier, promouvant le tourisme durable et l'exploration en plein air dans les régions montagneuses globales.",
+        "impact": "Tourisme durable",
+        "users": "Randonneurs et passionnés de plein air"
+      },
+      "clathes": {
+        "title": "Clathes",
+        "description": "Protection d'espèces menacées par la mode durable, créant un impact global avec chaque achat et initiative stratégique de conservation dans le monde entier.",
+        "impact": "Protection d'espèces menacées",
+        "users": "Communauté de conservation"
+      },
+      "moodleNet": {
+        "title": "Plateforme MoodleNet",
+        "description": "Plateforme d'apprentissage décentralisée permettant aux éducateurs de partager et découvrir des ressources éducatives ouvertes dans le monde entier, promouvant l'apprentissage collaboratif.",
+        "impact": "Éducation ouverte",
+        "users": "Éducateurs et apprenants"
+      },
+      "pomoca": {
+        "title": "Interface de Production Pomoca",
+        "description": "Système de contrôle de fabrication pour la production d'équipements de ski, optimisant le flux de travail et l'assurance qualité avec des interfaces numériques modernes.",
+        "impact": "Efficacité de fabrication",
+        "users": "Personnel de production"
+      },
+      "defrost": {
+        "title": "Surveillance de Neige DeFROST",
+        "description": "Système avancé de surveillance de neige et de prédiction d'avalanches utilisant des données satellitaires et l'IA, fournissant une intelligence environnementale en temps réel pour la sécurité.",
+        "impact": "Sécurité et recherche",
+        "users": "Stations de ski et chercheurs"
+      }
+    },
+    "technologies": {
+      "reactNative": "React Native",
+      "typescript": "TypeScript",
+      "stripe": "Stripe",
+      "mongodb": "MongoDB",
+      "nodejs": "Node.js",
+      "react": "React",
+      "mapbox": "Mapbox",
+      "postgresql": "PostgreSQL",
+      "conservationTech": "Technologie de Conservation",
+      "strategicPlanning": "Planification Stratégique",
+      "sustainableFashion": "Mode Durable",
+      "wildlifeProtection": "Protection de la Faune",
+      "shopify": "Shopify",
+      "activityPub": "ActivityPub",
+      "iot": "IoT",
+      "python": "Python",
+      "aiMl": "IA/ML",
+      "satelliteData": "Données Satellitaires"
+    }
+  },
+  "contact": {
+    "title": "Entrer en contact",
+    "subtitle": "À la recherche d'opportunités à temps plein pour rejoindre une équipe et contribuer à des projets significatifs.",
+    "formTitle": "M'envoyer un message",
+    "formDescription": "Discutons des opportunités à temps plein. Je cherche à rejoindre une équipe où je peux grandir, contribuer et construire ensemble des produits incroyables.",
+    "name": "Nom",
+    "email": "E-mail",
+    "message": "Message",
+    "namePlaceholder": "Votre nom",
+    "emailPlaceholder": "votre.email@exemple.com",
+    "messagePlaceholder": "Parlez-moi de votre équipe, du rôle que vous recrutez, ou dites simplement bonjour !",
+    "send": "Envoyer le message",
+    "sending": "Envoi en cours...",
+    "success": "Message envoyé avec succès !",
+    "error": "Erreur lors de l'envoi du message. Veuillez réessayer."
+  },
+  "languages": {
+    "title": "Langues que je maîtrise",
+    "subtitle": "Communication multilingue à travers différentes cultures et contextes.",
+    "proficiency": {
+      "native": "Langue maternelle",
+      "c2": "C2",
+      "c1": "C1",
+      "b1": "B1"
+    },
+    "languages": {
+      "english": "Anglais",
+      "french": "Français",
+      "spanish": "Espagnol",
+      "catalan": "Catalan",
+      "italian": "Italien",
+      "german": "Allemand",
+      "portuguese": "Portugais"
+    }
+  }
+}
+
+

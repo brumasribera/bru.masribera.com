@@ -1,15 +1,15 @@
 import { useMemo, useEffect, useState } from "react";
-import { Earth } from "lucide-react";
+import { Home } from "lucide-react";
 import GlobeGL from "react-globe.gl";
 import { PROJECTS } from "./data";
 import { Project } from "./types";
 
 interface Globe3DProps {
   onPick: (project: Project) => void;
+  onShowContributions: () => void;
 }
 
-export function Globe3D({ onPick }: Globe3DProps) {
-  const [isGlobeReady, setIsGlobeReady] = useState(false);
+export function Globe3D({ onPick, onShowContributions }: Globe3DProps) {
   const [dimensions, setDimensions] = useState({ width: 380, height: 680 });
 
   // Handle responsive sizing
@@ -176,15 +176,6 @@ export function Globe3D({ onPick }: Globe3DProps) {
     onPick(project);
   };
 
-  useEffect(() => {
-    // Give the globe some time to initialize
-    const timer = setTimeout(() => {
-      setIsGlobeReady(true);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <div className="globe-container w-full h-full flex flex-col relative bg-black">
       {/* Custom CSS for shooting star animation */}
@@ -235,112 +226,21 @@ export function Globe3D({ onPick }: Globe3DProps) {
         ))}
       </div>
       
-      {/* Header overlay */}
-      <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/40 to-transparent p-4 flex-shrink-0">
-        <div className="flex items-center gap-2 text-white">
-          <Earth className="w-5 h-5"/>
-          <h3 className="font-semibold">Explore Projects</h3>
-        </div>
-        <p className="text-white/80 text-sm">
-          {isGlobeReady ? "Spin, pinch to zoom, and tap a marker to open." : "Loading 3D globe..."}
-        </p>
-      </div>
+      {/* Header overlay removed per design */}
+
+      {/* Home Button - positioned top right */}
+      <button
+        onClick={() => {
+          console.log('Home button clicked, going to My Contributions');
+          onShowContributions();
+        }}
+        className="absolute top-4 right-4 w-10 h-10 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[9999]"
+      >
+        <Home className="h-5 w-5" />
+      </button>
 
       {/* Globe container - Takes remaining height and centers the globe */}
       <div className="flex-1 relative flex items-center justify-center">
-        {!isGlobeReady && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black z-50">
-            <div className="text-center relative">
-              <div className="relative">
-                {/* Reserve Logo */}
-                <div className="w-32 h-32 mx-auto mb-6 relative">
-                  <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-2xl mx-auto relative z-20">
-                    <img src="/logos/reserve-logo.png" alt="Reserve" className="w-16 h-16 object-contain" />
-                  </div>
-                  
-                  {/* Particles that get absorbed by the logo */}
-                  {Array.from({ length: 8 }).map((_, i) => (
-                    <div
-                      key={`particle-${i}`}
-                      className="absolute w-2 h-2 bg-emerald-400 rounded-full animate-pulse"
-                      style={{
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        zIndex: 15,
-                        animationDelay: `${i * 0.6}s`,
-                        animationDuration: '3s',
-                        animation: isGlobeReady ? 'none' : `particle-absorb-${i} 6s ease-out forwards`
-                      }}
-                    />
-                  ))}
-                </div>
-                
-                {/* Loading Bar */}
-                <div className="w-64 h-3 bg-gray-700 rounded-full mx-auto mb-4 overflow-hidden">
-                  <div 
-                    className="h-full bg-gradient-to-r from-emerald-500 to-green-500 rounded-full transition-all duration-1000 ease-out"
-                    style={{
-                      width: isGlobeReady ? '100%' : '0%',
-                      animation: isGlobeReady ? 'none' : 'loading-grow 6s ease-out forwards'
-                    }}
-                  />
-                </div>
-                
-                {/* Loading Text */}
-                <p className="text-white text-2xl font-bold mb-3">Connecting to Earth</p>
-                <p className="text-emerald-400 text-lg font-medium">
-                  {isGlobeReady ? "Ready to explore!" : "Loading conservation projects..."}
-                </p>
-              </div>
-            </div>
-            
-            {/* Custom CSS for particle absorption and loading bar */}
-            <style dangerouslySetInnerHTML={{
-              __html: `
-                @keyframes loading-grow {
-                  0% { width: 0%; }
-                  100% { width: 100%; }
-                }
-                
-                ${Array.from({ length: 8 }).map((_, i) => `
-                  @keyframes particle-absorb-${i} {
-                    0% {
-                      transform: translate(-50%, -50%) translate(${Math.random() * 120 - 60}px, ${Math.random() * 120 - 60}px);
-                      opacity: 1;
-                      scale: 1;
-                    }
-                    ${Math.max(15, i * 10)}% {
-                      transform: translate(-50%, -50%) translate(${Math.random() * 120 - 60}px, ${Math.random() * 120 - 60}px);
-                      opacity: 1;
-                      scale: 1;
-                    }
-                    ${Math.max(40, i * 10 + 30)}% {
-                      transform: translate(-50%, -50%) translate(${Math.random() * 80 - 40}px, ${Math.random() * 80 - 40}px);
-                      opacity: 0.8;
-                      scale: 0.8;
-                    }
-                    ${Math.max(65, i * 10 + 55)}% {
-                      transform: translate(-50%, -50%) translate(${Math.random() * 40 - 20}px, ${Math.random() * 40 - 20}px);
-                      opacity: 0.6;
-                      scale: 0.6;
-                    }
-                    ${Math.max(85, i * 10 + 75)}% {
-                      transform: translate(-50%, -50%) translate(${Math.random() * 20 - 10}px, ${Math.random() * 20 - 10}px);
-                      opacity: 0.3;
-                      scale: 0.3;
-                    }
-                    100% {
-                      transform: translate(-50%, -50%) translate(0px, 0px);
-                      opacity: 0;
-                      scale: 0.1;
-                    }
-                  }
-                `).join('')}
-              `
-            }} />
-          </div>
-        )}
         <GlobeGL 
           backgroundColor="#00000000" 
           globeImageUrl="https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
@@ -352,7 +252,6 @@ export function Globe3D({ onPick }: Globe3DProps) {
           htmlLat={(d: any) => d.lat}
           htmlLng={(d: any) => d.lng}
           htmlElement={makeMarker}
-          onGlobeReady={() => setIsGlobeReady(true)}
           width={dimensions.width}
           height={dimensions.height}
         />

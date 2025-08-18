@@ -1,8 +1,11 @@
-import { Mail, Linkedin, Github, MessageCircle, Send } from 'lucide-react'
+import { Linkedin, Github, MessageCircle, Send, Mail } from 'lucide-react'
+import { Button } from '../ui/button'
 import { useState } from 'react'
 import emailjs from '@emailjs/browser'
+import { useTranslation } from 'react-i18next'
 
 export function ContactSection() {
+  const { t } = useTranslation(['home'])
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -63,29 +66,29 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-8 sm:py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+    <section id="contact" className="py-6 sm:py-12 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
       <div className="max-w-4xl mx-auto">
-        {/* Professional header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-400 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-300 bg-clip-text text-transparent leading-tight pb-2">
-            Get In Touch
+        {/* Get In Touch header */}
+        <div className="text-center mb-10">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#20C997] leading-tight pb-2">
+            {t('contact.title')}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Looking for full-time opportunities to join a team and contribute to meaningful projects.
+            {t('contact.subtitle')}
           </p>
         </div>
         
         <div className="max-w-3xl mx-auto">
           {/* Contact Form */}
           <div className="space-y-8">
-            {/* Call to action merged with form header */}
+            {/* Message section */}
             <div className="text-center p-8 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-2xl border border-gray-200 dark:border-gray-600 mb-8">
               <MessageCircle className="h-10 w-10 text-gray-600 dark:text-gray-400 mx-auto mb-4" />
               <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">
-                Send me a message
+                {t('contact.formTitle')}
               </h3>
               <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-                Let's discuss full-time opportunities. I'm looking to join a team where I can grow, contribute, and build amazing products together.
+                {t('contact.formDescription')}
               </p>
             </div>
 
@@ -93,7 +96,7 @@ export function ContactSection() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-lg font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Name
+                    {t('contact.name')}
                   </label>
                   <input
                     type="text"
@@ -103,13 +106,13 @@ export function ContactSection() {
                     onChange={handleInputChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors"
-                    placeholder="Your name"
+                    placeholder={t('contact.namePlaceholder')}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="email" className="block text-lg font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Email
+                    {t('contact.email')}
                   </label>
                   <input
                     type="email"
@@ -119,14 +122,14 @@ export function ContactSection() {
                     onChange={handleInputChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors"
-                    placeholder="your.email@example.com"
+                    placeholder={t('contact.emailPlaceholder')}
                   />
                 </div>
               </div>
 
               <div>
                 <label htmlFor="message" className="block text-lg font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Message
+                  {t('contact.message')}
                 </label>
                 <textarea
                   id="message"
@@ -136,98 +139,100 @@ export function ContactSection() {
                   required
                   rows={5}
                   className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors resize-none"
-                  placeholder="Tell me about your team, the role you're hiring for, or just say hello!"
+                  placeholder={t('contact.messagePlaceholder')}
                 />
               </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="group relative w-full flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 hover:from-green-300 hover:via-emerald-400 hover:to-teal-400 disabled:from-gray-400 disabled:to-gray-500 text-white rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl disabled:shadow-none transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:hover:scale-100 disabled:cursor-not-allowed overflow-hidden"
-              >
-                {/* Shiny overlay effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
-                
-                {/* Drop shadow effect on click */}
-                <div className="absolute inset-0 bg-gradient-to-r from-green-600 via-emerald-700 to-teal-600 rounded-xl opacity-0 group-active:opacity-100 transition-opacity duration-150"></div>
-                
-                {/* Button content */}
-                <div className="relative z-10 flex items-center gap-3">
-                  {isSubmitting ? (
-                    <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      <span>Sending...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
-                      <span>Send Message</span>
-                    </>
-                  )}
-                </div>
-              </button>
-
-              {/* Status Messages */}
-              {submitStatus === 'success' && (
-                <div className={`overflow-hidden transition-all duration-500 ease-out ${
-                  showSuccess 
-                    ? 'max-h-20 opacity-100' 
-                    : 'max-h-0 opacity-0'
-                }`}>
-                  <div className="p-3 bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg text-green-700 dark:text-green-300 text-center">
-                    <div className="text-base font-medium">🎉 Message sent successfully!</div>
+              <div className="text-center">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="group relative w-full flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 hover:from-green-300 hover:via-emerald-400 hover:to-teal-400 disabled:from-gray-400 disabled:to-gray-500 text-white rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl disabled:shadow-none transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:hover:scale-100 disabled:cursor-not-allowed overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-600 via-emerald-700 to-teal-600 rounded-xl opacity-0 group-active:opacity-100 transition-opacity duration-150"></div>
+                  <div className="relative z-10 flex items-center gap-3">
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <span>{t('contact.sending')}</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
+                        <span>{t('contact.send')}</span>
+                      </>
+                    )}
                   </div>
-                </div>
-              )}
-              {submitStatus === 'error' && (
-                <div className="p-4 bg-red-100 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-700 dark:text-red-300 text-center">
-                  <div className="text-lg font-medium mb-1">❌ Failed to send message</div>
-                  <div className="text-sm">Please try again or use the email button below.</div>
-                </div>
-              )}
-            </form>
-
-            {/* Contact buttons */}
-            <div className="text-center">
-              <div className="flex flex-wrap justify-center gap-4">
-                {/* Email */}
-                <button 
-                  onClick={() => window.open('mailto:bru@masribera.com','_blank')}
-                  className="group bg-gray-900 dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-200 text-white dark:text-gray-900 px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2"
-                >
-                  <Mail className="h-4 w-4" />
-                  bru@masribera.com
-                </button>
-                
-                {/* LinkedIn */}
-                <button 
-                  onClick={() => window.open('https://linkedin.com/in/brumasribera','_blank')}
-                  className="group bg-white dark:bg-gray-800 text-black dark:text-white border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-blue-400 dark:hover:border-blue-500 px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 flex items-center gap-2"
-                >
-                  <Linkedin className="h-4 w-4" />
-                  LinkedIn
-                </button>
-                
-                {/* GitHub */}
-                <button 
-                  onClick={() => window.open('https://github.com/brumasribera','_blank')}
-                  className="group bg-white dark:bg-gray-800 text-black dark:text-white border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-400 dark:hover:border-gray-500 px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 flex items-center gap-2"
-                >
-                  <Github className="h-4 w-4" />
-                  GitHub
-                </button>
-                
-                {/* CV */}
-                <button 
-                  onClick={() => window.open('/documents/cv.pdf', '_blank')}
-                  className="group bg-white dark:bg-gray-800 text-black dark:text-white border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-emerald-400 dark:hover:border-emerald-500 px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 flex items-center gap-2"
-                >
-                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  CV
                 </button>
               </div>
+            </form>
+
+            {/* Status Messages */}
+            {submitStatus === 'success' && (
+              <div className={`transition-all duration-300 ease-in-out ${
+                showSuccess ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'
+              }`}>
+                <div className="p-3 bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg text-green-700 dark:text-green-300 text-center">
+                  <div className="text-base font-medium">🎉 {t('contact.success')}</div>
+                </div>
+              </div>
+            )}
+            {submitStatus === 'error' && (
+              <div className="p-4 bg-red-100 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-700 dark:text-red-300 text-center">
+                <div className="text-lg font-medium mb-1">❌ {t('contact.error')}</div>
+              </div>
+            )}
+          </div>
+
+          {/* Alternative Contact Methods */}
+          <div className="text-center mt-12">
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button 
+                size="lg" 
+                className="group bg-gray-900 dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-200 text-white dark:text-black px-6 py-3 transition-colors duration-200 text-base"
+                onClick={() => window.open('mailto:bru@masribera.com', '_blank')}
+              >
+                <Mail className="mr-2 h-4 w-4 transition-all duration-300 group-hover:scale-110" />
+                bru@masribera.com
+              </Button>
+              
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="group bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200 text-base shadow-md"
+                onClick={() => window.open('https://linkedin.com/in/brumasribera', '_blank')}
+              >
+                <Linkedin className="mr-2 h-4 w-4 transition-all duration-500 group-hover:fill-current group-hover:scale-110" />
+                LinkedIn
+              </Button>
+              
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="group bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200 text-base shadow-md"
+                onClick={() => window.open('https://github.com/brumasribera', '_blank')}
+              >
+                <Github className="mr-2 h-4 w-4 transition-all duration-500 group-hover:fill-current group-hover:scale-110" />
+                GitHub
+              </Button>
+              
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="group bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200 text-base shadow-md"
+                onClick={() => {
+                  const match = window.location.pathname.match(/^\/(\w{2})(\/|$)/)
+                  const lng = match ? match[1] : 'en'
+                  const url = lng === 'en' ? '/documents/CV - Bru Mas Ribera.pdf' : `/documents/CV - Bru Mas Ribera (${lng.toUpperCase()}).pdf`
+                  window.open(url, '_blank')
+                }}
+              >
+                <svg className="mr-2 h-4 w-4 transition-all duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                CV
+              </Button>
             </div>
           </div>
         </div>

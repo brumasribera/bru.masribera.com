@@ -1,0 +1,263 @@
+{
+  "hero": {
+    "title": "Enginyer Frontend i UX",
+    "location": "Amb base a Meiringen, Suïssa",
+    "subtitle": "Enginyer Frontend i UX | Remot",
+    "yearsExperience": "8+ anys d'experiència professional"
+  },
+  "about": {
+    "title": "Sobre mi",
+    "description": "Desenvolupament de producte de cap a peus, de la recerca a producció, creant solucions amb impacte que agraden a la gent.",
+    "frontend": { "title": "Desenvolupament Frontend", "desc": "React, TypeScript, rendiment i UI polit." },
+    "ux": { "title": "Disseny UX", "desc": "Fluxos accessibles basats en recerca." },
+    "research": { "title": "Recerca d'usuaris", "desc": "Entrevistes, enquestes i decisions basades en dades." },
+    "innovation": { "title": "Innovació", "desc": "Tecnologia i mètodes nous amb impacte sostenible." }
+  },
+  "experience": {
+    "title": "Experiència professional",
+    "subtitle": "Un viatge a través de diversos rols en tecnologia, des de startups fins a empreses establertes, sempre enfocat en crear experiències d'usuari significatives.",
+    "showMore": "Mostrar més",
+    "showLess": "Mostrar menys",
+    "moreDetails": "Més detalls",
+    "companies": {
+      "openHuts": {
+        "name": "Open Huts",
+        "position": "Fundador i Líder del Projecte",
+        "location": "Remot",
+        "period": "2014 - Present",
+        "description": "Troba llocs amagats per dormir a la natura. Ajuda a protegir la natura gaudint-la."
+      },
+      "moodle": {
+        "name": "Moodle",
+        "position": "Enginyer Frontend i UX",
+        "location": "Remot",
+        "period": "2021 - 2024",
+        "description": "Desenvolupant MoodleNet, una xarxa per compartir i curar recursos educatius oberts."
+      },
+      "oberalp": {
+        "name": "Grup Oberalp",
+        "position": "Dissenyador d'Experiència d'Usuari",
+        "location": "Lausana, Suïssa",
+        "period": "2020",
+        "description": "Redissenyant les interfícies de producció del líder mundial en pells d'esquí de muntanya, Pomoca."
+      },
+      "wegaw": {
+        "name": "Wegaw",
+        "position": "Arquitecte de Solucions",
+        "location": "Lausana, Suïssa",
+        "period": "2018",
+        "description": "Desenvolupant un projecte de l'Agència Espacial Europea per rastrejar la cobertura de neu des de satèl·lits a tot el món."
+      },
+      "pix4d": {
+        "name": "Pix4D",
+        "position": "Desenvolupador Web Junior",
+        "location": "Lausana, Suïssa",
+        "period": "2017 - 2018",
+        "description": "Desenvolupant una plataforma al núvol per pujar, processar i analitzar models 3D a partir d'imatges de drons."
+      }
+    },
+    "skills": {
+      "react": "React",
+      "next": "Next",
+      "typescript": "TypeScript",
+      "supabase": "Supabase",
+      "uxResearch": "Recerca UX",
+      "figma": "Figma",
+      "uxDesign": "Disseny UX",
+      "openSource": "Codi Obert",
+      "educationalTechnology": "Tecnologia Educativa",
+      "behavioralInterviewing": "Entrevistes Conductuals",
+      "usabilityTesting": "Proves d'Usabilitat",
+      "productionInterfaces": "Interfícies de Producció",
+      "javascript": "JavaScript",
+      "kubernetes": "Kubernetes",
+      "satelliteData": "Dades Satel·litals",
+      "esaProjects": "Projectes ESA",
+      "snowCoverTracking": "Seguiment de Cobertura de Neu",
+      "angular4": "Angular 4",
+      "rxjs": "RxJS",
+      "cloudPlatform": "Plataforma al Núvol",
+      "3dModeling": "Modelatge 3D",
+      "droneTechnology": "Tecnologia de Drons"
+    }
+  },
+  "education": {
+    "title": "Educació i certificacions",
+    "subtitle": "Aprenentatge continu en disciplines tècniques, de disseny i de negocis per lliurar solucions integrals.",
+    "showMore": "Mostrar més",
+    "showLess": "Mostrar menys",
+    "degrees": {
+      "computerEngineering": {
+        "degree": "Grau d'Enginyeria, Enginyeria Informàtica",
+        "institution": "Universitat de Barcelona",
+        "period": "2011 - 2016",
+        "location": "Barcelona, Catalunya",
+        "description": "Grau en Enginyeria Informàtica amb enfocament en desenvolupament web i arquitectura de programari."
+      },
+      "uxDesigner": {
+        "degree": "Nanograu en Disseny UX",
+        "institution": "Udacity",
+        "period": "2020 - 2020",
+        "location": "Remot",
+        "description": "Curs especialitzat en principis de disseny UX, recerca d'usuaris, prototipatge i metodologies de proves d'usuari."
+      },
+      "mountainLeader": {
+        "degree": "Líder de Muntanya UIMLA, Guia de Senderisme Alpí",
+        "institution": "ICEMP",
+        "period": "2019 - 2021",
+        "location": "Pirineus",
+        "description": "Certificació professional per lideratge de muntanya i guia de senderisme alpí."
+      },
+      "mba": {
+        "degree": "ThePowerMBA, MBA",
+        "institution": "ThePowerMBA",
+        "period": "2020 - 2021",
+        "location": "Remot",
+        "description": "Màster en Administració d'Empreses enfocat en estratègies empresarials modernes i transformació digital."
+      },
+      "architecture": {
+        "degree": "Arquitectura",
+        "institution": "Universitat Politècnica de Catalunya",
+        "period": "2009 - 2011",
+        "location": "Barcelona, Catalunya",
+        "description": "Estudis en Arquitectura que proporcionen fonaments en pensament de disseny i resolució de problemes espacials."
+      }
+    },
+    "skills": {
+      "webDevelopment": "Desenvolupament Web",
+      "softwareArchitecture": "Arquitectura de Programari",
+      "problemSolving": "Resolució de Problemes",
+      "technicalFoundation": "Fonaments Tècnics",
+      "systemDesign": "Disseny de Sistemes",
+      "userResearch": "Recerca d'Usuaris",
+      "prototyping": "Prototipatge",
+      "userTesting": "Proves d'Usuari",
+      "designThinking": "Pensament de Disseny",
+      "userCenteredDesign": "Disseny Centrat en l'Usuari",
+      "leadership": "Lideratge",
+      "environmentalAwareness": "Consciència Ambiental",
+      "riskAssessment": "Avaluació de Riscs",
+      "teamManagement": "Gestió d'Equips",
+      "sustainability": "Sostenibilitat",
+      "outdoorPlanning": "Planificació a l'Aire Lliure",
+      "businessStrategy": "Estratègia Empresarial",
+      "digitalTransformation": "Transformació Digital",
+      "productManagement": "Gestió de Productes",
+      "marketAnalysis": "Anàlisi de Mercat",
+      "strategicThinking": "Pensament Estratègic",
+      "innovation": "Innovació",
+      "spatialProblemSolving": "Resolució de Problemes Espacials",
+      "creativeDesign": "Disseny Creatiu",
+      "visualCommunication": "Comunicació Visual",
+      "3dModeling": "Modelatge 3D"
+    }
+  },
+  "projects": {
+    "featuredTitle": "Projectes destacats",
+    "featuredSubtitle": "Mostra del meu treball en frontend, UX i producte. De plataformes obertes a tecnologia per conservar la natura.",
+    "moreDetails": "Més detalls",
+    "audience": {
+      "natureEnthusiasts": "Entusiastes de la natura",
+      "hikersOutdoor": "Excursionistes i entusiastes de l'aire lliure",
+      "conservationCommunity": "Comunitat de conservació",
+      "educatorsLearners": "Educadors i estudiants"
+    },
+    "solution": "Solució empresarial",
+    "openSource": "Codi Obert",
+    "projects": {
+      "reserve": {
+        "title": "Reserve",
+        "description": "Aplicació mòbil que permet a qualsevol protegir la natura finançant la restauració i protecció d'hàbitats un metre quadrat a la vegada amb seguiment transparent de l'impacte.",
+        "impact": "Protecció de la natura",
+        "users": "Entusiastes de la natura"
+      },
+      "openHuts": {
+        "title": "Open Huts",
+        "description": "Plataforma que connecta excursionistes amb refugis de muntanya a tot el món, promovent el turisme sostenible i l'exploració a l'aire lliure en regions muntanyoses globals.",
+        "impact": "Turisme sostenible",
+        "users": "Excursionistes i entusiastes de l'aire lliure"
+      },
+      "clathes": {
+        "title": "Clathes",
+        "description": "Protegint espècies en perill a través de la moda sostenible, creant impacte global amb cada compra i iniciativa estratègica de conservació a tot el món.",
+        "impact": "Protecció d'espècies en perill",
+        "users": "Comunitat de conservació"
+      },
+      "moodleNet": {
+        "title": "Plataforma MoodleNet",
+        "description": "Plataforma d'aprenentatge descentralitzada que permet als educadors compartir i descobrir recursos educatius oberts a tot el món, promovent l'aprenentatge col·laboratiu.",
+        "impact": "Educació oberta",
+        "users": "Educadors i estudiants"
+      },
+      "pomoca": {
+        "title": "Interfície de Producció Pomoca",
+        "description": "Sistema de control de fabricació per a la producció d'equips d'esquí, optimitzant el flux de treball i la garantia de qualitat amb interfícies digitals modernes.",
+        "impact": "Eficiència de fabricació",
+        "users": "Personal de producció"
+      },
+      "defrost": {
+        "title": "Monitoratge de Neu DeFROST",
+        "description": "Sistema avançat de monitoratge de neu i predicció d'allaus usant dades satel·litals i IA, proporcionant intel·ligència ambiental en temps real per a la seguretat.",
+        "impact": "Seguretat i recerca",
+        "users": "Estacions d'esquí i investigadors"
+      }
+    },
+    "technologies": {
+      "reactNative": "React Native",
+      "typescript": "TypeScript",
+      "stripe": "Stripe",
+      "mongodb": "MongoDB",
+      "nodejs": "Node.js",
+      "react": "React",
+      "mapbox": "Mapbox",
+      "postgresql": "PostgreSQL",
+      "conservationTech": "Tecnologia de Conservació",
+      "strategicPlanning": "Planificació Estratègica",
+      "sustainableFashion": "Moda Sostenible",
+      "wildlifeProtection": "Protecció de Vida Salvatge",
+      "shopify": "Shopify",
+      "activityPub": "ActivityPub",
+      "iot": "IoT",
+      "python": "Python",
+      "aiMl": "IA/ML",
+      "satelliteData": "Dades Satel·litals"
+    }
+  },
+  "contact": {
+    "title": "Posa't en contacte",
+    "subtitle": "Buscant oportunitats de temps complet per unir-me a un equip i contribuir a projectes significatius.",
+    "formTitle": "Envia'm un missatge",
+    "formDescription": "Parlarem d'oportunitats de temps complet. Busco unir-me a un equip on pugui créixer, contribuir i construir productes increïbles junts.",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Missatge",
+    "namePlaceholder": "El teu nom",
+    "emailPlaceholder": "el.teu.email@exemple.com",
+    "messagePlaceholder": "Explica'm sobre el teu equip, el rol que estàs contractant, o simplement digues hola!",
+    "send": "Enviar missatge",
+    "sending": "Enviant...",
+    "success": "Missatge enviat amb èxit!",
+    "error": "Error en enviar missatge. Si us plau, torna-ho a provar."
+  },
+  "languages": {
+    "title": "Idiomes que conec",
+    "subtitle": "Comunicació multilingüe a través de diferents cultures i contextos.",
+    "proficiency": {
+      "native": "Natiu",
+      "c2": "C2",
+      "c1": "C1",
+      "b1": "B1"
+    },
+    "languages": {
+      "english": "Anglès",
+      "french": "Francès",
+      "spanish": "Espanyol",
+      "catalan": "Català",
+      "italian": "Italià",
+      "german": "Alemany",
+      "portuguese": "Portuguès"
+    }
+  }
+}
+
+

@@ -1,0 +1,94 @@
+{
+  "header": {
+    "title": "Open Huts",
+    "tagline": "Plataforma revolucionaria que conecta entusiastas de la naturaleza con refugios de montaña en todo el mundo, permitiendo turismo sostenible y planificación integral de aventuras"
+  },
+  "overview": {
+    "title": "Visión del proyecto",
+    "p1": "OpenHuts es una plataforma innovadora que conecta excursionistas y alpinistas con refugios de montaña de todo el mundo. El proyecto se centra en facilitar el descubrimiento y reserva de refugios, ofreciendo información detallada sobre rutas, condiciones y disponibilidad.",
+    "p2": "La plataforma integra tecnologías avanzadas para la gestión de reservas, la navegación GPS y la conexión comunitaria entre amantes de la montaña.",
+    "p3": "OpenHuts promueve el turismo sostenible y la conservación de los entornos naturales de montaña.",
+    "visitSite": "Visitar OpenHuts",
+    "app": "Descargar App"
+  },
+  "quick": {
+    "discovery": {
+      "title": "Descubrimiento",
+      "items": ["Refugios Globales", "Rutas Detalladas", "Reservas Fáciles"]
+    },
+    "technology": {
+      "title": "Tecnología",
+      "items": ["GPS Integrado", "Reservas en Tiempo Real", "Comunidad Activa"]
+    },
+    "sustainability": {
+      "title": "Sostenibilidad",
+      "items": ["Turismo Responsable", "Conservación Ambiental", "Desarrollo Local"]
+    }
+  },
+  "features": {
+    "title": "Características Principales",
+    "items": [
+      { "title": "Base de Datos Global", "desc": "Acceso a miles de refugios de montaña en todo el mundo" },
+      { "title": "Navegación GPS Integrada", "desc": "Rutas detalladas y navegación en tiempo real" },
+      { "title": "Sistema de Reservas", "desc": "Reservas instantáneas con confirmación automática" },
+      { "title": "Información Detallada", "desc": "Condiciones meteorológicas, disponibilidad y servicios" },
+      { "title": "Comunidad Activa", "desc": "Reseñas, fotos y experiencias compartidas por usuarios" },
+      { "title": "App Móvil Nativa", "desc": "Funcionalidad completa disponible offline para aventuras en montaña" }
+    ]
+  },
+  "technology": {
+    "title": "Arquitectura Tecnológica",
+    "mapping": {
+      "title": "Cartografía y Navegación",
+      "badges": ["OpenStreetMap", "GPS Integrado", "Rutas Offline", "Navegación 3D"]
+    },
+    "booking": {
+      "title": "Sistema de Reservas",
+      "badges": ["Reservas en Tiempo Real", "Confirmación Automática", "Gestión de Disponibilidad", "Pagos Seguros"]
+    },
+    "mobile": {
+      "title": "Desarrollo Móvil",
+      "badges": ["React Native", "Funcionalidad Offline", "Sincronización", "UX Optimizada"]
+    }
+  },
+  "destinations": {
+    "title": "Destinos y Refugios",
+    "europe": {
+      "title": "Europa",
+      "items": [
+        { "title": "Alpes", "desc": "Refugios clásicos en Suiza, Francia, Italia y Austria" },
+        { "title": "Pirineos", "desc": "Red extensa de refugios entre España y Francia" },
+        { "title": "Escandinavia", "desc": "Refugios modernos en Noruega, Suecia y Finlandia" }
+      ]
+    },
+    "americas": {
+      "title": "Américas",
+      "items": [
+        { "title": "Montañas Rocosas", "desc": "Refugios históricos en Estados Unidos y Canadá" },
+        { "title": "Andes", "desc": "Refugios de alta montaña en Chile, Argentina y Perú" },
+        { "title": "Alaska", "desc": "Refugios remotos para aventuras extremas" }
+      ]
+    }
+  },
+  "impact": {
+    "title": "Impacto y Resultados",
+    "metrics": [
+      { "title": "Refugios", "desc": "Más de 5,000 refugios disponibles en la plataforma" },
+      { "title": "Usuarios", "desc": "Más de 100,000 excursionistas registrados" },
+      { "title": "Reservas", "desc": "Más de 50,000 reservas procesadas con éxito" },
+      { "title": "Países", "desc": "Presente en más de 30 países diferentes" }
+    ]
+  },
+  "future": {
+    "title": "Visión de futuro",
+    "p1": "OpenHuts tiene como objetivo expandirse a nuevas regiones e integrar tecnologías emergentes como la realidad aumentada para experiencias de navegación mejoradas.",
+    "p2": "Los planes futuros incluyen la integración con sistemas de transporte público y la implementación de programas de fidelización para usuarios frecuentes.",
+    "backToAll": "Volver a todos los proyectos"
+  },
+  "nav": {
+    "prev": "Pomoca",
+    "next": "Reserve"
+  }
+}
+
+

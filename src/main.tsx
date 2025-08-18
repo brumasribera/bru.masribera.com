@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from '../App.tsx'
 import '../styles/globals.css'
+import { i18nReady } from './i18n' // Import i18n configuration and ready promise
 
 // Custom hook for automatic URL updates based on scroll position
 function useScrollBasedNavigation() {
@@ -66,8 +67,19 @@ function AppWithNavigation() {
   return <App />
 }
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <AppWithNavigation />
-  </React.StrictMode>
-)
+// Wait for i18n to be ready before rendering
+i18nReady.then(() => {
+  ReactDOM.createRoot(document.getElementById('root')!).render(
+    <React.StrictMode>
+      <AppWithNavigation />
+    </React.StrictMode>
+  )
+}).catch((error) => {
+  console.error('Failed to initialize i18n:', error)
+  // Fallback: render without waiting for i18n
+  ReactDOM.createRoot(document.getElementById('root')!).render(
+    <React.StrictMode>
+      <AppWithNavigation />
+    </React.StrictMode>
+  )
+})

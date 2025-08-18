@@ -1,0 +1,90 @@
+{
+  "header": {
+    "title": "Bru Mas Ribera",
+    "subtitle": "Frontend & UX Engineer from Barcelona. Based in Meiringen, Switzerland",
+    "years": "8+ years of professional experience",
+    "website": "Website"
+  },
+  "sections": {
+    "skillsTools": "Skills & tools",
+    "about": "About me",
+    "professionalExperience": "Professional experience",
+    "education": "Education",
+    "languages": "Languages",
+    "interests": "Interests",
+    "skillSet": "Skill set",
+    "contact": "Contact"
+  },
+  "labels": {
+    "languages": "Languages",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "uxTools": "UX tools"
+  },
+  "skills": {
+    "languagesList": "TypeScript, JavaScript, Python",
+    "frontendList": "React, Next.js, Vue, Tailwind CSS",
+    "backendList": "Node.js, Django, Supabase",
+    "uxToolsList": "Figma, Storybook, User research"
+  },
+  "about": {
+    "paragraph1": "Computer Engineer specialized in Web Development with 6 years Frontend and 3 years Backend experience. UX Designer with 3 years experience.",
+    "paragraph2": "Successfully delivered ESA-funded proof of concept, coordinating international consortiums."
+  },
+  "experience": {
+    "items": [
+      {
+        "meta": "2014 – Present • Remote",
+        "title": "Founder & Project Lead | Open Huts, Booking Platform for Nature Huts",
+        "description": "Find hidden places to sleep out in the wild. Help protect nature by enjoying it. User research, prototyping, user testing, hi‑fi interfaces with Figma and implementation with React, Next.js, TypeScript, Supabase"
+      },
+      {
+        "meta": "2021 – 2024 • Remote",
+        "title": "Frontend & UX Engineer | Moodle, Open Learning Platform",
+        "description": "Developing MoodleNet, a network to share and curate open educational resources. Using React, Figma, UX design, Open source, Educational technology"
+      },
+      {
+        "meta": "2020 • Lausanne, Switzerland",
+        "title": "User Experience Designer | Oberalp Group, Pomoca",
+        "description": "Redesigning the production interfaces of the ski touring skins world leader, Pomoca. Behavioral interviewing, Usability testing, UX design, Production interfaces"
+      },
+      {
+        "meta": "2017 – 2018 • Remote",
+        "title": "Junior Web Developer | Pix4D, Photogrammetry for Construction and Agriculture",
+        "description": "Developing a cloud platform to upload, process and analyze 3D models from drone images. Angular 4, RxJS, Cloud platform, 3D modeling, Drone technology"
+      }
+    ]
+  },
+  "education": {
+    "items": [
+      { "meta": "2020 – 2021", "title": "MBA", "place": "ThePowerMBA" },
+      { "meta": "2020", "title": "User Experience Design", "place": "Udacity" },
+      { "meta": "2014 – 2018", "title": "BA Computer Engineering", "place": "Barcelona University" },
+      { "meta": "2014 – 2018", "title": "Architecture", "place": "UPC, Barcelona" }
+    ]
+  },
+  "languagesSection": {
+    "lines": [
+      "<span class=\"font-semibold\">C2:</span> English, French • <span class=\"font-semibold\">Native:</span> Spanish, Catalan",
+      "<span class=\"font-semibold\">C1:</span> Italian • <span class=\"font-semibold\">B1:</span> German, Portuguese"
+    ]
+  },
+  "interests": {
+    "items": ["Business development", "Environment restoration"]
+  },
+  "skillSet": {
+    "items": ["UIMLA Mountain Leader", "User research & testing"]
+  },
+  "contact": {
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "website": "bru.masribera.com"
+  },
+  "actions": {
+    "viewInBrowser": "View CV in browser",
+    "downloadPdf": "Download CV PDF"
+  }
+}
+
+

@@ -1,0 +1,92 @@
+{
+  "header": {
+    "title": "Wegaw",
+    "tagline": "Advanced snow monitoring and avalanche prediction system using satellite data and AI. DeFROST project demonstrates comprehensive environmental monitoring capabilities",
+    "back": "Back to projects"
+  },
+  "overview": {
+    "title": "Project vision",
+    "p1": "Wegaw revolutionizes snow monitoring with the DeFROST project, providing near real-time snow cover and depth data at 20m resolution. Their service helps outdoor platforms, tourism offices, and adventure enthusiasts make informed decisions.",
+    "p2": "As climate change makes winters shorter, destinations need accurate snow condition overviews to develop safe off-season tourism. DeFROST combines satellite and ground data to deliver the comprehensive insights they require.",
+    "p3": "The company is expanding into the energy market, specifically for hydropower plant operators, demonstrating the value of near real time snow data in water inflow forecasting.",
+    "visitSite": "Visit Wegaw",
+    "esa": "ESA Project"
+  },
+  "quick": {
+    "resolution": {
+      "title": "Resolution",
+      "items": ["20m spatial resolution", "Daily updates", "Global coverage"]
+    },
+    "applications": {
+      "title": "Applications",
+      "items": ["Tourism & safety", "Digital platforms", "Energy markets"]
+    },
+    "technology": {
+      "title": "Technology",
+      "items": ["Sentinel satellites", "NASA sensors", "AI analysis"]
+    }
+  },
+  "capabilities": {
+    "title": "Core capabilities",
+    "items": [
+      { "title": "Snow cover mapping", "desc": "Daily snow cover data at 20m resolution using European Sentinel satellites and NASA sensors" },
+      { "title": "Snow depth estimation", "desc": "Accurate depth measurements from ground stations combined with satellite data" },
+      { "title": "Avalanche risk assessment", "desc": "Official country-wide risk assessments in collaboration with SLF Institute" },
+      { "title": "Weather integration", "desc": "Combined with weather nowcasts and probabilistic logic for comprehensive analysis" },
+      { "title": "API integration", "desc": "Flexible integration options for mobile and web applications with real-time data" },
+      { "title": "AI-powered analysis", "desc": "Advanced algorithms to predict snow cover beneath persistent cloud cover" }
+    ]
+  },
+  "defrost": {
+    "title": "DeFROST project development",
+    "intro": "DeFROST represents a comprehensive approach to operational snow monitoring, combining satellite remote sensing, ground validation, and advanced analytics to deliver actionable environmental intelligence.",
+    "stages": [
+      { "title": "Research & validation phase", "desc": "Comprehensive analysis of satellite data sources and ground truth validation methodologies. Established partnerships with WSL Institute for Snow and Avalanche Research (SLF) for scientific validation and quality assurance protocols." },
+      { "title": "Technical implementation", "desc": "Developed multi-sensor fusion algorithms integrating Sentinel-2, VIIRS, and MODIS data streams. Implemented cloud detection and AI-powered interpolation techniques for continuous coverage despite atmospheric interference." },
+      { "title": "Commercial deployment", "desc": "Successfully deployed operational service with Swiss Destination Marketing Organization, demonstrating 95% accuracy in snow cover detection. Established API infrastructure for seamless integration with outdoor platforms and tourism applications." },
+      { "title": "Market expansion", "desc": "Expanding into energy sector applications, particularly hydropower operations. Conducting proof-of-concept studies with major European utilities to demonstrate value in water resource management and inflow forecasting." }
+    ]
+  },
+  "technology": {
+    "title": "Technology architecture",
+    "satellite": {
+      "title": "Satellite data sources",
+      "badges": ["Sentinel-2", "VIIRS", "MODIS", "ESA"]
+    },
+    "ai": {
+      "title": "AI & processing",
+      "badges": ["Machine learning", "Probabilistic logic", "Cloud detection", "Real-time processing"]
+    }
+  },
+  "partners": {
+    "title": "Partners & integration",
+    "research": {
+      "title": "Research partners",
+      "items": [
+        { "title": "WSL Institute for Snow and Avalanche Research (SLF)", "desc": "Switzerland's leading institute for snow and avalanche research" },
+        { "title": "European Space Agency (ESA)", "desc": "Supporting the DeFROST project through Business Applications program" },
+        { "title": "Exolabs", "desc": "Innovative research and development partner for environmental monitoring solutions" }
+      ]
+    },
+    "platform": {
+      "title": "Platform integration",
+      "items": [
+        { "title": "Strava", "desc": "World's leading fitness tracking platform" },
+        { "title": "Swisstopo", "desc": "Switzerland's national mapping agency" },
+        { "title": "Skitourenguru", "desc": "Leading ski touring and outdoor adventure platform" }
+      ]
+    }
+  },
+  "future": {
+    "title": "Vision for the future",
+    "p1": "Wegaw is expanding into the energy market, specifically for hydropower plant operators. The current product capabilities enable proof of concepts that demonstrate the value of near real-time snow data in water inflow forecasting.",
+    "p2": "The goal is to convert successful proof of concepts into long-term commercial agreements and continue expanding Wegaw's foothold in the energy market while maintaining their leadership in outdoor recreation and tourism applications.",
+    "backToAll": "Back to all projects"
+  },
+  "nav": {
+    "prev": "Pomoca",
+    "next": "Pix4D"
+  }
+}
+
+

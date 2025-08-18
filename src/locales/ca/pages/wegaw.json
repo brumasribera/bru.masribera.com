@@ -1,0 +1,90 @@
+{
+  "header": {
+    "title": "Wegaw",
+    "tagline": "Sistema avançat de monitoratge de neu i predicció d'allaus utilitzant dades satel·litals i IA. El projecte DeFROST demostra les capacitats integrals de monitoratge ambiental",
+    "back": "Tornar als projectes"
+  },
+  "overview": {
+    "title": "Visió del projecte",
+    "p1": "Wegaw revoluciona el monitoratge de neu amb el projecte DeFROST, proporcionant dades de cobertura i profunditat de neu quasi en temps real amb una resolució de 20m. El seu servei ajuda a plataformes d'aire lliure, oficines de turisme i entusiastes de l'aventura a prendre decisions informades.",
+    "p2": "Com que el canvi climàtic fa que els hiverns siguin més curts, les destinacions necessiten visió generals precises de les condicions de neu per desenvolupar turisme d'entre-temporada segur. DeFROST combina dades satel·litals i terrestres per oferir les perspectives comprensiues que necessiten.",
+    "p3": "L'empresa s'està expandint al mercat energètic, específicament per a operadors de centrals hidroelèctriques, demostrant el valor de les dades de neu quasi en temps real en la predicció d'afluència d'aigua.",
+    "visitSite": "Visitar Wegaw",
+    "esa": "Projecte ESA"
+  },
+  "quick": {
+    "resolution": {
+      "title": "Resolució",
+      "items": ["Resolució Espacial de 20m", "Actualitzacions Diàries", "Cobertura Global"]
+    },
+    "applications": {
+      "title": "Aplicacions",
+      "items": ["Turisme i Seguretat", "Plataformes Digitals", "Mercats Energètics"]
+    },
+    "technology": {
+      "title": "Tecnologia",
+      "items": ["Satèl·lits Sentinel", "Sensors NASA", "Anàlisi d'IA"]
+    }
+  },
+  "capabilities": {
+    "title": "Capacitats Principals",
+    "items": [
+      { "title": "Cartografia de Cobertura de Neu", "desc": "Dades diàries de cobertura de neu amb resolució de 20m utilitzant satèl·lits europeus Sentinel i sensors NASA" },
+      { "title": "Estimació de Profunditat de Neu", "desc": "Mesuraments precisos de profunditat des d'estacions terrestres combinades amb dades satel·litals" },
+      { "title": "Avaluació de Risc d'Allaus", "desc": "Avaluacions oficials de risc a nivell nacional en col·laboració amb l'Institut SLF" },
+      { "title": "Integració Meteorològica", "desc": "Combinat amb prediccions meteorològiques i lògica probabilística per a anàlisi comprensiu" },
+      { "title": "Integració API", "desc": "Opcions flexibles d'integració per a aplicacions mòbils i web amb dades en temps real" },
+      { "title": "Anàlisi Impulsada per IA", "desc": "Algoritmes avançats per predir la cobertura de neu sota cobertura de núvols persistent" }
+    ]
+  },
+  "defrost": {
+    "title": "Desenvolupament del Projecte DeFROST",
+    "intro": "DeFROST representa un enfocament comprensiu per al monitoratge operatiu de neu, combinant teledetecció satel·lital, validació terrestre i anàlisi avançada per oferir intel·ligència ambiental accionable.",
+    "stages": [
+      { "title": "Fase de Recerca i Validació", "desc": "Anàlisi comprensiu de les fonts de dades satel·litals i metodologies de validació de veritat terrestre. Establiment de col·laboracions amb l'Institut WSL per a Recerca de Neu i Allaus (SLF) per a protocols de validació científica i garantia de qualitat." },
+      { "title": "Implementació Tècnica", "desc": "Desenvolupament d'algoritmes de fusió multi-sensor integrant fluxos de dades Sentinel-2, VIIRS i MODIS. Implementació de tècniques de detecció de núvols i interpolació impulsada per IA per a cobertura contínua malgrat la interferència atmosfèrica." },
+      { "title": "Desplegament Comercial", "desc": "Desplegament exitós del servei operatiu amb l'Organització de Marketing de Destinacions Suïsses, demostrant un 95% d'precisió en la detecció de cobertura de neu. Establiment de la infraestructura API per a integració perfecta amb plataformes d'aire lliure i aplicacions de turisme." },
+      { "title": "Expansió de Mercat", "desc": "Expansió a aplicacions del sector energètic, particularment operacions hidroelèctriques. Realització d'estudis de prova de concepte amb grans empreses públiques europees per demostrar el valor en la gestió de recursos hídrics i predicció d'afluència." }
+    ]
+  },
+  "technology": {
+    "title": "Arquitectura Tecnològica",
+    "satellite": {
+      "title": "Fonts de Dades Satel·litals",
+      "badges": ["Sentinel-2", "VIIRS", "MODIS", "ESA"]
+    },
+    "ai": {
+      "title": "IA i Processament",
+      "badges": ["Aprenentatge Automàtic", "Lògica Probabilística", "Detecció de Núvols", "Processament en Temps Real"]
+    }
+  },
+  "partners": {
+    "title": "Col·laboradors i Integració",
+    "research": {
+      "title": "Col·laboradors de Recerca",
+      "items": [
+        { "title": "Institut WSL per a Recerca de Neu i Allaus (SLF)", "desc": "Institut líder de Suïssa per a recerca de neu i allaus" },
+        { "title": "Agència Espacial Europea (ESA)", "desc": "Suportant el projecte DeFROST a través del programa d'Aplicacions Empresarials" },
+        { "title": "Exolabs", "desc": "Col·laborador innovador de recerca i desenvolupament per a solucions de monitoratge ambiental" }
+      ]
+    },
+    "platform": {
+      "title": "Integració de Plataforma",
+      "items": [
+        { "title": "Strava", "desc": "Plataforma líder mundial de seguiment de fitness" },
+        { "title": "Swisstopo", "desc": "Agència nacional de cartografia de Suïssa" },
+        { "title": "Skitourenguru", "desc": "Plataforma líder d'esquí de muntanya i aventura a l'aire lliure" }
+      ]
+    }
+  },
+  "future": {
+    "title": "Visió de futur",
+    "p1": "Wegaw s'està expandint al mercat energètic, específicament per a operadors de centrals hidroelèctriques. Les capacitats actuals del producte permeten Proves de Concepte que demostren el valor de les dades de neu quasi en temps real en la predicció d'afluència d'aigua.",
+    "p2": "L'objectiu és convertir les Proves de Concepte exitoses en acords comercials a llarg termini i continuar expandint la presència de Wegaw al mercat energètic mantenint el seu lideratge en aplicacions de recreació d'aire lliure i turisme.",
+    "backToAll": "Tornar a tots els projectes"
+  },
+  "nav": {
+    "prev": "Pomoca",
+    "next": "Pix4D"
+  }
+}

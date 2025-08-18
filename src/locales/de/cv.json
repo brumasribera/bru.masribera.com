@@ -1,0 +1,88 @@
+{
+  "header": {
+    "title": "BRU MAS RIBERA",
+    "subtitle": "Frontend & UX Engineer aus Barcelona. Ansässig in Meiringen, Schweiz",
+    "years": "8+ Jahre Berufserfahrung",
+    "website": "Website"
+  },
+  "sections": {
+    "skillsTools": "Fähigkeiten & Tools",
+    "about": "Über mich",
+    "professionalExperience": "Berufserfahrung",
+    "education": "Ausbildung",
+    "languages": "Sprachen",
+    "interests": "Interessen",
+    "skillSet": "Fähigkeiten",
+    "contact": "Kontakt"
+  },
+  "labels": {
+    "languages": "Sprachen",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "uxTools": "UX Tools"
+  },
+  "skills": {
+    "languagesList": "TypeScript, JavaScript, Python",
+    "frontendList": "React, Next.js, Vue, Tailwind CSS",
+    "backendList": "Node.js, Django, Supabase",
+    "uxToolsList": "Figma, Storybook, User Research"
+  },
+  "about": {
+    "paragraph1": "Informatiker, spezialisiert auf Webentwicklung mit 6 Jahren Frontend- und 3 Jahren Backend-Erfahrung. UX-Designer mit 3 Jahren Erfahrung.",
+    "paragraph2": "Erfolgreiche Lieferung eines von der ESA geförderten Proof of Concept, Koordination internationaler Konsortien."
+  },
+  "experience": {
+    "items": [
+      {
+        "meta": "2014 – Heute • Remote",
+        "title": "Gründer & Projektleiter | Open Huts, Buchungsplattform für Naturhütten",
+        "description": "Versteckte Plätze zum Schlafen in der Natur finden. Die Natur schützen, indem man sie genießt. User Research, Prototyping, Nutzertests, Hi‑Fi-Interfaces mit Figma und Implementierung mit React, Next.js, TypeScript, Supabase"
+      },
+      {
+        "meta": "2021 – 2024 • Remote",
+        "title": "Frontend & UX Engineer | Moodle, offene Lernplattform",
+        "description": "Entwicklung von MoodleNet, einem Netzwerk zum Teilen und Kuratieren offener Bildungsressourcen. Einsatz von React, Figma, UX Design, Open Source, Bildungstechnologie"
+      },
+      {
+        "meta": "2020 • Lausanne, Schweiz",
+        "title": "User Experience Designer | Oberalp Group, Pomoca",
+        "description": "Redesign der Produktionsoberflächen des Weltmarktführers für Skitourenfelle, Pomoca. Verhaltensinterviews, Usability-Tests, UX Design, Produktionsoberflächen"
+      },
+      {
+        "meta": "2017 – 2018 • Remote",
+        "title": "Junior Webentwickler | Pix4D, Photogrammetrie für Bauwesen und Landwirtschaft",
+        "description": "Entwicklung einer Cloud-Plattform zum Hochladen, Verarbeiten und Analysieren von 3D-Modellen aus Drohnenbildern. Angular 4, RxJS, Cloud-Plattform, 3D-Modellierung, Drohnentechnologie"
+      }
+    ]
+  },
+  "education": {
+    "items": [
+      { "meta": "2020 – 2021", "title": "MBA", "place": "ThePowerMBA" },
+      { "meta": "2020", "title": "User Experience Design", "place": "Udacity" },
+      { "meta": "2014 – 2018", "title": "Bachelor Informatik", "place": "Universität Barcelona" },
+      { "meta": "2014 – 2018", "title": "Architektur", "place": "UPC, Barcelona" }
+    ]
+  },
+  "languagesSection": {
+    "lines": [
+      "<span class=\"font-semibold\">C2:</span> Englisch, Französisch • <span class=\"font-semibold\">Muttersprache:</span> Spanisch, Katalanisch",
+      "<span class=\"font-semibold\">C1:</span> Italienisch • <span class=\"font-semibold\">B1:</span> Deutsch, Portugiesisch"
+    ]
+  },
+  "interests": {
+    "items": ["Business Development", "Umwelt-Restaurierung"]
+  },
+  "skillSet": {
+    "items": ["UIMLA Bergführer", "User Research & Testing"]
+  },
+  "contact": {
+    "email": "E-Mail",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "website": "bru.masribera.com"
+  },
+  "actions": {
+    "viewInBrowser": "CV im Browser anzeigen",
+    "downloadPdf": "CV PDF herunterladen"
+  }
+}

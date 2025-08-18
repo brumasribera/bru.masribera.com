@@ -6,28 +6,11 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-async function generateCVPDF() {
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  
-  // Set viewport to A4 dimensions
-  await page.setViewport({ width: 794, height: 1123 });
-  
-  // Navigate to the CV page in your local development server
-  console.log('Navigating to CV page...');
-  await page.goto('http://localhost:3001/cv', { 
-    waitUntil: 'networkidle0',
-    timeout: 30000 
-  });
-  
+async function prepareCvPage(page) {
   // Wait for the CV content to be fully rendered
   await page.waitForSelector('#a4-sheet', { timeout: 10000 });
-  
   // Wait a bit more for any animations or dynamic content to settle
   await new Promise(resolve => setTimeout(resolve, 2000));
-  
-  console.log('CV page loaded, generating PDF...');
-  
   // Get the CV content element and optimize it for PDF generation
   await page.evaluate(() => {
     // Hide the action buttons container
@@ -114,31 +97,64 @@ async function generateCVPDF() {
     html.style.padding = '0';
     html.style.width = '100%';
   });
-  
-  // Generate PDF from only the CV content
-  const pdf = await page.pdf({
-    format: 'A4',
-    printBackground: true,
-    margin: {
-      top: '0',
-      right: '0',
-      bottom: '0',
-      left: '0'
-    },
-    preferCSSPageSize: true,
-    pageRanges: '1'
-  });
-
-  await browser.close();
-
-  // Save the PDF to documents folder
-  const publicDir = path.join(__dirname, '..', 'public');
-  const documentsDir = path.join(publicDir, 'documents');
-  const pdfPath = path.join(documentsDir, 'cv.pdf');
-  
-  fs.writeFileSync(pdfPath, pdf);
-  console.log(`CV PDF generated successfully at: ${pdfPath}`);
-  console.log('The PDF now reflects the current CV page design and content.');
 }
 
-generateCVPDF().catch(console.error);
+async function generateCvForLanguage(browser, baseUrl, language) {
+  const page = await browser.newPage();
+  await page.setViewport({ width: 794, height: 1123 });
+
+  const pathSuffix = language === 'en' ? '/cv' : `/${language}/cv`;
+  const url = `${baseUrl}${pathSuffix}`;
+  console.log(`Generating CV for ${language}...`);
+  console.log(`Navigating to ${url} ...`);
+  
+  try {
+    await page.goto(url, {
+      waitUntil: 'networkidle0',
+      timeout: 30000,
+    });
+
+    await prepareCvPage(page);
+
+    // Generate PDF
+    const pdf = await page.pdf({
+      format: 'A4',
+      printBackground: true,
+      margin: { top: '0', right: '0', bottom: '0', left: '0' },
+      preferCSSPageSize: true,
+      pageRanges: '1',
+    });
+
+    // Save the PDF to documents folder
+    const publicDir = path.join(__dirname, '..', 'public');
+    const documentsDir = path.join(publicDir, 'documents');
+    if (!fs.existsSync(documentsDir)) fs.mkdirSync(documentsDir, { recursive: true });
+    const filename = language === 'en' ? 'CV - Bru Mas Ribera.pdf' : `CV - Bru Mas Ribera (${language.toUpperCase()}).pdf`;
+    const pdfPath = path.join(documentsDir, filename);
+    fs.writeFileSync(pdfPath, pdf);
+    await page.close();
+    console.log(`✅ Generated ${filename} at ${pdfPath}`);
+  } catch (error) {
+    console.error(`❌ Error generating CV for ${language}:`, error.message);
+    await page.close();
+    throw error;
+  }
+}
+
+async function generateAllCvs() {
+  const baseUrl = process.env.CV_SERVER_URL || 'http://localhost:3000';
+  const languages = ['en', 'de', 'fr', 'es', 'ca', 'it', 'pt', 'rm'];
+  const browser = await puppeteer.launch();
+  try {
+    for (const lng of languages) {
+      await generateCvForLanguage(browser, baseUrl, lng);
+    }
+  } finally {
+    await browser.close();
+  }
+}
+
+generateAllCvs().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

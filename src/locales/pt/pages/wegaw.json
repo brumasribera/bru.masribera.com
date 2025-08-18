@@ -1,0 +1,90 @@
+{
+  "header": {
+    "title": "Wegaw",
+    "tagline": "Sistema avançado de monitoramento de neve e previsão de avalanches usando dados satelitais e IA. O projeto DeFROST demonstra capacidades completas de monitoramento ambiental",
+    "back": "Voltar aos projetos"
+  },
+  "overview": {
+    "title": "Visão do projeto",
+    "p1": "Wegaw revoluciona o monitoramento de neve com o projeto DeFROST, fornecendo dados de cobertura e profundidade de neve quase em tempo real com resolução de 20m. Seu serviço ajuda plataformas ao ar livre, escritórios de turismo e entusiastas de aventura a tomar decisões informadas.",
+    "p2": "Como a mudança climática torna os invernos mais curtos, os destinos precisam de visões gerais precisas das condições de neve para desenvolver turismo fora da temporada segura. DeFROST combina dados satelitais e terrestres para fornecer as perspectivas abrangentes que eles precisam.",
+    "p3": "A empresa está se expandindo para o mercado de energia, especificamente para operadores de usinas hidrelétricas, demonstrando o valor dos dados de neve quase em tempo real na previsão de influxo de água.",
+    "visitSite": "Visitar Wegaw",
+    "esa": "Projeto ESA"
+  },
+  "quick": {
+    "resolution": {
+      "title": "Resolução",
+      "items": ["Resolução Espacial de 20m", "Atualizações Diárias", "Cobertura Global"]
+    },
+    "applications": {
+      "title": "Aplicações",
+      "items": ["Turismo e Segurança", "Plataformas Digitais", "Mercados de Energia"]
+    },
+    "technology": {
+      "title": "Tecnologia",
+      "items": ["Satélites Sentinel", "Sensores NASA", "Análise de IA"]
+    }
+  },
+  "capabilities": {
+    "title": "Capacidades Principais",
+    "items": [
+      { "title": "Mapeamento de Cobertura de Neve", "desc": "Dados diários de cobertura de neve com resolução de 20m usando satélites europeus Sentinel e sensores NASA" },
+      { "title": "Estimativa de Profundidade de Neve", "desc": "Medições precisas de profundidade de estações terrestres combinadas com dados satelitais" },
+      { "title": "Avaliação de Risco de Avalanches", "desc": "Avaliações oficiais de risco em todo o país em colaboração com o Instituto SLF" },
+      { "title": "Integração Meteorológica", "desc": "Combinado com previsões meteorológicas e lógica probabilística para análise abrangente" },
+      { "title": "Integração API", "desc": "Opções flexíveis de integração para aplicações móveis e web com dados em tempo real" },
+      { "title": "Análise Impulsionada por IA", "desc": "Algoritmos avançados para prever a cobertura de neve sob cobertura de nuvens persistente" }
+    ]
+  },
+  "defrost": {
+    "title": "Desenvolvimento do Projeto DeFROST",
+    "intro": "DeFROST representa uma abordagem abrangente para o monitoramento operacional de neve, combinando sensoriamento remoto satelital, validação terrestre e análise avançada para fornecer inteligência ambiental acionável.",
+    "stages": [
+      { "title": "Fase de Pesquisa e Validação", "desc": "Análise abrangente das fontes de dados satelitais e metodologias de validação de verdade terrestre. Estabelecimento de parcerias com o Instituto WSL para Pesquisa de Neve e Avalanches (SLF) para protocolos de validação científica e garantia de qualidade." },
+      { "title": "Implementação Técnica", "desc": "Desenvolvimento de algoritmos de fusão multi-sensor integrando fluxos de dados Sentinel-2, VIIRS e MODIS. Implementação de técnicas de detecção de nuvens e interpolação impulsionada por IA para cobertura contínua apesar da interferência atmosférica." },
+      { "title": "Implantação Comercial", "desc": "Implantação bem-sucedida do serviço operacional com a Organização de Marketing de Destinos Suíços, demonstrando 95% de precisão na detecção de cobertura de neve. Estabelecimento da infraestrutura API para integração perfeita com plataformas ao ar livre e aplicações turísticas." },
+      { "title": "Expansão de Mercado", "desc": "Expansão para aplicações do setor energético, particularmente operações hidrelétricas. Condução de estudos de prova de conceito com grandes empresas públicas europeias para demonstrar o valor na gestão de recursos hídricos e previsão de influxo." }
+    ]
+  },
+  "technology": {
+    "title": "Arquitetura Tecnológica",
+    "satellite": {
+      "title": "Fontes de Dados Satelitais",
+      "badges": ["Sentinel-2", "VIIRS", "MODIS", "ESA"]
+    },
+    "ai": {
+      "title": "IA e Processamento",
+      "badges": ["Aprendizado de Máquina", "Lógica Probabilística", "Detecção de Nuvens", "Processamento em Tempo Real"]
+    }
+  },
+  "partners": {
+    "title": "Parceiros e Integração",
+    "research": {
+      "title": "Parceiros de Pesquisa",
+      "items": [
+        { "title": "Instituto WSL para Pesquisa de Neve e Avalanches (SLF)", "desc": "Instituto líder da Suíça para pesquisa de neve e avalanches" },
+        { "title": "Agência Espacial Europeia (ESA)", "desc": "Apoiando o projeto DeFROST através do programa de Aplicações Comerciais" },
+        { "title": "Exolabs", "desc": "Parceiro inovador de pesquisa e desenvolvimento para soluções de monitoramento ambiental" }
+      ]
+    },
+    "platform": {
+      "title": "Integração de Plataforma",
+      "items": [
+        { "title": "Strava", "desc": "Plataforma líder mundial de rastreamento de fitness" },
+        { "title": "Swisstopo", "desc": "Agência nacional de mapeamento da Suíça" },
+        { "title": "Skitourenguru", "desc": "Plataforma líder de esqui de montanha e aventura ao ar livre" }
+      ]
+    }
+  },
+  "future": {
+    "title": "Visão do futuro",
+    "p1": "Wegaw está se expandindo para o mercado de energia, especificamente para operadores de usinas hidrelétricas. As capacidades atuais do produto permitem Provas de Conceito que demonstram o valor dos dados de neve quase em tempo real na previsão de influxo de água.",
+    "p2": "O objetivo é converter Provas de Conceito bem-sucedidas em acordos comerciais de longo prazo e continuar expandindo a presença de Wegaw no mercado de energia mantendo sua liderança em aplicações de recreação ao ar livre e turísticas.",
+    "backToAll": "Voltar a todos os projetos"
+  },
+  "nav": {
+    "prev": "Pomoca",
+    "next": "Pix4D"
+  }
+}

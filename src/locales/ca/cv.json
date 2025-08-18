@@ -1,0 +1,90 @@
+{
+  "header": {
+    "title": "BRU MAS RIBERA",
+    "subtitle": "Enginyer Frontend i UX de Barcelona. Amb base a Meiringen, Suïssa",
+    "years": "8+ anys d'experiència professional",
+    "website": "Lloc web"
+  },
+  "sections": {
+    "skillsTools": "Habilitats i eines",
+    "about": "Sobre mi",
+    "professionalExperience": "Experiència professional",
+    "education": "Educació",
+    "languages": "Idiomes",
+    "interests": "Interessos",
+    "skillSet": "Competències",
+    "contact": "Contacte"
+  },
+  "labels": {
+    "languages": "Llenguatges",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "uxTools": "Eines UX"
+  },
+  "skills": {
+    "languagesList": "TypeScript, JavaScript, Python",
+    "frontendList": "React, Next.js, Vue, Tailwind CSS",
+    "backendList": "Node.js, Django, Supabase",
+    "uxToolsList": "Figma, Storybook, Recerca d'usuaris"
+  },
+  "about": {
+    "paragraph1": "Enginyer informàtic especialitzat en desenvolupament web amb 6 anys d'experiència en Frontend i 3 anys en Backend. Dissenyador UX amb 3 anys d'experiència.",
+    "paragraph2": "Entrega amb èxit d'un Proof of Concept finançat per l'ESA, coordinant consorcis internacionals."
+  },
+  "experience": {
+    "items": [
+      {
+        "meta": "2014 – Present • Remot",
+        "title": "Fundador i líder de projecte | Open Huts, plataforma de reserves per a cabanes de natura",
+        "description": "Troba llocs amagats per dormir a l'aire lliure. Ajuda a protegir la natura gaudint-la. Recerca d'usuaris, prototipat, proves amb usuaris, interfícies hi‑fi amb Figma i implementació amb React, Next.js, TypeScript, Supabase"
+      },
+      {
+        "meta": "2021 – 2024 • Remot",
+        "title": "Enginyer Frontend & UX | Moodle, plataforma oberta d'aprenentatge",
+        "description": "Desenvolupant MoodleNet, una xarxa per compartir i curar recursos educatius oberts. Ús de React, Figma, Disseny UX, codi obert, tecnologia educativa"
+      },
+      {
+        "meta": "2020 • Lausana, Suïssa",
+        "title": "Dissenyador d'experiència d'usuari | Oberalp Group, Pomoca",
+        "description": "Redisseny de les interfícies de producció del líder mundial en pells d'esquí de muntanya, Pomoca. Entrevistes conductuals, proves d'usabilitat, disseny UX, interfícies de producció"
+      },
+      {
+        "meta": "2017 – 2018 • Remot",
+        "title": "Desenvolupador web júnior | Pix4D, fotogrametria per a construcció i agricultura",
+        "description": "Desenvolupament d'una plataforma al núvol per pujar, processar i analitzar models 3D a partir d'imatges de drons. Angular 4, RxJS, plataforma cloud, modelatge 3D, tecnologia de drons"
+      }
+    ]
+  },
+  "education": {
+    "items": [
+      { "meta": "2020 – 2021", "title": "MBA", "place": "ThePowerMBA" },
+      { "meta": "2020", "title": "Disseny d'experiència d'usuari", "place": "Udacity" },
+      { "meta": "2014 – 2018", "title": "Grau en Enginyeria Informàtica", "place": "Universitat de Barcelona" },
+      { "meta": "2014 – 2018", "title": "Arquitectura", "place": "UPC, Barcelona" }
+    ]
+  },
+  "languagesSection": {
+    "lines": [
+      "<span class=\"font-semibold\">C2:</span> Anglès, Francès • <span class=\"font-semibold\">Natiu:</span> Castellà, Català",
+      "<span class=\"font-semibold\">C1:</span> Italià • <span class=\"font-semibold\">B1:</span> Alemany, Portuguès"
+    ]
+  },
+  "interests": {
+    "items": ["Desenvolupament de negoci", "Restauració ambiental"]
+  },
+  "skillSet": {
+    "items": ["Guia de muntanya UIMLA", "Recerca i proves amb usuaris"]
+  },
+  "contact": {
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "website": "bru.masribera.com"
+  },
+  "actions": {
+    "viewInBrowser": "Veure el CV al navegador",
+    "downloadPdf": "Descarregar CV PDF"
+  }
+}
+
+

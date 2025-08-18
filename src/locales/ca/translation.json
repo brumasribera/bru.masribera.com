@@ -1,0 +1,187 @@
+{
+  "welcome": "Benvingut",
+  "about": "Sobre nosaltres",
+  "contact": "Contacte",
+  "home": "Inici",
+  "experience": "Experiència",
+  "education": "Educació",
+  "projects": "Projectes",
+  "cv": "CV",
+  "hero": {
+    "title": "Hola, sóc Bru Masribera",
+    "subtitle": "Desenvolupador Full Stack i Dissenyador UI/UX",
+    "description": "Apassionat per crear experiències digitals boniques, funcionals i centrades en l'usuari.",
+    "location": "Barcelona, Catalunya",
+    "contactMe": "Contacta'm",
+    "downloadCV": "Descarregar CV"
+  },
+  "navigation": {
+    "home": "Inici",
+    "about": "Sobre mi",
+    "experience": "Experiència",
+    "education": "Educació",
+    "projects": "Projectes",
+    "contact": "Contacte",
+    "cv": "CV"
+  },
+  "about": {
+    "title": "Sobre mi",
+    "description": "Sóc un desenvolupador apassionat que estima crear solucions innovadores i experiències d'usuari excepcionals.",
+    "skills": "Habilitats",
+    "interests": "Interessos"
+  },
+  "experience": {
+    "title": "Experiència professional",
+    "current": "Actual",
+    "previous": "Anterior",
+    "responsibilities": "Responsabilitats",
+    "technologies": "Tecnologies"
+  },
+  "education": {
+    "title": "Educació",
+    "degree": "Títol",
+    "university": "Universitat",
+    "period": "Període",
+    "gpa": "Mitjana"
+  },
+  "projects": {
+    "title": "Els meus projectes",
+    "viewProject": "Veure projecte",
+    "openApp": "Obrir app",
+    "description": "Descripció",
+    "technologies": "Tecnologies utilitzades",
+    "features": "Característiques"
+  },
+  "contact": {
+    "title": "Contacta'm",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Missatge",
+    "send": "Enviar",
+    "sending": "Enviant...",
+    "sent": "Missatge enviat!",
+    "error": "Error en enviar missatge"
+  },
+  "footer": {
+    "rights": "Tots els drets reservats",
+    "madeWith": "Fet amb"
+  },
+  "languages": {
+    "en": "Anglès",
+    "de": "Alemany",
+    "fr": "Francès",
+    "es": "Espanyol",
+    "ca": "Català",
+    "it": "Italià",
+    "pt": "Portuguès",
+    "rm": "Romanx"
+  },
+  "theme": {
+    "light": "Clar",
+    "dark": "Fosc"
+  },
+  "common": {
+    "loading": "Carregant...",
+    "error": "Error",
+    "success": "Èxit",
+    "cancel": "Cancel·lar",
+    "save": "Desar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "close": "Tancar",
+    "open": "Obrir",
+    "back": "Enrere",
+    "next": "Següent",
+    "previous": "Anterior"
+  },
+  "reserve": {
+    "title": "Reserve",
+    "description": "Sistema de gestió de reserves per a activitats a l'aire lliure.",
+    "openApp": "Obrir app",
+    "openAppSmall": "Obrir app",
+    "prototype": "Prototip",
+    "loading": "Carregant Reserve App...",
+    "loadingMessage": "Preparant la teva experiència d'aventura a l'aire lliure...",
+    "features": {
+      "title": "Característiques principals",
+      "reservations": "Gestió de reserves",
+      "calendar": "Calendari interactiu",
+      "maps": "Mapes d'ubicació",
+      "notifications": "Notificacions intel·ligents"
+    },
+    "technologies": "React, TypeScript, Leaflet, Tailwind CSS"
+  },
+  "clathes": {
+    "title": "Clathes",
+    "description": "Plataforma de moda sostenible per a roba ecològica.",
+    "viewProject": "Veure projecte",
+    "features": {
+      "title": "Característiques principals",
+      "sustainability": "Seguiment de sostenibilitat",
+      "recommendations": "Recomanacions ecològiques",
+      "community": "Característiques de comunitat"
+    },
+    "technologies": "React, Node.js, MongoDB, AWS"
+  },
+  "moodleNet": {
+    "title": "MoodleNet",
+    "description": "Plataforma d'intercanvi de recursos educatius oberts.",
+    "viewProject": "Veure projecte",
+    "features": {
+      "title": "Característiques principals",
+      "sharing": "Intercanvi de recursos",
+      "collaboration": "Aprenentatge col·laboratiu",
+      "discovery": "Descoberta de contingut"
+    },
+    "technologies": "PHP, MySQL, JavaScript, Bootstrap"
+  },
+  "openHuts": {
+    "title": "Open Huts",
+    "description": "Plataforma de reserva de refugis per a entusiastes de l'aire lliure.",
+    "viewProject": "Veure projecte",
+    "features": {
+      "title": "Característiques principals",
+      "booking": "Sistema de reserva de refugis",
+      "routes": "Rutes de senderisme",
+      "weather": "Integració del clima"
+    },
+    "technologies": "React Native, Firebase, Google Maps API"
+  },
+  "pix4D": {
+    "title": "Pix4D",
+    "description": "Programari de fotogrametria per a mapatge 3D.",
+    "viewProject": "Veure projecte",
+    "features": {
+      "title": "Característiques principals",
+      "photogrammetry": "Fotogrametria avançada",
+      "3dMapping": "Mapatge 3D",
+      "surveying": "Eines de topografia"
+    },
+    "technologies": "C++, Python, OpenGL, CUDA"
+  },
+  "pomoca": {
+    "title": "Pomoca",
+    "description": "Equipament innovador d'esquí de travessa i accessoris.",
+    "viewProject": "Veure projecte",
+    "features": {
+      "title": "Característiques principals",
+      "products": "Catàleg de productes",
+      "customization": "Solucions personalitzades",
+      "support": "Suport tècnic"
+    },
+    "technologies": "Shopify, React, Node.js, PostgreSQL"
+  },
+  "wegaw": {
+    "title": "Wegaw",
+    "description": "Plataforma d'intel·ligència meteorològica per a activitats a l'aire lliure.",
+    "viewProject": "Veure projecte",
+    "features": {
+      "title": "Característiques principals",
+      "forecasts": "Pronòstics del clima",
+      "alerts": "Alertes meteorològiques",
+      "planning": "Planificació d'activitats"
+    },
+    "technologies": "Python, Machine Learning, APIs, React"
+  }
+}
+

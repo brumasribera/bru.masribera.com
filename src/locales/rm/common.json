@@ -1,0 +1,25 @@
+{
+  "backToProjects": "Enavos als projects",
+  "backToAllProjects": "Enavos a tut ils projects",
+  "moreDetails": "Dapli detagls",
+  "openApp": "Avrir l'app",
+  "experience": "Experientscha",
+  "education": "Furmaziun",
+  "projects": "Projects",
+  "contact": "Contact",
+  "linkedin": "LinkedIn",
+  "github": "GitHub",
+  "cv": "CV",
+  "viewCvInBrowser": "Mussar il CV en il navigatur",
+  "downloadCvPdf": "Telechargiar il CV PDF",
+  "targetUsers": "Utilisaders destinads",
+  "developmentStatus": "Stadi da svilup",
+  "globalReach": "Ravatscha globala",
+  "technologyStack": "Stack da tecnologia",
+  "frontend": "Frontend",
+  "backend": "Backend",
+  "languages": {
+    "currentLanguage": "Lingua actuala"
+  }
+}
+

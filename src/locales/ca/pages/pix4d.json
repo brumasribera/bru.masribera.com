@@ -1,0 +1,92 @@
+{
+  "header": {
+    "title": "Pix4D Cloud Platform",
+    "tagline": "Plataforma en núvol per processar i analitzar models 3D a partir d'imatges de drones, oferint fotogrametria d'alta precisió amb arquitectura escalable i eines integrades"
+  },
+  "overview": {
+    "title": "Visió del projecte",
+    "p1": "Pix4D és una empresa líder en tecnologia de fotogrametria que desenvolupa programari per a la creació de models 3D precisos a partir d'imatges. La tecnologia s'aplica en diversos sectors com l'agricultura, la construcció, la mineria i la gestió de catàstrofes.",
+    "p2": "El projecte se centra en l'automatització del procés de fotogrametria, permetent als usuaris generar ortofotos, models digitals d'elevació i nuvols de punts amb una precisió centimètrica.",
+    "p3": "Pix4D integra tecnologies d'IA per a la detecció automàtica d'objectes i l'anàlisi avançada d'imatges aèries.",
+    "visitSite": "Visitar Pix4D",
+    "demo": "Demostració"
+  },
+  "quick": {
+    "accuracy": {
+      "title": "Precisió",
+      "items": ["Centimètrica", "Ortomosaics", "Models 3D"]
+    },
+    "applications": {
+      "title": "Aplicacions",
+      "items": ["Agricultura", "Construcció", "Mineria"]
+    },
+    "technology": {
+      "title": "Tecnologia",
+      "items": ["Fotogrametria", "IA", "Processament Automàtic"]
+    }
+  },
+  "features": {
+    "title": "Característiques Principals",
+    "items": [
+      { "title": "Processament Automàtic", "desc": "Algoritmes avançats per a la generació automàtica de models 3D" },
+      { "title": "Alta Precisió", "desc": "Resultats amb precisió centimètrica per a aplicacions professionals" },
+      { "title": "Processament en Temps Real", "desc": "Capacitat de processar imatges en temps real per a aplicacions crítiques" },
+      { "title": "Integració amb Drones", "desc": "Suport complet per a plataformes aèries no tripulades" },
+      { "title": "Anàlisi d'IA", "desc": "Detecció automàtica d'objectes i anàlisi d'imatges intel·ligent" },
+      { "title": "Exportació Flexible", "desc": "Múltiples formats d'exportació per a integració amb altres sistemes" }
+    ]
+  },
+  "technology": {
+    "title": "Arquitectura Tecnològica",
+    "photogrammetry": {
+      "title": "Fotogrametria",
+      "badges": ["Algoritmes SIFT", "Correlació d'Imatges", "Triangulació", "Bundle Adjustment"]
+    },
+    "ai": {
+      "title": "Intel·ligència Artificial",
+      "badges": ["Detecció d'Objectes", "Segmentació", "Classificació", "Deep Learning"]
+    },
+    "processing": {
+      "title": "Processament",
+      "badges": ["GPU Acceleration", "Paral·lelització", "Optimització", "Algoritmes Eficients"]
+    }
+  },
+  "applications": {
+    "title": "Aplicacions i Sectors",
+    "agriculture": {
+      "title": "Agricultura de Precisió",
+      "items": [
+        { "title": "Monitoratge de Cultius", "desc": "Seguiment del creixement i salut de les plantes" },
+        { "title": "Anàlisi de Rendiment", "desc": "Estimació de rendiments i detecció de problemes" },
+        { "title": "Gestió de Reg", "desc": "Optimització de l'ús de l'aigua i fertilitzants" }
+      ]
+    },
+    "construction": {
+      "title": "Construcció i Infraestructures",
+      "items": [
+        { "title": "Monitoratge de Projectes", "desc": "Seguiment del progrés de construcció" },
+        { "title": "Anàlisi de Volums", "desc": "Càlculs precisos de materials i excavació" },
+        { "title": "Inspecció d'Estructures", "desc": "Detectió de problemes i manteniment preventiu" }
+      ]
+    }
+  },
+  "impact": {
+    "title": "Impacte i Resultats",
+    "metrics": [
+      { "title": "Precisió", "desc": "Precisió centimètrica en models 3D generats" },
+      { "title": "Eficiència", "desc": "Reducció del 70% en temps de processament" },
+      { "title": "Usuaris", "desc": "Més de 100,000 professionals utilitzant la tecnologia" },
+      { "title": "Sectors", "desc": "Present en més de 15 sectors industrials diferents" }
+    ]
+  },
+  "future": {
+    "title": "Visió de futur",
+    "p1": "Pix4D té com a objectiu expandir-se a nous sectors i integrar tecnologies emergents com la realitat augmentada i la realitat virtual.",
+    "p2": "Els plans futurs inclouen el desenvolupament de solucions en el núvol per a processament a gran escala i la integració amb sistemes de gestió d'infraestructures.",
+    "backToAll": "Tornar a tots els projectes"
+  },
+  "nav": {
+    "prev": "MoodleNet",
+    "next": "Pomoca"
+  }
+}

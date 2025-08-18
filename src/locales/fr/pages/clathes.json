@@ -1,0 +1,98 @@
+{
+  "header": {
+    "title": "Clathes",
+    "tagline": "Plateforme de mode durable reliant designers émergents et consommateurs conscients, avec traçabilité complète et impact social mesurable",
+    "builtWith": "Construit avec Shopify"
+  },
+  "overview": {
+    "title": "Vision du projet",
+    "p1": "Clathes est une plateforme de mode durable qui révolutionne l'industrie en connectant les designers émergents aux consommateurs conscients. La plateforme promeut la mode éthique, la transparence dans la chaîne d'approvisionnement et la réduction de l'impact environnemental.",
+    "p2": "Le projet se concentre sur la création d'une communauté de mode durable où les designers peuvent présenter leurs créations uniques et les consommateurs peuvent découvrir des pièces exclusives avec des histoires authentiques derrière.",
+    "p3": "Clathes implémente des technologies blockchain pour garantir la transparence et la traçabilité de chaque pièce, du design à la vente finale.",
+    "instagramCta": "Suivre le projet"
+  },
+  "stats": {
+    "first": { "title": "Premier", "desc": "Projet : Vaquitas" },
+    "global": { "title": "Global", "desc": "Portée d'impact" },
+    "multiple": { "title": "Multiples", "desc": "Causes soutenues" }
+  },
+  "strategy": {
+    "title": "Plan stratégique pour sauver les vaquitas",
+    "subtitle": "Notre approche globale combine technologie, collaboration et action directe pour protéger la population de vaquitas",
+    "overviewTitle": "Aperçu stratégique",
+    "goal": "Objectif central : augmentation de la population de vaquitas",
+    "columns": {
+      "monitoring": { "title": "Suivi", "items": ["Suivi par satellite avec IA et réseaux d'acoustique sous-marine"] },
+      "terrain": { "title": "Action de terrain", "items": ["Intervention directe et collaboration avec les autorités locales"] },
+      "totoaba": { "title": "Totoaba", "items": ["Traiter la cause profonde des prises accidentelles de vaquitas"] }
+    },
+    "details": {
+      "title": "Systèmes de suivi et de détection",
+      "satelliteTitle": "Planet Labs & Google Earth Engine",
+      "satelliteItems": [
+        "Utiliser l'IA pour détecter les navires de braconnage",
+        "Envoyer un signal à l'approche de la zone des vaquitas",
+        "Les autorités locales et les ONG reçoivent une alerte"
+      ],
+      "acousticTitle": "Réseau de suivi acoustique",
+      "acousticItems": [
+        "Installer des microphones répartis dans toutes les zones",
+        "Aider à suivre les mouvements des vaquitas",
+        "Détecter les situations de stress"
+      ],
+      "taggingTitle": "Marquage avancé et capteurs",
+      "taggingItems": [
+        "Marquer toutes les vaquitas rencontrées",
+        "Meilleurs spécialistes mondiaux",
+        "Interventions rapides et non invasives"
+      ],
+      "transmissionTitle": "Transmission de données en temps réel",
+      "transmissionItems": [
+        "Envoyer position et rythme cardiaque toutes les 5-15 min",
+        "Détecter des schémas inhabituels indiquant des vaquitas piégées",
+        "Surveiller le stress en situations dangereuses"
+      ]
+    }
+  },
+  "terrain": {
+    "title": "Action de terrain et collaboration",
+    "seaShepherd": "Partenariat Sea Shepherd",
+    "stopPoachers": { "title": "Stopper les braconniers", "items": ["Avant la pose des filets", "Collaboration étroite avec les autorités locales"] },
+    "collaboration": { "title": "Assurer une bonne collaboration", "items": ["Poursuivre tout comportement anormal", "Travailler avec le gouvernement pour l'alignement"] },
+    "coordination": {
+      "title": "Coordonner les acteurs locaux",
+      "cards": [
+        { "title": "Autorités locales", "desc": "Collaboration directe et soutien" },
+        { "title": "Autres ONG", "desc": "Partenariats stratégiques" },
+        { "title": "Communautés locales", "desc": "Tours d'observation des vaquitas comme bénéfice économique" }
+      ]
+    }
+  },
+  "nextSteps": {
+    "title": "Prochaines étapes",
+    "immediate": {
+      "title": "Actions immédiates",
+      "items": ["Commencer le marquage des vaquitas", "Mettre en place des collaborations pour la surveillance satellitaire des navires"]
+    },
+    "strategic": {
+      "title": "Coordination stratégique",
+      "desc": "Coordonner tous les acteurs via des réunions stratégiques pour discuter et affiner notre stratégie de conservation"
+    }
+  },
+  "gallery": {
+    "vaquita": "La vaquita",
+    "hands": "Protection sur le terrain",
+    "shirts": "T‑shirts bio finançant l'action",
+    "learnMore": "En savoir plus sur les vaquitas",
+    "video1": { "title": "Efforts de conservation de la vaquita", "desc": "Regardez cette vidéo informative sur la situation critique des vaquitas et les efforts de conservation en cours." },
+    "video2": { "title": "Protéger la vaquita", "desc": "Découvrez l'urgence de protéger les vaquitas et les actions entreprises pour sauver cette espèce menacée." }
+  },
+  "nav": {
+    "prev": "OpenHuts",
+    "next": "MoodleNet",
+    "backToAll": "Retour à tous les projets"
+  },
+  "links": {
+    "backToProjects": "Retour aux projets"
+  }
+}

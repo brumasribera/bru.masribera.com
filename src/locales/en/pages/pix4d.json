@@ -1,0 +1,68 @@
+{
+  "header": {
+    "title": "Pix4D Cloud Platform",
+    "tagline": "Cloud platform for processing and analyzing 3D models from drone images, delivering high-precision photogrammetry with scalable cloud architecture and tools"
+  },
+  "overview": {
+    "title": "Project vision",
+    "p1": "Pix4D Cloud Platform revolutionizes photogrammetry processing with cloud-native architecture. As a frontend developer, I contributed to building a comprehensive ecosystem for processing drone imagery into high-precision 3D models and point clouds.",
+    "p2": "The platform addresses the need for scalable, accessible photogrammetry processing while maintaining Pix4D's industry-leading accuracy and performance standards.",
+    "p3": "The Matterhorn project demonstrated the platform's capabilities, processing 2,188 drone images into 300 million point clouds with 20cm ground sampling distance."
+  },
+  "cards": {
+    "role": {
+      "title": "Role",
+      "items": ["Frontend Developer", "Cloud Platform UI", "User Experience"]
+    },
+    "tech": {
+      "title": "Technologies",
+      "items": ["React & TypeScript", "Cloud Infrastructure", "3D Visualization"]
+    },
+    "impact": {
+      "title": "Impact",
+      "items": ["Scalable processing", "Global accessibility", "Industry standard"]
+    }
+  },
+  "cloudDemo": {
+    "title": "Pix4D Cloud Platform",
+    "subtitle": "Platform walkthrough and demonstration of key features"
+  },
+  "modelShowcase": {
+    "title": "Matterhorn (Cervin) - 3D model",
+    "subtitle": "Interactive 3D model demonstrating Pix4D's photogrammetry capabilities"
+  },
+  "droneTech": {
+    "title": "Drone technology & process",
+    "cards": {
+      "drone": { "title": "senseFly eBee drone", "desc": "Professional mapping drone with 50-minute flight time" },
+      "planning": { "title": "Flight planning & execution", "desc": "Autonomous flight paths from 4,478m summit" },
+      "reconstruction": { "title": "Matterhorn 3D reconstruction", "desc": "High-density point cloud with 300 million points at 20cm GSD" }
+    }
+  },
+  "tech": {
+    "title": "Technology architecture",
+    "frontend": "Frontend technologies",
+    "platform": "Platform features",
+    "frontendBadges": ["React", "TypeScript", "Cloud platform", "3D visualization"],
+    "platformBadges": ["Cloud platform", "3D modeling", "Drone technology", "Photogrammetry", "Point cloud processing", "GSD analysis"]
+  },
+  "achievements": {
+    "title": "Key achievements",
+    "items": [
+      { "title": "Large‑scale processing", "desc": "Contributed to processing 2,188 drone images into 300 million point clouds with 20cm GSD accuracy." },
+      { "title": "3D visualization", "desc": "Implemented interactive 3D model viewers and visualization tools for drone‑generated data." },
+      { "title": "Cloud architecture", "desc": "Built scalable cloud infrastructure for processing large photogrammetry datasets efficiently." }
+    ]
+  },
+  "nav": {
+    "prev": "Wegaw",
+    "next": "Reserve",
+    "backToAll": "Back to all projects"
+  },
+  "links": {
+    "visitSite": "Visit Pix4D",
+    "caseStudy": "Case study"
+  }
+}
+
+

@@ -1,0 +1,92 @@
+{
+  "header": {
+    "title": "Pix4D Cloud Platform",
+    "tagline": "Tecnologia da fotogrametria avanzada per cartografia 3D ed analisa spaziala cun architectura cloud scalabla ed utensils integrats per la precisiun"
+  },
+  "overview": {
+    "title": "Visiun dal project",
+    "p1": "Pix4D è ina interpresa leader en la tecnologia da fotogrametria che sviluppa software per la creaziun da models 3D precis da maletgs. La tecnologia s'applica en different secturs sco agricultura, construcziun, miniera e gestiun da catastrofas.",
+    "p2": "Il project sa concentrescha sin l'automatisaziun dal process da fotogrametria, permettend als utilisaders da generar ortofotos, models digitals da elevaziun e nuvlas da puncts cun precisiun centimetrica.",
+    "p3": "Pix4D integrescha tecnologias d'IA per la detecziun automatica d'objects ed analisa avanzada da maletgs aers.",
+    "visitSite": "Visitar Pix4D",
+    "demo": "Demo"
+  },
+  "quick": {
+    "accuracy": {
+      "title": "Precisiun",
+      "items": ["Centimetrica", "Ortomosaics", "Models 3D"]
+    },
+    "applications": {
+      "title": "Applicaziuns",
+      "items": ["Agricultura", "Construcziun", "Miniera"]
+    },
+    "technology": {
+      "title": "Tecnologia",
+      "items": ["Fotogrametria", "IA", "Elavuraziun Automatica"]
+    }
+  },
+  "features": {
+    "title": "Caracteristicas Principalas",
+    "items": [
+      { "title": "Elavuraziun Automatica", "desc": "Algoritms avanzads per la generaziun automatica da models 3D" },
+      { "title": "Auta Precisiun", "desc": "Resultats cun precisiun centimetrica per applicaziuns professiunalas" },
+      { "title": "Elavuraziun en Temps Real", "desc": "Capacitad da elavurar maletgs en temps real per applicaziuns criticas" },
+      { "title": "Integraziun cun Drones", "desc": "Sustegn cumplet per plattafurmas aeras betg pilotadas" },
+      { "title": "Analisa d'IA", "desc": "Detecziun automatica d'objects ed analisa intelligenta da maletgs" },
+      { "title": "Exportaziun Flexibla", "desc": "Multipls formats d'exportaziun per integraziun cun auters sistems" }
+    ]
+  },
+  "technology": {
+    "title": "Architectura Tecnologica",
+    "photogrammetry": {
+      "title": "Fotogrametria",
+      "badges": ["Algoritms SIFT", "Correlaziun Maletgs", "Triangulaziun", "Bundle Adjustment"]
+    },
+    "ai": {
+      "title": "Intelligenza Artificiala",
+      "badges": ["Detecziun Objects", "Segmentaziun", "Classificaziun", "Deep Learning"]
+    },
+    "processing": {
+      "title": "Elavuraziun",
+      "badges": ["Acceleraziun GPU", "Parallelisaziun", "Optimisaziun", "Algoritms Efficients"]
+    }
+  },
+  "applications": {
+    "title": "Applicaziuns e Secturs",
+    "agriculture": {
+      "title": "Agricultura da Precisiun",
+      "items": [
+        { "title": "Surveglianza Culturas", "desc": "Accompaniament da la creschientscha e sanadad da las plantas" },
+        { "title": "Analisa Rendiments", "desc": "Estimaziun da rendiments e detecziun da problems" },
+        { "title": "Gestiun Irrigaziun", "desc": "Optimisaziun da l'utilisaziun da aua e fertilisants" }
+      ]
+    },
+    "construction": {
+      "title": "Construcziun e Infrastructuras",
+      "items": [
+        { "title": "Surveglianza Projects", "desc": "Accompaniament dal progress da construcziun" },
+        { "title": "Analisa Volums", "desc": "Calculs precis da materials e excavaziun" },
+        { "title": "Inspecziun Structuras", "desc": "Detecziun da problems e mantegniment preventiv" }
+      ]
+    }
+  },
+  "impact": {
+    "title": "Impact e Resultats",
+    "metrics": [
+      { "title": "Precisiun", "desc": "Precisiun centimetrica en ils models 3D generads" },
+      { "title": "Efficienza", "desc": "Reducziun da 70% en il temps d'elavuraziun" },
+      { "title": "Utilisaders", "desc": "Dapli che 100.000 professiunals utiliseschan la tecnologia" },
+      { "title": "Secturs", "desc": "Present en dapli che 15 secturs industrials differents" }
+    ]
+  },
+  "future": {
+    "title": "Visiun dal futur",
+    "p1": "Pix4D visa da s'expander en novs secturs e integrar tecnologias emergentas sco realitad augmentada e realitad virtuala.",
+    "p2": "Ils plans futurs includan il svilup da soluziuns cloud per elavuraziun en larga scala e l'integraziun cun sistems da gestiun da infrastructuras.",
+    "backToAll": "Turnar a tut ils projects"
+  },
+  "nav": {
+    "prev": "MoodleNet",
+    "next": "Pomoca"
+  }
+}

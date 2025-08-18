@@ -1,0 +1,98 @@
+{
+  "header": {
+    "title": "Clathes",
+    "tagline": "Moda duradaivla che colla designers ed consumers conscients cun transparenza, trazzabilitad ed impact social – per tschernas eticas e responsablas en mintga cumprà global",
+    "builtWith": "Fabrichà cun Shopify"
+  },
+  "overview": {
+    "title": "Visiun dal project",
+    "p1": "Clathes è ina marca da moda duradaivla che utilisescha intelligenza artificiala per crear vestgids personalisads ed eco-friendly. Il project cumbina tecnologia avanzada cun praticas duradaivlas da producziun.",
+    "p2": "L'objectiv è da revoluziunar l'industria da la moda tras la personalisaziun en massa, reducind il spargn e creand pezzas unicas per mintga client.",
+    "p3": "Clathes integrescha IA per analisa da preferenzas, design personalisà ed optimisaziun da la cadena da provediment duradaivla.",
+    "instagramCta": "Suandar il project"
+  },
+  "stats": {
+    "first": { "title": "Emprim", "desc": "Project: Vaquitas" },
+    "global": { "title": "Global", "desc": "Ravatscha d'impact" },
+    "multiple": { "title": "Multipel", "desc": "Causas sustegnidas" }
+  },
+  "strategy": {
+    "title": "Plan strategic per salvar las vaquitas",
+    "subtitle": "Nies access cumplett cumbinescha tecnologia, collavuraziun ed acziun directa per proteger la populaziun da vaquitas",
+    "overviewTitle": "Survista strategica",
+    "goal": "Scopo central: la populaziun da vaquitas cumenza ad augmentar",
+    "columns": {
+      "monitoring": { "title": "Monitorisaziun", "items": ["Monitorisaziun da satellite cun IA e raits acusticas"] },
+      "terrain": { "title": "Acziun sin il terren", "items": ["Intervenziun directa e collavuraziun cun autoritads localas"] },
+      "totoaba": { "title": "Totoaba", "items": ["Tractar la raschun da capturas accessoricas da vaquitas"] }
+    },
+    "details": {
+      "title": "Sistems da monitorisaziun e detecziun",
+      "satelliteTitle": "Planet Labs & Google Earth Engine",
+      "satelliteItems": [
+        "Duvrar IA per identificar navs da bracunar",
+        "Trametter signal tar l'approximaziun da la zona da vaquitas",
+        "Autoritads localas ed ONG retschaivan in avis"
+      ],
+      "acousticTitle": "Rait da monitorisaziun acustica",
+      "acousticItems": [
+        "Installar microfons distribui en tut las zonas",
+        "Agid per suandar ils moviments da la vaquita",
+        "Detectar situaziuns da stress"
+      ],
+      "taggingTitle": "Marcaziun avanzada e sensors",
+      "taggingItems": [
+        "Marcar tut las vaquitas chattadas",
+        "Ils megliers professiunals dal mund",
+        "Intervenziuns sveltas e betg invasivas"
+      ],
+      "transmissionTitle": "Transmissiun da datas en temp real",
+      "transmissionItems": [
+        "Trametter posiziun e pulsaziun mintga 5-15 minutas",
+        "Detectar musters curius che inditgeschan vaquitas trapadas",
+        "Monitorisar il nivel da stress en situaziuns privlusas"
+      ]
+    }
+  },
+  "terrain": {
+    "title": "Acziun sin il terren e collavuraziun",
+    "seaShepherd": "Partenadi cun Sea Shepherd",
+    "stopPoachers": { "title": "Stoppar bracunar", "items": ["Avant che metter raits", "Collavuraziun stretga cun autoritads localas"] },
+    "collaboration": { "title": "Garantir collavuraziun adequata", "items": ["Perseguir mintga cumportament nunusità", "Lavurar cun il stadi per allineaziun"] },
+    "coordination": {
+      "title": "Coordinar acturs locals",
+      "cards": [
+        { "title": "Autoritads localas", "desc": "Collavuraziun directa e sustegn" },
+        { "title": "Autras ONG", "desc": "Partenadis strategics" },
+        { "title": "Communitads localas", "desc": "Turs da guardar vaquitas sco benefici economic" }
+      ]
+    }
+  },
+  "nextSteps": {
+    "title": "Pass proxims",
+    "immediate": {
+      "title": "Acziuns immediatas",
+      "items": ["Cumenzar a marcar las vaquitas", "Stabilir collavuraziuns per monitorisaziun da navs via satellite"]
+    },
+    "strategic": {
+      "title": "Coordinaziun strategica",
+      "desc": "Coordinar tut ils acturs tras scunters strategics per discuter e perfecziunar nossa strategia da conservaziun"
+    }
+  },
+  "gallery": {
+    "vaquita": "La vaquita",
+    "hands": "Protecziun pratica",
+    "shirts": "T‑shirts bio per finanziar l'acziun",
+    "learnMore": "Savar dapli davart las vaquitas",
+    "video1": { "title": "Sforzs da conservaziun per la vaquita", "desc": "Guardai quest video infurmativ davart la situaziun critica da las vaquitas e sforzs permanents da conservaziun." },
+    "video2": { "title": "Proteger la vaquita", "desc": "Emprendai davart l'urgenza da proteger las vaquitas ed ils pass per salvar questa spezia periclitada." }
+  },
+  "nav": {
+    "prev": "OpenHuts",
+    "next": "MoodleNet",
+    "backToAll": "Turnar a tut ils projects"
+  },
+  "links": {
+    "backToProjects": "Turnar als projects"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "header": {
+    "title": "Open Huts",
+    "tagline": "Piattaforma rivoluzionaria per scoprire e prenotare rifugi di montagna in tutto il mondo, abilitando il turismo sostenibile e la pianificazione completa delle avventure"
+  },
+  "overview": {
+    "title": "Visione del progetto",
+    "p1": "OpenHuts è una piattaforma innovativa che connette escursionisti e alpinisti con rifugi di montagna in tutto il mondo. Il progetto facilita la scoperta, prenotazione e gestione di soggiorni in rifugi remoti.",
+    "p2": "La piattaforma offre informazioni dettagliate sui rifugi, inclusa posizione, comfort, disponibilità e prenotazioni online. Gli utenti possono esplorare percorsi, pianificare viaggi e prenotare soggiorni con facilità.",
+    "p3": "OpenHuts promuove il turismo sostenibile e la preservazione dei rifugi di montagna, connettendo comunità locali con viaggiatori globali.",
+    "visitSite": "Visita OpenHuts",
+    "demo": "Demo"
+  },
+  "quick": {
+    "discovery": {
+      "title": "Scoperta",
+      "items": ["Rifugi", "Percorsi", "Destinazioni"]
+    },
+    "booking": {
+      "title": "Prenotazioni",
+      "items": ["Online", "Gestione", "Conferma"]
+    },
+    "community": {
+      "title": "Comunità",
+      "items": ["Recensioni", "Condivisione", "Connettività"]
+    }
+  },
+  "features": {
+    "title": "Caratteristiche Principali",
+    "items": [
+      { "title": "Catalogo Globale", "desc": "Database completo di rifugi di montagna in tutto il mondo" },
+      { "title": "Sistema di Prenotazioni", "desc": "Piattaforma di prenotazioni online integrata con conferme automatiche" },
+      { "title": "Esplorazione Percorsi", "desc": "Strumenti per scoprire e pianificare percorsi escursionistici" },
+      { "title": "Informazioni Dettagliate", "desc": "Dati completi su comfort, prezzi e disponibilità" },
+      { "title": "Recensioni della Comunità", "desc": "Sistema di feedback e recensioni degli utenti" },
+      { "title": "App Mobile", "desc": "Accesso offline per utilizzo in aree remote" }
+    ]
+  },
+  "technology": {
+    "title": "Architettura Tecnologica",
+    "platform": {
+      "title": "Piattaforma Web",
+      "badges": ["React", "Node.js", "MongoDB", "API RESTful"]
+    },
+    "mobile": {
+      "title": "App Mobile",
+      "badges": ["React Native", "Offline Sync", "GPS", "Notifiche"]
+    },
+    "mapping": {
+      "title": "Sistema di Mappatura",
+      "badges": ["OpenStreetMap", "Geolocalizzazione", "Percorsi", "Terreno"]
+    }
+  },
+  "applications": {
+    "title": "Applicazioni e Settori",
+    "tourism": {
+      "title": "Turismo di Montagna",
+      "items": [
+        { "title": "Escursionismo", "desc": "Pianificazione e prenotazione di percorsi escursionistici" },
+        { "title": "Alpinismo", "desc": "Accesso a rifugi per attività di arrampicata" },
+        { "title": "Turismo Sostenibile", "desc": "Promozione di pratiche responsabili in montagna" }
+      ]
+    },
+    "community": {
+      "title": "Comunità di Montagna",
+      "items": [
+        { "title": "Condivisione Esperienze", "desc": "Piattaforma per viaggiatori di condividere storie e consigli" },
+        { "title": "Connettività", "desc": "Connessione tra escursionisti e gestori di rifugi" },
+        { "title": "Preservazione", "desc": "Supporto alla manutenzione e conservazione dei rifugi" }
+      ]
+    }
+  },
+  "impact": {
+    "title": "Impatto e Risultati",
+    "metrics": [
+      { "title": "Rifugi", "desc": "Più di 5.000 rifugi elencati in tutto il mondo" },
+      { "title": "Utenti", "desc": "Più di 100.000 escursionisti registrati sulla piattaforma" },
+      { "title": "Prenotazioni", "desc": "Il sistema processa più di 50.000 prenotazioni annualmente" },
+      { "title": "Paesi", "desc": "Presente in più di 30 paesi con rifugi di montagna" }
+    ]
+  },
+  "future": {
+    "title": "Visione del futuro",
+    "p1": "OpenHuts mira ad espandersi in nuovi mercati e integrare tecnologie emergenti come la realtà aumentata per la visualizzazione di percorsi e rifugi.",
+    "p2": "I piani futuri includono lo sviluppo di funzionalità di intelligenza artificiale per raccomandazioni personalizzate e l'espansione per includere altri tipi di alloggi outdoor.",
+    "backToAll": "Torna a tutti i progetti"
+  },
+  "nav": {
+    "prev": "Wegaw",
+    "next": "Reserve"
+  }
+}

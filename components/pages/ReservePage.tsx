@@ -6,13 +6,15 @@ import { useProjectNavigation } from '../hooks/useProjectNavigation'
 import { ProjectNavigationButton } from '../navigation/ProjectNavigationButton'
 import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation'
 import ReserveMobileApp from '../ReserveApp'
+import { useTranslation } from 'react-i18next'
 
 export function ReservePage() {
 	const { navigateToProject, navigateToHome } = useProjectNavigation()
+	const { t } = useTranslation(['reserve', 'common'])
 	
 	// Enable keyboard navigation
 	useKeyboardNavigation({
-		prevProjectPath: '/clathes',
+		prevProjectPath: '/pix4d',
 		nextProjectPath: '/openhuts'
 	})
 
@@ -25,12 +27,20 @@ export function ReservePage() {
 	return (
 		<div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
 			{/* Hero */}
-			<div className="bg-gradient-to-br from-emerald-600 via-green-600 to-lime-600 text-white py-20">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div 
+				className="text-white py-20 relative overflow-hidden"
+				style={{
+					background: 'linear-gradient(45deg, #00ff88, #00d4aa, #00b4d8, #48cae4, #90e0ef, #ade8f4)',
+					backgroundSize: '200% 200%',
+					animation: 'diagonal-gradient 12s ease-in-out infinite'
+				}}
+			>
+				<div className="absolute inset-0 bg-black/20"></div>
+				<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex items-center gap-4 mb-8">
 						<button onClick={navigateToHome} className="flex items-center gap-2 text-emerald-100 hover:text-white transition-colors">
 							<ArrowLeft className="h-5 w-5" />
-							<span>Back to Projects</span>
+							<span>{t('common:backToProjects')}</span>
 						</button>
 					</div>
 
@@ -40,9 +50,9 @@ export function ReservePage() {
 								<img src="/logos/reserve-logo.png" alt="Reserve" className="h-24 w-24 object-contain rounded-2xl" />
 							</div>
 						</div>
-						<h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">Reserve</h1>
+						<h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">{t('page.header.title')}</h1>
 						<p className="text-2xl text-emerald-100 max-w-4xl mx-auto leading-relaxed">
-							A crowdfunding platform to protect regions, reforest areas, and restore natural habitats with transparent impact tracking and cost per square meter
+							{t('page.header.tagline')}
 						</p>
 					</div>
 				</div>
@@ -53,18 +63,14 @@ export function ReservePage() {
 				<div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
 					<Card className="lg:col-span-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg">
 						<CardHeader>
-							<CardTitle className="text-3xl font-bold text-gray-900 dark:text-white">Project Vision</CardTitle>
+							<CardTitle className="text-3xl font-bold text-gray-900 dark:text-white">{t('page.overview.title')}</CardTitle>
 						</CardHeader>
 						<CardContent className="space-y-4">
 							<p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-								Reserve is a nature crowdfunding platform that enables individuals and organizations to
-								directly fund conservation actions. Choose a region on a map, see its size and restoration cost,
-								and contribute to protecting, reforesting, or restoring natural habitats with transparent impact tracking.
+								{t('page.overview.p1')}
 							</p>
 							<p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-								The prototype showcases key flows: selecting a grid area for conservation, calculating protected m² and
-								cost, confirming your contribution, and sharing progress. Designed with calm visuals and a signature
-								rainbow gradient celebrating biodiversity and the variety of conservation projects available.
+								{t('page.overview.p2')}
 							</p>
 
 							<div className="flex flex-wrap gap-3 pt-2">
@@ -81,11 +87,11 @@ export function ReservePage() {
 							<CardContent className="p-6">
 								<div className="flex items-center gap-3 mb-4">
 									<Users className="h-6 w-6 text-emerald-600" />
-									<h3 className="text-lg font-semibold text-gray-900 dark:text-white">Target Users</h3>
+									<h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('page.cards.targetUsers.title')}</h3>
 								</div>
-								<p className="text-gray-600 dark:text-gray-400">Nature enthusiasts</p>
-								<p className="text-gray-600 dark:text-gray-400">Conservation organizations</p>
-								<p className="text-gray-600 dark:text-gray-400">Corporate sustainability programs</p>
+								{(t('page.cards.targetUsers.users', { returnObjects: true }) as string[]).map((item: string) => (
+									<p key={item} className="text-gray-600 dark:text-gray-400">{item}</p>
+								))}
 							</CardContent>
 						</Card>
 
@@ -93,11 +99,11 @@ export function ReservePage() {
 							<CardContent className="p-6">
 								<div className="flex items-center gap-3 mb-4">
 									<Shield className="h-6 w-6 text-green-600" />
-									<h3 className="text-lg font-semibold text-gray-900 dark:text-white">Impact</h3>
+									<h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('page.cards.impact.title')}</h3>
 								</div>
-								<p className="text-gray-600 dark:text-gray-400">Protect and restore natural regions</p>
-								<p className="text-gray-600 dark:text-gray-400">Reforest degraded areas</p>
-								<p className="text-gray-600 dark:text-gray-400">Transparent cost per m²</p>
+								{(t('page.cards.impact.benefits', { returnObjects: true }) as string[]).map((item: string) => (
+									<p key={item} className="text-gray-600 dark:text-gray-400">{item}</p>
+								))}
 							</CardContent>
 						</Card>
 
@@ -105,16 +111,16 @@ export function ReservePage() {
 							<CardContent className="p-6">
 								<div className="flex items-center gap-3 mb-4">
 									<Globe2 className="h-6 w-6 text-lime-600" />
-									<h3 className="text-lg font-semibold text-gray-900 dark:text-white">Channels</h3>
+									<h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('page.cards.channels.title')}</h3>
 								</div>
-								<p className="text-gray-600 dark:text-gray-400 mb-4">Follow the project on social media</p>
+								<p className="text-gray-600 dark:text-gray-400 mb-4">{t('page.cards.channels.subtitle')}</p>
 								<a href="https://www.instagram.com/reservenatureapp/" target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 hover:from-purple-500 hover:via-pink-400 hover:to-orange-400 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] overflow-hidden text-sm">
 									{/* Shiny overlay effect */}
 									<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
 
 									{/* Instagram icon with hover effect */}
 									<Instagram className="h-4 w-4 group-hover:scale-110 transition-transform duration-200 relative z-10" />
-									<span className="relative z-10">Follow on Instagram</span>
+									<span className="relative z-10">{t('page.cards.channels.instagram')}</span>
 								</a>
 							</CardContent>
 						</Card>
@@ -130,9 +136,9 @@ export function ReservePage() {
 								<div className="w-20 h-20 bg-white p-2 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl">
 									<img src="/logos/reserve-logo.png" alt="Reserve" className="h-full w-full object-contain" />
 								</div>
-								<h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Experience the App</h3>
+								<h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('page.prototype.ctaTitle')}</h3>
 								<p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-									Open the Reserve app in full screen for the best interactive experience
+									{t('page.prototype.ctaDesc')}
 								</p>
 								<button
 									onClick={openAppInNewTab}
@@ -142,7 +148,7 @@ export function ReservePage() {
 									<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
 									
 									<ExternalLink className="h-5 w-5 group-hover:scale-110 transition-transform duration-200 relative z-10" />
-									<span className="relative z-10">Open App</span>
+									<span className="relative z-10">{t('common:openApp')}</span>
 								</button>
 							</div>
 						</div>
@@ -168,8 +174,8 @@ export function ReservePage() {
 					{/* Previous Project Button - Left Side */}
 					<ProjectNavigationButton
 						direction="prev"
-						projectName="Clathes"
-						onClick={() => navigateToProject('/clathes')}
+						projectName="Pix4D"
+						onClick={() => navigateToProject('/pix4d')}
 					/>
 
 					{/* Next Project Button - Right Side */}
@@ -183,13 +189,13 @@ export function ReservePage() {
 					<div className="text-center mt-20">
 						<button
 							onClick={navigateToHome}
-							className="group relative inline-flex items-center gap-2 px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl text-lg overflow-hidden"
+							className="group relative inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 hover:from-green-300 hover:via-emerald-400 hover:to-teal-400 text-white rounded-xl font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl text-lg overflow-hidden"
 						>
 							{/* Shiny overlay effect */}
 							<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
 							
 							<ArrowLeft className="h-5 w-5 group-hover:scale-110 transition-transform duration-200 relative z-10" />
-							<span className="relative z-10">Back to All Projects</span>
+							<span className="relative z-10">{t('page.nav.backToAll')}</span>
 						</button>
 					</div>
 				</div>

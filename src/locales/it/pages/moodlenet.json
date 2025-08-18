@@ -1,0 +1,59 @@
+{
+  "header": {
+    "title": "MoodleNet Platform",
+    "tagline": "Piattaforma open‑source che rivoluziona come gli educatori scoprono e condividono risorse educative nel mondo, promuovendo l'educazione aperta e la collaborazione"
+  },
+  "overview": {
+    "title": "Visione del progetto",
+    "p1": "MoodleNet trasforma il modo in cui gli educatori scoprono, condividono e curano risorse educative. Come sviluppatore frontend, ho contribuito a creare un ecosistema completo per la curazione collaborativa e la scoperta di contenuti educativi di alta qualità.",
+    "p2": "La piattaforma risponde all’esigenza di materiali accessibili e ben curati, promuovendo l’educazione aperta e supportando la comunità didattica globale."
+  },
+  "cards": {
+    "targetUsers": {
+      "title": "Utenti target",
+      "items": ["Educatori e insegnanti", "Studenti e discenti", "Istituzioni"]
+    },
+    "developmentStatus": {
+      "title": "Stato di sviluppo",
+      "items": ["Sviluppo attivo", "Open‑source", "Guidato dalla comunità"]
+    },
+    "globalReach": {
+      "title": "Portata globale",
+      "items": ["Copertura mondiale", "Multilingua", "Standard aperti"]
+    }
+  },
+  "features": {
+    "title": "Funzionalità chiave",
+    "discovery": { "title": "Scoperta risorse", "desc": "Ricerca avanzata e filtri per risorse in più formati" },
+    "curation": { "title": "Curazione contenuti", "desc": "Strumenti collaborativi per organizzare e condividere risorse" },
+    "community": { "title": "Comunità", "desc": "Apprendimento sociale e condivisione guidata dalla comunità" },
+    "quality": { "title": "Controllo qualità", "desc": "Revisione tra pari e sistemi di valutazione dei contenuti" },
+    "learningPaths": { "title": "Percorsi di apprendimento", "desc": "Sequenze strutturate e strumenti di pianificazione curricolare" },
+    "sharing": { "title": "Condivisione aperta", "desc": "Licenze aperte e meccanismi di condivisione" }
+  },
+  "preview": {
+    "title": "Anteprima della piattaforma",
+    "main": { "title": "Interfaccia principale", "desc": "Interfaccia pulita e intuitiva con ricerca avanzata e filtri multipli." },
+    "details": { "title": "Dettagli risorsa", "desc": "Vista dettagliata con metadati, valutazioni e feedback della comunità." },
+    "community": { "title": "Funzionalità di comunità", "desc": "Recensioni, valutazioni e curazione collaborativa." }
+  },
+  "tech": {
+    "title": "Stack tecnologico",
+    "frontend": "Frontend",
+    "backend": "Backend"
+  },
+  "future": {
+    "title": "Visione del futuro",
+    "p1": "MoodleNet sta evolvendo in un ecosistema completo per l’educazione aperta e la condivisione di risorse. In programma: raccomandazioni con IA, analisi avanzata dell’apprendimento e partnership con istituzioni educative nel mondo.",
+    "p2": "La piattaforma punta a diventare lo standard globale per la scoperta e la curazione di risorse educative, connettendo gli educatori con i migliori OER e promuovendo comunità di apprendimento collaborativo."
+  },
+  "nav": {
+    "prev": "Clathes",
+    "next": "Pomoca",
+    "backToAll": "Torna a tutti i progetti"
+  },
+  "links": {
+    "visitSite": "Visita MoodleNet",
+    "github": "GitHub"
+  }
+}

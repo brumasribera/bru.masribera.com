@@ -1,18 +1,20 @@
 import { LanguagePill } from './LanguagePill'
 import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export function LanguagesBar() {
+  const { t } = useTranslation(['home'])
   const [autoHoveredPill, setAutoHoveredPill] = useState<string | null>(null)
   const [isPaused, setIsPaused] = useState(false)
 
   const languages = [
-    { label: 'English', level: 'C2', flag: '/flags/en.png' },
-    { label: 'French', level: 'C2', flag: '/flags/fr.png' },
-    { label: 'Spanish', level: 'Native', flag: '/flags/es.png' },
-    { label: 'Catalan', level: 'Native', flag: '/flags/ca.png' },
-    { label: 'Italian', level: 'C1', flag: '/flags/it.png' },
-    { label: 'German', level: 'B1', flag: '/flags/de.png' },
-    { label: 'Portuguese', level: 'B1', flag: '/flags/pt.png' }
+    { label: 'languages.languages.english', level: 'languages.proficiency.c2', flag: '/flags/en.png' },
+    { label: 'languages.languages.french', level: 'languages.proficiency.c2', flag: '/flags/fr.png' },
+    { label: 'languages.languages.spanish', level: 'languages.proficiency.native', flag: '/flags/es.png' },
+    { label: 'languages.languages.catalan', level: 'languages.proficiency.native', flag: '/flags/ca.png' },
+    { label: 'languages.languages.italian', level: 'languages.proficiency.c1', flag: '/flags/it.png' },
+    { label: 'languages.languages.german', level: 'languages.proficiency.b1', flag: '/flags/de.png' },
+    { label: 'languages.languages.portuguese', level: 'languages.proficiency.b1', flag: '/flags/pt.png' }
   ]
 
   useEffect(() => {
@@ -40,14 +42,27 @@ export function LanguagesBar() {
   }, [isPaused, languages])
 
   return (
-    <section id="languages-bar" className="py-6 sm:py-8 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+    <section id="languages-bar" className="py-8 sm:py-12 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto">
+        {/* Header section */}
+        <div className="text-center mb-6">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            {t('languages.title')}
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            {t('languages.subtitle')}
+          </p>
+        </div>
+
+        {/* Language URL display removed */}
+        
         <div className="flex flex-wrap gap-2 sm:gap-3 items-center justify-center">
           {languages.map((lang) => (
             <LanguagePill
               key={lang.label}
-              label={lang.label}
-              level={lang.level}
+              label={t(lang.label)}
+              level={t(lang.level)}
+              levelKey={lang.level}
               flag={lang.flag}
               isAutoHovered={autoHoveredPill === lang.label}
               onMouseEnter={() => {

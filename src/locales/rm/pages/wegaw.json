@@ -1,0 +1,90 @@
+{
+  "header": {
+    "title": "Wegaw",
+    "tagline": "Sistem avanzà da surveglianza da naiv e predicziun da lavinas utilisond datas satellitarias e IA. Il project DeFROST demonstrescha las capacitads cumplettas da surveglianza ambientala",
+    "back": "Turnar als projects"
+  },
+  "overview": {
+    "title": "Visiun dal project",
+    "p1": "Wegaw revoluziunescha la surveglianza da naiv cun il project DeFROST, furnind datas da cuverta e profunditad da naiv quasi en temp reàl cun ina resoluziun da 20m. Lur servetsch gida a plataformas d'aria libra, uffizis da turissem ed entusiasts da l'aventura da prender decisiuns infurmadas.",
+    "p2": "Cun che il midad climatic renda ils envierns pli curts, las destinaziuns basegnan survistas precisas da las cundiziuns da naiv per sviluppar turissem d'entre-stagiun segir. DeFROST cumbina datas satellitarias e terrestres per porscher las perspectivas cumplessivas ch'els basegnan.",
+    "p3": "L'interpresa s'extenda al martgà d'energia, specificamain per operaturs da centralas idraulicas, demonstrend il valur da las datas da naiv quasi en temp reàl en la predicziun d'affluenza d'aua.",
+    "visitSite": "Visitar Wegaw",
+    "esa": "Project ESA"
+  },
+  "quick": {
+    "resolution": {
+      "title": "Resoluziun",
+      "items": ["Resoluziun Spaziala da 20m", "Actualisaziuns Quotidanas", "Cuverta Globala"]
+    },
+    "applications": {
+      "title": "Aplicaziuns",
+      "items": ["Turissem e Segirezza", "Plataformas Digitalas", "Martgads d'Energia"]
+    },
+    "technology": {
+      "title": "Tecnologia",
+      "items": ["Satellits Sentinel", "Sensurs NASA", "Analisa d'IA"]
+    }
+  },
+  "capabilities": {
+    "title": "Capacitads Principalas",
+    "items": [
+      { "title": "Cartografia da Cuverta da Naiv", "desc": "Datas quotidianas da cuverta da naiv cun resoluziun da 20m utilisond satellits europeics Sentinel e sensurs NASA" },
+      { "title": "Estimaziun da Profunditad da Naiv", "desc": "Mesiraziuns precisas da profunditad da staziuns terrestres cumbinadas cun datas satellitarias" },
+      { "title": "Valitaziun da Risch da Lavinas", "desc": "Valitaziuns uffizialas da risch a nivel naziunal en collavuraziun cun l'Institut SLF" },
+      { "title": "Integraziun Meteorologica", "desc": "Cumbinà cun predicziuns meteorologicas e logica probabilistica per analisa cumplessiva" },
+      { "title": "Integraziun API", "desc": "Opziuns flexiblas d'integraziun per aplicaziuns mobilas e web cun datas en temp reàl" },
+      { "title": "Analisa Impulsada da IA", "desc": "Algoritms avanzads per predicir la cuverta da naiv sut cuverta da nuvs persistenta" }
+    ]
+  },
+  "defrost": {
+    "title": "Svilup dal Project DeFROST",
+    "intro": "DeFROST represchenta in approcc cumplessiv per la surveglianza operativa da naiv, cumbinand teledetecziun satellitara, validaziun terrestra ed analisa avanzada per furnir intelligenza ambientala accionabla.",
+    "stages": [
+      { "title": "Fasa da Recerca e Validaziun", "desc": "Analisa cumplessiva da las funtanas da datas satellitarias e metodologias da validaziun da veritad terrestra. Stabiliment da collavuraziuns cun l'Institut WSL per Recerca da Naiv e Lavinas (SLF) per protocols da validaziun scientifica e garanzia da qualitad." },
+      { "title": "Implementaziun Tecnica", "desc": "Svilup d'algoritms da fusiun multi-sensor integrand flus da datas Sentinel-2, VIIRS e MODIS. Implementaziun da tecnicas da detecziun da nuvs e interpolaziun impulsada da IA per cuverta cuntinuanta malgrà l'interferenza atmosferica." },
+      { "title": "Deploiament Comercial", "desc": "Deploiament successus dal servetsch operativ cun l'Organisaziun da Marketing da Destinaziuns Svizras, demonstrend in 95% da precisiun en la detecziun da cuverta da naiv. Stabiliment da l'infrastructura API per integraziun perfetta cun plataformas d'aria libra ed aplicaziuns da turissem." },
+      { "title": "Extensiun da Martgà", "desc": "Extensiun a aplicaziuns dal sectur energetic, particularmain operaziuns idraulicas. Realisaziun d'studis da prova da concept cun grondas interpresas publicas europeicas per demonstrar il valur en la gestiun da resursas d'aua e predicziun d'affluenza." }
+    ]
+  },
+  "technology": {
+    "title": "Architectura Tecnologica",
+    "satellite": {
+      "title": "Funtanas da Datas Satellitarias",
+      "badges": ["Sentinel-2", "VIIRS", "MODIS", "ESA"]
+    },
+    "ai": {
+      "title": "IA e Processament",
+      "badges": ["Emprender Automatic", "Logica Probabilistica", "Detecziun da Nuvs", "Processament en Temp Reàl"]
+    }
+  },
+  "partners": {
+    "title": "Collavuraturs e Integraziun",
+    "research": {
+      "title": "Collavuraturs da Recerca",
+      "items": [
+        { "title": "Institut WSL per Recerca da Naiv e Lavinas (SLF)", "desc": "Institut leader da la Svizra per recerca da naiv e lavinas" },
+        { "title": "Agenzia Spaziala Europea (ESA)", "desc": "Sustegn dal project DeFROST tras il program d'Aplicaziuns Comercialas" },
+        { "title": "Exolabs", "desc": "Collavuratur innovativ da recerca e svilup per soluziuns da surveglianza ambientala" }
+      ]
+    },
+    "platform": {
+      "title": "Integraziun da Plataforma",
+      "items": [
+        { "title": "Strava", "desc": "Plataforma leader mundiala da suvegliar fitness" },
+        { "title": "Swisstopo", "desc": "Agenzia naziunala da cartografia da la Svizra" },
+        { "title": "Skitourenguru", "desc": "Plataforma leader da ski da muntogna e aventura en l'aria libra" }
+      ]
+    }
+  },
+  "future": {
+    "title": "Visiun dal futur",
+    "p1": "Wegaw s'extenda al martgà energetic, specificamain per operaturs da centralas idraulicas. Las capacitads actualas dal product permetten Provas da Concept che demonstran il valur da las datas da naiv quasi en temp reàl en la predicziun d'affluenza d'aua.",
+    "p2": "L'objectiv è da convertir las Provas da Concept successus en acords comercials a lung termin e cuntinuar a extender la presenzia da Wegaw al martgà energetic mantegnend lur leadership en aplicaziuns da recreaziun d'aria libra e turisticas.",
+    "backToAll": "Turnar a tut ils projects"
+  },
+  "nav": {
+    "prev": "Pomoca",
+    "next": "Pix4D"
+  }
+}

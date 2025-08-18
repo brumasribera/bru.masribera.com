@@ -1,0 +1,92 @@
+{
+  "header": {
+    "title": "Pix4D Cloud Platform",
+    "tagline": "Plataforma en la nube para procesar y analizar modelos 3D a partir de imágenes de drones, ofreciendo fotogrametría de alta precisión con arquitectura escalable y herramientas integradas"
+  },
+  "overview": {
+    "title": "Visión del proyecto",
+    "p1": "Pix4D es una empresa líder en tecnología de fotogrametría que desarrolla software para la creación de modelos 3D precisos a partir de imágenes. La tecnología se aplica en diversos sectores como la agricultura, la construcción, la minería y la gestión de catástrofes.",
+    "p2": "El proyecto se centra en la automatización del proceso de fotogrametría, permitiendo a los usuarios generar ortofotos, modelos digitales de elevación y nubes de puntos con una precisión centimétrica.",
+    "p3": "Pix4D integra tecnologías de IA para la detección automática de objetos y el análisis avanzado de imágenes aéreas.",
+    "visitSite": "Visitar Pix4D",
+    "demo": "Demostración"
+  },
+  "quick": {
+    "accuracy": {
+      "title": "Precisión",
+      "items": ["Centimétrica", "Ortomosaicos", "Modelos 3D"]
+    },
+    "applications": {
+      "title": "Aplicaciones",
+      "items": ["Agricultura", "Construcción", "Minería"]
+    },
+    "technology": {
+      "title": "Tecnología",
+      "items": ["Fotogrametría", "IA", "Procesamiento Automático"]
+    }
+  },
+  "features": {
+    "title": "Características Principales",
+    "items": [
+      { "title": "Procesamiento Automático", "desc": "Algoritmos avanzados para la generación automática de modelos 3D" },
+      { "title": "Alta Precisión", "desc": "Resultados con precisión centimétrica para aplicaciones profesionales" },
+      { "title": "Procesamiento en Tiempo Real", "desc": "Capacidad de procesar imágenes en tiempo real para aplicaciones críticas" },
+      { "title": "Integración con Drones", "desc": "Soporte completo para plataformas aéreas no tripuladas" },
+      { "title": "Análisis de IA", "desc": "Detección automática de objetos y análisis de imágenes inteligente" },
+      { "title": "Exportación Flexible", "desc": "Múltiples formatos de exportación para integración con otros sistemas" }
+    ]
+  },
+  "technology": {
+    "title": "Arquitectura Tecnológica",
+    "photogrammetry": {
+      "title": "Fotogrametría",
+      "badges": ["Algoritmos SIFT", "Correlación de Imágenes", "Triangulación", "Bundle Adjustment"]
+    },
+    "ai": {
+      "title": "Inteligencia Artificial",
+      "badges": ["Detección de Objetos", "Segmentación", "Clasificación", "Deep Learning"]
+    },
+    "processing": {
+      "title": "Procesamiento",
+      "badges": ["GPU Acceleration", "Paralelización", "Optimización", "Algoritmos Eficientes"]
+    }
+  },
+  "applications": {
+    "title": "Aplicaciones y Sectores",
+    "agriculture": {
+      "title": "Agricultura de Precisión",
+      "items": [
+        { "title": "Monitoreo de Cultivos", "desc": "Seguimiento del crecimiento y salud de las plantas" },
+        { "title": "Análisis de Rendimiento", "desc": "Estimación de rendimientos y detección de problemas" },
+        { "title": "Gestión de Riego", "desc": "Optimización del uso de agua y fertilizantes" }
+      ]
+    },
+    "construction": {
+      "title": "Construcción e Infraestructuras",
+      "items": [
+        { "title": "Monitoreo de Proyectos", "desc": "Seguimiento del progreso de construcción" },
+        { "title": "Análisis de Volúmenes", "desc": "Cálculos precisos de materiales y excavación" },
+        { "title": "Inspección de Estructuras", "desc": "Detección de problemas y mantenimiento preventivo" }
+      ]
+    }
+  },
+  "impact": {
+    "title": "Impacto y Resultados",
+    "metrics": [
+      { "title": "Precisión", "desc": "Precisión centimétrica en modelos 3D generados" },
+      { "title": "Eficiencia", "desc": "Reducción del 70% en tiempo de procesamiento" },
+      { "title": "Usuarios", "desc": "Más de 100,000 profesionales utilizando la tecnología" },
+      { "title": "Sectores", "desc": "Presente en más de 15 sectores industriales diferentes" }
+    ]
+  },
+  "future": {
+    "title": "Visión de futuro",
+    "p1": "Pix4D tiene como objetivo expandirse a nuevos sectores e integrar tecnologías emergentes como la realidad aumentada y la realidad virtual.",
+    "p2": "Los planes futuros incluyen el desarrollo de soluciones en la nube para procesamiento a gran escala y la integración con sistemas de gestión de infraestructuras.",
+    "backToAll": "Volver a todos los proyectos"
+  },
+  "nav": {
+    "prev": "MoodleNet",
+    "next": "Pomoca"
+  }
+}

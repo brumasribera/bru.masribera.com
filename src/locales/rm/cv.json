@@ -1,0 +1,89 @@
+{
+  "header": {
+    "title": "BRU MAS RIBERA",
+    "subtitle": "Ingenier Frontend & UX da Barcelona. Basà a Meiringen, Svizra",
+    "years": "8+ onns d'experientscha professiunala",
+    "website": "Website"
+  },
+  "sections": {
+    "skillsTools": "Abilitads & Utensils",
+    "about": "Davart mai",
+    "professionalExperience": "Experientscha professiunala",
+    "education": "Furmaziun",
+    "languages": "Linguas",
+    "interests": "Interessas",
+    "skillSet": "Set d'abilitads",
+    "contact": "Contact"
+  },
+  "labels": {
+    "languages": "Linguas",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "uxTools": "Utensils UX"
+  },
+  "skills": {
+    "languagesList": "TypeScript, JavaScript, Python",
+    "frontendList": "React, Next.js, Vue, Tailwind CSS",
+    "backendList": "Node.js, Django, Supabase",
+    "uxToolsList": "Figma, Storybook, Retschertga d'utilisaders"
+  },
+  "about": {
+    "paragraph1": "Ingenier d'informatica spezialisà en svilup web cun 6 onns experientscha en Frontend e 3 onns en Backend. Designer UX cun 3 onns experientscha.",
+    "paragraph2": "Realisation cun success d'in Proof of Concept finanzià da l'ESA, cun coordinaziun da consorzis internaziunals."
+  },
+  "experience": {
+    "items": [
+      {
+        "meta": "2014 – Oz • A distanza",
+        "title": "Fundatur & Manader da project | Open Huts, plattafurma da reservaziuns per chasas da natira",
+        "description": "Chattar lieus zuppads per durmir en la natira. Agiudar a proteger la natira cun la recreaziun. Retschertga dad utilisaders, prototipis, tests cun utilisaders, interfaisas hi‑fi cun Figma ed implementaziun cun React, Next.js, TypeScript, Supabase"
+      },
+      {
+        "meta": "2021 – 2024 • A distanza",
+        "title": "Ingenier Frontend & UX | Moodle, plattafurma d'emprender averta",
+        "description": "Svilup da MoodleNet, ina rait per cundivider e curar resursas d'instrucziun avertas. React, Figma, UX Design, Open Source, tecnologia d'educaziun"
+      },
+      {
+        "meta": "2020 • Losanna, Svizra",
+        "title": "Designer d'experientscha d'utilisaders | Oberalp Group, Pomoca",
+        "description": "Redesign da las interfaisas da producziun dal leader mundial da pelms da scursalar, Pomoca. Interviews cumportamentals, tests d'utilisabladad, UX Design, interfaisas da producziun"
+      },
+      {
+        "meta": "2017 – 2018 • A distanza",
+        "title": "Sviluppader web giuven | Pix4D, fotogrammetria per construcziun ed agricultura",
+        "description": "Svilup d'ina plattafurma da cloud per telechargiar, elavurar ed analisar models 3D da maletgs da dronas. Angular 4, RxJS, plattafurma cloud, modelaziun 3D, tecnologia da dronas"
+      }
+    ]
+  },
+  "education": {
+    "items": [
+      { "meta": "2020 – 2021", "title": "MBA", "place": "ThePowerMBA" },
+      { "meta": "2020", "title": "Design d'experientscha d'utilisaders", "place": "Udacity" },
+      { "meta": "2014 – 2018", "title": "BA en informatica", "place": "Universitad da Barcelona" },
+      { "meta": "2014 – 2018", "title": "Architectura", "place": "UPC, Barcelona" }
+    ]
+  },
+  "languagesSection": {
+    "lines": [
+      "<span class=\"font-semibold\">C2:</span> Englais, Franzos • <span class=\"font-semibold\">Matern:</span> Spagnol, Catalan",
+      "<span class=\"font-semibold\">C1:</span> Talian • <span class=\"font-semibold\">B1:</span> Tudestg, Portugais"
+    ]
+  },
+  "interests": {
+    "items": ["Svilup da fatschenta", "Restauraziun da l'ambient"]
+  },
+  "skillSet": {
+    "items": ["Manader da muntogna UIMLA", "Retschertga & tests cun utilisaders"]
+  },
+  "contact": {
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "website": "bru.masribera.com"
+  },
+  "actions": {
+    "viewInBrowser": "Mussar en il navigatur",
+    "downloadPdf": "Telechargiar PDF"
+  }
+}
+

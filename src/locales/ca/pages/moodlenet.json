@@ -1,0 +1,59 @@
+{
+  "header": {
+    "title": "MoodleNet Platform",
+    "tagline": "Plataforma de codi obert que revoluciona com els educadors descobreixen i comparteixen recursos educatius a tot el món, promovent l'educació oberta i la col·laboració"
+  },
+  "overview": {
+    "title": "Visió del projecte",
+    "p1": "MoodleNet transforma la manera com els educadors descobreixen, comparteixen i fan curadoria de recursos educatius. Com a desenvolupador frontend, vaig contribuir a construir un ecosistema integral per a la curadoria col·laborativa i el descobriment de contingut educatiu d’alta qualitat.",
+    "p2": "La plataforma respon a la necessitat de materials accessibles i ben curats, promovent l’educació oberta i donant suport a la comunitat docent global."
+  },
+  "cards": {
+    "targetUsers": {
+      "title": "Usuaris objectiu",
+      "items": ["Educadors i docents", "Estudiants i aprenents", "Institucions"]
+    },
+    "developmentStatus": {
+      "title": "Estat de desenvolupament",
+      "items": ["Desenvolupament actiu", "Codi obert", "Impulsat per la comunitat"]
+    },
+    "globalReach": {
+      "title": "Abast global",
+      "items": ["Cobertura mundial", "Multiidioma", "Estàndards oberts"]
+    }
+  },
+  "features": {
+    "title": "Característiques clau",
+    "discovery": { "title": "Descobriment de recursos", "desc": "Cerca avançada i filtratge de recursos educatius en múltiples formats" },
+    "curation": { "title": "Curadoria de continguts", "desc": "Eines col·laboratives per organitzar i compartir recursos" },
+    "community": { "title": "Comunitat", "desc": "Aprenentatge social i compartició impulsada per la comunitat" },
+    "quality": { "title": "Control de qualitat", "desc": "Revisió per parells i sistemes de valoració de continguts" },
+    "learningPaths": { "title": "Rutes d’aprenentatge", "desc": "Seqüències estructurades i eines de planificació curricular" },
+    "sharing": { "title": "Compartició oberta", "desc": "Llicències obertes i mecanismes de compartició" }
+  },
+  "preview": {
+    "title": "Previsualització de la plataforma",
+    "main": { "title": "Interfície principal", "desc": "Interfície neta i intuïtiva amb cerca avançada i múltiples filtres." },
+    "details": { "title": "Detalls del recurs", "desc": "Vista detallada amb metadades, valoracions i feedback de la comunitat." },
+    "community": { "title": "Funcions de comunitat", "desc": "Ressenyes, valoracions i curadoria col·laborativa." }
+  },
+  "tech": {
+    "title": "Stack tecnològic",
+    "frontend": "Frontend",
+    "backend": "Backend"
+  },
+  "future": {
+    "title": "Visió de futur",
+    "p1": "MoodleNet evoluciona cap a un ecosistema complet per a l’educació oberta i la compartició de recursos. Es preveuen recomanacions amb IA, analítica d’aprenentatge avançada i aliances amb institucions educatives arreu del món.",
+    "p2": "La plataforma aspira a ser l’estàndard global per al descobriment i la curadoria de recursos educatius, connectant educadors amb els millors OER i fomentant comunitats d’aprenentatge col·laboratiu."
+  },
+  "nav": {
+    "prev": "Clathes",
+    "next": "Pomoca",
+    "backToAll": "Tornar a tots els projectes"
+  },
+  "links": {
+    "visitSite": "Visitar MoodleNet",
+    "github": "GitHub"
+  }
+}

@@ -1,0 +1,274 @@
+{
+  "navigation": {
+    "home": "Home",
+    "back": "Back",
+    "globe": "Globe"
+  },
+  "garden": {
+    "myContributions": "My Contributions",
+    "protectedAreas": "Protected Areas",
+    "totalProtected": "Total Protected",
+    "contributed": "Contributed",
+    "projects": "Projects",
+    "satelliteView": "Satellite view",
+    "yourAreas": "Your Areas",
+    "clearAndReload": "Clear & Reload",
+    "startProtecting": "Start protecting an area to grow your reserves."
+  },
+  "projects": {
+    "mx-mangroves": "Yucatán Mangroves",
+    "br-amazon": "Tapajós Rainforest",
+    "id-seagrass": "Bali Seagrass",
+    "ke-savanna": "Laikipia Savanna",
+    "us-cal-giants": "Redwood Groves",
+    "ca-boreal": "Boreal Shield",
+    "ar-wetlands": "Iberá Wetlands",
+    "pe-cloud": "Andean Cloud",
+    "ng-mangrove": "Niger Delta Mangroves",
+    "ma-atlas": "High Atlas",
+    "es-donana": "Doñana Marshes",
+    "ro-delta": "Danube Delta",
+    "ua-steppe": "Pontic Steppe",
+    "ru-taiga": "Siberian Taiga",
+    "in-sundarbans": "Sundarbans",
+    "np-terai": "Terai Arc",
+    "th-coral": "Andaman Coral",
+    "au-reef": "Great Barrier",
+    "pg-png": "PNG Rainforest",
+    "za-fynbos": "Cape Fynbos",
+    "mg-madagascar": "Madagascar Forests",
+    "ma-seagrass": "Mediterranean Seagrass",
+    "no-bogs": "Nordic Peat Bogs",
+    "uk-heath": "Dorset Heaths",
+    "tr-anatolia": "Anatolian Steppe",
+    "ir-wetland": "Mesopotamian Marshes",
+    "cn-giantpanda": "Sichuan Panda",
+    "jp-sea": "Seto Inland Sea",
+    "nz-kelp": "Kelp Forests",
+    "is-highlands": "Iceland Highlands",
+    "maurit-corals": "Mascarene Corals",
+    "eg-nile": "Nile Delta",
+    "sa-mangrove": "Arabian Mangroves"
+  },
+  "countries": {
+    "Mexico": "Mexico",
+    "Brazil": "Brazil",
+    "Indonesia": "Indonesia",
+    "Kenya": "Kenya",
+    "USA": "USA",
+    "Canada": "Canada",
+    "Argentina": "Argentina",
+    "Peru": "Peru",
+    "Nigeria": "Nigeria",
+    "Morocco": "Morocco",
+    "Spain": "Spain",
+    "Romania": "Romania",
+    "Ukraine": "Ukraine",
+    "Russia": "Russia",
+    "India": "India",
+    "Nepal": "Nepal",
+    "Thailand": "Thailand",
+    "Australia": "Australia",
+    "Papua New Guinea": "Papua New Guinea",
+    "South Africa": "South Africa",
+    "Madagascar": "Madagascar",
+    "Norway": "Norway",
+    "UK": "UK",
+    "Türkiye": "Türkiye",
+    "Iraq": "Iraq",
+    "China": "China",
+    "Japan": "Japan",
+    "New Zealand": "New Zealand",
+    "Iceland": "Iceland",
+    "Mauritius": "Mauritius",
+    "Egypt": "Egypt",
+    "Saudi Arabia": "Saudi Arabia"
+  },
+  "payment": {
+    "payWithCard": "Pay with Card",
+    "payWithPayPal": "Pay with PayPal",
+    "cardNumber": "Card number",
+    "expiry": "MM/YY",
+    "cvc": "CVC",
+    "nameOnCard": "Name on card",
+    "card": "Card",
+    "paypal": "PayPal"
+  },
+  "checkout": {
+    "project": "Project",
+    "protected": "Protected",
+    "totalPaid": "Total Paid",
+    "method": "Method",
+    "yourImpact": "Your Impact",
+    "contributionProtects": "Your €{amount} contribution protects approximately",
+    "yourSelectionSummary": "Your Selection Summary",
+    "selectedCount": "Selected",
+    "selectedArea": "Area",
+    "totalCost": "Total"
+  },
+  "learnMore": {
+    "learnMore": "Learn More",
+    "share": "Share",
+    "contribute": "Contribute",
+    "selectArea": "Select Area",
+    "checkout": "Checkout",
+    "success": "Success"
+  },
+  "impact": {
+    "biodiversity": "Biodiversity",
+    "carbon": "Carbon",
+    "community": "Community"
+  },
+  "units": {
+    "m2": "m²",
+    "euro": "€",
+    "dollar": "$"
+  },
+  "projectPage": {
+    "projectProgress": "Project Progress",
+    "raised": "Raised",
+    "goal": "Goal",
+    "protected": "Protected",
+    "total": "Total",
+    "aboutThisProtectedArea": "About This Protected Area",
+    "conservationDescription": "This conservation project protects vital ecosystems and wildlife habitats. Your contribution helps maintain biodiversity, sequester carbon, and support local communities through sustainable practices.",
+    "whyThisMatters": "Why This Matters",
+    "protectsEndangeredSpecies": "• Protects endangered species and their habitats",
+    "absorbsCO2": "• Absorbs CO2 equivalent to {cars} cars annually",
+    "createsSustainableJobs": "• Creates sustainable jobs for local communities",
+    "preservesNaturalSources": "• Preserves natural water sources and soil quality",
+    "contributeToProtection": "Contribute to Protection",
+    "backToProjects": "Back to projects",
+    "areaLabel": "ha",
+    "satelliteView": "Satellite view"
+  },
+  "learnMorePage": {
+    "title": "Learn More",
+    "about": "About {projectName}",
+    "projectDetails": "Project Details",
+    "projectDescription1": "This protected area spans {hectares} hectares of critical ecosystem, providing habitat for numerous species and contributing to global biodiversity conservation efforts.",
+    "projectDescription2": "The project focuses on sustainable land management practices that balance conservation goals with community needs, ensuring long-term environmental and social benefits.",
+    "conservationImpact": "Conservation Impact",
+    "biodiversityProtection": "Biodiversity Protection",
+    "protectingSpecies": "Protecting {percentage}% of local species",
+    "carbonSequestration": "Carbon Sequestration",
+    "absorbingCO2": "Absorbing {percentage}% more CO2 annually",
+    "communitySupport": "Community Support",
+    "supportingLivelihoods": "Supporting {percentage}% of local livelihoods",
+    "scientificResearch": "Scientific Research",
+    "researchDescription": "This area serves as a living laboratory for researchers studying climate change adaptation, ecosystem restoration, and sustainable development practices.",
+    "researchAreas": "Research Areas",
+    "climateChangeAssessment": "• Climate change impact assessment",
+    "biodiversityMonitoring": "• Biodiversity monitoring and conservation",
+    "sustainableLandUse": "• Sustainable land use practices",
+    "communityEngagement": "• Community engagement strategies"
+  },
+  "contributePage": {
+    "title": "Contribute",
+    "supportConservation": "Support {projectName} conservation",
+    "chooseAmount": "Choose Amount",
+    "paymentMethod": "Payment Method",
+    "creditDebitCard": "Credit/Debit Card",
+    "bankTransfer": "Bank Transfer",
+    "mobilePayment": "Mobile Payment",
+    "yourImpact": "Your Impact",
+    "contributionProtects": "Your €{amount} contribution protects approximately",
+    "ofThisProtectedArea": "of this protected area",
+    "cost": "Cost: €{price}/m²",
+    "completeContribution": "Complete Contribution"
+  },
+  "selectAreaPage": {
+    "title": "Select Protection Area",
+    "subtitle": "Choose which square meters to protect",
+    "selectYourProtectionZone": "Select Your Protection Zone",
+    "selectionDescription": "Tap on the map to select specific areas you want to protect. Each selection represents a conservation investment.",
+    "available": "Available",
+    "selected": "Selected",
+    "gridCells": "Grid Cells",
+    "squareMeters": "Square Meters",
+    "totalCost": "Total Cost",
+    "quickSelection": "Quick Selection",
+    "random25": "🎲 Random 25%",
+    "centerArea": "🎯 Center Area",
+    "clearAll": "🗑️ Clear All",
+    "continueToCheckout": "Continue to Checkout",
+    "backToProject": "← Back to Project"
+  },
+  "checkoutPage": {
+    "title": "Checkout",
+    "subtitle": "Secure payment",
+    "orderSummary": "Order Summary",
+    "total": "Total",
+    "choosePaymentMethod": "Choose Payment Method",
+    "cardDetails": "Card Details",
+    "processing": "Processing…",
+    "pay": "Pay €{amount}",
+    "connecting": "Connecting…",
+    "continueWithPayPal": "Continue with PayPal (Mock)",
+    "redirectedToPayPal": "You will be redirected to PayPal to approve your payment.",
+    "taxesIncluded": "Taxes included if applicable"
+  },
+  "sharePage": {
+    "title": "Share Project",
+    "subtitle": "Help spread the word about {projectName}",
+    "shareOptions": "Share Options",
+    "shareOnFacebook": "Share on Facebook",
+    "shareOnTwitter": "Share on Twitter",
+    "shareOnWhatsApp": "Share on WhatsApp",
+    "shareOnLinkedIn": "Share on LinkedIn",
+    "projectSummary": "Project Summary",
+    "helpProtect": "Help protect this vital ecosystem and support local communities through sustainable conservation practices.",
+    "impactPreview": "Impact Preview"
+  },
+  "successPage": {
+    "title": "Thank you!",
+    "subtitle": "Your contribution has been recorded (mock).",
+    "receipt": "Receipt",
+    "backToProject": "Back to Project"
+  },
+  "page": {
+    "header": {
+      "title": "Reserve",
+      "tagline": "Protecting nature, one square meter at a time"
+    },
+    "nav": {
+      "prev": "Previous project",
+      "next": "Next project",
+      "backToAll": "Back to all projects"
+    },
+    "overview": {
+      "title": "Project overview",
+      "p1": "Reserve is a nature crowdfunding platform that enables individuals and organizations to directly contribute to conservation projects worldwide.",
+      "p2": "Through transparent cost-per-square-meter pricing, users can select specific areas to protect, track their impact, and contribute to global biodiversity conservation."
+    },
+    "cards": {
+      "targetUsers": {
+        "title": "Target users",
+        "users": [
+          "Nature enthusiasts",
+          "Conservation organizations", 
+          "Corporate sustainability programs"
+        ]
+      },
+      "impact": {
+        "title": "Impact",
+        "benefits": [
+          "Protect and restore natural regions",
+          "Reforest degraded areas",
+          "Transparent cost per m²"
+        ]
+      },
+      "channels": {
+        "title": "Distribution channels",
+        "subtitle": "Connect with the Reserve community",
+        "instagram": "Follow on Instagram"
+      }
+    },
+    "prototype": {
+      "ctaTitle": "Try the interactive prototype",
+      "ctaDesc": "Experience the Reserve app firsthand with our interactive prototype. Navigate through the conservation process and see how easy it is to make a difference."
+    }
+  }
+}
+
+

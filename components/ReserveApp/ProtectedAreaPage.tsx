@@ -1,7 +1,9 @@
 import { Project } from "./types";
-import { ArrowLeft, MapPin, Leaf, Users, TrendingUp, Maximize2 } from "lucide-react";
+import { ArrowLeft, MapPin, Leaf, Users, TrendingUp, Maximize2, Home, Globe } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import L from "leaflet";
+import { saveContribution } from "./utils";
+import { useTranslation } from "react-i18next";
 
 // Import Leaflet CSS
 import "leaflet/dist/leaflet.css";
@@ -12,17 +14,28 @@ interface ProtectedAreaPageProps {
 }
 
 export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
+  const { t, ready } = useTranslation('reserve');
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
   const fullScreenMapRef = useRef<HTMLDivElement>(null);
   const fullScreenMapInstanceRef = useRef<L.Map | null>(null);
   const [isFullScreen, setIsFullScreen] = useState(false);
-  const [currentPage, setCurrentPage] = useState<'main' | 'learn-more' | 'share' | 'contribute' | 'select-area'>('main');
+  const [currentPage, setCurrentPage] = useState<'main' | 'learn-more' | 'share' | 'contribute' | 'select-area' | 'checkout' | 'success'>('main');
   const [animatedValues, setAnimatedValues] = useState({
     percentage: 0,
     euros: 0,
     m2: 0
   });
+  const [paymentMethod, setPaymentMethod] = useState<'card' | 'paypal' | null>(null);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [checkoutAmount, setCheckoutAmount] = useState(0);
+  const [checkoutM2, setCheckoutM2] = useState(0);
+  const [contributionAmount, setContributionAmount] = useState<number>(25);
+  const [customAmountInput, setCustomAmountInput] = useState<string>("");
+  const [cardNumber, setCardNumber] = useState<string>("");
+  const [cardExpiry, setCardExpiry] = useState<string>("");
+  const [cardCvc, setCardCvc] = useState<string>("");
+  const [cardName, setCardName] = useState<string>("");
   
 
 
@@ -41,6 +54,14 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
     if (countElement) countElement.textContent = selectedCount.toString();
     if (areaElement) areaElement.textContent = selectedArea.toString();
     if (costElement) costElement.textContent = `€${totalCost.toFixed(2)}`;
+  };
+
+  const getSelectionSummary = () => {
+    const selectedCells = document.querySelectorAll('.bg-green-500');
+    const selectedCount = selectedCells.length;
+    const selectedArea = selectedCount * 10;
+    const totalCost = selectedArea * project.pricePerM2;
+    return { selectedCount, selectedArea, totalCost };
   };
 
   const hectares = 1000 + (project.id.charCodeAt(0) * project.id.charCodeAt(1)) % 5000; // Consistent hectares per project
@@ -87,6 +108,29 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
       document.head.removeChild(style);
     };
   }, [raisedFunding, totalFunding, purchasedArea]);
+
+  // Prefill randomized card data when entering checkout card payment
+  useEffect(() => {
+    if (currentPage === 'checkout' && paymentMethod === 'card') {
+      if (!cardNumber) {
+        setCardNumber('4242 4242 4242 4242');
+      }
+      if (!cardExpiry) {
+        const mm = String(Math.floor(Math.random() * 12) + 1).padStart(2, '0');
+        const yy = String(28 + Math.floor(Math.random() * 6));
+        setCardExpiry(`${mm}/${yy}`);
+      }
+      if (!cardCvc) {
+        const cvc = String(Math.floor(Math.random() * 900) + 100);
+        setCardCvc(cvc);
+      }
+      if (!cardName) {
+        const first = ['Alex', 'Sam', 'Taylor', 'Jordan', 'Casey', 'Jamie'][Math.floor(Math.random() * 6)];
+        const last = ['Rivera', 'Morgan', 'Lee', 'Patel', 'Garcia', 'Khan'][Math.floor(Math.random() * 6)];
+        setCardName(`${first} ${last}`);
+      }
+    }
+  }, [currentPage, paymentMethod]);
 
   // Generate georeferenced polygon for each project based on project ID
   const generateProjectPolygon = (projectId: string, centerLat: number, centerLng: number) => {
@@ -160,7 +204,7 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
   useEffect(() => {
     if (!mapRef.current || mapInstanceRef.current) return;
 
-    console.log('Initializing map for project:', project.name, 'at coordinates:', project.lat, project.lon);
+    console.log('Initializing map for project:', t(`projects.${project.id}`), 'at coordinates:', project.lat, project.lon);
 
     // Small delay to ensure DOM is ready
     const timer = setTimeout(() => {
@@ -479,7 +523,21 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
      }
    }, [currentPage]);
 
-   // If in full-screen mode, show the map page
+  // Show loading state while i18n is not ready
+  if (!ready) {
+    return (
+      <div className="h-full flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-100">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading translations...</p>
+        </div>
+      </div>
+    );
+  }
+
+
+
+  // If in full-screen mode, show the map page
   if (isFullScreen) {
     return (
       <div className="h-full bg-white relative">
@@ -526,8 +584,8 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
           
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center text-white">
-              <h1 className="text-2xl font-bold mb-2">Learn More</h1>
-              <p className="text-green-100">About {project.name}</p>
+                              <h1 className="text-2xl font-bold mb-2">{t('learnMorePage.title')}</h1>
+                              <p className="text-green-100">About {t(`projects.${project.id}`)}</p>
             </div>
           </div>
         </div>
@@ -587,6 +645,144 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
     );
   }
 
+  // Checkout Page (Mock)
+  if (currentPage === 'checkout') {
+    return (
+      <div className="h-full bg-gradient-to-br from-green-50 to-emerald-100 overflow-y-auto">
+        <div className="relative h-32 overflow-hidden flex-shrink-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-600" />
+          <button
+            onClick={() => setCurrentPage('main')}
+            className="absolute top-4 left-4 w-10 h-10 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-20"
+          >
+            <ArrowLeft className="h-5 w-5" />
+          </button>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center text-white">
+                              <h1 className="text-2xl font-bold mb-1">{t('checkoutPage.title')}</h1>
+                              <p className="text-green-100">{t('checkoutPage.subtitle')}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="p-6 space-y-6 pb-24">
+          <div className="bg-white rounded-2xl p-6 shadow-sm">
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">Order Summary</h3>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="text-center p-3 bg-green-50 rounded-xl border border-green-200">
+                <div className="text-2xl font-bold text-green-700 mb-1">€{checkoutAmount.toFixed(2)}</div>
+                <div className="text-xs text-green-600">Total</div>
+              </div>
+              <div className="text-center p-3 bg-blue-50 rounded-xl border border-blue-200">
+                <div className="text-2xl font-bold text-blue-700 mb-1">{checkoutM2} m²</div>
+                <div className="text-xs text-blue-600">Protected</div>
+              </div>
+            </div>
+            <div className="mt-4 text-center text-xs text-gray-500">Taxes included if applicable</div>
+          </div>
+
+          <div className="bg-white rounded-2xl p-6 shadow-sm">
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">Choose Payment Method</h3>
+            <div className="grid grid-cols-1 gap-3">
+              <button 
+                className={`w-full p-4 border-2 rounded-xl flex items-center justify-start gap-4 transition-colors text-gray-800 pl-5 ${paymentMethod === 'card' ? 'border-green-500 bg-green-50' : 'border-gray-200 bg-white hover:border-green-400'}`}
+                onClick={() => setPaymentMethod('card')}
+              >
+                <span className="text-2xl leading-none">💳</span>
+                <span className="text-base">{t('payment.payWithCard')}</span>
+              </button>
+              <button 
+                className={`w-full p-4 border-2 rounded-xl flex items-center justify-start gap-4 transition-colors text-gray-800 pl-5 ${paymentMethod === 'paypal' ? 'border-green-500 bg-green-50' : 'border-gray-200 bg-white hover:border-green-400'}`}
+                onClick={() => setPaymentMethod('paypal')}
+              >
+                <svg aria-hidden="true" viewBox="0 0 24 24" className="w-8 h-8" focusable="false">
+                  <path fill="#003087" d="M16.9 4.1c-.8-.9-2.1-1.1-3.2-1.1H8.8c-.5 0-1 .4-1.1.9L5.2 18.7c-.1.6.3 1.1.9 1.1h3.5l.3-1.8-.1.6c.1-.6.6-.9 1.1-.9h1.9c3.2 0 5.8-1.3 6.6-5.1.3-1.6.1-2.8-.7-3.7-.5-.8-1.3-1.3-2.2-1.5.4-.5.4-1.2.4-1.5z"/>
+                  <path fill="#009cde" d="M18.4 7.4c-.8-.9-2.1-1.3-3.8-1.3h-3c-.5 0-1 .4-1.1.9l-1.6 9.4c-.1.6.3 1.1.9 1.1h2.2c.4 0 .8-.3.9-.7l.2-1.2c.1-.4.5-.7.9-.7h.6c2.6 0 4.7-1.1 5.3-4 .3-1.2.1-2.3-.5-3.2z"/>
+                </svg>
+                <span className="text-base">{t('payment.payWithPayPal')}</span>
+              </button>
+            </div>
+          </div>
+
+          {paymentMethod === 'card' && (
+            <div className="bg-white rounded-2xl p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('checkoutPage.cardDetails')}</h3>
+              <div className="space-y-3">
+                <input className="w-full px-4 py-3 border border-gray-300 rounded-xl text-sm bg-white placeholder:text-gray-400 text-gray-900" placeholder={t('payment.cardNumber')} value={cardNumber} onChange={(e)=>setCardNumber(e.target.value)} />
+                <div className="grid grid-cols-2 gap-3">
+                  <input className="px-4 py-3 border border-gray-300 rounded-xl text-sm bg-white placeholder:text-gray-400 text-gray-900" placeholder={t('payment.expiry')} value={cardExpiry} onChange={(e)=>setCardExpiry(e.target.value)} />
+                  <input className="px-4 py-3 border border-gray-300 rounded-xl text-sm bg-white placeholder:text-gray-400 text-gray-900" placeholder={t('payment.cvc')} value={cardCvc} onChange={(e)=>setCardCvc(e.target.value)} />
+                </div>
+                <input className="w-full px-4 py-3 border border-gray-300 rounded-xl text-sm bg-white placeholder:text-gray-400 text-gray-900" placeholder={t('payment.nameOnCard')} value={cardName} onChange={(e)=>setCardName(e.target.value)} />
+                <button 
+                  className="w-full py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-xl disabled:opacity-60"
+                  disabled={isProcessing}
+                  onClick={() => {
+                    setIsProcessing(true);
+                    setTimeout(() => {
+                      setIsProcessing(false);
+                      const c = {
+                        id: `${project.id}-${Date.now()}`,
+                        projectId: project.id,
+                        projectName: t(`projects.${project.id}`),
+                        projectCountry: t(`countries.${project.country}`),
+                        image: project.image,
+                        lat: project.lat,
+                        lon: project.lon,
+                        m2: checkoutM2,
+                        amount: checkoutAmount,
+                        method: 'card',
+                        createdAt: new Date().toISOString(),
+                      } as any;
+                      saveContribution(c);
+                      setCurrentPage('success');
+                    }, 1000);
+                  }}
+                >
+                  {isProcessing ? t('checkoutPage.processing') : t('checkoutPage.pay', { amount: checkoutAmount.toFixed(2) })}
+                </button>
+              </div>
+            </div>
+          )}
+
+          {paymentMethod === 'paypal' && (
+            <div className="bg-white rounded-2xl p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('payment.paypal')}</h3>
+                              <p className="text-sm text-gray-600 mb-3">{t('checkoutPage.redirectedToPayPal')}</p>
+              <button 
+                className="w-full py-3 bg-yellow-500 hover:bg-yellow-600 text-white font-medium rounded-xl disabled:opacity-60"
+                disabled={isProcessing}
+                onClick={() => {
+                  setIsProcessing(true);
+                  setTimeout(() => {
+                    setIsProcessing(false);
+                    const c = {
+                      id: `${project.id}-${Date.now()}`,
+                      projectId: project.id,
+                      projectName: t(`projects.${project.id}`),
+                      projectCountry: t(`countries.${project.country}`),
+                      image: project.image,
+                      lat: project.lat,
+                      lon: project.lon,
+                      m2: checkoutM2,
+                      amount: checkoutAmount,
+                      method: 'paypal',
+                      createdAt: new Date().toISOString(),
+                    } as any;
+                    saveContribution(c);
+                    setCurrentPage('success');
+                  }, 1000);
+                }}
+              >
+                {isProcessing ? t('checkoutPage.connecting') : t('checkoutPage.continueWithPayPal')}
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   // Share Project Page
   if (currentPage === 'share') {
     return (
@@ -595,7 +791,7 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
         <div className="relative h-48 overflow-hidden flex-shrink-0">
           <img 
             src={project.image} 
-            alt={project.name}
+            alt={t(`projects.${project.id}`)}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
@@ -609,8 +805,8 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
           
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center text-white">
-              <h1 className="text-2xl font-bold mb-2">Share Project</h1>
-              <p className="text-purple-100">Help spread the word about {project.name}</p>
+                              <h1 className="text-2xl font-bold mb-2">{t('sharePage.title')}</h1>
+                              <p className="text-purple-100">Help spread the word about {t(`projects.${project.id}`)}</p>
             </div>
           </div>
         </div>
@@ -640,31 +836,72 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
           </div>
 
           <div className="bg-white rounded-2xl p-6 shadow-sm">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">Project Summary</h3>
+                          <h3 className="text-xl font-semibold text-gray-900 mb-4">{t('sharePage.projectSummary')}</h3>
             <div className="bg-gray-50 rounded-xl p-4">
-              <h4 className="font-semibold text-gray-900 mb-2">{project.name}</h4>
-              <p className="text-gray-600 text-sm mb-3">{project.country} • {hectares} hectares</p>
-              <p className="text-gray-700">Help protect this vital ecosystem and support local communities through sustainable conservation practices.</p>
+                              <h4 className="font-semibold text-gray-900 mb-2">{t(`projects.${project.id}`)}</h4>
+                              <p className="text-gray-600 text-sm mb-3">{t(`countries.${project.country}`)} • {hectares} hectares</p>
+                              <p className="text-gray-700">{t('sharePage.helpProtect')}</p>
             </div>
           </div>
 
           <div className="bg-white rounded-2xl p-6 shadow-sm">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">Impact Preview</h3>
+                          <h3 className="text-xl font-semibold text-gray-900 mb-4">{t('sharePage.impactPreview')}</h3>
             <div className="grid grid-cols-3 gap-4">
               <div className="text-center p-3 bg-green-50 rounded-xl">
                 <div className="text-lg font-bold text-green-700">{project.impact.biodiversity}%</div>
-                <div className="text-xs text-green-600">Biodiversity</div>
+                <div className="text-xs text-green-600">{t('impact.biodiversity')}</div>
               </div>
               <div className="text-center p-3 bg-blue-50 rounded-xl">
                 <div className="text-lg font-bold text-blue-700">{project.impact.carbon}%</div>
-                <div className="text-xs text-blue-600">Carbon</div>
+                <div className="text-xs text-blue-600">{t('impact.carbon')}</div>
               </div>
               <div className="text-center p-3 bg-purple-50 rounded-xl">
                 <div className="text-lg font-bold text-purple-700">{project.impact.community}%</div>
-                <div className="text-xs text-purple-600">Community</div>
+                <div className="text-xs text-purple-600">{t('impact.community')}</div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Success Page
+  if (currentPage === 'success') {
+    return (
+      <div className="h-full bg-gradient-to-br from-green-50 to-emerald-100 overflow-y-auto">
+        <div className="relative h-48 overflow-hidden flex-shrink-0">
+          <img 
+            src={project.image} 
+            alt={project.name}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center text-white">
+                              <h1 className="text-2xl font-bold mb-2">{t('successPage.title')}</h1>
+                <p className="text-green-100">{t('successPage.subtitle')}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="p-6 space-y-6 pb-24">
+          <div className="bg-white rounded-2xl p-6 shadow-sm">
+                          <h3 className="text-xl font-semibold text-gray-900 mb-4">{t('successPage.receipt')}</h3>
+            <div className="space-y-2 text-gray-700">
+                              <div className="flex justify-between"><span>{t('checkout.project')}</span><span>{t(`projects.${project.id}`)}</span></div>
+                <div className="flex justify-between"><span>{t('checkout.protected')}</span><span>{checkoutM2} m²</span></div>
+                <div className="flex justify-between"><span>{t('checkout.totalPaid')}</span><span>€{checkoutAmount.toFixed(2)}</span></div>
+                <div className="flex justify-between"><span>{t('checkout.method')}</span><span>{paymentMethod === 'card' ? t('payment.card') : paymentMethod === 'paypal' ? t('payment.paypal') : '—'}</span></div>
+            </div>
+          </div>
+
+          <button 
+            className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-2xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200 active:scale-[0.98]"
+            onClick={() => setCurrentPage('main')}
+          >
+                            {t('successPage.backToProject')}
+          </button>
         </div>
       </div>
     );
@@ -692,8 +929,8 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
           
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center text-white">
-              <h1 className="text-2xl font-bold mb-2">Contribute</h1>
-              <p className="text-green-100">Support {project.name} conservation</p>
+                              <h1 className="text-2xl font-bold mb-2">{t('contributePage.title')}</h1>
+                              <p className="text-green-100">Support {t(`projects.${project.id}`)} conservation</p>
             </div>
           </div>
         </div>
@@ -703,13 +940,22 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
           <div className="bg-white rounded-2xl p-6 shadow-sm">
             <h3 className="text-xl font-semibold text-gray-900 mb-4">Choose Amount</h3>
             <div className="grid grid-cols-3 gap-3 mb-6">
-              <button className="py-4 px-3 bg-green-50 hover:bg-green-100 border-2 border-green-200 hover:border-green-400 rounded-xl text-sm font-medium text-green-700 transition-all duration-200 hover:scale-105">
+              <button 
+                className={`py-4 px-3 bg-green-50 hover:bg-green-100 border-2 rounded-xl text-sm font-medium transition-all duration-200 hover:scale-105 ${contributionAmount===25 ? 'border-green-500 text-green-800' : 'border-green-200 text-green-700 hover:border-green-400'}`}
+                onClick={() => setContributionAmount(25)}
+              >
                 €25
               </button>
-              <button className="py-4 px-3 bg-green-50 hover:bg-green-100 border-2 border-green-200 hover:border-green-400 rounded-xl text-sm font-medium text-green-700 transition-all duration-200 hover:scale-105">
+              <button 
+                className={`py-4 px-3 bg-green-50 hover:bg-green-100 border-2 rounded-xl text-sm font-medium transition-all duration-200 hover:scale-105 ${contributionAmount===50 ? 'border-green-500 text-green-800' : 'border-green-200 text-green-700 hover:border-green-400'}`}
+                onClick={() => setContributionAmount(50)}
+              >
                 €50
               </button>
-              <button className="py-4 px-3 bg-green-50 hover:bg-green-100 border-2 border-green-200 hover:border-green-400 rounded-xl text-sm font-medium text-green-700 transition-all duration-200 hover:scale-105">
+              <button 
+                className={`py-4 px-3 bg-green-50 hover:bg-green-100 border-2 rounded-xl text-sm font-medium transition-all duration-200 hover:scale-105 ${contributionAmount===100 ? 'border-green-500 text-green-800' : 'border-green-200 text-green-700 hover:border-green-400'}`}
+                onClick={() => setContributionAmount(100)}
+              >
                 €100
               </button>
             </div>
@@ -720,8 +966,18 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
                 placeholder="Custom amount (€)"
                 className="flex-1 px-4 py-3 border border-green-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
                 min="1"
+                value={customAmountInput}
+                onChange={(e) => setCustomAmountInput(e.target.value)}
               />
-              <button className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-xl text-sm font-medium transition-colors">
+              <button 
+                className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-xl text-sm font-medium transition-colors"
+                onClick={() => {
+                  const v = parseFloat(customAmountInput);
+                  if (!isNaN(v) && v > 0) {
+                    setContributionAmount(v);
+                  }
+                }}
+              >
                 Add
               </button>
             </div>
@@ -746,13 +1002,13 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
           </div>
 
           <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200">
-            <h4 className="text-lg font-semibold text-green-900 mb-3 text-center">Your Impact</h4>
+                          <h4 className="text-lg font-semibold text-green-900 mb-3 text-center">{t('checkout.yourImpact')}</h4>
             <div className="text-center">
               <p className="text-sm text-green-800 mb-2">
-                <span className="font-semibold">Your €25 contribution</span> protects approximately
+                <span className="font-semibold">{t('checkout.contributionProtects', { amount: Number(contributionAmount).toFixed(0) })}</span> protects approximately
               </p>
               <div className="text-2xl font-bold text-green-600 mb-1">
-                {Math.floor(25 / project.pricePerM2)} m²
+                {Math.floor(Number(contributionAmount) / project.pricePerM2)} m²
               </div>
               <p className="text-xs text-green-600">of this protected area</p>
               <p className="text-xs text-green-600 mt-2">
@@ -761,7 +1017,17 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
             </div>
           </div>
 
-          <button className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-2xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200 active:scale-[0.98]">
+          <button 
+            className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-2xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200 active:scale-[0.98]"
+            onClick={() => {
+              const amount = Number(contributionAmount) || 0;
+              const m2 = Math.floor(amount / project.pricePerM2);
+              setCheckoutAmount(amount);
+              setCheckoutM2(m2);
+              setPaymentMethod(null);
+              setCurrentPage('checkout');
+            }}
+          >
             <Leaf className="w-5 h-5 inline mr-2" />
             Complete Contribution
           </button>
@@ -792,8 +1058,8 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
            
            <div className="absolute inset-0 flex items-center justify-center">
              <div className="text-center text-white">
-               <h1 className="text-2xl font-bold mb-2">Select Protection Area</h1>
-               <p className="text-green-100">Choose which square meters to protect</p>
+                               <h1 className="text-2xl font-bold mb-2">{t('selectAreaPage.title')}</h1>
+                               <p className="text-green-100">{t('selectAreaPage.subtitle')}</p>
              </div>
            </div>
          </div>
@@ -860,29 +1126,29 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
 
            {/* Selection Summary */}
            <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200">
-             <h4 className="text-lg font-semibold text-green-900 mb-3 text-center">Your Selection Summary</h4>
+                           <h4 className="text-lg font-semibold text-green-900 mb-3 text-center">{t('checkout.yourSelectionSummary')}</h4>
              
              <div className="grid grid-cols-2 gap-4 mb-4">
                <div className="text-center p-3 bg-white rounded-xl border border-green-200">
                  <div className="text-2xl font-bold text-green-700 mb-1" id="selected-count">0</div>
-                 <div className="text-xs text-green-600">Grid Cells</div>
+                 <div className="text-xs text-green-600">{t('checkout.selectedCount')}</div>
                </div>
                <div className="text-center p-3 bg-white rounded-xl border border-green-200">
                  <div className="text-2xl font-bold text-blue-700 mb-1" id="selected-area">0</div>
-                 <div className="text-xs text-blue-600">Square Meters</div>
+                 <div className="text-xs text-blue-600">{t('checkout.selectedArea')}</div>
                </div>
              </div>
              
              <div className="text-center p-3 bg-white rounded-xl border border-green-200 mb-4">
                <div className="text-lg font-bold text-purple-700 mb-1" id="total-cost">€0</div>
-               <div className="text-xs text-purple-600">Total Cost</div>
+               <div className="text-xs text-purple-600">{t('checkout.totalCost')}</div>
                <div className="text-xs text-gray-500">€{project.pricePerM2}/m²</div>
              </div>
            </div>
 
            {/* Quick Selection Options */}
            <div className="bg-white rounded-2xl p-6 shadow-sm">
-             <h4 className="text-lg font-semibold text-gray-900 mb-4">Quick Selection</h4>
+             <h4 className="text-lg font-semibold text-gray-900 mb-4">{t('selectAreaPage.quickSelection')}</h4>
              <div className="grid grid-cols-2 gap-3">
                <button 
                  className="py-3 px-4 bg-blue-50 hover:bg-blue-100 border-2 border-blue-200 hover:border-blue-400 rounded-xl text-sm font-medium text-blue-700 transition-all duration-200"
@@ -913,7 +1179,7 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
                    updateSelectionSummary();
                  }}
                >
-                 🎲 Random 25%
+                 {t('selectAreaPage.random25')}
                </button>
                <button 
                  className="py-3 px-4 bg-purple-50 hover:bg-purple-100 border-2 border-purple-200 hover:border-purple-400 rounded-xl text-sm font-medium text-purple-700 transition-all duration-200"
@@ -942,7 +1208,7 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
                    updateSelectionSummary();
                  }}
                >
-                 🎯 Center Area
+                 {t('selectAreaPage.centerArea')}
                </button>
              </div>
              
@@ -961,7 +1227,7 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
                    updateSelectionSummary();
                  }}
                >
-                 🗑️ Clear All
+                 {t('selectAreaPage.clearAll')}
                </button>
              </div>
            </div>
@@ -971,19 +1237,22 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
              <button 
                className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-2xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200 active:scale-[0.98]"
                onClick={() => {
-                 // Here you would process the payment
-                 alert('Payment processing would be implemented here!');
+                 const { selectedArea, totalCost } = getSelectionSummary();
+                 setCheckoutAmount(totalCost);
+                 setCheckoutM2(selectedArea);
+                 setPaymentMethod(null);
+                 setCurrentPage('checkout');
                }}
              >
                <Leaf className="w-5 h-5 inline mr-2" />
-               Complete Protection Purchase
+                               {t('selectAreaPage.continueToCheckout')}
              </button>
              
              <button 
                className="w-full py-3 border-2 border-green-600 text-green-600 font-medium rounded-2xl hover:bg-green-50 transition-colors text-sm"
                onClick={() => setCurrentPage('main')}
              >
-               ← Back to Project
+                               ← {t('selectAreaPage.backToProject')}
              </button>
            </div>
          </div>
@@ -1004,21 +1273,32 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
         
-        {/* Back to Globe Button */}
-        <button
-          onClick={() => {
-            console.log('Back button clicked, calling onBack');
-            onBack();
-          }}
-          className="absolute top-4 left-4 w-10 h-10 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-20"
-        >
-          <ArrowLeft className="h-5 w-5" />
-        </button>
+                 {/* Back to Globe Button */}
+         <button
+           onClick={() => {
+             console.log('Back button clicked, calling onBack');
+             onBack();
+           }}
+           className="absolute top-4 left-4 w-10 h-10 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[9999]"
+         >
+           <Globe className="h-5 w-5" />
+         </button>
+         
+         {/* Home Button - positioned top right */}
+         <button
+           onClick={() => {
+             console.log('Home button clicked, going to reserves');
+             onBack();
+           }}
+           className="absolute top-4 right-4 w-10 h-10 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[9999]"
+         >
+           <Home className="h-5 w-5" />
+         </button>
         
         {/* Center Content */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center text-white">
-            <h1 className="text-2xl font-bold mb-2">{project.name}</h1>
+                            <h1 className="text-2xl font-bold mb-2">{t(`projects.${project.id}`)}</h1>
             <div className="flex items-center justify-center gap-2">
               <MapPin className="w-4 h-4" />
               <span className="text-green-100">{project.country}</span>
@@ -1105,17 +1385,17 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
           <div className="text-center p-4 bg-white rounded-xl shadow-sm">
             <Leaf className="w-8 h-8 text-green-600 mx-auto mb-2" />
             <div className="text-2xl font-bold text-green-700">{project.impact.biodiversity}%</div>
-            <div className="text-sm text-gray-600">Biodiversity</div>
+                            <div className="text-sm text-gray-600">{t('impact.biodiversity')}</div>
           </div>
           <div className="text-center p-4 bg-white rounded-xl shadow-sm">
             <TrendingUp className="w-8 h-8 text-blue-600 mx-auto mb-2" />
             <div className="text-2xl font-bold text-blue-700">{project.impact.carbon}%</div>
-            <div className="text-sm text-gray-600">Carbon</div>
+                            <div className="text-sm text-gray-600">{t('impact.carbon')}</div>
           </div>
           <div className="text-center p-4 bg-white rounded-xl shadow-sm">
             <Users className="w-8 h-8 text-purple-600 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-700">{project.impact.community}%</div>
-            <div className="text-sm text-gray-600">Community</div>
+                            <div className="text-sm text-gray-600">{t('impact.community')}</div>
           </div>
         </div>
 

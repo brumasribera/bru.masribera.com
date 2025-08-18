@@ -1,0 +1,96 @@
+{
+  "header": {
+    "title": "Open Huts",
+    "tagline": "Plataforma digital per descobrir, planificar i reservar refugis de muntanya arreu del món, amb rutes sostenibles i comunitat activa",
+    "back": "Tornar als projectes"
+  },
+  "overview": {
+    "title": "Visió del projecte",
+    "p1": "OpenHuts és una plataforma innovadora que connecta excursionistes i alpinistes amb refugis de muntanya de tot el món. El projecte se centra en facilitar la descoberta i reserva de refugis, oferint informació detallada sobre rutes, condicions i disponibilitat.",
+    "p2": "La plataforma integra tecnologies avançades per a la gestió de reserves, la navegació GPS i la connexió comunitària entre amants de la muntanya.",
+    "p3": "OpenHuts promou el turisme sostenible i la conservació dels entorns naturals de muntanya.",
+    "visitSite": "Visitar OpenHuts",
+    "app": "Descarregar App"
+  },
+  "quick": {
+    "discovery": {
+      "title": "Descobriment",
+      "items": ["Refugis Globals", "Rutes Detallades", "Reserves Fàcils"]
+    },
+    "technology": {
+      "title": "Tecnologia",
+      "items": ["GPS Integrat", "Reserves en Temps Real", "Comunitat Activa"]
+    },
+    "sustainability": {
+      "title": "Sostenibilitat",
+      "items": ["Turisme Responsable", "Conservació Ambiental", "Desenvolupament Local"]
+    }
+  },
+  "features": {
+    "title": "Característiques Principals",
+    "items": [
+      { "title": "Base de Dades Global", "desc": "Accés a milers de refugis de muntanya arreu del món" },
+      { "title": "Navegació GPS Integrada", "desc": "Rutes detallades i navegació en temps real" },
+      { "title": "Sistema de Reserves", "desc": "Reserves instantànies amb confirmació automàtica" },
+      { "title": "Informació Detallada", "desc": "Condicions meteorològiques, disponibilitat i serveis" },
+      { "title": "Comunitat Activa", "desc": "Ressenyes, fotos i experiències compartides per usuaris" },
+      { "title": "App Mòbil Nativa", "desc": "Funcionalitat completa disponible offline per a aventures en muntanya" }
+    ]
+  },
+  "technology": {
+    "title": "Arquitectura Tecnològica",
+    "mapping": {
+      "title": "Cartografia i Navegació",
+      "badges": ["OpenStreetMap", "GPS Integrat", "Rutes Offline", "Navegació 3D"]
+    },
+    "booking": {
+      "title": "Sistema de Reserves",
+      "badges": ["Reserves en Temps Real", "Confirmació Automàtica", "Gestió de Disponibilitat", "Pagaments Segurs"]
+    },
+    "mobile": {
+      "title": "Desenvolupament Mòbil",
+      "badges": ["React Native", "Funcionalitat Offline", "Sincronització", "UX Optimitzada"]
+    }
+  },
+  "destinations": {
+    "title": "Destinacions i Refugis",
+    "europe": {
+      "title": "Europa",
+      "items": [
+        { "title": "Alps", "desc": "Refugis clàssics a Suïssa, França, Itàlia i Àustria" },
+        { "title": "Pirineus", "desc": "Xarxa extensa de refugis entre Espanya i França" },
+        { "title": "Escandinàvia", "desc": "Refugis moderns a Noruega, Suècia i Finlàndia" }
+      ]
+    },
+    "americas": {
+      "title": "Amèriques",
+      "items": [
+        { "title": "Rocky Mountains", "desc": "Refugis històrics als Estats Units i Canadà" },
+        { "title": "Andes", "desc": "Refugis d'alta muntanya a Xile, Argentina i Perú" },
+        { "title": "Alaska", "desc": "Refugis remots per a aventures extremes" }
+      ]
+    }
+  },
+  "impact": {
+    "title": "Impacte i Resultats",
+    "metrics": [
+      { "title": "Refugis", "desc": "Més de 5,000 refugis disponibles a la plataforma" },
+      { "title": "Usuaris", "desc": "Més de 100,000 excursionistes registrats" },
+      { "title": "Reserves", "desc": "Més de 50,000 reserves processades amb èxit" },
+      { "title": "Països", "desc": "Present en més de 30 països diferents" }
+    ]
+  },
+  "future": {
+    "title": "Visió de futur",
+    "p1": "OpenHuts té com a objectiu expandir-se a noves regions i integrar tecnologies emergents com la realitat augmentada per a experiències de navegació millorades.",
+    "p2": "Els plans futurs inclouen la integració amb sistemes de transport públic i l'implementació de programes de fidelització per a usuaris freqüents.",
+    "backToAll": "Tornar a tots els projectes"
+  },
+  "nav": {
+    "prev": "Pomoca",
+    "next": "Reserve",
+    "backToAll": "Back to all projects"
+  }
+}
+
+

@@ -1,0 +1,196 @@
+{
+  "welcome": "Welcome",
+  "about": "About us",
+  "contact": "Contact",
+  "home": "Home",
+  "experience": "Experience",
+  "education": "Education",
+  "projects": "Projects",
+  "cv": "CV",
+  "hero": {
+    "title": "Hi, I'm Bru Masribera",
+    "subtitle": "Full Stack Developer & UI/UX Designer",
+    "description": "Passionate about creating beautiful, functional, and user-centered digital experiences.",
+    "location": "Barcelona, Spain",
+    "contactMe": "Fale comigo",
+    "downloadCV": "Download CV"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "education": "Education",
+    "projects": "Projects",
+    "contact": "Contact",
+    "cv": "CV"
+  },
+  "about": {
+    "title": "Sobre mim",
+    "description": "I am a passionate developer who loves creating innovative solutions and exceptional user experiences.",
+    "skills": "Skills",
+    "interests": "Interests"
+  },
+  "experience": {
+    "title": "Experiência profissional",
+    "current": "Current",
+    "previous": "Previous",
+    "responsibilities": "Responsibilities",
+    "technologies": "Technologies"
+  },
+  "education": {
+    "title": "Education",
+    "degree": "Degree",
+    "university": "University",
+    "period": "Period",
+    "gpa": "GPA"
+  },
+  "projects": {
+    "title": "Meus projetos",
+    "viewProject": "Ver projeto",
+    "openApp": "Abrir app",
+    "description": "Description",
+    "technologies": "Technologies Used",
+    "features": "Features"
+  },
+  "contact": {
+    "title": "Entre em contato",
+    "name": "Nome",
+    "email": "E‑mail",
+    "message": "Mensagem",
+    "send": "Enviar",
+    "sending": "Enviando...",
+    "sent": "Mensagem enviada!",
+    "error": "Erro ao enviar mensagem"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "madeWith": "Feito com 🥰 na Suíça",
+    "tagline": "Engenheiro Frontend e UX | Remoto-friendly",
+    "copyright": "© {{year}} Bru Mas Ribera. Todos os direitos reservados.",
+    "tooltips": {
+      "email": "Enviar-me um email",
+      "linkedin": "Ver o meu perfil do LinkedIn",
+      "github": "Ver o meu perfil do GitHub",
+      "cv": "Ver o meu CV"
+    }
+  },
+  "languages": {
+    "en": "English",
+    "de": "German",
+    "fr": "French",
+    "es": "Spanish",
+    "ca": "Catalan",
+    "it": "Italian",
+    "pt": "Portuguese",
+    "rm": "Romanche"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "close": "Close",
+    "open": "Open",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous"
+  },
+  "reserve": {
+    "title": "Reserve",
+    "description": "Reservation management system for outdoor activities.",
+    "openApp": "Abrir app",
+    "openAppSmall": "Abrir app",
+    "prototype": "Protótipo",
+    "loading": "Carregando o app Reserve...",
+    "loadingMessage": "Preparando sua experiência ao ar livre...",
+    "features": {
+      "title": "Recursos principais",
+      "reservations": "Gestão de reservas",
+      "calendar": "Calendário interativo",
+      "maps": "Mapas de localização",
+      "notifications": "Notificações inteligentes"
+    },
+    "technologies": "React, TypeScript, Leaflet, Tailwind CSS"
+  },
+  "clathes": {
+    "title": "Clathes",
+    "description": "Sustainable fashion platform for eco-friendly clothing.",
+    "viewProject": "View Project",
+    "features": {
+      "title": "Key Features",
+      "sustainability": "Sustainability Tracking",
+      "recommendations": "Eco-Friendly Recommendations",
+      "community": "Community Features"
+    },
+    "technologies": "React, Node.js, MongoDB, AWS"
+  },
+  "moodleNet": {
+    "title": "MoodleNet",
+    "description": "Open educational resource sharing platform.",
+    "viewProject": "View Project",
+    "features": {
+      "title": "Key Features",
+      "sharing": "Resource Sharing",
+      "collaboration": "Collaborative Learning",
+      "discovery": "Content Discovery"
+    },
+    "technologies": "PHP, MySQL, JavaScript, Bootstrap"
+  },
+  "openHuts": {
+    "title": "Open Huts",
+    "description": "Mountain hut booking platform for outdoor enthusiasts.",
+    "viewProject": "View Project",
+    "features": {
+      "title": "Key Features",
+      "booking": "Hut Booking System",
+      "routes": "Hiking Routes",
+      "weather": "Weather Integration"
+    },
+    "technologies": "React Native, Firebase, Google Maps API"
+  },
+  "pix4D": {
+    "title": "Pix4D",
+    "description": "Photogrammetry software for 3D mapping.",
+    "viewProject": "View Project",
+    "features": {
+      "title": "Key Features",
+      "photogrammetry": "Advanced Photogrammetry",
+      "3dMapping": "3D Mapping",
+      "surveying": "Surveying Tools"
+    },
+    "technologies": "C++, Python, OpenGL, CUDA"
+  },
+  "pomoca": {
+    "title": "Pomoca",
+    "description": "Innovative ski touring equipment and accessories.",
+    "viewProject": "View Project",
+    "features": {
+      "title": "Key Features",
+      "products": "Product Catalog",
+      "customization": "Custom Solutions",
+      "support": "Technical Support"
+    },
+    "technologies": "Shopify, React, Node.js, PostgreSQL"
+  },
+  "wegaw": {
+    "title": "Wegaw",
+    "description": "Weather intelligence platform for outdoor activities.",
+    "viewProject": "View Project",
+    "features": {
+      "title": "Key Features",
+      "forecasts": "Weather Forecasts",
+      "alerts": "Weather Alerts",
+      "planning": "Activity Planning"
+    },
+    "technologies": "Python, Machine Learning, APIs, React"
+  }
+}
+
+

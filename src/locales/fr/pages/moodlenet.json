@@ -1,0 +1,59 @@
+{
+  "header": {
+    "title": "MoodleNet Platform",
+    "tagline": "Plateforme open‑source qui révolutionne la découverte et le partage de ressources éducatives par les éducateurs dans le monde, promouvant l'éducation ouverte et la collaboration"
+  },
+  "overview": {
+    "title": "Vision du projet",
+    "p1": "MoodleNet transforme la manière dont les éducateurs découvrent, partagent et curent des ressources éducatives. En tant que développeur frontend, j’ai contribué à construire un écosystème complet pour la curation collaborative et la découverte de contenus éducatifs de haute qualité.",
+    "p2": "La plateforme répond au besoin de matériaux accessibles et bien curés, tout en promouvant l’éducation ouverte et en soutenant la communauté enseignante mondiale."
+  },
+  "cards": {
+    "targetUsers": {
+      "title": "Utilisateurs cibles",
+      "items": ["Éducateurs & enseignants", "Étudiants & apprenants", "Institutions"]
+    },
+    "developmentStatus": {
+      "title": "Statut de développement",
+      "items": ["Développement actif", "Open‑source", "Porté par la communauté"]
+    },
+    "globalReach": {
+      "title": "Portée globale",
+      "items": ["Couverture mondiale", "Multi‑langue", "Standards ouverts"]
+    }
+  },
+  "features": {
+    "title": "Fonctionnalités clés",
+    "discovery": { "title": "Découverte de ressources", "desc": "Recherche avancée et filtrage pour des ressources multi‑formats" },
+    "curation": { "title": "Curation de contenus", "desc": "Outils collaboratifs pour organiser et partager des ressources" },
+    "community": { "title": "Communauté", "desc": "Apprentissage social et partage piloté par la communauté" },
+    "quality": { "title": "Contrôle qualité", "desc": "Relecture par les pairs et systèmes d’évaluation des contenus" },
+    "learningPaths": { "title": "Parcours d’apprentissage", "desc": "Séquences structurées et outils de planification curriculaire" },
+    "sharing": { "title": "Partage ouvert", "desc": "Licences ouvertes et mécanismes de partage" }
+  },
+  "preview": {
+    "title": "Aperçu de la plateforme",
+    "main": { "title": "Interface principale", "desc": "Interface claire et intuitive avec recherche avancée et multiples filtres." },
+    "details": { "title": "Détails de la ressource", "desc": "Vue détaillée avec métadonnées, notes et avis de la communauté." },
+    "community": { "title": "Fonctionnalités communautaires", "desc": "Avis, évaluations et curation collaborative." }
+  },
+  "tech": {
+    "title": "Pile technologique",
+    "frontend": "Frontend",
+    "backend": "Backend"
+  },
+  "future": {
+    "title": "Vision pour l’avenir",
+    "p1": "MoodleNet évolue vers un écosystème complet pour l’éducation ouverte et le partage de ressources. À venir : recommandations IA, analyses d’apprentissage avancées et partenariats avec des institutions du monde entier.",
+    "p2": "La plateforme vise à devenir le standard mondial de découverte et de curation, connectant les éducateurs aux meilleurs OER et favorisant des communautés d’apprentissage collaboratives."
+  },
+  "nav": {
+    "prev": "Clathes",
+    "next": "Pomoca",
+    "backToAll": "Retour à tous les projets"
+  },
+  "links": {
+    "visitSite": "Visiter MoodleNet",
+    "github": "GitHub"
+  }
+}

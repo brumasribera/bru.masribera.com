@@ -1,5 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Header } from './components/layout/Header'
 import { HeroSection } from './components/sections/HeroSection'
 import { AboutSection } from './components/sections/AboutSection'
@@ -10,6 +10,9 @@ import { ContactSection } from './components/sections/ContactSection'
 import { LanguagesBar } from './components/ui/LanguagesBar'
 import { Footer } from './components/layout/Footer'
 import CVPage from './components/pages/CVPage'
+import TranslationsAdminPage from './components/pages/TranslationsAdminPage'
+import { useLanguageRouting } from './components/hooks/useLanguageRouting'
+import { useScrollPosition } from './components/hooks/useScrollPosition'
 
 // Lazy load project pages to reduce initial bundle size
 const OpenHutsPage = lazy(() => import('./components/pages/OpenHutsPage').then(module => ({ default: module.OpenHutsPage })))
@@ -18,15 +21,13 @@ const ReservePage = lazy(() => import('./components/pages/ReservePage').then(mod
 const ReserveFullScreenPage = lazy(() => import('./components/pages/ReserveFullScreenPage').then(module => ({ default: module.ReserveFullScreenPage })))
 const ClathesPage = lazy(() => import('./components/pages/ClathesPage').then(module => ({ default: module.ClathesPage })))
 const Pix4DPage = lazy(() => import('./components/pages/Pix4DPage').then(module => ({ default: module.Pix4DPage })))
-const WegawPage = lazy(() => import('./components/pages/WeGawPage').then(module => ({ default: module.WegawPage })))
+const WegawPage = lazy(() => import('./components/pages/WegawPage').then(module => ({ default: module.WegawPage })))
 const PomocaPage = lazy(() => import('./components/pages/PomocaPage').then(module => ({ default: module.PomocaPage })))
 
 // Loading component for lazy-loaded pages
-const PageLoader = () => (
-  <div className="min-h-screen flex items-center justify-center">
-    <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
-  </div>
-)
+const PageLoader = () => null
+
+// Home page component (inlined in routes below)
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -64,35 +65,87 @@ function App() {
 
 // Separate component to use useLocation hook
 function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDarkMode: () => void }) {
-  const location = useLocation()
+  const { getCurrentPathWithoutLanguage } = useLanguageRouting()
   
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [location.pathname])
+  // Use scroll position persistence hook
+  useScrollPosition()
   
+  const pathWithoutLang = getCurrentPathWithoutLanguage()
+  const shouldShowHeader = pathWithoutLang !== '/cv' && pathWithoutLang !== '/reserve-app'
+
+  const HomeElement = (
+    <>
+      <HeroSection />
+      <AboutSection />
+      <ExperienceSection />
+      <ProjectsSection />
+      <EducationSection />
+      <LanguagesBar />
+      <ContactSection />
+      <Footer />
+    </>
+  )
+
   return (
     <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
       {/* Hide header on CV page for print/download and on reserve-app for fullscreen */}
-      {location.pathname !== '/cv' && location.pathname !== '/reserve-app' && <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}
+      {shouldShowHeader && <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}
       
       <Routes>
-        <Route path="/" element={
-          <>
-            <HeroSection />
-            <AboutSection />
-            <ExperienceSection />
-            <ProjectsSection />
-            <EducationSection />
-            <LanguagesBar />
-            <ContactSection />
-            <Footer />
-          </>
-        } />
+        <Route path="/" element={HomeElement} />
+        {/* Language-prefixed routes */}
+        <Route path=":lang" element={HomeElement} />
         <Route path="/openhuts" element={
-          <Suspense fallback={<PageLoader />}>
+          <Suspense fallback={<PageLoader />}> 
             <OpenHutsPage />
           </Suspense>
         } />
+        {/* Nested language routes for each page */}
+        <Route path="/:lang">
+          <Route index element={HomeElement} />
+          <Route path="openhuts" element={
+            <Suspense fallback={<PageLoader />}>
+              <OpenHutsPage />
+            </Suspense>
+          } />
+          <Route path="moodlenet" element={
+            <Suspense fallback={<PageLoader />}>
+              <MoodleNetPage />
+            </Suspense>
+          } />
+          <Route path="reserve" element={
+            <Suspense fallback={<PageLoader />}>
+              <ReservePage />
+            </Suspense>
+          } />
+          <Route path="reserve-app" element={
+            <Suspense fallback={<PageLoader />}>
+              <ReserveFullScreenPage />
+            </Suspense>
+          } />
+          <Route path="clathes" element={
+            <Suspense fallback={<PageLoader />}>
+              <ClathesPage />
+            </Suspense>
+          } />
+          <Route path="pix4d" element={
+            <Suspense fallback={<PageLoader />}>
+              <Pix4DPage />
+            </Suspense>
+          } />
+          <Route path="wegaw" element={
+            <Suspense fallback={<PageLoader />}>
+              <WegawPage />
+            </Suspense>
+          } />
+          <Route path="pomoca" element={
+            <Suspense fallback={<PageLoader />}>
+              <PomocaPage />
+            </Suspense>
+          } />
+          <Route path="cv" element={<CVPage />} />
+          <Route path="admin/translations" element={<TranslationsAdminPage />} />
+        </Route>
         <Route path="/moodlenet" element={
           <Suspense fallback={<PageLoader />}>
             <MoodleNetPage />
@@ -129,6 +182,8 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
           </Suspense>
         } />
         <Route path="/cv" element={<CVPage />} />
+        {/* Admin translations (password protected in component) */}
+        <Route path="/admin/translations" element={<TranslationsAdminPage />} />
       </Routes>
     </div>
   )

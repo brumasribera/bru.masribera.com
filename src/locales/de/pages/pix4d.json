@@ -1,0 +1,92 @@
+{
+  "header": {
+    "title": "Pix4D Cloud Platform",
+    "tagline": "Fortschrittliche Photogrammetrie-Technologie für 3D-Kartierung und räumliche Analyse mit skalierbarer Cloud-Architektur und integrierten Werkzeugen"
+  },
+  "overview": {
+    "title": "Projektvision",
+    "p1": "Pix4D ist ein führendes Unternehmen in der Photogrammetrie-Technologie, das Software für die Erstellung präziser 3D-Modelle aus Bildern entwickelt. Die Technologie wird in verschiedenen Sektoren wie Landwirtschaft, Bauwesen, Bergbau und Katastrophenmanagement eingesetzt.",
+    "p2": "Das Projekt konzentriert sich auf die Automatisierung des Photogrammetrie-Prozesses und ermöglicht es Benutzern, Orthofotos, digitale Höhenmodelle und Punktwolken mit zentimetergenauer Präzision zu generieren.",
+    "p3": "Pix4D integriert KI-Technologien für die automatische Objekterkennung und fortschrittliche Bildanalyse von Luftaufnahmen.",
+    "visitSite": "Pix4D besuchen",
+    "demo": "Demo"
+  },
+  "quick": {
+    "accuracy": {
+      "title": "Genauigkeit",
+      "items": ["Zentimetergenau", "Orthomosaike", "3D-Modelle"]
+    },
+    "applications": {
+      "title": "Anwendungen",
+      "items": ["Landwirtschaft", "Bauwesen", "Bergbau"]
+    },
+    "technology": {
+      "title": "Technologie",
+      "items": ["Photogrammetrie", "KI", "Automatische Verarbeitung"]
+    }
+  },
+  "features": {
+    "title": "Hauptmerkmale",
+    "items": [
+      { "title": "Automatische Verarbeitung", "desc": "Fortschrittliche Algorithmen für die automatische Generierung von 3D-Modellen" },
+      { "title": "Hohe Genauigkeit", "desc": "Ergebnisse mit zentimetergenauer Präzision für professionelle Anwendungen" },
+      { "title": "Echtzeit-Verarbeitung", "desc": "Fähigkeit, Bilder in Echtzeit für kritische Anwendungen zu verarbeiten" },
+      { "title": "Drohnen-Integration", "desc": "Vollständige Unterstützung für unbemannte Luftfahrzeuge" },
+      { "title": "KI-Analyse", "desc": "Automatische Objekterkennung und intelligente Bildanalyse" },
+      { "title": "Flexible Exportierung", "desc": "Mehrere Exportformate für die Integration mit anderen Systemen" }
+    ]
+  },
+  "technology": {
+    "title": "Technologische Architektur",
+    "photogrammetry": {
+      "title": "Photogrammetrie",
+      "badges": ["SIFT-Algorithmen", "Bildkorrelation", "Triangulation", "Bundle Adjustment"]
+    },
+    "ai": {
+      "title": "Künstliche Intelligenz",
+      "badges": ["Objekterkennung", "Segmentierung", "Klassifizierung", "Deep Learning"]
+    },
+    "processing": {
+      "title": "Verarbeitung",
+      "badges": ["GPU-Beschleunigung", "Parallelisierung", "Optimierung", "Effiziente Algorithmen"]
+    }
+  },
+  "applications": {
+    "title": "Anwendungen und Sektoren",
+    "agriculture": {
+      "title": "Präzisionslandwirtschaft",
+      "items": [
+        { "title": "Kulturüberwachung", "desc": "Verfolgung des Wachstums und der Gesundheit von Pflanzen" },
+        { "title": "Ertragsanalyse", "desc": "Ertragsschätzung und Problemdetektion" },
+        { "title": "Bewässerungsmanagement", "desc": "Optimierung der Wassernutzung und Düngemittel" }
+      ]
+    },
+    "construction": {
+      "title": "Bauwesen und Infrastruktur",
+      "items": [
+        { "title": "Projektüberwachung", "desc": "Verfolgung des Baufortschritts" },
+        { "title": "Volumenanalyse", "desc": "Präzise Berechnungen von Materialien und Aushub" },
+        { "title": "Strukturinspektion", "desc": "Problemdetektion und vorbeugende Wartung" }
+      ]
+    }
+  },
+  "impact": {
+    "title": "Auswirkungen und Ergebnisse",
+    "metrics": [
+      { "title": "Genauigkeit", "desc": "Zentimetergenauigkeit in generierten 3D-Modellen" },
+      { "title": "Effizienz", "desc": "70% Reduzierung der Verarbeitungszeit" },
+      { "title": "Benutzer", "desc": "Mehr als 100.000 Fachleute nutzen die Technologie" },
+      { "title": "Sektoren", "desc": "In mehr als 15 verschiedenen Industriesektoren vertreten" }
+    ]
+  },
+  "future": {
+    "title": "Zukunftsvision",
+    "p1": "Pix4D zielt darauf ab, sich in neue Sektoren zu erweitern und aufstrebende Technologien wie Augmented Reality und Virtual Reality zu integrieren.",
+    "p2": "Zukünftige Pläne umfassen die Entwicklung von Cloud-Lösungen für großmaßstäbliche Verarbeitung und die Integration mit Infrastrukturmanagement-Systemen.",
+    "backToAll": "Zurück zu allen Projekten"
+  },
+  "nav": {
+    "prev": "MoodleNet",
+    "next": "Pomoca"
+  }
+}

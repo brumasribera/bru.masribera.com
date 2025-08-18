@@ -1,7 +1,9 @@
 import React from 'react';
 import { Mail, Linkedin, Github, Globe } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const CVPage: React.FC = () => {
+  const { t } = useTranslation('cv');
   return (
     <div className="min-h-screen bg-gray-50 py-4">
       <div className="container mx-auto px-4">
@@ -46,13 +48,13 @@ const CVPage: React.FC = () => {
                   
                   {/* Title, Subtitle & Badges - Right Side */}
                   <div className="flex-1">
-                    <h1 className="text-3xl font-bold text-gray-900 mb-3">BRU MAS RIBERA</h1>
-                    <p className="text-base text-gray-600 mb-3">Frontend & UX Engineer from Barcelona. Based in Meiringen, Switzerland</p>
+                    <h1 className="text-3xl font-bold text-gray-900 mb-3">{t('header.title')}</h1>
+                    <p className="text-base text-gray-600 mb-3">{t('header.subtitle')}</p>
                     
                     {/* Professional badges */}
                     <div className="flex flex-wrap gap-3">
                       <div className="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                        8+ years of professional experience
+                        {t('header.years')}
                       </div>
                       <a 
                         href="https://bru.masribera.com" 
@@ -60,7 +62,7 @@ const CVPage: React.FC = () => {
                         rel="noopener noreferrer"
                         className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold hover:bg-blue-200 transition-colors"
                       >
-                        Website
+                        {t('header.website')}
                       </a>
                     </div>
                   </div>
@@ -71,38 +73,38 @@ const CVPage: React.FC = () => {
             <div className="grid grid-cols-2 gap-6 mb-8 mt-8">
               <div>
                 <h2 className="text-sm font-bold text-emerald-500 uppercase tracking-wider mb-2">
-                  Skills & Tools
+                  {t('sections.skillsTools')}
                 </h2>
                 <div className="space-y-2">
                   <div className="grid grid-cols-[80px_1fr] gap-2 text-xs">
-                    <span className="font-semibold text-gray-700">Languages</span>
-                    <span className="text-gray-600">TypeScript, JavaScript, Python</span>
+                    <span className="font-semibold text-gray-700">{t('labels.languages')}</span>
+                    <span className="text-gray-600">{t('skills.languagesList')}</span>
                   </div>
                   <div className="grid grid-cols-[80px_1fr] gap-2 text-xs">
-                    <span className="font-semibold text-gray-700">Frontend</span>
-                    <span className="text-gray-600">React, Next.js, Vue, Tailwind CSS</span>
+                    <span className="font-semibold text-gray-700">{t('labels.frontend')}</span>
+                    <span className="text-gray-600">{t('skills.frontendList')}</span>
                   </div>
                   <div className="grid grid-cols-[80px_1fr] gap-2 text-xs">
-                    <span className="font-semibold text-gray-700">Backend</span>
-                    <span className="text-gray-600">Node.js, Django, Supabase</span>
+                    <span className="font-semibold text-gray-700">{t('labels.backend')}</span>
+                    <span className="text-gray-600">{t('skills.backendList')}</span>
                   </div>
                   <div className="grid grid-cols-[80px_1fr] gap-2 text-xs">
-                    <span className="font-semibold text-gray-700">UX Tools</span>
-                    <span className="text-gray-600">Figma, Storybook, User Research</span>
+                    <span className="font-semibold text-gray-700">{t('labels.uxTools')}</span>
+                    <span className="text-gray-600">{t('skills.uxToolsList')}</span>
                   </div>
                 </div>
               </div>
 
               <div>
                 <h2 className="text-sm font-bold text-emerald-500 uppercase tracking-wider mb-3">
-                  About Me
+                  {t('sections.about')}
                 </h2>
                 <div className="space-y-2">
                   <p className="text-xs text-gray-600 leading-tight">
-                    Computer Engineer specialized in Web Development with 6 years Frontend and 3 years Backend experience. UX Designer with 3 years experience.
+                    {t('about.paragraph1')}
                   </p>
                   <p className="text-xs text-gray-600 leading-relaxed">
-                    Successfully delivered ESA-funded Proof of Concept, coordinating international consortiums.
+                    {t('about.paragraph2')}
                   </p>
                 </div>
               </div>
@@ -111,7 +113,7 @@ const CVPage: React.FC = () => {
             {/* Professional Experience - Professional timeline */}
             <div className="mb-5">
                               <h2 className="text-sm font-bold text-emerald-500 uppercase tracking-wider mb-2">
-                  Professional Experience
+                  {t('sections.professionalExperience')}
                 </h2>
               <div className="relative">
                 {/* Timeline Line */}
@@ -121,46 +123,37 @@ const CVPage: React.FC = () => {
                 <div className="space-y-4">
                   <div className="relative" style={{ paddingLeft: '3rem' }}>
                     <div className="absolute top-1 w-2.5 h-2.5 bg-emerald-500 rounded-full" style={{ left: '10px' }}></div>
-                    <div className="text-xs text-gray-500 mb-1">2014 – Present • Remote</div>
-                    <h3 className="font-semibold text-gray-800 mb-1 text-sm">Founder & Project Lead | Open Huts, Booking Platform for Nature Huts</h3>
+                    <div className="text-xs text-gray-500 mb-1">{t('experience.items.0.meta')}</div>
+                    <h3 className="font-semibold text-gray-800 mb-1 text-sm">{t('experience.items.0.title')}</h3>
                     <p className="text-xs text-gray-600 leading-tight">
-                      Find hidden places to sleep out in the wild. Help protect nature by enjoying it. User research, prototyping, user testing, hi‑fi interfaces with Figma and implementation with React, Next.js, TypeScript, Supabase
+                      {t('experience.items.0.description')}
                     </p>
                   </div>
 
                   <div className="relative" style={{ paddingLeft: '3rem' }}>
                     <div className="absolute top-1 w-2.5 h-2.5 bg-emerald-500 rounded-full" style={{ left: '10px' }}></div>
-                    <div className="text-xs text-gray-500 mb-1">2021 – 2024 • Remote</div>
-                    <h3 className="font-semibold text-gray-800 mb-1 text-sm">Frontend & UX Engineer | Moodle, Open Learning Platform</h3>
+                    <div className="text-xs text-gray-500 mb-1">{t('experience.items.1.meta')}</div>
+                    <h3 className="font-semibold text-gray-800 mb-1 text-sm">{t('experience.items.1.title')}</h3>
                     <p className="text-xs text-gray-600 leading-tight">
-                      Developing MoodleNet, a network to share and curate open educational resources. Using React, Figma, UX Design, Open Source, Educational Technology
+                      {t('experience.items.1.description')}
                     </p>
                   </div>
 
                   <div className="relative" style={{ paddingLeft: '3rem' }}>
                     <div className="absolute top-1 w-2.5 h-2.5 bg-emerald-500 rounded-full" style={{ left: '10px' }}></div>
-                    <div className="text-xs text-gray-500 mb-1">2020 • Lausanne, Switzerland</div>
-                    <h3 className="font-semibold text-gray-800 mb-1 text-sm">User Experience Designer | Oberalp Group, Pomoca</h3>
+                    <div className="text-xs text-gray-500 mb-1">{t('experience.items.2.meta')}</div>
+                    <h3 className="font-semibold text-gray-800 mb-1 text-sm">{t('experience.items.2.title')}</h3>
                     <p className="text-xs text-gray-600 leading-tight">
-                      Redesigning the production interfaces of the ski touring skins world leader, Pomoca. Behavioral Interviewing, Usability Testing, UX Design, Production Interfaces
+                      {t('experience.items.2.description')}
                     </p>
                   </div>
 
                   <div className="relative" style={{ paddingLeft: '3rem' }}>
                     <div className="absolute top-1 w-2.5 h-2.5 bg-emerald-500 rounded-full" style={{ left: '10px' }}></div>
-                    <div className="text-xs text-gray-500 mb-1">2018 • Lausanne, Switzerland</div>
-                    <h3 className="font-semibold text-gray-800 mb-1 text-sm">Solution Architect | Wegaw, Terrain Monitoring for Outdoor Planning</h3>
+                    <div className="text-xs text-gray-500 mb-1">{t('experience.items.3.meta')}</div>
+                    <h3 className="font-semibold text-gray-800 mb-1 text-sm">{t('experience.items.3.title')}</h3>
                     <p className="text-xs text-gray-600 leading-tight">
-                      Developing an European Space Agency project to track snow cover from satellites worldwide. JavaScript, Kubernetes, Satellite Data, ESA Projects, Snow Cover Tracking
-                    </p>
-                  </div>
-
-                  <div className="relative" style={{ paddingLeft: '3rem' }}>
-                    <div className="absolute top-1 w-2.5 h-2.5 bg-emerald-500 rounded-full" style={{ left: '10px' }}></div>
-                    <div className="text-xs text-gray-500 mb-1">2017 – 2018 • Remote</div>
-                    <h3 className="font-semibold text-gray-800 mb-1 text-sm">Junior Web Developer | Pix4D, Photogrammetry for Construction and Agriculture</h3>
-                    <p className="text-xs text-gray-600 leading-tight">
-                      Developing a cloud platform to upload, process and analyze 3D models from drone images. Angular 4, RxJS, Cloud Platform, 3D Modeling, Drone Technology
+                      {t('experience.items.3.description')}
                     </p>
                   </div>
                 </div>
@@ -171,7 +164,7 @@ const CVPage: React.FC = () => {
             <div className="grid grid-cols-2 gap-6 mt-10">
               <div>
                 <h2 className="text-sm font-bold text-emerald-500 uppercase tracking-wider mb-3">
-                  Education
+                  {t('sections.education')}
                 </h2>
                 <div className="relative">
                   {/* Timeline Line */}
@@ -180,30 +173,30 @@ const CVPage: React.FC = () => {
                   <div className="space-y-4">
                     <div className="relative" style={{ paddingLeft: '3rem' }}>
                       <div className="absolute top-1 w-2.5 h-2.5 bg-emerald-500 rounded-full" style={{ left: '10px' }}></div>
-                      <div className="text-xs text-gray-500 mb-1">2020 – 2021</div>
-                      <h3 className="font-semibold text-gray-800 mb-1 text-sm">MBA</h3>
-                      <p className="text-xs text-gray-600">ThePowerMBA</p>
+                      <div className="text-xs text-gray-500 mb-1">{t('education.items.0.meta')}</div>
+                      <h3 className="font-semibold text-gray-800 mb-1 text-sm">{t('education.items.0.title')}</h3>
+                      <p className="text-xs text-gray-600">{t('education.items.0.place')}</p>
                     </div>
 
                     <div className="relative" style={{ paddingLeft: '3rem' }}>
                       <div className="absolute top-1 w-2.5 h-2.5 bg-emerald-500 rounded-full" style={{ left: '10px' }}></div>
-                      <div className="text-xs text-gray-500 mb-1">2020</div>
-                      <h3 className="font-semibold text-gray-800 mb-1 text-sm">User Experience Design</h3>
-                      <p className="text-xs text-gray-600">Udacity</p>
+                      <div className="text-xs text-gray-500 mb-1">{t('education.items.1.meta')}</div>
+                      <h3 className="font-semibold text-gray-800 mb-1 text-sm">{t('education.items.1.title')}</h3>
+                      <p className="text-xs text-gray-600">{t('education.items.1.place')}</p>
                     </div>
 
                     <div className="relative" style={{ paddingLeft: '3rem' }}>
                       <div className="absolute top-1 w-2.5 h-2.5 bg-emerald-500 rounded-full" style={{ left: '10px' }}></div>
-                      <div className="text-xs text-gray-500 mb-1">2014 – 2018</div>
-                      <h3 className="font-semibold text-gray-800 mb-1 text-sm">BA Computer Engineering</h3>
-                      <p className="text-xs text-gray-600">Barcelona University</p>
+                      <div className="text-xs text-gray-500 mb-1">{t('education.items.2.meta')}</div>
+                      <h3 className="font-semibold text-gray-800 mb-1 text-sm">{t('education.items.2.title')}</h3>
+                      <p className="text-xs text-gray-600">{t('education.items.2.place')}</p>
                     </div>
 
                     <div className="relative" style={{ paddingLeft: '3rem' }}>
                       <div className="absolute top-1 w-2.5 h-2.5 bg-emerald-500 rounded-full" style={{ left: '10px' }}></div>
-                      <div className="text-xs text-gray-500 mb-1">2014 – 2018</div>
-                      <h3 className="font-semibold text-gray-800 mb-1 text-sm">Architecture</h3>
-                      <p className="text-xs text-gray-600">UPC, Barcelona</p>
+                      <div className="text-xs text-gray-500 mb-1">{t('education.items.3.meta')}</div>
+                      <h3 className="font-semibold text-gray-800 mb-1 text-sm">{t('education.items.3.title')}</h3>
+                      <p className="text-xs text-gray-600">{t('education.items.3.place')}</p>
                     </div>
                   </div>
                 </div>
@@ -211,52 +204,48 @@ const CVPage: React.FC = () => {
 
               <div>
                 <h2 className="text-sm font-bold text-emerald-500 uppercase tracking-wider mb-3">
-                  Languages
+                  {t('sections.languages')}
                 </h2>
                 <div className="text-xs text-gray-600 mb-6">
-                  <div className="mb-2">
-                    <span className="font-semibold">C2:</span> English, French • <span className="font-semibold">Native:</span> Spanish, Catalan
-                  </div>
-                  <div>
-                    <span className="font-semibold">C1:</span> Italian • <span className="font-semibold">B1:</span> German, Portuguese
-                  </div>
+                  <div className="mb-2" dangerouslySetInnerHTML={{ __html: t('languagesSection.lines.0') }} />
+                  <div dangerouslySetInnerHTML={{ __html: t('languagesSection.lines.1') }} />
                 </div>
 
                 <h2 className="text-sm font-bold text-emerald-500 uppercase tracking-wider mb-3">
-                  Interests
+                  {t('sections.interests')}
                 </h2>
                 <div className="text-xs text-gray-600 mb-6">
-                  <div className="mb-2">Business Development</div>
-                  <div>Environment Restoration</div>
+                  <div className="mb-2">{t('interests.items.0')}</div>
+                  <div>{t('interests.items.1')}</div>
                 </div>
 
                 <h2 className="text-sm font-bold text-emerald-500 uppercase tracking-wider mb-3">
-                  Skill Set
+                  {t('sections.skillSet')}
                 </h2>
                 <div className="text-xs text-gray-600 mb-6">
-                  <div className="mb-2">UIMLA Mountain Leader</div>
-                  <div>User Research & Testing</div>
+                  <div className="mb-2">{t('skillSet.items.0')}</div>
+                  <div>{t('skillSet.items.1')}</div>
                 </div>
 
                 <h2 className="text-sm font-bold text-emerald-500 uppercase tracking-wider mb-3">
-                  Contact
+                  {t('sections.contact')}
                 </h2>
                 <div className="flex flex-wrap gap-3 text-xs mb-4">
                   <a href="mailto:bru@masribera.com" className="text-gray-800 hover:text-gray-900 flex items-center gap-1">
                     <Mail className="h-3 w-3 flex-shrink-0" />
-                    <span>Email</span>
+                    <span>{t('contact.email')}</span>
                   </a>
                   <a href="https://www.linkedin.com/in/brumasribera" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-900 flex items-center gap-1">
                     <Linkedin className="h-3 w-3 flex-shrink-0" />
-                    <span>LinkedIn</span>
+                    <span>{t('contact.linkedin')}</span>
                   </a>
                   <a href="https://github.com/brumasribera" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-900 flex items-center gap-1">
                     <Github className="h-3 w-3 flex-shrink-0" />
-                    <span>GitHub</span>
+                    <span>{t('contact.github')}</span>
                   </a>
                   <a href="https://bru.masribera.com" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-900 flex items-center gap-1">
                     <Globe className="h-3 w-3 flex-shrink-0" />
-                    <span>bru.masribera.com</span>
+                    <span>{t('contact.website')}</span>
                   </a>
                 </div>
               </div>
@@ -267,19 +256,31 @@ const CVPage: React.FC = () => {
         {/* Action Buttons */}
         <div className="text-center mt-6 space-x-4">
           <a
-            href="/documents/cv.pdf"
+            href={(() => {
+              const match = window.location.pathname.match(/^\/(\w{2})(\/|$)/)
+              const lng = match ? match[1] : 'en'
+              return lng === 'en' ? '/documents/CV - Bru Mas Ribera.pdf' : `/documents/CV - Bru Mas Ribera (${lng.toUpperCase()}).pdf`
+            })()}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-6 py-3 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors"
           >
-            View CV in Browser
+            {t('actions.viewInBrowser')}
           </a>
           <a
-            href="/documents/cv.pdf"
-            download="Bru_Mas_Ribera_CV.pdf"
+            href={(() => {
+              const match = window.location.pathname.match(/^\/(\w{2})(\/|$)/)
+              const lng = match ? match[1] : 'en'
+              return lng === 'en' ? '/documents/CV - Bru Mas Ribera.pdf' : `/documents/CV - Bru Mas Ribera (${lng.toUpperCase()}).pdf`
+            })()}
+            download={(() => {
+              const match = window.location.pathname.match(/^\/(\w{2})(\/|$)/)
+              const lng = match ? match[1] : 'en'
+              return lng === 'en' ? 'CV - Bru Mas Ribera.pdf' : `CV - Bru Mas Ribera (${lng.toUpperCase()}).pdf`
+            })()}
             className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
           >
-            Download CV PDF
+            {t('actions.downloadPdf')}
           </a>
         </div>
       </div>

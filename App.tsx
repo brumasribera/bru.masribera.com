@@ -21,7 +21,7 @@ const ReservePage = lazy(() => import('./components/pages/ReservePage').then(mod
 const ReserveFullScreenPage = lazy(() => import('./components/pages/ReserveFullScreenPage').then(module => ({ default: module.ReserveFullScreenPage })))
 const ClathesPage = lazy(() => import('./components/pages/ClathesPage').then(module => ({ default: module.ClathesPage })))
 const Pix4DPage = lazy(() => import('./components/pages/Pix4DPage').then(module => ({ default: module.Pix4DPage })))
-const WegawPage = lazy(() => import('./components/pages/WegawPage').then(module => ({ default: module.WegawPage })))
+const WegawPage = lazy(() => import('./components/pages/WeGawPage').then(module => ({ default: module.WegawPage })))
 const PomocaPage = lazy(() => import('./components/pages/PomocaPage').then(module => ({ default: module.PomocaPage })))
 
 // Loading component for lazy-loaded pages

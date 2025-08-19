@@ -11,9 +11,10 @@ import "leaflet/dist/leaflet.css";
 interface ProtectedAreaPageProps {
   project: Project;
   onBack: () => void;
+  onShowContributions: () => void;
 }
 
-export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
+export function ProtectedAreaPage({ project, onBack, onShowContributions }: ProtectedAreaPageProps) {
   const { t, ready } = useTranslation('reserve');
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
@@ -71,6 +72,16 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
   const purchasedArea = Math.floor(totalArea * (0.3 + (project.id.charCodeAt(0) % 20) / 100)); // 30-50% purchased
   const totalFunding = totalArea * project.pricePerM2;
   const raisedFunding = Math.floor(totalFunding * (0.4 + (project.id.charCodeAt(1) % 30) / 100)); // 40-70% funded
+
+  // Helper function to format large numbers with abbreviations
+  const formatNumber = (num: number): string => {
+    if (num >= 1000000) {
+      return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+    } else if (num >= 1000) {
+      return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+    }
+    return num.toString();
+  };
 
   // Add custom CSS animation for progress bar and animate counters
   useEffect(() => {
@@ -526,10 +537,10 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
   // Show loading state while i18n is not ready
   if (!ready) {
     return (
-      <div className="h-full flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-100">
+      <div className="h-full min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-100">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading translations...</p>
+          <div className="animate-spin rounded-full h-12 w-12 md:h-16 md:w-16 border-b-2 border-green-600 mx-auto mb-4"></div>
+          <p className="text-gray-600 text-sm md:text-base">Loading translations...</p>
         </div>
       </div>
     );
@@ -540,7 +551,7 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
   // If in full-screen mode, show the map page
   if (isFullScreen) {
     return (
-      <div className="h-full bg-white relative">
+      <div className="h-full min-h-screen bg-white relative">
         {/* Full-screen map container - Takes full height */}
         <div className="w-full h-full relative">
           <div 
@@ -548,14 +559,12 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
             className="w-full h-full"
           />
           
-
-          
           {/* Back button - positioned top left */}
           <button
             onClick={() => setIsFullScreen(false)}
-            className="absolute top-4 left-4 w-10 h-10 bg-white/95 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[99999]"
+            className="absolute top-4 left-4 w-10 h-10 md:w-12 md:h-12 bg-white/95 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[99999]"
           >
-            <ArrowLeft className="h-5 w-5" />
+            <ArrowLeft className="h-5 w-5 md:h-6 md:w-6" />
           </button>
         </div>
       </div>
@@ -668,16 +677,16 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
         <div className="p-6 space-y-6 pb-24">
           <div className="bg-white rounded-2xl p-6 shadow-sm">
             <h3 className="text-xl font-semibold text-gray-900 mb-4">Order Summary</h3>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="text-center p-3 bg-green-50 rounded-xl border border-green-200">
-                <div className="text-2xl font-bold text-green-700 mb-1">€{checkoutAmount.toFixed(2)}</div>
-                <div className="text-xs text-green-600">Total</div>
-              </div>
-              <div className="text-center p-3 bg-blue-50 rounded-xl border border-blue-200">
-                <div className="text-2xl font-bold text-blue-700 mb-1">{checkoutM2} m²</div>
-                <div className="text-xs text-blue-600">Protected</div>
-              </div>
-            </div>
+                         <div className="grid grid-cols-2 gap-4">
+               <div className="text-center p-3 bg-green-50 rounded-xl border border-green-200">
+                 <div className="text-2xl font-bold text-green-700 mb-1">€{formatNumber(checkoutAmount)}</div>
+                 <div className="text-xs text-green-600 whitespace-nowrap">Total</div>
+               </div>
+               <div className="text-center p-3 bg-blue-50 rounded-xl border border-blue-200">
+                 <div className="text-2xl font-bold text-blue-700 mb-1">{formatNumber(checkoutM2)} m²</div>
+                 <div className="text-xs text-blue-600 whitespace-nowrap">Protected</div>
+               </div>
+             </div>
             <div className="mt-4 text-center text-xs text-gray-500">Taxes included if applicable</div>
           </div>
 
@@ -849,15 +858,15 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
             <div className="grid grid-cols-3 gap-4">
               <div className="text-center p-3 bg-green-50 rounded-xl">
                 <div className="text-lg font-bold text-green-700">{project.impact.biodiversity}%</div>
-                <div className="text-xs text-green-600">{t('impact.biodiversity')}</div>
+                <div className="text-xs text-green-600 whitespace-nowrap">{t('impact.biodiversity')}</div>
               </div>
               <div className="text-center p-3 bg-blue-50 rounded-xl">
                 <div className="text-lg font-bold text-blue-700">{project.impact.carbon}%</div>
-                <div className="text-xs text-blue-600">{t('impact.carbon')}</div>
+                <div className="text-xs text-blue-600 whitespace-nowrap">{t('impact.carbon')}</div>
               </div>
               <div className="text-center p-3 bg-purple-50 rounded-xl">
                 <div className="text-lg font-bold text-purple-700">{project.impact.community}%</div>
-                <div className="text-xs text-purple-600">{t('impact.community')}</div>
+                <div className="text-xs text-purple-600 whitespace-nowrap">{t('impact.community')}</div>
               </div>
             </div>
           </div>
@@ -1131,18 +1140,18 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
              <div className="grid grid-cols-2 gap-4 mb-4">
                <div className="text-center p-3 bg-white rounded-xl border border-green-200">
                  <div className="text-2xl font-bold text-green-700 mb-1" id="selected-count">0</div>
-                 <div className="text-xs text-green-600">{t('checkout.selectedCount')}</div>
+                 <div className="text-xs text-green-600 whitespace-nowrap">{t('checkout.selectedCount')}</div>
                </div>
                <div className="text-center p-3 bg-white rounded-xl border border-green-200">
                  <div className="text-2xl font-bold text-blue-700 mb-1" id="selected-area">0</div>
-                 <div className="text-xs text-blue-600">{t('checkout.selectedArea')}</div>
+                 <div className="text-xs text-blue-600 whitespace-nowrap">{t('checkout.selectedArea')}</div>
                </div>
              </div>
              
              <div className="text-center p-3 bg-white rounded-xl border border-green-200 mb-4">
                <div className="text-lg font-bold text-purple-700 mb-1" id="total-cost">€0</div>
-               <div className="text-xs text-purple-600">{t('checkout.totalCost')}</div>
-               <div className="text-xs text-gray-500">€{project.pricePerM2}/m²</div>
+               <div className="text-xs text-purple-600 whitespace-nowrap">{t('checkout.totalCost')}</div>
+               <div className="text-xs text-gray-500 whitespace-nowrap">€{project.pricePerM2}/m²</div>
              </div>
            </div>
 
@@ -1261,9 +1270,9 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
    }
  
    return (
-    <div className="h-full bg-gradient-to-br from-green-50 to-emerald-100 overflow-y-auto">
+    <div className="h-full min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 overflow-y-auto">
       {/* Header */}
-      <div className="relative h-48 overflow-hidden flex-shrink-0">
+      <div className="relative h-48 md:h-56 lg:h-64 overflow-hidden flex-shrink-0">
         {/* Background Image */}
         <img 
           src={project.image} 
@@ -1273,49 +1282,49 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
         
-                 {/* Back to Globe Button */}
-         <button
-           onClick={() => {
-             console.log('Back button clicked, calling onBack');
-             onBack();
-           }}
-           className="absolute top-4 left-4 w-10 h-10 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[9999]"
-         >
-           <Globe className="h-5 w-5" />
-         </button>
+        {/* Back Button */}
+        <button
+          onClick={() => {
+            console.log('Back button clicked, calling onBack');
+            onBack();
+          }}
+          className="absolute top-4 left-4 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[9999]"
+        >
+          <ArrowLeft className="h-5 w-5 md:h-6 md:w-6" />
+        </button>
          
-         {/* Home Button - positioned top right */}
-         <button
-           onClick={() => {
-             console.log('Home button clicked, going to reserves');
-             onBack();
-           }}
-           className="absolute top-4 right-4 w-10 h-10 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[9999]"
-         >
-           <Home className="h-5 w-5" />
-         </button>
+        {/* Home Button - positioned top right */}
+        <button
+          onClick={() => {
+            console.log('Home button clicked, going to My Contributions');
+            onShowContributions();
+          }}
+          className="absolute top-4 right-4 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[9999]"
+        >
+          <Home className="h-5 w-5 md:h-6 md:w-6" />
+        </button>
         
         {/* Center Content */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center text-white">
-                            <h1 className="text-2xl font-bold mb-2">{t(`projects.${project.id}`)}</h1>
+          <div className="text-center text-white px-4">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2">{t(`projects.${project.id}`)}</h1>
             <div className="flex items-center justify-center gap-2">
-              <MapPin className="w-4 h-4" />
-              <span className="text-green-100">{project.country}</span>
+              <MapPin className="w-4 h-4 md:w-5 md:h-5" />
+              <span className="text-green-100 text-sm md:text-base">{project.country}</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Content - Allow vertical scrolling */}
-      <div className="p-6 space-y-6">
+      <div className="p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6 lg:space-y-8">
         {/* Progress Section - Investment Motivation */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-green-100">
+        <div className="bg-white rounded-2xl p-4 md:p-6 lg:p-8 shadow-sm border border-green-100">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-semibold text-gray-900">
+            <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-900">
               Project Progress
             </h3>
-            <span className="text-lg font-bold text-green-600">{animatedValues.percentage}%</span>
+            <span className="text-lg md:text-xl lg:text-2xl font-bold text-green-600">{animatedValues.percentage}%</span>
           </div>
           
           {/* Unified Progress Bar */}
@@ -1334,29 +1343,29 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
               </div>
             </div>
             
-            {/* Progress Details */}
-            <div className="grid grid-cols-2 gap-4 mt-4">
-              <div className="text-center p-3 bg-green-50 rounded-xl border border-green-200">
-                <div className="text-2xl font-bold text-green-700 mb-1">
-                  €{animatedValues.euros.toLocaleString()}
-                </div>
-                <div className="text-xs text-green-600">Raised</div>
-                <div className="text-xs text-gray-500">Goal: €{totalFunding.toLocaleString()}</div>
-              </div>
-              
-              <div className="text-center p-3 bg-blue-50 rounded-xl border border-blue-200">
-                <div className="text-2xl font-bold text-blue-700 mb-1">
-                  {animatedValues.m2.toLocaleString()} m²
-                </div>
-                <div className="text-xs text-blue-600">Protected</div>
-                <div className="text-xs text-gray-500">Total: {totalArea.toLocaleString()} m²</div>
-              </div>
-            </div>
+                         {/* Progress Details */}
+             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mt-4">
+               <div className="text-center p-3 md:p-4 bg-green-50 rounded-xl border border-green-200">
+                 <div className="text-xl md:text-2xl lg:text-3xl font-bold text-green-700 mb-1">
+                   €{formatNumber(animatedValues.euros)}
+                 </div>
+                 <div className="text-xs md:text-sm text-green-600 whitespace-nowrap">Raised</div>
+                 <div className="text-xs md:text-sm text-gray-500 whitespace-nowrap">Goal: €{formatNumber(totalFunding)}</div>
+               </div>
+               
+               <div className="text-center p-3 md:p-4 bg-blue-50 rounded-xl border border-blue-200">
+                 <div className="text-xl md:text-2xl lg:text-3xl font-bold text-blue-700 mb-1">
+                   {formatNumber(animatedValues.m2)} m²
+                 </div>
+                 <div className="text-xs md:text-sm text-blue-600 whitespace-nowrap">Protected</div>
+                 <div className="text-xs md:text-sm text-gray-500 whitespace-nowrap">Total: {formatNumber(totalArea)} m²</div>
+               </div>
+             </div>
           </div>
         </div>
 
         {/* Satellite Map with Reserve Area */}
-        <div className="relative h-48 rounded-2xl overflow-hidden shadow-lg">
+        <div className="relative h-48 md:h-56 lg:h-64 rounded-2xl overflow-hidden shadow-lg">
           {/* Leaflet Map Container */}
           <div 
             ref={mapRef} 
@@ -1365,53 +1374,51 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
           />
           
           {/* Area Label with Hectares - positioned top right */}
-          <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-full px-2 py-1 text-xs font-medium text-gray-700 shadow-lg border border-gray-200/50 z-[9999]">
+          <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-full px-2 py-1 text-xs md:text-sm font-medium text-gray-700 shadow-lg border border-gray-200/50 z-[9999]">
             {hectares} ha
           </div>
           
           {/* Full Screen Button - positioned top left */}
           <button
             onClick={() => setIsFullScreen(true)}
-            className="absolute top-4 left-4 w-10 h-10 bg-white/95 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[9999]"
+            className="absolute top-4 left-4 w-10 h-10 md:w-12 md:h-12 bg-white/95 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[9999]"
           >
-            <Maximize2 className="h-5 w-5" />
+            <Maximize2 className="h-5 w-5 md:h-6 md:w-6" />
           </button>
-          
-
         </div>
 
         {/* Impact Stats */}
-        <div className="grid grid-cols-3 gap-4">
-          <div className="text-center p-4 bg-white rounded-xl shadow-sm">
-            <Leaf className="w-8 h-8 text-green-600 mx-auto mb-2" />
-            <div className="text-2xl font-bold text-green-700">{project.impact.biodiversity}%</div>
-                            <div className="text-sm text-gray-600">{t('impact.biodiversity')}</div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
+          <div className="text-center p-3 md:p-4 lg:p-6 bg-white rounded-xl shadow-sm">
+            <Leaf className="w-6 h-6 md:w-8 md:h-8 text-green-600 mx-auto mb-2" />
+            <div className="text-xl md:text-2xl lg:text-3xl font-bold text-green-700">{project.impact.biodiversity}%</div>
+            <div className="text-xs md:text-sm text-gray-600 whitespace-nowrap">{t('impact.biodiversity')}</div>
           </div>
-          <div className="text-center p-4 bg-white rounded-xl shadow-sm">
-            <TrendingUp className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-            <div className="text-2xl font-bold text-blue-700">{project.impact.carbon}%</div>
-                            <div className="text-sm text-gray-600">{t('impact.carbon')}</div>
+          <div className="text-center p-3 md:p-4 lg:p-6 bg-white rounded-xl shadow-sm">
+            <TrendingUp className="w-6 h-6 md:w-8 md:h-8 text-blue-600 mx-auto mb-2" />
+            <div className="text-xl md:text-2xl lg:text-3xl font-bold text-blue-700">{project.impact.carbon}%</div>
+            <div className="text-xs md:text-sm text-gray-600 whitespace-nowrap">{t('impact.carbon')}</div>
           </div>
-          <div className="text-center p-4 bg-white rounded-xl shadow-sm">
-            <Users className="w-8 h-8 text-purple-600 mx-auto mb-2" />
-            <div className="text-2xl font-bold text-purple-700">{project.impact.community}%</div>
-                            <div className="text-sm text-gray-600">{t('impact.community')}</div>
+          <div className="text-center p-3 md:p-4 lg:p-6 bg-white rounded-xl shadow-sm">
+            <Users className="w-6 h-6 md:w-8 md:h-8 text-purple-600 mx-auto mb-2" />
+            <div className="text-xl md:text-2xl lg:text-3xl font-bold text-purple-700">{project.impact.community}%</div>
+            <div className="text-xs md:text-sm text-gray-600 whitespace-nowrap">{t('impact.community')}</div>
           </div>
         </div>
 
         {/* Enhanced Description with Motivation */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm">
-          <h3 className="text-lg font-semibold text-gray-900 mb-3">About This Protected Area</h3>
-          <p className="text-gray-600 leading-relaxed mb-4">
+        <div className="bg-white rounded-2xl p-4 md:p-6 lg:p-8 shadow-sm">
+          <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-900 mb-3">About This Protected Area</h3>
+          <p className="text-gray-600 leading-relaxed mb-4 text-sm md:text-base">
             This conservation project protects vital ecosystems and wildlife habitats. 
             Your contribution helps maintain biodiversity, sequester carbon, and support 
             local communities through sustainable practices.
           </p>
           
           {/* Additional Motivational Content */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-4 border border-blue-200">
-            <h4 className="font-semibold text-blue-900 mb-2">Why This Matters</h4>
-            <ul className="text-sm text-blue-800 space-y-1">
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-3 md:p-4 lg:p-6 border border-blue-200">
+            <h4 className="font-semibold text-blue-900 mb-2 text-base md:text-lg">Why This Matters</h4>
+            <ul className="text-xs md:text-sm text-blue-800 space-y-1">
               <li>• Protects endangered species and their habitats</li>
               <li>• Absorbs CO2 equivalent to {Math.floor(hectares * 0.8)} cars annually</li>
               <li>• Creates sustainable jobs for local communities</li>
@@ -1420,17 +1427,17 @@ export function ProtectedAreaPage({ project, onBack }: ProtectedAreaPageProps) {
           </div>
         </div>
 
-                                                                       {/* Action Buttons */}
-           <div className="space-y-3 pt-4 pb-48">
-             {/* Main Contribute Button */}
-             <button 
-               className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-2xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200 active:scale-[0.98]"
-               onClick={() => setCurrentPage('select-area')}
-             >
-               <Leaf className="w-5 h-5 inline mr-2" />
-               Contribute to Protection
-             </button>
-           </div>
+        {/* Action Buttons */}
+        <div className="space-y-3 pt-4 pb-48">
+          {/* Main Contribute Button */}
+          <button 
+            className="w-full py-3 md:py-4 lg:py-5 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-2xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200 active:scale-[0.98] text-sm md:text-base lg:text-lg"
+            onClick={() => setCurrentPage('select-area')}
+          >
+            <Leaf className="w-4 h-4 md:w-5 md:h-5 inline mr-2" />
+            Contribute to Protection
+          </button>
+        </div>
       </div>
     </div>
   );

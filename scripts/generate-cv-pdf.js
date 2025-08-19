@@ -13,6 +13,12 @@ async function prepareCvPage(page) {
   await new Promise(resolve => setTimeout(resolve, 2000));
   // Get the CV content element and optimize it for PDF generation
   await page.evaluate(() => {
+    // Hide the header when generating PDF
+    const header = document.querySelector('header');
+    if (header) {
+      header.style.display = 'none';
+    }
+    
     // Hide the action buttons container
     const actionButtons = document.querySelector('.text-center.mt-6.space-x-4');
     if (actionButtons) {

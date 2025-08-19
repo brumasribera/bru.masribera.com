@@ -129,25 +129,25 @@ export function ReservePage() {
 
 				{/* Prototype */}
 				<div id="interactive-prototype" className="mb-16">
-					{/* Open App Button - Only visible on screens smaller than 500px */}
-					<div className="block max-[500px]:block max-[500px]:mb-8 hidden">
+					{/* Mobile CTA - Visible on small screens */}
+					<div className="block max-[500px]:block max-[500px]:mb-8 md:hidden">
 						<div className="max-w-md mx-auto text-center">
-							<div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-3xl p-8 shadow-xl border border-gray-200 dark:border-gray-700">
-								<div className="w-20 h-20 bg-white p-2 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+							<div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-3xl p-6 md:p-8 shadow-xl border border-gray-200 dark:border-gray-700">
+								<div className="w-16 h-16 md:w-20 md:h-20 bg-white p-2 rounded-3xl flex items-center justify-center mx-auto mb-4 md:mb-6 shadow-xl">
 									<img src="/logos/reserve-logo.png" alt="Reserve" className="h-full w-full object-contain" />
 								</div>
-								<h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('page.prototype.ctaTitle')}</h3>
-								<p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+								<h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-3 md:mb-4">{t('page.prototype.ctaTitle')}</h3>
+								<p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-6 md:mb-8 leading-relaxed">
 									{t('page.prototype.ctaDesc')}
 								</p>
 								<button
 									onClick={openAppInNewTab}
-									className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white rounded-full font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl text-lg overflow-hidden w-full"
+									className="group relative inline-flex items-center justify-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white rounded-full font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl text-base md:text-lg overflow-hidden w-full"
 								>
 									{/* Shiny overlay effect */}
 									<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
 									
-									<ExternalLink className="h-5 w-5 group-hover:scale-110 transition-transform duration-200 relative z-10" />
+									<ExternalLink className="h-4 w-4 md:h-5 md:w-5 group-hover:scale-110 transition-transform duration-200 relative z-10" />
 									<span className="relative z-10">{t('common:openApp')}</span>
 								</button>
 							</div>
@@ -157,11 +157,9 @@ export function ReservePage() {
 					{/* Phone mockup - Only visible on screens 500px and wider */}
 					<div className="hidden min-[500px]:block">
 						<div className="flex items-center justify-center">
-							<div className="relative w-[380px] h-[700px] rounded-[3rem] border-8 border-gray-900 dark:border-gray-200 shadow-[0_25px_80px_rgba(0,0,0,0.35)] bg-gray-900 dark:bg-gray-800">
-								{/* Notch */}
-								<div className="mx-auto mt-2 h-6 w-40 rounded-b-2xl bg-gray-900 dark:bg-gray-200" />
+							<div className="relative w-[380px] h-[700px] rounded-3xl shadow-[0_25px_80px_rgba(0,0,0,0.35)] bg-white dark:bg-gray-900">
 								{/* Screen */}
-								<div className="relative m-2 mt-3 h-[638px] rounded-[2rem] overflow-hidden bg-white dark:bg-gray-900 shadow-inner">
+								<div className="relative h-full rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-700">
 									<ReserveMobileApp />
 								</div>
 							</div>

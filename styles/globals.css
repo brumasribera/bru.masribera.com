@@ -18,6 +18,11 @@
 
 /* CV PDF Page Break Control */
 @media print {
+  /* Hide header when printing CV */
+  header {
+    display: none !important;
+  }
+  
   #a4-sheet {
     page-break-after: avoid !important;
     page-break-inside: avoid !important;

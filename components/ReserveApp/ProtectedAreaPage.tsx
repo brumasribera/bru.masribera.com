@@ -215,12 +215,12 @@ export function ProtectedAreaPage({ project, onBack, onShowContributions }: Prot
   useEffect(() => {
     if (!mapRef.current || mapInstanceRef.current) return;
 
-    console.log('Initializing map for project:', t(`projects.${project.id}`), 'at coordinates:', project.lat, project.lon);
+    // Initializing map for project
 
     // Small delay to ensure DOM is ready
     const timer = setTimeout(() => {
       if (!mapRef.current) {
-        console.log('Map ref not available after delay');
+        // Map ref not available after delay
         return;
       }
 
@@ -239,7 +239,7 @@ export function ProtectedAreaPage({ project, onBack, onShowContributions }: Prot
           keyboard: false
         });
 
-        console.log('Map initialized successfully');
+        // Map initialized successfully
 
         // Add satellite tile layer using a more reliable provider
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -249,7 +249,7 @@ export function ProtectedAreaPage({ project, onBack, onShowContributions }: Prot
 
         // Generate and add the project polygon
         const polygonCoords = generateProjectPolygon(project.id, project.lat, project.lon);
-        console.log('Generated polygon coordinates:', polygonCoords);
+        // Generated polygon coordinates
         
         // Create beautiful rainbow gradient polygon
         const polygon = L.polygon(polygonCoords, {
@@ -310,7 +310,7 @@ export function ProtectedAreaPage({ project, onBack, onShowContributions }: Prot
 
                  mapInstanceRef.current = map;
 
-        console.log('Map setup completed successfully');
+        // Map setup completed successfully
       } catch (error) {
         console.error('Error initializing map:', error);
       }
@@ -1285,7 +1285,7 @@ export function ProtectedAreaPage({ project, onBack, onShowContributions }: Prot
         {/* Back Button */}
         <button
           onClick={() => {
-            console.log('Back button clicked, calling onBack');
+            // Back button clicked, calling onBack
             onBack();
           }}
           className="absolute top-4 left-4 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[9999]"
@@ -1296,7 +1296,7 @@ export function ProtectedAreaPage({ project, onBack, onShowContributions }: Prot
         {/* Home Button - positioned top right */}
         <button
           onClick={() => {
-            console.log('Home button clicked, going to My Contributions');
+            // Home button clicked, going to My Contributions
             onShowContributions();
           }}
           className="absolute top-4 right-4 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[9999]"

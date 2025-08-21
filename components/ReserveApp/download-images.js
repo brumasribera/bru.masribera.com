@@ -63,154 +63,124 @@ function validateImage(filepath) {
 }
 
 // Optimized download function with better error handling and progress tracking
-function downloadImage(url, filename) {
-  return new Promise((resolve, reject) => {
-    const filepath = path.join(imagesDir, filename);
-    
+async function downloadImage(url, filename) {
+  try {
     // Check if file already exists and is valid
-    if (fs.existsSync(filepath) && validateImage(filepath)) {
-      console.log(`✅ ${filename} already exists and is valid, skipping...`);
-      resolve();
-      return;
-    }
-
-    const file = fs.createWriteStream(filepath);
-    
-    // Add timeout to prevent hanging requests
-    const timeout = setTimeout(() => {
-      file.destroy();
-      fs.unlink(filepath, () => {});
-      reject(new Error('Download timeout'));
-    }, 30000); // 30 second timeout
-    
-    const request = https.get(url, (response) => {
-      clearTimeout(timeout);
-      
-      if (response.statusCode === 200) {
-        response.pipe(file);
-        
-        file.on('finish', () => {
-          file.close();
-          // Validate the downloaded image
-          if (validateImage(filepath)) {
-            console.log(`✅ Downloaded: ${filename}`);
-            resolve();
-          } else {
-            fs.unlink(filepath, () => {});
-            reject(new Error('Downloaded file is invalid or too small'));
-          }
-        });
-        
-        file.on('error', (err) => {
-          fs.unlink(filepath, () => {});
-          console.log(`❌ File write error for ${filename}: ${err.message}`);
-          reject(err);
-        });
-      } else {
-        clearTimeout(timeout);
-        file.destroy();
-        fs.unlink(filepath, () => {});
-        console.log(`❌ Failed to download ${filename}: HTTP ${response.statusCode}`);
-        reject(new Error(`HTTP ${response.statusCode}`));
+    if (fs.existsSync(filename)) {
+      try {
+        const stats = fs.statSync(filename)
+        if (stats.size > 1000) {
+          // File already exists and is valid, skipping...
+          return { success: true, skipped: true }
+        }
+      } catch (err) {
+        // File exists but can't be read, will re-download
       }
-    });
+    }
     
-    request.on('error', (err) => {
-      clearTimeout(timeout);
-      file.destroy();
-      fs.unlink(filepath, () => {});
-      console.log(`❌ Network error downloading ${filename}: ${err.message}`);
-      reject(err);
-    });
+    // Download the image
+    const response = await fetch(url)
     
-    request.setTimeout(30000, () => {
-      clearTimeout(timeout);
-      request.destroy();
-      file.destroy();
-      fs.unlink(filepath, () => {});
-      reject(new Error('Request timeout'));
-    });
-  });
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`)
+    }
+    
+    const buffer = await response.arrayBuffer()
+    await fs.writeFile(filename, Buffer.from(buffer))
+    
+    // Downloaded: filename
+    return { success: true, downloaded: true }
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      // File write error for filename: err.message
+      return { success: false, error: err.message }
+    }
+    
+    if (err.message.includes('HTTP')) {
+      // Failed to download filename: HTTP status
+      return { success: false, error: err.message }
+    }
+    
+    // Network error downloading filename: err.message
+    return { success: false, error: err.message }
+  }
 }
 
 // Download images in batches for better performance
 async function downloadAllImages() {
-  console.log('🚀 Starting download of all project images...\n');
-  console.log(`📁 Images will be saved to: ${imagesDir}\n`);
+  // Starting download of all project images...
+  // Images will be saved to: imagesDir
   
-  const batchSize = 5; // Download 5 images concurrently
-  const totalImages = projectImages.length;
-  let completed = 0;
-  let failed = 0;
-  let skipped = 0;
+  let completed = 0
+  let failed = 0
+  let skipped = 0
   
-  // Process images in batches
-  for (let i = 0; i < totalImages; i += batchSize) {
-    const batch = projectImages.slice(i, i + batchSize);
-    const promises = batch.map(project => {
-      const filename = `${project.id}.jpg`;
-      return downloadImage(project.url, filename)
-        .then(() => {
-          completed++;
-          console.log(`📊 Progress: ${completed}/${totalImages} (${Math.round(completed/totalImages*100)}%)`);
-        })
-        .catch((error) => {
-          if (error.message.includes('already exists')) {
-            skipped++;
-          } else {
-            failed++;
-            console.log(`❌ ${filename}: ${error.message}`);
-          }
-          console.log(`📊 Progress: ${completed}/${totalImages} (${Math.round(completed/totalImages*100)}%) - ${failed} failed, ${skipped} skipped`);
-        });
-    });
+  for (const imageUrl of imageUrls) {
+    const filename = path.join(imagesDir, path.basename(imageUrl))
+    const result = await downloadImage(imageUrl, filename)
     
-    // Wait for current batch to complete before starting next batch
-    await Promise.allSettled(promises);
+    if (result.success) {
+      if (result.skipped) {
+        skipped++
+      } else {
+        completed++
+      }
+    } else {
+      failed++
+      // filename: result.error.message
+    }
     
-    // Small delay between batches to be respectful to the server
-    if (i + batchSize < totalImages) {
-      console.log('⏳ Waiting 1 second before next batch...\n');
-      await new Promise(resolve => setTimeout(resolve, 1000));
+    // Progress: completed/totalImages (percentage%)
+    if (failed > 0 || skipped > 0) {
+      // Progress: completed/totalImages (percentage%) - failed failed, skipped skipped
+    }
+    
+    // Add delay between downloads to be respectful
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    // Waiting 1 second before next batch...
+  }
+  
+  // Download completed!
+  // Successfully downloaded: completed images
+  // Skipped (already existed): skipped images
+  // Failed downloads: failed images
+  
+  // Validate all downloaded images
+  const files = fs.readdirSync(imagesDir)
+  // Total files in reserve/project-images directory: files.length
+  
+  // Image validation results
+  let validImages = 0
+  let invalidImages = 0
+  
+  for (const file of files) {
+    try {
+      const filePath = path.join(imagesDir, file)
+      const stats = fs.statSync(filePath)
+      
+      if (stats.size > 1000) {
+        // Valid
+        validImages++
+      } else {
+        // Invalid/Corrupted
+        invalidImages++
+      }
+    } catch (err) {
+      // Invalid/Corrupted
+      invalidImages++
     }
   }
   
-  console.log('\n🎉 Download completed!');
-  console.log(`✅ Successfully downloaded: ${completed} images`);
-  console.log(`⏭️  Skipped (already existed): ${skipped} images`);
-  if (failed > 0) {
-    console.log(`❌ Failed downloads: ${failed} images`);
-  }
-  
-  // List and validate all files
-  try {
-    const files = fs.readdirSync(imagesDir);
-    console.log(`\n📁 Total files in reserve/project-images directory: ${files.length}`);
-    
-    if (files.length > 0) {
-      console.log('📋 Image validation results:');
-      let validImages = 0;
-      let invalidImages = 0;
-      
-      files.forEach(file => {
-        const filepath = path.join(imagesDir, file);
-        if (validateImage(filepath)) {
-          console.log(`   ✅ ${file} - Valid`);
-          validImages++;
-        } else {
-          console.log(`   ❌ ${file} - Invalid/Corrupted`);
-          invalidImages++;
-        }
-      });
-      
-      console.log(`\n📊 Final Summary:`);
-      console.log(`   ✅ Valid images: ${validImages}`);
-      console.log(`   ❌ Invalid images: ${invalidImages}`);
-      console.log(`   📁 Total files: ${files.length}`);
-    }
-  } catch (error) {
-    console.log('❌ Could not read reserve/project-images directory');
-  }
+  // Final Summary:
+  // Valid images: validImages
+  // Invalid images: invalidImages
+  // Total files: files.length
+}
+
+// Handle directory read error
+if (!fs.existsSync(imagesDir)) {
+  // Could not read reserve/project-images directory
+  process.exit(1)
 }
 
 // Run the download

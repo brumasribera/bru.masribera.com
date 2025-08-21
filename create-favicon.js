@@ -24,15 +24,10 @@ async function createFavicon() {
       .png()
       .toFile('public/favicon.png');
 
-    console.log('✅ Favicon created successfully!');
-    console.log('📁 Location: public/favicon.png');
-    
     // Also create favicon.ico
     await sharp(Buffer.from(svg))
       .png()
       .toFile('public/favicon.ico');
-
-    console.log('📁 Location: public/favicon.ico');
     
   } catch (error) {
     console.error('❌ Error creating favicon:', error);

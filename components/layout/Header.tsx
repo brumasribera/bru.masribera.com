@@ -24,13 +24,10 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
 
   // Debug: Log i18n status and test translations
   useEffect(() => {
-    console.log('Header i18n status:', {
-      isInitialized: i18n.isInitialized,
-      language: i18n.language,
-      ready: i18n.isInitialized,
-      testTranslation: t('navigation.home')
-    })
-  }, [i18n, t])
+    if (i18n.isInitialized) {
+      // Translation is ready
+    }
+  }, [i18n.isInitialized, t])
 
   // Close projects menu when clicking outside
   useEffect(() => {
@@ -109,48 +106,16 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
 
   // Debug: Log project pages to see if translations are working
   useEffect(() => {
-    console.log('Project pages translations:', projectPages.map(page => ({
-      path: page.path,
-      label: page.label,
-      description: page.description
-    })))
+    if (i18n.isInitialized) {
+      // Project pages translations are ready
+    }
   }, [projectPages])
 
   // Debug: Log translation keys to check for missing translations
   useEffect(() => {
-    const missingKeys: string[] = []
-    const keysToCheck = [
-      'reserve.title', 'reserve.description',
-      'openHuts.title', 'openHuts.description',
-      'clathes.title', 'clathes.description',
-      'moodleNet.title', 'moodleNet.description',
-      'pomoca.title', 'pomoca.description',
-      'wegaw.title', 'wegaw.description',
-      'pix4D.title', 'pix4D.description'
-    ]
-    
-    keysToCheck.forEach(key => {
-      const translation = t(key)
-      if (translation === key) {
-        missingKeys.push(key)
-      }
-    })
-    
-    if (missingKeys.length > 0) {
-      console.warn('Missing translation keys:', missingKeys)
+    if (i18n.isInitialized) {
+      // i18n state is ready
     }
-    
-    // Also log current language and i18n state
-    console.log('i18n state:', {
-      language: i18n.language,
-      isInitialized: i18n.isInitialized,
-      namespaces: i18n.reportNamespaces?.getUsedNamespaces?.() || 'N/A'
-    })
-    
-    // Test a simple translation
-    console.log('Test translation "navigation.home":', t('navigation.home'))
-    console.log('Test translation "reserve.title":', t('reserve.title'))
-    
   }, [t, i18n.language])
 
   // Simple navigation function - no scroll effects for cross-page navigation

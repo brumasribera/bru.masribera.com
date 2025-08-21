@@ -14,15 +14,10 @@ export function HeroSection() {
 
   // Debug: Log translation status
   useEffect(() => {
-    console.log('HeroSection i18n status:', {
-      isInitialized: i18n.isInitialized,
-      language: i18n.language,
-      ready: i18n.isInitialized,
-      testTranslation: t('hero.location'),
-      testTranslation2: t('hero.subtitle'),
-      testTranslation3: t('hero.yearsExperience')
-    })
-  }, [i18n, t])
+    if (i18n.isInitialized) {
+      // Translation is ready
+    }
+  }, [i18n.isInitialized])
 
   useEffect(() => {
     const handleScroll = () => {

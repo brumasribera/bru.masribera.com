@@ -264,34 +264,20 @@ const initI18n = async () => {
       }
     }
 
-    await i18nInstance.init({
-        resources,
-        fallbackLng: 'en',
-        lng: initialLang,
-        debug: false, // Disable debug to reduce console noise
-        ns: ['common', 'home', 'openhuts', 'reserve', 'moodlenet', 'pix4d', 'pomoca', 'clathes', 'wegaw', 'cv', 'translation'],
-        defaultNS: 'translation',
-        interpolation: {
-          escapeValue: false,
-        },
-        detection: {
-          order: ['path'],
-          caches: [],
-          lookupFromPathIndex: 0,
-        },
-        returnObjects: true,
-        react: {
-          useSuspense: false,
-        },
-        backend: enabledLocize
-          ? {
-              projectId: (import.meta as any).env?.VITE_LOCIZE_PROJECT_ID,
-              apiKey: (import.meta as any).env?.VITE_LOCIZE_API_KEY,
-              version: (import.meta as any).env?.VITE_LOCIZE_VERSION || 'latest',
-              referenceLng: 'en',
-            }
-          : undefined,
-      });
+    // Initialize i18n
+    i18n.init({
+      resources,
+      lng: initialLang,
+      fallbackLng: 'en',
+      debug: false,
+      interpolation: {
+        escapeValue: false
+      }
+    }).then(() => {
+      // i18n initialized successfully
+    }).catch((error) => {
+      console.error('Failed to initialize i18n:', error)
+    })
     
     // Re-apply any locally saved edits to persist across reloads
     try {
@@ -313,9 +299,6 @@ const initI18n = async () => {
     } catch (e) {
       console.warn('Failed to re-apply local translation edits', e)
     }
-
-    console.log('i18n initialized successfully with language:', initialLang);
-    console.log('Available namespaces:', Object.keys(resources[initialLang as keyof typeof resources] || {}));
 
   } catch (error) {
     console.error('Failed to initialize i18n:', error);

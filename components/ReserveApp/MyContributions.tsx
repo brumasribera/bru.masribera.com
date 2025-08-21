@@ -20,7 +20,6 @@ export function MyContributions({ onBack, onOpenContribution, onGoToGlobe }: MyC
 
   useEffect(() => {
     const loadedContributions = loadContributions();
-    console.log('Loaded contributions:', loadedContributions);
     setContributions(loadedContributions);
   }, []);
 
@@ -38,7 +37,6 @@ export function MyContributions({ onBack, onOpenContribution, onGoToGlobe }: MyC
     const m2 = contributions.reduce((a, c) => a + (c.m2 || 0), 0);
     const amount = contributions.reduce((a, c) => a + (c.amount || 0), 0);
     const projects = new Set(contributions.map((c) => c.projectId)).size;
-    console.log('Calculated totals:', { m2, amount, projects, contributionsCount: contributions.length });
     return { m2, amount, projects };
   }, [contributions]);
 
@@ -116,9 +114,7 @@ export function MyContributions({ onBack, onOpenContribution, onGoToGlobe }: MyC
       map.removeLayer(l);
     });
 
-    console.log('Adding markers for contributions:', contributions.length);
     contributions.forEach((c) => {
-      console.log('Creating marker for:', c.projectName, 'at', c.lat, c.lon);
       const size = Math.max(6, Math.min(18, Math.sqrt(c.m2)));
       const marker = L.circleMarker([c.lat, c.lon], {
         radius: size,

@@ -148,7 +148,13 @@ export function ProjectsSection() {
                   <div className="mt-auto flex justify-center">
                     {project.titleKey === 'projects.projects.clathes.title' ? (
                       <button
-                        onClick={() => navigate(getLocalizedPath('/clathes'))}
+                        onClick={() => {
+                          navigate(getLocalizedPath('/clathes'))
+                          // Scroll to top after navigation completes
+                          setTimeout(() => {
+                            window.scrollTo(0, 0)
+                          }, 150)
+                        }}
                         className="group relative flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105 shadow-lg hover:shadow-xl overflow-hidden"
                       >
                         {/* Shiny overlay effect */}
@@ -159,7 +165,13 @@ export function ProjectsSection() {
                       </button>
                     ) : project.titleKey === 'projects.projects.openHuts.title' ? (
                       <button
-                        onClick={() => navigate(getLocalizedPath('/openhuts'))}
+                        onClick={() => {
+                          navigate(getLocalizedPath('/openhuts'))
+                          // Scroll to top after navigation completes
+                          setTimeout(() => {
+                            window.scrollTo(0, 0)
+                          }, 150)
+                        }}
                         className="group relative flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105 shadow-lg hover:shadow-xl overflow-hidden"
                       >
                         {/* Shiny overlay effect */}
@@ -170,7 +182,13 @@ export function ProjectsSection() {
                       </button>
                     ) : project.titleKey === 'projects.projects.moodleNet.title' ? (
                       <button
-                        onClick={() => navigate(getLocalizedPath('/moodlenet'))}
+                        onClick={() => {
+                          navigate(getLocalizedPath('/moodlenet'))
+                          // Scroll to top after navigation completes
+                          setTimeout(() => {
+                            window.scrollTo(0, 0)
+                          }, 150)
+                        }}
                         className="group relative flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105 shadow-lg hover:shadow-xl overflow-hidden"
                       >
                         {/* Shiny overlay effect */}
@@ -181,7 +199,13 @@ export function ProjectsSection() {
                       </button>
                     ) : project.titleKey === 'projects.projects.reserve.title' ? (
                       <button
-                        onClick={() => navigate(getLocalizedPath('/reserve'))}
+                        onClick={() => {
+                          navigate(getLocalizedPath('/reserve'))
+                          // Scroll to top after navigation completes
+                          setTimeout(() => {
+                            window.scrollTo(0, 0)
+                          }, 150)
+                        }}
                         className="group relative flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105 shadow-lg hover:shadow-xl overflow-hidden"
                       >
                         {/* Shiny overlay effect */}
@@ -192,7 +216,13 @@ export function ProjectsSection() {
                       </button>
                     ) : project.titleKey === 'projects.projects.defrost.title' ? (
                       <button
-                        onClick={() => navigate(getLocalizedPath('/wegaw'))}
+                        onClick={() => {
+                          navigate(getLocalizedPath('/wegaw'))
+                          // Scroll to top after navigation completes
+                          setTimeout(() => {
+                            window.scrollTo(0, 0)
+                          }, 150)
+                        }}
                         className="group relative flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105 shadow-lg hover:shadow-xl overflow-hidden"
                       >
                         {/* Shiny overlay effect */}
@@ -203,7 +233,13 @@ export function ProjectsSection() {
                       </button>
                     ) : project.titleKey === 'projects.projects.pomoca.title' ? (
                       <button
-                        onClick={() => navigate(getLocalizedPath('/pomoca'))}
+                        onClick={() => {
+                          navigate(getLocalizedPath('/pomoca'))
+                          // Scroll to top after navigation completes
+                          setTimeout(() => {
+                            window.scrollTo(0, 0)
+                          }, 150)
+                        }}
                         className="group relative flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105 shadow-lg hover:shadow-xl overflow-hidden"
                       >
                         {/* Shiny overlay effect */}

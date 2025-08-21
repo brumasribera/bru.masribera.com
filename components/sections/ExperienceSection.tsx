@@ -169,8 +169,10 @@ export function ExperienceSection() {
                         <button
                           onClick={() => {
                             navigate('/openhuts')
-                            // Scroll to top instantly when navigating to project page
-                            window.scrollTo(0, 0)
+                            // Scroll to top after navigation completes
+                            setTimeout(() => {
+                              window.scrollTo(0, 0)
+                            }, 150)
                           }}
                           className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
                         >
@@ -181,8 +183,10 @@ export function ExperienceSection() {
                         <button
                           onClick={() => {
                             navigate('/moodlenet')
-                            // Scroll to top instantly when navigating to project page
-                            window.scrollTo(0, 0)
+                            // Scroll to top after navigation completes
+                            setTimeout(() => {
+                              window.scrollTo(0, 0)
+                            }, 150)
                           }}
                           className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
                         >
@@ -193,7 +197,10 @@ export function ExperienceSection() {
                         <button
                           onClick={() => {
                             navigate('/wegaw')
-                            window.scrollTo(0, 0)
+                            // Scroll to top after navigation completes
+                            setTimeout(() => {
+                              window.scrollTo(0, 0)
+                            }, 150)
                           }}
                           className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
                         >
@@ -204,7 +211,10 @@ export function ExperienceSection() {
                         <button
                           onClick={() => {
                             navigate('/pix4d')
-                            window.scrollTo(0, 0)
+                            // Scroll to top after navigation completes
+                            setTimeout(() => {
+                              window.scrollTo(0, 0)
+                            }, 150)
                           }}
                           className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
                         >
@@ -215,7 +225,10 @@ export function ExperienceSection() {
                         <button
                           onClick={() => {
                             navigate('/pomoca')
-                            window.scrollTo(0, 0)
+                            // Scroll to top after navigation completes
+                            setTimeout(() => {
+                              window.scrollTo(0, 0)
+                            }, 150)
                           }}
                           className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 font-medium hover:scale-105"
                         >

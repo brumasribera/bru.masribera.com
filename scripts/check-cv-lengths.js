@@ -59,13 +59,18 @@ let hasProblems = false;
 for (const res of results) {
 	if (res.missing || res.issues.length) {
 		hasProblems = true;
-		console.log(`\n[${res.language}]`);
-		for (const issue of res.issues) console.log(' - ' + issue);
+		// Display results for each language
+		results.forEach(res => {
+			// Language
+			res.issues.forEach(issue => {
+				// Issue description
+			})
+		})
 	}
 }
 
 if (!hasProblems) {
-	console.log('All CV translations look within acceptable length ranges.');
+	// All CV translations look within acceptable length ranges.
 }
 
 process.exit(hasProblems ? 1 : 0);

@@ -186,7 +186,6 @@ export function Globe3D({ onPick, onShowContributions }: Globe3DProps) {
     const handleClick = (e: Event) => {
       e.preventDefault();
       e.stopPropagation();
-      console.log('Marker clicked:', d.project.name);
       navigateToProtectedArea(d.project);
     };
 
@@ -195,20 +194,17 @@ export function Globe3D({ onPick, onShowContributions }: Globe3DProps) {
     
     // Add touch events for mobile
     el.addEventListener('touchstart', (e) => {
-      console.log('Touch start on marker:', d.project.name);
       e.preventDefault();
       el.style.transform = 'translate(-50%, -50%) scale(1.05)';
     });
     
     el.addEventListener('touchend', (e) => {
-      console.log('Touch end on marker:', d.project.name);
       e.preventDefault();
       el.style.transform = 'translate(-50%, -50%) scale(1)';
       // Small delay to ensure touch is complete before triggering action
       setTimeout(() => handleClick(e), 100);
     });
 
-    console.log('Marker created for:', d.project.name, 'with events attached');
     return el;
   };
 
@@ -381,7 +377,6 @@ export function Globe3D({ onPick, onShowContributions }: Globe3DProps) {
       {/* Home Button - positioned top right with responsive sizing */}
       <button
         onClick={() => {
-          console.log('Home button clicked, going to My Contributions');
           onShowContributions();
         }}
         className="absolute top-4 right-4 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[9999]"

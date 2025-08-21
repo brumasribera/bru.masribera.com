@@ -1,6 +1,6 @@
 {
   "navigation": {
-    "home": "Pagina da partenza",
+    "home": "Casa",
     "back": "Enavos",
     "globe": "Glob"
   },
@@ -10,45 +10,45 @@
     "totalProtected": "Total protegì",
     "contributed": "Contribuì",
     "projects": "Projets",
-    "satelliteView": "Vista satellit",
-    "yourAreas": "Vossas zonas",
-    "clearAndReload": "Stizzar e chargiar danov",
-    "startProtecting": "Cumenzar a proteger ina zona per far crescher vossas reservas."
+    "satelliteView": "Vista satellitara",
+    "yourAreas": "Tias zonas",
+    "clearAndReload": "Stizzar e chargiar",
+    "startProtecting": "Cumenzar a proteger ina zona per far crescher tias reservas."
   },
   "projects": {
-    "mx-mangroves": "Mangroves da Yucatán",
-    "br-amazon": "Guaiva dal Tapajós",
-    "id-seagrass": "Prat da mar da Bali",
-    "ke-savanna": "Savanna da Laikipia",
-    "us-cal-giants": "Guaivas da sequoia",
+    "mx-mangroves": "Mangroves dal Yucatán",
+    "br-amazon": "Guaiva amazzonica dal Tapajós",
+    "id-seagrass": "Pratarins marins da Bali",
+    "ke-savanna": "Savanas da Laikipia",
+    "us-cal-giants": "Guaivas da sequoias",
     "ca-boreal": "Scut boreal",
     "ar-wetlands": "Zonas umidas da l'Iberá",
-    "pe-cloud": "Guaiva da nebla andina",
+    "pe-cloud": "Guaiva da nibel andina",
     "ng-mangrove": "Mangroves dal delta dal Niger",
-    "ma-atlas": "Atlas aut",
+    "ma-atlas": "Aut Atlas",
     "es-donana": "Palids da Doñana",
     "ro-delta": "Delta dal Danubi",
     "ua-steppe": "Steppa pontica",
     "ru-taiga": "Taiga siberiana",
     "in-sundarbans": "Sundarbans",
     "np-terai": "Arch dal Terai",
-    "th-coral": "Corall d'Andaman",
+    "th-coral": "Corals d'Andaman",
     "au-reef": "Gronda barriera",
-    "pg-png": "Guaiva da Papua Nova Guinea",
+    "pg-png": "Guaiva tropicala da Papua Nova Guinea",
     "za-fynbos": "Fynbos dal Cap",
     "mg-madagascar": "Guaivas da Madagascar",
-    "ma-seagrass": "Prat da mar mediterran",
-    "no-bogs": "Torfas nordicas",
-    "uk-heath": "Heath da Dorset",
+    "ma-seagrass": "Pratarins marins mediterrans",
+    "no-bogs": "Torfieras nordicas",
+    "uk-heath": "Heaths da Dorset",
     "tr-anatolia": "Steppa anatolica",
-    "ir-wetland": "Zonas umidas da Mesopotamia",
+    "ir-wetland": "Zonas umidas mesopotamicas",
     "cn-giantpanda": "Panda da Sichuan",
     "jp-sea": "Mar intern da Seto",
     "nz-kelp": "Guaivas d'algas",
     "is-highlands": "Terra auta da l'Islanda",
-    "maurit-corals": "Coralls da las Mascarenas",
+    "maurit-corals": "Corals da las Mascarenhas",
     "eg-nile": "Delta dal Nil",
-    "sa-mangrove": "Mangroves da l'Arabia"
+    "sa-mangrove": "Mangroves arabas"
   },
   "countries": {
     "Mexico": "Mexico",
@@ -99,19 +99,19 @@
     "protected": "Protegì",
     "totalPaid": "Total pajà",
     "method": "Metoda",
-    "yourImpact": "Voss effect",
-    "contributionProtects": "Vossa contribuziun da €{amount} protegia approximativamain",
-    "yourSelectionSummary": "Resumè da vossa selecziun",
-    "selectedCount": "Tschernì",
+    "yourImpact": "Tes effect",
+    "contributionProtects": "Tia contribuziun da €{amount} protegia approximativamain",
+    "yourSelectionSummary": "Resum da tia selecziun",
+    "selectedCount": "Selezionà",
     "selectedArea": "Zona",
     "totalCost": "Total"
   },
   "learnMore": {
-    "learnMore": "Pli da savair",
-    "share": "Partir",
+    "learnMore": "Saver dapli",
+    "share": "Cundivider",
     "contribute": "Contribuir",
-    "selectArea": "Tscherner zona",
-    "checkout": "Cumprar",
+    "selectArea": "Selezionar zona",
+    "checkout": "Pajament",
     "success": "Success"
   },
   "impact": {
@@ -125,43 +125,43 @@
     "dollar": "$"
   },
   "projectPage": {
-    "projectProgress": "Progress dal project",
+    "projectProgress": "Progress dal projet",
     "raised": "Radunà",
-    "goal": "Tschertga",
-    "protected": "Protegi",
+    "goal": "Tegn",
+    "protected": "Protegì",
     "total": "Total",
     "aboutThisProtectedArea": "Davart questa zona protegida",
-    "conservationDescription": "Quest project da conservaziun protegia ecosistems vitals ed habitats da la fauna selvadia. Tia contribuziun gida a mantegnair la biodiversitad, sequestrar carboni e sustegnair las communitads localas tras praticas durabilas.",
-    "whyThisMatters": "Pertge ch'è impurtant",
-    "protectsEndangeredSpecies": "• Protegia spezias en privel ed ils lur habitats",
-    "absorbsCO2": "• Absorba CO2 equivalent a {cars} autos annualmain",
-    "createsSustainableJobs": "• Crea lavurs durabils per las communitads localas",
-    "preservesNaturalSources": "• Preserva funtaunas d'aua naturalas e qualitad dal terren",
+    "conservationDescription": "Quest projet da conservaziun protegia ecosistems vitals e habitats da la fauna selvadia. Tia contribuziun gida a mantegnair la biodiversitad, sequestrar carboni e sustegnair las cumunitads localas tras praticas sustentablas.",
+    "whyThisMatters": "Pertge che quai è important",
+    "protectsEndangeredSpecies": "Protegia spezias en privel d'extincziun e lur habitats",
+    "absorbsCO2": "Absorba CO2 equivalent a {cars} autos annualmain",
+    "createsSustainableJobs": "Crea post da lavur sustentabels per las cumunitads localas",
+    "preservesNaturalSources": "Preserva funtaunas natiralas d'aua e qualitad dal terren",
     "contributeToProtection": "Contribuir a la protecziun",
-    "backToProjects": "Turnar als projects",
+    "backToProjects": "Turnar als projets",
     "areaLabel": "ha",
     "satelliteView": "Vista satellitara"
   },
   "learnMorePage": {
     "title": "Saver dapli",
     "about": "Davart {projectName}",
-    "projectDetails": "Detagls dal project",
-    "projectDescription1": "Questa zona protegida cumpiglia {hectares} hectaras d'ecosistem critic, furnind habitat per numerusas spezias e contribuind als sforzs globals da conservaziun da la biodiversitad.",
-    "projectDescription2": "Il project sa concentra sin praticas durabilas da gestiun da terras che equilibran ils objectivs da conservaziun cun ils basegns da la communitad, garantind beneficis ambientals e socials a lung termin.",
-    "conservationImpact": "Impact da la conservaziun",
+    "projectDetails": "Detagls dal projet",
+    "projectDescription1": "Questa zona protegida s'estenda sin {hectares} hectaras d'ecosistem critic, furnind habitat per numerusas spezias e contribuind als sforzs globals da conservaziun da la biodiversitad.",
+    "projectDescription2": "Il projet sa concentra sin praticas da gestiun sustentabla dal terren che equilibran ils objectivs da conservaziun cun ils basegns da la cumunitad, garantind beneficis ambientals e socials a lung termin.",
+    "conservationImpact": "Effect da la conservaziun",
     "biodiversityProtection": "Protecziun da la biodiversitad",
     "protectingSpecies": "Protegind {percentage}% da las spezias localas",
     "carbonSequestration": "Sequestraziun dal carboni",
     "absorbingCO2": "Absorbind {percentage}% dapli CO2 annualmain",
-    "communitySupport": "Sustegn da la communitad",
+    "communitySupport": "Sustegn a la cumunitad",
     "supportingLivelihoods": "Sustegnind {percentage}% dals mezs da subsistenza locals",
-    "scientificResearch": "Ricercha scientifica",
-    "researchDescription": "Questa zona serva sco laboratori viv per investigaturs che studegian l'adaptaziun al midad climatic, restauraziun d'ecosistems e praticas da svilup durabil.",
-    "researchAreas": "Areas da ricercha",
-    "climateChangeAssessment": "• Valitaziun da l'impact dal midad climatic",
+    "scientificResearch": "Recerca scientifica",
+    "researchDescription": "Questa zona serva sco laboratori vivent per researchers che studegian l'adaptaziun al midadas climaticas, la restauraziun d'ecosistems e las praticas da svilup sustentabel.",
+    "researchAreas": "Zonas da recerca",
+    "climateChangeAssessment": "• Valitaziun da l'effect da las midadas climaticas",
     "biodiversityMonitoring": "• Monitoring e conservaziun da la biodiversitad",
-    "sustainableLandUse": "• Praticas d'utilisaziun durabila da la terra",
-    "communityEngagement": "• Strategias da participaziun da la communitad"
+    "sustainableLandUse": "• Praticas sustentablas d'utilisaziun dal terren",
+    "communityEngagement": "• Strategias d'engaschament da la cumunitad"
   },
   "contributePage": {
     "title": "Contribuir",
@@ -171,75 +171,75 @@
     "creditDebitCard": "Carta da credit/debit",
     "bankTransfer": "Transfert bancari",
     "mobilePayment": "Pajament mobil",
-    "yourImpact": "Tes impact",
+    "yourImpact": "Tes effect",
     "contributionProtects": "Tia contribuziun da €{amount} protegia approximativamain",
     "ofThisProtectedArea": "da questa zona protegida",
     "cost": "Cust: €{price}/m²",
     "completeContribution": "Cumpletar la contribuziun"
   },
   "selectAreaPage": {
-    "title": "Tscherner zona da protecziun",
-    "subtitle": "Tscherna quals meters quadrats proteger",
-    "selectYourProtectionZone": "Tscherna tia zona da protecziun",
-    "selectionDescription": "Tatga sin la carta per tscherner zonas specificas che ti vuls proteger. Mintga selecziun represchenta in investiment da conservaziun.",
+    "title": "Selezionar zona da protecziun",
+    "subtitle": "Tscherner quals meters quadrats proteger",
+    "selectYourProtectionZone": "Selezionar tia zona da protecziun",
+    "selectionDescription": "Tutcar la carta per selezionar zonas specificas che ti vuls proteger. Mintga selecziun represchenta in investiment en conservaziun.",
     "available": "Disponibel",
-    "selected": "Tschernì",
+    "selected": "Selezionà",
     "gridCells": "Cellas da la griglia",
     "squareMeters": "Meters quadrats",
     "totalCost": "Cust total",
     "quickSelection": "Selecziun svelta",
-    "random25": "🎲 Casual 25%",
+    "random25": "🎲 25% casual",
     "centerArea": "🎯 Zona centrala",
-    "clearAll": "🗑️ Stgargiar tut",
-    "continueToCheckout": "Cuntinuar al checkout",
-    "backToProject": "← Turnar al project"
+    "clearAll": "🗑️ Stizzar tut",
+    "continueToCheckout": "Cuntinuar al pajament",
+    "backToProject": "← Turnar al projet"
   },
   "checkoutPage": {
-    "title": "Checkout",
+    "title": "Pajament",
     "subtitle": "Pajament segir",
     "orderSummary": "Resum da la comanda",
     "total": "Total",
-    "choosePaymentMethod": "Tscherner metoda da pajament",
+    "choosePaymentMethod": "Tscherner la metoda da pajament",
     "cardDetails": "Detagls da la carta",
-    "processing": "Elavuraziun…",
+    "processing": "Elavuraziun en curs…",
     "pay": "Pajar €{amount}",
-    "connecting": "Connexiun…",
-    "continueWithPayPal": "Cuntinuar cun PayPal (Mock)",
+    "connecting": "Connexiun en curs…",
+    "continueWithPayPal": "Cuntinuar cun PayPal (Simulaziun)",
     "redirectedToPayPal": "Ti vegns redirigì a PayPal per approvar tes pajament.",
-    "taxesIncluded": "Taglias includidas sch'è applicabel"
+    "taxesIncluded": "Taglias includidas sch'ellas s'applicheschan"
   },
   "sharePage": {
-    "title": "Cundivider il project",
-    "subtitle": "Gida a spargnair la plaid davart {projectName}",
+    "title": "Cundivider il projet",
+    "subtitle": "Gidar a spargnair la pleda davart {projectName}",
     "shareOptions": "Opziuns da cundivisiun",
     "shareOnFacebook": "Cundivider sin Facebook",
     "shareOnTwitter": "Cundivider sin Twitter",
     "shareOnWhatsApp": "Cundivider sin WhatsApp",
     "shareOnLinkedIn": "Cundivider sin LinkedIn",
-    "projectSummary": "Resum dal project",
-    "helpProtect": "Gida a proteger quest ecosistem vital e sustegn las communitads localas tras praticas da conservaziun durabilas.",
-    "impactPreview": "Vista preliminara da l'impact"
+    "projectSummary": "Resum dal projet",
+    "helpProtect": "Gidar a proteger quest ecosistem vital e sustegnair las cumunitads localas tras praticas da conservaziun sustentablas.",
+    "impactPreview": "Vista previa da l'effect"
   },
   "successPage": {
     "title": "Grazia!",
-    "subtitle": "Tia contribuziun è stada registrada (mock).",
+    "subtitle": "Tia contribuziun è vegnida registrada (simulaziun).",
     "receipt": "Receipt",
-    "backToProject": "Turnar al project"
+    "backToProject": "Turnar al projet"
   },
   "page": {
     "header": {
       "title": "Reserve",
-      "tagline": "Proteger la natira, in meter quadrat a la giada"
+      "tagline": "Proteger la natira, in meter quadrat per giada"
     },
     "nav": {
-      "prev": "Project precedaint",
-      "next": "Project proxim",
+      "prev": "Projet precedenta",
+      "next": "Projet proxim",
       "backToAll": "Turnar a tut ils projects"
     },
     "overview": {
       "title": "Survista dal project",
-      "p1": "Reserve è ina plataforma da crowdfunding per la natira che permetta a individis ed organisaziuns da contribuir directamain a projects da conservaziun en tut il mund.",
-      "p2": "Tras pretschs transparents per meter quadrat, ils utilisaders pon tscherner zonas specificas per proteger, persequir lur impact e contribuir a la conservaziun globala da la biodiversitad."
+      "p1": "Reserve è ina plataforma da crowdfunding per la natira che permetta a persunas e organisaziuns da contribuir directamain a projects da conservaziun en tut il mund.",
+      "p2": "Cun pretschs transparents per meter quadrat, ils utilisaders pon tscherner zonas specificas da proteger, seguir lur effect e contribuir a la conservaziun globala da la biodiversitad."
     },
     "cards": {
       "targetUsers": {
@@ -251,9 +251,9 @@
         ]
       },
       "impact": {
-        "title": "Impact",
+        "title": "Effect",
         "benefits": [
-          "Proteger e restauraziar regiuns naturalas",
+          "Proteger e restaurar regiuns natiralas",
           "Reforestar zonas degradadas",
           "Cust transparent per m²"
         ]
@@ -261,13 +261,39 @@
       "channels": {
         "title": "Canals da distribuziun",
         "subtitle": "Conneczia cun la communitad Reserve",
-        "instagram": "Suandar sin Instagram"
+        "instagram": "Suonda sin Instagram"
       }
     },
     "prototype": {
-      "ctaTitle": "Emprovar il prototip interactiv",
-      "ctaDesc": "Viva l'experientscha da l'app Reserve en emprima ma cun noss prototip interactiv. Navighescha tras il process da conservaziun e ves co facil ch'è da far ina differenza."
+      "ctaTitle": "Emprova il prototip interactiv",
+      "ctaDesc": "Experimentescha l'app Reserve en emprima ma cun noss prototip interactiv. Navighescha tras il process da conservaziun e vescha co ch'è simpel da far ina differenza."
     }
+  },
+  "common": {
+    "loading": "Chargiament...",
+    "loadingTranslations": "Chargiament da las traducziuns...",
+    "confirm": "Confirmar",
+    "country": "Pajais",
+    "confirmationEmail": "Ti vegns a retschaiver in email da confirmaziun cun ils detagls da tia contribuziun",
+    "areaProtectedIn": "La zona che ti has gidà da proteger en {country}",
+    "yourProtectedArea": "Tia zona protegida",
+    "whatsNext": "Tge ven suenter?",
+    "trackImpact": "Suonda tia effect tras nossas actualisaziuns regularas",
+    "shareContribution": "Cundivida tia contribuziun cun amis e famiglia",
+    "m2Protected": "m² Protegì",
+    "contributed": "Contribuì",
+    "successfullyProtected": "Ti has protegì cun success {area} m² da {project}",
+    "thankYouContribution": "Grazia per tia contribuziun!",
+    "yourImpact": "Tia effect",
+    "biodiversityProtection": "Protecziun da la biodiversitad",
+    "carbonSequestration": "Sequestraziun dal carboni",
+    "communitySupport": "Sustegn da la communitad",
+    "shareYourImpact": "Cundivida tia effect",
+    "backToProjects": "Turnar als projects",
+    "protected": "Protegì",
+    "selected": "Tschernì",
+    "thankYou": "Grazia!",
+    "contributionProcessed": "Tia contribuziun è vegnida processada cun success"
   }
 }
 

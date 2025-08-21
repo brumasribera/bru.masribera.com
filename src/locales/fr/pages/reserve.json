@@ -17,38 +17,38 @@
   },
   "projects": {
     "mx-mangroves": "Mangroves du Yucatán",
-    "br-amazon": "Forêt du Tapajós",
-    "id-seagrass": "Herbiers de Bali",
+    "br-amazon": "Forêt amazonienne du Tapajós",
+    "id-seagrass": "Herbiers marins de Bali",
     "ke-savanna": "Savanes de Laikipia",
     "us-cal-giants": "Forêts de séquoias",
     "ca-boreal": "Bouclier boréal",
     "ar-wetlands": "Zones humides de l'Iberá",
-    "pe-cloud": "Forêt de brume andine",
+    "pe-cloud": "Forêt de nuages andine",
     "ng-mangrove": "Mangroves du delta du Niger",
     "ma-atlas": "Haut Atlas",
-    "es-donana": "Marismas de Doñana",
+    "es-donana": "Marais de Doñana",
     "ro-delta": "Delta du Danube",
     "ua-steppe": "Steppe pontique",
     "ru-taiga": "Taïga sibérienne",
     "in-sundarbans": "Sundarbans",
     "np-terai": "Arc du Terai",
-    "th-coral": "Corail d'Andaman",
+    "th-coral": "Coraux d'Andaman",
     "au-reef": "Grande barrière",
-    "pg-png": "Forêt de Papouasie-Nouvelle-Guinée",
+    "pg-png": "Forêt tropicale de Papouasie-Nouvelle-Guinée",
     "za-fynbos": "Fynbos du Cap",
     "mg-madagascar": "Forêts de Madagascar",
-    "ma-seagrass": "Herbiers méditerranéens",
+    "ma-seagrass": "Herbiers marins méditerranéens",
     "no-bogs": "Tourbières nordiques",
     "uk-heath": "Landes de Dorset",
-    "tr-anatolia": "Steppe d'Anatolie",
-    "ir-wetland": "Zones humides de Mésopotamie",
-    "cn-giantpanda": "Panda de Sichuan",
+    "tr-anatolia": "Steppe anatolienne",
+    "ir-wetland": "Zones humides mésopotamiennes",
+    "cn-giantpanda": "Panda du Sichuan",
     "jp-sea": "Mer intérieure de Seto",
     "nz-kelp": "Forêts de varech",
     "is-highlands": "Hautes terres d'Islande",
     "maurit-corals": "Coraux des Mascareignes",
     "eg-nile": "Delta du Nil",
-    "sa-mangrove": "Mangroves d'Arabie"
+    "sa-mangrove": "Mangroves arabes"
   },
   "countries": {
     "Mexico": "Mexique",
@@ -86,7 +86,7 @@
   },
   "payment": {
     "payWithCard": "Payer par carte",
-    "payWithPayPal": "Payer par PayPal",
+    "payWithPayPal": "Payer avec PayPal",
     "cardNumber": "Numéro de carte",
     "expiry": "MM/AA",
     "cvc": "CVC",
@@ -111,7 +111,7 @@
     "share": "Partager",
     "contribute": "Contribuer",
     "selectArea": "Sélectionner une zone",
-    "checkout": "Acheter",
+    "checkout": "Paiement",
     "success": "Succès"
   },
   "impact": {
@@ -125,7 +125,7 @@
     "dollar": "$"
   },
   "projectPage": {
-    "projectProgress": "Progression du projet",
+    "projectProgress": "Progrès du projet",
     "raised": "Collecté",
     "goal": "Objectif",
     "protected": "Protégé",
@@ -133,10 +133,10 @@
     "aboutThisProtectedArea": "À propos de cette zone protégée",
     "conservationDescription": "Ce projet de conservation protège des écosystèmes vitaux et des habitats fauniques. Votre contribution aide à maintenir la biodiversité, séquestrer le carbone et soutenir les communautés locales grâce à des pratiques durables.",
     "whyThisMatters": "Pourquoi c'est important",
-    "protectsEndangeredSpecies": "• Protège les espèces menacées et leurs habitats",
-    "absorbsCO2": "• Absorbe l'équivalent CO2 de {cars} voitures par an",
-    "createsSustainableJobs": "• Crée des emplois durables pour les communautés locales",
-    "preservesNaturalSources": "• Préserve les sources d'eau naturelles et la qualité du sol",
+    "protectsEndangeredSpecies": "Protège les espèces menacées et leurs habitats",
+    "absorbsCO2": "Absorbe l'équivalent CO2 de {cars} voitures annuellement",
+    "createsSustainableJobs": "Crée des emplois durables pour les communautés locales",
+    "preservesNaturalSources": "Préserve les sources d'eau naturelles et la qualité du sol",
     "contributeToProtection": "Contribuer à la protection",
     "backToProjects": "Retour aux projets",
     "areaLabel": "ha",
@@ -146,14 +146,14 @@
     "title": "En savoir plus",
     "about": "À propos de {projectName}",
     "projectDetails": "Détails du projet",
-    "projectDescription1": "Cette zone protégée s'étend sur {hectares} hectares d'écosystème critique, fournissant un habitat pour de nombreuses espèces et contribuant aux efforts mondiaux de conservation de la biodiversité.",
-    "projectDescription2": "Le projet se concentre sur des pratiques durables de gestion des terres qui équilibrent les objectifs de conservation avec les besoins de la communauté, assurant des avantages environnementaux et sociaux à long terme.",
+    "projectDescription1": "Cette zone protégée s'étend sur {hectares} hectares d'écosystème critique, fournissant un habitat à de nombreuses espèces et contribuant aux efforts mondiaux de conservation de la biodiversité.",
+    "projectDescription2": "Le projet se concentre sur des pratiques de gestion durable des terres qui équilibrent les objectifs de conservation avec les besoins de la communauté, assurant des avantages environnementaux et sociaux à long terme.",
     "conservationImpact": "Impact de la conservation",
     "biodiversityProtection": "Protection de la biodiversité",
     "protectingSpecies": "Protection de {percentage}% des espèces locales",
     "carbonSequestration": "Séquestration du carbone",
-    "absorbingCO2": "Absorption de {percentage}% de CO2 supplémentaire par an",
-    "communitySupport": "Soutien communautaire",
+    "absorbingCO2": "Absorption de {percentage}% de CO2 supplémentaire annuellement",
+    "communitySupport": "Soutien à la communauté",
     "supportingLivelihoods": "Soutien de {percentage}% des moyens de subsistance locaux",
     "scientificResearch": "Recherche scientifique",
     "researchDescription": "Cette zone sert de laboratoire vivant pour les chercheurs étudiant l'adaptation au changement climatique, la restauration des écosystèmes et les pratiques de développement durable.",
@@ -165,7 +165,7 @@
   },
   "contributePage": {
     "title": "Contribuer",
-    "supportConservation": "Soutenir la conservation {projectName}",
+    "supportConservation": "Soutenir la conservation de {projectName}",
     "chooseAmount": "Choisir le montant",
     "paymentMethod": "Méthode de paiement",
     "creditDebitCard": "Carte de crédit/débit",
@@ -181,30 +181,30 @@
     "title": "Sélectionner la zone de protection",
     "subtitle": "Choisissez quels mètres carrés protéger",
     "selectYourProtectionZone": "Sélectionnez votre zone de protection",
-    "selectionDescription": "Tapez sur la carte pour sélectionner des zones spécifiques que vous souhaitez protéger. Chaque sélection représente un investissement de conservation.",
+    "selectionDescription": "Touchez la carte pour sélectionner des zones spécifiques que vous souhaitez protéger. Chaque sélection représente un investissement en conservation.",
     "available": "Disponible",
     "selected": "Sélectionné",
-    "gridCells": "Cellules de grille",
+    "gridCells": "Cellules de la grille",
     "squareMeters": "Mètres carrés",
     "totalCost": "Coût total",
     "quickSelection": "Sélection rapide",
-    "random25": "🎲 Aléatoire 25%",
+    "random25": "🎲 25% aléatoire",
     "centerArea": "🎯 Zone centrale",
     "clearAll": "🗑️ Tout effacer",
-    "continueToCheckout": "Continuer vers le checkout",
+    "continueToCheckout": "Continuer au paiement",
     "backToProject": "← Retour au projet"
   },
   "checkoutPage": {
-    "title": "Checkout",
+    "title": "Paiement",
     "subtitle": "Paiement sécurisé",
     "orderSummary": "Résumé de la commande",
     "total": "Total",
     "choosePaymentMethod": "Choisir la méthode de paiement",
     "cardDetails": "Détails de la carte",
-    "processing": "Traitement…",
+    "processing": "Traitement en cours…",
     "pay": "Payer €{amount}",
-    "connecting": "Connexion…",
-    "continueWithPayPal": "Continuer avec PayPal (Mock)",
+    "connecting": "Connexion en cours…",
+    "continueWithPayPal": "Continuer avec PayPal (Simulation)",
     "redirectedToPayPal": "Vous serez redirigé vers PayPal pour approuver votre paiement.",
     "taxesIncluded": "Taxes incluses si applicable"
   },
@@ -222,7 +222,7 @@
   },
   "successPage": {
     "title": "Merci !",
-    "subtitle": "Votre contribution a été enregistrée (mock).",
+    "subtitle": "Votre contribution a été enregistrée (simulation).",
     "receipt": "Reçu",
     "backToProject": "Retour au projet"
   },
@@ -238,8 +238,8 @@
     },
     "overview": {
       "title": "Aperçu du projet",
-      "p1": "Reserve est une plateforme de crowdfunding nature qui permet aux individus et organisations de contribuer directement aux projets de conservation dans le monde entier.",
-      "p2": "Grâce à un prix transparent par mètre carré, les utilisateurs peuvent sélectionner des zones spécifiques à protéger, suivre leur impact et contribuer à la conservation mondiale de la biodiversité."
+      "p1": "Reserve est une plateforme de financement participatif pour la nature qui permet aux individus et aux organisations de contribuer directement à des projets de conservation dans le monde entier.",
+      "p2": "Grâce à des prix transparents par mètre carré, les utilisateurs peuvent sélectionner des zones spécifiques à protéger, suivre leur impact et contribuer à la conservation mondiale de la biodiversité."
     },
     "cards": {
       "targetUsers": {
@@ -253,8 +253,8 @@
       "impact": {
         "title": "Impact",
         "benefits": [
-          "Protéger et restaurer les régions naturelles",
-          "Reforester les zones dégradées",
+          "Protéger et restaurer des régions naturelles",
+          "Reforester des zones dégradées",
           "Coût transparent par m²"
         ]
       },
@@ -265,8 +265,34 @@
       }
     },
     "prototype": {
-      "ctaTitle": "Essayer le prototype interactif",
-      "ctaDesc": "Vivez l'expérience de l'app Reserve en première main avec notre prototype interactif. Naviguez dans le processus de conservation et voyez à quel point il est facile de faire une différence."
+      "ctaTitle": "Essayez le prototype interactif",
+      "ctaDesc": "Découvrez l'application Reserve de première main avec notre prototype interactif. Naviguez dans le processus de conservation et voyez à quel point il est facile de faire une différence."
     }
+  },
+  "common": {
+    "loading": "Chargement...",
+    "loadingTranslations": "Chargement des traductions...",
+    "confirm": "Confirmer",
+    "country": "Pays",
+    "confirmationEmail": "Vous recevrez un email de confirmation avec les détails de votre contribution",
+    "areaProtectedIn": "La zone que vous avez aidé à protéger en {country}",
+    "yourProtectedArea": "Votre zone protégée",
+    "whatsNext": "Et maintenant ?",
+    "trackImpact": "Suivez votre impact grâce à nos mises à jour régulières",
+    "shareContribution": "Partagez votre contribution avec vos amis et votre famille",
+    "m2Protected": "m² Protégé",
+    "contributed": "Contribué",
+    "successfullyProtected": "Vous avez protégé avec succès {area} m² de {project}",
+    "thankYouContribution": "Merci pour votre contribution !",
+    "yourImpact": "Votre impact",
+    "biodiversityProtection": "Protection de la biodiversité",
+    "carbonSequestration": "Séquestration du carbone",
+    "communitySupport": "Soutien communautaire",
+    "shareYourImpact": "Partagez votre impact",
+    "backToProjects": "Retour aux projets",
+    "protected": "Protégé",
+    "selected": "Sélectionné",
+    "thankYou": "Merci !",
+    "contributionProcessed": "Votre contribution a été traitée avec succès"
   }
 }

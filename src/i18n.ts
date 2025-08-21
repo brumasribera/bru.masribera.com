@@ -1,6 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import { autoSelectBestLanguage, shouldAutoSelectLanguage, markAutoLanguageSelected } from './utils/languageDetection';
 
 // Legacy single-namespace files used by parts of the app (navigation, languages, etc.)
 import enTranslation from './locales/en/translation.json';
@@ -264,8 +265,8 @@ const initI18n = async () => {
       }
     }
 
-    // Initialize i18n
-    i18n.init({
+    // Initialize i18n with initial language
+    await i18n.init({
       resources,
       lng: initialLang,
       fallbackLng: 'en',
@@ -273,11 +274,32 @@ const initI18n = async () => {
       interpolation: {
         escapeValue: false
       }
-    }).then(() => {
-      // i18n initialized successfully
-    }).catch((error) => {
-      console.error('Failed to initialize i18n:', error)
-    })
+    });
+
+    // Auto-select best language if appropriate
+    if (shouldAutoSelectLanguage() && initialLang === 'en') {
+      try {
+        const bestLanguage = await autoSelectBestLanguage();
+        if (bestLanguage && bestLanguage !== 'en') {
+          // Change to the detected language
+          await i18n.changeLanguage(bestLanguage);
+          
+          // Update URL to reflect the new language
+          const currentPath = window.location.pathname;
+          if (currentPath === '/' || currentPath === '/en') {
+            const newPath = `/${bestLanguage}`;
+            window.history.replaceState(null, '', newPath);
+          }
+          
+          // Mark that auto-selection has been performed
+          markAutoLanguageSelected();
+          
+          console.log(`Automatically selected language: ${bestLanguage}`);
+        }
+      } catch (error) {
+        console.log('Auto language selection failed:', error);
+      }
+    }
     
     // Re-apply any locally saved edits to persist across reloads
     try {

@@ -10,7 +10,7 @@
     "totalProtected": "Total protegido",
     "contributed": "Contribuido",
     "projects": "Proyectos",
-    "satelliteView": "Vista satélite",
+    "satelliteView": "Vista satelital",
     "yourAreas": "Tus áreas",
     "clearAndReload": "Limpiar y recargar",
     "startProtecting": "Comienza a proteger un área para hacer crecer tus reservas."
@@ -18,7 +18,7 @@
   "projects": {
     "mx-mangroves": "Manglares de Yucatán",
     "br-amazon": "Selva del Tapajós",
-    "id-seagrass": "Pradera marina de Bali",
+    "id-seagrass": "Hierba marina de Bali",
     "ke-savanna": "Sabanas de Laikipia",
     "us-cal-giants": "Bosques de secuoyas",
     "ca-boreal": "Escudo boreal",
@@ -37,7 +37,7 @@
     "pg-png": "Selva de Papúa Nueva Guinea",
     "za-fynbos": "Fynbos del Cabo",
     "mg-madagascar": "Bosques de Madagascar",
-    "ma-seagrass": "Pradera marina mediterránea",
+    "ma-seagrass": "Hierba marina mediterránea",
     "no-bogs": "Turberas nórdicas",
     "uk-heath": "Breñales de Dorset",
     "tr-anatolia": "Estepa de Anatolia",
@@ -48,7 +48,7 @@
     "is-highlands": "Tierras altas de Islandia",
     "maurit-corals": "Corales de Mascareñas",
     "eg-nile": "Delta del Nilo",
-    "sa-mangrove": "Manglares de Arabia"
+    "sa-mangrove": "Manglares árabes"
   },
   "countries": {
     "Mexico": "México",
@@ -107,11 +107,11 @@
     "totalCost": "Total"
   },
   "learnMore": {
-    "learnMore": "Más información",
+    "learnMore": "Saber más",
     "share": "Compartir",
     "contribute": "Contribuir",
     "selectArea": "Seleccionar área",
-    "checkout": "Comprar",
+    "checkout": "Pagar",
     "success": "Éxito"
   },
   "impact": {
@@ -132,13 +132,13 @@
     "total": "Total",
     "aboutThisProtectedArea": "Sobre esta área protegida",
     "conservationDescription": "Este proyecto de conservación protege ecosistemas vitales y hábitats de vida silvestre. Tu contribución ayuda a mantener la biodiversidad, secuestrar carbono y apoyar a las comunidades locales a través de prácticas sostenibles.",
-    "whyThisMatters": "Por qué es importante",
-    "protectsEndangeredSpecies": "• Protege especies en peligro y sus hábitats",
-    "absorbsCO2": "• Absorbe CO2 equivalente a {cars} coches anualmente",
-    "createsSustainableJobs": "• Crea empleos sostenibles para las comunidades locales",
-    "preservesNaturalSources": "• Preserva fuentes de agua naturales y calidad del suelo",
+    "whyThisMatters": "Por qué esto importa",
+    "protectsEndangeredSpecies": "Protege especies en peligro de extinción y sus hábitats",
+    "absorbsCO2": "Absorbe CO2 equivalente a {cars} autos anualmente",
+    "createsSustainableJobs": "Crea empleos sostenibles para las comunidades locales",
+    "preservesNaturalSources": "Preserva fuentes naturales de agua y calidad del suelo",
     "contributeToProtection": "Contribuir a la protección",
-    "backToProjects": "Volver a los proyectos",
+    "backToProjects": "Volver a proyectos",
     "areaLabel": "ha",
     "satelliteView": "Vista satelital"
   },
@@ -147,26 +147,26 @@
     "about": "Sobre {projectName}",
     "projectDetails": "Detalles del proyecto",
     "projectDescription1": "Esta área protegida abarca {hectares} hectáreas de ecosistema crítico, proporcionando hábitat para numerosas especies y contribuyendo a los esfuerzos globales de conservación de la biodiversidad.",
-    "projectDescription2": "El proyecto se enfoca en prácticas sostenibles de gestión de tierras que equilibran los objetivos de conservación con las necesidades de la comunidad, asegurando beneficios ambientales y sociales a largo plazo.",
-    "conservationImpact": "Impacto de la conservación",
+    "projectDescription2": "El proyecto se centra en prácticas de gestión sostenible de la tierra que equilibran los objetivos de conservación con las necesidades de la comunidad, asegurando beneficios ambientales y sociales a largo plazo.",
+    "conservationImpact": "Impacto de conservación",
     "biodiversityProtection": "Protección de la biodiversidad",
     "protectingSpecies": "Protegiendo {percentage}% de las especies locales",
     "carbonSequestration": "Secuestro de carbono",
     "absorbingCO2": "Absorbiendo {percentage}% más de CO2 anualmente",
-    "communitySupport": "Apoyo comunitario",
+    "communitySupport": "Apoyo a la comunidad",
     "supportingLivelihoods": "Apoyando {percentage}% de los medios de vida locales",
     "scientificResearch": "Investigación científica",
-    "researchDescription": "Esta área sirve como laboratorio viviente para investigadores que estudian la adaptación al cambio climático, restauración de ecosistemas y prácticas de desarrollo sostenible.",
+    "researchDescription": "Esta área sirve como laboratorio viviente para investigadores que estudian la adaptación al cambio climático, la restauración de ecosistemas y las prácticas de desarrollo sostenible.",
     "researchAreas": "Áreas de investigación",
     "climateChangeAssessment": "• Evaluación del impacto del cambio climático",
     "biodiversityMonitoring": "• Monitoreo y conservación de la biodiversidad",
-    "sustainableLandUse": "• Prácticas de uso sostenible de la tierra",
+    "sustainableLandUse": "• Prácticas sostenibles de uso de la tierra",
     "communityEngagement": "• Estrategias de participación comunitaria"
   },
   "contributePage": {
     "title": "Contribuir",
     "supportConservation": "Apoyar la conservación de {projectName}",
-    "chooseAmount": "Elegir cantidad",
+    "chooseAmount": "Elegir monto",
     "paymentMethod": "Método de pago",
     "creditDebitCard": "Tarjeta de crédito/débito",
     "bankTransfer": "Transferencia bancaria",
@@ -181,21 +181,21 @@
     "title": "Seleccionar área de protección",
     "subtitle": "Elige qué metros cuadrados proteger",
     "selectYourProtectionZone": "Selecciona tu zona de protección",
-    "selectionDescription": "Toca en el mapa para seleccionar áreas específicas que quieres proteger. Cada selección representa una inversión de conservación.",
+    "selectionDescription": "Toca el mapa para seleccionar áreas específicas que quieras proteger. Cada selección representa una inversión en conservación.",
     "available": "Disponible",
     "selected": "Seleccionado",
-    "gridCells": "Celdas de cuadrícula",
+    "gridCells": "Celdas de la cuadrícula",
     "squareMeters": "Metros cuadrados",
     "totalCost": "Costo total",
     "quickSelection": "Selección rápida",
-    "random25": "🎲 Aleatorio 25%",
+    "random25": "🎲 25% aleatorio",
     "centerArea": "🎯 Área central",
     "clearAll": "🗑️ Limpiar todo",
-    "continueToCheckout": "Continuar al checkout",
+    "continueToCheckout": "Continuar al pago",
     "backToProject": "← Volver al proyecto"
   },
   "checkoutPage": {
-    "title": "Checkout",
+    "title": "Pagar",
     "subtitle": "Pago seguro",
     "orderSummary": "Resumen del pedido",
     "total": "Total",
@@ -204,9 +204,9 @@
     "processing": "Procesando…",
     "pay": "Pagar €{amount}",
     "connecting": "Conectando…",
-    "continueWithPayPal": "Continuar con PayPal (Mock)",
+    "continueWithPayPal": "Continuar con PayPal (Simulación)",
     "redirectedToPayPal": "Serás redirigido a PayPal para aprobar tu pago.",
-    "taxesIncluded": "Impuestos incluidos si aplica"
+    "taxesIncluded": "Impuestos incluidos si aplican"
   },
   "sharePage": {
     "title": "Compartir proyecto",
@@ -222,7 +222,7 @@
   },
   "successPage": {
     "title": "¡Gracias!",
-    "subtitle": "Tu contribución ha sido registrada (mock).",
+    "subtitle": "Tu contribución ha sido registrada (simulación).",
     "receipt": "Recibo",
     "backToProject": "Volver al proyecto"
   },
@@ -237,9 +237,9 @@
       "backToAll": "Volver a todos los proyectos"
     },
     "overview": {
-      "title": "Resumen del proyecto",
-      "p1": "Reserve es una plataforma de crowdfunding de naturaleza que permite a individuos y organizaciones contribuir directamente a proyectos de conservación en todo el mundo.",
-      "p2": "A través de precios transparentes por metro cuadrado, los usuarios pueden seleccionar áreas específicas para proteger, rastrear su impacto y contribuir a la conservación global de la biodiversidad."
+      "title": "Vista general del proyecto",
+      "p1": "Reserve es una plataforma de micromecenazgo para la naturaleza que permite a individuos y organizaciones contribuir directamente a proyectos de conservación en todo el mundo.",
+      "p2": "A través de precios transparentes por metro cuadrado, los usuarios pueden seleccionar áreas específicas para proteger, seguir su impacto y contribuir a la conservación global de la biodiversidad."
     },
     "cards": {
       "targetUsers": {
@@ -260,14 +260,40 @@
       },
       "channels": {
         "title": "Canales de distribución",
-        "subtitle": "Conéctate con la comunidad Reserve",
-        "instagram": "Seguir en Instagram"
+        "subtitle": "Conecta con la comunidad Reserve",
+        "instagram": "Sigue en Instagram"
       }
     },
     "prototype": {
-      "ctaTitle": "Probar el prototipo interactivo",
-      "ctaDesc": "Experimenta la app Reserve de primera mano con nuestro prototipo interactivo. Navega a través del proceso de conservación y ve lo fácil que es hacer una diferencia."
+      "ctaTitle": "Prueba el prototipo interactivo",
+      "ctaDesc": "Experimenta la aplicación Reserve de primera mano con nuestro prototipo interactivo. Navega por el proceso de conservación y ve lo fácil que es hacer la diferencia."
     }
+  },
+  "common": {
+    "loading": "Cargando...",
+    "loadingTranslations": "Cargando traducciones...",
+    "confirm": "Confirmar",
+    "country": "País",
+    "confirmationEmail": "Recibirás un correo de confirmación con los detalles de tu contribución",
+    "areaProtectedIn": "El área que has ayudado a proteger en {country}",
+    "yourProtectedArea": "Tu área protegida",
+    "whatsNext": "¿Qué sigue?",
+    "trackImpact": "Sigue tu impacto a través de nuestras actualizaciones regulares",
+    "shareContribution": "Comparte tu contribución con amigos y familia",
+    "m2Protected": "m² Protegido",
+    "contributed": "Contribuido",
+    "successfullyProtected": "Has protegido exitosamente {area} m² de {project}",
+    "thankYouContribution": "¡Gracias por tu contribución!",
+    "yourImpact": "Tu impacto",
+    "biodiversityProtection": "Protección de la biodiversidad",
+    "carbonSequestration": "Secuestro de carbono",
+    "communitySupport": "Apoyo a la comunidad",
+    "shareYourImpact": "Comparte tu impacto",
+    "backToProjects": "Volver a los proyectos",
+    "protected": "Protegido",
+    "selected": "Seleccionado",
+    "thankYou": "¡Gracias!",
+    "contributionProcessed": "Tu contribución ha sido procesada exitosamente"
   }
 }
 

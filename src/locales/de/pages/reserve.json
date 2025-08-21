@@ -100,8 +100,8 @@
     "totalPaid": "Gesamt bezahlt",
     "method": "Methode",
     "yourImpact": "Ihr Einfluss",
-    "contributionProtects": "Ihr Beitrag von €{amount} schützt ungefähr",
-    "yourSelectionSummary": "Zusammenfassung Ihrer Auswahl",
+    "contributionProtects": "Ihr €{amount} Beitrag schützt ungefähr",
+    "yourSelectionSummary": "Ihre Auswahlzusammenfassung",
     "selectedCount": "Ausgewählt",
     "selectedArea": "Bereich",
     "totalCost": "Gesamt"
@@ -111,7 +111,7 @@
     "share": "Teilen",
     "contribute": "Beitragen",
     "selectArea": "Bereich auswählen",
-    "checkout": "Kaufen",
+    "checkout": "Kasse",
     "success": "Erfolg"
   },
   "impact": {
@@ -126,19 +126,19 @@
   },
   "projectPage": {
     "projectProgress": "Projektfortschritt",
-    "raised": "Gesammelt",
+    "raised": "Eingesammelt",
     "goal": "Ziel",
     "protected": "Geschützt",
     "total": "Gesamt",
     "aboutThisProtectedArea": "Über dieses geschützte Gebiet",
     "conservationDescription": "Dieses Naturschutzprojekt schützt lebenswichtige Ökosysteme und Lebensräume für Wildtiere. Ihr Beitrag hilft dabei, die Artenvielfalt zu erhalten, Kohlenstoff zu binden und lokale Gemeinschaften durch nachhaltige Praktiken zu unterstützen.",
     "whyThisMatters": "Warum das wichtig ist",
-    "protectsEndangeredSpecies": "• Schützt gefährdete Arten und ihre Lebensräume",
-    "absorbsCO2": "• Bindet CO2-Äquivalent zu {cars} Autos jährlich",
-    "createsSustainableJobs": "• Schafft nachhaltige Arbeitsplätze für lokale Gemeinschaften",
-    "preservesNaturalSources": "• Erhält natürliche Wasserquellen und Bodenqualität",
+    "protectsEndangeredSpecies": "Schützt gefährdete Arten und ihre Lebensräume",
+    "absorbsCO2": "Bindet CO2-Äquivalent zu {cars} Autos jährlich",
+    "createsSustainableJobs": "Schafft nachhaltige Arbeitsplätze für lokale Gemeinschaften",
+    "preservesNaturalSources": "Erhält natürliche Wasserquellen und Bodenqualität",
     "contributeToProtection": "Zum Schutz beitragen",
-    "backToProjects": "Zurück zu den Projekten",
+    "backToProjects": "Zurück zu Projekten",
     "areaLabel": "ha",
     "satelliteView": "Satellitenansicht"
   },
@@ -146,26 +146,26 @@
     "title": "Mehr erfahren",
     "about": "Über {projectName}",
     "projectDetails": "Projektdetails",
-    "projectDescription1": "Dieses geschützte Gebiet umfasst {hectares} Hektar kritischer Ökosysteme und bietet Lebensraum für zahlreiche Arten und trägt zu globalen Artenschutzbemühungen bei.",
+    "projectDescription1": "Dieses geschützte Gebiet umfasst {hectares} Hektar kritisches Ökosystem und bietet Lebensraum für zahlreiche Arten und trägt zu globalen Bemühungen zur Erhaltung der biologischen Vielfalt bei.",
     "projectDescription2": "Das Projekt konzentriert sich auf nachhaltige Landmanagementpraktiken, die Naturschutzziele mit den Bedürfnissen der Gemeinschaft in Einklang bringen und langfristige ökologische und soziale Vorteile gewährleisten.",
-    "conservationImpact": "Naturschutzauswirkung",
-    "biodiversityProtection": "Artenschutz",
+    "conservationImpact": "Naturschutzauswirkungen",
+    "biodiversityProtection": "Schutz der biologischen Vielfalt",
     "protectingSpecies": "Schutz von {percentage}% der lokalen Arten",
     "carbonSequestration": "Kohlenstoffbindung",
     "absorbingCO2": "Bindung von {percentage}% mehr CO2 jährlich",
-    "communitySupport": "Gemeinschaftsunterstützung",
+    "communitySupport": "Unterstützung der Gemeinschaft",
     "supportingLivelihoods": "Unterstützung von {percentage}% der lokalen Lebensgrundlagen",
     "scientificResearch": "Wissenschaftliche Forschung",
-    "researchDescription": "Dieses Gebiet dient als lebendes Labor für Forscher, die sich mit Klimawandelanpassung, Ökosystemrestaurierung und nachhaltigen Entwicklungspraktiken befassen.",
+    "researchDescription": "Dieses Gebiet dient als lebendes Labor für Forscher, die sich mit Klimawandelanpassung, Ökosystemrestaurierung und nachhaltigen Entwicklungsmethoden befassen.",
     "researchAreas": "Forschungsbereiche",
     "climateChangeAssessment": "• Bewertung der Klimawandelauswirkungen",
-    "biodiversityMonitoring": "• Überwachung und Schutz der Artenvielfalt",
+    "biodiversityMonitoring": "• Überwachung und Schutz der biologischen Vielfalt",
     "sustainableLandUse": "• Nachhaltige Landnutzungspraktiken",
     "communityEngagement": "• Strategien zur Einbindung der Gemeinschaft"
   },
   "contributePage": {
     "title": "Beitragen",
-    "supportConservation": "Unterstützen Sie den {projectName} Naturschutz",
+    "supportConservation": "Unterstützung der Erhaltung von {projectName}",
     "chooseAmount": "Betrag wählen",
     "paymentMethod": "Zahlungsmethode",
     "creditDebitCard": "Kredit-/Debitkarte",
@@ -181,7 +181,7 @@
     "title": "Schutzgebiet auswählen",
     "subtitle": "Wählen Sie, welche Quadratmeter geschützt werden sollen",
     "selectYourProtectionZone": "Wählen Sie Ihre Schutzzone",
-    "selectionDescription": "Tippen Sie auf die Karte, um spezifische Bereiche auszuwählen, die Sie schützen möchten. Jede Auswahl stellt eine Naturschutzinvestition dar.",
+    "selectionDescription": "Tippen Sie auf die Karte, um bestimmte Bereiche auszuwählen, die Sie schützen möchten. Jede Auswahl stellt eine Investition in den Naturschutz dar.",
     "available": "Verfügbar",
     "selected": "Ausgewählt",
     "gridCells": "Rasterzellen",
@@ -191,20 +191,20 @@
     "random25": "🎲 Zufällig 25%",
     "centerArea": "🎯 Zentrumsbereich",
     "clearAll": "🗑️ Alles löschen",
-    "continueToCheckout": "Zum Checkout",
+    "continueToCheckout": "Zur Kasse fortfahren",
     "backToProject": "← Zurück zum Projekt"
   },
   "checkoutPage": {
-    "title": "Checkout",
+    "title": "Kasse",
     "subtitle": "Sichere Zahlung",
     "orderSummary": "Bestellübersicht",
     "total": "Gesamt",
     "choosePaymentMethod": "Zahlungsmethode wählen",
     "cardDetails": "Kartendetails",
-    "processing": "Verarbeitung…",
+    "processing": "Wird verarbeitet…",
     "pay": "€{amount} bezahlen",
-    "connecting": "Verbinde…",
-    "continueWithPayPal": "Mit PayPal fortfahren (Mock)",
+    "connecting": "Wird verbunden…",
+    "continueWithPayPal": "Mit PayPal fortfahren (Simulation)",
     "redirectedToPayPal": "Sie werden zu PayPal weitergeleitet, um Ihre Zahlung zu genehmigen.",
     "taxesIncluded": "Steuern inklusive, falls zutreffend"
   },
@@ -218,11 +218,11 @@
     "shareOnLinkedIn": "Auf LinkedIn teilen",
     "projectSummary": "Projektzusammenfassung",
     "helpProtect": "Helfen Sie dabei, dieses lebenswichtige Ökosystem zu schützen und lokale Gemeinschaften durch nachhaltige Naturschutzpraktiken zu unterstützen.",
-    "impactPreview": "Auswirkungsvorschau"
+    "impactPreview": "Einflussvorschau"
   },
   "successPage": {
     "title": "Vielen Dank!",
-    "subtitle": "Ihr Beitrag wurde aufgezeichnet (Mock).",
+    "subtitle": "Ihr Beitrag wurde aufgezeichnet (Simulation).",
     "receipt": "Quittung",
     "backToProject": "Zurück zum Projekt"
   },
@@ -238,14 +238,14 @@
     },
     "overview": {
       "title": "Projektübersicht",
-      "p1": "Reserve ist eine Natur-Crowdfunding-Plattform, die es Einzelpersonen und Organisationen ermöglicht, direkt zu Naturschutzprojekten weltweit beizutragen.",
-      "p2": "Durch transparente Kosten pro Quadratmeter können Benutzer spezifische Bereiche zum Schutz auswählen, ihren Einfluss verfolgen und zu globalen Artenschutzbemühungen beitragen."
+      "p1": "Reserve ist eine Crowdfunding-Plattform für die Natur, die es Einzelpersonen und Organisationen ermöglicht, direkt zu Naturschutzprojekten weltweit beizutragen.",
+      "p2": "Durch transparente Kosten pro Quadratmeter können Benutzer spezifische Bereiche zum Schutz auswählen, ihren Einfluss verfolgen und zur globalen Biodiversitätserhaltung beitragen."
     },
     "cards": {
       "targetUsers": {
-        "title": "Zielbenutzer",
+        "title": "Zielgruppen",
         "users": [
-          "Naturliebhaber",
+          "Naturbegeisterte",
           "Naturschutzorganisationen",
           "Unternehmensnachhaltigkeitsprogramme"
         ]
@@ -254,19 +254,45 @@
         "title": "Einfluss",
         "benefits": [
           "Natürliche Regionen schützen und wiederherstellen",
-          "Degradierte Gebiete wiederaufforsten",
+          "Degradierte Gebiete aufforsten",
           "Transparente Kosten pro m²"
         ]
       },
       "channels": {
         "title": "Vertriebskanäle",
         "subtitle": "Verbinden Sie sich mit der Reserve-Community",
-        "instagram": "Auf Instagram folgen"
+        "instagram": "Folgen Sie auf Instagram"
       }
     },
     "prototype": {
       "ctaTitle": "Probieren Sie den interaktiven Prototyp",
       "ctaDesc": "Erleben Sie die Reserve-App aus erster Hand mit unserem interaktiven Prototyp. Navigieren Sie durch den Naturschutzprozess und sehen Sie, wie einfach es ist, einen Unterschied zu machen."
     }
+  },
+  "common": {
+    "loading": "Laden...",
+    "loadingTranslations": "Übersetzungen werden geladen...",
+    "confirm": "Bestätigen",
+    "country": "Land",
+    "confirmationEmail": "Sie erhalten eine Bestätigungs-E-Mail mit den Details Ihres Beitrags",
+    "areaProtectedIn": "Das Gebiet, das Sie in {country} geschützt haben",
+    "yourProtectedArea": "Ihr geschütztes Gebiet",
+    "whatsNext": "Was kommt als nächstes?",
+    "trackImpact": "Verfolgen Sie Ihren Einfluss durch unsere regelmäßigen Updates",
+    "shareContribution": "Teilen Sie Ihren Beitrag mit Freunden und Familie",
+    "m2Protected": "m² Geschützt",
+    "contributed": "Beigetragen",
+    "successfullyProtected": "Sie haben erfolgreich {area} m² von {project} geschützt",
+    "thankYouContribution": "Vielen Dank für Ihren Beitrag!",
+    "yourImpact": "Ihr Einfluss",
+    "biodiversityProtection": "Biodiversitätsschutz",
+    "carbonSequestration": "Kohlenstoffbindung",
+    "communitySupport": "Gemeinschaftsunterstützung",
+    "shareYourImpact": "Teilen Sie Ihren Einfluss",
+    "backToProjects": "Zurück zu den Projekten",
+    "protected": "Geschützt",
+    "selected": "Ausgewählt",
+    "thankYou": "Vielen Dank!",
+    "contributionProcessed": "Ihr Beitrag wurde erfolgreich verarbeitet"
   }
 }

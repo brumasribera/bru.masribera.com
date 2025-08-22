@@ -7,6 +7,16 @@ import { Project } from "./types/types";
 import { MyContributions } from "./pages/contribution/MyContributions";
 import { Contribution } from "./types/types";
 import { ContributionDetail } from "./pages/contribution/ContributionDetail";
+import { AccountMain } from "./pages/account/AccountMain";
+import { ProfilePage } from "./pages/account/ProfilePage";
+import { PaymentPage } from "./pages/account/PaymentPage";
+import { TransactionHistory } from "./pages/account/TransactionHistory";
+import { LinkedAccounts } from "./pages/account/LinkedAccounts";
+import { InterfaceSettings } from "./pages/account/InterfaceSettings";
+import { LanguageSettings } from "./pages/account/LanguageSettings";
+import { SecurityPage } from "./pages/account/SecurityPage";
+import { NotificationsPage } from "./pages/account/NotificationsPage";
+import { DownloadsPage } from "./pages/account/DownloadsPage";
 import { Leaf } from "lucide-react";
 
 /**
@@ -19,11 +29,31 @@ import { Leaf } from "lucide-react";
  * - Responsive typography and spacing
  */
 
+type AccountPage = 'main' | 'profile' | 'payment' | 'transactions' | 'linked' | 'interface' | 'language' | 'notifications' | 'security' | 'downloads';
+
 export default function ReserveMobileApp() {
   const { ready, t } = useTranslation('reserve');
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [showMyContributions, setShowMyContributions] = useState(false);
   const [selectedContribution, setSelectedContribution] = useState<Contribution | null>(null);
+  const [showAccount, setShowAccount] = useState(false);
+  const [accountPage, setAccountPage] = useState<AccountPage>('main');
+  
+  // Mock user data - shared across components
+  const [user, setUser] = useState({
+    name: "Sonia Rodriguez",
+    email: "sonia.rodriguez@email.com",
+    phone: "+1 (555) 987-6543",
+    location: "Denver, CO",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=3&w=300&h=300&q=80",
+    memberSince: "June 2023",
+    verified: true
+  });
+
+  // Function to update user profile
+  const updateUser = (updatedUser: Partial<typeof user>) => {
+    setUser(prev => ({ ...prev, ...updatedUser }));
+  };
 
   // Show loading state while i18n is not ready
   if (!ready) {
@@ -43,11 +73,62 @@ export default function ReserveMobileApp() {
   const openProject = (p: Project) => {
     setActiveProject(p);
     setShowMyContributions(false);
+    setShowAccount(false);
+  };
+
+  const closeAccount = () => {
+    setShowAccount(false);
+    setAccountPage('main');
+  };
+
+  const renderAccountPage = () => {
+    switch (accountPage) {
+      case 'profile':
+        return <ProfilePage onBack={() => setAccountPage('main')} user={user} onUpdateUser={updateUser} />;
+      case 'payment':
+        return (
+          <PaymentPage 
+            onBack={() => setAccountPage('main')} 
+            onNavigateToTransactionHistory={() => setAccountPage('transactions')}
+          />
+        );
+      case 'transactions':
+        return <TransactionHistory onBack={() => setAccountPage('payment')} />;
+      case 'linked':
+        return <LinkedAccounts onBack={() => setAccountPage('main')} />;
+      case 'interface':
+        return <InterfaceSettings onBack={() => setAccountPage('main')} />;
+      case 'language':
+        return <LanguageSettings onBack={() => setAccountPage('main')} />;
+      case 'notifications':
+        return <NotificationsPage onBack={() => setAccountPage('main')} />;
+      case 'security':
+        return <SecurityPage onBack={() => setAccountPage('main')} />;
+      case 'downloads':
+        return <DownloadsPage onBack={() => setAccountPage('main')} />;
+      default:
+        return (
+          <AccountMain
+            onBack={closeAccount}
+            onNavigateToProfile={() => setAccountPage('profile')}
+            onNavigateToPayment={() => setAccountPage('payment')}
+            onNavigateToSettings={() => setAccountPage('interface')}
+            onNavigateToSecurity={() => setAccountPage('security')}
+            onNavigateToNotifications={() => setAccountPage('notifications')}
+            onNavigateToLanguage={() => setAccountPage('language')}
+            onNavigateToDownloads={() => setAccountPage('transactions')}
+            onNavigateToLinkedAccounts={() => setAccountPage('linked')}
+            user={user}
+          />
+        );
+    }
   };
 
   return (
     <AppShell>
-      {showMyContributions ? (
+      {showAccount ? (
+        renderAccountPage()
+      ) : showMyContributions ? (
         selectedContribution ? (
           <ContributionDetail
             contribution={selectedContribution}
@@ -61,10 +142,23 @@ export default function ReserveMobileApp() {
               setShowMyContributions(false);
               setActiveProject(null);
             }}
+            onShowAccount={() => {
+              setShowAccount(true);
+              setAccountPage('main');
+            }}
+            user={user}
           />
         )
       ) : !activeProject ? (
-        <Globe3D onPick={openProject} onShowContributions={() => setShowMyContributions(true)} />
+        <Globe3D 
+          onPick={openProject} 
+          onShowContributions={() => setShowMyContributions(true)}
+          onShowAccount={() => {
+            setShowAccount(true);
+            setAccountPage('main');
+          }}
+          user={user}
+        />
       ) : (
         <ProtectedAreaPage
           project={activeProject}

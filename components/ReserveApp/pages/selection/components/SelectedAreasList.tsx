@@ -14,7 +14,7 @@ export function SelectedAreasList({
   if (selectedAreas.length === 0) return null;
 
   return (
-    <div className="absolute top-20 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-4 max-w-xs z-[9999]">
+    <div className="absolute top-20 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-4 max-w-xs z-[40]">
       <h3 className="font-semibold text-gray-900 mb-2">Selected Areas</h3>
       <div className="space-y-2 max-h-48 overflow-y-auto">
         {selectedAreas.map(area => (

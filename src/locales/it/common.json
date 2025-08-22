@@ -1,0 +1,36 @@
+{
+  "backToProjects": "Torna ai progetti",
+  "backToAllProjects": "Torna a tutti i progetti",
+  "moreDetails": "Più dettagli",
+  "openApp": "Apri app",
+  "experience": "Esperienza",
+  "education": "Educazione",
+  "projects": "Progetti",
+  "contact": "Contatto",
+  "linkedin": "LinkedIn",
+  "github": "GitHub",
+  "cv": "CV",
+  "viewCvInBrowser": "Visualizza CV nel browser",
+  "downloadCvPdf": "Scarica CV PDF",
+  "searchProjects": "Cerca progetti...",
+  "targetUsers": "Utenti target",
+  "developmentStatus": "Stato di sviluppo",
+  "globalReach": "Portata globale",
+  "technologyStack": "Stack tecnologico",
+  "frontend": "Frontend",
+  "backend": "Backend",
+  "languages": {
+    "currentLanguage": "Lingua attuale"
+  },
+  "footer": {
+    "tagline": "Ingegnere Frontend & UX | Remote-friendly",
+    "madeWith": "Fatto con 🥰 in Svizzera",
+    "copyright": "© {{year}} Bru Mas Ribera. Tutti i diritti riservati.",
+    "tooltips": {
+      "email": "Inviami un'email",
+      "linkedin": "Visualizza il mio profilo LinkedIn",
+      "github": "Visualizza il mio profilo GitHub",
+      "cv": "Visualizza il mio CV"
+    }
+  }
+}

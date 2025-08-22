@@ -1,9 +1,10 @@
 import { Project } from "../../types/types";
 import { ArrowLeft, CheckCircle, Heart, Share2, Home } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import { calculateMapScale, MapScaleBar } from "../../utils/mapScale.tsx";
 
 interface ProjectSuccessProps {
   project: Project;
@@ -13,6 +14,7 @@ interface ProjectSuccessProps {
 
 export function ProjectSuccess({ project, selectedArea, onBack }: ProjectSuccessProps) {
   const { t } = useTranslation('reserve');
+  const [mapScale, setMapScale] = useState({ distance: '1km', width: 48 });
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
   
@@ -116,6 +118,18 @@ export function ProjectSuccess({ project, selectedArea, onBack }: ProjectSuccess
       }
     }
 
+    // Add zoom event listener for scale calculation
+    map.on('zoomend', () => {
+      const zoom = map.getZoom();
+      const { distance, width } = calculateMapScale(zoom);
+      setMapScale({ distance, width });
+    });
+    
+    // Set initial scale
+    const initialZoom = map.getZoom();
+    const { distance, width } = calculateMapScale(initialZoom);
+    setMapScale({ distance, width });
+
     mapInstanceRef.current = map;
 
     return () => {
@@ -211,6 +225,9 @@ export function ProjectSuccess({ project, selectedArea, onBack }: ProjectSuccess
               <div className="text-xs font-medium text-gray-700">{formattedArea} m²</div>
               <div className="text-xs text-gray-500">{t('common.protected')}</div>
             </div>
+            
+            {/* Scale Bar - positioned bottom left to avoid overlap with area info */}
+            <MapScaleBar scale={mapScale} position="bottom-left" />
           </div>
         </div>
 

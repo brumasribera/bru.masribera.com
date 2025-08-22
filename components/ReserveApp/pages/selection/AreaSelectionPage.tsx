@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Edit3 } from 'lucide-react';
 import L from 'leaflet';
 import { AreaSelectionPageProps, SelectedArea } from './types';
 import { useMapInitialization } from './hooks/useMapInitialization';
@@ -7,6 +7,7 @@ import { useMapGrid } from './hooks/useMapGrid';
 import { useMapLayers } from './hooks/useMapLayers';
 import { useAreaSelection } from './hooks/useAreaSelection';
 import { useTranslation } from 'react-i18next';
+import { calculateMapScale, MapScaleBar } from '../../utils/mapScale.tsx';
 
 
 export function AreaSelectionPage({ project, onBack, onContinue }: AreaSelectionPageProps) {
@@ -17,10 +18,35 @@ export function AreaSelectionPage({ project, onBack, onContinue }: AreaSelection
   const [showGrid] = useState(true);
   const [gridMultiplier] = useState(1);
   const [isPinging, setIsPinging] = useState(false);
+  const [mapScale, setMapScale] = useState({ distance: '1km', width: 48 });
   const { t } = useTranslation('reserve');
 
   // Initialize map
-  const { mapRef, mapInstanceRef, mapLoaded } = useMapInitialization(project);
+  const { mapRef, mapInstanceRef, mapLoaded, updateScale } = useMapInitialization(project);
+
+  // Add zoom event listener for scale calculation
+  useEffect(() => {
+    if (!mapInstanceRef.current || !mapLoaded) return;
+    
+    const map = mapInstanceRef.current;
+    
+    const handleZoomEnd = () => {
+      const zoom = map.getZoom();
+      const newScale = updateScale(zoom);
+      setMapScale(newScale);
+    };
+    
+    map.on('zoomend', handleZoomEnd);
+    
+    // Set initial scale
+    const initialZoom = map.getZoom();
+    const initialScale = updateScale(initialZoom);
+    setMapScale(initialScale);
+    
+    return () => {
+      map.off('zoomend', handleZoomEnd);
+    };
+  }, [mapLoaded, updateScale]);
 
   // Ensure SVG gradient definitions are available
   const ensureGradientDefinitions = (map: L.Map, projectId: string) => {
@@ -260,62 +286,54 @@ export function AreaSelectionPage({ project, onBack, onContinue }: AreaSelection
   };
 
   return (
-    <div className="w-full h-full bg-gradient-to-br from-green-50 to-emerald-100 overflow-hidden flex flex-col">
+    <div className="w-full h-full bg-gradient-to-br from-green-50 to-emerald-100 overflow-hidden relative">
       
 
 
-      {/* Back Button */}
-      <button
-        onClick={onBack}
-        className="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-sm hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 border border-gray-200 hover:border-gray-300 z-[9999]"
-      >
-        <ArrowLeft className="w-5 h-5" />
-      </button>
+       {/* Back Button */}
+       <button
+         onClick={onBack}
+         className="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-sm hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 border border-gray-200 hover:border-gray-300 z-40"
+       >
+         <ArrowLeft className="w-5 h-5" />
+       </button>
 
 
 
-      {/* Map Container */}
-      <div className="relative w-full h-full">
-        <div
-          ref={mapRef}
-          className="w-full h-full"
-          style={{ cursor: isSelectionMode ? 'crosshair' : 'grab' }}
-        />
-        
-        
-        {/* Total Selected Area Pill - Bottom Left */}
-        {totalSelectedArea > 0 && (
-          <div className="absolute bottom-4 left-4">
-            <div className="bg-green-500 text-white rounded-full px-4 py-2 shadow-lg">
-              <div className="text-center">
-                <div className="text-sm font-medium">{totalSelectedArea} m²</div>
-                <div className="text-xs opacity-90">€{(totalSelectedArea * project.pricePerM2).toFixed(2)}</div>
-              </div>
-            </div>
-          </div>
-        )}
+       {/* Map Container */}
+       <div className="relative w-full h-full">
+         <div
+           ref={mapRef}
+           className="w-full h-full z-0"
+           style={{ cursor: 'default' }}
+         />
+       </div>
 
-        {/* Confirmation Button - Bottom Center */}
-        {totalSelectedArea > 0 && (
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-[9999]">
-            <button
-              onClick={handleConfirmClick}
-              className="relative overflow-hidden bg-gradient-to-r from-emerald-500 via-green-600 to-emerald-600 hover:from-emerald-600 hover:via-green-700 hover:to-emerald-700 text-white px-8 py-4 rounded-xl font-medium shadow-[0_10px_20px_rgba(16,185,129,0.35)] ring-1 ring-white/20 transition-all duration-200 active:scale-95 flex flex-col items-center"
-            >
-              {/* sheen */}
-              <span className="pointer-events-none absolute inset-0 -translate-x-full rotate-6 bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-[.dummy]:translate-x-full" aria-hidden="true" />
+       {/* Scale Bar - top right */}
+       <div className="absolute top-4 right-4">
+         <MapScaleBar scale={mapScale} position="top-right" />
+       </div>
+       
 
-              {/* ping on click */}
-              {isPinging && (
-                <span className="pointer-events-none absolute inset-0 rounded-xl border border-white/60 animate-ping" aria-hidden="true" />
-              )}
-
-              <span className="text-base font-semibold">{t('common.confirm')}</span>
-              <span className="text-sm opacity-90">{totalSelectedArea} m² • €{(totalSelectedArea * project.pricePerM2).toFixed(2)}</span>
-            </button>
-          </div>
-        )}
-      </div>
+       
+       {/* Confirmation Button - bottom center */}
+       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+         {totalSelectedArea > 0 ? (
+           <button
+             onClick={handleConfirmClick}
+             className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 border border-green-500 hover:border-green-600 flex items-center space-x-2"
+           >
+             <span className="text-sm font-semibold">{t('common.confirm')}</span>
+             <span className="text-xs opacity-90">
+               {totalSelectedArea} m² €{(totalSelectedArea * project.pricePerM2).toFixed(2)}
+             </span>
+           </button>
+         ) : (
+           <div className="bg-gray-400 text-white px-6 py-3 rounded-full font-medium shadow-lg border border-gray-300 flex items-center space-x-2 opacity-75">
+             <span className="text-sm font-semibold">Select cells to continue</span>
+           </div>
+         )}
+       </div>
 
 
 

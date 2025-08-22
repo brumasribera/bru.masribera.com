@@ -4,15 +4,20 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { loadContributions } from "../../utils/utils";
 import { Contribution } from "../../types/types";
-import { Globe } from "lucide-react";
+import { Globe, User } from "lucide-react";
 
 interface MyContributionsProps {
   onBack: () => void;
   onOpenContribution: (c: Contribution) => void;
   onGoToGlobe: () => void;
+  onShowAccount?: () => void;
+  user?: {
+    name: string;
+    avatar: string;
+  };
 }
 
-export function MyContributions({ onBack, onOpenContribution, onGoToGlobe }: MyContributionsProps) {
+export function MyContributions({ onBack, onOpenContribution, onGoToGlobe, onShowAccount, user }: MyContributionsProps) {
   const { t } = useTranslation('reserve');
   const [contributions, setContributions] = useState<Contribution[]>([]);
   const mapRef = useRef<HTMLDivElement>(null);
@@ -195,12 +200,35 @@ export function MyContributions({ onBack, onOpenContribution, onGoToGlobe }: MyC
             <div className="text-sm md:text-base opacity-90">{t('garden.myContributions')}</div>
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold">{t('garden.protectedAreas')}</h1>
           </div>
+          {/* Globe Button - positioned top left */}
           <button
             onClick={onGoToGlobe}
-            className="w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 absolute top-4 right-4 z-[9999]"
+            className="w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 absolute top-4 left-4 z-[40]"
           >
             <Globe className="h-5 w-5 md:h-6 md:w-6" />
           </button>
+          
+          {/* Account Button - positioned top right */}
+          {onShowAccount && (
+            <button
+              onClick={onShowAccount}
+              className="w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 absolute top-4 right-4 z-[40] overflow-hidden"
+            >
+              {user?.avatar ? (
+                <img 
+                  src={user.avatar} 
+                  alt={user.name || 'Profile'} 
+                  className="w-full h-full object-cover rounded-full"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                  }}
+                />
+              ) : (
+                <User className="h-5 w-5 md:h-6 md:w-6" />
+              )}
+            </button>
+          )}
         </div>
         <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[90%] h-24 bg-white/20 blur-2xl rounded-full" />
       </div>

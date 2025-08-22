@@ -1,10 +1,11 @@
 import { Project } from "../../types/types";
-import { ArrowLeft, Leaf, MapPin, Pointer, Ruler, Edit3 } from "lucide-react";
+import { ArrowLeft, Leaf, MapPin, Pointer, Ruler, Pencil } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect, useRef } from "react";
 import { AreaSelectionPage } from "./AreaSelectionPage";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import { calculateMapScale, MapScaleBar } from "../../utils/mapScale.tsx";
 
 interface ProjectSelectAreaProps {
   project: Project;
@@ -20,6 +21,7 @@ export function ProjectSelectArea({ project, onBack, onContinue }: ProjectSelect
   const [totalPrice, setTotalPrice] = useState(0);
   const [showManualSelection, setShowManualSelection] = useState(false);
   const [selectedAreas, setSelectedAreas] = useState<any[]>([]); // Store selected areas from manual selection
+  const [mapScale, setMapScale] = useState({ distance: '1km', width: 48 });
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
   
@@ -60,6 +62,18 @@ export function ProjectSelectArea({ project, onBack, onContinue }: ProjectSelect
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
       attribution: '&copy; Esri'
     }).addTo(map);
+
+    // Add zoom event listener for scale calculation
+    map.on('zoomend', () => {
+      const zoom = map.getZoom();
+      const { distance, width } = calculateMapScale(zoom);
+      setMapScale({ distance, width });
+    });
+    
+    // Set initial scale
+    const initialZoom = map.getZoom();
+    const { distance, width } = calculateMapScale(initialZoom);
+    setMapScale({ distance, width });
 
     // Add selected areas to map
     selectedAreas.forEach((area, index) => {
@@ -105,6 +119,7 @@ export function ProjectSelectArea({ project, onBack, onContinue }: ProjectSelect
             htmlElement.style.strokeWidth = '3px';
             htmlElement.style.fill = `url(#selection-map-gradient-${project.id}-${index})`;
             htmlElement.style.fillOpacity = '0.4';
+            htmlElement.style.cursor = 'default';
           }
         }
       }
@@ -186,7 +201,7 @@ export function ProjectSelectArea({ project, onBack, onContinue }: ProjectSelect
         {/* Back Button */}
         <button
           onClick={onBack}
-          className="absolute top-4 left-4 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[9999]"
+          className="absolute top-4 left-4 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[40]"
         >
           <ArrowLeft className="h-5 w-5 md:w-6 md:h-6" />
         </button>
@@ -251,26 +266,24 @@ export function ProjectSelectArea({ project, onBack, onContinue }: ProjectSelect
                        {/* Manual Selection Mode - Show map when areas are selected */}
             {inputMode === 'manual' && selectedAreas.length > 0 ? (
               <div className="mb-6">
-                {/* Map with selected areas */}
-                <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-                  <div className="relative h-48">
-                    <div ref={mapRef} className="w-full h-full" />
-                    
-                    {/* Edit button - top right corner */}
-                    <button
-                      onClick={() => setShowManualSelection(true)}
-                      className="absolute top-2 right-2 w-8 h-8 bg-white/90 backdrop-blur-sm hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 border border-gray-200 hover:border-gray-300 z-10"
-                    >
-                      <Edit3 className="w-4 h-4" />
-                    </button>
-                    
-                    {/* Area info overlay */}
-                    <div className="absolute bottom-2 left-2 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg border border-gray-200">
-                      <div className="text-xs font-medium text-gray-700">{formatNumber(selectedArea)} m²</div>
-                      <div className="text-xs text-gray-500">{t('common.selected')}</div>
-                    </div>
-                  </div>
-                </div>
+                                 {/* Map with selected areas */}
+                 <div className="relative h-48 rounded-lg overflow-hidden shadow-lg bg-white border border-gray-200">
+                   {/* Map Container */}
+                   <div ref={mapRef} className="w-full h-full z-0" />
+                   
+                   {/* Edit button - top right corner */}
+                   <button
+                     onClick={() => setShowManualSelection(true)}
+                     className="absolute top-2 right-2 w-8 h-8 bg-white/95 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50"
+                   >
+                     <Pencil className="w-4 h-4" />
+                   </button>
+                   
+                   {/* Scale Bar - positioned bottom left */}
+                   <div className="absolute bottom-2 left-2">
+                     <MapScaleBar scale={mapScale} position="bottom-left" />
+                   </div>
+                 </div>
                
                {selectedArea > 0 && (
                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-3 border border-green-200 mt-3">
@@ -313,7 +326,7 @@ export function ProjectSelectArea({ project, onBack, onContinue }: ProjectSelect
                      step="10"
                      value={selectedArea}
                      onChange={(e) => setSelectedArea(Number(e.target.value))}
-                     className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-center text-lg font-semibold bg-white text-gray-900 placeholder-gray-500 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:placeholder-gray-400"
+                     className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-center text-lg font-semibold bg-white text-gray-900 placeholder-gray-500"
                      placeholder="Enter area"
                    />
                    <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">m²</span>
@@ -355,7 +368,7 @@ export function ProjectSelectArea({ project, onBack, onContinue }: ProjectSelect
                      step="1"
                      value={customPrice}
                      onChange={(e) => setCustomPrice(Number(e.target.value))}
-                     className="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-center text-lg font-semibold bg-white text-gray-900 placeholder-gray-500 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:placeholder-gray-400"
+                     className="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-center text-lg font-semibold bg-white text-gray-900 placeholder-gray-500"
                      placeholder="Enter amount"
                    />
                  </div>

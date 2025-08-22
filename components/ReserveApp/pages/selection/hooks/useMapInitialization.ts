@@ -1,11 +1,16 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import L from 'leaflet';
 import "leaflet/dist/leaflet.css";
+import { calculateMapScale } from '../../../utils/mapScale.tsx';
 
 export function useMapInitialization(project: any) {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
+
+  const updateScale = useCallback((zoom: number) => {
+    return calculateMapScale(zoom);
+  }, []);
 
   // Initialize map
   useEffect(() => {
@@ -30,15 +35,6 @@ export function useMapInitialization(project: any) {
 
     mapInstanceRef.current = map;
 
-    // Add default Leaflet scale control
-    const scaleControl = L.control.scale({
-      position: 'topright',
-      metric: true,
-      imperial: false
-    });
-    
-    scaleControl.addTo(map);
-
     // Set map as loaded
     setMapLoaded(true);
 
@@ -51,6 +47,7 @@ export function useMapInitialization(project: any) {
   return {
     mapRef,
     mapInstanceRef,
-    mapLoaded
+    mapLoaded,
+    updateScale
   };
 }

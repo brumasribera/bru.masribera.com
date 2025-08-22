@@ -4,6 +4,7 @@
     "back": "Back",
     "globe": "Globe"
   },
+  "searchProjects": "Search projects...",
   "garden": {
     "myContributions": "My contributions",
           "protectedAreas": "Protected areas",
@@ -143,7 +144,9 @@
     "satelliteView": "Satellite view",
     "selectArea": "Select your area",
     "yourImpact": "Your impact",
-    "continueToCheckout": "Continue to checkout"
+    "continueToCheckout": "Continue to checkout",
+    "projectUpdates": "Project Updates",
+    "latestActivity": "Latest conservation activity and progress"
   },
   "learnMorePage": {
     "title": "Learn more",

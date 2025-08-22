@@ -4,6 +4,7 @@
     "back": "Zurück",
     "globe": "Globus"
   },
+  "searchProjects": "Projekte suchen...",
   "garden": {
     "myContributions": "Meine Beiträge",
     "protectedAreas": "Geschützte Gebiete",
@@ -140,7 +141,9 @@
     "contributeToProtection": "Zum Schutz beitragen",
     "backToProjects": "Zurück zu Projekten",
     "areaLabel": "ha",
-    "satelliteView": "Satellitenansicht"
+    "satelliteView": "Satellitenansicht",
+    "projectUpdates": "Projekt-Updates",
+    "latestActivity": "Neueste Naturschutzaktivitäten und Fortschritte"
   },
   "learnMorePage": {
     "title": "Mehr erfahren",

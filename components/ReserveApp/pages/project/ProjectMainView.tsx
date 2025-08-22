@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import L from "leaflet";
 import { useTranslation } from "react-i18next";
 import "leaflet/dist/leaflet.css";
+import { calculateMapScale, MapScaleBar } from "../../utils/mapScale.tsx";
 
 interface ProjectMainViewProps {
   project: Project;
@@ -31,6 +32,8 @@ export function ProjectMainView({
   const fullScreenMapInstanceRef = useRef<L.Map | null>(null);
 
   const [isFullScreen, setIsFullScreen] = useState(false);
+  const [mainMapScale, setMainMapScale] = useState({ distance: "1km", width: 48 });
+  const [fullscreenMapScale, setFullscreenMapScale] = useState({ distance: "1km", width: 48 });
   const [animatedValues, setAnimatedValues] = useState({
     percentage: 0,
     euros: 0,
@@ -42,6 +45,8 @@ export function ProjectMainView({
   const purchasedArea = Math.floor(totalArea * (0.3 + (project.id.charCodeAt(0) % 20) / 100));
   const totalFunding = totalArea * project.pricePerM2;
   const raisedFunding = Math.floor(totalFunding * (0.4 + (project.id.charCodeAt(1) % 30) / 100));
+
+  // Use shared scale calculation utility
 
   // Helper function to format large numbers with abbreviations
   const formatNumber = (num: number): string => {
@@ -60,6 +65,20 @@ export function ProjectMainView({
       @keyframes progressFill {
         from { width: 0%; }
         to { width: ${(raisedFunding / totalFunding) * 100}%; }
+      }
+      
+      /* Override Leaflet cursor for minimized map only */
+      .project-main-map .leaflet-container {
+        cursor: default !important;
+      }
+      .project-main-map .leaflet-container .leaflet-interactive {
+        cursor: default !important;
+      }
+      .project-main-map .leaflet-container svg {
+        cursor: default !important;
+      }
+      .project-main-map .leaflet-container svg * {
+        cursor: default !important;
       }
     `;
     document.head.appendChild(style);
@@ -95,7 +114,13 @@ export function ProjectMainView({
     if (mapRef.current && !mapInstanceRef.current) {
       const map = L.map(mapRef.current, {
         zoomControl: false,
-        attributionControl: false
+        attributionControl: false,
+        dragging: false,
+        touchZoom: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        boxZoom: false,
+        keyboard: false
       }).setView([project.lat, project.lon], 13);
       
       L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -181,7 +206,19 @@ export function ProjectMainView({
      }
    }
 
-   mapInstanceRef.current = map;
+         mapInstanceRef.current = map;
+      
+      // Add zoom event listener for scale calculation
+      map.on('zoomend', () => {
+        const zoom = map.getZoom();
+        const { distance, width } = calculateMapScale(zoom);
+        setMainMapScale({ distance, width });
+      });
+      
+      // Set initial scale for main map
+      const initialZoom = map.getZoom();
+      const { distance, width } = calculateMapScale(initialZoom);
+      setMainMapScale({ distance, width });
     }
 
     return () => {
@@ -197,7 +234,13 @@ export function ProjectMainView({
     if (isFullScreen && fullScreenMapRef.current && !fullScreenMapInstanceRef.current) {
       const fullScreenMap = L.map(fullScreenMapRef.current, {
         zoomControl: false,
-        attributionControl: false
+        attributionControl: false,
+        dragging: true,
+        touchZoom: true,
+        scrollWheelZoom: true,
+        doubleClickZoom: true,
+        boxZoom: true,
+        keyboard: true
       }).setView([project.lat, project.lon], 13);
       
       L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -284,6 +327,18 @@ export function ProjectMainView({
    }
    
       fullScreenMapInstanceRef.current = fullScreenMap;
+      
+      // Add zoom event listener for scale calculation in fullscreen
+      fullScreenMap.on('zoomend', () => {
+        const zoom = fullScreenMap.getZoom();
+        const { distance, width } = calculateMapScale(zoom);
+        setFullscreenMapScale({ distance, width });
+      });
+      
+      // Set initial scale for fullscreen map
+      const initialZoom = fullScreenMap.getZoom();
+      const { distance, width } = calculateMapScale(initialZoom);
+      setFullscreenMapScale({ distance, width });
     }
 
     return () => {
@@ -310,7 +365,7 @@ export function ProjectMainView({
         {/* Back Button */}
         <button
           onClick={onBack}
-          className="absolute top-4 left-4 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[9999]"
+          className="absolute top-4 left-4 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[40]"
         >
           <ArrowLeft className="h-5 w-5 md:w-6 md:h-6" />
         </button>
@@ -318,7 +373,7 @@ export function ProjectMainView({
         {/* Home Button - positioned top right */}
         <button
           onClick={onShowContributions}
-          className="absolute top-4 right-4 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[9999]"
+          className="absolute top-4 right-4 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[40]"
         >
           <Home className="h-5 w-5 md:w-6 md:h-6" />
         </button>
@@ -384,12 +439,12 @@ export function ProjectMainView({
         </div>
 
         {/* Satellite Map with Reserve Area */}
-        <div className="relative h-48 md:h-56 lg:h-64 rounded-2xl overflow-hidden shadow-lg">
+        <div className="relative h-48 md:h-56 lg:h-64 rounded-2xl overflow-hidden shadow-lg project-main-map">
           {/* Leaflet Map Container */}
           <div 
             ref={mapRef} 
             className="w-full h-full z-0" 
-            style={{ minHeight: '192px' }}
+            style={{ minHeight: '192px', cursor: 'default' }}
           />
           
           {/* Area Label with Square Meters - positioned top right */}
@@ -404,6 +459,9 @@ export function ProjectMainView({
           >
             <Maximize2 className="h-5 w-5 md:w-6 md:h-6" />
           </button>
+          
+          {/* Scale Bar - positioned bottom left */}
+          <MapScaleBar scale={mainMapScale} position="bottom-left" />
         </div>
 
         {/* Impact Stats */}
@@ -449,7 +507,7 @@ export function ProjectMainView({
       </div>
 
       {/* Floating Contribute Button - Sticky to Bottom */}
-      <div className="absolute w-full bottom-0 z-50 p-4 md:p-6 lg:p-8 pr-6 md:pr-8 lg:pr-10">
+      <div className="absolute w-full bottom-0 z-30 p-4 md:p-6 lg:p-8 pr-6 md:pr-8 lg:pr-10">
         <div className="w-full">
           <button 
             className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-2xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200 active:scale-[0.98] text-base flex items-center justify-center"
@@ -463,20 +521,24 @@ export function ProjectMainView({
 
              {/* Fullscreen Map Modal - Inside Mockup */}
        {isFullScreen && (
-         <div className="absolute inset-0 bg-black z-50 flex items-center justify-center rounded-2xl overflow-hidden">
-           {/* Fullscreen Map Container */}
+         <div className="absolute inset-0 bg-black z-40 flex items-center justify-center rounded-2xl overflow-hidden">
+                      {/* Fullscreen Map Container */}
            <div 
              ref={fullScreenMapRef} 
-             className="w-full h-full" 
+             className="w-full h-full relative z-0" 
            />
            
-                       {/* Exit Fullscreen Button */}
-            <button
-              onClick={() => setIsFullScreen(false)}
-              className="absolute top-4 left-4 w-10 h-10 md:w-12 md:h-12 bg-white/95 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[9999]"
-            >
-              <Minimize2 className="h-5 w-5 md:w-6 md:h-6" />
-            </button>
+           {/* Minimize Button */}
+           <button
+             onClick={() => setIsFullScreen(false)}
+             className="absolute top-4 left-4 w-10 h-10 md:w-12 md:h-12 bg-white/95 hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 border border-gray-200/50 z-10"
+             aria-label="Exit fullscreen"
+           >
+             <Minimize2 className="h-5 w-5 md:w-6 md:h-6" />
+           </button>
+           
+           {/* Scale Bar - positioned bottom left */}
+           <MapScaleBar scale={fullscreenMapScale} position="bottom-left" />
          </div>
        )}
     </div>

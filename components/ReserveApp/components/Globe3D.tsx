@@ -3,13 +3,24 @@ import { Home } from "lucide-react";
 import GlobeGL from "react-globe.gl";
 import { PROJECTS } from "../utils/data";
 import { Project } from "../types/types";
+import { SearchBox } from "./SearchBox";
 
 interface Globe3DProps {
   onPick: (project: Project) => void;
   onShowContributions: () => void;
+  onShowAccount?: () => void;
+  user?: {
+    name: string;
+    email: string;
+    phone: string;
+    location: string;
+    avatar: string;
+    memberSince: string;
+    verified: boolean;
+  };
 }
 
-export function Globe3D({ onPick, onShowContributions }: Globe3DProps) {
+export function Globe3D({ onPick, onShowContributions, onShowAccount, user }: Globe3DProps) {
   const [dimensions, setDimensions] = useState({ width: 380, height: 680 });
   const globeRef = useRef<any>(null);
   
@@ -372,17 +383,26 @@ export function Globe3D({ onPick, onShowContributions }: Globe3DProps) {
         ))}
       </div>
       
-      {/* Header overlay removed per design */}
-
-      {/* Home Button - positioned top right with responsive sizing */}
-      <button
-        onClick={() => {
-          onShowContributions();
-        }}
-        className="absolute top-4 right-4 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[9999]"
-      >
-        <Home className="h-5 w-5 md:h-6 md:w-6" />
-      </button>
+      {/* Header with Search and Home Button */}
+              <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-[40]">
+        {/* Search Box - takes left space */}
+        <div className="flex-1 max-w-xs">
+          <SearchBox 
+            projects={PROJECTS} 
+            onProjectSelect={onPick}
+          />
+        </div>
+        
+        {/* Home Button - positioned right */}
+        <button
+          onClick={() => {
+            onShowContributions();
+          }}
+          className="ml-4 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 flex-shrink-0"
+        >
+          <Home className="h-5 w-5 md:h-6 md:w-6" />
+        </button>
+      </div>
 
       {/* Globe container - Takes remaining height and centers the globe */}
       <div className="flex-1 relative flex items-center justify-center">

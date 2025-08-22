@@ -4,6 +4,7 @@
     "back": "Enrere",
     "globe": "Globus"
   },
+  "searchProjects": "Cercar projectes...",
   "garden": {
     "myContributions": "Les meves contribucions",
     "protectedAreas": "Àrees protegides",
@@ -140,7 +141,9 @@
     "contributeToProtection": "Contribuir a la protecció",
     "backToProjects": "Tornar als projectes",
     "areaLabel": "ha",
-    "satelliteView": "Vista satèl·lit"
+    "satelliteView": "Vista satèl·lit",
+    "projectUpdates": "Actualitzacions del Projecte",
+    "latestActivity": "Última activitat de conservació i progrés"
   },
   "learnMorePage": {
     "title": "Saber més",

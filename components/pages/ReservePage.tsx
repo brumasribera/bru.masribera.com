@@ -129,8 +129,8 @@ export function ReservePage() {
 
 				{/* Prototype */}
 				<div id="interactive-prototype" className="mb-16">
-					{/* Mobile CTA - Visible on small screens */}
-					<div className="block max-[500px]:block max-[500px]:mb-8 md:hidden">
+					{/* Mobile CTA - Open App Card for screens under 500px */}
+					<div className="block max-[499px]:block max-[499px]:mb-8 min-[500px]:hidden">
 						<div className="max-w-md mx-auto text-center">
 							<div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-3xl p-6 md:p-8 shadow-xl border border-gray-200 dark:border-gray-700">
 								<div className="w-16 h-16 md:w-20 md:h-20 bg-white p-2 rounded-3xl flex items-center justify-center mx-auto mb-4 md:mb-6 shadow-xl">

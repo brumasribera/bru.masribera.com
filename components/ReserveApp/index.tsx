@@ -29,7 +29,7 @@ import { Leaf } from "lucide-react";
  * - Responsive typography and spacing
  */
 
-type AccountPage = 'main' | 'profile' | 'payment' | 'transactions' | 'linked' | 'interface' | 'language' | 'notifications' | 'security' | 'downloads';
+type AccountPage = 'main' | 'profile' | 'payment' | 'transactions' | 'linked' | 'downloads';
 
 export default function ReserveMobileApp() {
   const { ready, t } = useTranslation('reserve');
@@ -96,14 +96,6 @@ export default function ReserveMobileApp() {
         return <TransactionHistory onBack={() => setAccountPage('payment')} />;
       case 'linked':
         return <LinkedAccounts onBack={() => setAccountPage('main')} />;
-      case 'interface':
-        return <InterfaceSettings onBack={() => setAccountPage('main')} />;
-      case 'language':
-        return <LanguageSettings onBack={() => setAccountPage('main')} />;
-      case 'notifications':
-        return <NotificationsPage onBack={() => setAccountPage('main')} />;
-      case 'security':
-        return <SecurityPage onBack={() => setAccountPage('main')} />;
       case 'downloads':
         return <DownloadsPage onBack={() => setAccountPage('main')} />;
       default:
@@ -112,11 +104,7 @@ export default function ReserveMobileApp() {
             onBack={closeAccount}
             onNavigateToProfile={() => setAccountPage('profile')}
             onNavigateToPayment={() => setAccountPage('payment')}
-            onNavigateToSettings={() => setAccountPage('interface')}
-            onNavigateToSecurity={() => setAccountPage('security')}
-            onNavigateToNotifications={() => setAccountPage('notifications')}
-            onNavigateToLanguage={() => setAccountPage('language')}
-            onNavigateToDownloads={() => setAccountPage('transactions')}
+            onNavigateToDownloads={() => setAccountPage('downloads')}
             onNavigateToLinkedAccounts={() => setAccountPage('linked')}
             user={user}
           />

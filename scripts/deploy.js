@@ -9,7 +9,22 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 async function main() {
+  // Check if commit message was provided
+  const commitMessage = process.argv[2];
+  if (!commitMessage) {
+    console.error('❌ Error: Commit message is required!');
+    console.log('\n📝 Usage:');
+    console.log('  npm run deploy "Your commit message here"');
+    console.log('  npm run release "Your commit message here"');
+    console.log('\n💡 Examples:');
+    console.log('  npm run deploy "Add new Open Graph images for social sharing"');
+    console.log('  npm run deploy "Fix responsive layout on mobile devices"');
+    console.log('  npm run deploy "Update project descriptions and add new skills"');
+    process.exit(1);
+  }
+
   console.log('🚀 Starting deployment process...\n');
+  console.log(`💬 Commit message: "${commitMessage}"\n`);
   
   try {
     // Step 1: Build the project
@@ -22,10 +37,7 @@ async function main() {
     execSync('git add .', { stdio: 'inherit' });
     console.log('✅ Changes added to git!\n');
     
-    // Step 3: Commit changes
-    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const commitMessage = `Deploy: Update site - ${timestamp}`;
-    
+    // Step 3: Commit changes with custom message
     console.log('💾 Committing changes...');
     execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
     console.log('✅ Changes committed!\n');

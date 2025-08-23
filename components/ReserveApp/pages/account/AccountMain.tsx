@@ -4,10 +4,6 @@ import {
   ArrowLeft, 
   User, 
   CreditCard, 
-  Settings, 
-  Shield, 
-  Bell, 
-  Globe, 
   Download,
   Link2,
   Mail,
@@ -29,10 +25,6 @@ interface AccountMainProps {
   onBack: () => void;
   onNavigateToProfile: () => void;
   onNavigateToPayment: () => void;
-  onNavigateToSettings: () => void;
-  onNavigateToSecurity: () => void;
-  onNavigateToNotifications: () => void;
-  onNavigateToLanguage: () => void;
   onNavigateToDownloads: () => void;
   onNavigateToLinkedAccounts?: () => void;
   user?: {
@@ -69,10 +61,6 @@ export function AccountMain({
   onBack, 
   onNavigateToProfile,
   onNavigateToPayment,
-  onNavigateToSettings,
-  onNavigateToSecurity,
-  onNavigateToNotifications,
-  onNavigateToLanguage,
   onNavigateToDownloads,
   onNavigateToLinkedAccounts,
   user
@@ -118,7 +106,7 @@ export function AccountMain({
       id: "area_protector",
       title: "Area Protector",
       description: "Protected 1000m² of nature",
-      icon: Shield,
+      icon: Award,
       unlocked: true
     },
     {
@@ -174,43 +162,6 @@ export function AccountMain({
           icon: CreditCard,
           action: onNavigateToPayment,
           color: "bg-green-500"
-        }
-      ]
-    },
-    {
-      title: "Preferences",
-      items: [
-        {
-          id: "settings",
-          title: "App Settings",
-          description: "Customize your experience",
-          icon: Settings,
-          action: onNavigateToSettings,
-          color: "bg-purple-500"
-        },
-        {
-          id: "security",
-          title: "Security & Privacy",
-          description: "Password, 2FA & data control",
-          icon: Shield,
-          action: onNavigateToSecurity,
-          color: "bg-red-500"
-        },
-        {
-          id: "notifications",
-          title: "Notifications",
-          description: "Push, email & SMS preferences",
-          icon: Bell,
-          action: onNavigateToNotifications,
-          color: "bg-yellow-500"
-        },
-        {
-          id: "language",
-          title: "Language & Region",
-          description: "Language, timezone & currency",
-          icon: Globe,
-          action: onNavigateToLanguage,
-          color: "bg-indigo-500"
         }
       ]
     },
@@ -288,7 +239,7 @@ export function AccountMain({
             />
             {currentUser.verified && (
               <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center border-2 border-white">
-                <Shield className="w-3 h-3 text-white" />
+                <Award className="w-3 h-3 text-white" />
               </div>
             )}
           </div>
@@ -309,7 +260,7 @@ export function AccountMain({
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-4 text-center border border-green-100">
               <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-2">
-                <Shield className="w-4 h-4 text-white" />
+                <Award className="w-4 h-4 text-white" />
               </div>
               <div className="text-2xl font-bold text-green-700">{formatNumber(stats.totalAreaProtected)}</div>
               <div className="text-xs text-green-600">m² Protected</div>

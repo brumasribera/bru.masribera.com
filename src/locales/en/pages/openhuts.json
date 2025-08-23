@@ -5,8 +5,8 @@
   },
   "overview": {
     "title": "Project vision",
-    "p1": "Open Huts Nature Network revolutionizes how outdoor enthusiasts discover, book, and plan mountain adventures. As founder and lead developer, I created a comprehensive ecosystem for multi-hut route planning across the world's most beautiful mountain regions.",
-    "p2": "The platform addresses the need for accessible mountain accommodations while promoting sustainable outdoor tourism and supporting local mountain communities."
+    "p1": "Open Huts Nature Network is a platform connecting outdoor enthusiasts with mountain accommodations worldwide. The project focuses on sustainable outdoor tourism and supporting local mountain communities.",
+    "p2": "The platform aims to address accessibility challenges in mountain tourism while promoting environmental conservation and community engagement."
   },
   "cards": {
     "targetUsers": {
@@ -24,18 +24,18 @@
   },
   "features": {
     "title": "Key features",
-    "search": { "title": "Smart search", "desc": "Advanced filtering by location, amenities, availability, and user preferences" },
-    "route": { "title": "Route planning", "desc": "Multi-hut route planning with elevation profiles and difficulty ratings" },
-    "hut":   { "title": "Hut management", "desc": "Comprehensive hut profiles with photos, amenities, and availability" },
-    "community": { "title": "Community", "desc": "User reviews, ratings, and community-driven content" },
-    "navigation": { "title": "Navigation", "desc": "Offline maps and GPS integration for remote areas" },
-    "weather": { "title": "Weather integration", "desc": "Real-time weather data and seasonal considerations" }
+    "search": { "title": "Search functionality", "desc": "Find mountain huts based on location and preferences" },
+    "route": { "title": "Route planning", "desc": "Plan multi-hut adventures with basic route information" },
+    "hut":   { "title": "Hut information", "desc": "View hut details, photos, and basic amenities" },
+    "community": { "title": "Community features", "desc": "User reviews and community content" },
+    "navigation": { "title": "Navigation support", "desc": "Maps and location services for outdoor activities" },
+    "weather": { "title": "Weather information", "desc": "Weather data for trip planning" }
   },
   "preview": {
     "title": "Platform preview",
-    "search": { "title": "Search interface", "desc": "Advanced search functionality with filters for location, amenities, and availability. Users can find the perfect mountain hut based on their specific requirements." },
-    "hut": { "title": "Hut details", "desc": "Comprehensive hut profiles with photos, amenities, availability, and user reviews. Detailed information to help users make informed decisions." },
-    "route": { "title": "Route planning", "desc": "Multi-hut route planning with interactive maps, elevation profiles, and difficulty ratings. Plan your perfect mountain adventure with multiple stops." }
+    "search": { "title": "Search interface", "desc": "Search functionality to find mountain huts based on location and basic preferences." },
+    "hut": { "title": "Hut details", "desc": "Hut profiles with photos and basic information to help users make decisions." },
+    "route": { "title": "Route planning", "desc": "Basic route planning with maps for multi-hut adventures." }
   },
   "tech": {
     "title": "Technology stack",
@@ -44,8 +44,8 @@
   },
   "future": {
     "title": "Vision for the future",
-    "p1": "Open Huts Nature Network is evolving into a comprehensive ecosystem for sustainable outdoor tourism. Future plans include AI-powered route recommendations, community-driven conservation initiatives, and partnerships with environmental organizations to protect mountain ecosystems worldwide.",
-    "p2": "The platform aims to become the global standard for mountain hut booking and route planning, connecting adventurers with the world's most beautiful and remote mountain destinations."
+    "p1": "Open Huts Nature Network aims to expand its reach and improve user experience through ongoing development and community feedback.",
+    "p2": "The platform seeks to connect more adventurers with mountain destinations while promoting sustainable tourism practices."
   },
   "nav": {
     "prev": "Reserve",

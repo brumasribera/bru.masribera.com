@@ -243,7 +243,9 @@
     "send": "Invia messaggio",
     "sending": "Invio in corso...",
     "success": "Messaggio inviato con successo!",
-    "error": "Errore nell'invio del messaggio. Riprova."
+    "error": "Errore nell'invio del messaggio. Riprova.",
+    "consent": "Consento al trattamento dei miei dati personali come descritto nelle informazioni sulla privacy sopra. Questi dati saranno utilizzati solo per rispondere alla mia richiesta.",
+    "consentRequired": "Per favore conferma che consenti al trattamento dei dati prima di inviare il tuo messaggio."
   },
   "languages": {
     "title": "Lingue che conosco",

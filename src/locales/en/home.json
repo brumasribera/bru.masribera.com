@@ -242,7 +242,9 @@
     "send": "Send message",
     "sending": "Sending...",
     "success": "Message sent successfully!",
-    "error": "Error sending message. Please try again."
+    "error": "Error sending message. Please try again.",
+    "consent": "I consent to the processing of my personal data as described in the privacy information above. This data will only be used to respond to my inquiry.",
+    "consentRequired": "Please confirm that you consent to data processing before sending your message."
   },
   "languages": {
     "title": "Languages I know",

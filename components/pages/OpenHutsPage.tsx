@@ -341,18 +341,15 @@ export function OpenHutsPage() {
         {/* Future Vision */}
         <div className="text-center">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
-            Vision for the Future
+            {t('openhuts:future.title')}
           </h2>
           <Card className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-700 rounded-3xl shadow-lg">
             <CardContent className="p-8">
               <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                Open Huts Nature Network is evolving into a comprehensive ecosystem for sustainable outdoor tourism. 
-                Future plans include AI-powered route recommendations, community-driven conservation initiatives, 
-                and partnerships with environmental organizations to protect mountain ecosystems worldwide.
+                {t('openhuts:future.p1')}
               </p>
               <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                The platform aims to become the global standard for mountain hut booking and route planning, 
-                connecting adventurers with the world's most beautiful and remote mountain destinations.
+                {t('openhuts:future.p2')}
               </p>
             </CardContent>
           </Card>

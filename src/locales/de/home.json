@@ -243,7 +243,9 @@
     "send": "Nachricht senden",
     "sending": "Wird gesendet...",
     "success": "Nachricht erfolgreich gesendet!",
-    "error": "Fehler beim Senden der Nachricht. Bitte versuche es erneut."
+    "error": "Fehler beim Senden der Nachricht. Bitte versuche es erneut.",
+    "consent": "Ich stimme der Verarbeitung meiner persönlichen Daten zu, wie in den oben genannten Datenschutzinformationen beschrieben. Diese Daten werden nur zur Beantwortung meiner Anfrage verwendet.",
+    "consentRequired": "Bitte bestätigen Sie, dass Sie der Datenverarbeitung zustimmen, bevor Sie Ihre Nachricht senden."
   },
   "languages": {
     "title": "Sprachen, die ich beherrsche",

@@ -31,6 +31,76 @@
       "linkedin": "Voir mon profil LinkedIn",
       "github": "Voir mon profil GitHub",
       "cv": "Voir mon CV"
+    },
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfUse": "Conditions d'utilisation"
+  },
+  "gdpr": {
+    "title": "Confidentialité et cookies",
+    "description": "Ce site utilise uniquement des cookies essentiels. En continuant, vous acceptez nos Conditions et Politique de confidentialité.",
+    "essentialOnly": "Cookies essentiels uniquement",
+    "accept": "Accepter",
+    "consentText": "En cliquant sur \"Accepter\", vous acceptez nos Conditions et Politique de confidentialité."
+  },
+  "privacy": {
+    "title": "Votre confidentialité compte",
+    "dataCollection": {
+      "title": "Ce que nous collectons",
+      "description": "Uniquement les informations que vous fournissez dans le formulaire de contact : votre nom, email et message. Pas de suivi, pas d'analyses, pas de collecte de données tierces."
+    },
+    "purpose": {
+      "title": "Pourquoi nous les collectons",
+      "description": "Uniquement pour répondre à votre demande et établir une communication professionnelle. Vos données sont transmises de manière sécurisée via EmailJS et ne sont pas stockées sur nos serveurs."
+    },
+    "sharing": {
+      "title": "Avec qui nous les partageons",
+      "description": "Personne. Vos informations sont privées et confidentielles. Nous ne partageons, vendons ou distribuons jamais vos données personnelles à des tiers."
+    },
+    "retention": {
+      "title": "Combien de temps nous les conservons",
+      "description": "Votre email est traité immédiatement et conservé uniquement dans ma boîte email personnelle à des fins de communication. Vous pouvez demander sa suppression à tout moment."
+    },
+    "rights": "Vous avez le droit d'accéder, corriger ou supprimer vos données personnelles à tout moment. Contactez-moi pour exercer ces droits.",
+    "commitment": "Nous nous engageons à protéger votre vie privée et à assurer la sécurité de vos informations personnelles.",
+    "gdprRights": {
+      "title": "Vos droits selon le GDPR"
+    },
+    "contact": {
+      "title": "Contactez-nous concernant votre confidentialité",
+      "description": "Si vous avez des questions sur cette politique de confidentialité ou souhaitez exercer vos droits, veuillez nous contacter via le formulaire de contact sur ce site web."
+    }
+  },
+  "terms": {
+    "title": "Conditions d'utilisation",
+    "acceptance": {
+      "title": "Acceptation des conditions",
+      "description": "En accédant et en utilisant ce site web, vous acceptez et acceptez d'être lié par ces termes et conditions. Si vous n'êtes pas d'accord avec une partie de ces termes, veuillez ne pas utiliser ce site web."
+    },
+    "intellectualProperty": {
+      "title": "Propriété intellectuelle",
+      "description": "Tout le contenu de ce site web, y compris le texte, les graphiques, les logos et le code, est la propriété de Bru Mas Ribera et est protégé par les lois sur le droit d'auteur. Vous pouvez voir et utiliser ce contenu uniquement à des fins personnelles et non commerciales. IMPORTANT : Le concept du projet Open Huts, le modèle économique et les idées innovantes connexes sont une propriété intellectuelle exclusive. Toute tentative de copier, reproduire ou utiliser ces concepts à des fins commerciales ou concurrentielles sera poursuivie par tous les moyens légaux disponibles."
+    },
+    "contact": {
+      "title": "Contact et communication",
+      "description": "Ce site web fournit un formulaire de contact pour les demandes professionnelles. En utilisant le formulaire de contact, vous acceptez de fournir des informations précises et consentez au traitement de vos données comme décrit dans notre politique de confidentialité."
+    },
+    "disclaimer": {
+      "title": "Avertissement",
+      "description": "Ce site web est fourni 'tel quel' sans aucune garantie. Les informations fournies sont uniquement à des fins générales et ne doivent pas être considérées comme des conseils professionnels. Utilisez à vos propres risques."
+    },
+    "projectProtection": {
+      "title": "Protection des projets",
+      "description": "Les projets et concepts innovants présentés sur ce site représentent une recherche originale et un développement intellectuel. Ces idées et méthodologies sont protégées par les droits de propriété intellectuelle. Respectez l'effort intellectuel qu'elles représentent et évitez la copie directe à des fins commerciales sans autorisation."
+    },
+    "legalEnforcement": {
+      "title": "Application légale",
+      "description": "La violation de ces conditions peut entraîner une action légale. Nous nous réservons le droit de poursuivre tous les recours légaux disponibles pour protéger notre propriété intellectuelle et faire respecter ces conditions d'utilisation."
+    },
+    "lastUpdated": "Dernière mise à jour : Décembre 2024",
+    "readCarefully": "Veuillez lire attentivement ces conditions avant d'utiliser ce site web.",
+    "questions": {
+      "title": "Des Questions Sur Ces Conditions ?",
+      "description": "Si vous avez des questions sur ces conditions d'utilisation, veuillez nous contacter via le formulaire de contact sur ce site web."
     }
   }
 }

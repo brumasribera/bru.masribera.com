@@ -31,6 +31,76 @@
       "linkedin": "Ver meu perfil LinkedIn",
       "github": "Ver meu perfil GitHub",
       "cv": "Ver meu CV"
+    },
+    "privacyPolicy": "Política de Privacidade",
+    "termsOfUse": "Termos de Uso"
+  },
+  "gdpr": {
+    "title": "Privacidade e cookies",
+    "description": "Este site usa apenas cookies essenciais. Ao continuar, você concorda com nossos Termos e Política de Privacidade.",
+    "essentialOnly": "Apenas cookies essenciais",
+    "accept": "Aceitar",
+    "consentText": "Ao clicar em \"Aceitar\", você concorda com nossos Termos e Política de Privacidade."
+  },
+  "privacy": {
+    "title": "Sua privacidade é importante",
+    "dataCollection": {
+      "title": "O que coletamos",
+      "description": "Apenas as informações que você fornece no formulário de contato: seu nome, email e mensagem. Sem rastreamento, sem análises, sem coleta de dados de terceiros."
+    },
+    "purpose": {
+      "title": "Por que coletamos",
+      "description": "Apenas para responder à sua consulta e estabelecer comunicação profissional. Seus dados são transmitidos com segurança via EmailJS e não são armazenados em nossos servidores."
+    },
+    "sharing": {
+      "title": "Com quem compartilhamos",
+      "description": "Com ninguém. Suas informações são privadas e confidenciais. Nunca compartilhamos, vendemos ou distribuímos seus dados pessoais para terceiros."
+    },
+    "retention": {
+      "title": "Por quanto tempo mantemos",
+      "description": "Seu email é processado imediatamente e mantido apenas no meu email pessoal para fins de comunicação. Você pode solicitar a exclusão a qualquer momento."
+    },
+    "rights": "Você tem o direito de acessar, corrigir ou excluir seus dados pessoais a qualquer momento. Entre em contato comigo para exercer esses direitos.",
+    "commitment": "Estamos comprometidos em proteger sua privacidade e garantir a segurança de suas informações pessoais.",
+    "gdprRights": {
+      "title": "Seus direitos sob o GDPR"
+    },
+    "contact": {
+      "title": "Entre em contato sobre sua privacidade",
+      "description": "Se você tiver dúvidas sobre esta política de privacidade ou quiser exercer seus direitos, entre em contato conosco através do formulário de contato neste site."
+    }
+  },
+  "terms": {
+    "title": "Termos de uso",
+    "acceptance": {
+      "title": "Aceitação dos termos",
+      "description": "Ao acessar e usar este site, você aceita e concorda em estar vinculado a estes termos e condições. Se você não concordar com qualquer parte destes termos, não use este site."
+    },
+    "intellectualProperty": {
+      "title": "Propriedade intelectual",
+      "description": "Todo o conteúdo deste site, incluindo texto, gráficos, logotipos e código, é propriedade de Bru Mas Ribera e é protegido pelas leis de direitos autorais. Você pode visualizar e usar este conteúdo apenas para fins pessoais e não comerciais."
+    },
+    "contact": {
+      "title": "Contato e comunicação",
+      "description": "Este site fornece um formulário de contato para consultas profissionais. Ao usar o formulário de contato, você concorda em fornecer informações precisas e consente com o processamento de seus dados conforme descrito em nossa política de privacidade."
+    },
+    "disclaimer": {
+      "title": "Aviso legal",
+      "description": "Este site é fornecido 'como está' sem garantias. As informações fornecidas são apenas para fins gerais e não devem ser consideradas como aconselhamento profissional. Use por sua conta e risco."
+    },
+    "projectProtection": {
+      "title": "Conceitos de projeto",
+      "description": "Os projetos e conceitos inovadores apresentados neste site representam pesquisa original e desenvolvimento intelectual. Essas ideias e metodologias são protegidas por direitos de propriedade intelectual. Respeite o esforço intelectual por trás delas e evite cópia direta para fins comerciais sem permissão."
+    },
+    "legalEnforcement": {
+      "title": "Aplicação legal",
+      "description": "A violação destes termos pode resultar em ação legal. Reservamo-nos o direito de perseguir todos os recursos legais disponíveis para proteger nossa propriedade intelectual e fazer cumprir estes termos de uso."
+    },
+    "lastUpdated": "Última atualização: Dezembro 2024",
+    "readCarefully": "Por favor, leia estes termos cuidadosamente antes de usar este site.",
+    "questions": {
+      "title": "Perguntas Sobre Estes Termos?",
+      "description": "Se você tiver dúvidas sobre estes termos de uso, entre em contato conosco através do formulário de contato neste site."
     }
   }
 }

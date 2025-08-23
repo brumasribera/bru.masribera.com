@@ -31,6 +31,76 @@
       "linkedin": "Visualizza il mio profilo LinkedIn",
       "github": "Visualizza il mio profilo GitHub",
       "cv": "Visualizza il mio CV"
+    },
+    "privacyPolicy": "Informativa sulla privacy",
+    "termsOfUse": "Termini di utilizzo"
+  },
+  "gdpr": {
+    "title": "Privacy e cookie",
+    "description": "Questo sito usa solo cookie essenziali. Continuando, accetti i nostri Termini e Politica sulla privacy.",
+    "essentialOnly": "Solo cookie essenziali",
+    "accept": "Accetta",
+    "consentText": "Cliccando su \"Accetta\", accetti i nostri Termini e Politica sulla privacy."
+  },
+  "privacy": {
+    "title": "La tua privacy è importante",
+    "dataCollection": {
+      "title": "Cosa raccogliamo",
+      "description": "Solo le informazioni che fornisci nel modulo di contatto: il tuo nome, email e messaggio. Nessun tracciamento, nessuna analisi, nessuna raccolta di dati di terze parti."
+    },
+    "purpose": {
+      "title": "Perché li raccogliamo",
+      "description": "Solo per rispondere alla tua richiesta e stabilire una comunicazione professionale. I tuoi dati vengono trasmessi in modo sicuro tramite EmailJS e non vengono memorizzati sui nostri server."
+    },
+    "sharing": {
+      "title": "Con chi li condividiamo",
+      "description": "Con nessuno. Le tue informazioni sono private e confidenziali. Non condividiamo, vendiamo o distribuiamo mai i tuoi dati personali a terze parti."
+    },
+    "retention": {
+      "title": "Per quanto tempo li conserviamo",
+      "description": "La tua email viene elaborata immediatamente e conservata solo nella mia email personale per scopi di comunicazione. Puoi richiedere la cancellazione in qualsiasi momento."
+    },
+    "rights": "Hai il diritto di accedere, correggere o eliminare i tuoi dati personali in qualsiasi momento. Contattami per esercitare questi diritti.",
+    "commitment": "Ci impegniamo a proteggere la tua privacy e garantire la sicurezza delle tue informazioni personali.",
+    "gdprRights": {
+      "title": "I tuoi diritti secondo il GDPR"
+    },
+    "contact": {
+      "title": "Contattaci per la tua privacy",
+      "description": "Se hai domande su questa politica sulla privacy o vuoi esercitare i tuoi diritti, contattaci tramite il modulo di contatto su questo sito web."
+    }
+  },
+  "terms": {
+    "title": "Termini di utilizzo",
+    "acceptance": {
+      "title": "Accettazione dei termini",
+      "description": "Accedendo e utilizzando questo sito web, accetti e accetti di essere vincolato da questi termini e condizioni. Se non sei d'accordo con una parte di questi termini, non utilizzare questo sito web."
+    },
+    "intellectualProperty": {
+      "title": "Proprietà intellettuale",
+      "description": "Tutto il contenuto di questo sito web, inclusi testo, grafica, loghi e codice, è di proprietà di Bru Mas Ribera ed è protetto dalle leggi sul copyright. Puoi visualizzare e utilizzare questo contenuto solo per scopi personali e non commerciali."
+    },
+    "contact": {
+      "title": "Contatto e comunicazione",
+      "description": "Questo sito web fornisce un modulo di contatto per richieste professionali. Utilizzando il modulo di contatto, accetti di fornire informazioni accurate e consenti al trattamento dei tuoi dati come descritto nella nostra politica sulla privacy."
+    },
+    "disclaimer": {
+      "title": "Disclaimer",
+      "description": "Questo sito web è fornito 'così com'è' senza alcuna garanzia. Le informazioni fornite sono solo per scopi generali e non devono essere considerate come consigli professionali. Utilizzo a proprio rischio."
+    },
+    "projectProtection": {
+      "title": "Concetti di progetto",
+      "description": "I progetti e concetti innovativi presentati su questo sito rappresentano ricerca originale e sviluppo intellettuale. Queste idee e metodologie sono protette dai diritti di proprietà intellettuale. Rispetta lo sforzo intellettuale dietro di essi ed evita la copia diretta per scopi commerciali senza autorizzazione."
+    },
+    "legalEnforcement": {
+      "title": "Applicazione legale",
+      "description": "La violazione di questi termini può comportare un'azione legale. Ci riserviamo il diritto di perseguire tutti i rimedi legali disponibili per proteggere la nostra proprietà intellettuale e far rispettare questi termini di utilizzo."
+    },
+    "lastUpdated": "Ultimo aggiornamento: Dicembre 2024",
+    "readCarefully": "Per favore, leggi attentamente questi termini prima di utilizzare questo sito web.",
+    "questions": {
+      "title": "Domande Su Questi Termini?",
+      "description": "Se hai domande su questi termini di utilizzo, contattaci tramite il modulo di contatto su questo sito web."
     }
   }
 }

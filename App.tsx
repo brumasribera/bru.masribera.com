@@ -11,8 +11,11 @@ import { LanguagesBar } from './components/ui/LanguagesBar'
 import { Footer } from './components/layout/Footer'
 import CVPage from './components/pages/CVPage'
 import TranslationsAdminPage from './components/pages/TranslationsAdminPage'
+import { PrivacyPage } from './components/pages/PrivacyPage'
+import { TermsPage } from './components/pages/TermsPage'
 import { useLanguageRouting } from './components/hooks/useLanguageRouting'
 import { useScrollPosition } from './components/hooks/useScrollPosition'
+import { GDPRBanner, useGDPRConsent } from './components/ui/GDPRBanner'
 
 // Lazy load project pages to reduce initial bundle size
 const OpenHutsPage = lazy(() => import('./components/pages/OpenHutsPage').then(module => ({ default: module.OpenHutsPage })))
@@ -67,6 +70,7 @@ function App() {
 // Separate component to use useLocation hook
 function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDarkMode: () => void }) {
   const { getCurrentPathWithoutLanguage } = useLanguageRouting()
+  const { showBanner, acceptConsent } = useGDPRConsent()
   
   // Use scroll position persistence hook
   useScrollPosition()
@@ -155,6 +159,8 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
             </Suspense>
           } />
           <Route path="cv" element={<CVPage />} />
+          <Route path="privacy" element={<PrivacyPage />} />
+          <Route path="terms" element={<TermsPage />} />
           <Route path="admin/translations" element={<TranslationsAdminPage />} />
         </Route>
         <Route path="/moodlenet" element={
@@ -196,6 +202,9 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
         {/* Admin translations (password protected in component) */}
         <Route path="/admin/translations" element={<TranslationsAdminPage />} />
       </Routes>
+      
+      {/* GDPR Banner */}
+      <GDPRBanner onAccept={acceptConsent} isVisible={showBanner} />
     </div>
   )
 }

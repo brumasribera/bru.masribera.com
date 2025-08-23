@@ -31,6 +31,76 @@
       "linkedin": "Ver mi perfil de LinkedIn",
       "github": "Ver mi perfil de GitHub",
       "cv": "Ver mi CV"
+    },
+    "privacyPolicy": "Política de Privacidad",
+    "termsOfUse": "Términos de Uso"
+  },
+  "gdpr": {
+    "title": "Privacidad y cookies",
+    "description": "Este sitio usa solo cookies esenciales. Al continuar, aceptas nuestros Términos y Política de Privacidad.",
+    "essentialOnly": "Solo cookies esenciales",
+    "accept": "Aceptar",
+    "consentText": "Al hacer clic en \"Aceptar\", aceptas nuestros Términos y Política de Privacidad."
+  },
+  "privacy": {
+    "title": "Tu privacidad importa",
+    "dataCollection": {
+      "title": "Qué recopilamos",
+      "description": "Solo la información que proporcionas en el formulario de contacto: tu nombre, email y mensaje. Sin seguimiento, sin análisis, sin recopilación de datos de terceros."
+    },
+    "purpose": {
+      "title": "Por qué lo recopilamos",
+      "description": "Únicamente para responder a tu consulta y establecer comunicación profesional. Tus datos se transmiten de forma segura a través de EmailJS y no se almacenan en nuestros servidores."
+    },
+    "sharing": {
+      "title": "Con quién los compartimos",
+      "description": "Con nadie. Tu información es privada y confidencial. Nunca compartimos, vendemos o distribuimos tus datos personales a terceros."
+    },
+    "retention": {
+      "title": "Cuánto tiempo los conservamos",
+      "description": "Tu email se procesa inmediatamente y solo se conserva en mi email personal para fines de comunicación. Puedes solicitar su eliminación en cualquier momento."
+    },
+    "rights": "Tienes derecho a acceder, corregir o eliminar tus datos personales en cualquier momento. Contáctame para ejercer estos derechos.",
+    "commitment": "Nos comprometemos a proteger tu privacidad y garantizar la seguridad de tu información personal.",
+    "gdprRights": {
+      "title": "Tus derechos bajo el GDPR"
+    },
+    "contact": {
+      "title": "Contáctanos sobre tu privacidad",
+      "description": "Si tienes alguna pregunta sobre esta política de privacidad o quieres ejercer tus derechos, por favor contáctanos a través del formulario de contacto en este sitio web."
+    }
+  },
+  "terms": {
+    "title": "Términos de uso",
+    "acceptance": {
+      "title": "Aceptación de términos",
+      "description": "Al acceder y usar este sitio web, aceptas y acuerdas estar sujeto a estos términos y condiciones. Si no estás de acuerdo con alguna parte de estos términos, por favor no uses este sitio web."
+    },
+    "intellectualProperty": {
+      "title": "Propiedad intelectual",
+      "description": "Todo el contenido de este sitio web, incluyendo texto, gráficos, logos y código, es propiedad de Bru Mas Ribera y está protegido por las leyes de copyright. Puedes ver y usar este contenido solo para fines personales y no comerciales. IMPORTANTE: El concepto del proyecto Open Huts, modelo de negocio e ideas innovadoras relacionadas son propiedad intelectual registrada. Cualquier intento de copiar, replicar o usar estos conceptos para fines comerciales o competitivos será perseguido a través de todos los medios legales disponibles."
+    },
+    "contact": {
+      "title": "Contacto y comunicación",
+      "description": "Este sitio web proporciona un formulario de contacto para consultas profesionales. Al usar el formulario de contacto, aceptas proporcionar información precisa y consientes al procesamiento de tus datos como se describe en nuestra política de privacidad."
+    },
+    "disclaimer": {
+      "title": "Descargo de responsabilidad",
+      "description": "Este sitio web se proporciona 'tal como está' sin ninguna garantía. La información proporcionada es solo para fines generales y no debe considerarse como asesoramiento profesional. Úsalo bajo tu propio riesgo."
+    },
+    "projectProtection": {
+      "title": "Protección de proyectos",
+      "description": "Los proyectos y conceptos innovadores presentados en este sitio representan investigación original y desarrollo intelectual. Estas ideas y metodologías están protegidas por derechos de propiedad intelectual. Respeta el esfuerzo intelectual detrás de ellas y evita la copia directa para fines comerciales sin permiso."
+    },
+    "legalEnforcement": {
+      "title": "Aplicación legal",
+      "description": "La violación de estos términos puede resultar en acción legal. Nos reservamos el derecho de perseguir todos los recursos legales disponibles para proteger nuestra propiedad intelectual y hacer cumplir estos términos de uso."
+    },
+    "lastUpdated": "Última actualización: Diciembre 2024",
+    "readCarefully": "Por favor, lee estos términos cuidadosamente antes de usar este sitio web.",
+    "questions": {
+      "title": "¿Preguntas Sobre Estos Términos?",
+      "description": "Si tienes alguna pregunta sobre estos términos de uso, por favor contáctanos a través del formulario de contacto en este sitio web."
     }
   }
 }

@@ -21,6 +21,87 @@
   "backend": "Backend",
   "languages": {
     "currentLanguage": "Lingua actuala"
+  },
+  "footer": {
+    "tagline": "Ingegner Frontend & UX | Remote-friendly",
+    "madeWith": "Fatg cun 🥰 en Svizra",
+    "copyright": "© {{year}} Bru Mas Ribera. Tut ils dretgs reservads.",
+    "tooltips": {
+      "email": "Trametta in email",
+      "linkedin": "Vesa il profil LinkedIn",
+      "github": "Vesa il profil GitHub",
+      "cv": "Vesa il CV"
+    },
+    "privacyPolicy": "Politica da protecziun da datas",
+    "termsOfUse": "Cundiziuns d'utilisaziun"
+  },
+  "gdpr": {
+    "title": "Protecziun da datas e cookies",
+    "description": "Questa pagina web utilisescha mo cookies essenzials. Cun cuntinuar, acceptas nossas cundiziuns e politica da protecziun da datas.",
+    "essentialOnly": "Mo cookies essenzials",
+    "accept": "Acceptar",
+    "consentText": "Cun cliccar sin \"Acceptar\", acceptas nossas cundiziuns e politica da protecziun da datas."
+  },
+  "privacy": {
+    "title": "Tia sfera privata è impurtanta",
+    "dataCollection": {
+      "title": "Tge che nus rimnain",
+      "description": "Mo las infurmaziuns che ti furneschas en il formular da contact: tes num, email e messadi. Nagin persequitament, naginas analisas, nagina rimnada da datas da terzas partidas."
+    },
+    "purpose": {
+      "title": "Perquai che nus las rimnain",
+      "description": "Mo per respunder a tia dumonda ed establira communicaziun professiunala. Tias datas vegnan transmessas segira via EmailJS e na vegnan betg memorisadas sin noss servers."
+    },
+    "sharing": {
+      "title": "Cun tgi che nus las dividain",
+      "description": "Cun nagin. Tias infurmaziuns èn privatas e confidenzialas. Nus na dividain, vendain u distribuain mai tias datas persunalas a terzas partidas."
+    },
+    "retention": {
+      "title": "Damaun che nus las tegnain",
+      "description": "Tes email vegn elaborà immediatamain e tegnì mo en mia email persunala per finamiras da communicaziun. Ti pos dumandar la stizzada en mintga mument."
+    },
+    "rights": "Ti has il dretg d'acceder, corregier u stizzar tias datas persunalas en mintga mument. Contactescha'm per exequir quests dretgs.",
+    "commitment": "Nus s'engaschain da proteger tia sfera privata ed assicurar la segirezza da tias infurmaziuns persunalas.",
+    "gdprRights": {
+      "title": "Tes dretgs sut la DSGVO"
+    },
+    "contact": {
+      "title": "Contactescha'ns per tia sfera privata",
+      "description": "Sche ti has dumondas davart questa politica da protecziun da datas u vuls exequir tes dretgs, contactescha'ns per plaschair tras il formular da contact sin questa pagina web."
+    }
+  },
+  "terms": {
+    "title": "Cundiziuns d'utilisaziun",
+    "acceptance": {
+      "title": "Acceptaziun da las cundiziuns",
+      "description": "Cun acceder e utilisar questa pagina web, acceptas e consents da esser lià a questas cundiziuns e terms. Sche ti n'es betg d'accord cun ina part da quests terms, na duvra betg questa pagina web."
+    },
+    "intellectualProperty": {
+      "title": "Proprietad intellektuala",
+      "description": "Tut il cuntegn da questa pagina web, inclus text, grafica, logos e code, è la proprietad da Bru Mas Ribera ed è protegì tras las leschas da dretgs d'autur. Ti pos vesair e utilisar quest cuntegn mo per finamiras persunalas e betg commerzialas."
+    },
+    "contact": {
+      "title": "Contact e communicaziun",
+      "description": "Questa pagina web furnescha in formular da contact per dumondas professiunalas. Cun utilisar il formular da contact, acceptas da furnir infurmaziuns exactas e consents al tractament da tias datas sco descrit en nossa politica da protecziun da datas."
+    },
+    "disclaimer": {
+      "title": "Exoneraziun da responsabladad",
+      "description": "Questa pagina web è furnida 'uschia sco è' senza garanzias. Las infurmaziuns furnidas èn mo per finamiras generalas e na duain betg esser consideradas sco cussegls professiunals. Utilisaziun a tes risch."
+    },
+    "projectProtection": {
+      "title": "Concepts da project",
+      "description": "Ils projects e concepts innovativs preschentads sin quest site representan perscrutaziun originala e svilup intellektual. Questas ideas e metodologias èn protegidas tras dretgs da proprietad intellektuala. Respecta l'emprova intellektuala davos els ed evita còpia directa per finamiras commerzialas senza permess."
+    },
+    "legalEnforcement": {
+      "title": "Applicaziun legala",
+      "description": "La violaziun da quests terms po resultar en accziun legala. Nus s'reservain il dretg da persequir tut ils remedis legals disponibels per proteger nossa proprietad intellektuala ed exequir quests terms d'utilisaziun."
+    },
+    "lastUpdated": "Ultima actualisaziun: December 2024",
+    "readCarefully": "Per plaschair, leja quests terms cun tschertga avant dad utilisar questa pagina web.",
+    "questions": {
+      "title": "Dumondas Davart Questas Cundiziuns?",
+      "description": "Sche ti has dumondas davart questas cundiziuns d'utilisaziun, contactescha'ns per plaschair tras il formular da contact sin questa pagina web."
+    }
   }
 }
 

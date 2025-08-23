@@ -4,6 +4,7 @@ import { useState } from 'react'
 import emailjs from '@emailjs/browser'
 import { useTranslation } from 'react-i18next'
 
+
 export function ContactSection() {
   const { t } = useTranslation(['home'])
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ export function ContactSection() {
     email: '',
     message: ''
   })
+
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [showSuccess, setShowSuccess] = useState(false)
@@ -25,19 +27,23 @@ export function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
     try {
+      // Basic client-side validation and sanitization
+      const sanitizedData = {
+        name: formData.name.trim().substring(0, 100), // Limit name length
+        email: formData.email.trim().substring(0, 255), // Limit email length
+        message: formData.message.trim().substring(0, 2000), // Limit message length
+        time: new Date().toLocaleString()
+      }
+      
       const result = await emailjs.send(
         'service_2u98nps', // Your EmailJS service ID
         'template_rsgbpt7', // Your EmailJS template ID
-        {
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          time: new Date().toLocaleString()
-        },
+        sanitizedData,
         'Pq1K7CO2PNmSWgNel' // Your EmailJS public key
       )
 
@@ -45,6 +51,7 @@ export function ContactSection() {
         setSubmitStatus('success')
         setShowSuccess(true)
         setFormData({ name: '', email: '', message: '' })
+        setConsentGiven(false) // Reset consent for security
         
         // Start fade-out animation after 3 seconds
         setTimeout(() => {
@@ -142,6 +149,8 @@ export function ContactSection() {
                   placeholder={t('contact.messagePlaceholder')}
                 />
               </div>
+
+
 
               <div className="text-center">
                 <button

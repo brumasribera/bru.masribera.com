@@ -31,6 +31,76 @@
       "linkedin": "Mein LinkedIn-Profil anzeigen",
       "github": "Mein GitHub-Profil anzeigen",
       "cv": "Meinen Lebenslauf anzeigen"
+    },
+    "privacyPolicy": "Datenschutzrichtlinien",
+    "termsOfUse": "Nutzungsbedingungen"
+  },
+  "gdpr": {
+    "title": "Datenschutz und Cookies",
+    "description": "Diese Website verwendet nur notwendige Cookies. Durch das Fortfahren stimmen Sie unseren Nutzungsbedingungen und Datenschutzrichtlinien zu.",
+    "essentialOnly": "Nur notwendige Cookies",
+    "accept": "Akzeptieren",
+    "consentText": "Durch Klicken auf \"Akzeptieren\" stimmen Sie unseren Nutzungsbedingungen und Datenschutzrichtlinien zu."
+  },
+  "privacy": {
+    "title": "Ihre Privatsphäre ist wichtig",
+    "dataCollection": {
+      "title": "Was wir sammeln",
+      "description": "Nur die Informationen, die Sie im Kontaktformular angeben: Ihr Name, E-Mail und Nachricht. Kein Tracking, keine Analytik, keine Datensammlung durch Dritte."
+    },
+    "purpose": {
+      "title": "Warum wir sie sammeln",
+      "description": "Ausschließlich zur Beantwortung Ihrer Anfrage und Herstellung professioneller Kommunikation. Ihre Daten werden sicher über EmailJS übertragen und nicht auf unseren Servern gespeichert."
+    },
+    "sharing": {
+      "title": "Mit wem wir sie teilen",
+      "description": "Mit niemandem. Ihre Informationen sind privat und vertraulich. Wir teilen, verkaufen oder verteilen niemals Ihre persönlichen Daten an Dritte."
+    },
+    "retention": {
+      "title": "Wie lange wir sie aufbewahren",
+      "description": "Ihre E-Mail wird sofort verarbeitet und nur in meiner persönlichen E-Mail für Kommunikationszwecke aufbewahrt. Sie können jederzeit die Löschung beantragen."
+    },
+    "rights": "Sie haben das Recht, jederzeit auf Ihre persönlichen Daten zuzugreifen, sie zu korrigieren oder zu löschen. Kontaktieren Sie mich, um diese Rechte auszuüben.",
+    "commitment": "Wir verpflichten uns, Ihre Privatsphäre zu schützen und die Sicherheit Ihrer persönlichen Daten zu gewährleisten.",
+    "gdprRights": {
+      "title": "Ihre Rechte nach der DSGVO"
+    },
+    "contact": {
+      "title": "Kontaktieren Sie uns bezüglich Ihrer Privatsphäre",
+      "description": "Wenn Sie Fragen zu dieser Datenschutzerklärung haben oder Ihre Rechte ausüben möchten, kontaktieren Sie uns bitte über das Kontaktformular auf dieser Website."
+    }
+  },
+  "terms": {
+    "title": "Nutzungsbedingungen",
+    "acceptance": {
+      "title": "Annahme der Bedingungen",
+      "description": "Durch den Zugriff auf und die Nutzung dieser Website akzeptieren und stimmen Sie zu, an diese Nutzungsbedingungen gebunden zu sein. Wenn Sie mit einem Teil dieser Bedingungen nicht einverstanden sind, verwenden Sie bitte diese Website nicht."
+    },
+    "intellectualProperty": {
+      "title": "Geistiges Eigentum",
+      "description": "Alle Inhalte dieser Website, einschließlich Text, Grafiken, Logos und Code, sind das Eigentum von Bru Mas Ribera und durch Urheberrechtsgesetze geschützt. Sie können diese Inhalte nur für persönliche, nicht-kommerzielle Zwecke anzeigen und verwenden. WICHTIG: Das Open Huts Projektkonzept, das Geschäftsmodell und verwandte innovative Ideen sind geschütztes geistiges Eigentum. Jeder Versuch, diese Konzepte zu kopieren, zu replizieren oder für kommerzielle oder wettbewerbliche Zwecke zu nutzen, wird mit allen verfügbaren rechtlichen Mitteln verfolgt."
+    },
+    "contact": {
+      "title": "Kontakt und Kommunikation",
+      "description": "Diese Website bietet ein Kontaktformular für berufliche Anfragen. Durch die Nutzung des Kontaktformulars stimmen Sie zu, genaue Informationen bereitzustellen und der Verarbeitung Ihrer Daten wie in unserer Datenschutzerklärung beschrieben zuzustimmen."
+    },
+    "disclaimer": {
+      "title": "Haftungsausschluss",
+      "description": "Diese Website wird 'wie besehen' ohne jegliche Garantien bereitgestellt. Die bereitgestellten Informationen dienen nur allgemeinen Zwecken und sollten nicht als professioneller Rat betrachtet werden. Nutzung auf eigene Gefahr."
+    },
+    "projectProtection": {
+      "title": "Projektschutz",
+      "description": "Die innovativen Projekte und Konzepte auf dieser Website repräsentieren ursprüngliche Forschung und geistige Entwicklung. Diese Ideen und Methodologien sind durch geistige Eigentumsrechte geschützt. Respektieren Sie die geistige Anstrengung dahinter und vermeiden Sie direkte Kopien für kommerzielle Zwecke ohne Genehmigung."
+    },
+    "legalEnforcement": {
+      "title": "Rechtliche Durchsetzung",
+      "description": "Verstöße gegen diese Bedingungen können rechtliche Schritte zur Folge haben. Wir behalten uns das Recht vor, alle verfügbaren rechtlichen Mittel zu verfolgen, um unser geistiges Eigentum zu schützen und diese Nutzungsbedingungen durchzusetzen."
+    },
+    "lastUpdated": "Zuletzt aktualisiert: Dezember 2024",
+    "readCarefully": "Bitte lesen Sie diese Bedingungen sorgfältig durch, bevor Sie diese Website nutzen.",
+    "questions": {
+      "title": "Fragen Zu Diesen Bedingungen?",
+      "description": "Wenn Sie Fragen zu diesen Nutzungsbedingungen haben, kontaktieren Sie uns bitte über das Kontaktformular auf dieser Website."
     }
   }
 }

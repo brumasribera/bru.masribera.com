@@ -31,6 +31,76 @@
       "linkedin": "Veure el meu perfil de LinkedIn",
       "github": "Veure el meu perfil de GitHub",
       "cv": "Veure el meu CV"
+    },
+    "privacyPolicy": "Política de Privadesa",
+    "termsOfUse": "Termes d'Ús"
+  },
+  "gdpr": {
+    "title": "Privadesa i galetes",
+    "description": "Aquest lloc utilitza només galetes essencials. En continuar, acceptes els nostres Termes i Política de privadesa.",
+    "essentialOnly": "Només galetes essencials",
+    "accept": "Acceptar",
+    "consentText": "En fer clic a \"Acceptar\", acceptes els nostres Termes i Política de privadesa."
+  },
+  "privacy": {
+    "title": "La teva privadesa importa",
+    "dataCollection": {
+      "title": "Què recopilem",
+      "description": "Només la informació que proporciones al formulari de contacte: el teu nom, email i missatge. Sense seguiment, sense anàlisi, sense recopilació de dades de tercers."
+    },
+    "purpose": {
+      "title": "Per què ho recopilem",
+      "description": "Únicament per respondre a la teva consulta i establir comunicació professional. Les teves dades es transmeten de forma segura a través d'EmailJS i no s'emmagatzemen als nostres servidors."
+    },
+    "sharing": {
+      "title": "Amb qui les compartim",
+      "description": "Amb ningú. La teva informació és privada i confidencial. Mai compartim, venem o distribuïm les teves dades personals a tercers."
+    },
+    "retention": {
+      "title": "Quant de temps les conservem",
+      "description": "El teu email es processa immediatament i només es conserva a la meva email personal per a finalitats de comunicació. Pots sol·licitar la seva eliminació en qualsevol moment."
+    },
+    "rights": "Tens dret a accedir, corregir o eliminar les teves dades personals en qualsevol moment. Contacta'm per exercir aquests drets.",
+    "commitment": "Ens comprometem a protegir la teva privadesa i assegurar la seguretat de la teva informació personal.",
+    "gdprRights": {
+      "title": "Els teus drets segons el GDPR"
+    },
+    "contact": {
+      "title": "Contacta'ns sobre la teva privadesa",
+      "description": "Si tens alguna pregunta sobre aquesta política de privadesa o vols exercir els teus drets, si us plau contacta'ns a través del formulari de contacte en aquest lloc web."
+    }
+  },
+  "terms": {
+    "title": "Termes d'ús",
+    "acceptance": {
+      "title": "Acceptació dels termes",
+      "description": "En accedir i usar aquest lloc web, acceptes i acordes estar subjecte a aquests termes i condicions. Si no estàs d'acord amb alguna part d'aquests termes, si us plau no uses aquest lloc web."
+    },
+    "intellectualProperty": {
+      "title": "Propietat intel·lectual",
+      "description": "Tot el contingut d'aquest lloc web, incloent text, gràfics, logos i codi, és propietat de Bru Mas Ribera i està protegit per les lleis de copyright. Pots veure i usar aquest contingut només per a finalitats personals i no comercials. IMPORTANT: El concepte del projecte Open Huts, model de negoci i idees innovadores relacionades són propietat intel·lectual registrada. Qualsevol intent de copiar, replicar o usar aquests conceptes per a finalitats comercials o competitives serà perseguit a través de tots els mitjans legals disponibles."
+    },
+    "contact": {
+      "title": "Contacte i comunicació",
+      "description": "Aquest lloc web proporciona un formulari de contacte per a consultes professionals. En usar el formulari de contacte, acceptes proporcionar informació precisa i consents al processament de les teves dades com es descriu a la nostra política de privadesa."
+    },
+    "disclaimer": {
+      "title": "Descàrrec de responsabilitat",
+      "description": "Aquest lloc web es proporciona 'tal com està' sense cap garantia. La informació proporcionada és només per a finalitats generals i no ha de considerar-se com a assessorament professional. Úsala sota la teva pròpia responsabilitat."
+    },
+    "projectProtection": {
+      "title": "Protecció de projectes",
+      "description": "Els projectes i conceptes innovadors presentats en aquest lloc representen recerca original i desenvolupament intel·lectual. Aquestes idees i metodologies estan protegides per drets de propietat intel·lectual. Respecta l'esforç intel·lectual que hi ha al darrere i evita la còpia directa per a fins comercials sense permís."
+    },
+    "legalEnforcement": {
+      "title": "Aplicació legal",
+      "description": "La violació d'aquests termes pot resultar en acció legal. Ens reservem el dret de perseguir tots els recursos legals disponibles per protegir la nostra propietat intel·lectual i fer complir aquests termes d'ús."
+    },
+    "lastUpdated": "Última actualització: Desembre 2024",
+    "readCarefully": "Si us plau, llegeix aquests termes amb cura abans d'utilitzar aquest lloc web.",
+    "questions": {
+      "title": "Preguntes Sobre aquests Termes?",
+      "description": "Si tens alguna pregunta sobre aquests termes d'ús, si us plau contacta'ns a través del formulari de contacte en aquest lloc web."
     }
   }
 }

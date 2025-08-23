@@ -2,9 +2,11 @@ import { Mail, Linkedin, Github, FileText } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { AnimatedGradientTitle } from '../ui/AnimatedGradientTitle';
 import { useFirstHoverTooltip } from '../hooks/useFirstHoverTooltip';
+import { useLanguageRouting } from '../hooks/useLanguageRouting';
 
 export function Footer() {
   const { t } = useTranslation(['common', 'translation']);
+  const { getLocalizedPath } = useLanguageRouting();
   const { shouldShowTooltip: shouldShowEmailTooltip, handleMouseEnter: handleEmailMouseEnter, handleMouseLeave: handleEmailMouseLeave } = useFirstHoverTooltip();
   const { shouldShowTooltip: shouldShowLinkedInTooltip, handleMouseEnter: handleLinkedInMouseEnter, handleMouseLeave: handleLinkedInMouseLeave } = useFirstHoverTooltip();
   const { shouldShowTooltip: shouldShowGithubTooltip, handleMouseEnter: handleGithubMouseEnter, handleMouseLeave: handleGithubMouseLeave } = useFirstHoverTooltip();
@@ -104,13 +106,29 @@ export function Footer() {
           </div>
           
           <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
-            <div className="flex flex-col sm:grid sm:grid-cols-2 items-center justify-center gap-2 sm:gap-5">
+            <div className="flex flex-col items-center justify-center gap-3">
               <p className="text-gray-500 dark:text-gray-500 text-lg font-medium text-center">
                 {t('footer.madeWith')}
               </p>
-              <p className="text-gray-600 dark:text-gray-400 text-base text-center">
-                {t('footer.copyright', { year: new Date().getFullYear() })}
-              </p>
+                             <div className="flex items-center justify-center gap-4 text-sm">
+                 <p className="text-gray-600 dark:text-gray-400">
+                   {t('footer.copyright', { year: new Date().getFullYear() })}
+                 </p>
+                 <span className="text-gray-300 dark:text-gray-600">•</span>
+                 <a 
+                   href={getLocalizedPath('/privacy')} 
+                   className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-200"
+                 >
+                   {t('footer.privacyPolicy')}
+                 </a>
+                 <span className="text-gray-300 dark:text-gray-600">•</span>
+                 <a 
+                   href={getLocalizedPath('/terms')} 
+                   className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-200"
+                 >
+                   {t('footer.termsOfUse')}
+                 </a>
+               </div>
             </div>
           </div>
         </div>

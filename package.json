@@ -10,6 +10,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "deploy": "node scripts/deploy.js",
+    "release": "node scripts/deploy.js",
     "generate-cv": "node scripts/generate-cv-pdf.js",
     "check-cv-lengths": "node scripts/check-cv-lengths.js",
     "cv:all": "npm run check-cv-lengths && npm run generate-cv",

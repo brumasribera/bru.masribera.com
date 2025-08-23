@@ -9,69 +9,43 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 async function main() {
-  // Starting deployment process
+  console.log('🚀 Starting deployment process...\n');
   
-  // Check if dist folder exists
-  if (!fs.existsSync('dist')) {
-    // dist folder not found. Building project first...
-    await buildProject()
-    // Build completed successfully!
-  }
-
-  // Build Information
-  // Total files: files.length
-  // Total size: totalSize KB
-  
-  // Detected deployment platforms
-  if (hasVercel) {
-    // Vercel configuration found
-  }
-  if (hasNetlify) {
-    // Netlify configuration found
-  }
-  if (!hasVercel && !hasNetlify) {
-    // No deployment config found - manual deployment required
-  }
-  
-  // Deployment Options
-  
-  // Vercel (Recommended):
-  // vercel --prod dist
-  
-  // Netlify:
-  // netlify deploy --prod --dir=dist
-
-  // Manual Deployment:
-  // Upload contents of dist/ folder to your hosting provider
-
-  // GitHub Pages:
-  // npm install -g gh-pages
-  // gh-pages -d dist
-
-  // Next Steps:
-  // 1. Choose your deployment method above
-  // 2. Run the deployment command
-  // 3. Test the deployed site
-  // 4. Update DNS if using custom domain
-
-  // Your portfolio is ready for release!
-  // Version: packageJson.version
-  // Good luck with your deployment!
-}
-
-async function buildProject() {
   try {
+    // Step 1: Build the project
+    console.log('📦 Building project...');
     execSync('npm run build', { stdio: 'inherit' });
     console.log('✅ Build completed successfully!\n');
+    
+    // Step 2: Add all changes to git
+    console.log('📁 Adding changes to git...');
+    execSync('git add .', { stdio: 'inherit' });
+    console.log('✅ Changes added to git!\n');
+    
+    // Step 3: Commit changes
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    const commitMessage = `Deploy: Update site - ${timestamp}`;
+    
+    console.log('💾 Committing changes...');
+    execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
+    console.log('✅ Changes committed!\n');
+    
+    // Step 4: Push to remote repository
+    console.log('🌐 Pushing to remote repository...');
+    execSync('git push', { stdio: 'inherit' });
+    console.log('✅ Successfully pushed to remote!\n');
+    
+    console.log('🎉 Deployment completed successfully!');
+    console.log('🌍 Your site should be updated shortly.');
+    
   } catch (error) {
-    console.error('❌ Build failed:', error.message);
-    process.exit(1);
+    if (error.message.includes('nothing to commit')) {
+      console.log('ℹ️  No changes to deploy. Everything is up to date.');
+    } else {
+      console.error('❌ Deployment failed:', error.message);
+      process.exit(1);
+    }
   }
 }
-
-// Check for common deployment platforms
-const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-const hasVercel = fs.existsSync('.vercel');
-const hasNetlify = fs.existsSync('netlify.toml');
 
 main();

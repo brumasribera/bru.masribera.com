@@ -200,6 +200,12 @@
         "description": "Sistema avanzado de monitoreo de nieve y predicción de avalanchas usando datos satelitales e IA, proporcionando inteligencia ambiental en tiempo real para la seguridad.",
         "impact": "Seguridad e investigación",
         "users": "Estaciones de esquí e investigadores"
+      },
+      "pix4d": {
+        "title": "Plataforma Pix4D Cloud",
+        "description": "Plataforma de procesamiento fotogramétrico nativa de la nube que revoluciona la creación de modelos 3D a partir de imágenes de drones con detección de objetos y análisis impulsado por IA.",
+        "impact": "Transformación digital",
+        "users": "Profesionales de construcción y agricultura"
       }
     },
     "technologies": {

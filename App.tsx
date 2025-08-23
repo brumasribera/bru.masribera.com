@@ -23,6 +23,7 @@ const ClathesPage = lazy(() => import('./components/pages/ClathesPage').then(mod
 const Pix4DPage = lazy(() => import('./components/pages/Pix4DPage').then(module => ({ default: module.Pix4DPage })))
 const WegawPage = lazy(() => import('./components/pages/WeGawPage').then(module => ({ default: module.WegawPage })))
 const PomocaPage = lazy(() => import('./components/pages/PomocaPage').then(module => ({ default: module.PomocaPage })))
+const ProjectsPage = lazy(() => import('./components/pages/ProjectsPage').then(module => ({ default: module.ProjectsPage })))
 
 // Loading component for lazy-loaded pages
 const PageLoader = () => null
@@ -95,6 +96,11 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
         <Route path="/" element={HomeElement} />
         {/* Language-prefixed routes */}
         <Route path=":lang" element={HomeElement} />
+        <Route path="/projects" element={
+          <Suspense fallback={<PageLoader />}> 
+            <ProjectsPage />
+          </Suspense>
+        } />
         <Route path="/openhuts" element={
           <Suspense fallback={<PageLoader />}> 
             <OpenHutsPage />
@@ -103,6 +109,11 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
         {/* Nested language routes for each page */}
         <Route path="/:lang">
           <Route index element={HomeElement} />
+          <Route path="projects" element={
+            <Suspense fallback={<PageLoader />}>
+              <ProjectsPage />
+            </Suspense>
+          } />
           <Route path="openhuts" element={
             <Suspense fallback={<PageLoader />}>
               <OpenHutsPage />

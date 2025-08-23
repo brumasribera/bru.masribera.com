@@ -200,6 +200,12 @@
         "description": "Sistema avançat de monitoratge de neu i predicció d'allaus usant dades satel·litals i IA, proporcionant intel·ligència ambiental en temps real per a la seguretat.",
         "impact": "Seguretat i recerca",
         "users": "Estacions d'esquí i investigadors"
+      },
+      "pix4d": {
+        "title": "Plataforma Pix4D Cloud",
+        "description": "Plataforma de processament fotogramètric nativa del núvol que revoluciona la creació de models 3D a partir d'imatges de drones amb detecció d'objectes i anàlisi impulsada per IA.",
+        "impact": "Transformació digital",
+        "users": "Professionals de construcció i agricultura"
       }
     },
     "technologies": {

@@ -12,10 +12,6 @@ import { ProfilePage } from "./pages/account/ProfilePage";
 import { PaymentPage } from "./pages/account/PaymentPage";
 import { TransactionHistory } from "./pages/account/TransactionHistory";
 import { LinkedAccounts } from "./pages/account/LinkedAccounts";
-import { InterfaceSettings } from "./pages/account/InterfaceSettings";
-import { LanguageSettings } from "./pages/account/LanguageSettings";
-import { SecurityPage } from "./pages/account/SecurityPage";
-import { NotificationsPage } from "./pages/account/NotificationsPage";
 import { DownloadsPage } from "./pages/account/DownloadsPage";
 import { Leaf } from "lucide-react";
 

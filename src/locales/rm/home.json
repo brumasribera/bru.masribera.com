@@ -200,6 +200,12 @@
         "description": "Sistem avanzà per observar naiv e preverir lavinas cun datas da satellites e IA, furnind intelligientscha ambientala en temp real per segirezza.",
         "impact": "Segirezza & perscrutaziun",
         "users": "Stations da skis & perscrutaders"
+      },
+      "pix4d": {
+        "title": "Plattafurma Pix4D Cloud",
+        "description": "Plattafurma da processament fotogrametric nativa dal nibel che revoluziunescha la creaziun da models 3D da maletgs da drones cun detecziun d'objects ed analisa alimentada da IA.",
+        "impact": "Transformaziun digitala",
+        "users": "Professiunals da construcziun ed agricultura"
       }
     },
     "technologies": {

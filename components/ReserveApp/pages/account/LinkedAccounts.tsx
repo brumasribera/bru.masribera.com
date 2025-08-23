@@ -3,29 +3,22 @@ import { useTranslation } from "react-i18next";
 import { 
   ArrowLeft, 
   Link2,
-  Plus,
   Check,
   X,
-  ExternalLink,
   Shield,
   AlertTriangle,
-  Smartphone,
   CreditCard,
   TrendingUp,
   Leaf,
-  Calendar,
-  Camera,
-  Share2,
-  Bell,
-  Lock,
-  Unlock,
   RefreshCw,
-  Eye,
-  EyeOff,
-  ChevronRight,
   Zap,
-  Users
+  Building2,
+  Globe,
+  TreePine,
+  Satellite
 } from "lucide-react";
+
+
 
 interface LinkedAccountsProps {
   onBack: () => void;
@@ -36,7 +29,7 @@ interface ConnectedAccount {
   name: string;
   type: 'bank' | 'fintech' | 'carbon' | 'fitness' | 'social' | 'productivity' | 'sustainability';
   description: string;
-  icon: string;
+  icon: string | React.ReactElement;
   isConnected: boolean;
   connectionDate?: string;
   permissions: string[];
@@ -63,330 +56,113 @@ export function LinkedAccounts({ onBack }: LinkedAccountsProps) {
 
   const [accountCategories] = useState<AccountCategory[]>([
     {
-      title: "Financial Services",
-      description: "Connect your banking and payment apps for automated contributions",
+      title: "Roundup Donations",
+      description: "Connect your bank and payment apps for automatic roundup contributions",
       icon: CreditCard,
       accounts: [
-        {
-          id: 'wells_fargo',
-          name: 'Wells Fargo Mobile',
-          type: 'bank',
-          description: 'Round up purchases and automatically contribute spare change',
-          icon: '🏦',
-          isConnected: true,
-          connectionDate: '2024-01-18',
-          permissions: ['Read account balance', 'View transactions', 'Round up purchases'],
-          benefits: ['Automatic micro-donations', 'Round-up contributions', 'Monthly savings tracking'],
-          dataShared: ['Transaction amounts', 'Purchase categories', 'Account balance'],
-          status: 'active',
-          canAutomate: true,
-          automationEnabled: true,
-          lastSync: '2024-01-19T14:30:00Z'
-        },
-        {
-          id: 'mint',
-          name: 'Mint',
-          type: 'fintech',
-          description: 'Track environmental spending and get green finance insights',
-          icon: '💰',
-          isConnected: false,
-          permissions: ['View spending patterns', 'Categorize eco-friendly purchases'],
-          benefits: ['Sustainability spending insights', 'Green purchase tracking', 'Impact reporting'],
-          dataShared: ['Spending categories', 'Environmental purchases', 'Budget allocations'],
-          status: 'disconnected',
-          canAutomate: true,
-          automationEnabled: false
-        },
-        {
-          id: 'paypal',
-          name: 'PayPal',
-          type: 'fintech',
-          description: 'Enable one-click environmental contributions',
-          icon: '💙',
-          isConnected: true,
-          connectionDate: '2024-01-12',
-          permissions: ['Process payments', 'Store payment methods'],
-          benefits: ['Quick contributions', 'Secure payments', 'Global currency support'],
-          dataShared: ['Payment confirmations', 'Transaction history'],
-          status: 'active',
-          lastSync: '2024-01-19T11:15:00Z'
-        }
+                                   {
+            id: 'my_bank',
+            name: 'My Bank',
+            type: 'bank',
+            description: 'Round up purchases and automatically contribute spare change to nature projects',
+            icon: <Building2 className="w-6 h-6 text-slate-700" />,
+            isConnected: true,
+            connectionDate: '2024-01-18',
+            permissions: ['Read transactions', 'Round up purchases'],
+            benefits: ['Automatic micro-donations', 'Round-up contributions', 'Everyday impact'],
+            dataShared: ['Transaction amounts', 'Roundup amounts'],
+            status: 'active',
+            canAutomate: true,
+            automationEnabled: true,
+            lastSync: '2024-01-19T14:30:00Z'
+          },
+                 {
+           id: 'paypal',
+           name: 'PayPal',
+           type: 'fintech',
+           description: 'Enable one-click environmental contributions and roundup donations',
+           icon: '/components/ReserveApp/assets/logos/financial/paypal-logo.png',
+           isConnected: true,
+           connectionDate: '2024-01-12',
+           permissions: ['Process payments', 'Round up purchases'],
+           benefits: ['Quick contributions', 'Roundup donations', 'Secure payments'],
+           dataShared: ['Payment confirmations', 'Roundup amounts'],
+           status: 'active',
+           lastSync: '2024-01-19T11:15:00Z'
+         }
       ]
     },
     {
-      title: "Carbon & Sustainability",
-      description: "Sync with carbon tracking and sustainability apps",
+      title: "Nature Projects",
+      description: "Connect with essential conservation and restoration platforms",
       icon: Leaf,
       accounts: [
-        {
-          id: 'carbon_trust',
-          name: 'Carbon Trust',
-          type: 'carbon',
-          description: 'Automatically offset your calculated carbon footprint',
-          icon: '🌱',
-          isConnected: true,
-          connectionDate: '2023-12-25',
-          permissions: ['Read carbon footprint data', 'Access travel data'],
-          benefits: ['Automatic offsetting', 'Comprehensive tracking', 'Monthly reports'],
-          dataShared: ['Carbon emissions', 'Travel patterns', 'Energy usage'],
-          status: 'active',
-          canAutomate: true,
-          automationEnabled: true,
-          lastSync: '2024-01-19T09:00:00Z'
-        },
-        {
-          id: 'ecosia',
-          name: 'Ecosia',
-          type: 'sustainability',
-          description: 'Convert search activities into tree planting contributions',
-          icon: '🌳',
-          isConnected: false,
-          permissions: ['View search statistics', 'Track tree contributions'],
-          benefits: ['Search-based giving', 'Tree planting tracking', 'Environmental impact'],
-          dataShared: ['Search count', 'Tree planting progress'],
-          status: 'disconnected',
-          canAutomate: true,
-          automationEnabled: false
-        },
-        {
-          id: 'joro',
-          name: 'Joro',
-          type: 'carbon',
-          description: 'Track your carbon footprint and suggest offset opportunities',
-          icon: '🍃',
-          isConnected: false,
-          permissions: ['Carbon footprint data', 'Lifestyle tracking'],
-          benefits: ['Personalized offsets', 'Lifestyle insights', 'Impact measurement'],
-          dataShared: ['Carbon calculations', 'Activity data'],
-          status: 'disconnected'
-        }
-      ]
-    },
-    {
-      title: "Conservation Platforms",
-      description: "Connect with restoration and forest monitoring platforms",
-      icon: Shield,
-      accounts: [
-        {
-          id: 'restor_eco',
-          name: 'Restor.eco',
-          type: 'sustainability',
-          description: 'Sync restoration projects and track global conservation impact',
-          icon: '🌍',
-          isConnected: true,
-          connectionDate: '2024-01-15',
-          permissions: ['Access restoration data', 'View project progress', 'Share impact metrics'],
-          benefits: ['Global restoration tracking', 'Scientific validation', 'Biodiversity insights'],
-          dataShared: ['Restoration contributions', 'Project locations', 'Impact measurements'],
-          status: 'active',
-          canAutomate: true,
-          automationEnabled: true,
-          lastSync: '2024-01-19T08:30:00Z'
-        },
-        {
-          id: 'openforests',
-          name: 'OpenForests',
-          type: 'sustainability',
-          description: 'Connect forest monitoring data and deforestation alerts',
-          icon: '🌲',
-          isConnected: false,
-          permissions: ['Forest monitoring data', 'Deforestation alerts', 'Satellite imagery access'],
-          benefits: ['Real-time forest monitoring', 'Deforestation prevention alerts', 'Satellite tracking'],
-          dataShared: ['Forest watch preferences', 'Alert locations', 'Monitoring activity'],
-          status: 'disconnected',
-          canAutomate: true,
-          automationEnabled: false
-        },
-        {
-          id: 'global_forest_watch',
-          name: 'Global Forest Watch',
-          type: 'sustainability',
-          description: 'Monitor deforestation and forest changes worldwide',
-          icon: '🛰️',
-          isConnected: false,
-          permissions: ['Forest loss data', 'Satellite monitoring', 'Alert subscriptions'],
-          benefits: ['Deforestation monitoring', 'Forest change alerts', 'Data visualization'],
-          dataShared: ['Monitored regions', 'Alert preferences', 'Conservation focus areas'],
-          status: 'disconnected'
-        },
-        {
-          id: 'forest_watcher',
-          name: 'Forest Watcher',
-          type: 'sustainability',
-          description: 'Mobile forest monitoring and data collection platform',
-          icon: '📱',
-          isConnected: false,
-          permissions: ['Field data collection', 'GPS locations', 'Photo documentation'],
-          benefits: ['Field monitoring', 'Real-time data collection', 'Community engagement'],
-          dataShared: ['Field observations', 'Location data', 'Conservation activities'],
-          status: 'disconnected'
-        },
-        {
-          id: 'planet_labs',
-          name: 'Planet Labs',
-          type: 'sustainability',
-          description: 'Access daily satellite imagery for conservation monitoring',
-          icon: '🛰️',
-          isConnected: false,
-          permissions: ['Satellite imagery', 'Land use analysis', 'Change detection'],
-          benefits: ['Daily satellite monitoring', 'Land use tracking', 'Environmental analysis'],
-          dataShared: ['Monitoring areas', 'Analysis preferences', 'Alert configurations'],
-          status: 'disconnected'
-        }
-      ]
-    },
-    {
-      title: "Environmental Organizations",
-      description: "Partner with leading environmental and conservation groups",
-      icon: Users,
-      accounts: [
-        {
-          id: 'one_tree_planted',
-          name: 'One Tree Planted',
-          type: 'sustainability',
-          description: 'Connect tree planting donations and track reforestation impact',
-          icon: '🌱',
-          isConnected: false,
-          permissions: ['Donation tracking', 'Project updates', 'Impact reporting'],
-          benefits: ['Tree planting coordination', 'Reforestation tracking', 'Impact verification'],
-          dataShared: ['Donation history', 'Project preferences', 'Geographic interests'],
-          status: 'disconnected'
-        },
-        {
-          id: 'wwf',
-          name: 'World Wildlife Fund',
-          type: 'sustainability',
-          description: 'Support wildlife conservation and habitat protection',
-          icon: '🐼',
-          isConnected: false,
-          permissions: ['Conservation projects', 'Species tracking', 'Habitat monitoring'],
-          benefits: ['Wildlife protection', 'Habitat conservation', 'Species monitoring'],
-          dataShared: ['Conservation interests', 'Species preferences', 'Project support'],
-          status: 'disconnected'
-        },
-        {
-          id: 'rainforest_alliance',
-          name: 'Rainforest Alliance',
-          type: 'sustainability',
-          description: 'Connect with sustainable agriculture and forest conservation',
-          icon: '🦋',
-          isConnected: false,
-          permissions: ['Certification tracking', 'Supply chain data', 'Impact metrics'],
-          benefits: ['Sustainable sourcing', 'Certification tracking', 'Supply chain transparency'],
-          dataShared: ['Purchase preferences', 'Certification interests', 'Impact tracking'],
-          status: 'disconnected'
-        },
-        {
-          id: 'conservation_international',
-          name: 'Conservation International',
-          type: 'sustainability',
-          description: 'Support biodiversity conservation and ecosystem protection',
-          icon: '🦜',
-          isConnected: false,
-          permissions: ['Biodiversity data', 'Ecosystem monitoring', 'Conservation projects'],
-          benefits: ['Biodiversity protection', 'Ecosystem conservation', 'Scientific research'],
-          dataShared: ['Conservation priorities', 'Ecosystem interests', 'Project support'],
-          status: 'disconnected'
-        }
-      ]
-    },
-    {
-      title: "Fitness & Health",
-      description: "Convert your wellness activities into environmental contributions",
-      icon: TrendingUp,
-      accounts: [
-        {
-          id: 'apple_health',
-          name: 'Apple Health',
-          type: 'fitness',
-          description: 'Donate based on your daily steps and exercise minutes',
-          icon: '🍎',
-          isConnected: true,
-          connectionDate: '2024-01-10',
-          permissions: ['Read step count', 'Access workout data', 'View health metrics'],
-          benefits: ['Activity-based giving', 'Health impact tracking', 'Motivation boost'],
-          dataShared: ['Daily steps', 'Workout duration', 'Health goals'],
-          status: 'active',
-          canAutomate: true,
-          automationEnabled: false,
-          lastSync: '2024-01-16T06:00:00Z'
-        },
-        {
-          id: 'strava',
-          name: 'Strava',
-          type: 'fitness',
-          description: 'Turn your outdoor activities into nature protection funding',
-          icon: '🏃',
-          isConnected: false,
-          permissions: ['Activity data', 'Route information', 'Achievement tracking'],
-          benefits: ['Exercise-based donations', 'Route-based giving', 'Community challenges'],
-          dataShared: ['Activity types', 'Distance covered', 'Time outdoors'],
-          status: 'disconnected',
-          canAutomate: true,
-          automationEnabled: false
-        }
-      ]
-    },
-    {
-      title: "Social & Communication",
-      description: "Share your environmental impact and engage your network",
-      icon: Share2,
-      accounts: [
-        {
-          id: 'instagram',
-          name: 'Instagram',
-          type: 'social',
-          description: 'Share your conservation achievements and inspire others',
-          icon: '📸',
-          isConnected: false,
-          permissions: ['Post updates', 'Share achievements', 'Access followers'],
-          benefits: ['Impact sharing', 'Network engagement', 'Awareness building'],
-          dataShared: ['Achievement posts', 'Impact metrics', 'Conservation milestones'],
-          status: 'disconnected'
-        },
-        {
-          id: 'twitter',
-          name: 'X (Twitter)',
-          type: 'social',
-          description: 'Tweet about your environmental contributions automatically',
-          icon: '🐦',
-          isConnected: false,
-          permissions: ['Post tweets', 'Share milestones'],
-          benefits: ['Automated sharing', 'Community building', 'Impact awareness'],
-          dataShared: ['Conservation updates', 'Milestone achievements'],
-          status: 'disconnected'
-        }
-      ]
-    },
-    {
-      title: "Productivity & Lifestyle",
-      description: "Integrate environmental giving into your daily routines",
-      icon: Calendar,
-      accounts: [
-        {
-          id: 'google_calendar',
-          name: 'Google Calendar',
-          type: 'productivity',
-          description: 'Schedule regular contributions and track environmental commitments',
-          icon: '📅',
-          isConnected: false,
-          permissions: ['Calendar access', 'Event creation', 'Reminder settings'],
-          benefits: ['Scheduled giving', 'Commitment tracking', 'Goal reminders'],
-          dataShared: ['Calendar events', 'Commitment schedules'],
-          status: 'disconnected'
-        },
-        {
-          id: 'notion',
-          name: 'Notion',
-          type: 'productivity',
-          description: 'Track your environmental goals and impact in your workspace',
-          icon: '📝',
-          isConnected: false,
-          permissions: ['Database access', 'Page creation', 'Template sharing'],
-          benefits: ['Goal tracking', 'Impact documentation', 'Progress visualization'],
-          dataShared: ['Goal data', 'Impact metrics', 'Progress reports'],
-          status: 'disconnected'
-        }
+                 {
+           id: 'restor_eco',
+           name: 'Restor.eco',
+           type: 'sustainability',
+           description: 'Track global restoration projects and conservation impact',
+           icon: '/components/ReserveApp/assets/logos/conservation/restor-eco-favicon.ico',
+           isConnected: true,
+           connectionDate: '2024-01-15',
+           permissions: ['Access restoration data', 'View project progress'],
+           benefits: ['Global restoration tracking', 'Scientific validation', 'Impact measurement'],
+           dataShared: ['Restoration contributions', 'Project locations'],
+           status: 'active',
+           canAutomate: true,
+           automationEnabled: true,
+           lastSync: '2024-01-19T08:30:00Z'
+         },
+                 {
+           id: 'one_tree_planted',
+           name: 'One Tree Planted',
+           type: 'sustainability',
+           description: 'Connect tree planting donations and track reforestation impact',
+           icon: '/components/ReserveApp/assets/logos/conservation/One_Tree_Planted-logo-round.png',
+           isConnected: false,
+           permissions: ['Donation tracking', 'Project updates', 'Impact reporting'],
+           benefits: ['Tree planting coordination', 'Reforestation tracking', 'Impact verification'],
+           dataShared: ['Donation history', 'Project preferences', 'Geographic interests'],
+           status: 'disconnected'
+         },
+                 {
+           id: 'wwf',
+           name: 'World Wildlife Fund',
+           type: 'sustainability',
+           description: 'Support wildlife conservation and habitat protection',
+           icon: '/components/ReserveApp/assets/logos/organizations/wwf.jpg',
+           isConnected: false,
+           permissions: ['Conservation projects', 'Species tracking', 'Habitat monitoring'],
+           benefits: ['Wildlife protection', 'Habitat conservation', 'Species monitoring'],
+           dataShared: ['Conservation interests', 'Species preferences', 'Project support'],
+           status: 'disconnected'
+         },
+                 {
+           id: 'global_forest_watch',
+           name: 'Global Forest Watch',
+           type: 'sustainability',
+           description: 'Monitor deforestation and forest changes worldwide',
+           icon: '/components/ReserveApp/assets/logos/conservation/gfw.png',
+           isConnected: false,
+           permissions: ['Forest loss data', 'Satellite monitoring', 'Alert subscriptions'],
+           benefits: ['Deforestation monitoring', 'Forest change alerts', 'Data visualization'],
+           dataShared: ['Monitored regions', 'Alert preferences', 'Conservation focus areas'],
+           status: 'disconnected'
+         },
+                 {
+           id: 'openforests',
+           name: 'OpenForests',
+           type: 'sustainability',
+           description: 'Monitor forest health and deforestation alerts',
+           icon: '/components/ReserveApp/assets/logos/conservation/openforests.png',
+           isConnected: false,
+           permissions: ['Forest monitoring data', 'Deforestation alerts'],
+           benefits: ['Real-time forest monitoring', 'Deforestation prevention', 'Satellite tracking'],
+           dataShared: ['Forest watch preferences', 'Alert locations'],
+           status: 'disconnected',
+           canAutomate: true,
+           automationEnabled: false
+         }
       ]
     }
   ]);
@@ -484,11 +260,8 @@ export function LinkedAccounts({ onBack }: LinkedAccountsProps) {
         <div className="flex gap-2 overflow-x-auto">
           {[
             { key: 'all', label: 'All', icon: Link2 },
-            { key: 'bank', label: 'Banks', icon: CreditCard },
-            { key: 'carbon', label: 'Carbon', icon: Leaf },
-            { key: 'sustainability', label: 'Conservation', icon: Shield },
-            { key: 'fitness', label: 'Fitness', icon: TrendingUp },
-            { key: 'social', label: 'Social', icon: Share2 }
+            { key: 'bank', label: 'Roundup', icon: CreditCard },
+            { key: 'sustainability', label: 'Projects', icon: Leaf }
           ].map(({ key, label, icon: Icon }) => (
             <button
               key={key}
@@ -528,28 +301,30 @@ export function LinkedAccounts({ onBack }: LinkedAccountsProps) {
             <div className="space-y-3">
               {category.accounts.map((account) => (
                 <div key={account.id} className="bg-white rounded-3xl p-4 shadow-sm border border-gray-100">
-                  {/* Account Header */}
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className="text-2xl">{account.icon}</div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h4 className="text-sm font-medium text-gray-900">{account.name}</h4>
-                        <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium border ${getStatusColor(account.status)}`}>
-                          {getStatusIcon(account.status)}
-                          {account.status.charAt(0).toUpperCase() + account.status.slice(1)}
-                        </span>
-                      </div>
+                                     {/* Account Header */}
+                   <div className="flex items-start gap-3 mb-3">
+                     <div className="w-8 h-8 flex items-center justify-center">
+                       {typeof account.icon === 'string' && account.icon.startsWith('/') ? (
+                         <img src={account.icon} alt={account.name} className="w-6 h-6 object-contain" />
+                       ) : typeof account.icon === 'string' ? (
+                         <span className="text-2xl">{account.icon}</span>
+                       ) : (
+                         account.icon
+                       )}
+                     </div>
+                                          <div className="flex-1 min-w-0">
+                       <div className="flex items-center gap-2 mb-1">
+                         <h4 className="text-sm font-medium text-gray-900">{account.name}</h4>
+                         {account.isConnected && (
+                           <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium border ${getStatusColor(account.status)}`}>
+                             {getStatusIcon(account.status)}
+                             {account.status.charAt(0).toUpperCase() + account.status.slice(1)}
+                           </span>
+                         )}
+                       </div>
                       <p className="text-xs text-gray-600 mb-2">{account.description}</p>
                       
-                      {/* Connection Details */}
-                      {account.isConnected && (
-                        <div className="text-xs text-gray-500">
-                          Connected {account.connectionDate && formatDate(account.connectionDate)}
-                          {account.lastSync && (
-                            <span> • Last sync {formatDate(account.lastSync)}</span>
-                          )}
-                        </div>
-                      )}
+                      
                     </div>
                     
                     {/* Action Button */}
@@ -565,17 +340,16 @@ export function LinkedAccounts({ onBack }: LinkedAccountsProps) {
                     </button>
                   </div>
 
-                  {/* Benefits */}
-                  <div className="mb-3">
-                    <h5 className="text-xs font-medium text-gray-700 mb-2">Benefits</h5>
-                    <div className="flex flex-wrap gap-1">
-                      {account.benefits.slice(0, 3).map((benefit, index) => (
-                        <span key={index} className="px-2 py-1 bg-teal-50 text-teal-700 text-xs rounded-lg">
-                          {benefit}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                                     {/* Benefits */}
+                   <div className="mb-3">
+                     <div className="flex flex-wrap gap-1">
+                       {account.benefits.slice(0, 3).map((benefit, index) => (
+                         <span key={index} className="px-2 py-1 bg-teal-50 text-teal-700 text-xs rounded-lg">
+                           {benefit}
+                         </span>
+                       ))}
+                     </div>
+                   </div>
 
                   {/* Automation Toggle */}
                   {account.canAutomate && account.isConnected && (
@@ -630,8 +404,8 @@ export function LinkedAccounts({ onBack }: LinkedAccountsProps) {
                 <Zap className="w-4 h-4" />
               </div>
               <div>
-                <p className="text-sm font-medium">Automated Impact</p>
-                <p className="text-xs text-teal-100">Turn everyday activities into environmental action</p>
+                <p className="text-sm font-medium">Roundup Donations</p>
+                <p className="text-xs text-teal-100">Automatically contribute spare change to nature projects</p>
               </div>
             </div>
             
@@ -640,18 +414,18 @@ export function LinkedAccounts({ onBack }: LinkedAccountsProps) {
                 <TrendingUp className="w-4 h-4" />
               </div>
               <div>
-                <p className="text-sm font-medium">Maximize Contributions</p>
-                <p className="text-xs text-teal-100">Round up purchases and convert activities to donations</p>
+                <p className="text-sm font-medium">Track Impact</p>
+                <p className="text-xs text-teal-100">Monitor your conservation contributions and project progress</p>
               </div>
             </div>
             
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                <Share2 className="w-4 h-4" />
+                <Leaf className="w-4 h-4" />
               </div>
               <div>
-                <p className="text-sm font-medium">Share Your Impact</p>
-                <p className="text-xs text-teal-100">Inspire others by sharing your conservation achievements</p>
+                <p className="text-sm font-medium">Nature Protection</p>
+                <p className="text-xs text-teal-100">Support forest restoration and conservation efforts</p>
               </div>
             </div>
           </div>

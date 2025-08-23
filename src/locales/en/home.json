@@ -199,6 +199,12 @@
         "description": "Advanced snow monitoring and avalanche prediction system using satellite data and AI, providing real-time environmental intelligence for safety.",
         "impact": "Safety & research",
         "users": "Ski resorts & researchers"
+      },
+      "pix4d": {
+        "title": "Pix4D Cloud Platform",
+        "description": "Cloud-native photogrammetry processing platform revolutionizing 3D model creation from drone imagery with AI-powered object detection and analysis.",
+        "impact": "Digital transformation",
+        "users": "Construction & agriculture professionals"
       }
     },
     "technologies": {

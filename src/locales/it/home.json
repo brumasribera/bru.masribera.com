@@ -200,6 +200,12 @@
         "description": "Sistema avanzato di monitoraggio della neve e previsione di valanghe utilizzando dati satellitari e IA, fornendo intelligenza ambientale in tempo reale per la sicurezza.",
         "impact": "Sicurezza e ricerca",
         "users": "Stazioni sciistiche e ricercatori"
+      },
+      "pix4d": {
+        "title": "Piattaforma Pix4D Cloud",
+        "description": "Piattaforma di elaborazione fotogrammetrica nativa del cloud che rivoluziona la creazione di modelli 3D da immagini di droni con rilevamento di oggetti e analisi alimentata dall'IA.",
+        "impact": "Trasformazione digitale",
+        "users": "Professionisti di costruzione e agricoltura"
       }
     },
     "technologies": {

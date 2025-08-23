@@ -16,6 +16,14 @@
   animation: shimmer 2s infinite;
 }
 
+/* Line clamp utilities */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /* CV PDF Page Break Control */
 @media print {
   /* Hide header when printing CV */

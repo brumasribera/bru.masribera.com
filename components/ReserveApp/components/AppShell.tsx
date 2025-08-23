@@ -5,7 +5,7 @@ interface AppShellProps {
 
 export function AppShell({ children, showHeader = false }: AppShellProps) {
   return (
-    <div className={`w-full flex flex-col ${showHeader ? 'min-h-screen' : 'h-screen'} bg-gradient-to-b from-white to-slate-50`}>
+    <div className={`w-full flex flex-col ${showHeader ? 'min-h-screen' : 'h-full'} bg-gradient-to-b from-white to-slate-50`}>
       {/* Desktop app bar - only show when showHeader is true */}
       {showHeader && (
         <header className="hidden lg:block sticky top-0 z-50 border-b bg-white/70 backdrop-blur">
@@ -15,10 +15,10 @@ export function AppShell({ children, showHeader = false }: AppShellProps) {
           </div>
         </header>
       )}
-      <main className={`${showHeader ? 'flex-1' : 'h-full'} overflow-hidden relative flex`}>
-        <div className="flex-1 flex items-stretch justify-center">
-          {/* Content grows to full width on desktop, remains natural on mobile */}
-          <div className="w-full h-full">{children}</div>
+      <main className={`${showHeader ? 'flex-1' : 'h-full'} relative flex overflow-hidden`}>
+        <div className="flex-1 flex items-stretch justify-center overflow-hidden">
+          {/* Content constrained to parent width, no overflow */}
+          <div className="w-full h-full max-w-full overflow-hidden">{children}</div>
         </div>
       </main>
     </div>

@@ -1,9 +1,10 @@
-// Language detection based on geographic location
+// Language detection using multiple legal methods without user permissions
 export interface LanguageSuggestion {
   languageCode: string;
   confidence: number;
   reason: string;
   country?: string;
+  method: string;
 }
 
 // Country to language mapping with confidence scores
@@ -91,6 +92,44 @@ const countryLanguageMap: Record<string, Array<{ lang: string; confidence: numbe
   'OM': [{ lang: 'en', confidence: 0.30, reason: 'English as business language in Oman' }]
 };
 
+// Timezone to language mapping (for regions with strong language associations)
+const timezoneLanguageMap: Record<string, Array<{ lang: string; confidence: number; reason: string }>> = {
+  'Europe/Berlin': [{ lang: 'de', confidence: 0.85, reason: 'German timezone' }],
+  'Europe/Vienna': [{ lang: 'de', confidence: 0.85, reason: 'Austrian timezone' }],
+  'Europe/Zurich': [
+    { lang: 'de', confidence: 0.60, reason: 'Swiss German timezone' },
+    { lang: 'fr', confidence: 0.25, reason: 'Swiss French timezone' },
+    { lang: 'it', confidence: 0.10, reason: 'Swiss Italian timezone' }
+  ],
+  'Europe/Paris': [{ lang: 'fr', confidence: 0.90, reason: 'French timezone' }],
+  'Europe/Brussels': [
+    { lang: 'fr', confidence: 0.50, reason: 'Belgian French timezone' },
+    { lang: 'de', confidence: 0.40, reason: 'Belgian German timezone' }
+  ],
+  'Europe/Rome': [{ lang: 'it', confidence: 0.90, reason: 'Italian timezone' }],
+  'Europe/Madrid': [
+    { lang: 'es', confidence: 0.80, reason: 'Spanish timezone' },
+    { lang: 'ca', confidence: 0.15, reason: 'Catalan regions timezone' }
+  ],
+  'Europe/Lisbon': [{ lang: 'pt', confidence: 0.90, reason: 'Portuguese timezone' }],
+  'Europe/London': [{ lang: 'en', confidence: 0.90, reason: 'British timezone' }],
+  'Europe/Dublin': [{ lang: 'en', confidence: 0.90, reason: 'Irish timezone' }],
+  'America/New_York': [{ lang: 'en', confidence: 0.80, reason: 'US Eastern timezone' }],
+  'America/Chicago': [{ lang: 'en', confidence: 0.80, reason: 'US Central timezone' }],
+  'America/Denver': [{ lang: 'en', confidence: 0.80, reason: 'US Mountain timezone' }],
+  'America/Los_Angeles': [{ lang: 'en', confidence: 0.80, reason: 'US Pacific timezone' }],
+  'America/Toronto': [
+    { lang: 'en', confidence: 0.60, reason: 'Canadian English timezone' },
+    { lang: 'fr', confidence: 0.25, reason: 'Canadian French timezone' }
+  ],
+  'America/Mexico_City': [{ lang: 'es', confidence: 0.90, reason: 'Mexican timezone' }],
+  'America/Sao_Paulo': [{ lang: 'pt', confidence: 0.90, reason: 'Brazilian timezone' }],
+  'America/Buenos_Aires': [{ lang: 'es', confidence: 0.90, reason: 'Argentine timezone' }],
+  'Australia/Sydney': [{ lang: 'en', confidence: 0.90, reason: 'Australian timezone' }],
+  'Australia/Melbourne': [{ lang: 'en', confidence: 0.90, reason: 'Australian timezone' }],
+  'Pacific/Auckland': [{ lang: 'en', confidence: 0.90, reason: 'New Zealand timezone' }]
+};
+
 // Get language suggestions based on country code
 export function getLanguageSuggestionsByCountry(countryCode: string): LanguageSuggestion[] {
   const country = countryCode.toUpperCase();
@@ -104,77 +143,30 @@ export function getLanguageSuggestionsByCountry(countryCode: string): LanguageSu
     languageCode: suggestion.lang,
     confidence: suggestion.confidence,
     reason: suggestion.reason,
-    country: country
+    country: country,
+    method: 'country-mapping'
   }));
 }
 
-// Get the best language suggestion for a country
-export function getBestLanguageForCountry(countryCode: string): LanguageSuggestion | null {
-  const suggestions = getLanguageSuggestionsByCountry(countryCode);
-  if (suggestions.length === 0) return null;
-  
-  // Return the suggestion with highest confidence
-  return suggestions.reduce((best, current) => 
-    current.confidence > best.confidence ? current : best
-  );
-}
-
-// Detect user's location and suggest language
-export async function detectLocationAndSuggestLanguage(): Promise<LanguageSuggestion | null> {
+// Get language suggestions based on timezone
+export function getLanguageSuggestionsByTimezone(): LanguageSuggestion[] {
   try {
-    // Check if geolocation is supported
-    if (!navigator.geolocation) {
-      console.log('Geolocation not supported');
-      return null;
-    }
-
-    // Get current position
-    const position = await new Promise<GeolocationPosition>((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(resolve, reject, {
-        enableHighAccuracy: false,
-        timeout: 10000,
-        maximumAge: 300000 // 5 minutes
-      });
-    });
-
-    // Reverse geocode to get country
-    const { latitude, longitude } = position.coords;
-    const countryCode = await reverseGeocodeToCountry(latitude, longitude);
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const suggestions = timezoneLanguageMap[timezone];
     
-    if (countryCode) {
-      return getBestLanguageForCountry(countryCode);
+    if (!suggestions) {
+      return [];
     }
 
-    return null;
+    return suggestions.map(suggestion => ({
+      languageCode: suggestion.lang,
+      confidence: suggestion.confidence,
+      reason: suggestion.reason,
+      method: 'timezone-inference'
+    }));
   } catch (error) {
-    console.log('Location detection failed:', error);
-    return null;
-  }
-}
-
-// Reverse geocode coordinates to country using a free service
-async function reverseGeocodeToCountry(lat: number, lon: number): Promise<string | null> {
-  try {
-    // Use OpenStreetMap Nominatim API (free, no API key required)
-    const response = await fetch(
-      `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=3&addressdetails=1`,
-      {
-        headers: {
-          'Accept-Language': 'en',
-          'User-Agent': 'BruMasriberaWebsite/1.0'
-        }
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data.address?.country_code?.toUpperCase() || null;
-  } catch (error) {
-    console.log('Reverse geocoding failed:', error);
-    return null;
+    console.log('Timezone detection failed:', error);
+    return [];
   }
 }
 
@@ -182,17 +174,18 @@ async function reverseGeocodeToCountry(lat: number, lon: number): Promise<string
 export function getLanguageSuggestionsByBrowser(): LanguageSuggestion[] {
   const suggestions: LanguageSuggestion[] = [];
   
-  // Check navigator.languages
+  // Check navigator.languages (most reliable)
   if (navigator.languages && navigator.languages.length > 0) {
     navigator.languages.forEach((lang, index) => {
       const langCode = lang.split('-')[0].toLowerCase();
-      const confidence = Math.max(0.9 - (index * 0.1), 0.1); // Higher confidence for first languages
+      const confidence = Math.max(0.95 - (index * 0.1), 0.1); // Higher confidence for first languages
       
       if (isSupportedLanguage(langCode)) {
         suggestions.push({
           languageCode: langCode,
           confidence,
           reason: `Browser language preference #${index + 1}`,
+          method: 'browser-languages'
         });
       }
     });
@@ -204,13 +197,77 @@ export function getLanguageSuggestionsByBrowser(): LanguageSuggestion[] {
     if (isSupportedLanguage(langCode) && !suggestions.find(s => s.languageCode === langCode)) {
       suggestions.push({
         languageCode: langCode,
-        confidence: 0.8,
+        confidence: 0.85,
         reason: 'Browser primary language',
+        method: 'browser-language'
       });
     }
   }
 
   return suggestions;
+}
+
+// Get language suggestions based on Accept-Language header (if available)
+export function getLanguageSuggestionsByAcceptLanguage(): LanguageSuggestion[] {
+  const suggestions: LanguageSuggestion[] = [];
+  
+  try {
+    // This would typically come from server-side, but we can check if it's available
+    // For client-side, we'll use navigator.language as a proxy
+    if (navigator.language) {
+      const langCode = navigator.language.split('-')[0].toLowerCase();
+      if (isSupportedLanguage(langCode)) {
+        suggestions.push({
+          languageCode: langCode,
+          confidence: 0.80,
+          reason: 'Accept-Language header equivalent',
+          method: 'accept-language'
+        });
+      }
+    }
+  } catch (error) {
+    console.log('Accept-Language detection failed:', error);
+  }
+
+  return suggestions;
+}
+
+// Detect country from IP using a free, legal service
+export async function detectCountryFromIP(): Promise<string | null> {
+  try {
+    // Use ipapi.co (free tier, no API key required, GDPR compliant)
+    const response = await fetch('https://ipapi.co/json/', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'User-Agent': 'BruMasriberaWebsite/1.0'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.country_code || null;
+  } catch (error) {
+    console.log('IP-based country detection failed:', error);
+    return null;
+  }
+}
+
+// Get language suggestions based on IP geolocation
+export async function getLanguageSuggestionsByIP(): Promise<LanguageSuggestion[]> {
+  try {
+    const countryCode = await detectCountryFromIP();
+    if (countryCode) {
+      return getLanguageSuggestionsByCountry(countryCode);
+    }
+    return [];
+  } catch (error) {
+    console.log('IP-based language detection failed:', error);
+    return [];
+  }
 }
 
 // Check if a language code is supported
@@ -219,34 +276,56 @@ function isSupportedLanguage(langCode: string): boolean {
   return supportedLanguages.includes(langCode);
 }
 
-// Get comprehensive language suggestions combining all methods
+// Get comprehensive language suggestions using all available methods
 export async function getComprehensiveLanguageSuggestions(): Promise<LanguageSuggestion[]> {
   const suggestions: LanguageSuggestion[] = [];
   
-  // Add browser-based suggestions
+  // 1. Browser language preferences (highest confidence, most reliable)
   const browserSuggestions = getLanguageSuggestionsByBrowser();
   suggestions.push(...browserSuggestions);
   
-  // Add location-based suggestions
+  // 2. Timezone-based inference (good confidence, no network needed)
+  const timezoneSuggestions = getLanguageSuggestionsByTimezone();
+  suggestions.push(...timezoneSuggestions);
+  
+  // 3. IP-based country detection (good confidence, requires network)
   try {
-    const locationSuggestion = await detectLocationAndSuggestLanguage();
-    if (locationSuggestion) {
-      // Check if we already have this language from browser
-      const existingIndex = suggestions.findIndex(s => s.languageCode === locationSuggestion.languageCode);
-      if (existingIndex >= 0) {
-        // Boost confidence if both methods suggest the same language
-        suggestions[existingIndex].confidence = Math.min(0.98, suggestions[existingIndex].confidence + 0.1);
-        suggestions[existingIndex].reason += ` + ${locationSuggestion.reason}`;
-      } else {
-        suggestions.push(locationSuggestion);
-      }
-    }
+    const ipSuggestions = await getLanguageSuggestionsByIP();
+    suggestions.push(...ipSuggestions);
   } catch (error) {
-    console.log('Location-based detection failed:', error);
+    console.log('IP-based detection failed:', error);
   }
   
+  // 4. Accept-Language header equivalent
+  const acceptLanguageSuggestions = getLanguageSuggestionsByAcceptLanguage();
+  suggestions.push(...acceptLanguageSuggestions);
+  
+  // Merge duplicate languages and boost confidence for multiple methods
+  const mergedSuggestions = mergeLanguageSuggestions(suggestions);
+  
   // Sort by confidence (highest first)
-  return suggestions.sort((a, b) => b.confidence - a.confidence);
+  return mergedSuggestions.sort((a, b) => b.confidence - a.confidence);
+}
+
+// Merge duplicate language suggestions and boost confidence
+function mergeLanguageSuggestions(suggestions: LanguageSuggestion[]): LanguageSuggestion[] {
+  const languageMap = new Map<string, LanguageSuggestion>();
+  
+  suggestions.forEach(suggestion => {
+    const existing = languageMap.get(suggestion.languageCode);
+    
+    if (existing) {
+      // Boost confidence when multiple methods suggest the same language
+      const confidenceBoost = Math.min(0.15, existing.confidence * 0.1);
+      existing.confidence = Math.min(0.98, existing.confidence + confidenceBoost);
+      existing.reason += ` + ${suggestion.reason}`;
+      existing.method += `, ${suggestion.method}`;
+    } else {
+      languageMap.set(suggestion.languageCode, { ...suggestion });
+    }
+  });
+  
+  return Array.from(languageMap.values());
 }
 
 // Get the best overall language suggestion

@@ -200,6 +200,12 @@
         "description": "Fortschrittliches Schneeüberwachungs- und Lawinenvorhersagesystem mit Satellitendaten und KI, das Echtzeit-Umweltintelligenz für die Sicherheit bereitstellt.",
         "impact": "Sicherheit & Forschung",
         "users": "Skigebiete & Forscher"
+      },
+      "pix4d": {
+        "title": "Pix4D Cloud-Plattform",
+        "description": "Cloud-native Photogrammetrie-Verarbeitungsplattform, die die 3D-Modellerstellung aus Drohnenbildern mit KI-gestützter Objekterkennung und -analyse revolutioniert.",
+        "impact": "Digitale Transformation",
+        "users": "Bau- und Landwirtschaftsprofis"
       }
     },
     "technologies": {

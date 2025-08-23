@@ -1,22 +1,15 @@
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import { 
   ArrowLeft, 
   User, 
   CreditCard, 
   Download,
   Link2,
-  Mail,
-  Phone,
-  MapPin,
-  Calendar,
   Award,
   Heart,
   Leaf,
   Zap,
   TrendingUp,
-  DollarSign,
-  Eye,
   ChevronRight
 } from "lucide-react";
 import { ImageModal } from "../../components/ImageModal";
@@ -65,7 +58,6 @@ export function AccountMain({
   onNavigateToLinkedAccounts,
   user
 }: AccountMainProps) {
-  const { t } = useTranslation('reserve');
   
   // Default user data if none provided
   const defaultUser = {

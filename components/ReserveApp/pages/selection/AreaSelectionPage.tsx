@@ -287,57 +287,84 @@ export function AreaSelectionPage({ project, onBack, onContinue }: AreaSelection
 
   return (
     <div className="w-full h-full bg-gradient-to-br from-green-50 to-emerald-100 overflow-hidden relative">
-      
+      {/* Desktop grid: map left, summary right */}
+      <div className="h-full lg:grid lg:grid-cols-12 lg:gap-6">
+        <div className="relative w-full h-full lg:col-span-9">
+          {/* Back Button */}
+          <button
+            onClick={onBack}
+            className="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-sm hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 border border-gray-200 hover:border-gray-300 z-40"
+          >
+            <ArrowLeft className="w-5 h-5" />
+          </button>
 
+          {/* Map Container */}
+          <div className="relative w-full h-full">
+            <div
+              ref={mapRef}
+              className="w-full h-full z-0"
+              style={{ cursor: 'default' }}
+            />
+          </div>
 
-       {/* Back Button */}
-       <button
-         onClick={onBack}
-         className="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-sm hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 border border-gray-200 hover:border-gray-300 z-40"
-       >
-         <ArrowLeft className="w-5 h-5" />
-       </button>
+          {/* Scale Bar - top right */}
+          <div className="absolute top-4 right-4">
+            <MapScaleBar scale={mapScale} position="top-right" />
+          </div>
 
+          {/* Confirmation Button - bottom center (mobile only) */}
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 lg:hidden">
+            {totalSelectedArea > 0 ? (
+              <button
+                onClick={handleConfirmClick}
+                className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 border border-green-500 hover:border-green-600 flex items-center space-x-2"
+              >
+                <span className="text-sm font-semibold">{t('common.confirm')}</span>
+                <span className="text-xs opacity-90">
+                  {totalSelectedArea} m² €{(totalSelectedArea * project.pricePerM2).toFixed(2)}
+                </span>
+              </button>
+            ) : (
+              <div className="bg-gray-400 text-white px-6 py-3 rounded-full font-medium shadow-lg border border-gray-300 flex items-center space-x-2 opacity-75">
+                <span className="text-sm font-semibold">Select cells to continue</span>
+              </div>
+            )}
+          </div>
+        </div>
 
-
-       {/* Map Container */}
-       <div className="relative w-full h-full">
-         <div
-           ref={mapRef}
-           className="w-full h-full z-0"
-           style={{ cursor: 'default' }}
-         />
-       </div>
-
-       {/* Scale Bar - top right */}
-       <div className="absolute top-4 right-4">
-         <MapScaleBar scale={mapScale} position="top-right" />
-       </div>
-       
-
-       
-       {/* Confirmation Button - bottom center */}
-       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
-         {totalSelectedArea > 0 ? (
-           <button
-             onClick={handleConfirmClick}
-             className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 border border-green-500 hover:border-green-600 flex items-center space-x-2"
-           >
-             <span className="text-sm font-semibold">{t('common.confirm')}</span>
-             <span className="text-xs opacity-90">
-               {totalSelectedArea} m² €{(totalSelectedArea * project.pricePerM2).toFixed(2)}
-             </span>
-           </button>
-         ) : (
-           <div className="bg-gray-400 text-white px-6 py-3 rounded-full font-medium shadow-lg border border-gray-300 flex items-center space-x-2 opacity-75">
-             <span className="text-sm font-semibold">Select cells to continue</span>
-           </div>
-         )}
-       </div>
-
-
-
-
+        {/* Right summary (desktop) */}
+        <aside className="hidden lg:block lg:col-span-3">
+          <div className="sticky top-24 p-4 space-y-4">
+            <div className="bg-white rounded-2xl p-5 shadow-sm border border-green-100">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">{t('projectPage.yourSelection') || 'Your selection'}</h3>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between p-3 bg-green-50 rounded-xl">
+                  <span className="text-sm text-green-700">{t('projectPage.selectedArea') || 'Selected area'}</span>
+                  <span className="font-semibold text-green-800">{totalSelectedArea} m²</span>
+                </div>
+                <div className="flex items-center justify-between p-3 bg-blue-50 rounded-xl">
+                  <span className="text-sm text-blue-700">{t('projectPage.estimatedCost') || 'Estimated cost'}</span>
+                  <span className="font-semibold text-blue-800">€{(totalSelectedArea * project.pricePerM2).toFixed(2)}</span>
+                </div>
+              </div>
+              <button
+                onClick={handleConfirmClick}
+                disabled={totalSelectedArea === 0}
+                className={`mt-4 w-full py-3 font-semibold rounded-xl shadow-lg transition-all duration-200 ${
+                  totalSelectedArea === 0
+                    ? 'bg-gray-300 cursor-not-allowed text-gray-600'
+                    : 'bg-gradient-to-r from-green-600 to-emerald-700 text-white hover:from-green-700 hover:to-emerald-700'
+                }`}
+              >
+                {t('common.confirm')}
+              </button>
+            </div>
+            <div className="text-xs text-gray-500">
+              {t('projectPage.selectionHint') || 'Select grid cells inside the reserve polygon. Protected areas are not selectable.'}
+            </div>
+          </div>
+        </aside>
+      </div>
     </div>
   );
 }

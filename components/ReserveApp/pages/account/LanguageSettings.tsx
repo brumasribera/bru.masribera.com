@@ -270,7 +270,7 @@ export function LanguageSettings({ onBack }: LanguageSettingsProps) {
   };
 
   return (
-    <div className="w-full h-full bg-gradient-to-br from-green-50 to-emerald-100 overflow-y-auto" style={{ maxHeight: '700px', maxWidth: '380px' }}>
+    <div className="w-full h-full bg-gradient-to-br from-green-50 to-emerald-100 overflow-y-auto">
       {/* Header */}
       <div className="relative h-48 overflow-hidden flex-shrink-0">
         {/* Background Gradient */}

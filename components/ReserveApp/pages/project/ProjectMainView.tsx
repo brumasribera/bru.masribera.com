@@ -350,7 +350,7 @@ export function ProjectMainView({
   }, [isFullScreen, project]);
 
   return (
-    <div className="w-full h-full bg-gradient-to-br from-green-50 to-emerald-100 overflow-y-auto" style={{ maxHeight: '700px', maxWidth: '380px' }}>
+    <div className="w-full h-full bg-gradient-to-br from-green-50 to-emerald-100 overflow-y-auto">
       {/* Header */}
       <div className="relative h-48 md:h-56 lg:h-64 overflow-hidden flex-shrink-0">
         {/* Background Image */}
@@ -390,124 +390,152 @@ export function ProjectMainView({
         </div>
       </div>
 
-      {/* Content - Allow vertical scrolling */}
-      <div className="p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6 lg:space-y-8">
-        {/* Progress Section - Investment Motivation */}
-        <div className="bg-white rounded-2xl p-4 md:p-6 lg:p-8 shadow-sm border border-green-100">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-900">
-              {t('projectPage.projectProgress')}
-            </h3>
-            <span className="text-lg md:text-xl lg:text-2xl font-bold text-green-600">{animatedValues.percentage}%</span>
+      {/* Content - Desktop grid with right panel */}
+      <div className="p-4 md:p-6 lg:p-8 lg:grid lg:grid-cols-12 lg:gap-6">
+        <div className="space-y-4 md:space-y-6 lg:space-y-8 lg:col-span-8">
+          {/* Progress Section - Investment Motivation */}
+          <div className="bg-white rounded-2xl p-4 md:p-6 lg:p-8 shadow-sm border border-green-100">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-900">
+                {t('projectPage.projectProgress')}
+              </h3>
+              <span className="text-lg md:text-xl lg:text-2xl font-bold text-green-600">{animatedValues.percentage}%</span>
+            </div>
+            
+            {/* Unified Progress Bar */}
+            <div className="mb-4">
+              {/* Main Progress Bar */}
+              <div className="relative w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+                <div 
+                  className="bg-gradient-to-r from-green-500 via-emerald-500 to-green-600 h-4 rounded-full transition-all duration-1000 ease-out relative"
+                  style={{ 
+                    width: `${(raisedFunding / totalFunding) * 100}%`,
+                    animation: 'progressFill 1s ease-out forwards'
+                  }}
+                >
+                  {/* Animated shine effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
+                </div>
+              </div>
+              
+              {/* Progress Details */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mt-4">
+                <div className="text-center p-3 md:p-4 bg-green-50 rounded-xl border border-green-200">
+                  <div className="text-xl md:text-2xl lg:text-3xl font-bold text-green-700 mb-1">
+                    <span className="text-sm md:text-base lg:text-lg">€</span>{formatNumber(animatedValues.euros)}
+                  </div>
+                  <div className="text-xs md:text-sm text-green-600 whitespace-nowrap">{t('projectPage.raised')}</div>
+                  <div className="text-xs md:text-sm text-gray-500 whitespace-nowrap">{t('projectPage.goal')}: <span className="text-xs">€</span>{formatNumber(totalFunding)}</div>
+                </div>
+              
+                <div className="text-center p-3 md:p-4 bg-blue-50 rounded-xl border border-blue-200">
+                  <div className="text-xl md:text-2xl lg:text-3xl font-bold text-blue-700 mb-1">
+                    {formatNumber(animatedValues.m2)}<span className="text-sm md:text-base lg:text-lg"> m²</span>
+                  </div>
+                  <div className="text-xs md:text-sm text-blue-600 whitespace-nowrap">{t('projectPage.protected')}</div>
+                  <div className="text-xs md:text-sm text-gray-500 whitespace-nowrap">{t('projectPage.total')}: {formatNumber(totalArea)}<span className="text-xs"> m²</span></div>
+                </div>
+              </div>
+            </div>
           </div>
-          
-          {/* Unified Progress Bar */}
-          <div className="mb-4">
-            {/* Main Progress Bar */}
-            <div className="relative w-full bg-gray-200 rounded-full h-4 overflow-hidden">
-              <div 
-                className="bg-gradient-to-r from-green-500 via-emerald-500 to-green-600 h-4 rounded-full transition-all duration-1000 ease-out relative"
-                style={{ 
-                  width: `${(raisedFunding / totalFunding) * 100}%`,
-                  animation: 'progressFill 1s ease-out forwards'
-                }}
+
+          {/* Satellite Map with Reserve Area */}
+          <div className="relative h-48 md:h-56 lg:h-80 rounded-2xl overflow-hidden shadow-lg project-main-map">
+            {/* Leaflet Map Container */}
+            <div 
+              ref={mapRef} 
+              className="w-full h-full z-0" 
+              style={{ minHeight: '192px', cursor: 'default' }}
+            />
+            
+            {/* Area Label with Square Meters - positioned top right */}
+            <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-full px-2 py-1 text-[10px] font-medium text-gray-700 shadow-lg border border-gray-200/50">
+              {formatNumber(Math.round(hectares * 10000))} m²
+            </div>
+            
+            {/* Full Screen Button - positioned top left */}
+            <button
+              onClick={() => setIsFullScreen(true)}
+              className="absolute top-4 left-4 w-10 h-10 md:w-12 md:h-12 bg-white/95 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50"
+            >
+              <Maximize2 className="h-5 w-5 md:w-6 md:h-6" />
+            </button>
+            
+            {/* Scale Bar - positioned bottom left */}
+            <MapScaleBar scale={mainMapScale} position="bottom-left" />
+          </div>
+
+          {/* Impact Stats */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
+            <div className="text-center p-3 md:p-4 lg:p-6 bg-white rounded-xl shadow-sm">
+              <Leaf className="w-6 h-6 md:w-8 md:h-8 text-green-600 mx-auto mb-2" />
+              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-green-700">{project.impact.biodiversity}%</div>
+              <div className="text-xs md:text-sm text-gray-600 whitespace-nowrap">{t('impact.biodiversity')}</div>
+            </div>
+            <div className="text-center p-3 md:p-4 lg:p-6 bg-white rounded-xl shadow-sm">
+              <TrendingUp className="w-6 h-6 md:w-8 md:h-8 text-blue-600 mx-auto mb-2" />
+              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-blue-700">{project.impact.carbon}%</div>
+              <div className="text-xs md:text-sm text-gray-600 whitespace-nowrap">{t('impact.carbon')}</div>
+            </div>
+            <div className="text-center p-3 md:p-4 lg:p-6 bg-white rounded-xl shadow-sm">
+              <Users className="w-6 h-6 md:w-8 md:h-8 text-purple-600 mx-auto mb-2" />
+              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-purple-700">{project.impact.community}%</div>
+              <div className="text-xs md:text-sm text-gray-600 whitespace-nowrap">{t('impact.community')}</div>
+            </div>
+          </div>
+
+          {/* Enhanced Description with Motivation */}
+          <div className="bg-white rounded-2xl p-4 md:p-6 lg:p-8 shadow-sm">
+            <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-900 mb-3">{t('projectPage.aboutThisProtectedArea')}</h3>
+            <p className="text-gray-600 leading-relaxed mb-4 text-sm md:text-base">
+              {t('projectPage.conservationDescription')}
+            </p>
+            
+            {/* Additional Motivational Content */}
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-3 md:p-4 lg:p-6 border border-blue-200">
+              <h4 className="font-semibold text-blue-900 mb-2 text-base md:text-lg">{t('projectPage.whyThisMatters')}</h4>
+              <ul className="text-xs md:text-sm text-blue-800 space-y-1 list-disc pl-5">
+                <li>{t('projectPage.protectsEndangeredSpecies')}</li>
+                <li>{t('projectPage.absorbsCO2', { cars: Math.floor(hectares * 0.8) })}</li>
+                <li>{t('projectPage.createsSustainableJobs')}</li>
+                <li>{t('projectPage.preservesNaturalSources')}</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Reduced bottom spacing for phone mockup */}
+          <div className="h-20 lg:hidden"></div>
+        </div>
+
+        {/* Right sticky CTA panel (desktop) */}
+        <aside className="hidden lg:block lg:col-span-4">
+          <div className="sticky top-24 space-y-4">
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-green-100">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">{t('projectPage.yourImpact') || 'Your Impact'}</h3>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between p-3 bg-green-50 rounded-xl">
+                  <span className="text-sm text-green-700">{t('projectPage.protected')}</span>
+                  <span className="font-semibold text-green-800">{formatNumber(animatedValues.m2)} m²</span>
+                </div>
+                <div className="flex items-center justify-between p-3 bg-blue-50 rounded-xl">
+                  <span className="text-sm text-blue-700">{t('projectPage.raised')}</span>
+                  <span className="font-semibold text-blue-800">€{formatNumber(animatedValues.euros)}</span>
+                </div>
+              </div>
+              <button 
+                className="mt-4 w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200"
+                onClick={onSelectArea}
               >
-                {/* Animated shine effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
-              </div>
-            </div>
-            
-            {/* Progress Details */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mt-4">
-              <div className="text-center p-3 md:p-4 bg-green-50 rounded-xl border border-green-200">
-                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-green-700 mb-1">
-                  <span className="text-sm md:text-base lg:text-lg">€</span>{formatNumber(animatedValues.euros)}
-                </div>
-                <div className="text-xs md:text-sm text-green-600 whitespace-nowrap">{t('projectPage.raised')}</div>
-                <div className="text-xs md:text-sm text-gray-500 whitespace-nowrap">{t('projectPage.goal')}: <span className="text-xs">€</span>{formatNumber(totalFunding)}</div>
-              </div>
-            
-              <div className="text-center p-3 md:p-4 bg-blue-50 rounded-xl border border-blue-200">
-                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-blue-700 mb-1">
-                  {formatNumber(animatedValues.m2)}<span className="text-sm md:text-base lg:text-lg"> m²</span>
-                </div>
-                <div className="text-xs md:text-sm text-blue-600 whitespace-nowrap">{t('projectPage.protected')}</div>
-                <div className="text-xs md:text-sm text-gray-500 whitespace-nowrap">{t('projectPage.total')}: {formatNumber(totalArea)}<span className="text-xs"> m²</span></div>
-              </div>
+                <Leaf className="w-5 h-5 inline mr-2" />
+                {t('projectPage.contributeToProtection')}
+              </button>
             </div>
           </div>
-        </div>
-
-        {/* Satellite Map with Reserve Area */}
-        <div className="relative h-48 md:h-56 lg:h-64 rounded-2xl overflow-hidden shadow-lg project-main-map">
-          {/* Leaflet Map Container */}
-          <div 
-            ref={mapRef} 
-            className="w-full h-full z-0" 
-            style={{ minHeight: '192px', cursor: 'default' }}
-          />
-          
-          {/* Area Label with Square Meters - positioned top right */}
-          <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-full px-2 py-1 text-[10px] font-medium text-gray-700 shadow-lg border border-gray-200/50">
-            {formatNumber(Math.round(hectares * 10000))} m²
-          </div>
-          
-          {/* Full Screen Button - positioned top left */}
-          <button
-            onClick={() => setIsFullScreen(true)}
-            className="absolute top-4 left-4 w-10 h-10 md:w-12 md:h-12 bg-white/95 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50"
-          >
-            <Maximize2 className="h-5 w-5 md:w-6 md:h-6" />
-          </button>
-          
-          {/* Scale Bar - positioned bottom left */}
-          <MapScaleBar scale={mainMapScale} position="bottom-left" />
-        </div>
-
-        {/* Impact Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
-          <div className="text-center p-3 md:p-4 lg:p-6 bg-white rounded-xl shadow-sm">
-            <Leaf className="w-6 h-6 md:w-8 md:h-8 text-green-600 mx-auto mb-2" />
-            <div className="text-xl md:text-2xl lg:text-3xl font-bold text-green-700">{project.impact.biodiversity}%</div>
-            <div className="text-xs md:text-sm text-gray-600 whitespace-nowrap">{t('impact.biodiversity')}</div>
-          </div>
-          <div className="text-center p-3 md:p-4 lg:p-6 bg-white rounded-xl shadow-sm">
-            <TrendingUp className="w-6 h-6 md:w-8 md:h-8 text-blue-600 mx-auto mb-2" />
-            <div className="text-xl md:text-2xl lg:text-3xl font-bold text-blue-700">{project.impact.carbon}%</div>
-            <div className="text-xs md:text-sm text-gray-600 whitespace-nowrap">{t('impact.carbon')}</div>
-          </div>
-          <div className="text-center p-3 md:p-4 lg:p-6 bg-white rounded-xl shadow-sm">
-            <Users className="w-6 h-6 md:w-8 md:h-8 text-purple-600 mx-auto mb-2" />
-            <div className="text-xl md:text-2xl lg:text-3xl font-bold text-purple-700">{project.impact.community}%</div>
-            <div className="text-xs md:text-sm text-gray-600 whitespace-nowrap">{t('impact.community')}</div>
-          </div>
-        </div>
-
-        {/* Enhanced Description with Motivation */}
-        <div className="bg-white rounded-2xl p-4 md:p-6 lg:p-8 shadow-sm">
-          <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-900 mb-3">{t('projectPage.aboutThisProtectedArea')}</h3>
-          <p className="text-gray-600 leading-relaxed mb-4 text-sm md:text-base">
-            {t('projectPage.conservationDescription')}
-          </p>
-          
-          {/* Additional Motivational Content */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-3 md:p-4 lg:p-6 border border-blue-200">
-            <h4 className="font-semibold text-blue-900 mb-2 text-base md:text-lg">{t('projectPage.whyThisMatters')}</h4>
-            <ul className="text-xs md:text-sm text-blue-800 space-y-1 list-disc pl-5">
-              <li>{t('projectPage.protectsEndangeredSpecies')}</li>
-              <li>{t('projectPage.absorbsCO2', { cars: Math.floor(hectares * 0.8) })}</li>
-              <li>{t('projectPage.createsSustainableJobs')}</li>
-              <li>{t('projectPage.preservesNaturalSources')}</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Reduced bottom spacing for phone mockup */}
-        <div className="h-20"></div>
+        </aside>
       </div>
 
-      {/* Floating Contribute Button - Sticky to Bottom */}
-      <div className="absolute w-full bottom-0 z-30 p-4 md:p-6 lg:p-8 pr-6 md:pr-8 lg:pr-10">
+      {/* Floating Contribute Button - Sticky to Bottom (mobile only) */}
+      <div className="absolute w-full bottom-0 z-30 p-4 md:p-6 lg:p-8 pr-6 md:pr-8 lg:pr-10 lg:hidden">
         <div className="w-full">
           <button 
             className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-2xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200 active:scale-[0.98] text-base flex items-center justify-center"
@@ -519,28 +547,28 @@ export function ProjectMainView({
         </div>
       </div>
 
-             {/* Fullscreen Map Modal - Inside Mockup */}
-       {isFullScreen && (
-         <div className="absolute inset-0 bg-black z-40 flex items-center justify-center rounded-2xl overflow-hidden">
-                      {/* Fullscreen Map Container */}
-           <div 
-             ref={fullScreenMapRef} 
-             className="w-full h-full relative z-0" 
-           />
-           
-           {/* Minimize Button */}
-           <button
-             onClick={() => setIsFullScreen(false)}
-             className="absolute top-4 left-4 w-10 h-10 md:w-12 md:h-12 bg-white/95 hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 border border-gray-200/50 z-10"
-             aria-label="Exit fullscreen"
-           >
-             <Minimize2 className="h-5 w-5 md:w-6 md:h-6" />
-           </button>
-           
-           {/* Scale Bar - positioned bottom left */}
-           <MapScaleBar scale={fullscreenMapScale} position="bottom-left" />
-         </div>
-       )}
+      {/* Fullscreen Map Modal - Inside Mockup */}
+      {isFullScreen && (
+        <div className="absolute inset-0 bg-black z-40 flex items-center justify-center rounded-2xl overflow-hidden">
+          {/* Fullscreen Map Container */}
+          <div 
+            ref={fullScreenMapRef} 
+            className="w-full h-full relative z-0" 
+          />
+          
+          {/* Minimize Button */}
+          <button
+            onClick={() => setIsFullScreen(false)}
+            className="absolute top-4 left-4 w-10 h-10 md:w-12 md:h-12 bg-white/95 hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 border border-gray-200/50 z-10"
+            aria-label="Exit fullscreen"
+          >
+            <Minimize2 className="h-5 w-5 md:w-6 md:h-6" />
+          </button>
+          
+          {/* Scale Bar - positioned bottom left */}
+          <MapScaleBar scale={fullscreenMapScale} position="bottom-left" />
+        </div>
+      )}
     </div>
   );
 }

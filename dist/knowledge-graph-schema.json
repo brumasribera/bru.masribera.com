@@ -1,0 +1,93 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://bru.masribera.com/#person",
+      "name": "Bru Mas Ribera",
+      "jobTitle": "Frontend & UX Engineer",
+      "description": "Professional Frontend & UX Engineer specializing in modern web technologies",
+      "url": "https://bru.masribera.com",
+      "image": "https://bru.masribera.com/profile/bru-mas-ribera.jpg",
+      "sameAs": [
+        "https://github.com/bru-mas-ribera",
+        "https://linkedin.com/in/bru-mas-ribera",
+        "https://twitter.com/bru_mas_ribera"
+      ],
+      "knowsAbout": [
+        "Frontend Development",
+        "UX Design",
+        "React",
+        "TypeScript",
+        "Web Development",
+        "User Experience",
+        "Responsive Design",
+        "Modern Web Technologies"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Frontend & UX Engineer",
+        "description": "Specialized in creating modern, responsive web applications with focus on user experience"
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Freelance",
+        "description": "Independent Frontend & UX Engineer"
+      },
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Web Development Institute"
+      },
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Frontend Development Certification",
+          "credentialCategory": "Professional Certification"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "UX Design Certification",
+          "credentialCategory": "Professional Certification"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://bru.masribera.com/#website",
+      "name": "Bru Mas Ribera Portfolio",
+      "url": "https://bru.masribera.com",
+      "description": "Professional portfolio showcasing projects and skills of Bru Mas Ribera",
+      "author": {
+        "@id": "https://bru.masribera.com/#person"
+      },
+      "publisher": {
+        "@id": "https://bru.masribera.com/#person"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://bru.masribera.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://bru.masribera.com/#organization",
+      "name": "Bru Mas Ribera Development",
+      "description": "Professional web development and UX design services",
+      "url": "https://bru.masribera.com",
+      "founder": {
+        "@id": "https://bru.masribera.com/#person"
+      },
+      "employee": {
+        "@id": "https://bru.masribera.com/#person"
+      },
+      "serviceType": [
+        "Frontend Development",
+        "UX Design",
+        "Web Application Development",
+        "Responsive Design",
+        "Modern Web Technologies"
+      ]
+    }
+  ]
+}

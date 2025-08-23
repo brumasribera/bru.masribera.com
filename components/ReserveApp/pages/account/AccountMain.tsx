@@ -247,7 +247,7 @@ export function AccountMain({
   };
 
   return (
-    <div className="w-full h-full bg-gradient-to-br from-green-50 to-emerald-100 overflow-y-auto relative" style={{ maxHeight: '700px', maxWidth: '380px' }}>
+    <div className="w-full h-full bg-gradient-to-br from-green-50 to-emerald-100 overflow-y-auto relative">
       {/* Header with Profile */}
       <div className="relative h-64 overflow-hidden flex-shrink-0">
         {/* Background Gradient */}

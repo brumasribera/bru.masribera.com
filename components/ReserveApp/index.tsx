@@ -125,7 +125,7 @@ export default function ReserveMobileApp() {
   };
 
   return (
-    <AppShell>
+    <AppShell showHeader={false}>
       {showAccount ? (
         renderAccountPage()
       ) : showMyContributions ? (
@@ -150,15 +150,17 @@ export default function ReserveMobileApp() {
           />
         )
       ) : !activeProject ? (
-        <Globe3D 
-          onPick={openProject} 
-          onShowContributions={() => setShowMyContributions(true)}
-          onShowAccount={() => {
-            setShowAccount(true);
-            setAccountPage('main');
-          }}
-          user={user}
-        />
+        <div className="w-full h-full">
+          <Globe3D 
+            onPick={openProject} 
+            onShowContributions={() => setShowMyContributions(true)}
+            onShowAccount={() => {
+              setShowAccount(true);
+              setAccountPage('main');
+            }}
+            user={user}
+          />
+        </div>
       ) : (
         <ProtectedAreaPage
           project={activeProject}

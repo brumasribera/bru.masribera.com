@@ -12,7 +12,14 @@
     "deploy": "node scripts/deploy.js",
     "generate-cv": "node scripts/generate-cv-pdf.js",
     "check-cv-lengths": "node scripts/check-cv-lengths.js",
-    "cv:all": "npm run check-cv-lengths && npm run generate-cv"
+    "cv:all": "npm run check-cv-lengths && npm run generate-cv",
+    "seo:check": "node scripts/seo-monitor.js",
+    "seo:validate": "npm run seo:check",
+    "generate-og-images": "node scripts/generate-preview-images.js",
+    "generate-og-main": "node scripts/generate-og-main.js",
+    "generate-og-reserve": "node scripts/generate-og-reserve.js",
+    "generate-og-single": "node scripts/generate-og-single.js",
+    "test-og": "node scripts/test-og-generation.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -54,7 +61,7 @@
     "jspdf": "^3.0.1",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.487.0",
-    "puppeteer": "^24.16.2",
+    "puppeteer": "^24.17.0",
     "react": "^18.2.0",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.2.0",

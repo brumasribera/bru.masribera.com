@@ -226,8 +226,8 @@ export function Globe3D({ onPick, onShowContributions, onShowAccount, user }: Gl
   };
 
   return (
-    <div className="globe-container w-full h-full min-h-screen flex flex-col relative bg-black">
-      {/* Custom CSS for star animations */}
+    <div className="globe-container w-full h-full flex flex-col relative bg-black">
+      {/* Custom CSS for star animations and full viewport */}
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes twinkle {
@@ -277,7 +277,21 @@ export function Globe3D({ onPick, onShowContributions, onShowAccount, user }: Gl
             }
           }
           
-
+          /* Ensure full viewport coverage */
+          .globe-container {
+            height: 100% !important;
+            width: 100% !important;
+            position: relative !important;
+            top: 0 !important;
+            left: 0 !important;
+            z-index: 10 !important;
+          }
+          
+          /* Ensure globe takes full container */
+          .globe-container > div:last-child {
+            height: 100% !important;
+            width: 100% !important;
+          }
         `
       }} />
       
@@ -384,9 +398,9 @@ export function Globe3D({ onPick, onShowContributions, onShowAccount, user }: Gl
       </div>
       
       {/* Header with Search and Home Button */}
-              <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-[40]">
+      <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-[40]">
         {/* Search Box - takes left space */}
-        <div className="flex-1 max-w-xs">
+        <div className="flex-1 max-w-xl lg:max-w-2xl xl:max-w-3xl">
           <SearchBox 
             projects={PROJECTS} 
             onProjectSelect={onPick}
@@ -404,8 +418,8 @@ export function Globe3D({ onPick, onShowContributions, onShowAccount, user }: Gl
         </button>
       </div>
 
-      {/* Globe container - Takes remaining height and centers the globe */}
-      <div className="flex-1 relative flex items-center justify-center">
+      {/* Globe container - Takes full height and centers the globe */}
+      <div className="h-full relative flex items-center justify-center">
         <GlobeGL 
           ref={globeRef}
           backgroundColor="#00000000" 

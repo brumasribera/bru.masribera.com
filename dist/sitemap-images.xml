@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <url>
+    <loc>https://bru.masribera.com/</loc>
+    <image:image>
+      <image:loc>https://bru.masribera.com/og-images/main.png</image:loc>
+      <image:title>Bru Mas Ribera - Frontend & UX Engineer Portfolio</image:title>
+      <image:caption>Professional portfolio showcasing innovative web development projects</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://bru.masribera.com/projects/open-huts</loc>
+    <image:image>
+      <image:loc>https://bru.masribera.com/projects/open-huts/hero.jpg</image:loc>
+      <image:title>Open Huts - Mountain Hut Booking Platform</image:title>
+      <image:caption>Modern mountain hut booking platform with intuitive UX design</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://bru.masribera.com/projects/reserve</loc>
+    <image:image>
+      <image:loc>https://bru.masribera.com/projects/reserve/hero.jpg</image:loc>
+      <image:title>Reserve App - Reservation Management System</image:title>
+      <image:caption>Efficient reservation management system for businesses</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://bru.masribera.com/projects/wegaw</loc>
+    <image:image>
+      <image:loc>https://bru.masribera.com/projects/wegaw/hero.jpg</image:loc>
+      <image:title>Wegaw - Weather & Outdoor Activity Platform</image:title>
+      <image:caption>Comprehensive weather and outdoor activity planning platform</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://bru.masribera.com/projects/pix4d</loc>
+    <image:image>
+      <image:loc>https://bru.masribera.com/projects/pix4d/hero.jpg</image:loc>
+      <image:title>Pix4D - Professional Photogrammetry Software</image:title>
+      <image:caption>Advanced photogrammetry software interface design</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://bru.masribera.com/projects/moodlenet</loc>
+    <image:image>
+      <image:loc>https://bru.masribera.com/projects/moodlenet/hero.jpg</image:loc>
+      <image:title>MoodleNet - Educational Learning Platform</image:title>
+      <image:caption>Innovative educational platform and learning management system</image:caption>
+    </image:image>
+  </url>
+</urlset>

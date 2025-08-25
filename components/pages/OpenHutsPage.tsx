@@ -6,7 +6,7 @@ import { useProjectNavigation } from '../hooks/useProjectNavigation'
 import { ProjectNavigationButton } from '../navigation/ProjectNavigationButton'
 import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation'
 import { ImageModal } from '../modals/ImageModal'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
 export function OpenHutsPage() {
@@ -24,6 +24,19 @@ export function OpenHutsPage() {
     nextProjectPath: '/clathes',
     disableNavigation: selectedImage !== null
   })
+  
+  // Set page title for PWA
+  useEffect(() => {
+    document.title = 'Open Huts - Bru Mas Ribera'
+  }, [])
+  
+  // To add PWA support, simply wrap the export with:
+  // export default withPWASupport(OpenHutsPage, {
+  //   name: 'Open Huts - Bru Mas Ribera',
+  //   short_name: 'Open Huts',
+  //   description: 'Mountain hut booking platform',
+  //   categories: ['travel', 'outdoors']
+  // })
   
   // Array of all image paths for navigation
   const imagePaths = [

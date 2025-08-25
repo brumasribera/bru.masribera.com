@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { withPWASupport } from '../hocs/withPWASupport'
 
 // Use public folder assets for simplest pathing
 const GONG_SOUNDS = {
@@ -8,7 +9,7 @@ const GONG_SOUNDS = {
   end: '/timer-sounds/end-gong.mp3'
 }
 
-export default function TimerPage() {
+function TimerPage() {
   const [timeLeft, setTimeLeft] = useState(8 * 60) // 8 minutes in seconds
   const [isRunning, setIsRunning] = useState(false)
   const [isCompleted, setIsCompleted] = useState(false)
@@ -20,7 +21,7 @@ export default function TimerPage() {
     document.title = 'Timer'
   }, [])
 
-  // Initialize audio elements
+  // Initialize audio elements and set timer favicon
   useEffect(() => {
     // Set the timer favicon
     const setTimerFavicon = () => {
@@ -265,6 +266,14 @@ export default function TimerPage() {
             </button>
         </div>
       </div>
-    </div>
-  )
-}
+         </div>
+   )
+ }
+
+// Export with PWA support
+export default withPWASupport(TimerPage, {
+   name: 'Timer - Bru Mas Ribera',
+   short_name: 'Timer',
+   description: 'A simple and elegant timer app',
+   categories: ['productivity', 'utilities']
+ })

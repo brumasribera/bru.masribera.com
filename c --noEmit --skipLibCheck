@@ -1,0 +1,5 @@
+[33m5828995[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Fix WegawPage import path to resolve build error
+[33mf1cc16c[m Update timer favicon with improved hour markers and hand positioning
+[33mbb93b30[m Fix timer audio loading and clean up console output
+[33m00761bd[m Fix overcapitalization in privacy content and improve GDPR banner functionality
+[33m0f0f91f[m Simplify Reserve app profile settings and optimize LinkedAccounts interface

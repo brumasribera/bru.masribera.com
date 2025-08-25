@@ -17,7 +17,7 @@ function TimerPage() {
 
   // Set page title and timer-specific manifest
   useEffect(() => {
-    document.title = 'Timer'
+    document.title = 'Stretch Timer'
     
     // Set the timer-specific manifest for PWA installation
     const setTimerManifest = () => {
@@ -42,9 +42,11 @@ function TimerPage() {
       const metaTags = [
         { name: 'mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
-        { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
-        { name: 'apple-mobile-web-app-title', content: 'Timer' },
-        { name: 'application-name', content: 'Timer' }
+        { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
+        { name: 'apple-mobile-web-app-title', content: 'Stretch Timer' },
+        { name: 'application-name', content: 'Stretch Timer' },
+        { name: 'msapplication-TileColor', content: '#000000' },
+        { name: 'msapplication-config', content: '/browserconfig.xml' }
       ];
       
       metaTags.forEach(tag => {
@@ -60,12 +62,28 @@ function TimerPage() {
     
     addPWAMetaTags();
     
+    // Register service worker for PWA functionality
+    const registerServiceWorker = () => {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+          .then((registration) => {
+            console.log('Timer service worker registered:', registration);
+          })
+          .catch((error) => {
+            console.error('Timer service worker registration failed:', error);
+          });
+      }
+    };
+    
+    registerServiceWorker();
+    
     // Cleanup function to restore original manifest and remove meta tags
     return () => {
       const currentManifest = document.querySelector("link[rel='manifest']") as HTMLLinkElement;
       if (currentManifest && currentManifest.dataset.originalHref) {
         currentManifest.href = currentManifest.dataset.originalHref;
         delete currentManifest.dataset.originalHref;
+        console.log('Restored original manifest:', currentManifest.href);
       }
       
       // Remove PWA meta tags
@@ -74,7 +92,9 @@ function TimerPage() {
         'apple-mobile-web-app-capable',
         'apple-mobile-web-app-status-bar-style',
         'apple-mobile-web-app-title',
-        'application-name'
+        'application-name',
+        'msapplication-TileColor',
+        'msapplication-config'
       ];
       
       pwaMetaTags.forEach(name => {
@@ -83,6 +103,21 @@ function TimerPage() {
           meta.remove();
         }
       });
+      
+      // Restore original title
+      document.title = 'Bru Mas Ribera - Frontend & UX Engineer';
+      
+      // Unregister service worker to prevent conflicts
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          registrations.forEach((registration) => {
+            if (registration.scope.includes('/tools/timer')) {
+              registration.unregister();
+              console.log('Timer service worker unregistered');
+            }
+          });
+        });
+      }
     };
   }, [])
 
@@ -92,6 +127,10 @@ function TimerPage() {
     const setTimerFavicon = () => {
       const existingLink = document.querySelector("link[rel*='icon']") as HTMLLinkElement;
       if (existingLink) {
+        // Store original favicon to restore later
+        if (!existingLink.dataset.originalHref) {
+          existingLink.dataset.originalHref = existingLink.href;
+        }
         existingLink.href = '/favicons/favicon-timer.svg';
       } else {
         const link = document.createElement('link');
@@ -156,7 +195,11 @@ function TimerPage() {
       
       // Restore original favicon
       const timerLink = document.querySelector("link[rel*='icon']") as HTMLLinkElement;
-      if (timerLink && timerLink.href.includes('favicon-timer')) {
+      if (timerLink && timerLink.dataset.originalHref) {
+        timerLink.href = timerLink.dataset.originalHref;
+        delete timerLink.dataset.originalHref;
+      } else if (timerLink && timerLink.href.includes('favicon-timer')) {
+        // Fallback: restore to default favicon
         timerLink.href = '/favicon.ico';
       }
       

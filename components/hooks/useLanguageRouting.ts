@@ -59,6 +59,13 @@ export const useLanguageRouting = () => {
     setCurrentLanguage(newLanguage);
     
     const currentPath = getPathWithoutLanguage(location.pathname);
+    
+    // Don't change language on timer pages to preserve PWA routing
+    if (currentPath.includes('/tools/timer')) {
+      console.log('Language change blocked on timer page to preserve PWA routing');
+      return;
+    }
+    
     const newPath = addLanguageToPath(currentPath, newLanguage);
     
     // Update URL immediately

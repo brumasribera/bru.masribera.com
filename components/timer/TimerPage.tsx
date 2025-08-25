@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { withPWASupport } from '../hocs/withPWASupport'
 
 // Use public folder assets for simplest pathing
 const GONG_SOUNDS = {
@@ -16,9 +15,75 @@ function TimerPage() {
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
   const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({})
 
-  // Set page title
+  // Set page title and timer-specific manifest
   useEffect(() => {
     document.title = 'Timer'
+    
+    // Set the timer-specific manifest for PWA installation
+    const setTimerManifest = () => {
+      const existingManifest = document.querySelector("link[rel='manifest']") as HTMLLinkElement;
+      if (existingManifest) {
+        // Store original manifest to restore later
+        if (!existingManifest.dataset.originalHref) {
+          existingManifest.dataset.originalHref = existingManifest.href;
+        }
+        existingManifest.href = '/tools/timer/manifest.webmanifest';
+        
+        // Debug: log the manifest change
+        console.log('Timer manifest set to:', existingManifest.href);
+        console.log('Current path:', window.location.pathname);
+      }
+    };
+    
+    setTimerManifest();
+    
+    // Add PWA meta tags for better installation experience
+    const addPWAMetaTags = () => {
+      const metaTags = [
+        { name: 'mobile-web-app-capable', content: 'yes' },
+        { name: 'apple-mobile-web-app-capable', content: 'yes' },
+        { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
+        { name: 'apple-mobile-web-app-title', content: 'Timer' },
+        { name: 'application-name', content: 'Timer' }
+      ];
+      
+      metaTags.forEach(tag => {
+        const existingMeta = document.querySelector(`meta[name="${tag.name}"]`);
+        if (!existingMeta) {
+          const meta = document.createElement('meta');
+          meta.name = tag.name;
+          meta.content = tag.content;
+          document.head.appendChild(meta);
+        }
+      });
+    };
+    
+    addPWAMetaTags();
+    
+    // Cleanup function to restore original manifest and remove meta tags
+    return () => {
+      const currentManifest = document.querySelector("link[rel='manifest']") as HTMLLinkElement;
+      if (currentManifest && currentManifest.dataset.originalHref) {
+        currentManifest.href = currentManifest.dataset.originalHref;
+        delete currentManifest.dataset.originalHref;
+      }
+      
+      // Remove PWA meta tags
+      const pwaMetaTags = [
+        'mobile-web-app-capable',
+        'apple-mobile-web-app-capable',
+        'apple-mobile-web-app-status-bar-style',
+        'apple-mobile-web-app-title',
+        'application-name'
+      ];
+      
+      pwaMetaTags.forEach(name => {
+        const meta = document.querySelector(`meta[name="${name}"]`);
+        if (meta) {
+          meta.remove();
+        }
+      });
+    };
   }, [])
 
   // Initialize audio elements and set timer favicon
@@ -270,10 +335,5 @@ function TimerPage() {
    )
  }
 
-// Export with PWA support
-export default withPWASupport(TimerPage, {
-   name: 'Timer - Bru Mas Ribera',
-   short_name: 'Timer',
-   description: 'A simple and elegant timer app',
-   categories: ['productivity', 'utilities']
- })
+// Export the timer page
+export default TimerPage

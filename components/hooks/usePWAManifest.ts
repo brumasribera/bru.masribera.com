@@ -70,12 +70,16 @@ export function usePWAManifest(config: PWAManifestConfig = {}) {
       const existingManifest = document.querySelector("link[rel='manifest']") as HTMLLinkElement
       
       if (existingManifest) {
+        // Store the original manifest href to restore later
+        if (!existingManifest.dataset.originalHref) {
+          existingManifest.dataset.originalHref = existingManifest.href
+        }
+        
         // Create a data URL with the manifest content
         const manifestContent = JSON.stringify(createRouteManifest(), null, 2)
-        const manifestBlob = new Blob([manifestContent], { type: 'application/json' })
-        const manifestUrl = URL.createObjectURL(manifestBlob)
+        const dataUrl = `data:application/json;charset=utf-8,${encodeURIComponent(manifestContent)}`
         
-        existingManifest.href = manifestUrl
+        existingManifest.href = dataUrl
       }
     }
 
@@ -110,9 +114,9 @@ export function usePWAManifest(config: PWAManifestConfig = {}) {
     return () => {
       // Restore original manifest
       const currentManifest = document.querySelector("link[rel='manifest']") as HTMLLinkElement
-      if (currentManifest && currentManifest.href.startsWith('blob:')) {
-        URL.revokeObjectURL(currentManifest.href)
-        currentManifest.href = '/site.webmanifest'
+      if (currentManifest && currentManifest.dataset.originalHref) {
+        currentManifest.href = currentManifest.dataset.originalHref
+        delete currentManifest.dataset.originalHref
       }
       
       // Remove PWA meta tags

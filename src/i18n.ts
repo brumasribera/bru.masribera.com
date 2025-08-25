@@ -277,7 +277,9 @@ const initI18n = async () => {
     });
 
     // Auto-select best language if appropriate
-    if (shouldAutoSelectLanguage() && initialLang === 'en') {
+    // BUT don't auto-select on timer pages to preserve PWA routing
+    const currentPath = window.location.pathname;
+    if (shouldAutoSelectLanguage() && initialLang === 'en' && !currentPath.includes('/tools/timer')) {
       try {
         const bestLanguage = await autoSelectBestLanguage();
         if (bestLanguage && bestLanguage !== 'en') {
@@ -285,8 +287,9 @@ const initI18n = async () => {
           await i18n.changeLanguage(bestLanguage);
           
           // Update URL to reflect the new language
+          // BUT don't redirect on timer pages to preserve PWA routing
           const currentPath = window.location.pathname;
-          if (currentPath === '/' || currentPath === '/en') {
+          if ((currentPath === '/' || currentPath === '/en') && !currentPath.includes('/tools/timer')) {
             const newPath = `/${bestLanguage}`;
             window.history.replaceState(null, '', newPath);
           }

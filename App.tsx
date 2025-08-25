@@ -15,7 +15,6 @@ import { LegalPage } from './components/pages/LegalPage'
 import { useLanguageRouting } from './components/hooks/useLanguageRouting'
 import { useScrollPosition } from './components/hooks/useScrollPosition'
 import { GDPRBanner, useGDPRConsent } from './components/ui/GDPRBanner'
-import { OfflineIndicator } from './components/ui/OfflineIndicator'
 
 // Lazy load project pages to reduce initial bundle size
 const OpenHutsPage = lazy(() => import('./components/pages/OpenHutsPage').then(module => ({ default: module.OpenHutsPage })))
@@ -97,7 +96,6 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
 
   return (
     <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
-      <OfflineIndicator />
       {/* Hide header on CV page for print/download and on reserve-app for fullscreen */}
       {shouldShowHeader && <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}
       

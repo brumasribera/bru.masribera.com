@@ -17,22 +17,38 @@ function TimerPage() {
 
   // Set page title and timer-specific manifest
   useEffect(() => {
-    document.title = 'Stretch Timer'
+    // Set title immediately and multiple times to ensure it's used
+    document.title = 'Stretch Timer';
+    
+    // Force title update after a short delay to ensure it's applied
+    setTimeout(() => {
+      document.title = 'Stretch Timer';
+    }, 100);
+    
+    // Set title again when the page becomes visible
+    const handleVisibilityChange = () => {
+      if (!document.hidden) {
+        document.title = 'Stretch Timer';
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
     
     // Set the timer-specific manifest for PWA installation
     const setTimerManifest = () => {
-      const existingManifest = document.querySelector("link[rel='manifest']") as HTMLLinkElement;
-      if (existingManifest) {
-        // Store original manifest to restore later
-        if (!existingManifest.dataset.originalHref) {
-          existingManifest.dataset.originalHref = existingManifest.href;
-        }
-        existingManifest.href = '/tools/timer/manifest.webmanifest';
-        
-        // Debug: log the manifest change
-        console.log('Timer manifest set to:', existingManifest.href);
-        console.log('Current path:', window.location.pathname);
-      }
+      // Remove any existing manifest links first
+      const existingManifests = document.querySelectorAll("link[rel='manifest']");
+      existingManifests.forEach(manifest => manifest.remove());
+      
+      // Create a new manifest link for the timer
+      const timerManifest = document.createElement('link');
+      timerManifest.rel = 'manifest';
+      timerManifest.href = `/tools/timer/manifest.webmanifest?v=${Date.now()}`;
+      timerManifest.setAttribute('data-timer-manifest', 'true');
+      document.head.appendChild(timerManifest);
+      
+      // Debug: log the manifest change
+      console.log('Timer manifest set to:', timerManifest.href);
+      console.log('Current path:', window.location.pathname);
     };
     
     setTimerManifest();
@@ -46,7 +62,9 @@ function TimerPage() {
         { name: 'apple-mobile-web-app-title', content: 'Stretch Timer' },
         { name: 'application-name', content: 'Stretch Timer' },
         { name: 'msapplication-TileColor', content: '#000000' },
-        { name: 'msapplication-config', content: '/browserconfig.xml' }
+        { name: 'msapplication-config', content: '/browserconfig.xml' },
+        { name: 'name', content: 'Stretch Timer' },
+        { name: 'title', content: 'Stretch Timer' }
       ];
       
       metaTags.forEach(tag => {
@@ -79,12 +97,19 @@ function TimerPage() {
     
     // Cleanup function to restore original manifest and remove meta tags
     return () => {
-      const currentManifest = document.querySelector("link[rel='manifest']") as HTMLLinkElement;
-      if (currentManifest && currentManifest.dataset.originalHref) {
-        currentManifest.href = currentManifest.dataset.originalHref;
-        delete currentManifest.dataset.originalHref;
-        console.log('Restored original manifest:', currentManifest.href);
+      // Remove timer manifest and restore original
+      const timerManifest = document.querySelector("link[data-timer-manifest='true']");
+      if (timerManifest) {
+        timerManifest.remove();
       }
+      
+      // Restore the original site manifest
+      const originalManifest = document.createElement('link');
+      originalManifest.rel = 'manifest';
+      originalManifest.href = '/site.webmanifest';
+      document.head.appendChild(originalManifest);
+      
+      console.log('Restored original manifest:', originalManifest.href);
       
       // Remove PWA meta tags
       const pwaMetaTags = [
@@ -106,6 +131,9 @@ function TimerPage() {
       
       // Restore original title
       document.title = 'Bru Mas Ribera - Frontend & UX Engineer';
+      
+      // Remove visibility change listener
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       
       // Unregister service worker to prevent conflicts
       if ('serviceWorker' in navigator) {

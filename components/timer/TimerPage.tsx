@@ -15,8 +15,29 @@ export default function TimerPage() {
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
   const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({})
 
+  // Set page title
+  useEffect(() => {
+    document.title = 'Timer'
+  }, [])
+
   // Initialize audio elements
   useEffect(() => {
+    // Set the timer favicon
+    const setTimerFavicon = () => {
+      const existingLink = document.querySelector("link[rel*='icon']") as HTMLLinkElement;
+      if (existingLink) {
+        existingLink.href = '/favicons/favicon-timer.svg';
+      } else {
+        const link = document.createElement('link');
+        link.type = 'image/svg+xml';
+        link.rel = 'icon';
+        link.href = '/favicons/favicon-timer.svg';
+        document.head.appendChild(link);
+      }
+    };
+
+    setTimerFavicon();
+
     let isMounted = true;
     
     const loadAudioFiles = async () => {
@@ -66,6 +87,13 @@ export default function TimerPage() {
 
     return () => {
       isMounted = false;
+      
+      // Restore original favicon
+      const timerLink = document.querySelector("link[rel*='icon']") as HTMLLinkElement;
+      if (timerLink && timerLink.href.includes('favicon-timer')) {
+        timerLink.href = '/favicon.ico';
+      }
+      
       // Cleanup audio elements
       Object.values(audioRefs.current).forEach(audio => {
         audio.pause()

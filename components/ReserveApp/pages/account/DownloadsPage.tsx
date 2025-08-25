@@ -11,11 +11,11 @@ import {
   Clock,
   CheckCircle,
   AlertCircle,
-  Play,
-  Pause,
+
+
   ExternalLink,
   Wifi,
-  WifiOff,
+
   Settings
 } from "lucide-react";
 
@@ -37,9 +37,9 @@ interface DownloadedItem {
 }
 
 export function DownloadsPage({ onBack }: DownloadsPageProps) {
-  const { t } = useTranslation('reserve');
+
   
-  const [selectedFilter, setSelectedFilter] = useState<'all' | 'projects' | 'languages' | 'maps'>('all');
+  const [selectedFilter, setSelectedFilter] = useState<'all' | 'project' | 'language' | 'map' | 'content'>('all');
   const [sortBy, setSortBy] = useState<'date' | 'name' | 'size'>('date');
   const [showOfflineMode, setShowOfflineMode] = useState(true);
 
@@ -160,20 +160,7 @@ export function DownloadsPage({ onBack }: DownloadsPageProps) {
     }
   };
 
-  const getTypeIcon = (type: string) => {
-    switch (type) {
-      case 'project':
-        return <Leaf className="w-4 h-4" />;
-      case 'language':
-        return <Globe className="w-4 h-4" />;
-      case 'map':
-        return <MapPin className="w-4 h-4" />;
-      case 'content':
-        return <Download className="w-4 h-4" />;
-      default:
-        return <Download className="w-4 h-4" />;
-    }
-  };
+
 
   const getTypeColor = (type: string) => {
     switch (type) {

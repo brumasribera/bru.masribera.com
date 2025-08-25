@@ -37,7 +37,7 @@
   },
   "gdpr": {
     "title": "Privacy & cookies",
-    "description": "This site uses essential cookies only. By continuing, you agree to our Terms and Privacy Policy.",
+    "description": "This site uses essential cookies only. By continuing, you agree to our Terms and Privacy Policy",
     "essentialOnly": "Only essential cookies",
     "accept": "Accept",
     "consentText": "By clicking \"Accept\", you agree to our Terms and Privacy Policy."

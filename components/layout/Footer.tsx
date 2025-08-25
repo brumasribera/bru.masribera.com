@@ -116,14 +116,14 @@ export function Footer() {
                  </p>
                  <span className="text-gray-300 dark:text-gray-600">•</span>
                  <a 
-                   href={getLocalizedPath('/privacy')} 
+                   href={`${getLocalizedPath('/legal')}#privacy`}
                    className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-200"
                  >
                    {t('footer.privacyPolicy')}
                  </a>
                  <span className="text-gray-300 dark:text-gray-600">•</span>
                  <a 
-                   href={getLocalizedPath('/terms')} 
+                   href={`${getLocalizedPath('/legal')}#terms`}
                    className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-200"
                  >
                    {t('footer.termsOfUse')}

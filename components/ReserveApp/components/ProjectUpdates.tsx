@@ -22,7 +22,7 @@ interface ProjectUpdatesProps {
   projectName: string;
 }
 
-export function ProjectUpdates({ projectId, projectName }: ProjectUpdatesProps) {
+export function ProjectUpdates({ projectId }: ProjectUpdatesProps) {
   const { t } = useTranslation('reserve');
   const [currentUpdateIndex, setCurrentUpdateIndex] = useState(0);
 

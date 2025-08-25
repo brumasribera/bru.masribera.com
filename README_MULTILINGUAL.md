@@ -216,3 +216,9 @@ The language switcher is fully responsive and works on all screen sizes. The glo
 **Note**: This multilingual system covers the entire application including the Reserve app and all project pages. All user-facing text should use translation keys for consistency across languages.
 
 
+
+
+
+
+
+

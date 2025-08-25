@@ -26,7 +26,7 @@ import enClathes from './locales/en/pages/clathes.json';
 import enWegaw from './locales/en/pages/wegaw.json';
 
 // German translations - some fallback to English
-import deCommon from './locales/en/common.json';
+import deCommon from './locales/de/common.json';
 import deHome from './locales/de/home.json';
 import deOpenHuts from './locales/de/pages/openhuts.json';
 import deReserve from './locales/de/pages/reserve.json';
@@ -38,7 +38,7 @@ import deClathes from './locales/de/pages/clathes.json';
 import deWegaw from './locales/de/pages/wegaw.json';
 
 // French translations - some fallback to English
-import frCommon from './locales/en/common.json';
+import frCommon from './locales/fr/common.json';
 import frHome from './locales/fr/home.json';
 import frOpenHuts from './locales/fr/pages/openhuts.json';
 import frReserve from './locales/fr/pages/reserve.json';
@@ -73,7 +73,7 @@ import caPomoca from './locales/ca/pages/pomoca.json';
 import caClathes from './locales/ca/pages/clathes.json';
 import caWegaw from './locales/ca/pages/wegaw.json';
 
-import itCommon from './locales/en/common.json';
+import itCommon from './locales/it/common.json';
 import itHome from './locales/it/home.json';
 import itOpenHuts from './locales/it/pages/openhuts.json';
 import itReserve from './locales/it/pages/reserve.json';
@@ -84,7 +84,7 @@ import itPomoca from './locales/it/pages/pomoca.json';
 import itClathes from './locales/it/pages/clathes.json';
 import itWegaw from './locales/it/pages/wegaw.json';
 
-import ptCommon from './locales/en/common.json';
+import ptCommon from './locales/pt/common.json';
 import ptHome from './locales/pt/home.json';
 import ptOpenHuts from './locales/pt/pages/openhuts.json';
 import ptReserve from './locales/pt/pages/reserve.json';

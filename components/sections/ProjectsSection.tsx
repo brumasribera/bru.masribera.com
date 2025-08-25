@@ -264,25 +264,7 @@ export function ProjectsSection() {
           ))}
         </div>
         
-        {/* Explore all projects button */}
-        <div className="text-center mt-12">
-          <button
-            onClick={() => {
-              navigate(getLocalizedPath('/projects'))
-              // Scroll to top after navigation completes
-              setTimeout(() => {
-                window.scrollTo(0, 0)
-              }, 150)
-            }}
-            className="w-full max-w-md bg-white/20 hover:bg-white/30 text-white font-medium py-3 rounded-2xl transition-colors backdrop-blur-sm border border-white/20"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-leaf w-4 h-4 inline mr-2">
-              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
-              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
-            </svg>
-            Explore Projects
-          </button>
-        </div>
+
       </div>
     </section>
   )

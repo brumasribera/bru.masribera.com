@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { AppShell } from "./components/AppShell";
 import { Globe3D } from "./components/Globe3D";
 import { ProtectedAreaPage } from "./pages/contribution/ProtectedAreaPage";
 import { Project } from "./types/types";
-import { MyContributions } from "./pages/contribution/MyContributions";
+import { HomePage } from "./pages/HomePage";
 import { Contribution } from "./types/types";
 import { ContributionDetail } from "./pages/contribution/ContributionDetail";
-import { AccountMain } from "./pages/account/AccountMain";
-import { ProfilePage } from "./pages/account/ProfilePage";
+import { ProjectsListPage } from "./pages/ProjectsListPage";
+import { SettingsPage } from "./pages/SettingsPage";
+import { ProfileSettings } from "./pages/account/ProfileSettings";
+import { AccountSettings } from "./pages/account/AccountSettings";
 import { PaymentPage } from "./pages/account/PaymentPage";
 import { TransactionHistory } from "./pages/account/TransactionHistory";
 import { LinkedAccounts } from "./pages/account/LinkedAccounts";
@@ -25,15 +27,29 @@ import { Leaf } from "lucide-react";
  * - Responsive typography and spacing
  */
 
-type AccountPage = 'main' | 'profile' | 'payment' | 'transactions' | 'linked' | 'downloads';
+type SettingsPage = 'main' | 'profile' | 'account' | 'payment' | 'transactions' | 'linked' | 'downloads';
 
 export default function ReserveMobileApp() {
   const { ready, t } = useTranslation('reserve');
+  const [showSettings, setShowSettings] = useState(false);
+  const [settingsPage, setSettingsPage] = useState<'main' | 'profile' | 'account' | 'payment' | 'transactions' | 'linked' | 'downloads'>('main');
+  const [showProjectsList, setShowProjectsList] = useState(false);
+  const [showHome, setShowHome] = useState(false);
   const [activeProject, setActiveProject] = useState<Project | null>(null);
-  const [showMyContributions, setShowMyContributions] = useState(false);
   const [selectedContribution, setSelectedContribution] = useState<Contribution | null>(null);
-  const [showAccount, setShowAccount] = useState(false);
-  const [accountPage, setAccountPage] = useState<AccountPage>('main');
+  
+  // Add state for project list filters
+  const [projectListFilters, setProjectListFilters] = useState({
+    searchTerm: '',
+    selectedCountry: '',
+    selectedImpact: '',
+    showFilters: false
+  });
+  
+  // Add state to store loaded projects to prevent reloading
+  const [loadedProjects, setLoadedProjects] = useState<Project[]>([]);
+  const [projectsPage, setProjectsPage] = useState(1);
+  const [hasMoreProjects, setHasMoreProjects] = useState(true);
   
   // Mock user data - shared across components
   const [user, setUser] = useState({
@@ -68,40 +84,44 @@ export default function ReserveMobileApp() {
 
   const openProject = (p: Project) => {
     setActiveProject(p);
-    setShowMyContributions(false);
-    setShowAccount(false);
+    setShowHome(false);
+    setShowSettings(false);
+    setShowProjectsList(false);
   };
 
-  const closeAccount = () => {
-    setShowAccount(false);
-    setAccountPage('main');
+  const closeSettings = () => {
+    setShowSettings(false);
+    setSettingsPage('main');
   };
 
-  const renderAccountPage = () => {
-    switch (accountPage) {
+  const renderSettingsPage = () => {
+    switch (settingsPage) {
       case 'profile':
-        return <ProfilePage onBack={() => setAccountPage('main')} user={user} onUpdateUser={updateUser} />;
+        return <ProfileSettings onBack={() => setSettingsPage('main')} user={user} onUpdateUser={updateUser} />;
+      case 'account':
+        return <AccountSettings onBack={() => setSettingsPage('main')} user={user} />;
       case 'payment':
         return (
           <PaymentPage 
-            onBack={() => setAccountPage('main')} 
-            onNavigateToTransactionHistory={() => setAccountPage('transactions')}
+            onBack={() => setSettingsPage('main')} 
+            onNavigateToTransactionHistory={() => setSettingsPage('transactions')}
           />
         );
       case 'transactions':
-        return <TransactionHistory onBack={() => setAccountPage('payment')} />;
+        return <TransactionHistory onBack={() => setSettingsPage('payment')} />;
       case 'linked':
-        return <LinkedAccounts onBack={() => setAccountPage('main')} />;
+        return <LinkedAccounts onBack={() => setSettingsPage('main')} />;
       case 'downloads':
-        return <DownloadsPage onBack={() => setAccountPage('main')} />;
+        return <DownloadsPage onBack={() => setSettingsPage('main')} />;
       default:
         return (
-          <AccountMain
-            onBack={closeAccount}
-            onNavigateToProfile={() => setAccountPage('profile')}
-            onNavigateToPayment={() => setAccountPage('payment')}
-            onNavigateToDownloads={() => setAccountPage('downloads')}
-            onNavigateToLinkedAccounts={() => setAccountPage('linked')}
+          <SettingsPage
+            onBack={closeSettings}
+            onNavigateToProfileSettings={() => setSettingsPage('profile')}
+            onNavigateToAccountSettings={() => setSettingsPage('account')}
+            onNavigateToPaymentSettings={() => setSettingsPage('payment')}
+            onNavigateToDownloads={() => setSettingsPage('downloads')}
+            onNavigateToLinkedAccounts={() => setSettingsPage('linked')}
             user={user}
           />
         );
@@ -110,26 +130,48 @@ export default function ReserveMobileApp() {
 
   return (
     <AppShell showHeader={false}>
-      {showAccount ? (
-        renderAccountPage()
-      ) : showMyContributions ? (
+      {showSettings ? (
+        renderSettingsPage()
+      ) : showProjectsList ? (
+        <ProjectsListPage
+          onBack={() => setShowProjectsList(false)}
+          onSelectProject={(project) => {
+            // Use a callback to ensure state updates happen in sequence
+            setActiveProject(project);
+            setShowProjectsList(false);
+            setShowHome(false);
+          }}
+          // Pass filter state and update function
+          filters={projectListFilters}
+          onFiltersChange={setProjectListFilters}
+          // Pass loaded projects state to prevent reloading
+          loadedProjects={loadedProjects}
+          onLoadMoreProjects={(newProjects, page, hasMore) => {
+            setLoadedProjects(prev => [...prev, ...newProjects]);
+            setProjectsPage(page);
+            setHasMoreProjects(hasMore);
+          }}
+          currentPage={projectsPage}
+          hasMore={hasMoreProjects}
+        />
+      ) : showHome ? (
         selectedContribution ? (
           <ContributionDetail
             contribution={selectedContribution}
             onBack={() => setSelectedContribution(null)}
           />
         ) : (
-          <MyContributions
-            onBack={() => setShowMyContributions(false)}
-            onOpenContribution={(c) => setSelectedContribution(c)}
+          <HomePage
             onGoToGlobe={() => {
-              setShowMyContributions(false);
+              setShowHome(false);
               setActiveProject(null);
             }}
-            onShowAccount={() => {
-              setShowAccount(true);
-              setAccountPage('main');
+            onShowProjectsList={() => setShowProjectsList(true)}
+            onShowSettings={() => {
+              setShowSettings(true);
+              setSettingsPage('main');
             }}
+            onOpenContribution={(c) => setSelectedContribution(c)}
             user={user}
           />
         )
@@ -137,10 +179,10 @@ export default function ReserveMobileApp() {
         <div className="w-full h-full">
           <Globe3D 
             onPick={openProject} 
-            onShowContributions={() => setShowMyContributions(true)}
+            onShowContributions={() => setShowHome(true)}
             onShowAccount={() => {
-              setShowAccount(true);
-              setAccountPage('main');
+              setShowSettings(true);
+              setSettingsPage('main');
             }}
             user={user}
           />
@@ -148,8 +190,12 @@ export default function ReserveMobileApp() {
       ) : (
         <ProtectedAreaPage
           project={activeProject}
-          onBack={() => setActiveProject(null)}
-          onShowContributions={() => setShowMyContributions(true)}
+          onBack={() => {
+            // Return to projects list with preserved filters instead of going back to globe
+            setActiveProject(null);
+            setShowProjectsList(true);
+          }}
+          onShowContributions={() => setShowHome(true)}
         />
       )}
     </AppShell>

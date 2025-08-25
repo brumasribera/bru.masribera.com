@@ -1,0 +1,19 @@
+﻿{
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.git/**": true,
+    "**/dist/**": true,
+    "**/.next/**": true,
+    "**/build/**": true,
+    "**/.turbo/**": true,
+    "**/.cache/**": true,
+    "**/coverage/**": true,
+    "**/node_modules/.vite/**": true
+  },
+  "search.exclude": {
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/.next/**": true
+  },
+  "typescript.tsserver.maxTsServerMemory": 4096
+}

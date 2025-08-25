@@ -137,7 +137,6 @@ export function HeroSection() {
         <div className="flex justify-center mb-8">
           <Avatar className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-52 lg:h-52 xl:w-56 xl:h-56 2xl:w-[220px] 2xl:h-[220px] border border-gray-200 dark:border-gray-700 shadow-md">
             <AvatarImage src="/profile/profile-original.png" alt="Bru Mas Ribera" className="object-cover" />
-            <AvatarFallback>BR</AvatarFallback>
           </Avatar>
         </div>
 

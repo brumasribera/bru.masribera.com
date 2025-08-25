@@ -350,7 +350,7 @@ export function ProjectMainView({
   }, [isFullScreen, project]);
 
   return (
-    <div className="w-full h-full bg-gradient-to-br from-green-50 to-emerald-100 overflow-y-auto">
+    <div className="w-full h-full bg-gradient-to-br from-green-50 to-emerald-100 overflow-y-auto relative">
       {/* Header */}
       <div className="relative h-48 md:h-56 lg:h-64 overflow-hidden flex-shrink-0">
         {/* Background Image */}
@@ -390,9 +390,10 @@ export function ProjectMainView({
         </div>
       </div>
 
-      {/* Content - Desktop grid with right panel */}
-      <div className="p-4 md:p-6 lg:p-8 lg:grid lg:grid-cols-12 lg:gap-6">
-        <div className="space-y-4 md:space-y-6 lg:space-y-8 lg:col-span-8">
+      {/* Content - Responsive layout */}
+      <div className="p-4 md:p-6 lg:p-8">
+        {/* Single column layout for all screen sizes */}
+        <div className="space-y-4 md:space-y-6 lg:space-y-8">
           {/* Progress Section - Investment Motivation */}
           <div className="bg-white rounded-2xl p-4 md:p-6 lg:p-8 shadow-sm border border-green-100">
             <div className="flex justify-between items-center mb-4">
@@ -424,16 +425,16 @@ export function ProjectMainView({
                   <div className="text-xl md:text-2xl lg:text-3xl font-bold text-green-700 mb-1">
                     <span className="text-sm md:text-base lg:text-lg">€</span>{formatNumber(animatedValues.euros)}
                   </div>
-                  <div className="text-xs md:text-sm text-green-600 whitespace-nowrap">{t('projectPage.raised')}</div>
-                  <div className="text-xs md:text-sm text-gray-500 whitespace-nowrap">{t('projectPage.goal')}: <span className="text-xs">€</span>{formatNumber(totalFunding)}</div>
+                  <div className="text-xs md:text-sm text-green-600 mb-1">{t('projectPage.raised')}</div>
+                  <div className="text-xs md:text-sm text-gray-500 break-words">{t('projectPage.goal')}: €{formatNumber(totalFunding)}</div>
                 </div>
               
                 <div className="text-center p-3 md:p-4 bg-blue-50 rounded-xl border border-blue-200">
                   <div className="text-xl md:text-2xl lg:text-3xl font-bold text-blue-700 mb-1">
                     {formatNumber(animatedValues.m2)}<span className="text-sm md:text-base lg:text-lg"> m²</span>
                   </div>
-                  <div className="text-xs md:text-sm text-blue-600 whitespace-nowrap">{t('projectPage.protected')}</div>
-                  <div className="text-xs md:text-sm text-gray-500 whitespace-nowrap">{t('projectPage.total')}: {formatNumber(totalArea)}<span className="text-xs"> m²</span></div>
+                  <div className="text-xs md:text-sm text-blue-600 mb-1">{t('projectPage.protected')}</div>
+                  <div className="text-xs md:text-sm text-gray-500 break-words">{t('projectPage.total')}: {formatNumber(totalArea)} m²</div>
                 </div>
               </div>
             </div>
@@ -503,49 +504,28 @@ export function ProjectMainView({
             </div>
           </div>
 
-          {/* Reduced bottom spacing for phone mockup */}
-          <div className="h-20 lg:hidden"></div>
-        </div>
+          {/* Extra spacing to separate from contribute button */}
+          <div className="h-4 md:h-6 lg:h-8"></div>
 
-        {/* Right sticky CTA panel (desktop) */}
-        <aside className="hidden lg:block lg:col-span-4">
-          <div className="sticky top-24 space-y-4">
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-green-100">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">{t('projectPage.yourImpact') || 'Your Impact'}</h3>
-              <div className="space-y-3">
-                <div className="flex items-center justify-between p-3 bg-green-50 rounded-xl">
-                  <span className="text-sm text-green-700">{t('projectPage.protected')}</span>
-                  <span className="font-semibold text-green-800">{formatNumber(animatedValues.m2)} m²</span>
-                </div>
-                <div className="flex items-center justify-between p-3 bg-blue-50 rounded-xl">
-                  <span className="text-sm text-blue-700">{t('projectPage.raised')}</span>
-                  <span className="font-semibold text-blue-800">€{formatNumber(animatedValues.euros)}</span>
-                </div>
-              </div>
-              <button 
-                className="mt-4 w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200"
-                onClick={onSelectArea}
-              >
-                <Leaf className="w-5 h-5 inline mr-2" />
-                {t('projectPage.contributeToProtection')}
-              </button>
-            </div>
           </div>
-        </aside>
+
+          {/* Single Contribute Button - Sticky within mockup */}
+          <div className="sticky bottom-6 left-4 right-4 z-30 md:left-6 md:right-6 lg:left-8 lg:right-8">
+            <button 
+              className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200"
+              onClick={onSelectArea}
+            >
+              <Leaf className="w-5 h-5 inline mr-2" />
+              <span className="break-words">{t('projectPage.contributeToProtection')}</span>
+            </button>
+          </div>
+
+          {/* Bottom spacing for proper layout */}
+          <div className="h-6"></div>
+
       </div>
 
-      {/* Floating Contribute Button - Sticky to Bottom (mobile only) */}
-      <div className="absolute w-full bottom-0 z-30 p-4 md:p-6 lg:p-8 pr-6 md:pr-8 lg:pr-10 lg:hidden">
-        <div className="w-full">
-          <button 
-            className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-2xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200 active:scale-[0.98] text-base flex items-center justify-center"
-            onClick={onSelectArea}
-          >
-            <Leaf className="w-5 h-5 mr-2" />
-            {t('projectPage.contributeToProtection')}
-          </button>
-        </div>
-      </div>
+
 
       {/* Fullscreen Map Modal - Inside Mockup */}
       {isFullScreen && (

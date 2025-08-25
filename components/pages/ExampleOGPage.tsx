@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { DynamicOGImage } from '../ui/DynamicOGImage';
 import { useOpenGraph } from '../hooks/useOpenGraph';
 

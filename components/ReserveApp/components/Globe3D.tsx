@@ -20,7 +20,7 @@ interface Globe3DProps {
   };
 }
 
-export function Globe3D({ onPick, onShowContributions, onShowAccount, user }: Globe3DProps) {
+export function Globe3D({ onPick, onShowContributions }: Globe3DProps) {
   const [dimensions, setDimensions] = useState({ width: 380, height: 680 });
   const globeRef = useRef<any>(null);
   
@@ -413,6 +413,7 @@ export function Globe3D({ onPick, onShowContributions, onShowAccount, user }: Gl
             onShowContributions();
           }}
           className="ml-4 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 flex-shrink-0"
+          title="Home - Your contributions"
         >
           <Home className="h-5 w-5 md:h-6 md:w-6" />
         </button>

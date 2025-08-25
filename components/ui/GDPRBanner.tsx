@@ -34,19 +34,18 @@ export function GDPRBanner({ onAccept, isVisible }: GDPRBannerProps) {
               <p className="text-sm text-gray-600 dark:text-gray-300">
                 {t('gdpr.description').replace('Terms and Privacy Policy', '').trim()}{' '}
                 <a 
-                  href={getLocalizedPath('/terms')} 
+                  href={`${getLocalizedPath('/legal')}#terms`}
                   className="text-blue-600 dark:text-blue-400 hover:underline"
                 >
                   {t('footer.termsOfUse')}
                 </a>
                 {' '}and{' '}
                 <a 
-                  href={getLocalizedPath('/privacy')} 
+                  href={`${getLocalizedPath('/legal')}#privacy`}
                   className="text-blue-600 dark:text-blue-400 hover:underline"
                 >
                   {t('footer.privacyPolicy')}
                 </a>
-                .
               </p>
             </div>
             

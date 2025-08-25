@@ -13,8 +13,8 @@ import {
   RefreshCw,
   Zap,
   Building2,
-  Globe,
-  TreePine,
+
+
   Satellite
 } from "lucide-react";
 

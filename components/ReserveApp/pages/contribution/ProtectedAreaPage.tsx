@@ -20,14 +20,6 @@ export function ProtectedAreaPage({ project, onBack, onShowContributions }: Prot
   const [currentPage, setCurrentPage] = useState<'main' | 'learn-more' | 'share' | 'contribute' | 'select-area' | 'checkout' | 'success'>('main');
   const [selectedArea, setSelectedArea] = useState<number>(0);
 
-  // Debug logging
-  console.log('ProtectedAreaPage state:', { currentPage, selectedArea });
-  
-  // Debug logging for area flow
-  useEffect(() => {
-    console.log('ProtectedAreaPage selectedArea changed:', selectedArea);
-  }, [selectedArea]);
-
   if (!ready) {
     return <div>{t('common.loading')}</div>;
   }
@@ -45,7 +37,6 @@ export function ProtectedAreaPage({ project, onBack, onShowContributions }: Prot
         project={project} 
         onBack={() => setCurrentPage('main')} 
         onContinue={(area) => {
-          console.log('ProjectSelectArea onContinue called with area:', area);
           setSelectedArea(area);
           setCurrentPage('checkout');
         }} 

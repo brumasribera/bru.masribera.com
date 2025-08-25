@@ -19,3 +19,5 @@ Crawl-delay: 1
 Disallow: /node_modules/
 Disallow: /scripts/
 Disallow: /dist/
+Disallow: /tools/timer
+Disallow: /timer-sounds/

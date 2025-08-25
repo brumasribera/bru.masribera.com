@@ -31,7 +31,7 @@ This directory contains optimized images for social media sharing (Open Graph an
 - **Twitter**: Twitter Card images
 - **LinkedIn**: Professional sharing
 - **WhatsApp**: Link previews
-- **Discord**: Link embeds
+- **Discord**: Link embed
 
 ## Performance Tips
 

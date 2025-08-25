@@ -15,6 +15,7 @@ function TimerPage() {
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
   const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({})
   const wasOtherAudioPlayingRef = useRef(false)
+  const previousAudioStateRef = useRef<{ [key: string]: any }>({})
 
   // Set page title and timer-specific manifest
   useEffect(() => {
@@ -187,12 +188,7 @@ function TimerPage() {
           
           if (!isMounted) break;
           
-          const audio = new Audio(src)
-          audio.preload = 'auto'
-          audio.volume = 0.7 // Lower volume to be less intrusive
-          
-          // Set audio properties to minimize interruptions
-          audio.setAttribute('data-timer-audio', 'true')
+          const audio = createNotificationAudio(src)
           
           // Handle audio loading errors silently
           audio.addEventListener('error', () => {
@@ -256,17 +252,34 @@ function TimerPage() {
     const allAudioElements = document.querySelectorAll('audio');
     let otherAudioPlaying = false;
     
-    allAudioElements.forEach(audio => {
+    // Store previous audio state for restoration
+    previousAudioStateRef.current = {};
+    
+    allAudioElements.forEach((audio, index) => {
       if (!audio.hasAttribute('data-timer-audio') && !audio.paused) {
         otherAudioPlaying = true;
+        // Store the audio element's state
+        previousAudioStateRef.current[`audio_${index}`] = {
+          element: audio,
+          wasPlaying: true,
+          currentTime: audio.currentTime,
+          volume: audio.volume
+        };
       }
     });
     
     // Also check for video elements with audio
     const allVideoElements = document.querySelectorAll('video');
-    allVideoElements.forEach(video => {
+    allVideoElements.forEach((video, index) => {
       if (!video.paused && video.volume > 0) {
         otherAudioPlaying = true;
+        // Store the video element's state
+        previousAudioStateRef.current[`video_${index}`] = {
+          element: video,
+          wasPlaying: true,
+          currentTime: video.currentTime,
+          volume: video.volume
+        };
       }
     });
     
@@ -279,13 +292,190 @@ function TimerPage() {
     
     // Small delay to ensure our audio has fully finished
     setTimeout(() => {
+      // Try to restore the specific audio/video that was playing before
+      Object.values(previousAudioStateRef.current).forEach((audioState: any) => {
+        if (audioState.wasPlaying && audioState.element) {
+          try {
+            // Try to resume the specific audio/video element
+            if (audioState.element.tagName === 'AUDIO' || audioState.element.tagName === 'VIDEO') {
+              // Set the time back to where it was
+              audioState.element.currentTime = audioState.currentTime;
+              audioState.element.volume = audioState.volume;
+              
+              // Try to resume playback
+              const playPromise = audioState.element.play();
+              if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                  // Silent error handling - the element might not be resumable
+                });
+              }
+            }
+          } catch (error) {
+            // Silent error handling
+          }
+        }
+      });
+      
       // Try to resume other audio by triggering a user interaction
       // This is a workaround for Android's audio focus management
       const resumeEvent = new Event('resume-audio', { bubbles: true });
       document.dispatchEvent(resumeEvent);
       
+      // Try to restore MediaSession to help other apps regain audio focus
+      if ('mediaSession' in navigator) {
+        navigator.mediaSession.playbackState = 'none';
+        // Clear metadata to release any remaining audio focus
+        navigator.mediaSession.metadata = null;
+      }
+      
+      // Dispatch additional events to help restore audio state
+      window.dispatchEvent(new Event('focus'));
+      document.dispatchEvent(new Event('visibilitychange'));
+      
       wasOtherAudioPlayingRef.current = false;
+      // Clear the stored state
+      previousAudioStateRef.current = {};
     }, 100);
+  }, [])
+
+  // Enhanced Android audio focus management
+  const setupAndroidAudioFocus = useCallback(() => {
+    if ('mediaSession' in navigator) {
+      // Set up MediaSession to indicate we don't want audio focus
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: 'Timer Gong',
+        artist: 'Stretch Timer',
+        album: 'Meditation Sounds'
+      });
+      
+      // Set playback state to none to avoid taking audio focus
+      navigator.mediaSession.playbackState = 'none';
+      
+      // Set action handlers that do nothing to prevent audio focus conflicts
+      navigator.mediaSession.setActionHandler('play', () => {});
+      navigator.mediaSession.setActionHandler('pause', () => {});
+      navigator.mediaSession.setActionHandler('stop', () => {});
+      navigator.mediaSession.setActionHandler('seekbackward', () => {});
+      navigator.mediaSession.setActionHandler('seekforward', () => {});
+      navigator.mediaSession.setActionHandler('seekto', () => {});
+      navigator.mediaSession.setActionHandler('previoustrack', () => {});
+      navigator.mediaSession.setActionHandler('nexttrack', () => {});
+    }
+  }, [])
+
+  // Most intelligent Android audio focus approach
+  const setupIntelligentAudioFocus = useCallback(() => {
+    if ('mediaSession' in navigator) {
+      // Set up MediaSession to indicate we don't want audio focus
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: 'Timer Gong',
+        artist: 'Stretch Timer',
+        album: 'Meditation Sounds'
+      });
+      
+      // Set playback state to none to avoid taking audio focus
+      navigator.mediaSession.playbackState = 'none';
+      
+      // Set action handlers that do nothing to prevent audio focus conflicts
+      navigator.mediaSession.setActionHandler('play', () => {});
+      navigator.mediaSession.setActionHandler('pause', () => {});
+      navigator.mediaSession.setActionHandler('stop', () => {});
+      navigator.mediaSession.setActionHandler('seekbackward', () => {});
+      navigator.mediaSession.setActionHandler('seekforward', () => {});
+      navigator.mediaSession.setActionHandler('seekto', () => {});
+      navigator.mediaSession.setActionHandler('previoustrack', () => {});
+      navigator.mediaSession.setActionHandler('nexttrack', () => {});
+      
+      // Try to set audio focus to TRANSIENT_MAY_DUCK if supported
+      // This tells Android we want minimal audio focus for notification sounds
+      if ('setAudioFocusRequest' in navigator.mediaSession) {
+        try {
+          (navigator.mediaSession as any).setAudioFocusRequest({
+            audioFocusRequestType: 'transient_may_duck'
+          });
+        } catch (error) {
+          // Fallback if not supported
+        }
+      }
+    }
+  }, [])
+
+  // Create notification-style audio that doesn't steal audio focus
+  const createNotificationAudio = useCallback((src: string) => {
+    // Create a very short, notification-style audio element
+    const audio = new Audio(src);
+    
+    // Set properties to make it behave like a notification sound
+    audio.preload = 'auto';
+    audio.volume = 0.5; // Lower volume to be less intrusive
+    audio.loop = false;
+    
+    // Set audio attributes to prevent taking audio focus on Android
+    audio.setAttribute('data-timer-audio', 'true');
+    audio.setAttribute('data-notification-style', 'true');
+    
+    // Make the audio very short by setting a maximum duration
+    // This helps Android treat it as a notification rather than media
+    audio.addEventListener('loadedmetadata', () => {
+      if (audio.duration > 3) { // If longer than 3 seconds, trim it
+        audio.addEventListener('timeupdate', () => {
+          if (audio.currentTime >= 3) {
+            audio.pause();
+            audio.currentTime = 0;
+          }
+        });
+      }
+    });
+    
+    return audio;
+  }, [])
+
+  // Most effective approach: Use Web Audio API for notification-style sounds
+  const playNotificationSound = useCallback((src: string) => {
+    try {
+      // Create audio context for notification-style playback
+      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      
+      // Fetch and decode the audio file
+      fetch(src)
+        .then(response => response.arrayBuffer())
+        .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
+        .then(audioBuffer => {
+          // Create a very short, notification-style sound
+          const source = audioContext.createBufferSource();
+          source.buffer = audioBuffer;
+          
+          // Create a gain node to control volume
+          const gainNode = audioContext.createGain();
+          gainNode.gain.setValueAtTime(0.4, audioContext.currentTime); // Low volume
+          
+          // Connect the nodes
+          source.connect(gainNode);
+          gainNode.connect(audioContext.destination);
+          
+          // Resume audio context if suspended
+          if (audioContext.state === 'suspended') {
+            audioContext.resume();
+          }
+          
+          // Play the sound
+          source.start(0);
+          
+          // Stop after a short duration to make it notification-like
+          source.stop(audioContext.currentTime + Math.min(audioBuffer.duration, 2));
+          
+          // Clean up
+          setTimeout(() => {
+            audioContext.close();
+          }, 3000);
+        })
+        .catch(() => {
+          // Fallback to regular audio if Web Audio API fails
+          audioContext.close();
+        });
+    } catch (error) {
+      // Fallback to regular audio
+    }
   }, [])
 
   // Resume interrupted audio when app regains focus
@@ -329,40 +519,50 @@ function TimerPage() {
 
   // Play gong sound with audio session management
   const playGong = (type: keyof typeof GONG_SOUNDS) => {
-    const audio = audioRefs.current[type]
-    if (audio) {
-      try {
-        // Check if other audio is playing before we start
-        if (!wasOtherAudioPlayingRef.current) {
-          wasOtherAudioPlayingRef.current = checkOtherAudioPlaying();
-        }
+    const src = GONG_SOUNDS[type];
+    
+    try {
+      // Check if other audio is playing before we start
+      if (!wasOtherAudioPlayingRef.current) {
+        wasOtherAudioPlayingRef.current = checkOtherAudioPlaying();
+      }
+      
+      // Use the most effective approach: Web Audio API for notification-style sounds
+      playNotificationSound(src);
+      
+      // Also try to play the regular audio as a fallback
+      const audio = audioRefs.current[type];
+      if (audio) {
+        // Set up the most intelligent Android audio focus management
+        setupIntelligentAudioFocus();
         
         // Set audio properties for minimal interruption
-        audio.currentTime = 0
-        audio.volume = 0.7 // Lower volume to be less intrusive
+        audio.currentTime = 0;
+        audio.volume = 0.4; // Lower volume for notification-style behavior
         
-        // Try to set audio session properties if supported
-        if ('mediaSession' in navigator) {
-          navigator.mediaSession.metadata = new MediaMetadata({
-            title: 'Timer Gong',
-            artist: 'Stretch Timer',
-            album: 'Meditation Sounds'
-          });
-          
-          navigator.mediaSession.setActionHandler('play', () => {});
-          navigator.mediaSession.setActionHandler('pause', () => {});
-        }
-        
-        const playPromise = audio.play()
+        // Try to play audio as a notification sound
+        const playPromise = audio.play();
         
         if (playPromise !== undefined) {
-          playPromise.catch((error) => {
+          playPromise.then(() => {
+            // Audio started playing successfully
+            // Immediately set MediaSession to none to release audio focus
+            if ('mediaSession' in navigator) {
+              navigator.mediaSession.playbackState = 'none';
+              // Clear metadata to help release audio focus faster
+              setTimeout(() => {
+                if ('mediaSession' in navigator) {
+                  navigator.mediaSession.metadata = null;
+                }
+              }, 100);
+            }
+          }).catch((error) => {
             // Silent error handling for audio play issues
           })
         }
-      } catch (error) {
-        // Silent error handling
       }
+    } catch (error) {
+      // Silent error handling
     }
   }
 

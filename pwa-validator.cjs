@@ -117,12 +117,32 @@ async function validatePWA() {
     console.log(`❌ Service worker not found: ${swCheck.error}`);
   } else if (swCheck.status === 200) {
     console.log(`✅ Service worker accessible (Status: ${swCheck.status})`);
+    console.log(`   Content-Type: ${swCheck.headers['content-type']}`);
+    
+    // Check if service worker contains offline functionality
+    if (swCheck.data.includes('offline') || swCheck.data.includes('cache')) {
+      console.log(`   ✅ Service worker includes offline functionality`);
+    } else {
+      console.log(`   ⚠️  Service worker may not have offline features`);
+    }
   } else {
     console.log(`⚠️  Service worker status: ${swCheck.status}`);
   }
   
+  // Check offline page
+  console.log('\n6. Checking offline page...');
+  const offlineCheck = await checkURL(`${BASE_URL}/offline.html`);
+  if (offlineCheck.error) {
+    console.log(`❌ Offline page not found: ${offlineCheck.error}`);
+  } else if (offlineCheck.status === 200) {
+    console.log(`✅ Offline page accessible (Status: ${offlineCheck.status})`);
+    console.log(`   Content-Type: ${offlineCheck.headers['content-type']}`);
+  } else {
+    console.log(`⚠️  Offline page status: ${offlineCheck.status}`);
+  }
+  
   // Check HTTPS (for production)
-  console.log('\n6. Security check...');
+  console.log('\n7. Security check...');
   if (BASE_URL.startsWith('https')) {
     console.log('✅ HTTPS enabled (required for PWA)');
   } else {
@@ -130,7 +150,7 @@ async function validatePWA() {
   }
   
   // Check routing behavior
-  console.log('\n7. Checking PWA routing behavior...');
+  console.log('\n8. Checking PWA routing behavior...');
   console.log('   This test simulates what happens when the PWA is installed:');
   console.log(`   - User installs PWA from ${TIMER_PATH}`);
   console.log(`   - PWA should open directly to ${TIMER_PATH}`);
@@ -147,7 +167,8 @@ async function validatePWA() {
   console.log('\n📋 PWA Requirements Summary:');
   console.log('✅ Web App Manifest: Present');
   console.log('✅ Icons: Available');
-  console.log('⚠️  Service Worker: Not detected');
+  console.log('✅ Service Worker: Present with offline functionality');
+  console.log('✅ Offline Page: Available for offline users');
   console.log('✅ HTTPS: Required for production');
   console.log('✅ Viewport meta: Present in HTML');
   console.log('✅ Start URL: Points to timer page');

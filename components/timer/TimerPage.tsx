@@ -14,6 +14,7 @@ function TimerPage() {
   const [isCompleted, setIsCompleted] = useState(false)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
   const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({})
+  const wasOtherAudioPlayingRef = useRef(false)
 
   // Set page title and timer-specific manifest
   useEffect(() => {
@@ -188,8 +189,10 @@ function TimerPage() {
           
           const audio = new Audio(src)
           audio.preload = 'auto'
-          audio.volume = 1.0
-          audioRefs.current[key] = audio
+          audio.volume = 0.7 // Lower volume to be less intrusive
+          
+          // Set audio properties to minimize interruptions
+          audio.setAttribute('data-timer-audio', 'true')
           
           // Handle audio loading errors silently
           audio.addEventListener('error', () => {
@@ -209,6 +212,13 @@ function TimerPage() {
           audio.addEventListener('play', () => {
             // Audio resumed playing
           });
+
+          // Handle audio completion to resume other audio
+          audio.addEventListener('ended', () => {
+            resumeOtherAudio();
+          });
+          
+          audioRefs.current[key] = audio
           
         } catch (error) {
           // Silent error handling
@@ -238,6 +248,44 @@ function TimerPage() {
       })
       audioRefs.current = {};
     }
+  }, [])
+
+  // Check if other audio is currently playing
+  const checkOtherAudioPlaying = useCallback(() => {
+    // Check if there are any audio elements playing that aren't our timer sounds
+    const allAudioElements = document.querySelectorAll('audio');
+    let otherAudioPlaying = false;
+    
+    allAudioElements.forEach(audio => {
+      if (!audio.hasAttribute('data-timer-audio') && !audio.paused) {
+        otherAudioPlaying = true;
+      }
+    });
+    
+    // Also check for video elements with audio
+    const allVideoElements = document.querySelectorAll('video');
+    allVideoElements.forEach(video => {
+      if (!video.paused && video.volume > 0) {
+        otherAudioPlaying = true;
+      }
+    });
+    
+    return otherAudioPlaying;
+  }, [])
+
+  // Resume other audio that was interrupted
+  const resumeOtherAudio = useCallback(() => {
+    if (!wasOtherAudioPlayingRef.current) return;
+    
+    // Small delay to ensure our audio has fully finished
+    setTimeout(() => {
+      // Try to resume other audio by triggering a user interaction
+      // This is a workaround for Android's audio focus management
+      const resumeEvent = new Event('resume-audio', { bubbles: true });
+      document.dispatchEvent(resumeEvent);
+      
+      wasOtherAudioPlayingRef.current = false;
+    }, 100);
   }, [])
 
   // Resume interrupted audio when app regains focus
@@ -279,13 +327,31 @@ function TimerPage() {
     };
   }, [resumeInterruptedAudio])
 
-  // Play gong sound
+  // Play gong sound with audio session management
   const playGong = (type: keyof typeof GONG_SOUNDS) => {
     const audio = audioRefs.current[type]
     if (audio) {
       try {
+        // Check if other audio is playing before we start
+        if (!wasOtherAudioPlayingRef.current) {
+          wasOtherAudioPlayingRef.current = checkOtherAudioPlaying();
+        }
+        
+        // Set audio properties for minimal interruption
         audio.currentTime = 0
-        audio.volume = 1.0
+        audio.volume = 0.7 // Lower volume to be less intrusive
+        
+        // Try to set audio session properties if supported
+        if ('mediaSession' in navigator) {
+          navigator.mediaSession.metadata = new MediaMetadata({
+            title: 'Timer Gong',
+            artist: 'Stretch Timer',
+            album: 'Meditation Sounds'
+          });
+          
+          navigator.mediaSession.setActionHandler('play', () => {});
+          navigator.mediaSession.setActionHandler('pause', () => {});
+        }
         
         const playPromise = audio.play()
         

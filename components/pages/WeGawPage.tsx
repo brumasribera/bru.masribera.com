@@ -140,7 +140,7 @@ export function WegawPage() {
                   <Snowflake className="h-6 w-6 text-blue-600" />
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('quick.resolution.title')}</h3>
                 </div>
-                {t('quick.resolution.items', { returnObjects: true }).map((item: string) => (
+                {(t('quick.resolution.items', { returnObjects: true }) as string[]).map((item: string) => (
                   <p key={item} className="text-gray-600 dark:text-gray-400">{item}</p>
                 ))}
               </CardContent>
@@ -152,7 +152,7 @@ export function WegawPage() {
                   <Shield className="h-6 w-6 text-green-600" />
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('quick.applications.title')}</h3>
                 </div>
-                {t('quick.applications.items', { returnObjects: true }).map((item: string) => (
+                {(t('quick.applications.items', { returnObjects: true }) as string[]).map((item: string) => (
                   <p key={item} className="text-gray-600 dark:text-gray-400">{item}</p>
                 ))}
               </CardContent>
@@ -164,7 +164,7 @@ export function WegawPage() {
                   <Satellite className="h-6 w-6 text-purple-600" />
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('quick.technology.title')}</h3>
                 </div>
-                {t('quick.technology.items', { returnObjects: true }).map((item: string) => (
+                {(t('quick.technology.items', { returnObjects: true }) as string[]).map((item: string) => (
                   <p key={item} className="text-gray-600 dark:text-gray-400">{item}</p>
                 ))}
               </CardContent>
@@ -336,7 +336,7 @@ export function WegawPage() {
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-3">
-                  {t('technology.satellite.badges', { returnObjects: true }).map((badge: string) => (
+                  {(t('technology.satellite.badges', { returnObjects: true }) as string[]).map((badge: string) => (
                     <Badge key={badge} className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">{badge}</Badge>
                   ))}
                 </div>
@@ -349,7 +349,7 @@ export function WegawPage() {
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-3">
-                  {t('technology.ai.badges', { returnObjects: true }).map((badge: string) => (
+                  {(t('technology.ai.badges', { returnObjects: true }) as string[]).map((badge: string) => (
                     <Badge key={badge} className="px-3 py-1.5 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600">{badge}</Badge>
                   ))}
                 </div>

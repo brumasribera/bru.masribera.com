@@ -256,7 +256,7 @@ export default function TimerPage() {
             </button>
           )}
           
-                      <button
+          <button
               onClick={restartTimer}
               className="w-16 h-16 bg-gray-800 text-gray-200 rounded-full font-medium hover:bg-gray-700 transition-all duration-200 flex items-center justify-center text-3xl"
               title="Reset"

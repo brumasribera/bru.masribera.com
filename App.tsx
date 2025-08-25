@@ -77,6 +77,9 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
   
   const pathWithoutLang = getCurrentPathWithoutLanguage()
   const shouldShowHeader = pathWithoutLang !== '/cv' && pathWithoutLang !== '/reserve-app' && pathWithoutLang !== '/tools/timer'
+  
+  // Hide GDPR banner on tools pages
+  const shouldShowGDPRBanner = !pathWithoutLang.startsWith('/tools/')
 
   const HomeElement = (
     <>
@@ -106,6 +109,50 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
             <OpenHutsPage />
           </Suspense>
         } />
+        <Route path="/moodlenet" element={
+          <Suspense fallback={<PageLoader />}>
+            <MoodleNetPage />
+          </Suspense>
+        } />
+        <Route path="/reserve" element={
+          <Suspense fallback={<PageLoader />}>
+            <ReservePage />
+          </Suspense>
+        } />
+        <Route path="/reserve-app" element={
+          <Suspense fallback={<PageLoader />}>
+            <ReserveFullScreenPage />
+          </Suspense>
+        } />
+        <Route path="/clathes" element={
+          <Suspense fallback={<PageLoader />}>
+            <ClathesPage />
+          </Suspense>
+        } />
+        <Route path="/pix4d" element={
+          <Suspense fallback={<PageLoader />}>
+            <Pix4DPage />
+          </Suspense>
+        } />
+        <Route path="/wegaw" element={
+          <Suspense fallback={<PageLoader />}>
+            <WegawPage />
+          </Suspense>
+        } />
+        <Route path="/pomoca" element={
+          <Suspense fallback={<PageLoader />}>
+            <PomocaPage />
+          </Suspense>
+        } />
+        <Route path="/tools/timer" element={
+          <Suspense fallback={<PageLoader />}>
+            <TimerPage />
+          </Suspense>
+        } />
+        <Route path="/cv" element={<CVPage />} />
+        <Route path="/legal" element={<LegalPage />} />
+        {/* Admin translations (password protected in component) */}
+        <Route path="/admin/translations" element={<TranslationsAdminPage />} />
         {/* Nested language routes for each page */}
         <Route path="/:lang">
           <Route index element={HomeElement} />
@@ -159,54 +206,10 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
           <Route path="legal" element={<LegalPage />} />
           <Route path="admin/translations" element={<TranslationsAdminPage />} />
         </Route>
-        <Route path="/moodlenet" element={
-          <Suspense fallback={<PageLoader />}>
-            <MoodleNetPage />
-          </Suspense>
-        } />
-        <Route path="/reserve" element={
-          <Suspense fallback={<PageLoader />}>
-            <ReservePage />
-          </Suspense>
-        } />
-        <Route path="/reserve-app" element={
-          <Suspense fallback={<PageLoader />}>
-            <ReserveFullScreenPage />
-          </Suspense>
-        } />
-        <Route path="/clathes" element={
-          <Suspense fallback={<PageLoader />}>
-            <ClathesPage />
-          </Suspense>
-        } />
-        <Route path="/pix4d" element={
-          <Suspense fallback={<PageLoader />}>
-            <Pix4DPage />
-          </Suspense>
-        } />
-        <Route path="/wegaw" element={
-          <Suspense fallback={<PageLoader />}>
-            <WegawPage />
-          </Suspense>
-        } />
-        <Route path="/pomoca" element={
-          <Suspense fallback={<PageLoader />}>
-            <PomocaPage />
-          </Suspense>
-        } />
-        <Route path="/tools/timer" element={
-          <Suspense fallback={<PageLoader />}>
-            <TimerPage />
-          </Suspense>
-        } />
-        <Route path="/cv" element={<CVPage />} />
-        <Route path="/legal" element={<LegalPage />} />
-        {/* Admin translations (password protected in component) */}
-        <Route path="/admin/translations" element={<TranslationsAdminPage />} />
       </Routes>
       
-      {/* GDPR Banner */}
-      <GDPRBanner onAccept={acceptConsent} isVisible={showBanner} />
+      {/* GDPR Banner - Hidden on tools pages */}
+      {shouldShowGDPRBanner && <GDPRBanner onAccept={acceptConsent} isVisible={showBanner} />}
     </div>
   )
 }

@@ -4,6 +4,10 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 const TIMER_VERSION = 'v1.1.2'
 const TIMER_RELEASE_DATE = '2025-08-26 10:07:45'
 
+// Debug: Log version info to console
+console.log('Timer version loaded:', TIMER_VERSION)
+console.log('Timer release date:', TIMER_RELEASE_DATE)
+
 // Use public folder assets for simplest pathing
 const GONG_SOUNDS = {
   start: '/timer-sounds/start-gong.mp3',
@@ -779,8 +783,15 @@ function TimerPage() {
         </div>
 
         {/* Version Pill */}
-        <div className="mt-8 text-sm text-gray-500">
-          {TIMER_VERSION} ({TIMER_RELEASE_DATE})
+        <div className="mt-6 text-center">
+          <span className="inline-block bg-gray-800 text-gray-400 text-xs px-3 py-1 rounded-full font-mono border border-gray-700">
+            {TIMER_VERSION} • {TIMER_RELEASE_DATE}
+          </span>
+        </div>
+        
+        {/* Debug Info - Remove this after confirming it works */}
+        <div className="mt-2 text-center text-xs text-gray-600">
+          Debug: Version loaded as {TIMER_VERSION}
         </div>
       </div>
          </div>

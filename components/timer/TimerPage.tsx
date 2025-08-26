@@ -1,5 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 
+// Timer version information - Auto-updated by update-version.js script
+const TIMER_VERSION = 'v1.1.2'
+const TIMER_RELEASE_DATE = '2025-08-26 10:07:45'
+
 // Use public folder assets for simplest pathing
 const GONG_SOUNDS = {
   start: '/timer-sounds/start-gong.mp3',
@@ -772,6 +776,11 @@ function TimerPage() {
             >
               ↺
             </button>
+        </div>
+
+        {/* Version Pill */}
+        <div className="mt-8 text-sm text-gray-500">
+          {TIMER_VERSION} ({TIMER_RELEASE_DATE})
         </div>
       </div>
          </div>

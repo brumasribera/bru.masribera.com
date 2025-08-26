@@ -2,6 +2,11 @@
 
 A modern, responsive portfolio website showcasing my skills as a Frontend & UX Engineer. Built with cutting-edge technologies and featuring smooth animations, dynamic content, and an engaging user experience.
 
+## 📋 Version
+
+Current: `0.1.0`  
+Released: 2024-12-19 15:30
+
 ## ✨ Features
 
 ### 🎨 **Dynamic Title Transformation**

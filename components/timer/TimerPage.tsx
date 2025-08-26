@@ -12,10 +12,10 @@ function TimerPage() {
   const [timeLeft, setTimeLeft] = useState(8 * 60) // 8 minutes in seconds
   const [isRunning, setIsRunning] = useState(false)
   const [isCompleted, setIsCompleted] = useState(false)
-  const intervalRef = useRef<NodeJS.Timeout | null>(null)
   const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({})
   const wasOtherAudioPlayingRef = useRef(false)
   const previousAudioStateRef = useRef<{ [key: string]: any }>({})
+  const serviceWorkerRef = useRef<ServiceWorker | null>(null)
 
   // Set page title and timer-specific manifest
   useEffect(() => {
@@ -83,15 +83,22 @@ function TimerPage() {
     addPWAMetaTags();
     
     // Register service worker for PWA functionality
-    const registerServiceWorker = () => {
+    const registerServiceWorker = async () => {
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js')
-          .then((registration) => {
-            console.log('Timer service worker registered:', registration);
-          })
-          .catch((error) => {
-            console.error('Timer service worker registration failed:', error);
-          });
+        try {
+          const registration = await navigator.serviceWorker.register('/sw.js');
+          console.log('Timer service worker registered:', registration);
+          
+          // Wait for service worker to be ready
+          await navigator.serviceWorker.ready;
+          serviceWorkerRef.current = registration.active;
+          
+          // Listen for messages from service worker
+          navigator.serviceWorker.addEventListener('message', handleServiceWorkerMessage);
+          
+        } catch (error) {
+          console.error('Timer service worker registration failed:', error);
+        }
       }
     };
     
@@ -137,6 +144,11 @@ function TimerPage() {
       // Remove visibility change listener
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       
+      // Remove service worker message listener
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.removeEventListener('message', handleServiceWorkerMessage);
+      }
+      
       // Unregister service worker to prevent conflicts
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.getRegistrations().then((registrations) => {
@@ -149,6 +161,31 @@ function TimerPage() {
         });
       }
     };
+  }, [])
+
+  // Handle messages from service worker
+  const handleServiceWorkerMessage = useCallback((event: MessageEvent) => {
+    if (event.data && event.data.type === 'TIMER_UPDATE') {
+      setTimeLeft(event.data.timeLeft);
+      setIsRunning(event.data.isRunning);
+      setIsCompleted(event.data.isCompleted);
+      
+      // Play original MP3 gong sounds when triggered by service worker
+      if (event.data.gongType) {
+        playGong(event.data.gongType);
+      }
+    }
+  }, [])
+
+  // Communicate with service worker
+  const sendToServiceWorker = useCallback((action: string, data?: any) => {
+    if (serviceWorkerRef.current) {
+      serviceWorkerRef.current.postMessage({
+        type: 'TIMER_CONTROL',
+        action: action,
+        data: data
+      });
+    }
   }, [])
 
   // Initialize audio elements and set timer favicon
@@ -172,6 +209,19 @@ function TimerPage() {
     };
 
     setTimerFavicon();
+
+    // Request notification permission for background timer alerts
+    const requestNotificationPermission = async () => {
+      if ('Notification' in window && Notification.permission === 'default') {
+        try {
+          await Notification.requestPermission();
+        } catch (error) {
+          console.log('Notification permission request failed');
+        }
+      }
+    };
+
+    requestNotificationPermission();
 
     let isMounted = true;
     
@@ -494,28 +544,23 @@ function TimerPage() {
     });
   }, [])
 
-  // Handle app focus and resume interrupted audio
-  useEffect(() => {
-    const handleFocus = () => {
-      // App regained focus, check for interrupted audio
-      resumeInterruptedAudio();
-    };
-
-    const handleVisibilityChange = () => {
-      if (!document.hidden) {
-        // App became visible again, resume interrupted audio
-        resumeInterruptedAudio();
+  // Send notification when timer completes (works even in background)
+  const sendTimerNotification = useCallback(() => {
+    if ('Notification' in window && Notification.permission === 'granted') {
+      try {
+        new Notification('Stretch Timer Complete! 🧘‍♀️', {
+          body: 'Your 8-minute stretch session is finished. Time to get back to work!',
+          icon: '/favicons/favicon-timer.svg',
+          badge: '/favicons/favicon-timer.svg',
+          tag: 'stretch-timer',
+          requireInteraction: true, // Keep notification visible until user interacts
+          silent: false // Allow system sounds
+        });
+      } catch (error) {
+        console.log('Failed to send notification:', error);
       }
-    };
-
-    window.addEventListener('focus', handleFocus);
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-
-    return () => {
-      window.removeEventListener('focus', handleFocus);
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
-  }, [resumeInterruptedAudio])
+    }
+  }, [])
 
   // Play gong sound with audio session management
   const playGong = (type: keyof typeof GONG_SOUNDS) => {
@@ -566,60 +611,121 @@ function TimerPage() {
     }
   }
 
-  // Timer logic
+  // High-precision timer logic using performance.now()
   useEffect(() => {
     if (isRunning && timeLeft > 0) {
-      intervalRef.current = setInterval(() => {
-        setTimeLeft(prev => {
-          const newTime = prev - 1
-          
-          // Play minute gong every minute
-          if (newTime > 0 && newTime % 60 === 0) {
-            playGong('minute')
-          }
-          
-          // Play middle gong at 4 minutes (middle point)
-          if (newTime === 4 * 60) {
-            playGong('middle')
-          }
-          
-          return newTime
-        })
-      }, 1000)
+      const animate = (currentTime: number) => {
+        // This effect is now primarily for sending updates to the service worker
+        // and triggering gongs based on service worker messages.
+        // The main timer logic is handled by the service worker.
+        
+        // Send current timer state to service worker
+        sendToServiceWorker('TIMER_SYNC', {
+          timeLeft: timeLeft,
+          isRunning: isRunning,
+          isCompleted: isCompleted
+        });
+        
+        // Play minute gong every minute
+        if (timeLeft > 0 && timeLeft % 60 === 0 && !isCompleted) {
+          playGong('minute');
+        }
+        
+        // Play middle gong at 4 minutes (middle point)
+        if (timeLeft === 4 * 60 && !isCompleted) {
+          playGong('middle');
+        }
+        
+        // If timer completed, send notification and stop
+        if (timeLeft === 0 && !isCompleted) {
+          setIsCompleted(true);
+          setIsRunning(false);
+          playGong('end');
+          sendTimerNotification(); // Send notification even if app is in background
+          sendToServiceWorker('TIMER_SYNC', {
+            timeLeft: 0,
+            isRunning: false,
+            isCompleted: true
+          });
+        }
+      };
+      
+      // Request an animation frame to start the loop
+      // This ensures the service worker receives the initial state
+      requestAnimationFrame(animate);
     } else if (timeLeft === 0 && !isCompleted) {
-      setIsCompleted(true)
-      setIsRunning(false)
-      playGong('end') // Play end gong when timer completes
+      // If timeLeft is 0 and not completed, it means the service worker
+      // has sent a final update, so we just set isCompleted and play end gong.
+      setIsCompleted(true);
+      setIsRunning(false);
+      playGong('end');
+      sendTimerNotification(); // Send notification even if app is in background
+      sendToServiceWorker('TIMER_SYNC', {
+        timeLeft: 0,
+        isRunning: false,
+        isCompleted: true
+      });
     }
 
     return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current)
-      }
+      // No cleanup needed here as the service worker handles the animation frame
+    };
+  }, [isRunning, timeLeft, isCompleted, sendToServiceWorker, playGong, sendTimerNotification])
+
+  // Handle visibility changes to compensate for background throttling
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      // This effect is now primarily for sending updates to the service worker
+      // to inform it of visibility changes.
+      sendToServiceWorker('VISIBILITY_CHANGE', {
+        isVisible: !document.hidden
+      });
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+  }, [sendToServiceWorker])
+
+  // Add page focus/blur handling for better background detection
+  useEffect(() => {
+    const handleFocus = () => {
+      // This effect is now primarily for sending updates to the service worker
+      // to inform it of page focus.
+      sendToServiceWorker('PAGE_FOCUS');
+    };
+
+    const handleBlur = () => {
+      // This effect is now primarily for sending updates to the service worker
+      // to inform it of page blur.
+      sendToServiceWorker('PAGE_BLUR');
+    };
+
+    window.addEventListener('focus', handleFocus);
+    window.addEventListener('blur', handleBlur);
+    
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+      window.removeEventListener('blur', handleBlur);
     }
-  }, [isRunning, timeLeft, isCompleted])
+  }, [sendToServiceWorker])
 
   const startTimer = () => {
     if (timeLeft === 0) return
     setIsRunning(true)
     setIsCompleted(false)
-    if (timeLeft === 8 * 60) {
-      playGong('start') // Play start gong when starting fresh
-    }
+    sendToServiceWorker('START')
   }
 
   const stopTimer = () => {
     setIsRunning(false)
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current)
-    }
+    sendToServiceWorker('STOP')
   }
 
   const restartTimer = () => {
     stopTimer()
     setTimeLeft(8 * 60)
     setIsCompleted(false)
-    setIsRunning(false)
+    sendToServiceWorker('RESET')
   }
 
   const formatTime = (seconds: number) => {

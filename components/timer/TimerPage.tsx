@@ -57,7 +57,7 @@ function TimerPage() {
 
   // Load version information from VERSION.json
   useEffect(() => {
-    fetch('/VERSION.json')
+    fetch(`/VERSION.json?v=${Date.now()}`)
       .then(response => response.json())
       .then(data => {
         setTimerVersion(`v${data.version}`)

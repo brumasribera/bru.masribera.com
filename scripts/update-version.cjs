@@ -70,6 +70,10 @@ const versionInfo = {
 const versionPath = path.join(__dirname, '..', 'VERSION.json');
 fs.writeFileSync(versionPath, JSON.stringify(versionInfo, null, 2) + '\n');
 
+// Also update the public folder copy for deployment
+const publicVersionPath = path.join(__dirname, '..', 'public', 'VERSION.json');
+fs.writeFileSync(publicVersionPath, JSON.stringify(versionInfo, null, 2) + '\n');
+
 // Update README with current version
 const readmePath = path.join(__dirname, '..', 'README.md');
 let readmeContent = fs.readFileSync(readmePath, 'utf8');

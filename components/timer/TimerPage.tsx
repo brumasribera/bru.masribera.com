@@ -36,8 +36,6 @@ function TimerPage() {
   const startTimeRef = useRef<number | null>(null)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
   const lastGongTimeRef = useRef<number | null>(null)
-  const wasOtherAudioPlayingRef = useRef(false)
-  const previousAudioStateRef = useRef<{ [key: string]: any }>({})
 
   // Function to get consistent color for a version
   const getVersionColor = useCallback((version: string) => {
@@ -55,163 +53,33 @@ function TimerPage() {
     return VERSION_COLORS[versionHash]
   }, [])
 
-  // Check if other audio is playing and store state for restoration
-  const checkOtherAudioPlaying = useCallback(() => {
-    const allAudioElements = document.querySelectorAll('audio')
-    let otherAudioPlaying = false
-    
-    // Store previous audio state for restoration
-    previousAudioStateRef.current = {}
-    
-    allAudioElements.forEach((audio, index) => {
-      if (!audio.hasAttribute('data-timer-audio') && !audio.paused) {
-        otherAudioPlaying = true
-        // Store the audio element's state
-        previousAudioStateRef.current[`audio_${index}`] = {
-          element: audio,
-          wasPlaying: true,
-          currentTime: audio.currentTime,
-          volume: audio.volume
-        }
-      }
-    })
-    
-    // Also check for video elements with audio
-    const allVideoElements = document.querySelectorAll('video')
-    allVideoElements.forEach((video, index) => {
-      if (!video.paused && video.volume > 0) {
-        otherAudioPlaying = true
-        // Store the video element's state
-        previousAudioStateRef.current[`video_${index}`] = {
-          element: video,
-          wasPlaying: true,
-          currentTime: video.currentTime,
-          volume: video.volume
-        }
-      }
-    })
-    
-    return otherAudioPlaying
-  }, [])
-
-  // Resume other audio that was interrupted
-  const resumeOtherAudio = useCallback(() => {
-    if (!wasOtherAudioPlayingRef.current) return
-    
-    // Small delay to ensure our audio has fully finished
-    setTimeout(() => {
-      // Try to restore the specific audio/video that was playing before
-      Object.values(previousAudioStateRef.current).forEach((audioState: any) => {
-        if (audioState.wasPlaying && audioState.element) {
-          try {
-            // Try to resume the specific audio/video element
-            if (audioState.element.tagName === 'AUDIO' || audioState.element.tagName === 'VIDEO') {
-              // Set the time back to where it was
-              audioState.element.currentTime = audioState.currentTime
-              audioState.element.volume = audioState.volume
-              
-              // Try to resume playback
-              const playPromise = audioState.element.play()
-              if (playPromise !== undefined) {
-                playPromise.catch(() => {
-                  // Silent error handling - the element might not be resumable
-                })
-              }
-            }
-          } catch (error) {
-            // Silent error handling
-          }
-        }
-      })
-      
-      // Try to restore MediaSession to help other apps regain audio focus
-      if ('mediaSession' in navigator) {
-        navigator.mediaSession.playbackState = 'none'
-        // Clear metadata to release any remaining audio focus
-        navigator.mediaSession.metadata = null
-      }
-      
-      wasOtherAudioPlayingRef.current = false
-      // Clear the stored state
-      previousAudioStateRef.current = {}
-    }, 100)
-  }, [])
-
-  // Create notification-style audio that doesn't steal audio focus
-  const createNotificationAudio = useCallback((src: string) => {
-    // Create a notification-style audio element
-    const audio = new Audio(src)
-    
-    // Set properties to make it behave like a notification sound
-    audio.preload = 'auto'
-    audio.volume = 0.5 // Lower volume to be less intrusive
-    audio.loop = false
-    
-    // Set audio attributes to prevent taking audio focus on Android
-    audio.setAttribute('data-timer-audio', 'true')
-    audio.setAttribute('data-notification-style', 'true')
-    
-    return audio
-  }, [])
-
-  // Setup MediaSession to avoid taking audio focus
-  const setupIntelligentAudioFocus = useCallback(() => {
-    if ('mediaSession' in navigator) {
-      // Set up MediaSession to indicate we don't want audio focus
-      navigator.mediaSession.metadata = new MediaMetadata({
-        title: 'Timer Gong',
-        artist: 'Stretch Timer',
-        album: 'Meditation Sounds'
-      })
-      
-      // Set playback state to none to avoid taking audio focus
-      navigator.mediaSession.playbackState = 'none'
-      
-      // Set action handlers that do nothing to prevent audio focus conflicts
-      navigator.mediaSession.setActionHandler('play', () => {})
-      navigator.mediaSession.setActionHandler('pause', () => {})
-      navigator.mediaSession.setActionHandler('stop', () => {})
-      navigator.mediaSession.setActionHandler('seekbackward', () => {})
-      navigator.mediaSession.setActionHandler('seekforward', () => {})
-      navigator.mediaSession.setActionHandler('seekto', () => {})
-      navigator.mediaSession.setActionHandler('previoustrack', () => {})
-      navigator.mediaSession.setActionHandler('nexttrack', () => {})
-    }
-  }, [])
-
-    // Android-friendly audio play function
+  // Simple audio play function
   const playGong = useCallback((type: keyof typeof GONG_SOUNDS) => {
-    // Check if other audio is playing before we play our sound
-    wasOtherAudioPlayingRef.current = checkOtherAudioPlaying()
+    // Create audio element for notification-style playback
+    const audio = new Audio(GONG_SOUNDS[type])
     
-    // Setup MediaSession to avoid audio focus conflicts
-    setupIntelligentAudioFocus()
+    // Configure for notification-like behavior on Android
+    audio.volume = 0.6
+    audio.preload = 'none' // Don't preload - behaves more like notifications
+    audio.autoplay = false
     
-    // Create notification-style audio
-    const audio = createNotificationAudio(GONG_SOUNDS[type])
-    
-    // Play immediately
+    // Play immediately and clean up
     audio.play().then(() => {
-      // Auto-cleanup and resume other audio after our sound finishes naturally
-      audio.addEventListener('ended', () => {
-        resumeOtherAudio()
-        audio.src = '' // Release the audio resource
-      }, { once: true })
-      
-      // Fallback cleanup after 6 seconds (allowing full 5s + 1s buffer)
+      // Auto-cleanup after a reasonable time (gongs are short)
       setTimeout(() => {
-        if (!audio.ended) {
-          audio.pause()
-          audio.currentTime = 0
-          resumeOtherAudio()
-          audio.src = ''
-        }
-      }, 6000)
+        audio.pause()
+        audio.currentTime = 0
+        audio.src = '' // Release the audio resource
+      }, 5000) // 5 seconds should be enough for any gong
     }).catch(error => {
       console.warn(`Could not play gong ${type}:`, error)
-      resumeOtherAudio() // Resume other audio even if our sound failed
     })
-  }, [checkOtherAudioPlaying, setupIntelligentAudioFocus, createNotificationAudio, resumeOtherAudio])
+    
+    // Clean up if audio ends naturally
+    audio.addEventListener('ended', () => {
+      audio.src = ''
+    }, { once: true })
+  }, [])
 
   // Load version information from VERSION.json
   useEffect(() => {

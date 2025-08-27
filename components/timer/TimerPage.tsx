@@ -55,11 +55,30 @@ function TimerPage() {
 
   // Simple audio play function
   const playGong = useCallback((type: keyof typeof GONG_SOUNDS) => {
+    // Create audio element for notification-style playback
     const audio = new Audio(GONG_SOUNDS[type])
+    
+    // Configure for notification-like behavior on Android
     audio.volume = 0.6
-    audio.play().catch(error => {
+    audio.preload = 'none' // Don't preload - behaves more like notifications
+    audio.autoplay = false
+    
+    // Play immediately and clean up
+    audio.play().then(() => {
+      // Auto-cleanup after a reasonable time (gongs are short)
+      setTimeout(() => {
+        audio.pause()
+        audio.currentTime = 0
+        audio.src = '' // Release the audio resource
+      }, 5000) // 5 seconds should be enough for any gong
+    }).catch(error => {
       console.warn(`Could not play gong ${type}:`, error)
     })
+    
+    // Clean up if audio ends naturally
+    audio.addEventListener('ended', () => {
+      audio.src = ''
+    }, { once: true })
   }, [])
 
   // Load version information from VERSION.json

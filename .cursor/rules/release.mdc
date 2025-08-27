@@ -1,5 +1,5 @@
 ---
-description:
+description: when the users types for release or deploy I need to do a npm run release "a meaninguful commmit message"
 globs:
 alwaysApply: false
 ---

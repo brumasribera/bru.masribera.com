@@ -267,13 +267,16 @@ function TimerPage() {
     let isMounted = true;
     
     const loadAudioFiles = async () => {
+      console.log('🎵 Starting to load audio files...');
       for (const [key, src] of Object.entries(GONG_SOUNDS)) {
         if (!isMounted) break;
         
         try {
+          console.log(`🎵 Loading audio: ${key} from ${src}`);
           // Check if file is accessible
           const response = await fetch(src);
           if (!response.ok) {
+            console.warn(`⚠️ Audio file not accessible: ${src}`);
             continue;
           }
           
@@ -281,36 +284,39 @@ function TimerPage() {
           
           const audio = createNotificationAudio(src)
           
-          // Handle audio loading errors silently
-          audio.addEventListener('error', () => {
-            // Silent error handling
+          // Handle audio loading errors
+          audio.addEventListener('error', (e) => {
+            console.error(`❌ Audio loading error for ${key}:`, e);
           });
 
-          // Handle successful loading silently
+          // Handle successful loading
           audio.addEventListener('canplaythrough', () => {
-            // Audio loaded successfully
+            console.log(`✅ Audio loaded successfully: ${key}`);
           });
 
-          // Handle audio interruptions silently
+          // Handle audio interruptions
           audio.addEventListener('pause', () => {
-            // Audio paused by system
+            console.log(`⏸️ Audio paused: ${key}`);
           });
 
           audio.addEventListener('play', () => {
-            // Audio resumed playing
+            console.log(`▶️ Audio started: ${key}`);
           });
 
           // Handle audio completion to resume other audio
           audio.addEventListener('ended', () => {
+            console.log(`🔚 Audio ended: ${key}`);
             resumeOtherAudio();
           });
           
           audioRefs.current[key] = audio
+          console.log(`✅ Audio element created for ${key}`);
           
         } catch (error) {
-          // Silent error handling
+          console.error(`❌ Error loading audio ${key}:`, error);
         }
       }
+      console.log(`🎵 Audio loading complete. Loaded ${Object.keys(audioRefs.current).length} files:`, Object.keys(audioRefs.current));
     };
     
     loadAudioFiles();
@@ -597,52 +603,38 @@ function TimerPage() {
   }, [])
 
 
-  // Play gong sound with audio session management
+  // Play gong sound with simplified audio management
   const playGong = (type: keyof typeof GONG_SOUNDS) => {
     const src = GONG_SOUNDS[type];
+    console.log(`🎵 Playing gong: ${type} from ${src}`);
     
     try {
-      // Check if other audio is playing before we start
-      if (!wasOtherAudioPlayingRef.current) {
-        wasOtherAudioPlayingRef.current = checkOtherAudioPlaying();
-      }
-      
-      // Use the most effective approach: Web Audio API for notification-style sounds
-      playNotificationSound(src);
-      
-      // Also try to play the regular audio as a fallback
+      // Simple approach: use the preloaded audio element
       const audio = audioRefs.current[type];
       if (audio) {
-        // Set up the most intelligent Android audio focus management
-        setupIntelligentAudioFocus();
-        
-        // Set audio properties for minimal interruption
+        // Reset and play
         audio.currentTime = 0;
-        audio.volume = 0.4; // Lower volume for notification-style behavior
+        audio.volume = 0.6;
         
-        // Try to play audio as a notification sound
         const playPromise = audio.play();
-        
         if (playPromise !== undefined) {
           playPromise.then(() => {
-            // Audio started playing successfully
-            // Immediately set MediaSession to none to release audio focus
-            if ('mediaSession' in navigator) {
-              navigator.mediaSession.playbackState = 'none';
-              // Clear metadata to help release audio focus faster
-              setTimeout(() => {
-                if ('mediaSession' in navigator) {
-                  navigator.mediaSession.metadata = null;
-                }
-              }, 100);
-            }
+            console.log(`✅ Gong ${type} started playing`);
           }).catch((error) => {
-            // Silent error handling for audio play issues
-          })
+            console.warn(`❌ Failed to play gong ${type}:`, error);
+            // Fallback: try Web Audio API
+            playNotificationSound(src);
+          });
         }
+      } else {
+        console.warn(`⚠️ Audio element not found for ${type}, using Web Audio API fallback`);
+        // Fallback to Web Audio API
+        playNotificationSound(src);
       }
     } catch (error) {
-      // Silent error handling
+      console.error(`❌ Error playing gong ${type}:`, error);
+      // Final fallback: try Web Audio API
+      playNotificationSound(src);
     }
   }
 

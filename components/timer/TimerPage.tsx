@@ -585,6 +585,16 @@ function TimerPage() {
     });
   }, [])
 
+  // Send timer completion notification
+  const sendTimerNotification = useCallback(() => {
+    if ('Notification' in window && Notification.permission === 'granted') {
+      new Notification('Timer Complete!', {
+        body: 'Your 8-minute stretch timer has finished.',
+        icon: '/favicons/favicon-timer.svg',
+        badge: '/favicons/favicon-timer.svg'
+      });
+    }
+  }, [])
 
 
   // Play gong sound with audio session management
@@ -636,72 +646,58 @@ function TimerPage() {
     }
   }
 
-  // High-precision timer logic using performance.now()
+  // Hybrid timer: Use service worker for background accuracy, local state for UI
   useEffect(() => {
     if (isRunning && timeLeft > 0) {
-      const animate = (currentTime: number) => {
-        // This effect is now primarily for sending updates to the service worker
-        // and triggering gongs based on service worker messages.
-        // The main timer logic is handled by the service worker.
-        
-        // Send current timer state to service worker
+      // Start the service worker timer for background accuracy
+      sendToServiceWorker('START');
+      
+      // Also run local timer for immediate UI updates
+      const intervalId = setInterval(() => {
+        setTimeLeft(prevTime => {
+          const newTime = prevTime - 1;
+          
+          // Play minute gong every minute
+          if (newTime > 0 && newTime % 60 === 0) {
+            playGong('minute');
+          }
+          
+          // Play middle gong at 4 minutes (middle point)
+          if (newTime === 4 * 60) {
+            playGong('middle');
+          }
+          
+          // If timer completed
+          if (newTime === 0) {
+            setIsCompleted(true);
+            setIsRunning(false);
+            playGong('end');
+            sendTimerNotification();
+            sendToServiceWorker('STOP');
+            return 0;
+          }
+          
+          return newTime;
+        });
+      }, 1000);
+
+      return () => {
+        clearInterval(intervalId);
+      };
+    }
+  }, [isRunning, timeLeft, playGong, sendTimerNotification, sendToServiceWorker])
+
+  // Handle visibility changes to compensate for background throttling
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (!document.hidden && isRunning) {
+        // Page became visible and timer is running - sync with service worker
         sendToServiceWorker('TIMER_SYNC', {
           timeLeft: timeLeft,
           isRunning: isRunning,
           isCompleted: isCompleted
         });
-        
-        // Play minute gong every minute
-        if (timeLeft > 0 && timeLeft % 60 === 0 && !isCompleted) {
-          playGong('minute');
-        }
-        
-        // Play middle gong at 4 minutes (middle point)
-        if (timeLeft === 4 * 60 && !isCompleted) {
-          playGong('middle');
-        }
-        
-        // If timer completed, send notification and stop
-        if (timeLeft === 0 && !isCompleted) {
-          setIsCompleted(true);
-          setIsRunning(false);
-          playGong('end');
-  
-          sendToServiceWorker('TIMER_SYNC', {
-            timeLeft: 0,
-            isRunning: false,
-            isCompleted: true
-          });
-        }
-      };
-      
-      // Request an animation frame to start the loop
-      // This ensures the service worker receives the initial state
-      requestAnimationFrame(animate);
-    } else if (timeLeft === 0 && !isCompleted) {
-      // If timeLeft is 0 and not completed, it means the service worker
-      // has sent a final update, so we just set isCompleted and play end gong.
-      setIsCompleted(true);
-      setIsRunning(false);
-      playGong('end');
-      
-      sendToServiceWorker('TIMER_SYNC', {
-        timeLeft: 0,
-        isRunning: false,
-        isCompleted: true
-      });
-    }
-
-    return () => {
-      // No cleanup needed here as the service worker handles the animation frame
-    };
-  }, [isRunning, timeLeft, isCompleted, sendToServiceWorker, playGong])
-
-  // Handle visibility changes to compensate for background throttling
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      // This effect is now primarily for sending updates to the service worker
-      // to inform it of visibility changes.
+      }
       sendToServiceWorker('VISIBILITY_CHANGE', {
         isVisible: !document.hidden
       });
@@ -709,7 +705,22 @@ function TimerPage() {
 
     document.addEventListener('visibilitychange', handleVisibilityChange);
     return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
-  }, [sendToServiceWorker])
+  }, [sendToServiceWorker, isRunning, timeLeft, isCompleted])
+
+  // Periodic sync with service worker to maintain accuracy
+  useEffect(() => {
+    if (isRunning) {
+      const syncInterval = setInterval(() => {
+        sendToServiceWorker('TIMER_SYNC', {
+          timeLeft: timeLeft,
+          isRunning: isRunning,
+          isCompleted: isCompleted
+        });
+      }, 5000); // Sync every 5 seconds
+
+      return () => clearInterval(syncInterval);
+    }
+  }, [isRunning, timeLeft, isCompleted, sendToServiceWorker])
 
   // Add page focus/blur handling for better background detection
   useEffect(() => {
@@ -738,19 +749,19 @@ function TimerPage() {
     if (timeLeft === 0) return
     setIsRunning(true)
     setIsCompleted(false)
-    sendToServiceWorker('START')
+    sendToServiceWorker('START');
   }
 
   const stopTimer = () => {
     setIsRunning(false)
-    sendToServiceWorker('STOP')
+    sendToServiceWorker('STOP');
   }
 
   const restartTimer = () => {
     stopTimer()
     setTimeLeft(8 * 60)
     setIsCompleted(false)
-    sendToServiceWorker('RESET')
+    sendToServiceWorker('RESET');
   }
 
   const formatTime = (seconds: number) => {

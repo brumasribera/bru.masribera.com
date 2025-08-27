@@ -37,7 +37,8 @@ try {
   
   // Step 5: Commit with user's message
   console.log('\n💾 Step 4: Committing changes...');
-  execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
+  const formattedCommitMessage = `v${versionInfo.version}: ${commitMessage}`;
+  execSync(`git commit -m "${formattedCommitMessage}"`, { stdio: 'inherit' });
   
   // Step 6: Create git tag
   console.log('\n🏷️ Step 5: Creating git tag...');

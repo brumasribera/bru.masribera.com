@@ -1,0 +1,5 @@
+[33mc12528b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;33mtag: [m[1;33mv1.1.6[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Add dynamic colors to timer version pills for visual distinction between releases
+[33m5702f8d[m Remove notification permissions requirement from timer - not needed for basic functionality
+[33m332fc67[m[33m ([m[1;33mtag: [m[1;33mv1.1.5[m[33m)[m Fix timer version display and improve release process
+[33m3cd6397[m v1.1.3: 2025-08-27 11:45:00 - Automated release
+[33m15a47bd[m fix: restore working version pill with blue styling

@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 
 // Timer version information - Auto-updated by update-version.js script
-const TIMER_VERSION = 'v1.1.2'
-const TIMER_RELEASE_DATE = '2025-08-26 10:07:45'
+const TIMER_VERSION = 'v1.1.3'
+const TIMER_RELEASE_DATE = '2025-08-27 11:45:00'
 
 // Use public folder assets for simplest pathing
 const GONG_SOUNDS = {

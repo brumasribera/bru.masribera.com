@@ -8,6 +8,26 @@ const GONG_SOUNDS = {
   end: '/timer-sounds/end-gong.mp3'
 }
 
+// Color palette for version pills - each version gets a different color
+const VERSION_COLORS = [
+  { bg: 'bg-blue-600', border: 'border-blue-400', text: 'text-white' },
+  { bg: 'bg-green-600', border: 'border-green-400', text: 'text-white' },
+  { bg: 'bg-purple-600', border: 'border-purple-400', text: 'text-white' },
+  { bg: 'bg-orange-600', border: 'border-orange-400', text: 'text-white' },
+  { bg: 'bg-pink-600', border: 'border-pink-400', text: 'text-white' },
+  { bg: 'bg-indigo-600', border: 'border-indigo-400', text: 'text-white' },
+  { bg: 'bg-teal-600', border: 'border-teal-400', text: 'text-white' },
+  { bg: 'bg-red-600', border: 'border-red-400', text: 'text-white' },
+  { bg: 'bg-yellow-600', border: 'border-yellow-400', text: 'text-black' },
+  { bg: 'bg-cyan-600', border: 'border-cyan-400', text: 'text-white' },
+  { bg: 'bg-emerald-600', border: 'border-emerald-400', text: 'text-white' },
+  { bg: 'bg-rose-600', border: 'border-rose-400', text: 'text-white' },
+  { bg: 'bg-violet-600', border: 'border-violet-400', text: 'text-white' },
+  { bg: 'bg-amber-600', border: 'border-amber-400', text: 'text-black' },
+  { bg: 'bg-lime-600', border: 'border-lime-400', text: 'text-black' },
+  { bg: 'bg-sky-600', border: 'border-sky-400', text: 'text-white' }
+]
+
 function TimerPage() {
   const [timeLeft, setTimeLeft] = useState(8 * 60) // 8 minutes in seconds
   const [isRunning, setIsRunning] = useState(false)
@@ -18,6 +38,22 @@ function TimerPage() {
   const wasOtherAudioPlayingRef = useRef(false)
   const previousAudioStateRef = useRef<{ [key: string]: any }>({})
   const serviceWorkerRef = useRef<ServiceWorker | null>(null)
+
+  // Function to get consistent color for a version
+  const getVersionColor = useCallback((version: string) => {
+    // Extract version number and convert to index
+    const versionMatch = version.match(/v?(\d+)\.(\d+)\.(\d+)/)
+    if (!versionMatch) return VERSION_COLORS[0] // Default color
+    
+    const major = parseInt(versionMatch[1])
+    const minor = parseInt(versionMatch[2])
+    const patch = parseInt(versionMatch[3])
+    
+    // Create a hash-like number from version components
+    const versionHash = (major * 10000 + minor * 100 + patch) % VERSION_COLORS.length
+    
+    return VERSION_COLORS[versionHash]
+  }, [])
 
   // Load version information from VERSION.json
   useEffect(() => {
@@ -226,18 +262,7 @@ function TimerPage() {
 
     setTimerFavicon();
 
-    // Request notification permission for background timer alerts
-    const requestNotificationPermission = async () => {
-      if ('Notification' in window && Notification.permission === 'default') {
-        try {
-          await Notification.requestPermission();
-        } catch (error) {
-          console.log('Notification permission request failed');
-        }
-      }
-    };
 
-    requestNotificationPermission();
 
     let isMounted = true;
     
@@ -560,23 +585,7 @@ function TimerPage() {
     });
   }, [])
 
-  // Send notification when timer completes (works even in background)
-  const sendTimerNotification = useCallback(() => {
-    if ('Notification' in window && Notification.permission === 'granted') {
-      try {
-        new Notification('Stretch Timer Complete! 🧘‍♀️', {
-          body: 'Your 8-minute stretch session is finished. Time to get back to work!',
-          icon: '/favicons/favicon-timer.svg',
-          badge: '/favicons/favicon-timer.svg',
-          tag: 'stretch-timer',
-          requireInteraction: true, // Keep notification visible until user interacts
-          silent: false // Allow system sounds
-        });
-      } catch (error) {
-        console.log('Failed to send notification:', error);
-      }
-    }
-  }, [])
+
 
   // Play gong sound with audio session management
   const playGong = (type: keyof typeof GONG_SOUNDS) => {
@@ -657,7 +666,7 @@ function TimerPage() {
           setIsCompleted(true);
           setIsRunning(false);
           playGong('end');
-          sendTimerNotification(); // Send notification even if app is in background
+  
           sendToServiceWorker('TIMER_SYNC', {
             timeLeft: 0,
             isRunning: false,
@@ -675,7 +684,7 @@ function TimerPage() {
       setIsCompleted(true);
       setIsRunning(false);
       playGong('end');
-      sendTimerNotification(); // Send notification even if app is in background
+      
       sendToServiceWorker('TIMER_SYNC', {
         timeLeft: 0,
         isRunning: false,
@@ -686,7 +695,7 @@ function TimerPage() {
     return () => {
       // No cleanup needed here as the service worker handles the animation frame
     };
-  }, [isRunning, timeLeft, isCompleted, sendToServiceWorker, playGong, sendTimerNotification])
+  }, [isRunning, timeLeft, isCompleted, sendToServiceWorker, playGong])
 
   // Handle visibility changes to compensate for background throttling
   useEffect(() => {
@@ -792,7 +801,7 @@ function TimerPage() {
 
         {/* Version Pill */}
         <div className="mt-6 text-center">
-          <span className="inline-block bg-blue-600 text-white text-sm px-4 py-2 rounded-lg font-mono border-2 border-blue-400 shadow-lg">
+          <span className={`inline-block ${getVersionColor(timerVersion).bg} ${getVersionColor(timerVersion).text} text-sm px-4 py-2 rounded-lg font-mono border-2 ${getVersionColor(timerVersion).border} shadow-lg`}>
             🚀 {timerVersion} • {timerReleaseDate}
           </span>
         </div>

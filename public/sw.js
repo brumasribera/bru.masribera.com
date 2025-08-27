@@ -123,7 +123,7 @@ function sendTimerUpdate() {
 }
 
 function sendGongUpdate(gongType) {
-  // Send gong notification to all connected clients
+  // Send gong update to all connected clients
   self.clients.matchAll().then(clients => {
     clients.forEach(client => {
       client.postMessage({

@@ -1,9 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 
-// Timer version information - Auto-updated by update-version.js script
-const TIMER_VERSION = 'v1.1.3'
-const TIMER_RELEASE_DATE = '2025-08-27 11:45:00'
-
 // Use public folder assets for simplest pathing
 const GONG_SOUNDS = {
   start: '/timer-sounds/start-gong.mp3',
@@ -16,10 +12,26 @@ function TimerPage() {
   const [timeLeft, setTimeLeft] = useState(8 * 60) // 8 minutes in seconds
   const [isRunning, setIsRunning] = useState(false)
   const [isCompleted, setIsCompleted] = useState(false)
+  const [timerVersion, setTimerVersion] = useState('v1.1.3')
+  const [timerReleaseDate, setTimerReleaseDate] = useState('2025-08-27 11:45:00')
   const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({})
   const wasOtherAudioPlayingRef = useRef(false)
   const previousAudioStateRef = useRef<{ [key: string]: any }>({})
   const serviceWorkerRef = useRef<ServiceWorker | null>(null)
+
+  // Load version information from VERSION.json
+  useEffect(() => {
+    fetch('/VERSION.json')
+      .then(response => response.json())
+      .then(data => {
+        setTimerVersion(`v${data.version}`)
+        setTimerReleaseDate(data.timestamp)
+      })
+      .catch(error => {
+        console.warn('Failed to load version info:', error)
+        // Fallback to hardcoded values if fetch fails
+      })
+  }, [])
 
   // Set page title and timer-specific manifest
   useEffect(() => {
@@ -781,7 +793,7 @@ function TimerPage() {
         {/* Version Pill */}
         <div className="mt-6 text-center">
           <span className="inline-block bg-blue-600 text-white text-sm px-4 py-2 rounded-lg font-mono border-2 border-blue-400 shadow-lg">
-            🚀 {TIMER_VERSION} • {TIMER_RELEASE_DATE}
+            🚀 {timerVersion} • {timerReleaseDate}
           </span>
         </div>
       </div>

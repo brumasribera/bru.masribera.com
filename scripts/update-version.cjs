@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿// Update version script
 
 const fs = require('fs');
 const path = require('path');

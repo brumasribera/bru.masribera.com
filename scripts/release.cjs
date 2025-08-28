@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿// Release script
 
 const { execSync } = require('child_process');
 const fs = require('fs');

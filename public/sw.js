@@ -11,7 +11,7 @@ const urlsToCache = [
   '/tools/timer/manifest.webmanifest'
 ];
 
-// Timer Service Worker - Version 1.1.5 - Released 2025-08-28 14:27:55// Timer functionality for background operation
+// Timer Service Worker - Version 1.1.6 - Released 2025-08-28 14:34:25// Timer functionality for background operation
 let timerStartTime = null;
 let timerDuration = 8 * 60; // 8 minutes in seconds
 let animationFrameId = null;

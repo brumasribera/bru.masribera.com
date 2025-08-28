@@ -671,7 +671,7 @@ function TimerPage() {
         {/* Version Pill */}
         <div className="mt-6 text-center">
           <span className="inline-block bg-blue-600 text-white text-sm px-4 py-2 rounded-lg font-mono border-2 border-blue-400 shadow-lg">
-            🚀 v1.1.4 • 2025-08-28 14:23:39
+            🚀 v1.1.5 • 28 Thursday August 16:27
           </span>
         </div>
       </div>

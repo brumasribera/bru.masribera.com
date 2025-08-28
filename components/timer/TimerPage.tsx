@@ -667,10 +667,17 @@ function TimerPage() {
               ↺
             </button>
         </div>
+
+        {/* Version Pill */}
+        <div className="mt-6 text-center">
+          <span className="inline-block bg-blue-600 text-white text-sm px-4 py-2 rounded-lg font-mono border-2 border-blue-400 shadow-lg">
+            🚀 v1.1.3 • 2025-01-27 11:45:00
+          </span>
+        </div>
       </div>
-         </div>
-   )
- }
+    </div>
+  )
+}
 
 // Export the timer page
 export default TimerPage

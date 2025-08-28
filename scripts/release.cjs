@@ -42,7 +42,13 @@ try {
   
   // Step 6: Create git tag
   console.log('\n🏷️ Step 5: Creating git tag...');
-  execSync(`git tag -a v${versionInfo.version} -m "Release v${versionInfo.version}"`, { stdio: 'inherit' });
+  try {
+    // Try to create tag, if it exists, force update it
+    execSync(`git tag -a v${versionInfo.version} -m "Release v${versionInfo.version}" --force`, { stdio: 'inherit' });
+    console.log(`✅ Tag v${versionInfo.version} created/updated successfully`);
+  } catch (tagError) {
+    console.log(`⚠️  Tag v${versionInfo.version} already exists, skipping tag creation`);
+  }
   
   // Step 7: Push to remote (including tags)
   console.log('\n🚀 Step 6: Pushing to remote repository...');

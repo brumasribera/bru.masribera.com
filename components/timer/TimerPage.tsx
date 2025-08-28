@@ -88,6 +88,17 @@ function TimerPage() {
         navigator.serviceWorker.register('/sw.js')
           .then((registration) => {
             console.log('Timer service worker registered:', registration);
+            
+            // Check if service worker needs update
+            if (registration.waiting) {
+              registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+            }
+            
+            // Force update if version changed
+            registration.active?.postMessage({ 
+              type: 'VERSION_CHECK', 
+              version: '1.1.7' 
+            });
           })
           .catch((error) => {
             console.error('Timer service worker registration failed:', error);

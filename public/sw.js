@@ -1,4 +1,7 @@
-const CACHE_NAME = 'stretch-timer-v1';
+// Dynamic cache name based on current version - this ensures cache invalidation on updates
+const CACHE_NAME = 'stretch-timer-v1.1.7-' + Date.now();
+const VERSION = '1.1.7';
+
 const urlsToCache = [
   '/',
   '/tools/timer',
@@ -11,7 +14,7 @@ const urlsToCache = [
   '/tools/timer/manifest.webmanifest'
 ];
 
-// Timer Service Worker - Version 1.1.7 - Released 2025-08-28 14:38:01// Timer functionality for background operation
+// Timer Service Worker - Version 1.1.8 - Released 2025-08-28 14:48:21// Timer functionality for background operation
 let timerStartTime = null;
 let timerDuration = 8 * 60; // 8 minutes in seconds
 let animationFrameId = null;

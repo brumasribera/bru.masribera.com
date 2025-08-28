@@ -12,6 +12,7 @@ function TimerPage() {
   const [timeLeft, setTimeLeft] = useState(8 * 60) // 8 minutes in seconds
   const [isRunning, setIsRunning] = useState(false)
   const [isCompleted, setIsCompleted] = useState(false)
+  const startTimeRef = useRef<number | null>(null)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
   const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({})
   const wasOtherAudioPlayingRef = useRef(false)
@@ -21,575 +22,147 @@ function TimerPage() {
   useEffect(() => {
     // Set title immediately and multiple times to ensure it's used
     document.title = 'Stretch Timer';
-    
+     
     // Force title update after a short delay to ensure it's applied
     setTimeout(() => {
       document.title = 'Stretch Timer';
     }, 100);
-    
-    // Set title again when the page becomes visible
-    const handleVisibilityChange = () => {
-      if (!document.hidden) {
-        document.title = 'Stretch Timer';
-      }
-    };
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    
-    // Set the timer-specific manifest for PWA installation
-    const setTimerManifest = () => {
-      // Remove any existing manifest links first
-      const existingManifests = document.querySelectorAll("link[rel='manifest']");
-      existingManifests.forEach(manifest => manifest.remove());
-      
-      // Create a new manifest link for the timer
-      const timerManifest = document.createElement('link');
-      timerManifest.rel = 'manifest';
-      timerManifest.href = `/tools/timer/manifest.webmanifest?v=${Date.now()}`;
-      timerManifest.setAttribute('data-timer-manifest', 'true');
-      document.head.appendChild(timerManifest);
-      
-      // Debug: log the manifest change
-      console.log('Timer manifest set to:', timerManifest.href);
-      console.log('Current path:', window.location.pathname);
-    };
-    
-    setTimerManifest();
-    
-    // Add PWA meta tags for better installation experience
-    const addPWAMetaTags = () => {
-      const metaTags = [
-        { name: 'mobile-web-app-capable', content: 'yes' },
-        { name: 'apple-mobile-web-app-capable', content: 'yes' },
-        { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
-        { name: 'apple-mobile-web-app-title', content: 'Stretch Timer' },
-        { name: 'application-name', content: 'Stretch Timer' },
-        { name: 'msapplication-TileColor', content: '#000000' },
-        { name: 'msapplication-config', content: '/browserconfig.xml' },
-        { name: 'name', content: 'Stretch Timer' },
-        { name: 'title', content: 'Stretch Timer' }
-      ];
-      
-      metaTags.forEach(tag => {
-        const existingMeta = document.querySelector(`meta[name="${tag.name}"]`);
-        if (!existingMeta) {
-          const meta = document.createElement('meta');
-          meta.name = tag.name;
-          meta.content = tag.content;
-          document.head.appendChild(meta);
-        }
-      });
-    };
-    
-    addPWAMetaTags();
-    
-    // Register service worker for PWA functionality
-    const registerServiceWorker = () => {
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js')
-          .then((registration) => {
-            console.log('Timer service worker registered:', registration);
-          })
-          .catch((error) => {
-            console.error('Timer service worker registration failed:', error);
-          });
-      }
-    };
-    
-    registerServiceWorker();
-    
-    // Cleanup function to restore original manifest and remove meta tags
-    return () => {
-      // Remove timer manifest and restore original
-      const timerManifest = document.querySelector("link[data-timer-manifest='true']");
-      if (timerManifest) {
-        timerManifest.remove();
-      }
-      
-      // Restore the original site manifest
-      const originalManifest = document.createElement('link');
-      originalManifest.rel = 'manifest';
-      originalManifest.href = '/site.webmanifest';
-      document.head.appendChild(originalManifest);
-      
-      console.log('Restored original manifest:', originalManifest.href);
-      
-      // Remove PWA meta tags
-      const pwaMetaTags = [
-        'mobile-web-app-capable',
-        'apple-mobile-web-app-capable',
-        'apple-mobile-web-app-status-bar-style',
-        'apple-mobile-web-app-title',
-        'application-name',
-        'msapplication-TileColor',
-        'msapplication-config'
-      ];
-      
-      pwaMetaTags.forEach(name => {
-        const meta = document.querySelector(`meta[name="${name}"]`);
-        if (meta) {
-          meta.remove();
-        }
-      });
-      
-      // Restore original title
-      document.title = 'Bru Mas Ribera - Frontend & UX Engineer';
-      
-      // Remove visibility change listener
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-      
-      // Unregister service worker to prevent conflicts
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then((registrations) => {
-          registrations.forEach((registration) => {
-            if (registration.scope.includes('/tools/timer')) {
-              registration.unregister();
-              console.log('Timer service worker unregistered');
-            }
-          });
-        });
-      }
-    };
-  }, [])
 
-  // Initialize audio elements and set timer favicon
+    // Set timer-specific manifest
+    const manifestLink = document.querySelector('link[rel="manifest"]') as HTMLLinkElement;
+    if (manifestLink) {
+      manifestLink.href = '/tools/timer/manifest.webmanifest';
+    } else {
+      const link = document.createElement('link');
+      link.rel = 'manifest';
+      link.href = '/tools/timer/manifest.webmanifest';
+      document.head.appendChild(link);
+    }
+
+    // Set timer-specific favicon
+    const faviconLink = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
+    if (faviconLink) {
+      faviconLink.href = '/favicons/favicon-timer.svg';
+    } else {
+      const link = document.createElement('link');
+      link.rel = 'icon';
+      link.href = '/favicons/favicon-timer.svg';
+      document.head.appendChild(link);
+    }
+
+    // Cleanup on unmount - restore original manifest and favicon
+    return () => {
+      const manifestLink = document.querySelector('link[rel="manifest"]') as HTMLLinkElement;
+      if (manifestLink) {
+        manifestLink.href = '/site.webmanifest';
+      }
+      
+      const faviconLink = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
+      if (faviconLink) {
+        faviconLink.href = '/favicon.ico';
+      }
+    };
+  }, []);
+
+  // Preload audio files on component mount
   useEffect(() => {
-    // Set the timer favicon
-    const setTimerFavicon = () => {
-      const existingLink = document.querySelector("link[rel*='icon']") as HTMLLinkElement;
-      if (existingLink) {
-        // Store original favicon to restore later
-        if (!existingLink.dataset.originalHref) {
-          existingLink.dataset.originalHref = existingLink.href;
-        }
-        existingLink.href = '/favicons/favicon-timer.svg';
-      } else {
-        const link = document.createElement('link');
-        link.type = 'image/svg+xml';
-        link.rel = 'icon';
-        link.href = '/favicons/favicon-timer.svg';
-        document.head.appendChild(link);
-      }
-    };
+    Object.entries(GONG_SOUNDS).forEach(([key, src]) => {
+      const audio = new Audio(src)
+      audio.preload = 'auto'
+      audio.load()
+      audioRefs.current[key] = audio
+    })
 
-    setTimerFavicon();
-
-    let isMounted = true;
-    
-    const loadAudioFiles = async () => {
-      for (const [key, src] of Object.entries(GONG_SOUNDS)) {
-        if (!isMounted) break;
-        
-        try {
-          // Check if file is accessible
-          const response = await fetch(src);
-          if (!response.ok) {
-            continue;
-          }
-          
-          if (!isMounted) break;
-          
-          const audio = createNotificationAudio(src)
-          
-          // Handle audio loading errors silently
-          audio.addEventListener('error', () => {
-            // Silent error handling
-          });
-
-          // Handle successful loading silently
-          audio.addEventListener('canplaythrough', () => {
-            // Audio loaded successfully
-          });
-
-          // Handle audio interruptions silently
-          audio.addEventListener('pause', () => {
-            // Audio paused by system
-          });
-
-          audio.addEventListener('play', () => {
-            // Audio resumed playing
-          });
-
-          // Handle audio completion to resume other audio
-          audio.addEventListener('ended', () => {
-            resumeOtherAudio();
-          });
-          
-          audioRefs.current[key] = audio
-          
-        } catch (error) {
-          // Silent error handling
-        }
-      }
-    };
-    
-    loadAudioFiles();
-
+    // Cleanup audio on unmount
     return () => {
-      isMounted = false;
-      
-      // Restore original favicon
-      const timerLink = document.querySelector("link[rel*='icon']") as HTMLLinkElement;
-      if (timerLink && timerLink.dataset.originalHref) {
-        timerLink.href = timerLink.dataset.originalHref;
-        delete timerLink.dataset.originalHref;
-      } else if (timerLink && timerLink.href.includes('favicon-timer')) {
-        // Fallback: restore to default favicon
-        timerLink.href = '/favicon.ico';
-      }
-      
-      // Cleanup audio elements
       Object.values(audioRefs.current).forEach(audio => {
         audio.pause()
         audio.src = ''
       })
-      audioRefs.current = {};
     }
   }, [])
 
-  // Check if other audio is currently playing
-  const checkOtherAudioPlaying = useCallback(() => {
-    // Check if there are any audio elements playing that aren't our timer sounds
-    const allAudioElements = document.querySelectorAll('audio');
-    let otherAudioPlaying = false;
-    
-    // Store previous audio state for restoration
-    previousAudioStateRef.current = {};
-    
-    allAudioElements.forEach((audio, index) => {
-      if (!audio.hasAttribute('data-timer-audio') && !audio.paused) {
-        otherAudioPlaying = true;
-        // Store the audio element's state
-        previousAudioStateRef.current[`audio_${index}`] = {
-          element: audio,
-          wasPlaying: true,
-          currentTime: audio.currentTime,
-          volume: audio.volume
-        };
-      }
-    });
-    
-    // Also check for video elements with audio
-    const allVideoElements = document.querySelectorAll('video');
-    allVideoElements.forEach((video, index) => {
-      if (!video.paused && video.volume > 0) {
-        otherAudioPlaying = true;
-        // Store the video element's state
-        previousAudioStateRef.current[`video_${index}`] = {
-          element: video,
-          wasPlaying: true,
-          currentTime: video.currentTime,
-          volume: video.volume
-        };
-      }
-    });
-    
-    return otherAudioPlaying;
-  }, [])
+  // Android-compatible audio play function that preserves other audio
+  const playGong = useCallback(async (gongType: string) => {
+    const audio = audioRefs.current[gongType]
+    if (!audio) return
 
-  // Resume other audio that was interrupted
-  const resumeOtherAudio = useCallback(() => {
-    if (!wasOtherAudioPlayingRef.current) return;
-    
-    // Small delay to ensure our audio has fully finished
-    setTimeout(() => {
-      // Try to restore the specific audio/video that was playing before
-      Object.values(previousAudioStateRef.current).forEach((audioState: any) => {
-        if (audioState.wasPlaying && audioState.element) {
-          try {
-            // Try to resume the specific audio/video element
-            if (audioState.element.tagName === 'AUDIO' || audioState.element.tagName === 'VIDEO') {
-              // Set the time back to where it was
-              audioState.element.currentTime = audioState.currentTime;
-              audioState.element.volume = audioState.volume;
-              
-              // Try to resume playback
-              const playPromise = audioState.element.play();
-              if (playPromise !== undefined) {
-                playPromise.catch(() => {
-                  // Silent error handling - the element might not be resumable
-                });
-              }
-            }
-          } catch (error) {
-            // Silent error handling
+    try {
+      // Check if other audio is playing before we play our gong
+      const mediaElements = document.querySelectorAll('audio, video')
+      wasOtherAudioPlayingRef.current = false
+      
+      mediaElements.forEach((element: any) => {
+        if (element !== audio && !element.paused) {
+          wasOtherAudioPlayingRef.current = true
+          // Store the current state but don't pause
+          previousAudioStateRef.current[element.src || element.currentSrc] = {
+            currentTime: element.currentTime,
+            volume: element.volume,
+            playbackRate: element.playbackRate
           }
         }
-      });
-      
-      // Try to resume other audio by triggering a user interaction
-      // This is a workaround for Android's audio focus management
-      const resumeEvent = new Event('resume-audio', { bubbles: true });
-      document.dispatchEvent(resumeEvent);
-      
-      // Try to restore MediaSession to help other apps regain audio focus
-      if ('mediaSession' in navigator) {
-        navigator.mediaSession.playbackState = 'none';
-        // Clear metadata to release any remaining audio focus
-        navigator.mediaSession.metadata = null;
-      }
-      
-      // Dispatch additional events to help restore audio state
-      window.dispatchEvent(new Event('focus'));
-      document.dispatchEvent(new Event('visibilitychange'));
-      
-      wasOtherAudioPlayingRef.current = false;
-      // Clear the stored state
-      previousAudioStateRef.current = {};
-    }, 100);
-  }, [])
+      })
 
-  // Enhanced Android audio focus management
-  const setupAndroidAudioFocus = useCallback(() => {
-    if ('mediaSession' in navigator) {
-      // Set up MediaSession to indicate we don't want audio focus
-      navigator.mediaSession.metadata = new MediaMetadata({
-        title: 'Timer Gong',
-        artist: 'Stretch Timer',
-        album: 'Meditation Sounds'
-      });
+      // Reset audio to beginning and play
+      audio.currentTime = 0
+      audio.volume = 0.7
       
-      // Set playback state to none to avoid taking audio focus
-      navigator.mediaSession.playbackState = 'none';
+      // Use a promise-based approach for better cross-platform compatibility
+      const playPromise = audio.play()
       
-      // Set action handlers that do nothing to prevent audio focus conflicts
-      navigator.mediaSession.setActionHandler('play', () => {});
-      navigator.mediaSession.setActionHandler('pause', () => {});
-      navigator.mediaSession.setActionHandler('stop', () => {});
-      navigator.mediaSession.setActionHandler('seekbackward', () => {});
-      navigator.mediaSession.setActionHandler('seekforward', () => {});
-      navigator.mediaSession.setActionHandler('seekto', () => {});
-      navigator.mediaSession.setActionHandler('previoustrack', () => {});
-      navigator.mediaSession.setActionHandler('nexttrack', () => {});
-    }
-  }, [])
-
-  // Most intelligent Android audio focus approach
-  const setupIntelligentAudioFocus = useCallback(() => {
-    if ('mediaSession' in navigator) {
-      // Set up MediaSession to indicate we don't want audio focus
-      navigator.mediaSession.metadata = new MediaMetadata({
-        title: 'Timer Gong',
-        artist: 'Stretch Timer',
-        album: 'Meditation Sounds'
-      });
-      
-      // Set playback state to none to avoid taking audio focus
-      navigator.mediaSession.playbackState = 'none';
-      
-      // Set action handlers that do nothing to prevent audio focus conflicts
-      navigator.mediaSession.setActionHandler('play', () => {});
-      navigator.mediaSession.setActionHandler('pause', () => {});
-      navigator.mediaSession.setActionHandler('stop', () => {});
-      navigator.mediaSession.setActionHandler('seekbackward', () => {});
-      navigator.mediaSession.setActionHandler('seekforward', () => {});
-      navigator.mediaSession.setActionHandler('seekto', () => {});
-      navigator.mediaSession.setActionHandler('previoustrack', () => {});
-      navigator.mediaSession.setActionHandler('nexttrack', () => {});
-      
-      // Try to set audio focus to TRANSIENT_MAY_DUCK if supported
-      // This tells Android we want minimal audio focus for notification sounds
-      if ('setAudioFocusRequest' in navigator.mediaSession) {
-        try {
-          (navigator.mediaSession as any).setAudioFocusRequest({
-            audioFocusRequestType: 'transient_may_duck'
-          });
-        } catch (error) {
-          // Fallback if not supported
-        }
-      }
-    }
-  }, [])
-
-  // Create notification-style audio that doesn't steal audio focus
-  const createNotificationAudio = useCallback((src: string) => {
-    // Create a very short, notification-style audio element
-    const audio = new Audio(src);
-    
-    // Set properties to make it behave like a notification sound
-    audio.preload = 'auto';
-    audio.volume = 0.5; // Lower volume to be less intrusive
-    audio.loop = false;
-    
-    // Set audio attributes to prevent taking audio focus on Android
-    audio.setAttribute('data-timer-audio', 'true');
-    audio.setAttribute('data-notification-style', 'true');
-    
-    // Make the audio very short by setting a maximum duration
-    // This helps Android treat it as a notification rather than media
-    audio.addEventListener('loadedmetadata', () => {
-      if (audio.duration > 3) { // If longer than 3 seconds, trim it
-        audio.addEventListener('timeupdate', () => {
-          if (audio.currentTime >= 3) {
-            audio.pause();
-            audio.currentTime = 0;
-          }
-        });
-      }
-    });
-    
-    return audio;
-  }, [])
-
-  // Most effective approach: Use Web Audio API for notification-style sounds
-  const playNotificationSound = useCallback((src: string) => {
-    try {
-      // Create audio context for notification-style playback
-      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-      
-      // Fetch and decode the audio file
-      fetch(src)
-        .then(response => response.arrayBuffer())
-        .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
-        .then(audioBuffer => {
-          // Create a very short, notification-style sound
-          const source = audioContext.createBufferSource();
-          source.buffer = audioBuffer;
-          
-          // Create a gain node to control volume
-          const gainNode = audioContext.createGain();
-          gainNode.gain.setValueAtTime(0.4, audioContext.currentTime); // Low volume
-          
-          // Connect the nodes
-          source.connect(gainNode);
-          gainNode.connect(audioContext.destination);
-          
-          // Resume audio context if suspended
-          if (audioContext.state === 'suspended') {
-            audioContext.resume();
-          }
-          
-          // Play the sound
-          source.start(0);
-          
-          // Stop after a short duration to make it notification-like
-          source.stop(audioContext.currentTime + Math.min(audioBuffer.duration, 2));
-          
-          // Clean up
-          setTimeout(() => {
-            audioContext.close();
-          }, 3000);
-        })
-        .catch(() => {
-          // Fallback to regular audio if Web Audio API fails
-          audioContext.close();
-        });
-    } catch (error) {
-      // Fallback to regular audio
-    }
-  }, [])
-
-  // Resume interrupted audio when app regains focus
-  const resumeInterruptedAudio = useCallback(() => {
-    // Only resume audio if component is still mounted
-    if (!audioRefs.current || Object.keys(audioRefs.current).length === 0) {
-      return;
-    }
-    
-    Object.entries(audioRefs.current).forEach(([key, audio]) => {
-      if (audio.paused && audio.currentTime > 0 && audio.currentTime < audio.duration) {
-        audio.play().catch(() => {
-          // Silent error handling
-        });
-      }
-    });
-  }, [])
-
-  // Handle app focus and resume interrupted audio
-  useEffect(() => {
-    const handleFocus = () => {
-      // App regained focus, check for interrupted audio
-      resumeInterruptedAudio();
-    };
-
-    const handleVisibilityChange = () => {
-      if (!document.hidden) {
-        // App became visible again, resume interrupted audio
-        resumeInterruptedAudio();
-      }
-    };
-
-    window.addEventListener('focus', handleFocus);
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-
-    return () => {
-      window.removeEventListener('focus', handleFocus);
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
-  }, [resumeInterruptedAudio])
-
-  // Play gong sound with audio session management
-  const playGong = (type: keyof typeof GONG_SOUNDS) => {
-    const src = GONG_SOUNDS[type];
-    
-    try {
-      // Check if other audio is playing before we start
-      if (!wasOtherAudioPlayingRef.current) {
-        wasOtherAudioPlayingRef.current = checkOtherAudioPlaying();
-      }
-      
-      // Use the most effective approach: Web Audio API for notification-style sounds
-      playNotificationSound(src);
-      
-      // Also try to play the regular audio as a fallback
-      const audio = audioRefs.current[type];
-      if (audio) {
-        // Set up the most intelligent Android audio focus management
-        setupIntelligentAudioFocus();
-        
-        // Set audio properties for minimal interruption
-        audio.currentTime = 0;
-        audio.volume = 0.4; // Lower volume for notification-style behavior
-        
-        // Try to play audio as a notification sound
-        const playPromise = audio.play();
-        
-        if (playPromise !== undefined) {
-          playPromise.then(() => {
-            // Audio started playing successfully
-            // Immediately set MediaSession to none to release audio focus
-            if ('mediaSession' in navigator) {
-              navigator.mediaSession.playbackState = 'none';
-              // Clear metadata to help release audio focus faster
-              setTimeout(() => {
-                if ('mediaSession' in navigator) {
-                  navigator.mediaSession.metadata = null;
-                }
-              }, 100);
-            }
-          }).catch((error) => {
-            // Silent error handling for audio play issues
+      if (playPromise !== undefined) {
+        await playPromise
+          .then(() => {
+            console.log(`${gongType} gong played successfully`)
           })
-        }
+          .catch((error) => {
+            console.log(`Audio play failed for ${gongType}:`, error)
+            // Try alternative approach for Android
+            setTimeout(() => {
+              try {
+                audio.play()
+              } catch (e) {
+                // Silent fallback
+              }
+            }, 100)
+          })
       }
     } catch (error) {
       // Silent error handling
     }
-  }
+  }, [])
 
-  // Timer logic
+  // Precise timer logic using Date.now()
   useEffect(() => {
-    if (isRunning && timeLeft > 0) {
+    if (isRunning && timeLeft > 0 && startTimeRef.current) {
       intervalRef.current = setInterval(() => {
-        setTimeLeft(prev => {
-          const newTime = prev - 1
-          
+        const now = Date.now()
+        const elapsed = Math.floor((now - startTimeRef.current!) / 1000)
+        const newTimeLeft = Math.max(0, (8 * 60) - elapsed)
+        
+        // Check for minute marks for gong sounds
+        const prevTime = timeLeft
+        if (newTimeLeft !== prevTime) {
           // Play minute gong every minute
-          if (newTime > 0 && newTime % 60 === 0) {
+          if (newTimeLeft > 0 && newTimeLeft % 60 === 0 && newTimeLeft !== 8 * 60) {
             playGong('minute')
           }
           
           // Play middle gong at 4 minutes (middle point)
-          if (newTime === 4 * 60) {
+          if (newTimeLeft === 4 * 60) {
             playGong('middle')
           }
-          
-          return newTime
-        })
-      }, 1000)
-    } else if (timeLeft === 0 && !isCompleted) {
-      setIsCompleted(true)
-      setIsRunning(false)
-      playGong('end') // Play end gong when timer completes
+        }
+        
+        setTimeLeft(newTimeLeft)
+        
+        if (newTimeLeft === 0) {
+          setIsCompleted(true)
+          setIsRunning(false)
+          playGong('end') // Play end gong when timer completes
+        }
+      }, 100) // Update every 100ms for more precise timing
     }
 
     return () => {
@@ -597,12 +170,15 @@ function TimerPage() {
         clearInterval(intervalRef.current)
       }
     }
-  }, [isRunning, timeLeft, isCompleted])
+  }, [isRunning, timeLeft, playGong])
 
   const startTimer = () => {
     if (timeLeft === 0) return
+    
+    startTimeRef.current = Date.now()
     setIsRunning(true)
     setIsCompleted(false)
+    
     if (timeLeft === 8 * 60) {
       playGong('start') // Play start gong when starting fresh
     }
@@ -620,6 +196,7 @@ function TimerPage() {
     setTimeLeft(8 * 60)
     setIsCompleted(false)
     setIsRunning(false)
+    startTimeRef.current = null
   }
 
   const formatTime = (seconds: number) => {
@@ -637,40 +214,53 @@ function TimerPage() {
         </div>
 
         {/* Control Buttons */}
-        <div className="flex gap-6 justify-center">
-          {!isRunning && timeLeft > 0 && !isCompleted && (
+        <div className="flex gap-4 justify-center">
+          {!isRunning ? (
             <button
               onClick={startTimer}
-              className="w-16 h-16 bg-gray-700 text-gray-200 rounded-full font-medium hover:bg-gray-600 transition-all duration-200 flex items-center justify-center"
-              title="Start"
+              disabled={timeLeft === 0}
+              className="bg-gray-700 hover:bg-gray-600 disabled:bg-gray-800 disabled:opacity-50 
+                         text-white px-8 py-4 rounded-full text-lg font-medium transition-colors
+                         flex items-center justify-center w-20 h-20"
+              style={{ zIndex: 10 }}
             >
-              <div className="w-0 h-0 border-l-[16px] border-l-gray-200 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent ml-1"></div>
+              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+              </svg>
             </button>
-          )}
-          
-          {isRunning && (
+          ) : (
             <button
               onClick={stopTimer}
-              className="w-16 h-16 bg-gray-700 text-gray-200 rounded-full font-medium hover:bg-gray-600 transition-all duration-200 flex items-center justify-center gap-1"
-              title="Pause"
+              className="bg-gray-700 hover:bg-gray-600 text-white px-8 py-4 rounded-full text-lg font-medium transition-colors
+                         flex items-center justify-center w-20 h-20"
+              style={{ zIndex: 10 }}
             >
-              <div className="w-1.5 h-6 bg-gray-200 rounded-sm"></div>
-              <div className="w-1.5 h-6 bg-gray-200 rounded-sm"></div>
+              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+              </svg>
             </button>
           )}
           
           <button
-              onClick={restartTimer}
-              className="w-16 h-16 bg-gray-800 text-gray-200 rounded-full font-medium hover:bg-gray-700 transition-all duration-200 flex items-center justify-center text-3xl"
-              title="Reset"
-            >
-              ↺
-            </button>
+            onClick={restartTimer}
+            className="bg-gray-700 hover:bg-gray-600 text-white px-8 py-4 rounded-full text-lg font-medium transition-colors
+                       flex items-center justify-center w-20 h-20"
+            style={{ zIndex: 10 }}
+          >
+            <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
+            </svg>
+          </button>
         </div>
-      </div>
-         </div>
-   )
- }
 
-// Export the timer page
+        {isCompleted && (
+          <div className="mt-8 text-2xl text-green-400 font-medium">
+            Time's up! Great job stretching! 🎉
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
 export default TimerPage

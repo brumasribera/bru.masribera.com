@@ -1,3 +1,4 @@
+// Timer Service Worker - Version 1.1.18 - Released 2025-08-28 10:35:20
 const CACHE_NAME = 'stretch-timer-v1';
 const urlsToCache = [
   '/',

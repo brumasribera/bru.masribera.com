@@ -12,10 +12,41 @@ function TimerPage() {
   const [timeLeft, setTimeLeft] = useState(8 * 60) // 8 minutes in seconds
   const [isRunning, setIsRunning] = useState(false)
   const [isCompleted, setIsCompleted] = useState(false)
+  const [timerVersion, setTimerVersion] = useState('v1.1.9')
+  const [timerReleaseDate, setTimerReleaseDate] = useState('28 Thursday August 16:59')
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
   const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({})
   const wasOtherAudioPlayingRef = useRef(false)
   const previousAudioStateRef = useRef<{ [key: string]: any }>({})
+
+    // Load version information from VERSION.json automatically
+  useEffect(() => {
+    const loadVersionInfo = async () => {
+      try {
+        const response = await fetch(`/VERSION.json?v=${Date.now()}`)
+        const data = await response.json()
+        
+        // Format the date from the timestamp, converting UTC to local timezone
+        const date = new Date(data.timestamp + ' UTC') // Treat as UTC and convert to local
+        const day = date.getDate()
+        const weekday = date.toLocaleDateString('en-US', { weekday: 'long' })
+        const month = date.toLocaleDateString('en-US', { month: 'long' })
+        const time = date.toLocaleTimeString('en-US', { 
+          hour12: false, 
+          hour: '2-digit', 
+          minute: '2-digit'
+        })
+        
+        setTimerVersion(`v${data.version}`)
+        setTimerReleaseDate(`${day} ${weekday} ${month} ${time}`)
+      } catch (error) {
+        console.warn('Failed to load version info:', error)
+        // Keep fallback values if fetch fails
+      }
+    }
+    
+    loadVersionInfo()
+  }, [])
 
   // Set page title and timer-specific manifest
   useEffect(() => {
@@ -682,7 +713,7 @@ function TimerPage() {
         {/* Version Pill */}
         <div className="mt-6 text-center">
           <span className="inline-block bg-purple-600 text-white text-sm px-4 py-2 rounded-lg font-mono border-2 border-purple-400 shadow-lg">
-            🚀 v1.1.8 • 28 Thursday August 16:48
+            🚀 {timerVersion} • {timerReleaseDate}
           </span>
         </div>
       </div>

@@ -14,7 +14,7 @@ const urlsToCache = [
   '/tools/timer/manifest.webmanifest'
 ];
 
-// Timer Service Worker - Version 1.1.8 - Released 2025-08-28 14:48:21// Timer functionality for background operation
+// Timer Service Worker - Version 1.1.9 - Released 2025-08-28 14:59:32// Timer functionality for background operation
 let timerStartTime = null;
 let timerDuration = 8 * 60; // 8 minutes in seconds
 let animationFrameId = null;
@@ -247,13 +247,27 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Fetch event - serve from cache when offline
+// Fetch event - serve from cache when offline, but always fetch fresh JavaScript and CSS
 self.addEventListener('fetch', (event) => {
+  const request = event.request;
+  
+  // Always fetch JavaScript, CSS, and HTML files fresh from network
+  if (request.url.includes('.js') || request.url.includes('.css') || request.url.includes('.html')) {
+    event.respondWith(
+      fetch(request)
+        .catch(() => {
+          // Fallback to cache only if network fails
+          return caches.match(request);
+        })
+    );
+    return;
+  }
+  
+  // For other resources, try cache first, then network
   event.respondWith(
-    caches.match(event.request)
+    caches.match(request)
       .then((response) => {
-        // Return cached version or fetch from network
-        return response || fetch(event.request);
+        return response || fetch(request);
       })
   );
 });

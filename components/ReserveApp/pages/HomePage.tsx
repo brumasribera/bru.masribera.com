@@ -5,6 +5,7 @@ import "leaflet/dist/leaflet.css";
 import { loadContributions } from "../utils/utils";
 import { Contribution } from "../types/types";
 import { Globe, TrendingUp, Award, Heart, Leaf, Maximize2, Minimize2, Compass } from "lucide-react";
+import { ImageModal } from "../components/ImageModal";
 
 interface HomePageProps {
   onGoToGlobe: () => void;
@@ -25,6 +26,7 @@ export function HomePage({ onGoToGlobe, onShowProjectsList, onShowSettings, onOp
   const [isFullScreen, setIsFullScreen] = useState(false);
   const fullScreenMapRef = useRef<HTMLDivElement>(null);
   const fullScreenMapInstanceRef = useRef<L.Map | null>(null);
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
   useEffect(() => {
     const loadedContributions = loadContributions();
@@ -262,7 +264,9 @@ export function HomePage({ onGoToGlobe, onShowProjectsList, onShowSettings, onOp
             {user?.avatar && (
               <button
                 onClick={onShowSettings}
+                onDoubleClick={() => setIsImageModalOpen(true)}
                 className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/30 hover:border-white/50 transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl"
+                title="Click to open settings, double-click to view image"
               >
                 <img 
                   src={user.avatar} 
@@ -553,6 +557,14 @@ export function HomePage({ onGoToGlobe, onShowProjectsList, onShowSettings, onOp
           </button>
         </div>
       )}
+
+      {/* Image Modal */}
+      <ImageModal
+        isOpen={isImageModalOpen}
+        onClose={() => setIsImageModalOpen(false)}
+        imageSrc={user?.avatar || ""}
+        altText={user?.name || 'Profile'}
+      />
     </div>
   );
 }

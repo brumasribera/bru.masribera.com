@@ -2,18 +2,26 @@ import { useState } from "react";
 import { 
   ArrowLeft, 
   User, 
-  CreditCard, 
-  Shield,
-  Bell,
-  Globe,
-  Smartphone,
-  Monitor,
-  ChevronRight,
+  Mail, 
+  Phone, 
+  MapPin, 
+  Calendar,
+  Camera,
   Edit3,
+  Save,
+  X,
+  CheckCircle,
+  Shield,
+  Globe,
+  CreditCard,
   Lock,
   Eye,
-  Database
+  Database,
+  Bell,
+  Monitor,
+  ChevronRight
 } from "lucide-react";
+import { ImageModal } from "../components/ImageModal";
 import { useTranslation } from "react-i18next";
 
 interface SettingsPageProps {
@@ -42,6 +50,7 @@ export function SettingsPage({
   user
 }: SettingsPageProps) {
   const { t } = useTranslation('reserve');
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   
   // Default user data if none provided
   const defaultUser = {
@@ -172,7 +181,7 @@ export function SettingsPage({
         {/* Back Button */}
         <button
           onClick={onBack}
-          className="absolute top-4 left-4 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[40]"
+          className="absolute top-4 left-4 w-10 h-10 bg-white/90 hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[40]"
         >
           <ArrowLeft className="h-5 w-5 md:w-6 md:h-6" />
         </button>
@@ -184,7 +193,8 @@ export function SettingsPage({
             <img 
               src={currentUser.avatar} 
               alt={currentUser.name}
-              className="w-20 h-20 rounded-full border-4 border-white/30 shadow-lg object-cover"
+              className="w-20 h-20 rounded-full border-4 border-white/30 shadow-lg object-cover cursor-pointer hover:scale-105 transition-transform duration-200"
+              onClick={() => setIsImageModalOpen(true)}
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.src = "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80";
@@ -192,7 +202,7 @@ export function SettingsPage({
             />
             {currentUser.verified && (
               <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center border-2 border-white">
-                <Shield className="w-3 h-3 text-white" />
+                <Shield className="w-3 h-3" />
               </div>
             )}
           </div>
@@ -264,6 +274,14 @@ export function SettingsPage({
       
       {/* Bottom spacing */}
       <div className="h-8" />
+
+      {/* Image Modal */}
+      <ImageModal
+        isOpen={isImageModalOpen}
+        onClose={() => setIsImageModalOpen(false)}
+        imageSrc={currentUser.avatar}
+        altText={currentUser.name}
+      />
     </div>
   );
 }

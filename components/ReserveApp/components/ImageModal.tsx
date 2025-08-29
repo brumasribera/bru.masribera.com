@@ -12,11 +12,17 @@ export function ImageModal({ isOpen, onClose, imageSrc, altText }: ImageModalPro
 
   return (
     <div className="absolute inset-0 z-[40] flex items-center justify-center bg-black/80 backdrop-blur-sm">
-      <div className="relative max-w-[80%] max-h-[80%] p-4">
+      {/* Click outside to close - covers the entire modal area */}
+      <div 
+        className="absolute inset-0" 
+        onClick={onClose}
+      />
+      
+      <div className="relative max-w-[90%] max-h-[90%] p-4 z-10">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute -top-2 -right-2 z-10 w-8 h-8 bg-white hover:bg-gray-100 text-gray-700 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 border border-gray-200"
+          className="absolute -top-2 -right-2 z-20 w-8 h-8 bg-white hover:bg-gray-100 text-gray-700 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 border border-gray-200"
         >
           <X className="w-4 h-4" />
         </button>
@@ -33,12 +39,6 @@ export function ImageModal({ isOpen, onClose, imageSrc, altText }: ImageModalPro
             }}
           />
         </div>
-        
-        {/* Click outside to close */}
-        <div 
-          className="absolute inset-0 -z-10" 
-          onClick={onClose}
-        />
       </div>
     </div>
   );

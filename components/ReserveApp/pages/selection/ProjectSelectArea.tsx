@@ -447,8 +447,8 @@ export function ProjectSelectArea({ project, onBack, onContinue }: ProjectSelect
         >
           <Leaf className="w-5 h-5 inline mr-2" />
           {inputMode === 'manual' && selectedArea === 0 
-            ? 'Select Area First' 
-            : (t('projectPage.continueToCheckout') || 'Continue to Checkout')
+            ? 'Select area first' 
+            : (t('projectPage.continueToCheckout') || 'Continue to checkout')
           }
         </button>
       </div>

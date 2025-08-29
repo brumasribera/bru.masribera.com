@@ -3,15 +3,16 @@ import {
   ArrowLeft, 
   User, 
   CreditCard, 
-  Download,
-  Link2,
   Shield,
   Bell,
   Globe,
   Smartphone,
   Monitor,
   ChevronRight,
-  Edit3
+  Edit3,
+  Lock,
+  Eye,
+  Database
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
@@ -21,7 +22,6 @@ interface SettingsPageProps {
   onNavigateToPaymentSettings: () => void;
   onNavigateToAccountSettings: () => void;
   onNavigateToLinkedAccounts: () => void;
-  onNavigateToDownloads: () => void;
   user?: {
     name: string;
     email: string;
@@ -39,7 +39,6 @@ export function SettingsPage({
   onNavigateToPaymentSettings,
   onNavigateToAccountSettings,
   onNavigateToLinkedAccounts,
-  onNavigateToDownloads,
   user
 }: SettingsPageProps) {
   const { t } = useTranslation('reserve');
@@ -76,11 +75,19 @@ export function SettingsPage({
           icon: Shield,
           action: onNavigateToAccountSettings,
           color: "bg-purple-500"
+        },
+        {
+          id: "linked",
+          title: t('settings.connectedAccounts'),
+          description: t('settings.connectedAccountsDesc'),
+          icon: Lock,
+          action: onNavigateToLinkedAccounts,
+          color: "bg-cyan-500"
         }
       ]
     },
     {
-      title: t('settings.payments'),
+      title: t('settings.financial'),
       items: [
         {
           id: "payment",
@@ -96,20 +103,20 @@ export function SettingsPage({
       title: t('settings.privacy'),
       items: [
         {
-          id: "linked",
-          title: t('settings.connectedAccounts'),
-          description: t('settings.connectedAccountsDesc'),
-          icon: Link2,
-          action: onNavigateToLinkedAccounts,
-          color: "bg-cyan-500"
+          id: "data",
+          title: "Data & Privacy",
+          description: "Manage your data preferences and privacy settings",
+          icon: Eye,
+          action: () => {}, // TODO: Implement data privacy settings
+          color: "bg-indigo-500"
         },
         {
-          id: "downloads",
-          title: t('settings.dataExport'),
-          description: t('settings.dataExportDesc'),
-          icon: Download,
-          action: onNavigateToDownloads,
-          color: "bg-orange-500"
+          id: "security",
+          title: "Security Settings",
+          description: "Two-factor authentication and security preferences",
+          icon: Database,
+          action: () => {}, // TODO: Implement security settings
+          color: "bg-red-500"
         }
       ]
     },
@@ -138,7 +145,7 @@ export function SettingsPage({
           description: t('settings.interfaceDesc'),
           icon: Monitor,
           action: () => {}, // TODO: Implement interface settings
-          color: "bg-indigo-500"
+          color: "bg-orange-500"
         }
       ]
     }
@@ -165,7 +172,7 @@ export function SettingsPage({
         {/* Back Button */}
         <button
           onClick={onBack}
-          className="absolute top-4 left-4 w-10 h-10 md:w-12 md:h-12 bg-white/20 hover:bg-white/30 text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-white/30 z-[40]"
+          className="absolute top-4 left-4 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[40]"
         >
           <ArrowLeft className="h-5 w-5 md:w-6 md:h-6" />
         </button>

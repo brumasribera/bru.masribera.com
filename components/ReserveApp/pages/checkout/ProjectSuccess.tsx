@@ -146,9 +146,9 @@ export function ProjectSuccess({ project, selectedArea, onBack }: ProjectSuccess
       <div className="absolute top-4 left-4 z-10">
         <button 
           onClick={onBack} 
-          className="w-10 h-10 bg-white/90 backdrop-blur-sm hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 border border-gray-200 hover:border-gray-300"
+          className="w-9 h-9 bg-white/90 backdrop-blur-sm hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 border border-gray-200 hover:border-gray-300"
         >
-          <ArrowLeft className="w-5 h-5" />
+          <ArrowLeft className="w-4 h-4" />
         </button>
       </div>
 
@@ -156,9 +156,9 @@ export function ProjectSuccess({ project, selectedArea, onBack }: ProjectSuccess
       <div className="absolute top-4 right-4 z-10">
         <button 
           onClick={onBack} 
-          className="w-10 h-10 bg-white/90 backdrop-blur-sm hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 border border-gray-200 hover:border-gray-300"
+          className="w-9 h-9 bg-white/90 backdrop-blur-sm hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 border border-gray-200 hover:border-gray-300"
         >
-          <Home className="w-5 h-5" />
+          <Home className="w-4 h-4" />
         </button>
       </div>
 

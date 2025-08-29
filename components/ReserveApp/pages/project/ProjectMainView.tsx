@@ -365,17 +365,17 @@ export function ProjectMainView({
         {/* Back Button */}
         <button
           onClick={onBack}
-          className="absolute top-4 left-4 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[40]"
+          className="absolute top-4 left-4 w-9 h-9 md:w-11 md:h-11 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[40]"
         >
-          <ArrowLeft className="h-5 w-5 md:w-6 md:h-6" />
+          <ArrowLeft className="h-4 w-4 md:w-5 md:h-5" />
         </button>
          
         {/* Home Button - positioned top right */}
         <button
           onClick={onShowContributions}
-          className="absolute top-4 right-4 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[40]"
+          className="absolute top-4 right-4 w-9 h-9 md:w-11 md:h-11 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[40]"
         >
-          <Home className="h-5 w-5 md:w-6 md:h-6" />
+          <Home className="h-4 w-4 md:w-5 md:h-5" />
         </button>
         
         {/* Center Content */}
@@ -507,8 +507,6 @@ export function ProjectMainView({
           {/* Extra spacing to separate from contribute button */}
           <div className="h-4 md:h-6 lg:h-8"></div>
 
-          </div>
-
           {/* Single Contribute Button - Sticky within mockup */}
           <div className="sticky bottom-6 left-4 right-4 z-30 md:left-6 md:right-6 lg:left-8 lg:right-8">
             <button 
@@ -523,6 +521,12 @@ export function ProjectMainView({
           {/* Bottom spacing for proper layout */}
           <div className="h-6"></div>
 
+        </div>
+      </div>
+
+      {/* Green gradient overlay for contribute button visibility - positioned under the button */}
+      <div className="sticky bottom-0 left-0 right-0 z-20">
+        <div className="h-20 bg-gradient-to-t from-[#d4fae6] via-[#d4fae6]/80 to-transparent"></div>
       </div>
 
 

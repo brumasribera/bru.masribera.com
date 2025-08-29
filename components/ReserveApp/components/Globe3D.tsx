@@ -398,9 +398,9 @@ export function Globe3D({ onPick, onShowContributions }: Globe3DProps) {
       </div>
       
       {/* Header with Search and Home Button */}
-      <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-[40]">
-        {/* Search Box - takes left space */}
-        <div className="flex-1 max-w-xl lg:max-w-2xl xl:max-w-3xl">
+      <div className="absolute top-4 left-4 flex items-center justify-between z-[40] w-[calc(100%-2rem)]">
+        {/* Search Box - constrained to mockup width */}
+        <div className="flex-1 max-w-[280px] sm:max-w-[320px] md:max-w-[360px]">
           <SearchBox 
             projects={PROJECTS} 
             onProjectSelect={onPick}

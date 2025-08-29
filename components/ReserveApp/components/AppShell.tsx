@@ -15,10 +15,10 @@ export function AppShell({ children, showHeader = false }: AppShellProps) {
           </div>
         </header>
       )}
-      <main className={`${showHeader ? 'flex-1' : 'h-full'} relative flex overflow-hidden`}>
-        <div className="flex-1 flex items-stretch justify-center overflow-hidden">
-          {/* Content constrained to parent width, no overflow */}
-          <div className="w-full h-full max-w-full overflow-hidden">{children}</div>
+      <main className={`${showHeader ? 'flex-1' : 'h-full'} relative flex`}>
+        <div className="flex-1 flex items-stretch w-full">
+          {/* Content - allow full height and overflow for scrolling */}
+          <div className="w-full h-full max-w-full overflow-visible">{children}</div>
         </div>
       </main>
     </div>

@@ -14,7 +14,6 @@ import { AccountSettings } from "./pages/account/AccountSettings";
 import { PaymentPage } from "./pages/account/PaymentPage";
 import { TransactionHistory } from "./pages/account/TransactionHistory";
 import { LinkedAccounts } from "./pages/account/LinkedAccounts";
-import { DownloadsPage } from "./pages/account/DownloadsPage";
 import { Leaf } from "lucide-react";
 
 /**
@@ -27,16 +26,27 @@ import { Leaf } from "lucide-react";
  * - Responsive typography and spacing
  */
 
-type SettingsPage = 'main' | 'profile' | 'account' | 'payment' | 'transactions' | 'linked' | 'downloads';
+type SettingsPage = 'main' | 'profile' | 'account' | 'payment' | 'transactions' | 'linked';
+type NavigationState = 'globe' | 'home' | 'projects-list' | 'project' | 'settings';
+
+interface NavigationHistoryItem {
+  state: NavigationState;
+  data?: any; // Additional data like project, settings page, etc.
+}
 
 export default function ReserveMobileApp() {
   const { ready, t } = useTranslation('reserve');
   const [showSettings, setShowSettings] = useState(false);
-  const [settingsPage, setSettingsPage] = useState<'main' | 'profile' | 'account' | 'payment' | 'transactions' | 'linked' | 'downloads'>('main');
+  const [settingsPage, setSettingsPage] = useState<'main' | 'profile' | 'account' | 'payment' | 'transactions' | 'linked'>('main');
   const [showProjectsList, setShowProjectsList] = useState(false);
   const [showHome, setShowHome] = useState(false);
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [selectedContribution, setSelectedContribution] = useState<Contribution | null>(null);
+  
+  // Navigation history tracking
+  const [navigationHistory, setNavigationHistory] = useState<NavigationHistoryItem[]>([
+    { state: 'globe' }
+  ]);
   
   // Add state for project list filters
   const [projectListFilters, setProjectListFilters] = useState({
@@ -67,6 +77,60 @@ export default function ReserveMobileApp() {
     setUser(prev => ({ ...prev, ...updatedUser }));
   };
 
+  // Navigation helper functions
+  const navigateTo = (newState: NavigationState, data?: any) => {
+    setNavigationHistory(prev => [...prev, { state: newState, data }]);
+  };
+
+  const navigateBack = () => {
+    if (navigationHistory.length > 1) {
+      const newHistory = [...navigationHistory];
+      newHistory.pop(); // Remove current state
+      const previousState = newHistory[newHistory.length - 1];
+      
+      setNavigationHistory(newHistory);
+      
+      // Restore previous state
+      switch (previousState.state) {
+        case 'globe':
+          setActiveProject(null);
+          setShowProjectsList(false);
+          setShowHome(false);
+          setShowSettings(false);
+          break;
+        case 'home':
+          setShowHome(true);
+          setActiveProject(null);
+          setShowProjectsList(false);
+          setShowSettings(false);
+          break;
+        case 'projects-list':
+          setShowProjectsList(true);
+          setActiveProject(null);
+          setShowHome(false);
+          setShowSettings(false);
+          break;
+        case 'project':
+          if (previousState.data?.project) {
+            setActiveProject(previousState.data.project);
+            setShowProjectsList(false);
+            setShowHome(false);
+            setShowSettings(false);
+          }
+          break;
+        case 'settings':
+          setShowSettings(true);
+          if (previousState.data?.page) {
+            setSettingsPage(previousState.data.page);
+          }
+          setActiveProject(null);
+          setShowProjectsList(false);
+          setShowHome(false);
+          break;
+      }
+    }
+  };
+
   // Show loading state while i18n is not ready
   if (!ready) {
     return (
@@ -83,6 +147,7 @@ export default function ReserveMobileApp() {
   }
 
   const openProject = (p: Project) => {
+    navigateTo('project', { project: p });
     setActiveProject(p);
     setShowHome(false);
     setShowSettings(false);
@@ -111,8 +176,6 @@ export default function ReserveMobileApp() {
         return <TransactionHistory onBack={() => setSettingsPage('payment')} />;
       case 'linked':
         return <LinkedAccounts onBack={() => setSettingsPage('main')} />;
-      case 'downloads':
-        return <DownloadsPage onBack={() => setSettingsPage('main')} />;
       default:
         return (
           <SettingsPage
@@ -120,7 +183,6 @@ export default function ReserveMobileApp() {
             onNavigateToProfileSettings={() => setSettingsPage('profile')}
             onNavigateToAccountSettings={() => setSettingsPage('account')}
             onNavigateToPaymentSettings={() => setSettingsPage('payment')}
-            onNavigateToDownloads={() => setSettingsPage('downloads')}
             onNavigateToLinkedAccounts={() => setSettingsPage('linked')}
             user={user}
           />
@@ -134,25 +196,16 @@ export default function ReserveMobileApp() {
         renderSettingsPage()
       ) : showProjectsList ? (
         <ProjectsListPage
-          onBack={() => setShowProjectsList(false)}
+          onBack={() => {
+            navigateBack();
+          }}
           onSelectProject={(project) => {
             // Use a callback to ensure state updates happen in sequence
+            navigateTo('project', { project });
             setActiveProject(project);
             setShowProjectsList(false);
             setShowHome(false);
           }}
-          // Pass filter state and update function
-          filters={projectListFilters}
-          onFiltersChange={setProjectListFilters}
-          // Pass loaded projects state to prevent reloading
-          loadedProjects={loadedProjects}
-          onLoadMoreProjects={(newProjects, page, hasMore) => {
-            setLoadedProjects(prev => [...prev, ...newProjects]);
-            setProjectsPage(page);
-            setHasMoreProjects(hasMore);
-          }}
-          currentPage={projectsPage}
-          hasMore={hasMoreProjects}
         />
       ) : showHome ? (
         selectedContribution ? (
@@ -163,11 +216,16 @@ export default function ReserveMobileApp() {
         ) : (
           <HomePage
             onGoToGlobe={() => {
+              navigateTo('globe');
               setShowHome(false);
               setActiveProject(null);
             }}
-            onShowProjectsList={() => setShowProjectsList(true)}
+            onShowProjectsList={() => {
+              navigateTo('projects-list');
+              setShowProjectsList(true);
+            }}
             onShowSettings={() => {
+              navigateTo('settings', { page: 'main' });
               setShowSettings(true);
               setSettingsPage('main');
             }}
@@ -179,8 +237,12 @@ export default function ReserveMobileApp() {
         <div className="w-full h-full">
           <Globe3D 
             onPick={openProject} 
-            onShowContributions={() => setShowHome(true)}
+            onShowContributions={() => {
+              navigateTo('home');
+              setShowHome(true);
+            }}
             onShowAccount={() => {
+              navigateTo('settings', { page: 'main' });
               setShowSettings(true);
               setSettingsPage('main');
             }}
@@ -191,10 +253,7 @@ export default function ReserveMobileApp() {
         <ProtectedAreaPage
           project={activeProject}
           onBack={() => {
-            // Return to globe view when going back from a project
-            setActiveProject(null);
-            setShowProjectsList(false);
-            setShowHome(false);
+            navigateBack();
           }}
           onShowContributions={() => setShowHome(true)}
         />

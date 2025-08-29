@@ -5,6 +5,9 @@
     "globe": "Globe"
   },
   "searchProjects": "Search projects...",
+  "garden": {
+    "clearAndReload": "Clear & Reload"
+  },
   "home": {
     "welcomeBack": "Welcome back",
     "yourImpactSummary": "Your conservation impact",
@@ -27,14 +30,12 @@
     "personalInfoDesc": "Manage your profile details",
     "accountSettings": "Account settings",
     "accountSettingsDesc": "Security and privacy settings",
-    "payments": "Payments & Billing",
+    "financial": "Financial",
     "paymentMethods": "Payment methods",
     "paymentMethodsDesc": "Cards, billing & receipts",
-    "privacy": "Privacy & Data",
+    "privacy": "Privacy & Security",
     "connectedAccounts": "Connected accounts",
     "connectedAccountsDesc": "External apps & services",
-    "dataExport": "Data export",
-    "dataExportDesc": "Download your contributions",
     "preferences": "Preferences",
     "notifications": "Notifications",
     "notificationsDesc": "Email and push notifications",

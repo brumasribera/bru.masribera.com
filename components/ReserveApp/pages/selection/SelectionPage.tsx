@@ -274,10 +274,9 @@ export function AreaSelectionPage({ project, onBack, onContinue }: AreaSelection
         <div className="flex items-center justify-between p-4">
           <button
             onClick={onBack}
-            className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+            className="w-10 h-10 bg-white/90 hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50"
           >
-            <ArrowLeft className="w-5 h-5" />
-            Back
+            <ArrowLeft className="h-5 w-5" />
           </button>
           
           <div className="flex items-center gap-4">

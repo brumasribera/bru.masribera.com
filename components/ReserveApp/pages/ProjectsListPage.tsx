@@ -113,7 +113,7 @@ export function ProjectsListPage({ onBack, onSelectProject }: ProjectsListPagePr
            <div className="flex items-center justify-between mb-4">
              <button
                onClick={onBack}
-               className="w-10 h-10 bg-white/20 hover:bg-white/30 text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-white/30"
+               className="w-10 h-10 bg-white/90 hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50"
              >
                <ArrowLeft className="h-5 w-5" />
              </button>
@@ -123,7 +123,7 @@ export function ProjectsListPage({ onBack, onSelectProject }: ProjectsListPagePr
              <button
                onClick={() => setShowFilters(!showFilters)}
                className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ease-in-out hover:scale-110 shadow-lg hover:shadow-xl ${
-                 showFilters ? 'bg-green-600 text-white rotate-180' : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm border border-white/30'
+                 showFilters ? 'bg-green-600 text-white rotate-180' : 'bg-white/90 text-gray-700 hover:bg-white backdrop-blur-sm border border-gray-200/50'
                }`}
              >
                <Filter className="h-5 w-5 transition-transform duration-500 ease-in-out" />
@@ -140,7 +140,7 @@ export function ProjectsListPage({ onBack, onSelectProject }: ProjectsListPagePr
                   placeholder="Search projects or countries..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full h-10 md:h-12 pl-10 pr-4 bg-white/90 backdrop-blur-sm border border-white/30 rounded-full text-base text-gray-700 placeholder-gray-700 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 shadow-md"
+                  className="w-full h-10 pl-10 pr-4 bg-white/90 backdrop-blur-sm border border-white/30 rounded-full text-base text-gray-700 placeholder-gray-700 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 shadow-md"
             />
               </div>
             </div>
@@ -470,9 +470,9 @@ export function ProjectsListPage({ onBack, onSelectProject }: ProjectsListPagePr
                      </div>
 
                      {/* Action Button */}
-                    <div className="w-full bg-green-600 hover:bg-green-700 text-white py-1.5 px-2.5 rounded-lg text-xs font-medium transition-colors duration-200 flex items-center justify-center">
-                       Protect This Area
-                     </div>
+                                        <div className="w-full bg-green-600 hover:bg-green-700 text-white py-1.5 px-2.5 rounded-lg text-xs font-medium transition-colors duration-200 flex items-center justify-center">
+                      Protect this area
+                    </div>
                    </div>
                  </div>
                </div>

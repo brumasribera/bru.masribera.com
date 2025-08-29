@@ -238,7 +238,7 @@ export function LinkedAccounts({ onBack }: LinkedAccountsProps) {
         {/* Navigation */}
         <button
           onClick={onBack}
-          className="absolute top-4 left-4 w-10 h-10 bg-white/20 hover:bg-white/30 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-white/30 z-10"
+          className="absolute top-4 left-4 w-10 h-10 bg-white/90 hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-10"
         >
           <ArrowLeft className="h-5 w-5" />
         </button>

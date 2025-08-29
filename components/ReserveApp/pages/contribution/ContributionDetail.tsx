@@ -62,7 +62,7 @@ export function ContributionDetail({ contribution, onBack }: ContributionDetailP
         <div className="absolute inset-0 flex items-center justify-between px-4 md:px-6 lg:px-8">
           <button
             onClick={onBack}
-            className="w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 absolute top-4 left-4 z-[40]"
+            className="w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 absolute top-4 left-4 z-[40]"
           >
             <ArrowLeft className="h-5 w-5 md:h-6 md:w-6" />
           </button>

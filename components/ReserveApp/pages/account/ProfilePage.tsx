@@ -169,9 +169,9 @@ export function ProfileSettings({ onBack, user, onUpdateUser }: ProfilePageProps
         <div className="absolute top-2 left-2 right-2 flex justify-between items-center z-10">
           <button
             onClick={onBack}
-            className="w-7 h-7 bg-white/20 hover:bg-white/30 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 backdrop-blur-sm border border-white/30"
+            className="w-9 h-9 bg-white/90 hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50"
           >
-            <ArrowLeft className="h-3.5 w-3.5" />
+            <ArrowLeft className="h-4 w-4" />
           </button>
           
           {!isEditing ? (

@@ -17,7 +17,7 @@ export function ProjectCheckout({ project, selectedArea, onBack, onSuccess }: Pr
   // Ensure selectedArea is a number and handle edge cases
   const area = typeof selectedArea === 'number' ? selectedArea : 0;
   const totalAmount = area * (project?.pricePerM2 || 0);
-  const formattedAmount = isNaN(totalAmount) ? '0.00' : totalAmount.toFixed(2);
+  const formattedAmount = isNaN(totalAmount) ? '0' : (totalAmount % 1 === 0 ? totalAmount.toFixed(0) : totalAmount.toFixed(2));
   const formattedArea = area.toLocaleString();
 
   // Debug logging
@@ -76,7 +76,7 @@ export function ProjectCheckout({ project, selectedArea, onBack, onSuccess }: Pr
                 <div className="text-sm text-green-600">Square Meters</div>
               </div>
               <div className="text-center p-4 bg-emerald-50 rounded-xl">
-                <div className="text-2xl font-bold text-emerald-700">€{project?.pricePerM2?.toFixed(2) || '0.00'}</div>
+                <div className="text-2xl font-bold text-emerald-700">€{project?.pricePerM2 ? (project.pricePerM2 % 1 === 0 ? project.pricePerM2.toFixed(0) : project.pricePerM2.toFixed(2)) : '0'}</div>
                 <div className="text-sm text-emerald-600">Per m²</div>
               </div>
             </div>
@@ -123,7 +123,7 @@ export function ProjectCheckout({ project, selectedArea, onBack, onSuccess }: Pr
               }`}
             >
               <div className="w-6 h-6 mr-3 flex items-center justify-center">
-                <img src="/logos/paypal-logo.png" alt="PayPal" className="w-6 h-6 object-contain" />
+                <img src="/components/ReserveApp/assets/logos/financial/paypal-logo.png" alt="PayPal" className="w-6 h-6 object-contain" />
               </div>
               <div className="flex-1">
                 <div className="font-medium text-gray-800">PayPal</div>
@@ -155,7 +155,7 @@ export function ProjectCheckout({ project, selectedArea, onBack, onSuccess }: Pr
             onClick={onSuccess}
             className="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-[1.02] flex items-center justify-center space-x-2"
           >
-            <span>Complete Payment</span>
+                          <span>Complete payment</span>
             <span className="text-green-200">€{formattedAmount}</span>
           </button>
         </div>

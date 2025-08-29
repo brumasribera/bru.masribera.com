@@ -33,7 +33,7 @@ export function ProjectDetail({ project, onBack, onAddToCart }: ProjectDetailPro
   return (
     <Card>
       <CardHeader className="flex items-center justify-between">
-        <Button size="sm" variant="outline" onClick={onBack}>{t('navigation.back')}</Button>
+        <Button size="sm" variant="outline" onClick={onBack} className="bg-white/90 hover:bg-white text-gray-700 border-gray-200/50">{t('navigation.back')}</Button>
         <CardTitle>{t(`projects.${project.id}`)}</CardTitle>
         <Badge>{t(`countries.${project.country}`)}</Badge>
       </CardHeader>

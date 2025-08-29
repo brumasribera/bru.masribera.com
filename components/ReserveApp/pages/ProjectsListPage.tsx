@@ -106,9 +106,9 @@ export function ProjectsListPage({ onBack, onSelectProject }: ProjectsListPagePr
   };
 
   return (
-    <div className="h-full min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-emerald-100 overflow-y-auto relative">
-             {/* Header */}
-       <div className="bg-gradient-to-r from-green-600 to-emerald-600 sticky top-0 z-50">
+    <div className="h-full bg-gradient-to-br from-emerald-50 via-green-50 to-emerald-100 flex flex-col">
+      {/* Header - Always sticky at top, no scrollbar */}
+      <div className="bg-gradient-to-r from-green-600 to-emerald-600 sticky top-0 z-50 flex-shrink-0 shadow-lg">
          <div className="p-4">
            <div className="flex items-center justify-between mb-4">
              <button
@@ -122,11 +122,9 @@ export function ProjectsListPage({ onBack, onSelectProject }: ProjectsListPagePr
              </div>
              <button
                onClick={() => setShowFilters(!showFilters)}
-               className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ease-in-out hover:scale-110 shadow-lg hover:shadow-xl ${
-                 showFilters ? 'bg-green-600 text-white rotate-180' : 'bg-white/90 text-gray-700 hover:bg-white backdrop-blur-sm border border-gray-200/50'
-               }`}
+               className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ease-in-out hover:scale-110 shadow-lg hover:shadow-xl bg-white/90 text-gray-700 hover:bg-white backdrop-blur-sm border border-gray-200/50"
              >
-               <Filter className="h-5 w-5 transition-transform duration-500 ease-in-out" />
+               <Filter className={`h-5 w-5 transition-transform duration-500 ease-in-out ${showFilters ? 'rotate-180' : ''}`} />
              </button>
            </div>
 
@@ -368,8 +366,8 @@ export function ProjectsListPage({ onBack, onSelectProject }: ProjectsListPagePr
                        </div>
                      </div>
                      
-      {/* Projects List */}
-      <div className="p-4">
+      {/* Projects List - Scrollable section */}
+      <div className="flex-1 overflow-y-auto px-2 py-4">
         {sortedProjects.length === 0 ? (
           <div className="text-center py-12">
             <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full text-gray-600 shadow-lg">
@@ -383,7 +381,7 @@ export function ProjectsListPage({ onBack, onSelectProject }: ProjectsListPagePr
                <div
                  key={project.id}
                 onClick={() => handleProjectClick(project)}
-                className="project-card bg-white rounded-xl shadow-sm overflow-hidden cursor-pointer hover:shadow-lg hover:scale-[1.02] transition-all duration-200 w-[calc(100%-2rem)] max-w-md group relative focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                className="project-card bg-white rounded-xl shadow-sm overflow-hidden cursor-pointer hover:shadow-lg hover:scale-[1.02] transition-all duration-200 w-[calc(100%-1rem)] max-w-lg group relative focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
                  tabIndex={0}
                  role="button"
                  aria-label={`View details for ${t(`projects.${project.id}`)} project`}

@@ -252,7 +252,7 @@ export function HomePage({ onGoToGlobe, onShowProjectsList, onShowSettings, onOp
           {/* Globe Button */}
                      <button
              onClick={onGoToGlobe}
-             className="w-9 h-9 bg-white/90 hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50"
+             className="w-10 h-10 bg-white/90 hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50"
            >
              <Globe className="h-5 w-5" />
            </button>
@@ -262,7 +262,7 @@ export function HomePage({ onGoToGlobe, onShowProjectsList, onShowSettings, onOp
             {user?.avatar && (
               <button
                 onClick={onShowSettings}
-                className="w-9 h-9 rounded-full overflow-hidden border-2 border-white/30 hover:border-white/50 transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl"
+                className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/30 hover:border-white/50 transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl"
               >
                 <img 
                   src={user.avatar} 

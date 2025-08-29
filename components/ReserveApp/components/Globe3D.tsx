@@ -8,6 +8,7 @@ import { SearchBox } from "./SearchBox";
 interface Globe3DProps {
   onPick: (project: Project) => void;
   onShowContributions: () => void;
+  onShowProjectsList: () => void;
   onShowAccount?: () => void;
   user?: {
     name: string;
@@ -20,9 +21,10 @@ interface Globe3DProps {
   };
 }
 
-export function Globe3D({ onPick, onShowContributions }: Globe3DProps) {
-  const [dimensions, setDimensions] = useState({ width: 380, height: 680 });
+export function Globe3D({ onPick, onShowContributions, onShowProjectsList }: Globe3DProps) {
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const globeRef = useRef<any>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   
   // Generate random starting position on land near the equator
   const randomStartPosition = useMemo(() => {
@@ -54,62 +56,37 @@ export function Globe3D({ onPick, onShowContributions }: Globe3DProps) {
     };
   }, []);
 
-  // Handle responsive sizing
+  // Optimized dimension handling with direct container reference
   useEffect(() => {
-    const updateDimensions = () => {
-      // Get the container dimensions or fall back to viewport
-      const container = document.querySelector('.globe-container');
-      if (container) {
-        const rect = container.getBoundingClientRect();
+    if (containerRef.current) {
+      const updateDimensions = () => {
+        const rect = containerRef.current!.getBoundingClientRect();
         setDimensions({
           width: rect.width,
           height: rect.height
         });
-      } else {
-        // Fallback to viewport dimensions
-        setDimensions({
-          width: window.innerWidth,
-          height: window.innerHeight
-        });
-      }
-    };
-
-    // Set initial dimensions
-    updateDimensions();
-
-    // Add resize listener
-    window.addEventListener('resize', updateDimensions);
-    
-    // Use ResizeObserver for more accurate container size changes
-    const container = document.querySelector('.globe-container');
-    if (container) {
-      const resizeObserver = new ResizeObserver(updateDimensions);
-      resizeObserver.observe(container);
-      
-      // Cleanup
-      return () => {
-        window.removeEventListener('resize', updateDimensions);
-        resizeObserver.disconnect();
       };
+
+      // Set initial dimensions immediately
+      updateDimensions();
+
+      // Use ResizeObserver for efficient size changes
+      const resizeObserver = new ResizeObserver(updateDimensions);
+      resizeObserver.observe(containerRef.current);
+      
+      return () => resizeObserver.disconnect();
     }
-    
-    // Cleanup
-    return () => window.removeEventListener('resize', updateDimensions);
   }, []);
 
   // Real 3D globe using Three.js via react-globe.gl with NASA Blue Marble textures
   const markers = useMemo(() => PROJECTS.map(p => ({ lat: p.lat, lng: p.lon, project: p })), []);
 
-  
-
-
-
   // Set initial position when globe is ready
   useEffect(() => {
-    if (globeRef.current) {
+    if (globeRef.current && dimensions.width > 0) {
       globeRef.current.pointOfView(randomStartPosition, 0);
     }
-  }, [globeRef, randomStartPosition]);
+  }, [globeRef, randomStartPosition, dimensions.width]);
 
   const makeMarker = (d: any) => {
     const el = document.createElement('div');
@@ -226,7 +203,7 @@ export function Globe3D({ onPick, onShowContributions }: Globe3DProps) {
   };
 
   return (
-    <div className="globe-container w-full h-full flex flex-col relative bg-black">
+    <div className="globe-container w-full h-full flex flex-col relative bg-black overflow-hidden" ref={containerRef}>
       {/* Custom CSS for star animations and full viewport */}
       <style dangerouslySetInnerHTML={{
         __html: `
@@ -277,7 +254,7 @@ export function Globe3D({ onPick, onShowContributions }: Globe3DProps) {
             }
           }
           
-          /* Ensure full viewport coverage */
+          /* Ensure full viewport coverage and prevent scrolling */
           .globe-container {
             height: 100% !important;
             width: 100% !important;
@@ -285,12 +262,35 @@ export function Globe3D({ onPick, onShowContributions }: Globe3DProps) {
             top: 0 !important;
             left: 0 !important;
             z-index: 10 !important;
+            overflow: hidden !important;
           }
           
           /* Ensure globe takes full container */
           .globe-container > div:last-child {
             height: 100% !important;
             width: 100% !important;
+          }
+          
+          /* Optimize for fast rendering */
+          .globe-container canvas {
+            width: 100% !important;
+            height: 100% !important;
+            display: block !important;
+          }
+          
+          /* Ensure globe is perfectly centered */
+          .globe-container > div:last-child {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            height: 100% !important;
+            width: 100% !important;
+          }
+          
+          /* Prevent any scrolling within globe */
+          .globe-container * {
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: none;
           }
         `
       }} />
@@ -408,12 +408,45 @@ export function Globe3D({ onPick, onShowContributions }: Globe3DProps) {
         </div>
       </div>
 
-      {/* Bottom Action Buttons */}
+      {/* Sticky full-width action/footer area */}
+      <div className="sticky bottom-0 z-40 w-screen -ml-[50vw] -mr-[50vw] ml-[50vw]">
+        <div className="relative">
+          {/* Background Gradient (under the button, full width) */}
+          <div className="absolute inset-0 h-24 bg-gradient-to-t from-green-100 via-green-100/70 to-transparent pointer-events-none"></div>
+
+                      {/* CTA Button (on top of gradient) */}
+            <div className="pb-6 relative z-20">
+            <button
+              onClick={() => onShowContributions()}
+              className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-leaf w-5 h-5 inline mr-2"
+              >
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+              </svg>
+              Contribute to protection
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Action Buttons - At bottom of screen */}
       <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center z-[40]">
         {/* Explore Projects Button - Bottom Left */}
         <button
           onClick={() => {
-            onShowContributions();
+            onShowProjectsList();
           }}
           className="w-12 h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50"
           title="Explore Projects"
@@ -434,22 +467,30 @@ export function Globe3D({ onPick, onShowContributions }: Globe3DProps) {
       </div>
 
       {/* Globe container - Takes full height and centers the globe */}
-      <div className="h-full relative flex items-center justify-center">
-        <GlobeGL 
-          ref={globeRef}
-          backgroundColor="#00000000" 
-          globeImageUrl="https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
-          bumpImageUrl="https://unpkg.com/three-globe/example/img/earth-topology.png"
-          showAtmosphere
-          atmosphereColor="#60a5fa"
-          atmosphereAltitude={0.15}
-          htmlElementsData={markers}
-          htmlLat={(d: any) => d.lat}
-          htmlLng={(d: any) => d.lng}
-          htmlElement={makeMarker}
-          width={dimensions.width}
-          height={dimensions.height}
-        />
+      <div className="h-full relative flex items-center justify-center overflow-hidden" ref={containerRef} style={{ alignItems: 'center', justifyContent: 'center', marginTop: '16px' }}>
+        {dimensions.width > 0 && dimensions.height > 0 ? (
+          <GlobeGL 
+            ref={globeRef}
+            backgroundColor="#00000000" 
+            globeImageUrl="https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+            bumpImageUrl="https://unpkg.com/three-globe/example/img/earth-topology.png"
+            showAtmosphere
+            atmosphereColor="#60a5fa"
+            atmosphereAltitude={0.15}
+            htmlElementsData={markers}
+            htmlLat={(d: any) => d.lat}
+            htmlLng={(d: any) => d.lng}
+            htmlElement={makeMarker}
+            width={dimensions.width}
+            height={dimensions.height}
+            enablePointerInteraction={true}
+          />
+        ) : (
+          <div className="text-white text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+            <div>Loading globe...</div>
+          </div>
+        )}
       </div>
     </div>
   );

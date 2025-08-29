@@ -234,12 +234,16 @@ export default function ReserveMobileApp() {
           />
         )
       ) : !activeProject ? (
-        <div className="w-full">
+        <div className="w-full h-full">
           <Globe3D 
             onPick={openProject} 
             onShowContributions={() => {
               navigateTo('home');
               setShowHome(true);
+            }}
+            onShowProjectsList={() => {
+              navigateTo('projects-list');
+              setShowProjectsList(true);
             }}
             onShowAccount={() => {
               navigateTo('settings', { page: 'main' });

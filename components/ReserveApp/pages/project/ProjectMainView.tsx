@@ -365,7 +365,7 @@ export function ProjectMainView({
         {/* Back Button */}
         <button
           onClick={onBack}
-          className="absolute top-4 left-4 w-9 h-9 md:w-11 md:h-11 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[40]"
+          className="absolute top-4 left-4 w-10 h-10 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[40]"
         >
           <ArrowLeft className="h-4 w-4 md:w-5 md:h-5" />
         </button>
@@ -373,7 +373,7 @@ export function ProjectMainView({
         {/* Home Button - positioned top right */}
         <button
           onClick={onShowContributions}
-          className="absolute top-4 right-4 w-9 h-9 md:w-11 md:h-11 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[40]"
+          className="absolute top-4 right-4 w-10 h-10 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[40]"
         >
           <Home className="h-4 w-4 md:w-5 md:h-5" />
         </button>
@@ -421,20 +421,20 @@ export function ProjectMainView({
               
               {/* Progress Details */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mt-4">
-                <div className="text-center p-3 md:p-4 bg-green-50 rounded-xl border border-green-200">
-                  <div className="text-xl md:text-2xl lg:text-3xl font-bold text-green-700 mb-1">
-                    <span className="text-sm md:text-base lg:text-lg">€</span>{formatNumber(animatedValues.euros)}
+                <div className="text-center p-2 md:p-3 bg-green-50 rounded-xl border border-green-200">
+                  <div className="text-lg md:text-xl font-bold text-green-700 mb-1">
+                    <span className="text-sm">€</span>{formatNumber(animatedValues.euros)}
                   </div>
-                  <div className="text-xs md:text-sm text-green-600 mb-1">{t('projectPage.raised')}</div>
-                  <div className="text-xs md:text-sm text-gray-500 break-words">{t('projectPage.goal')}: €{formatNumber(totalFunding)}</div>
+                  <div className="text-xs text-green-600 mb-1">{t('projectPage.raised')}</div>
+                  <div className="text-xs text-gray-500 break-words">{t('projectPage.goal')}: €{formatNumber(totalFunding)}</div>
                 </div>
               
-                <div className="text-center p-3 md:p-4 bg-blue-50 rounded-xl border border-blue-200">
-                  <div className="text-xl md:text-2xl lg:text-3xl font-bold text-blue-700 mb-1">
-                    {formatNumber(animatedValues.m2)}<span className="text-sm md:text-base lg:text-lg"> m²</span>
+                <div className="text-center p-2 md:p-3 bg-blue-50 rounded-xl border border-blue-200">
+                  <div className="text-lg md:text-xl font-bold text-blue-700 mb-1">
+                    {formatNumber(animatedValues.m2)}<span className="text-sm"> m²</span>
                   </div>
-                  <div className="text-xs md:text-sm text-blue-600 mb-1">{t('projectPage.protected')}</div>
-                  <div className="text-xs md:text-sm text-gray-500 break-words">{t('projectPage.total')}: {formatNumber(totalArea)} m²</div>
+                  <div className="text-xs text-blue-600 mb-1">{t('projectPage.protected')}</div>
+                  <div className="text-xs text-gray-500 break-words">{t('projectPage.total')}: {formatNumber(totalArea)} m²</div>
                 </div>
               </div>
             </div>
@@ -468,20 +468,20 @@ export function ProjectMainView({
 
           {/* Impact Stats */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
-            <div className="text-center p-3 md:p-4 lg:p-6 bg-white rounded-xl shadow-sm">
-              <Leaf className="w-6 h-6 md:w-8 md:h-8 text-green-600 mx-auto mb-2" />
-              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-green-700">{project.impact.biodiversity}%</div>
-              <div className="text-xs md:text-sm text-gray-600 whitespace-nowrap">{t('impact.biodiversity')}</div>
+            <div className="text-center p-2 md:p-3 bg-white rounded-xl shadow-sm">
+              <Leaf className="w-5 h-5 md:w-6 md:h-6 text-green-600 mx-auto mb-1" />
+              <div className="text-lg md:text-xl font-bold text-green-700 mb-1">{project.impact.biodiversity}%</div>
+              <div className="text-xs text-gray-600 whitespace-nowrap">{t('impact.biodiversity')}</div>
             </div>
-            <div className="text-center p-3 md:p-4 lg:p-6 bg-white rounded-xl shadow-sm">
-              <TrendingUp className="w-6 h-6 md:w-8 md:h-8 text-blue-600 mx-auto mb-2" />
-              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-blue-700">{project.impact.carbon}%</div>
-              <div className="text-xs md:text-sm text-gray-600 whitespace-nowrap">{t('impact.carbon')}</div>
+            <div className="text-center p-2 md:p-3 bg-white rounded-xl shadow-sm">
+              <TrendingUp className="w-5 h-5 md:w-6 md:h-6 text-blue-600 mx-auto mb-1" />
+              <div className="text-lg md:text-xl font-bold text-blue-700 mb-1">{project.impact.carbon}%</div>
+              <div className="text-xs text-gray-600 whitespace-nowrap">{t('impact.carbon')}</div>
             </div>
-            <div className="text-center p-3 md:p-4 lg:p-6 bg-white rounded-xl shadow-sm">
-              <Users className="w-6 h-6 md:w-8 md:h-8 text-purple-600 mx-auto mb-2" />
-              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-purple-700">{project.impact.community}%</div>
-              <div className="text-xs md:text-sm text-gray-600 whitespace-nowrap">{t('impact.community')}</div>
+            <div className="text-center p-2 md:p-3 bg-white rounded-xl shadow-sm">
+              <Users className="w-5 h-5 md:w-6 md:h-6 text-purple-600 mx-auto mb-1" />
+              <div className="text-lg md:text-xl font-bold text-purple-700 mb-1">{project.impact.community}%</div>
+              <div className="text-xs text-gray-600 whitespace-nowrap">{t('impact.community')}</div>
             </div>
           </div>
 
@@ -496,37 +496,33 @@ export function ProjectMainView({
             <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-3 md:p-4 lg:p-6 border border-blue-200">
               <h4 className="font-semibold text-blue-900 mb-2 text-base md:text-lg">{t('projectPage.whyThisMatters')}</h4>
               <ul className="text-xs md:text-sm text-blue-800 space-y-1 list-disc pl-5">
-                <li>{t('projectPage.protectsEndangeredSpecies')}</li>
-                <li>{t('projectPage.absorbsCO2', { cars: Math.floor(hectares * 0.8) })}</li>
-                <li>{t('projectPage.createsSustainableJobs')}</li>
-                <li>{t('projectPage.preservesNaturalSources')}</li>
+                <li>Protects {Math.floor(hectares * 0.15)}+ endangered species and their habitats</li>
+                <li>Absorbs CO2 equivalent to {Math.floor(hectares * 0.8)} cars annually</li>
+                <li>Creates {Math.floor(hectares * 0.02)} sustainable jobs for local communities</li>
+                <li>Preserves {Math.floor(hectares * 0.3)} natural water sources and soil quality</li>
               </ul>
             </div>
           </div>
 
-          {/* Extra spacing to separate from contribute button */}
-          <div className="h-4 md:h-6 lg:h-8"></div>
 
-          {/* Single Contribute Button - Sticky within mockup */}
-          <div className="sticky bottom-6 left-4 right-4 z-30 md:left-6 md:right-6 lg:left-8 lg:right-8">
-            <button 
-              className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200"
-              onClick={onSelectArea}
-            >
-              <Leaf className="w-5 h-5 inline mr-2" />
-              <span className="break-words">{t('projectPage.contributeToProtection')}</span>
-            </button>
+
+          {/* Combined sticky container with gradient background and contribute button */}
+          <div className="sticky bottom-0 left-0 right-0 z-30">
+            <div className="relative">
+              <div className="h-20 bg-gradient-to-t from-[#d4fae6] via-[#d4fae6]/80 to-transparent absolute bottom-0 left-0 right-0 z-10 pointer-events-none"></div>
+              <div className="pt-4 pb-4 relative z-20">
+                <button 
+                  className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200"
+                  onClick={onSelectArea}
+                >
+                  <Leaf className="w-5 h-5 inline mr-2" />
+                  <span className="break-words">{t('projectPage.contributeToProtection')}</span>
+                </button>
+              </div>
+            </div>
           </div>
 
-          {/* Bottom spacing for proper layout */}
-          <div className="h-6"></div>
-
         </div>
-      </div>
-
-      {/* Green gradient overlay for contribute button visibility - positioned under the button */}
-      <div className="sticky bottom-0 left-0 right-0 z-20">
-        <div className="h-20 bg-gradient-to-t from-[#d4fae6] via-[#d4fae6]/80 to-transparent"></div>
       </div>
 
 

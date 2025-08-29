@@ -191,9 +191,10 @@ export default function ReserveMobileApp() {
         <ProtectedAreaPage
           project={activeProject}
           onBack={() => {
-            // Return to projects list with preserved filters instead of going back to globe
+            // Return to globe view when going back from a project
             setActiveProject(null);
-            setShowProjectsList(true);
+            setShowProjectsList(false);
+            setShowHome(false);
           }}
           onShowContributions={() => setShowHome(true)}
         />

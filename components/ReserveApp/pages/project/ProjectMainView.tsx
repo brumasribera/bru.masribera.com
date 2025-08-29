@@ -365,17 +365,17 @@ export function ProjectMainView({
         {/* Back Button */}
         <button
           onClick={onBack}
-          className="absolute top-4 left-4 w-10 h-10 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[40]"
+          className="absolute top-4 left-4 w-12 h-12 bg-white/95 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 backdrop-blur-sm border border-gray-200/50 z-[40]"
         >
-          <ArrowLeft className="h-4 w-4 md:w-5 md:h-5" />
+          <ArrowLeft className="h-5 w-5" />
         </button>
          
         {/* Home Button - positioned top right */}
         <button
           onClick={onShowContributions}
-          className="absolute top-4 right-4 w-10 h-10 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 z-[40]"
+          className="absolute top-4 right-4 w-12 h-12 bg-white/95 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 backdrop-blur-sm border border-gray-200/50 z-[40]"
         >
-          <Home className="h-4 w-4 md:w-5 md:h-5" />
+          <Home className="h-5 w-5" />
         </button>
         
         {/* Center Content */}
@@ -457,9 +457,9 @@ export function ProjectMainView({
             {/* Full Screen Button - positioned top left */}
             <button
               onClick={() => setIsFullScreen(true)}
-              className="absolute top-4 left-4 w-10 h-10 md:w-12 md:h-12 bg-white/95 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50"
+              className="absolute top-4 left-4 w-12 h-12 bg-white/95 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 backdrop-blur-sm border border-gray-200/50"
             >
-              <Maximize2 className="h-5 w-5 md:w-6 md:h-6" />
+              <Maximize2 className="h-5 w-5" />
             </button>
             
             {/* Scale Bar - positioned bottom left */}
@@ -512,10 +512,10 @@ export function ProjectMainView({
               <div className="h-20 bg-gradient-to-t from-[#d4fae6] via-[#d4fae6]/80 to-transparent absolute bottom-0 left-0 right-0 z-10 pointer-events-none"></div>
               <div className="pt-4 pb-4 relative z-20">
                 <button 
-                  className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200"
+                  className="w-full h-12 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200 flex items-center justify-center"
                   onClick={onSelectArea}
                 >
-                  <Leaf className="w-5 h-5 inline mr-2" />
+                  <Leaf className="w-5 h-5 mr-2" />
                   <span className="break-words">{t('projectPage.contributeToProtection')}</span>
                 </button>
               </div>
@@ -539,10 +539,10 @@ export function ProjectMainView({
           {/* Minimize Button */}
           <button
             onClick={() => setIsFullScreen(false)}
-            className="absolute top-4 left-4 w-10 h-10 md:w-12 md:h-12 bg-white/95 hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 border border-gray-200/50 z-10"
+            className="absolute top-4 left-4 w-12 h-12 bg-white/95 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 backdrop-blur-sm border border-gray-200/50 z-10"
             aria-label="Exit fullscreen"
           >
-            <Minimize2 className="h-5 w-5 md:w-6 md:h-6" />
+            <Minimize2 className="h-5 w-5" />
           </button>
           
           {/* Scale Bar - positioned bottom left */}

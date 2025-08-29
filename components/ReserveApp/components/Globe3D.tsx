@@ -26,32 +26,25 @@ export function Globe3D({ onPick, onShowContributions, onShowProjectsList }: Glo
   const globeRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   
-  // Generate random starting position on land near the equator
+  // Generate starting position centered on Europe near the equator
   const randomStartPosition = useMemo(() => {
-    // Predefined land-based coordinates near the equator
-    const landPositions = [
-      { lat: 0, lng: 37, altitude: 2.5 },      // Kenya, Africa
-      { lat: 0, lng: 78, altitude: 2.5 },      // Ecuador, South America
-      { lat: 0, lng: 120, altitude: 2.5 },     // Indonesia, Asia
-      { lat: 0, lng: -79, altitude: 2.5 },     // Colombia, South America
-      { lat: 0, lng: -9, altitude: 2.5 },      // Guinea, Africa
-      { lat: 0, lng: 15, altitude: 2.5 },      // Cameroon, Africa
-      { lat: 0, lng: 100, altitude: 2.5 },     // Thailand, Asia
-      { lat: 0, lng: 110, altitude: 2.5 },     // Borneo, Asia
-      { lat: 0, lng: -60, altitude: 2.5 },     // Venezuela, South America
-      { lat: 0, lng: 30, altitude: 2.5 },      // Uganda, Africa
-      { lat: 0, lng: 80, altitude: 2.5 },      // India, Asia
-      { lat: 0, lng: -70, altitude: 2.5 },     // Peru, South America
+    // Europe-focused coordinates near the equator
+    const europePositions = [
+      { lat: 0, lng: 15, altitude: 2.5 },      // Cameroon, Africa (closest to Europe)
       { lat: 0, lng: 10, altitude: 2.5 },      // Nigeria, Africa
-      { lat: 0, lng: 90, altitude: 2.5 },      // Bangladesh, Asia
-      { lat: 0, lng: -50, altitude: 2.5 },     // Brazil, South America
+      { lat: 0, lng: 20, altitude: 2.5 },      // Chad, Africa
+      { lat: 0, lng: 25, altitude: 2.5 },      // Sudan, Africa
+      { lat: 0, lng: 30, altitude: 2.5 },      // Uganda, Africa
+      { lat: 0, lng: 35, altitude: 2.5 },      // Kenya, Africa
+      { lat: 0, lng: 40, altitude: 2.5 },      // Somalia, Africa
+      { lat: 0, lng: 45, altitude: 2.5 },      // Yemen, Asia
     ];
     
-    // Add some variation in latitude (±15 degrees from equator)
-    const basePosition = landPositions[Math.floor(Math.random() * landPositions.length)];
+    // Add some variation in latitude (±10 degrees from equator) and longitude (±15 degrees)
+    const basePosition = europePositions[Math.floor(Math.random() * europePositions.length)];
     return {
-      lat: basePosition.lat + (Math.random() - 0.5) * 30,
-      lng: basePosition.lng + (Math.random() - 0.5) * 20,
+      lat: basePosition.lat + (Math.random() - 0.5) * 20,
+      lng: basePosition.lng + (Math.random() - 0.5) * 30,
       altitude: 2.5
     };
   }, []);
@@ -87,6 +80,28 @@ export function Globe3D({ onPick, onShowContributions, onShowProjectsList }: Glo
       globeRef.current.pointOfView(randomStartPosition, 0);
     }
   }, [globeRef, randomStartPosition, dimensions.width]);
+
+  // Auto-spinning effect for the globe
+  useEffect(() => {
+    let animationFrameId: number;
+    const ROTATION_SPEED = 0.1; // degrees per frame, tweak for faster/slower spin
+
+    const animate = () => {
+      if (globeRef.current) {
+        const currentPOV = globeRef.current.pointOfView();
+        globeRef.current.pointOfView({
+          lat: currentPOV.lat,
+          lng: currentPOV.lng + ROTATION_SPEED,
+          altitude: currentPOV.altitude
+        }, 0); // 0 ms = instant
+      }
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
 
   const makeMarker = (d: any) => {
     const el = document.createElement('div');

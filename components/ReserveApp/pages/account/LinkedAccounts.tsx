@@ -60,36 +60,36 @@ export function LinkedAccounts({ onBack }: LinkedAccountsProps) {
       description: "Connect your bank and payment apps for automatic roundup contributions",
       icon: CreditCard,
       accounts: [
-                                   {
-            id: 'my_bank',
-            name: 'My Bank',
-            type: 'bank',
-            description: 'Round up purchases and automatically contribute spare change to nature projects',
-            icon: <Building2 className="w-6 h-6 text-slate-700" />,
-            isConnected: true,
-            connectionDate: '2024-01-18',
-            permissions: ['Read transactions', 'Round up purchases'],
-            benefits: ['Automatic micro-donations', 'Round-up contributions', 'Everyday impact'],
-            dataShared: ['Transaction amounts', 'Roundup amounts'],
-            status: 'active',
-            canAutomate: true,
-            automationEnabled: true,
-            lastSync: '2024-01-19T14:30:00Z'
-          },
-                 {
-           id: 'paypal',
-           name: 'PayPal',
-           type: 'fintech',
-           description: 'Enable one-click environmental contributions and roundup donations',
-           icon: '/components/ReserveApp/assets/logos/financial/paypal-logo.png',
-           isConnected: true,
-           connectionDate: '2024-01-12',
-           permissions: ['Process payments', 'Round up purchases'],
-           benefits: ['Quick contributions', 'Roundup donations', 'Secure payments'],
-           dataShared: ['Payment confirmations', 'Roundup amounts'],
-           status: 'active',
-           lastSync: '2024-01-19T11:15:00Z'
-         }
+                                                                                                                                               {
+              id: 'my_bank',
+              name: 'My Bank',
+              type: 'bank',
+              description: 'Round up purchases and automatically contribute spare change to nature projects',
+              icon: <Building2 className="w-6 h-6 text-slate-700" />,
+              isConnected: true,
+              connectionDate: '2024-01-18',
+              permissions: ['Read transactions', 'Round up purchases'],
+              benefits: ['Automatic micro-donations', 'Round-up contributions', 'Everyday impact'],
+              dataShared: ['Transaction amounts', 'Roundup amounts'],
+              status: 'active',
+              canAutomate: true,
+              automationEnabled: true,
+              lastSync: '2024-01-19T14:30:00Z'
+            },
+                                                                       {
+             id: 'paypal',
+             name: 'PayPal',
+             type: 'fintech',
+             description: 'Enable one-click environmental contributions and roundup donations',
+             icon: '/components/ReserveApp/assets/logos/financial/paypal-logo.png',
+             isConnected: true,
+             connectionDate: '2024-01-12',
+             permissions: ['Process payments', 'Round up purchases'],
+             benefits: ['Quick contributions', 'Roundup donations', 'Secure payments'],
+             dataShared: ['Payment confirmations', 'Roundup amounts'],
+             status: 'active',
+             lastSync: '2024-01-19T11:15:00Z'
+           }
       ]
     },
     {
@@ -97,22 +97,22 @@ export function LinkedAccounts({ onBack }: LinkedAccountsProps) {
       description: "Connect with essential conservation and restoration platforms",
       icon: Leaf,
       accounts: [
-                 {
-           id: 'restor_eco',
-           name: 'Restor.eco',
-           type: 'sustainability',
-           description: 'Track global restoration projects and conservation impact',
-           icon: '/components/ReserveApp/assets/logos/conservation/restor-eco-favicon.ico',
-           isConnected: true,
-           connectionDate: '2024-01-15',
-           permissions: ['Access restoration data', 'View project progress'],
-           benefits: ['Global restoration tracking', 'Scientific validation', 'Impact measurement'],
-           dataShared: ['Restoration contributions', 'Project locations'],
-           status: 'active',
-           canAutomate: true,
-           automationEnabled: true,
-           lastSync: '2024-01-19T08:30:00Z'
-         },
+                                                                       {
+             id: 'restor_eco',
+             name: 'Restor.eco',
+             type: 'sustainability',
+             description: 'Track global restoration projects and conservation impact',
+             icon: '/components/ReserveApp/assets/logos/conservation/restor-eco-favicon.ico',
+             isConnected: true,
+             connectionDate: '2024-01-15',
+             permissions: ['Access restoration data', 'View project progress'],
+             benefits: ['Global restoration tracking', 'Scientific validation', 'Impact measurement'],
+             dataShared: ['Restoration contributions', 'Project locations'],
+             status: 'active',
+             canAutomate: true,
+             automationEnabled: true,
+             lastSync: '2024-01-19T08:30:00Z'
+           },
                  {
            id: 'one_tree_planted',
            name: 'One Tree Planted',
@@ -125,18 +125,18 @@ export function LinkedAccounts({ onBack }: LinkedAccountsProps) {
            dataShared: ['Donation history', 'Project preferences', 'Geographic interests'],
            status: 'disconnected'
          },
-                 {
-           id: 'wwf',
-           name: 'World Wildlife Fund',
-           type: 'sustainability',
-           description: 'Support wildlife conservation and habitat protection',
-           icon: '/components/ReserveApp/assets/logos/organizations/wwf.jpg',
-           isConnected: false,
-           permissions: ['Conservation projects', 'Species tracking', 'Habitat monitoring'],
-           benefits: ['Wildlife protection', 'Habitat conservation', 'Species monitoring'],
-           dataShared: ['Conservation interests', 'Species preferences', 'Project support'],
-           status: 'disconnected'
-         },
+                                                                       {
+             id: 'wwf',
+             name: 'World Wildlife Fund',
+             type: 'sustainability',
+             description: 'Support wildlife conservation and habitat protection',
+             icon: '/components/ReserveApp/assets/logos/conservation/wwf.jpg',
+             isConnected: false,
+             permissions: ['Conservation projects', 'Species tracking', 'Habitat monitoring'],
+             benefits: ['Wildlife protection', 'Habitat conservation', 'Species monitoring'],
+             dataShared: ['Conservation interests', 'Species preferences', 'Project support'],
+             status: 'disconnected'
+           },
                  {
            id: 'global_forest_watch',
            name: 'Global Forest Watch',
@@ -313,15 +313,9 @@ export function LinkedAccounts({ onBack }: LinkedAccountsProps) {
                        )}
                      </div>
                                           <div className="flex-1 min-w-0">
-                       <div className="flex items-center gap-2 mb-1">
-                         <h4 className="text-sm font-medium text-gray-900">{account.name}</h4>
-                         {account.isConnected && (
-                           <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium border ${getStatusColor(account.status)}`}>
-                             {getStatusIcon(account.status)}
-                             {account.status.charAt(0).toUpperCase() + account.status.slice(1)}
-                           </span>
-                         )}
-                       </div>
+                                               <div className="flex items-center gap-2 mb-1">
+                          <h4 className="text-sm font-medium text-gray-900">{account.name}</h4>
+                        </div>
                       <p className="text-xs text-gray-600 mb-2">{account.description}</p>
                       
                       

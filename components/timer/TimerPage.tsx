@@ -14,6 +14,13 @@ function TimerPage() {
   const [isCompleted, setIsCompleted] = useState(false)
   const [timerVersion, setTimerVersion] = useState('v1.1.9')
   const [timerReleaseDate, setTimerReleaseDate] = useState('28 Thursday August 16:59')
+  
+  // Use absolute timestamps for accurate timing
+  const startTimeRef = useRef<number | null>(null)
+  const endTimeRef = useRef<number | null>(null)
+  const gongScheduleRef = useRef<{ [key: string]: number }>({})
+  const lastGongCheckRef = useRef<number>(0)
+  
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
   const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({})
   const wasOtherAudioPlayingRef = useRef(false)
@@ -547,6 +554,20 @@ function TimerPage() {
       if (!document.hidden) {
         // App became visible again, resume interrupted audio
         resumeInterruptedAudio();
+        
+        // Update timer immediately when app becomes visible to ensure accuracy
+        if (isRunning && startTimeRef.current && endTimeRef.current) {
+          const now = Date.now()
+          const remaining = Math.max(0, Math.ceil((endTimeRef.current - now) / 1000))
+          setTimeLeft(remaining)
+          
+          // Check if timer completed while in background
+          if (remaining === 0 && !isCompleted) {
+            setIsCompleted(true)
+            setIsRunning(false)
+            playGong('end')
+          }
+        }
       }
     };
 
@@ -557,7 +578,7 @@ function TimerPage() {
       window.removeEventListener('focus', handleFocus);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
-  }, [resumeInterruptedAudio])
+  }, [resumeInterruptedAudio, isRunning, isCompleted])
 
   // Play gong sound with audio session management
   const playGong = (type: keyof typeof GONG_SOUNDS) => {
@@ -608,30 +629,30 @@ function TimerPage() {
     }
   }
 
-  // Timer logic
+  // Timestamp-based timer logic for accurate timing on mobile
   useEffect(() => {
-    if (isRunning && timeLeft > 0) {
+    if (isRunning && startTimeRef.current && endTimeRef.current) {
+      // Use a more frequent interval for smooth updates
       intervalRef.current = setInterval(() => {
-        setTimeLeft(prev => {
-          const newTime = prev - 1
-          
-          // Play minute gong every minute
-          if (newTime > 0 && newTime % 60 === 0) {
-            playGong('minute')
-          }
-          
-          // Play middle gong at 4 minutes (middle point)
-          if (newTime === 4 * 60) {
-            playGong('middle')
-          }
-          
-          return newTime
-        })
-      }, 1000)
+        const now = Date.now()
+        const remaining = Math.max(0, Math.ceil((endTimeRef.current! - now) / 1000))
+        
+        setTimeLeft(remaining)
+        
+        // Check for gongs based on absolute time
+        checkAndPlayGongs(remaining)
+        
+        // Check if timer completed
+        if (remaining === 0 && !isCompleted) {
+          setIsCompleted(true)
+          setIsRunning(false)
+          playGong('end')
+        }
+      }, 100) // Check every 100ms for smoother countdown
     } else if (timeLeft === 0 && !isCompleted) {
       setIsCompleted(true)
       setIsRunning(false)
-      playGong('end') // Play end gong when timer completes
+      playGong('end')
     }
 
     return () => {
@@ -641,10 +662,51 @@ function TimerPage() {
     }
   }, [isRunning, timeLeft, isCompleted])
 
+  // Check and play gongs based on absolute time
+  const checkAndPlayGongs = useCallback((remainingSeconds: number) => {
+    const now = Date.now()
+    
+    // Only check gongs every 500ms to avoid spam
+    if (now - lastGongCheckRef.current < 500) return
+    
+    lastGongCheckRef.current = now
+    
+    // Check specific minute gongs (7, 6, 5, 3, 2 minutes)
+    const specificMinutes = [7 * 60, 6 * 60, 5 * 60, 3 * 60, 2 * 60]
+    if (specificMinutes.includes(remainingSeconds)) {
+      const gongKey = `minute_${remainingSeconds}`
+      if (!gongScheduleRef.current[gongKey]) {
+        gongScheduleRef.current[gongKey] = now
+        playGong('minute')
+      }
+    }
+    
+    // Check middle gong at 4 minutes
+    if (remainingSeconds === 4 * 60) {
+      const gongKey = 'middle_4min'
+      if (!gongScheduleRef.current[gongKey]) {
+        gongScheduleRef.current[gongKey] = now
+        playGong('middle')
+      }
+    }
+  }, [])
+
   const startTimer = () => {
     if (timeLeft === 0) return
+    
+    const now = Date.now()
+    const duration = timeLeft * 1000 // Convert seconds to milliseconds
+    
+    startTimeRef.current = now
+    endTimeRef.current = now + duration
+    
+    // Clear previous gong schedule
+    gongScheduleRef.current = {}
+    lastGongCheckRef.current = 0
+    
     setIsRunning(true)
     setIsCompleted(false)
+    
     if (timeLeft === 8 * 60) {
       playGong('start') // Play start gong when starting fresh
     }
@@ -652,6 +714,9 @@ function TimerPage() {
 
   const stopTimer = () => {
     setIsRunning(false)
+    startTimeRef.current = null
+    endTimeRef.current = null
+    
     if (intervalRef.current) {
       clearInterval(intervalRef.current)
     }
@@ -662,6 +727,10 @@ function TimerPage() {
     setTimeLeft(8 * 60)
     setIsCompleted(false)
     setIsRunning(false)
+    
+    // Clear gong schedule
+    gongScheduleRef.current = {}
+    lastGongCheckRef.current = 0
   }
 
   const formatTime = (seconds: number) => {

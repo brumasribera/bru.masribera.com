@@ -158,7 +158,7 @@ export function ReservePage() {
 					{/* Phone mockup - Only visible on screens 500px and wider */}
 					<div className="hidden min-[500px]:block">
 						<div className="flex items-center justify-center">
-							<div className="relative w-[380px] h-[700px] rounded-3xl shadow-[0_25px_80px_rgba(0,0,0,0.35)] bg-white dark:bg-gray-900">
+							<div className="relative w-[330px] h-[600px] rounded-3xl shadow-[0_25px_80px_rgba(0,0,0,0.35)] bg-white dark:bg-gray-900">
 								{/* Screen */}
 								<div className="relative h-full rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-700">
 									<ReserveMobileApp />

@@ -16,10 +16,10 @@ export function AnimatedGradientTitle({
   alternateText = ''
 }: AnimatedGradientTitleProps) {
   const sizeClasses = {
-    sm: 'text-2xl',
-    md: 'text-3xl sm:text-4xl',
-    lg: 'text-4xl sm:text-5xl lg:text-6xl',
-    xl: 'text-5xl sm:text-6xl lg:text-7xl xl:text-8xl'
+    sm: 'text-xl max-[400px]:text-lg',
+    md: 'text-2xl max-[400px]:text-xl sm:text-3xl sm:max-[400px]:text-2xl sm:text-4xl',
+    lg: 'text-3xl max-[400px]:text-2xl sm:text-4xl sm:max-[400px]:text-3xl lg:text-5xl lg:max-[400px]:text-4xl lg:text-6xl',
+    xl: 'text-5xl max-[400px]:text-2xl sm:text-6xl sm:max-[400px]:text-3xl lg:text-7xl lg:max-[400px]:text-4xl xl:text-8xl'
   };
 
   const [hackProgress, setHackProgress] = useState(0);

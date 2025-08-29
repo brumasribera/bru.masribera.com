@@ -11,6 +11,7 @@ export function HeroSection() {
   const [isPaused, setIsPaused] = useState(false)
   const [showScrollHint, setShowScrollHint] = useState(true)
   const [hackText, setHackText] = useState('BRU MAS RIBERA')
+  const [needsTopMargin, setNeedsTopMargin] = useState(false)
 
   // Debug: Log translation status
   useEffect(() => {
@@ -18,6 +19,35 @@ export function HeroSection() {
       // Translation is ready
     }
   }, [i18n.isInitialized])
+
+  // Check if we need top margin for the profile image
+  useEffect(() => {
+    const checkMarginNeeded = () => {
+      const screenHeight = window.innerHeight
+      const isSmallScreen = screenHeight < 800
+      
+      if (isSmallScreen) {
+        // Check if the profile image is too close to the navbar
+        const profileImage = document.querySelector('[data-profile-image]')
+        if (profileImage) {
+          const rect = profileImage.getBoundingClientRect()
+          const navbarHeight = 64 // h-16 from Header component
+          const minDistance = navbarHeight + 16 // navbar height + extra spacing
+          
+          // Only add margin if the image is too close to the navbar
+          setNeedsTopMargin(rect.top < minDistance)
+        }
+      } else {
+        setNeedsTopMargin(false)
+      }
+    }
+
+    // Check on mount and resize
+    checkMarginNeeded()
+    window.addEventListener('resize', checkMarginNeeded)
+    
+    return () => window.removeEventListener('resize', checkMarginNeeded)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -134,7 +164,10 @@ export function HeroSection() {
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto text-center">
         {/* Profile Picture */}
-        <div className="flex justify-center mb-8">
+        <div 
+          className={`flex justify-center mb-8 ${needsTopMargin ? 'mt-20' : ''}`}
+          data-profile-image
+        >
           <Avatar className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-52 lg:h-52 xl:w-56 xl:h-56 2xl:w-[220px] 2xl:h-[220px] border border-gray-200 dark:border-gray-700 shadow-md">
             <AvatarImage src="/profile/profile-original.png" alt="Bru Mas Ribera" className="object-cover" />
           </Avatar>

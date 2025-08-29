@@ -101,7 +101,7 @@ export function SearchBox({ projects, onProjectSelect }: SearchBoxProps) {
 
 
   return (
-    <div ref={searchRef} className="relative w-full max-w-sm">
+    <div ref={searchRef} className="relative w-full">
       {/* Search Input */}
       <div className="relative">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -116,14 +116,7 @@ export function SearchBox({ projects, onProjectSelect }: SearchBoxProps) {
           placeholder={t('searchProjects')}
           className="w-full h-10 md:h-12 pl-10 pr-10 bg-white/90 backdrop-blur-sm border border-gray-200/50 rounded-full text-base text-gray-700 placeholder-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent shadow-md"
         />
-        {searchTerm && (
-          <button
-            onClick={clearSearch}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 hover:text-gray-600 transition-colors"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        )}
+
       </div>
 
       {/* Autocomplete Dropdown */}

@@ -2,6 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Ensure proper scrolling behavior */
+html, body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Ensure the main app container allows proper scrolling */
+#root {
+  overflow-x: hidden;
+}
+
+/* Ensure proper spacing between sections */
+section {
+  overflow: visible;
+  position: relative;
+}
+
+/* Ensure the hero section doesn't take up the full viewport */
+#home {
+  min-height: auto;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+/* Ensure all content is properly visible */
+main, .main-content {
+  overflow: visible;
+}
+
+/* Ensure proper spacing for all sections */
+#about, #experience, #projects, #education, #languages-bar, #contact {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* Ensure footer is properly visible and page can scroll to bottom */
+footer {
+  margin-bottom: 0;
+  position: relative;
+}
+
+/* Ensure the page can scroll to the very bottom */
+html {
+  scroll-padding-bottom: 2rem;
+}
+
 /* Custom animations */
 @keyframes shimmer {
   0% {

@@ -151,7 +151,7 @@ export function HeroSection() {
   }, [isPaused])
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 overflow-hidden">
+    <section id="home" className="relative py-20 flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
       {/* Background Image with soft overlay */}
       <div className="absolute inset-0 z-0">
         <div

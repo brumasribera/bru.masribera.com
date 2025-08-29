@@ -5,7 +5,7 @@ interface AppShellProps {
 
 export function AppShell({ children, showHeader = false }: AppShellProps) {
   return (
-    <div className={`w-full flex flex-col ${showHeader ? 'min-h-screen' : 'h-full'} bg-gradient-to-b from-white to-slate-50`}>
+    <div className="w-full h-full bg-gradient-to-b from-white to-slate-50 overflow-y-auto">
       {/* Desktop app bar - only show when showHeader is true */}
       {showHeader && (
         <header className="hidden lg:block sticky top-0 z-50 border-b bg-white/70 backdrop-blur">
@@ -15,10 +15,9 @@ export function AppShell({ children, showHeader = false }: AppShellProps) {
           </div>
         </header>
       )}
-      <main className={`${showHeader ? 'flex-1' : 'h-full'} relative flex`}>
-        <div className="flex-1 flex items-stretch w-full">
-          {/* Content - allow full height and overflow for scrolling */}
-          <div className="w-full h-full max-w-full overflow-visible">{children}</div>
+      <main className="relative h-full">
+        <div className="w-full h-full">
+          {children}
         </div>
       </main>
     </div>

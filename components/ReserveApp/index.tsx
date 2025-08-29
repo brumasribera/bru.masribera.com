@@ -234,7 +234,7 @@ export default function ReserveMobileApp() {
           />
         )
       ) : !activeProject ? (
-        <div className="w-full h-full">
+        <div className="w-full">
           <Globe3D 
             onPick={openProject} 
             onShowContributions={() => {

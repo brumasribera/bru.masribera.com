@@ -242,7 +242,7 @@ export function HomePage({ onGoToGlobe, onShowProjectsList, onShowSettings, onOp
   }, [contributions, t, onOpenContribution]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-emerald-100 overflow-y-auto">
+    <div className="w-full bg-gradient-to-br from-emerald-50 via-green-50 to-emerald-100">
       {/* Header */}
       <div className="relative h-32 overflow-hidden flex-shrink-0">
         <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-600" />
@@ -291,7 +291,7 @@ export function HomePage({ onGoToGlobe, onShowProjectsList, onShowSettings, onOp
       </div>
 
       {/* Content */}
-      <div className="p-4 space-y-4 pb-28">
+      <div className="p-4 space-y-4 pb-8">
         {/* Impact Stats Grid */}
         <div className="grid grid-cols-2 gap-3">
           {impactStats.map((stat, index) => {
@@ -402,8 +402,6 @@ export function HomePage({ onGoToGlobe, onShowProjectsList, onShowSettings, onOp
           </div>
         </div>
 
-        {/* Additional Content Sections for Scrolling Demo */}
-        
         {/* Conservation Tips Section */}
         <div className="bg-white rounded-2xl p-4 shadow-sm border border-green-100">
           <h3 className="text-lg font-semibold text-gray-900 mb-3">Conservation Tips</h3>
@@ -455,28 +453,85 @@ export function HomePage({ onGoToGlobe, onShowProjectsList, onShowSettings, onOp
           </div>
         </div>
 
-        {/* Prominent Scroll Indicator - Show there's more content */}
-        <div className="text-center py-4 bg-gradient-to-r from-green-100 to-emerald-100 rounded-2xl border border-green-200">
-          <div className="inline-flex items-center gap-3 text-green-700 text-sm font-medium">
-            <span className="text-lg">↓</span>
-            <span>Scroll down to see more content</span>
-            <span className="text-lg">↓</span>
+        {/* Achievement Badges */}
+        <div className="bg-white rounded-2xl p-4 shadow-sm border border-green-100">
+          <h3 className="text-lg font-semibold text-gray-900 mb-3">Your Achievements</h3>
+          <div className="grid grid-cols-3 gap-3">
+            <div className="text-center p-3 bg-yellow-50 rounded-xl border border-yellow-200">
+              <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                <span className="text-2xl">⭐</span>
+              </div>
+              <div className="text-xs text-yellow-700 font-medium">First Step</div>
+            </div>
+            <div className="text-center p-3 bg-green-50 rounded-xl border border-green-200">
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                <span className="text-2xl">🎯</span>
+              </div>
+              <div className="text-xs text-green-700 font-medium">Goal Setter</div>
+            </div>
+            <div className="text-center p-3 bg-blue-50 rounded-xl border border-blue-200">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                <span className="text-2xl">⚡</span>
+              </div>
+              <div className="text-xs text-blue-700 font-medium">Active</div>
+            </div>
           </div>
         </div>
 
-        {/* Back to Projects Button - Bottom of Scrollable Content */}
-        <div className="text-center py-4">
-          <button 
-            onClick={onShowProjectsList}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-full text-sm font-medium transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
-          >
-            <span>←</span>
-            <span>Back to all projects</span>
-          </button>
+        {/* Monthly Progress */}
+        <div className="bg-white rounded-2xl p-4 shadow-sm border border-green-100">
+          <h3 className="text-lg font-semibold text-gray-900 mb-3">Monthly Progress</h3>
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <span className="text-sm text-gray-600">January</span>
+              <div className="flex items-center gap-2">
+                <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="h-full bg-green-500 rounded-full" style={{ width: '75%' }}></div>
+                </div>
+                <span className="text-xs text-gray-500">75%</span>
+              </div>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-sm text-gray-600">February</span>
+              <div className="flex items-center gap-2">
+                <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="h-full bg-green-500 rounded-full" style={{ width: '90%' }}></div>
+                </div>
+                <span className="text-xs text-gray-500">90%</span>
+              </div>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-sm text-gray-600">March</span>
+              <div className="flex items-center gap-2">
+                <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="h-full bg-green-500 rounded-full" style={{ width: '60%' }}></div>
+                </div>
+                <span className="text-xs text-gray-500">60%</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Final Spacer to ensure bottom content is visible */}
-        <div className="h-16"></div>
+        {/* Global Impact Stats */}
+        <div className="bg-white rounded-2xl p-4 shadow-sm border border-green-100">
+          <h3 className="text-lg font-semibold text-gray-900 mb-3">Global Impact</h3>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="text-center p-3 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border border-green-200">
+              <div className="w-8 h-8 text-green-600 mx-auto mb-2">👥</div>
+              <div className="text-lg font-bold text-green-700">2.4M</div>
+              <div className="text-xs text-green-600">Active Users</div>
+            </div>
+            <div className="text-center p-3 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border border-blue-200">
+              <div className="w-8 h-8 text-blue-600 mx-auto mb-2">🌿</div>
+              <div className="text-lg font-bold text-blue-700">15.7M</div>
+              <div className="text-xs text-blue-600">m² Protected</div>
+            </div>
+          </div>
+        </div>
+
+
+
+
       </div>
 
       {/* Fullscreen Map Modal */}

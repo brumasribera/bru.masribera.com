@@ -95,7 +95,7 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
   )
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
+    <div className={`${darkMode ? 'dark' : ''}`}>
       {/* Hide header on CV page for print/download and on reserve-app for fullscreen */}
       {shouldShowHeader && <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}
       

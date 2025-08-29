@@ -1,5 +1,5 @@
 import { useMemo, useEffect, useState, useRef } from "react";
-import { Home } from "lucide-react";
+import { Home, Compass } from "lucide-react";
 import GlobeGL from "react-globe.gl";
 import { PROJECTS } from "../utils/data";
 import { Project } from "../types/types";
@@ -397,25 +397,39 @@ export function Globe3D({ onPick, onShowContributions }: Globe3DProps) {
         ))}
       </div>
       
-      {/* Header with Search and Home Button */}
-      <div className="absolute top-4 left-4 flex items-center justify-between z-[40] w-[calc(100%-2rem)]">
-        {/* Search Box - constrained to mockup width */}
-        <div className="flex-1 max-w-[280px] sm:max-w-[320px] md:max-w-[360px]">
+      {/* Header with Search Bar - Full Width */}
+      <div className="absolute top-4 left-4 right-4 z-[40]">
+        {/* Search Box - Full width */}
+        <div className="w-full">
           <SearchBox 
             projects={PROJECTS} 
             onProjectSelect={onPick}
           />
         </div>
-        
-        {/* Home Button - positioned right */}
+      </div>
+
+      {/* Bottom Action Buttons */}
+      <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center z-[40]">
+        {/* Explore Projects Button - Bottom Left */}
         <button
           onClick={() => {
             onShowContributions();
           }}
-          className="ml-4 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 flex-shrink-0"
+          className="w-12 h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50"
+          title="Explore Projects"
+        >
+          <Compass className="h-6 w-6" />
+        </button>
+        
+        {/* Home Button - Bottom Right */}
+        <button
+          onClick={() => {
+            onShowContributions();
+          }}
+          className="w-12 h-12 bg-white/90 hover:bg-gray-100/95 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50"
           title="Home - Your contributions"
         >
-          <Home className="h-5 w-5 md:h-6 md:w-6" />
+          <Home className="h-6 w-6" />
         </button>
       </div>
 

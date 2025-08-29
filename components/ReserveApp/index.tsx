@@ -5,8 +5,8 @@ import { Globe3D } from "./components/Globe3D";
 import { ProtectedAreaPage } from "./pages/contribution/ProtectedAreaPage";
 import { Project } from "./types/types";
 import { HomePage } from "./pages/HomePage";
-import { Contribution } from "./types/types";
-import { ContributionDetail } from "./pages/contribution/ContributionDetail";
+import { PROJECTS } from "./utils/data";
+
 import { ProjectsListPage } from "./pages/ProjectsListPage";
 import { SettingsPage } from "./pages/SettingsPage";
 import { ProfileSettings } from "./pages/account/ProfileSettings";
@@ -41,7 +41,6 @@ export default function ReserveMobileApp() {
   const [showProjectsList, setShowProjectsList] = useState(false);
   const [showHome, setShowHome] = useState(false);
   const [activeProject, setActiveProject] = useState<Project | null>(null);
-  const [selectedContribution, setSelectedContribution] = useState<Contribution | null>(null);
   
   // Navigation history tracking
   const [navigationHistory, setNavigationHistory] = useState<NavigationHistoryItem[]>([
@@ -208,13 +207,7 @@ export default function ReserveMobileApp() {
           }}
         />
       ) : showHome ? (
-        selectedContribution ? (
-          <ContributionDetail
-            contribution={selectedContribution}
-            onBack={() => setSelectedContribution(null)}
-          />
-        ) : (
-          <HomePage
+        <HomePage
             onGoToGlobe={() => {
               navigateTo('globe');
               setShowHome(false);
@@ -229,11 +222,20 @@ export default function ReserveMobileApp() {
               setShowSettings(true);
               setSettingsPage('main');
             }}
-            onOpenContribution={(c) => setSelectedContribution(c)}
+            onOpenProject={(projectId) => {
+              // Find the full project data from the PROJECTS array
+              const project = PROJECTS.find(p => p.id === projectId);
+              
+              if (project) {
+                // Navigate directly to the project page with full project data
+                navigateTo('project', { project });
+                setActiveProject(project);
+                setShowHome(false);
+              }
+            }}
             user={user}
           />
-        )
-      ) : !activeProject ? (
+        ) : !activeProject ? (
         <div className="w-full h-full">
           <Globe3D 
             onPick={openProject} 
@@ -260,6 +262,7 @@ export default function ReserveMobileApp() {
             navigateBack();
           }}
           onShowContributions={() => setShowHome(true)}
+          highlightContributions={navigationHistory[navigationHistory.length - 1]?.data?.highlightContributions}
         />
       )}
     </AppShell>

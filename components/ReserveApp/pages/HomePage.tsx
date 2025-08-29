@@ -11,14 +11,19 @@ interface HomePageProps {
   onGoToGlobe: () => void;
   onShowProjectsList: () => void;
   onShowSettings: () => void;
-  onOpenContribution: (c: Contribution) => void;
+  onOpenProject: (projectId: string) => void;
   user?: {
     name: string;
+    email: string;
+    phone: string;
+    location: string;
     avatar: string;
+    memberSince: string;
+    verified: boolean;
   };
 }
 
-export function HomePage({ onGoToGlobe, onShowProjectsList, onShowSettings, onOpenContribution, user }: HomePageProps) {
+export function HomePage({ onGoToGlobe, onShowProjectsList, onShowSettings, onOpenProject, user }: HomePageProps) {
   const { t } = useTranslation('reserve');
   const [contributions, setContributions] = useState<Contribution[]>([]);
   const mapRef = useRef<HTMLDivElement>(null);
@@ -179,7 +184,7 @@ export function HomePage({ onGoToGlobe, onShowProjectsList, onShowSettings, onOp
         </div>`
       );
 
-      marker.on('click', () => onOpenContribution(c));
+      marker.on('click', () => onOpenProject(c.projectId));
     });
 
     // Fit map to show all markers with padding
@@ -198,7 +203,7 @@ export function HomePage({ onGoToGlobe, onShowProjectsList, onShowSettings, onOp
       map.remove();
       fullScreenMapInstanceRef.current = null;
     };
-  }, [isFullScreen, contributions, t, onOpenContribution, formatNumber]);
+  }, [isFullScreen, contributions, t, onOpenProject, formatNumber]);
 
   // Add markers to map
   useEffect(() => {
@@ -229,7 +234,7 @@ export function HomePage({ onGoToGlobe, onShowProjectsList, onShowSettings, onOp
         </div>`
       );
 
-      marker.on('click', () => onOpenContribution(c));
+      marker.on('click', () => onOpenProject(c.projectId));
     });
 
     // Fit map to show all markers with padding
@@ -241,7 +246,7 @@ export function HomePage({ onGoToGlobe, onShowProjectsList, onShowSettings, onOp
         animate: true
       });
     }
-  }, [contributions, t, onOpenContribution]);
+  }, [contributions, t, onOpenProject]);
 
   return (
     <div className="w-full bg-gradient-to-br from-emerald-50 via-green-50 to-emerald-100">
@@ -393,7 +398,7 @@ export function HomePage({ onGoToGlobe, onShowProjectsList, onShowSettings, onOp
               <div
                 key={c.id}
                 className="flex gap-3 p-3 bg-gray-50 rounded-xl cursor-pointer hover:bg-emerald-50 transition-colors"
-                onClick={() => onOpenContribution(c)}
+                onClick={() => onOpenProject(c.projectId)}
               >
                 <img src={c.image} alt={t(`projects.${c.projectId}`)} className="w-12 h-12 object-cover rounded-lg flex-shrink-0" />
                 <div className="flex-1 min-w-0">

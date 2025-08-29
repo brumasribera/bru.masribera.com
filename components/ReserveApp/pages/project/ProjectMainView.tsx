@@ -5,6 +5,8 @@ import L from "leaflet";
 import { useTranslation } from "react-i18next";
 import "leaflet/dist/leaflet.css";
 import { calculateMapScale, MapScaleBar } from "../../utils/mapScale.tsx";
+import { loadContributions } from "../../utils/utils";
+import { Contribution } from "../../types/types";
 
 interface ProjectMainViewProps {
   project: Project;
@@ -14,6 +16,7 @@ interface ProjectMainViewProps {
   onShare: () => void;
   onContribute: () => void;
   onSelectArea: () => void;
+  highlightContributions?: boolean;
 }
 
 export function ProjectMainView({ 
@@ -23,11 +26,14 @@ export function ProjectMainView({
   onLearnMore, 
   onShare, 
   onContribute, 
-  onSelectArea 
+  onSelectArea,
+  highlightContributions
 }: ProjectMainViewProps) {
   const { t } = useTranslation('reserve');
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
+  const contributionsMapRef = useRef<HTMLDivElement>(null);
+  const contributionsMapInstanceRef = useRef<L.Map | null>(null);
   const fullScreenMapRef = useRef<HTMLDivElement>(null);
   const fullScreenMapInstanceRef = useRef<L.Map | null>(null);
 
@@ -39,12 +45,34 @@ export function ProjectMainView({
     euros: 0,
     m2: 0
   });
+  const [projectContributions, setProjectContributions] = useState<Contribution[]>([]);
+  const contributionsSectionRef = useRef<HTMLDivElement>(null);
 
   const hectares = project.areaHectares || 1000;
   const totalArea = hectares;
   const purchasedArea = Math.floor(totalArea * (0.3 + (project.id.charCodeAt(0) % 20) / 100));
   const totalFunding = totalArea * project.pricePerM2;
   const raisedFunding = Math.floor(totalFunding * (0.4 + (project.id.charCodeAt(1) % 30) / 100));
+
+  // Load contributions for this project
+  useEffect(() => {
+    const allContributions = loadContributions();
+    const filtered = allContributions.filter((contrib: Contribution) => contrib.projectId === project.id);
+    setProjectContributions(filtered);
+  }, [project.id]);
+
+  // Scroll to contributions section when highlighted
+  useEffect(() => {
+    if (highlightContributions && contributionsSectionRef.current && projectContributions.length > 0) {
+      // Small delay to ensure the component is fully rendered
+      setTimeout(() => {
+        contributionsSectionRef.current?.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
+      }, 500);
+    }
+  }, [highlightContributions, projectContributions]);
 
   // Use shared scale calculation utility
 
@@ -349,6 +377,69 @@ export function ProjectMainView({
     };
   }, [isFullScreen, project]);
 
+  // Initialize contributions map
+  useEffect(() => {
+    if (!contributionsMapRef.current || contributionsMapInstanceRef.current || projectContributions.length === 0) return;
+
+    const contributionsMap = L.map(contributionsMapRef.current, {
+      zoomControl: false,
+      attributionControl: false,
+      dragging: false,
+      touchZoom: false,
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      keyboard: false
+    }).setView([project.lat, project.lon], 14);
+    
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      attribution: ''
+    }).addTo(contributionsMap);
+
+    // Add markers for each contribution area
+    projectContributions.forEach((contribution, index) => {
+      // Calculate contribution area size based on m2
+      const areaSize = Math.max(8, Math.min(20, Math.sqrt(contribution.m2) / 10));
+      
+      // Create a circle marker representing the protected area
+      const marker = L.circleMarker([contribution.lat, contribution.lon], {
+        radius: areaSize,
+        color: "#10b981", // Emerald green for your contributions
+        weight: 2,
+        fillColor: "#10b981",
+        fillOpacity: 0.6,
+      }).addTo(contributionsMap);
+      
+      // Add popup with contribution details
+      marker.bindPopup(
+        `<div style="min-width:160px">
+          <div style="font-weight:600;margin-bottom:4px">Your Contribution</div>
+          <div style="font-size:12px;color:#065f46">${formatNumber(contribution.m2)} m² • €${formatNumber(contribution.amount)}</div>
+          <div style="font-size:11px;color:#6b7280">${new Date(contribution.createdAt).toLocaleDateString()}</div>
+        </div>`
+      );
+    });
+
+    // Fit map to show all contribution markers with padding
+    if (projectContributions.length > 0) {
+      const bounds = L.latLngBounds(projectContributions.map(c => [c.lat, c.lon]));
+      contributionsMap.fitBounds(bounds, { 
+        padding: [15, 15],
+        maxZoom: 16,
+        animate: true
+      });
+    }
+
+    contributionsMapInstanceRef.current = contributionsMap;
+
+    return () => {
+      if (contributionsMapInstanceRef.current) {
+        contributionsMapInstanceRef.current.remove();
+        contributionsMapInstanceRef.current = null;
+      }
+    };
+  }, [projectContributions, project.lat, project.lon, formatNumber]);
+
   return (
     <div className="w-full h-full bg-gradient-to-br from-green-50 to-emerald-100 overflow-y-auto relative">
       {/* Header */}
@@ -485,6 +576,40 @@ export function ProjectMainView({
             </div>
           </div>
 
+          {/* Your Contributions Section */}
+          {projectContributions.length > 0 && (
+            <div 
+              ref={contributionsSectionRef}
+              className={`bg-white rounded-2xl p-4 md:p-6 lg:p-8 shadow-sm border transition-all duration-500 ${
+                highlightContributions 
+                  ? 'border-green-300 shadow-lg ring-2 ring-green-200 ring-opacity-50' 
+                  : 'border-green-100'
+              }`}
+            >
+              <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-900 mb-4">
+                {t('home.yourContributions')}
+              </h3>
+              
+
+              
+              {/* Summary Stats */}
+              <div className="mt-4 grid grid-cols-2 gap-3">
+                <div className="text-center p-3 bg-green-50 rounded-xl border border-green-200">
+                  <div className="text-lg font-bold text-green-700">
+                    {formatNumber(projectContributions.reduce((sum, c) => sum + c.m2, 0))} m²
+                  </div>
+                  <div className="text-xs text-green-600">Total protected</div>
+                </div>
+                <div className="text-center p-3 bg-blue-50 rounded-xl border border-blue-200">
+                  <div className="text-lg font-bold text-blue-700">
+                    €{formatNumber(projectContributions.reduce((sum, c) => sum + c.amount, 0))}
+                  </div>
+                  <div className="text-xs text-blue-600">Total contributed</div>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Enhanced Description with Motivation */}
           <div className="bg-white rounded-2xl p-4 md:p-6 lg:p-8 shadow-sm">
             <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-900 mb-3">{t('projectPage.aboutThisProtectedArea')}</h3>
@@ -505,7 +630,6 @@ export function ProjectMainView({
           </div>
 
 
-
           {/* Combined sticky container with gradient background and contribute button */}
           <div className="sticky bottom-0 left-0 right-0 z-30">
             <div className="relative">
@@ -516,7 +640,9 @@ export function ProjectMainView({
                   onClick={onSelectArea}
                 >
                   <Leaf className="w-5 h-5 mr-2" />
-                  <span className="break-words">{t('projectPage.contributeToProtection')}</span>
+                  <span className="break-words">
+                    {projectContributions.length > 0 ? 'Contribute More' : t('projectPage.contributeToProtection')}
+                  </span>
                 </button>
               </div>
             </div>

@@ -1,12 +1,12 @@
 {
   "name": "Stretch Timer",
-  "short_name": "Stretch Timer",
+  "short_name": "Timer",
   "description": "A simple and elegant timer app for stretching exercises",
-  "start_url": "/tools/timer",
+  "start_url": "/tools/timer/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
-  "orientation": "portrait-primary",
+  "orientation": "portrait",
   "scope": "/",
   "lang": "en",
   "categories": ["productivity", "utilities", "health"],
@@ -18,21 +18,6 @@
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
-    },
-    {
-      "src": "/favicon-16x16.png",
-      "sizes": "16x16",
-      "type": "image/png"
-    },
-    {
-      "src": "/favicon-32x32.png",
-      "sizes": "32x32",
-      "type": "image/png"
-    },
-    {
-      "src": "/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png"
     },
     {
       "src": "/apple-touch-icon.png",

@@ -1,20 +1,18 @@
-// Dynamic cache name based on current version - this ensures cache invalidation on updates
-const CACHE_NAME = 'stretch-timer-v1.1.7-' + Date.now();
-const VERSION = '1.1.7';
-
-const urlsToCache = [
+const CACHE_NAME = 'stretch-timer-v1';
+const OFFLINE_URLS = [
   '/',
-  '/tools/timer',
   '/tools/timer/',
-  '/favicons/favicon-timer.svg',
+  '/index.html',
   '/timer-sounds/start-gong.mp3',
   '/timer-sounds/middle-gong.mp3',
   '/timer-sounds/1m-gong.mp3',
   '/timer-sounds/end-gong.mp3',
-  '/tools/timer/manifest.webmanifest'
+  '/tools/timer/manifest.webmanifest',
+  '/favicons/favicon-timer.svg',
+  '/apple-touch-icon.png'
 ];
 
-// Timer Service Worker - Version 1.1.25 - Released 2025-08-31 20:54:14// Timer functionality for background operation
+// Timer Service Worker - Version 1.1.28 - Released 2025-08-31 21:11:40// Timer functionality for background operation
 let timerStartTime = null;
 let timerDuration = 8 * 60; // 8 minutes in seconds
 let animationFrameId = null;
@@ -239,36 +237,40 @@ self.addEventListener('activate', (event) => {
 // Install event - cache resources
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
-      })
+    caches.open(CACHE_NAME).then(cache => {
+      console.log('✔ Service Worker cache opened');
+      return cache.addAll(OFFLINE_URLS);
+    })
   );
 });
 
-// Fetch event - serve from cache when offline, but always fetch fresh JavaScript and CSS
+// Fetch event - serve from cache when offline
 self.addEventListener('fetch', (event) => {
-  const request = event.request;
-  
-  // Always fetch JavaScript, CSS, and HTML files fresh from network
-  if (request.url.includes('.js') || request.url.includes('.css') || request.url.includes('.html')) {
-    event.respondWith(
-      fetch(request)
-        .catch(() => {
-          // Fallback to cache only if network fails
-          return caches.match(request);
-        })
-    );
-    return;
-  }
-  
-  // For other resources, try cache first, then network
   event.respondWith(
-    caches.match(request)
-      .then((response) => {
-        return response || fetch(request);
-      })
+    caches.match(event.request).then(response => {
+      if (response) {
+        return response;
+      }
+      
+      return fetch(event.request).then(response => {
+        // Cache runtime assets (JS, CSS) for offline use
+        if (response.status === 200 && 
+            (event.request.url.includes('.js') || 
+             event.request.url.includes('.css') ||
+             event.request.url.includes('/assets/'))) {
+          const responseClone = response.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, responseClone);
+          });
+        }
+        return response;
+      }).catch(() => {
+        // Fallback for timer page when offline
+        if (event.request.url.includes('/tools/timer')) {
+          return caches.match('/tools/timer/') || caches.match('/index.html');
+        }
+      });
+    })
   );
 });
 

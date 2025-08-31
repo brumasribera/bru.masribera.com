@@ -1,4 +1,4 @@
-import ReserveMobileApp from '../ReserveApp'
+import ReserveMobileApp from '../ReserveApp/index'
 
 export function ReserveFullScreenPage() {
 	return (

@@ -12,7 +12,7 @@ const OFFLINE_URLS = [
   '/apple-touch-icon.png'
 ];
 
-// Timer Service Worker - Version 1.1.28 - Released 2025-08-31 21:11:40// Timer functionality for background operation
+// Timer Service Worker - Version 1.1.30 - Released 2025-08-31 21:33:03// Timer functionality for background operation
 let timerStartTime = null;
 let timerDuration = 8 * 60; // 8 minutes in seconds
 let animationFrameId = null;

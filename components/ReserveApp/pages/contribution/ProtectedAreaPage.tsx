@@ -1,6 +1,6 @@
 import { Project } from "../../types/types";
 import { useTranslation } from "react-i18next";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ProjectMainView } from "../project/ProjectMainView";
 import { ProjectLearnMore } from "../project/ProjectLearnMore";
 import { ProjectShare } from "./ProjectShare";
@@ -13,9 +13,10 @@ interface ProtectedAreaPageProps {
   project: Project;
   onBack: () => void;
   onShowContributions: () => void;
+  highlightContributions?: boolean;
 }
 
-export function ProtectedAreaPage({ project, onBack, onShowContributions }: ProtectedAreaPageProps) {
+export function ProtectedAreaPage({ project, onBack, onShowContributions, highlightContributions }: ProtectedAreaPageProps) {
   const { ready, t } = useTranslation('reserve');
   const [currentPage, setCurrentPage] = useState<'main' | 'learn-more' | 'share' | 'contribute' | 'select-area' | 'checkout' | 'success'>('main');
   const [selectedArea, setSelectedArea] = useState<number>(0);
@@ -64,6 +65,7 @@ export function ProtectedAreaPage({ project, onBack, onShowContributions }: Prot
           onShare={() => setCurrentPage('share')}
           onContribute={() => setCurrentPage('contribute')}
           onSelectArea={() => setCurrentPage('select-area')}
+          highlightContributions={highlightContributions}
         />
       );
   }

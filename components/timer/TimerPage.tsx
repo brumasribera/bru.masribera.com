@@ -159,6 +159,7 @@ export default function TimerPage() {
             75% { background-position: 0% 100%; }
             100% { background-position: 0% 0%; }
           }
+
           
 
         `}
@@ -182,15 +183,17 @@ export default function TimerPage() {
         <div className="flex gap-6">
           {!run && time > 0 && !done && 
             <button onClick={start} title="Start" className="w-16 h-16 bg-gray-700 hover:bg-gray-600 rounded-full flex items-center justify-center">
-              <div className="w-0 h-0 border-l-[16px] border-t-[10px] border-b-[10px] border-transparent border-l-gray-200 ml-1" />
+              <svg className="w-10 h-10 text-gray-200" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5.5c0-0.3 0.2-0.5 0.5-0.5l11 6.5c0.3 0.2 0.3 0.6 0 0.8l-11 6.5c-0.3 0.2-0.5 0-0.5-0.3V5.5z" />
+              </svg>
             </button>
           }
           {run && 
             <button onClick={() => stop()} title="Pause" className="w-16 h-16 bg-gray-700 hover:bg-gray-600 rounded-full flex items-center justify-center gap-1">
-              <div className="w-1.5 h-6 bg-gray-200" /><div className="w-1.5 h-6 bg-gray-200" />
+              <div className="w-1.5 h-6 bg-gray-200 rounded-sm" /><div className="w-1.5 h-6 bg-gray-200 rounded-sm" />
             </button>
           }
-          <button onClick={reset} title="Reset" className="w-16 h-16 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center text-3xl">↺</button>
+          <button onClick={reset} title="Reset" className="w-16 h-16 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center text-4xl">↺</button>
           
 
           

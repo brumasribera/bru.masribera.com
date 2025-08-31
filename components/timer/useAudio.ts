@@ -69,8 +69,19 @@ export function useAudio() {
       const s = ctx.current.createBufferSource()
       s.buffer = bufs.current[t]
       s.connect(gain.current)
+      
+      // Ensure the sound plays for its full duration
+      s.onended = () => {
+        console.log(`✅ ${t} gong finished playing`)
+      }
+      
+      // Start playing immediately
       s.start(0)
-      console.log(`✅ Playing ${t} gong`)
+      console.log(`✅ Playing ${t} gong (duration: ${bufs.current[t].duration.toFixed(2)}s)`)
+      
+      // Log the actual duration to verify it's playing fully
+      console.log(`📊 ${t} gong buffer duration: ${bufs.current[t].duration.toFixed(2)}s`)
+      
     } catch (error) {
       console.error(`❌ Error playing ${t} gong:`, error)
     }

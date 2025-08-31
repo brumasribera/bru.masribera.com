@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+
+
+
+
+
+
 /* Ensure proper scrolling behavior */
 html, body {
   scroll-behavior: smooth;
@@ -338,7 +346,8 @@ select option {
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    /* Lake background is applied via custom CSS, not Tailwind classes */
   }
 }
 

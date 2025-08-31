@@ -1,15 +1,78 @@
 ﻿import { useState, useEffect, useRef } from 'react'
 import { useAudio } from './useAudio'
 import { usePWA } from './usePWA'
-import { useVersion } from './useVersion'
+
+// ShootingStars Component
+function ShootingStars({ active }: { active: boolean }) {
+  const [stars, setStars] = useState<{ id: number, left: string, size: number, delay: number, duration: number, rotate: number }[]>([])
+  const idRef = useRef(0)
+  const intervalRef = useRef<NodeJS.Timeout>()
+
+  useEffect(() => {
+    if (!active) {
+      setStars([])
+      clearInterval(intervalRef.current)
+      return
+    }
+
+    intervalRef.current = setInterval(() => {
+      const newStar = {
+        id: idRef.current++,
+        left: `${Math.random() * 100}%`,
+        size: Math.random() * 2 + 1,
+        delay: 0,
+        duration: Math.random() * 5 + 3,
+        rotate: Math.random() * 20 - 10
+      }
+      console.log('🌟 Generated star:', newStar)
+      setStars((prev) => [
+        ...prev.slice(-300), // Limit stars in DOM (doubled again)
+        newStar
+      ])
+    }, 75) // Generate one every 75ms (twice as frequent)
+
+    return () => clearInterval(intervalRef.current)
+  }, [active])
+
+  console.log('🌟 ShootingStars render - active:', active, 'stars count:', stars.length)
+  
+  return (
+    <div className="fixed inset-0 pointer-events-none z-10">
+
+      
+      {stars.map(star => (
+        <div key={star.id}
+          className="absolute bg-white opacity-90 rounded-full"
+          style={{
+            top: '0px',
+            left: star.left,
+            width: `${star.size * 2}px`,
+            height: `${star.size * 2}px`,
+            animationDuration: `${star.duration}s`,
+            animationName: 'fall',
+            animationFillMode: 'forwards',
+            animationTimingFunction: 'linear'
+          }}
+        />
+      ))}
+      <style>{`
+        @keyframes fall {
+          0% { transform: translateY(-50px); opacity: 1; }
+          100% { transform: translateY(100vh); opacity: 0; }
+        }
+      `}</style>
+    </div>
+  )
+}
 
 const GONG_TIMES = [420, 360, 300, 240, 180, 120, 60] // seconds
 
 export default function TimerPage() {
   const [time, setTime] = useState(480), [run, setRun] = useState(false), [done, setDone] = useState(false)
+  const [gongPlaying, setGongPlaying] = useState(false)
+  const [showStars, setShowStars] = useState(false)
   const end = useRef(0), int = useRef<NodeJS.Timeout>(), gongs = useRef<Record<string, number>>({})
   const play = useAudio()
-  const { version, date } = useVersion()
   
   usePWA()
 
@@ -18,12 +81,19 @@ export default function TimerPage() {
     int.current = setInterval(() => {
       const now = Math.max(0, Math.ceil((end.current - Date.now()) / 1000))
       setTime(now)
-      if (now === 0) return stop('end')
+      if (now === 0) {
+        stop('end')
+        setShowStars(true) // Automatically show stars when timer ends
+        return
+      }
       if (GONG_TIMES.includes(now)) {
         const key = `gong_${now}`
         if (!gongs.current[key]) {
           gongs.current[key] = Date.now()
+          setGongPlaying(true)
           play(now === 240 ? 'middle' : 'minute').catch(console.error)
+          // Reset gong playing state after 5 seconds to match sound duration
+          setTimeout(() => setGongPlaying(false), 5000)
         }
       }
     }, 250)
@@ -45,11 +115,24 @@ export default function TimerPage() {
   const start = async () => {
     if (done || time === 0) return
     end.current = Date.now() + time * 1000
-    setRun(true); setDone(false); gongs.current = {}; await play('start')
+    setRun(true); setDone(false); gongs.current = {}
+    setShowStars(false) // No stars during countdown
+    // Play start sound immediately without await to prevent delay
+    play('start')
   }
   
   const stop = async (final?: 'end') => { 
-    setRun(false); if (final) { await play(final); setDone(true) }
+    setRun(false)
+    if (final) { 
+      await play(final)
+      if (final === 'end') {
+        setDone(true)
+        setShowStars(true) // Show stars only when timer ends
+      }
+    }
+    if (final !== 'end') {
+      setShowStars(false) // Hide stars if stopping early
+    }
   }
   
   const reset = () => { 
@@ -59,26 +142,70 @@ export default function TimerPage() {
   const fmt = (s: number) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`
 
   return (
-    <div className="min-h-screen bg-black text-white font-mono flex flex-col items-center justify-center">
-      <div className="text-8xl mb-6 text-gray-300 tracking-wider font-light">{fmt(time)}</div>
-      <div className="flex gap-6">
-        {!run && time > 0 && !done && 
-          <button onClick={start} title="Start" className="w-16 h-16 bg-gray-700 hover:bg-gray-600 rounded-full flex items-center justify-center">
-            <div className="w-0 h-0 border-l-[16px] border-t-[10px] border-b-[10px] border-transparent border-l-gray-200 ml-1" />
-          </button>
-        }
-        {run && 
-          <button onClick={() => stop()} title="Pause" className="w-16 h-16 bg-gray-700 hover:bg-gray-600 rounded-full flex items-center justify-center gap-1">
-            <div className="w-1.5 h-6 bg-gray-200" /><div className="w-1.5 h-6 bg-gray-200" />
-          </button>
-        }
-        <button onClick={reset} title="Reset" className="w-16 h-16 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center text-3xl">↺</button>
-      </div>
+    <>
+      <style>
+        {`
+          @keyframes timer-pulse-slow {
+            0% { background-position: 0% 0%; }
+            25% { background-position: 100% 0%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 0%; }
+          }
+          @keyframes timer-pulse-fast {
+            0% { background-position: 0% 0%; }
+            25% { background-position: 100% 0%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 0%; }
+          }
+          
+
+        `}
+      </style>
+      <div 
+        className={`min-h-screen text-white font-mono flex flex-col items-center justify-center overflow-hidden relative ${gongPlaying ? 'gong-playing' : ''}`}
+        data-timer-page="true"
+        style={{
+          background: 'linear-gradient(135deg, #000000 0%, #0a0a0a 20%, #0a0f1c 40%, #0a0a0a 60%, #0a0f1c 80%, #000000 100%)',
+          backgroundSize: '150% 150%',
+          animation: gongPlaying ? 'timer-pulse-fast 8s ease-in-out infinite' : 'timer-pulse-slow 40s ease-in-out infinite'
+        }}
+      >
+        {showStars && <ShootingStars active={true} />}
+                {/* Time display - always visible */}
+        <div className="text-8xl mb-6 text-gray-300 tracking-wider font-light">{fmt(time)}</div>
+        
+
+        
+        {/* Controls container */}
+        <div className="flex gap-6">
+          {!run && time > 0 && !done && 
+            <button onClick={start} title="Start" className="w-16 h-16 bg-gray-700 hover:bg-gray-600 rounded-full flex items-center justify-center">
+              <div className="w-0 h-0 border-l-[16px] border-t-[10px] border-b-[10px] border-transparent border-l-gray-200 ml-1" />
+            </button>
+          }
+          {run && 
+            <button onClick={() => stop()} title="Pause" className="w-16 h-16 bg-gray-700 hover:bg-gray-600 rounded-full flex items-center justify-center gap-1">
+              <div className="w-1.5 h-6 bg-gray-200" /><div className="w-1.5 h-6 bg-gray-200" />
+            </button>
+          }
+          <button onClick={reset} title="Reset" className="w-16 h-16 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center text-3xl">↺</button>
+          
+
+          
+
+        </div>
+              {/* Version pill - commented out
       <div className="mt-6">
         <span className="inline-block bg-purple-600 text-white text-sm px-4 py-2 rounded-lg font-mono border-2 border-purple-400 shadow-lg">
           🚀 {version} • {date}
         </span>
       </div>
-    </div>
+      */}
+      
+
+      </div>
+    </>
   )
 }

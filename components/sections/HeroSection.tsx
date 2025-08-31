@@ -258,11 +258,12 @@ export function HeroSection() {
         </div>
 
         {/* Skills */}
-        <div className="w-full max-w-4xl mx-auto mb-6 sm:mb-8 flex flex-wrap justify-center gap-2 sm:gap-3 items-center">
+        <div className="w-full max-w-6xl mx-auto mb-6 sm:mb-8 flex flex-wrap justify-center gap-2 sm:gap-3 items-center">
           {[
             { name: 'Cursor', emoji: '⚡', url: 'https://cursor.sh' },
             { name: 'React', emoji: '⚛️', url: 'https://react.dev' },
             { name: 'Figma', emoji: '🎨', url: 'https://figma.com' },
+            { name: 'Photoshop', emoji: '🎨', url: 'https://adobe.com/products/photoshop.html' },
             { name: 'TypeScript', emoji: '🔷', url: 'https://typescriptlang.org' },
             { name: 'Next', emoji: '🚀', url: 'https://nextjs.org' },
             { name: 'Vue', emoji: '💚', url: 'https://vuejs.org' },

@@ -3,16 +3,26 @@ import { useAudio } from './useAudio'
 import { usePWA } from './usePWA'
 
 // ShootingStars Component
-function ShootingStars({ active }: { active: boolean }) {
+function ShootingStars({ active, startTime }: { active: boolean; startTime: number | null }) {
   const [stars, setStars] = useState<{ id: number, left: string, size: number, delay: number, duration: number, rotate: number }[]>([])
   const idRef = useRef(0)
   const intervalRef = useRef<NodeJS.Timeout>()
+  const [shouldStop, setShouldStop] = useState(false)
 
   useEffect(() => {
-    if (!active) {
+    if (!active || shouldStop) {
       setStars([])
       clearInterval(intervalRef.current)
       return
+    }
+
+    // Check if 5 minutes have passed since start
+    if (startTime) {
+      const elapsed = Date.now() - startTime
+      if (elapsed >= 5 * 60 * 1000) { // 5 minutes in milliseconds
+        setShouldStop(true)
+        return
+      }
     }
 
     intervalRef.current = setInterval(() => {
@@ -71,10 +81,21 @@ export default function TimerPage() {
   const [time, setTime] = useState(480), [run, setRun] = useState(false), [done, setDone] = useState(false)
   const [gongPlaying, setGongPlaying] = useState(false)
   const [showStars, setShowStars] = useState(false)
+  const [starStartTime, setStarStartTime] = useState<number | null>(null)
   const end = useRef(0), int = useRef<NodeJS.Timeout>(), gongs = useRef<Record<string, number>>({})
   const play = useAudio()
   
   usePWA()
+
+  // Check if timer has already finished when component mounts
+  useEffect(() => {
+    if (end.current && done) {
+      const remaining = Math.max(0, Math.ceil((end.current - Date.now()) / 1000))
+      if (remaining === 0) {
+        setShowStars(true)
+      }
+    }
+  }, [done])
 
   useEffect(() => {
     if (!run) return
@@ -84,6 +105,7 @@ export default function TimerPage() {
       if (now === 0) {
         stop('end')
         setShowStars(true) // Automatically show stars when timer ends
+        setStarStartTime(Date.now()) // Record when stars started
         return
       }
       if (GONG_TIMES.includes(now)) {
@@ -102,10 +124,17 @@ export default function TimerPage() {
 
   useEffect(() => {
     const handleVisibility = () => {
-      if (!document.hidden && run && end.current) {
+      if (!document.hidden && end.current) {
         const remaining = Math.max(0, Math.ceil((end.current - Date.now()) / 1000))
         setTime(remaining)
-        if (remaining === 0 && !done) stop('end')
+        if (remaining === 0) {
+          if (!done) {
+            stop('end')
+          } else {
+            // Timer already finished, show stars immediately
+            setShowStars(true)
+          }
+        }
       }
     }
     document.addEventListener('visibilitychange', handleVisibility)
@@ -116,7 +145,7 @@ export default function TimerPage() {
     if (done || time === 0) return
     end.current = Date.now() + time * 1000
     setRun(true); setDone(false); gongs.current = {}
-    setShowStars(false) // No stars during countdown
+    setShowStars(false); setStarStartTime(null) // No stars during countdown
     // Play start sound immediately without await to prevent delay
     play('start')
   }
@@ -128,6 +157,7 @@ export default function TimerPage() {
       if (final === 'end') {
         setDone(true)
         setShowStars(true) // Show stars only when timer ends
+        setStarStartTime(Date.now()) // Record when stars started
       }
     }
     if (final !== 'end') {
@@ -137,6 +167,7 @@ export default function TimerPage() {
   
   const reset = () => { 
     stop(); setTime(480); setDone(false); gongs.current = {}
+    setShowStars(false); setStarStartTime(null)
   }
   
   const fmt = (s: number) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`
@@ -173,7 +204,7 @@ export default function TimerPage() {
           animation: gongPlaying ? 'timer-pulse-fast 8s ease-in-out infinite' : 'timer-pulse-slow 40s ease-in-out infinite'
         }}
       >
-        {showStars && <ShootingStars active={true} />}
+        {showStars && <ShootingStars active={true} startTime={starStartTime} />}
                 {/* Time display - always visible */}
         <div className="text-8xl mb-6 text-gray-300 tracking-wider font-light">{fmt(time)}</div>
         

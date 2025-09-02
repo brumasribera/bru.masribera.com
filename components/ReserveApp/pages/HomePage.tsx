@@ -6,6 +6,7 @@ import { loadContributions } from "../utils/utils";
 import { Contribution } from "../types/types";
 import { Globe, TrendingUp, Award, Heart, Leaf, Maximize2, Minimize2, Compass } from "lucide-react";
 import { ImageModal } from "../components/ImageModal";
+import { Globe3D } from "../components/Globe3D";
 
 interface HomePageProps {
   onGoToGlobe: () => void;
@@ -249,7 +250,7 @@ export function HomePage({ onGoToGlobe, onShowProjectsList, onShowSettings, onOp
   }, [contributions, t, onOpenProject]);
 
   return (
-    <div className="w-full bg-gradient-to-br from-emerald-50 via-green-50 to-emerald-100">
+    <div className="w-full h-full bg-gradient-to-br from-emerald-50 via-green-50 to-emerald-100 overflow-y-auto">
       {/* Header */}
       <div className="relative h-32 overflow-hidden flex-shrink-0">
         <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-600" />

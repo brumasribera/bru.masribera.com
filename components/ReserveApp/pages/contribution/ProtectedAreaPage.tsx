@@ -13,10 +13,11 @@ interface ProtectedAreaPageProps {
   project: Project;
   onBack: () => void;
   onShowContributions: () => void;
+  onHome?: () => void;
   highlightContributions?: boolean;
 }
 
-export function ProtectedAreaPage({ project, onBack, onShowContributions, highlightContributions }: ProtectedAreaPageProps) {
+export function ProtectedAreaPage({ project, onBack, onShowContributions, onHome, highlightContributions }: ProtectedAreaPageProps) {
   const { ready, t } = useTranslation('reserve');
   const [currentPage, setCurrentPage] = useState<'main' | 'learn-more' | 'share' | 'contribute' | 'select-area' | 'checkout' | 'success'>('main');
   const [selectedArea, setSelectedArea] = useState<number>(0);
@@ -53,7 +54,8 @@ export function ProtectedAreaPage({ project, onBack, onShowContributions, highli
       return <ProjectSuccess 
         project={project} 
         selectedArea={selectedArea}
-        onBack={() => setCurrentPage('main')} 
+        onBack={() => setCurrentPage('main')}
+        onHome={onHome}
       />;
     default:
     return (

@@ -29,7 +29,9 @@ export function useMapGrid(
 
   const computeGridSideMeters = (map: L.Map) => {
     const zoom = map.getZoom();
-    const idealMeters = Math.max(50, Math.min(1000, 200 * Math.pow(1.5, 13 - zoom)));
+    // Grid cells get smaller as zoom increases for precise area selection
+    // At zoom 19 (max): ~10m cells, at zoom 13: ~100m cells, at zoom 10: ~500m cells
+    const idealMeters = Math.max(10, Math.min(500, 1000 * Math.pow(0.5, zoom - 10)));
     return roundSideToNiceSeries(idealMeters);
   };
 

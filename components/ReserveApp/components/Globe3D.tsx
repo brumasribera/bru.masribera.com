@@ -483,29 +483,22 @@ export function Globe3D({ onPick, onShowContributions, onShowProjectsList }: Glo
 
       {/* Globe container - Takes full height and centers the globe */}
       <div className="h-full relative flex items-center justify-center overflow-hidden" ref={containerRef} style={{ alignItems: 'center', justifyContent: 'center', marginTop: '16px' }}>
-        {dimensions.width > 0 && dimensions.height > 0 ? (
-          <GlobeGL 
-            ref={globeRef}
-            backgroundColor="#00000000" 
-            globeImageUrl="https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
-            bumpImageUrl="https://unpkg.com/three-globe/example/img/earth-topology.png"
-            showAtmosphere
-            atmosphereColor="#60a5fa"
-            atmosphereAltitude={0.15}
-            htmlElementsData={markers}
-            htmlLat={(d: any) => d.lat}
-            htmlLng={(d: any) => d.lng}
-            htmlElement={makeMarker}
-            width={dimensions.width}
-            height={dimensions.height}
-            enablePointerInteraction={true}
-          />
-        ) : (
-          <div className="text-white text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
-            <div>Loading globe...</div>
-          </div>
-        )}
+        <GlobeGL 
+          ref={globeRef}
+          backgroundColor="#00000000" 
+          globeImageUrl="https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+          bumpImageUrl="https://unpkg.com/three-globe/example/img/earth-topology.png"
+          showAtmosphere
+          atmosphereColor="#60a5fa"
+          atmosphereAltitude={0.15}
+          htmlElementsData={markers}
+          htmlLat={(d: any) => d.lat}
+          htmlLng={(d: any) => d.lng}
+          htmlElement={makeMarker}
+          width={dimensions.width}
+          height={dimensions.height}
+          enablePointerInteraction={true}
+        />
       </div>
     </div>
   );

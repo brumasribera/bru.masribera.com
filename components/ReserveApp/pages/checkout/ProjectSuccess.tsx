@@ -10,9 +10,10 @@ interface ProjectSuccessProps {
   project: Project;
   selectedArea: number;
   onBack: () => void;
+  onHome?: () => void;
 }
 
-export function ProjectSuccess({ project, selectedArea, onBack }: ProjectSuccessProps) {
+export function ProjectSuccess({ project, selectedArea, onBack, onHome }: ProjectSuccessProps) {
   const { t } = useTranslation('reserve');
   const [mapScale, setMapScale] = useState({ distance: '1km', width: 48 });
   const mapRef = useRef<HTMLDivElement>(null);
@@ -155,7 +156,7 @@ export function ProjectSuccess({ project, selectedArea, onBack }: ProjectSuccess
       {/* Home Button */}
       <div className="absolute top-4 right-4 z-10">
         <button 
-          onClick={onBack} 
+          onClick={onHome || onBack} 
           className="w-9 h-9 bg-white/90 backdrop-blur-sm hover:bg-white text-gray-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 border border-gray-200 hover:border-gray-300"
         >
           <Home className="w-4 h-4" />
@@ -274,7 +275,7 @@ export function ProjectSuccess({ project, selectedArea, onBack }: ProjectSuccess
             onClick={onBack}
             className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 px-6 py-3 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-[1.02]"
           >
-            {t('common.backToProjects')}
+            {t('successPage.backToProject')}
           </button>
         </div>
       </div>

@@ -111,7 +111,7 @@ export function Globe3D({ onPick, onShowContributions, onShowProjectsList }: Glo
     el.style.cursor = 'pointer';
     el.style.zIndex = '1000';
     el.style.pointerEvents = 'auto';
-    el.style.filter = 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))';
+    el.style.filter = 'drop-shadow(0 6px 12px rgba(0,0,0,0.4)) drop-shadow(0 2px 4px rgba(0,0,0,0.2))';
     el.style.touchAction = 'manipulation'; // Optimize for touch
     el.style.userSelect = 'none'; // Prevent text selection on mobile
     el.style.webkitUserSelect = 'none'; // Safari support
@@ -134,7 +134,7 @@ export function Globe3D({ onPick, onShowContributions, onShowProjectsList }: Glo
     circle.style.display = 'flex';
     circle.style.alignItems = 'center';
     circle.style.justifyContent = 'center';
-    circle.style.boxShadow = 'none';
+    circle.style.boxShadow = '0 4px 8px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.1)';
 
     // Create the Reserve logo image inside the circle
     const logo = document.createElement('img');

@@ -267,25 +267,26 @@ export function HomePage({ onGoToGlobe, onShowProjectsList, onShowSettings, onOp
           
           {/* Profile Picture (Settings) */}
           <div className="flex items-center">
-            {user?.avatar && (
-              <button
-                onClick={onShowSettings}
-                onDoubleClick={() => setIsImageModalOpen(true)}
-                className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/30 hover:border-white/50 transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl"
-                title="Click to open settings, double-click to view image"
-              >
-                <img 
-                  src={user.avatar} 
-                  alt={user.name || 'Profile'} 
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                  }}
-                />
-              </button>
-            )}
+            <button
+              onClick={onShowSettings}
+              onDoubleClick={() => setIsImageModalOpen(true)}
+              className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/30 hover:border-white/50 transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl bg-white/20"
+              title="Click to open settings, double-click to view image"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=3&w=300&h=300&q=80" 
+                alt="Profile" 
+                className="w-full h-full object-cover"
+                style={{ display: 'block' }}
+                onError={(e) => {
+                  console.log('Image failed to load');
+                  const target = e.target as HTMLImageElement;
+                  target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
+                }}
+              />
+            </button>
           </div>
+
         </div>
         
         {/* Welcome Message */}

@@ -1,0 +1,1 @@
+import{j as e}from"./index-4oMsRARN.js";import{R as r}from"./index-CSrhqYgq.js";import"./trending-up-B2nKnjkm.js";import"./compass-BS0sCHGo.js";import"./search-DX1j7t4u.js";import"./circle-check-big-DLlAnIy3.js";import"./share-2-CpzMdwlW.js";function c(){return e.jsx("div",{className:"w-screen h-screen overflow-hidden",children:e.jsx(r,{})})}export{c as ReserveFullScreenPage};

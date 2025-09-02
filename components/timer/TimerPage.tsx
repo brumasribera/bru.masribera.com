@@ -2,29 +2,20 @@
 import { useAudio } from './useAudio'
 import { usePWA } from './usePWA'
 
-// ShootingStars Component
-function ShootingStars({ active, startTime }: { active: boolean; startTime: number | null }) {
-  const [stars, setStars] = useState<{ id: number, left: string, size: number, delay: number, duration: number, rotate: number }[]>([])
+// FallingStars Component - stars always fall from top and accumulate at bottom
+function FallingStars({ timerFinished }: { timerFinished: boolean }) {
+  const [stars, setStars] = useState<{ id: number, left: string, size: number, delay: number, duration: number, color: string }[]>([])
   const idRef = useRef(0)
   const intervalRef = useRef<NodeJS.Timeout>()
-  const [shouldStop, setShouldStop] = useState(false)
 
   useEffect(() => {
-    if (!active || shouldStop) {
-      setStars([])
+    // Only stop generating new stars when timer finishes
+    if (timerFinished) {
       clearInterval(intervalRef.current)
       return
     }
 
-    // Check if 5 minutes have passed since start
-    if (startTime) {
-      const elapsed = Date.now() - startTime
-      if (elapsed >= 5 * 60 * 1000) { // 5 minutes in milliseconds
-        setShouldStop(true)
-        return
-      }
-    }
-
+    // Always generate falling stars
     intervalRef.current = setInterval(() => {
       const newStar = {
         id: idRef.current++,
@@ -32,32 +23,31 @@ function ShootingStars({ active, startTime }: { active: boolean; startTime: numb
         size: Math.random() * 2 + 1,
         delay: 0,
         duration: Math.random() * 5 + 3,
-        rotate: Math.random() * 20 - 10
+        color: '#ffffff' // All stars are white
       }
       console.log('🌟 Generated star:', newStar)
       setStars((prev) => [
-        ...prev.slice(-300), // Limit stars in DOM (doubled again)
+        ...prev.slice(-300), // Limit stars in DOM
         newStar
       ])
-    }, 75) // Generate one every 75ms (twice as frequent)
+    }, 75) // Generate one every 75ms
 
     return () => clearInterval(intervalRef.current)
-  }, [active])
+  }, [timerFinished])
 
-  console.log('🌟 ShootingStars render - active:', active, 'stars count:', stars.length)
+  console.log('🌟 FallingStars render - timerFinished:', timerFinished, 'stars count:', stars.length)
   
   return (
     <div className="fixed inset-0 pointer-events-none z-10">
-
-      
       {stars.map(star => (
         <div key={star.id}
-          className="absolute bg-white opacity-90 rounded-full"
+          className="absolute opacity-90 rounded-full"
           style={{
             top: '0px',
             left: star.left,
             width: `${star.size * 2}px`,
             height: `${star.size * 2}px`,
+            backgroundColor: star.color,
             animationDuration: `${star.duration}s`,
             animationName: 'fall',
             animationFillMode: 'forwards',
@@ -80,22 +70,12 @@ const GONG_TIMES = [420, 360, 300, 240, 180, 120, 60] // seconds
 export default function TimerPage() {
   const [time, setTime] = useState(480), [run, setRun] = useState(false), [done, setDone] = useState(false)
   const [gongPlaying, setGongPlaying] = useState(false)
-  const [showStars, setShowStars] = useState(false)
-  const [starStartTime, setStarStartTime] = useState<number | null>(null)
   const end = useRef(0), int = useRef<NodeJS.Timeout>(), gongs = useRef<Record<string, number>>({})
   const play = useAudio()
   
   usePWA()
 
-  // Check if timer has already finished when component mounts
-  useEffect(() => {
-    if (end.current && done) {
-      const remaining = Math.max(0, Math.ceil((end.current - Date.now()) / 1000))
-      if (remaining === 0) {
-        setShowStars(true)
-      }
-    }
-  }, [done])
+
 
   useEffect(() => {
     if (!run) return
@@ -104,8 +84,6 @@ export default function TimerPage() {
       setTime(now)
       if (now === 0) {
         stop('end')
-        setShowStars(true) // Automatically show stars when timer ends
-        setStarStartTime(Date.now()) // Record when stars started
         return
       }
       if (GONG_TIMES.includes(now)) {
@@ -130,9 +108,6 @@ export default function TimerPage() {
         if (remaining === 0) {
           if (!done) {
             stop('end')
-          } else {
-            // Timer already finished, show stars immediately
-            setShowStars(true)
           }
         }
       }
@@ -145,7 +120,6 @@ export default function TimerPage() {
     if (done || time === 0) return
     end.current = Date.now() + time * 1000
     setRun(true); setDone(false); gongs.current = {}
-    setShowStars(false); setStarStartTime(null) // No stars during countdown
     // Play start sound immediately without await to prevent delay
     play('start')
   }
@@ -156,18 +130,12 @@ export default function TimerPage() {
       await play(final)
       if (final === 'end') {
         setDone(true)
-        setShowStars(true) // Show stars only when timer ends
-        setStarStartTime(Date.now()) // Record when stars started
       }
-    }
-    if (final !== 'end') {
-      setShowStars(false) // Hide stars if stopping early
     }
   }
   
   const reset = () => { 
     stop(); setTime(480); setDone(false); gongs.current = {}
-    setShowStars(false); setStarStartTime(null)
   }
   
   const fmt = (s: number) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`
@@ -204,7 +172,7 @@ export default function TimerPage() {
           animation: gongPlaying ? 'timer-pulse-fast 8s ease-in-out infinite' : 'timer-pulse-slow 40s ease-in-out infinite'
         }}
       >
-        {showStars && <ShootingStars active={true} startTime={starStartTime} />}
+        <FallingStars timerFinished={done} />
                 {/* Time display - always visible */}
         <div className="text-8xl mb-6 text-gray-300 tracking-wider font-light">{fmt(time)}</div>
         

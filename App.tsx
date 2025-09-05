@@ -30,6 +30,28 @@ const PomocaPage = lazy(() => import('./components/pages/PomocaPage').then(modul
 // Loading component for lazy-loaded pages
 const PageLoader = () => null
 
+// Timer redirect component
+const TimerRedirect = () => {
+  useEffect(() => {
+    // In development, redirect to local timer app
+    if (window.location.hostname === 'localhost') {
+      window.location.href = 'http://localhost:3001'
+    } else {
+      // In production, redirect to external timer app
+      window.location.href = 'https://stretch-timer-lime.vercel.app'
+    }
+  }, [])
+
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
+        <p className="text-gray-600">Redirecting to timer app...</p>
+      </div>
+    </div>
+  )
+}
+
 // Home page component (inlined in routes below)
 
 function App() {
@@ -143,15 +165,7 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
             <PomocaPage />
           </Suspense>
         } />
-        <Route path="/tools/timer" element={
-          <div className="min-h-screen flex items-center justify-center">
-            <div className="text-center">
-              <h1 className="text-2xl font-bold mb-4">Timer App</h1>
-              <p className="text-gray-600">This route is handled by the external timer app.</p>
-              <p className="text-sm text-gray-500 mt-2">Visit <a href="/tools/timer" className="text-blue-500 hover:underline">/tools/timer</a> to access the timer.</p>
-            </div>
-          </div>
-        } />
+        <Route path="/tools/timer" element={<TimerRedirect />} />
         <Route path="/cv" element={<CVPage />} />
         <Route path="/legal" element={<LegalPage />} />
         {/* Admin translations (password protected in component) */}
@@ -200,15 +214,7 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
               <PomocaPage />
             </Suspense>
           } />
-          <Route path="tools/timer" element={
-            <div className="min-h-screen flex items-center justify-center">
-              <div className="text-center">
-                <h1 className="text-2xl font-bold mb-4">Timer App</h1>
-                <p className="text-gray-600">This route is handled by the external timer app.</p>
-                <p className="text-sm text-gray-500 mt-2">Visit <a href="/tools/timer" className="text-blue-500 hover:underline">/tools/timer</a> to access the timer.</p>
-              </div>
-            </div>
-          } />
+          <Route path="tools/timer" element={<TimerRedirect />} />
           <Route path="cv" element={<CVPage />} />
           <Route path="legal" element={<LegalPage />} />
           <Route path="admin/translations" element={<TranslationsAdminPage />} />

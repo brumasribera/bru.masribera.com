@@ -1,4 +1,4 @@
-// Timer Service Worker - Version 1.1.47 - Released 2025-09-05 15:05:44// Main Site Service Worker - Version 1.1.45 - Released 2025-09-05 14:53:54
+// Timer Service Worker - Version 1.1.48 - Released 2025-09-05 15:07:29// Main Site Service Worker - Version 1.1.45 - Released 2025-09-05 14:53:54
 const CACHE_NAME = 'bru-masribera-v1';
 const OFFLINE_URLS = [
   '/',

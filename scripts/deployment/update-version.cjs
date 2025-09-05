@@ -26,21 +26,7 @@ console.log(`Timestamp: ${timestamp}`);
 packageJson.version = newVersion;
 fs.writeFileSync(packagePath, JSON.stringify(packageJson, null, 2) + '\n');
 
-// Update timer version constants
-const timerPath = path.join(__dirname, '..', '..', 'components', 'timer', 'TimerPage.tsx');
-let timerContent = fs.readFileSync(timerPath, 'utf8');
-
-// Update version constants
-timerContent = timerContent.replace(
-  /const TIMER_VERSION = 'v[\d.]+'/,
-  `const TIMER_VERSION = 'v${newVersion}'`
-);
-timerContent = timerContent.replace(
-  /const TIMER_RELEASE_DATE = '[\d\-\s:]+'/,
-  `const TIMER_RELEASE_DATE = '${timestamp}'`
-);
-
-fs.writeFileSync(timerPath, timerContent);
+// Timer app is now external - no need to update timer files
 
 // Update service worker version comment
 const swPath = path.join(__dirname, '..', '..', 'public', 'sw.js');
@@ -99,7 +85,6 @@ console.log(`✅ Version updated to ${newVersion}`);
 console.log(`✅ Timestamp updated to ${timestamp}`);
 console.log(`✅ Files updated:`);
 console.log(`   - package.json`);
-console.log(`   - timer/TimerPage.tsx`);
 console.log(`   - public/sw.js`);
 console.log(`   - VERSION.json`);
 console.log(`   - README.md`);

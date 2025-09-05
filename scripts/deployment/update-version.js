@@ -95,7 +95,7 @@ console.log(`✅ Version updated to ${newVersion}`);
 console.log(`✅ Timestamp updated to ${timestamp}`);
 console.log(`✅ Files updated:`);
 console.log(`   - package.json`);
-console.log(`   - components/timer/TimerPage.tsx`);
+console.log(`   - timer/TimerPage.tsx`);
 console.log(`   - public/sw.js`);
 console.log(`   - VERSION.json`);
 console.log(`   - README.md`);

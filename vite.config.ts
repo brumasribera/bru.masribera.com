@@ -20,7 +20,15 @@ export default defineConfig({
       '/tools/timer': {
         target: 'http://localhost:3001',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/tools\/timer/, '')
+        rewrite: (path) => path.replace(/^\/tools\/timer/, ''),
+        configure: (proxy, options) => {
+          proxy.on('error', (err, req, res) => {
+            console.log('Proxy error:', err);
+          });
+          proxy.on('proxyReq', (proxyReq, req, res) => {
+            console.log('Proxying request:', req.url);
+          });
+        }
       }
     }
   }

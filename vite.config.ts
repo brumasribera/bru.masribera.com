@@ -14,5 +14,14 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 2000, // Increase warning limit to 2MB
     target: 'es2015' // Target modern browsers for better tree-shaking
+  },
+  server: {
+    proxy: {
+      '/tools/timer': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/tools\/timer/, '')
+      }
+    }
   }
 })

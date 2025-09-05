@@ -25,7 +25,6 @@ const ClathesPage = lazy(() => import('./components/pages/ClathesPage').then(mod
 const Pix4DPage = lazy(() => import('./components/pages/Pix4DPage').then(module => ({ default: module.Pix4DPage })))
 const WegawPage = lazy(() => import('./components/pages/WegawPage').then(module => ({ default: module.WegawPage })))
 const PomocaPage = lazy(() => import('./components/pages/PomocaPage').then(module => ({ default: module.PomocaPage })))
-const TimerPage = lazy(() => import('./components/timer').then(module => ({ default: module.TimerPage })))
 
 
 // Loading component for lazy-loaded pages
@@ -142,11 +141,6 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
         <Route path="/pomoca" element={
           <Suspense fallback={<PageLoader />}>
             <PomocaPage />
-          </Suspense>
-        } />
-        <Route path="/tools/timer" element={
-          <Suspense fallback={<PageLoader />}>
-            <TimerPage />
           </Suspense>
         } />
         <Route path="/cv" element={<CVPage />} />

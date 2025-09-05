@@ -108,7 +108,7 @@ export function ProjectsListPage({ onBack, onSelectProject }: ProjectsListPagePr
   return (
     <div className="h-full bg-gradient-to-br from-emerald-50 via-green-50 to-emerald-100 flex flex-col">
       {/* Header - Always sticky at top, no scrollbar */}
-      <div className="bg-gradient-to-r from-green-600 to-emerald-600 sticky top-0 z-50 flex-shrink-0 shadow-lg">
+      <div className="bg-gradient-to-r from-green-600 to-emerald-600 sticky top-0 z-40 flex-shrink-0 shadow-lg">
          <div className="p-4">
            <div className="flex items-center justify-between mb-4">
              <button
@@ -162,7 +162,7 @@ export function ProjectsListPage({ onBack, onSelectProject }: ProjectsListPagePr
                   
                   <Select.Portal>
                     <Select.Content 
-                      className="overflow-hidden bg-white/95 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg z-50"
+                      className="overflow-hidden bg-white/95 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg z-40"
                       style={{ maxHeight: '120px' }}
                     >
                       <Select.Viewport className="p-1">

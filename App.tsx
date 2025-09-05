@@ -143,6 +143,15 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
             <PomocaPage />
           </Suspense>
         } />
+        <Route path="/tools/timer" element={
+          <div className="min-h-screen flex items-center justify-center">
+            <div className="text-center">
+              <h1 className="text-2xl font-bold mb-4">Timer App</h1>
+              <p className="text-gray-600">This route is handled by the external timer app.</p>
+              <p className="text-sm text-gray-500 mt-2">Visit <a href="/tools/timer" className="text-blue-500 hover:underline">/tools/timer</a> to access the timer.</p>
+            </div>
+          </div>
+        } />
         <Route path="/cv" element={<CVPage />} />
         <Route path="/legal" element={<LegalPage />} />
         {/* Admin translations (password protected in component) */}
@@ -192,9 +201,13 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
             </Suspense>
           } />
           <Route path="tools/timer" element={
-            <Suspense fallback={<PageLoader />}>
-              <TimerPage />
-            </Suspense>
+            <div className="min-h-screen flex items-center justify-center">
+              <div className="text-center">
+                <h1 className="text-2xl font-bold mb-4">Timer App</h1>
+                <p className="text-gray-600">This route is handled by the external timer app.</p>
+                <p className="text-sm text-gray-500 mt-2">Visit <a href="/tools/timer" className="text-blue-500 hover:underline">/tools/timer</a> to access the timer.</p>
+              </div>
+            </div>
           } />
           <Route path="cv" element={<CVPage />} />
           <Route path="legal" element={<LegalPage />} />

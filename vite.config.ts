@@ -16,20 +16,6 @@ export default defineConfig({
     target: 'es2015' // Target modern browsers for better tree-shaking
   },
   server: {
-    proxy: {
-      '/tools/timer': {
-        target: 'http://localhost:3001',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/tools\/timer/, ''),
-        configure: (proxy, options) => {
-          proxy.on('error', (err, req, res) => {
-            console.log('Proxy error:', err);
-          });
-          proxy.on('proxyReq', (proxyReq, req, res) => {
-            console.log('Proxying request:', req.url);
-          });
-        }
-      }
-    }
+    // Remove proxy - let React Router handle /tools/timer
   }
 })

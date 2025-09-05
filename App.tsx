@@ -33,31 +33,17 @@ const PageLoader = () => null
 // Timer redirect component
 const TimerRedirect = () => {
   useEffect(() => {
-    console.log('TimerRedirect component mounted')
-    console.log('Current hostname:', window.location.hostname)
-    
-    // Use setTimeout to ensure the component renders before redirect
-    const timer = setTimeout(() => {
-      // In development, redirect to local timer app
-      if (window.location.hostname === 'localhost') {
-        console.log('Redirecting to local timer app: http://localhost:3001')
-        window.location.replace('http://localhost:3001')
-      } else {
-        console.log('Redirecting to external timer app: https://stretch-timer-lime.vercel.app')
-        // In production, redirect to external timer app
-        window.location.replace('https://stretch-timer-lime.vercel.app')
-      }
-    }, 100)
-
-    return () => clearTimeout(timer)
+    // Instant redirect - no loading screen
+    if (window.location.hostname === 'localhost') {
+      window.location.replace('http://localhost:3001')
+    } else {
+      window.location.replace('https://stretch-timer-lime.vercel.app')
+    }
   }, [])
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-        <p className="text-gray-600">Redirecting to timer app...</p>
-      </div>
+    <div className="min-h-screen bg-black">
+      {/* Dark background to prevent white flash during redirect */}
     </div>
   )
 }

@@ -1,5 +1,4 @@
-// Timer Service Worker - Version 1.1.45 - Released 2025-09-05 14:53:54
-// Main Site Service Worker - Version 1.1.44 - Released 2025-09-05 14:52:19
+// Timer Service Worker - Version 1.1.47 - Released 2025-09-05 15:05:44// Main Site Service Worker - Version 1.1.45 - Released 2025-09-05 14:53:54
 const CACHE_NAME = 'bru-masribera-v1';
 const OFFLINE_URLS = [
   '/',
@@ -35,14 +34,12 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
-            console.log('Deleting old cache:', cacheName);
-            return caches.delete(cacheName);
-          }
+          console.log('Deleting cache:', cacheName);
+          return caches.delete(cacheName);
         })
       );
     }).then(() => {
-      console.log('Service Worker activated successfully');
+      console.log('Service Worker activated successfully - all caches cleared');
       return self.clients.claim();
     })
   );
@@ -116,6 +113,17 @@ self.addEventListener('fetch', (event) => {
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
+  }
+});
+
+// Force reload when service worker updates
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'FORCE_RELOAD') {
+    self.clients.matchAll().then(clients => {
+      clients.forEach(client => {
+        client.postMessage({ type: 'RELOAD' });
+      });
+    });
   }
 });
 

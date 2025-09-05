@@ -1,5 +1,5 @@
-// Timer Service Worker - Version 1.1.44 - Released 2025-09-05 14:52:19
-// Main Site Service Worker - Version 1.1.43 - Released 2025-09-05 14:50:20
+// Timer Service Worker - Version 1.1.45 - Released 2025-09-05 14:53:54
+// Main Site Service Worker - Version 1.1.44 - Released 2025-09-05 14:52:19
 const CACHE_NAME = 'bru-masribera-v1';
 const OFFLINE_URLS = [
   '/',
@@ -67,6 +67,11 @@ self.addEventListener('fetch', (event) => {
   // Skip external timer app resources - let them be handled by the external app
   if (event.request.url.includes('/tools/timer/') && 
       !event.request.url.includes('bru.masribera.com')) {
+    return;
+  }
+
+  // Skip navigation requests to /tools/timer to allow redirect
+  if (event.request.mode === 'navigate' && event.request.url.includes('/tools/timer')) {
     return;
   }
 

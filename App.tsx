@@ -33,13 +33,23 @@ const PageLoader = () => null
 // Timer redirect component
 const TimerRedirect = () => {
   useEffect(() => {
-    // In development, redirect to local timer app
-    if (window.location.hostname === 'localhost') {
-      window.location.href = 'http://localhost:3001'
-    } else {
-      // In production, redirect to external timer app
-      window.location.href = 'https://stretch-timer-lime.vercel.app'
-    }
+    console.log('TimerRedirect component mounted')
+    console.log('Current hostname:', window.location.hostname)
+    
+    // Use setTimeout to ensure the component renders before redirect
+    const timer = setTimeout(() => {
+      // In development, redirect to local timer app
+      if (window.location.hostname === 'localhost') {
+        console.log('Redirecting to local timer app: http://localhost:3001')
+        window.location.replace('http://localhost:3001')
+      } else {
+        console.log('Redirecting to external timer app: https://stretch-timer-lime.vercel.app')
+        // In production, redirect to external timer app
+        window.location.replace('https://stretch-timer-lime.vercel.app')
+      }
+    }, 100)
+
+    return () => clearTimeout(timer)
   }, [])
 
   return (

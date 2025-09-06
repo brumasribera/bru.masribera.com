@@ -121,7 +121,7 @@ export function ContactSection() {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-[var(--input)] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors"
                     placeholder={t('contact.namePlaceholder')}
                   />
                 </div>
@@ -137,7 +137,7 @@ export function ContactSection() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-[var(--input)] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors"
                     placeholder={t('contact.emailPlaceholder')}
                   />
                 </div>
@@ -154,7 +154,7 @@ export function ContactSection() {
                   onChange={handleInputChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-[var(--input)] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent !bg-white dark:!bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors resize-none"
                   placeholder={t('contact.messagePlaceholder')}
                 />
               </div>
@@ -219,7 +219,7 @@ export function ContactSection() {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="group bg-[var(--input)] text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200 text-base shadow-md"
+                className="group bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200 text-base shadow-md"
                 onClick={() => window.open('https://linkedin.com/in/brumasribera', '_blank')}
               >
                 <Linkedin className="mr-2 h-4 w-4 transition-all duration-500 group-hover:fill-current group-hover:scale-110" />
@@ -229,7 +229,7 @@ export function ContactSection() {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="group bg-[var(--input)] text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200 text-base shadow-md"
+                className="group bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200 text-base shadow-md"
                 onClick={() => window.open('https://github.com/brumasribera', '_blank')}
               >
                 <Github className="mr-2 h-4 w-4 transition-all duration-500 group-hover:fill-current group-hover:scale-110" />
@@ -239,7 +239,7 @@ export function ContactSection() {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="group bg-[var(--input)] text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200 text-base shadow-md"
+                className="group bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200 text-base shadow-md"
                 onClick={() => {
                   const match = window.location.pathname.match(/^\/(\w{2})(\/|$)/)
                   const lng = match ? match[1] : 'en'

@@ -43,7 +43,7 @@ export function ProjectsSection() {
       impactKey: 'projects.projects.clathes.impact',
       usersKey: 'projects.projects.clathes.users',
       featured: true,
-      image: '/clathes/Vaquita - profile logo.png'
+      image: '/clathes/vaquita-profile-logo.png'
     },
     {
       titleKey: 'projects.projects.moodleNet.title',
@@ -65,7 +65,7 @@ export function ProjectsSection() {
       impactKey: 'projects.projects.pomoca.impact',
       usersKey: 'projects.projects.pomoca.users',
       featured: true,
-      image: '/logos/oberalp___salewa_group_logo.jpeg'
+      image: '/logos/oberalp-salewa-group-logo.jpeg'
     },
     {
       titleKey: 'projects.projects.defrost.title',

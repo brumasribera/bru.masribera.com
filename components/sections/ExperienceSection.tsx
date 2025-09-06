@@ -25,7 +25,7 @@ const experiences = [
   },
   {
     company: 'oberalp',
-    logo: '/logos/oberalp___salewa_group_logo.jpeg',
+    logo: '/logos/oberalp-salewa-group-logo.jpeg',
     position: 'experience.companies.oberalp.position',
     location: 'experience.companies.oberalp.location',
     period: 'experience.companies.oberalp.period',

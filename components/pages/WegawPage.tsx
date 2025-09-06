@@ -20,10 +20,10 @@ export function WegawPage() {
   
   // Array of all image paths for navigation
   const imagePaths = [
-    '/wegaw/DeFROST1.jpg',
-    '/wegaw/2_defrost.png',
-    '/wegaw/3_defrost.png',
-    '/wegaw/DeFROST_SpaceValueAdded_01.png'
+    '/wegaw/defrost-demo-1.jpg',
+    '/wegaw/defrost-screenshot-2.png',
+    '/wegaw/defrost-screenshot-3.png',
+    '/wegaw/defrost-space-value-added-01.png'
   ]
 
   useKeyboardNavigation({
@@ -254,10 +254,10 @@ export function WegawPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <CardContent className="p-0">
                 <img
-                  src="/wegaw/DeFROST1.jpg"
+                  src="/wegaw/defrost-demo-1.jpg"
                   alt="DeFROST Research & Validation"
                   className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
-                  onClick={() => setSelectedImage('/wegaw/DeFROST1.jpg')}
+                  onClick={() => setSelectedImage('/wegaw/defrost-demo-1.jpg')}
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('defrost.stages.0.title')}</h3>
@@ -272,10 +272,10 @@ export function WegawPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <CardContent className="p-0">
                 <img
-                  src="/wegaw/2_defrost.png"
+                  src="/wegaw/defrost-screenshot-2.png"
                   alt="DeFROST Technical Implementation"
                   className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
-                  onClick={() => setSelectedImage('/wegaw/2_defrost.png')}
+                  onClick={() => setSelectedImage('/wegaw/defrost-screenshot-2.png')}
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('defrost.stages.1.title')}</h3>
@@ -290,10 +290,10 @@ export function WegawPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <CardContent className="p-0">
                 <img
-                  src="/wegaw/3_defrost.png"
+                  src="/wegaw/defrost-screenshot-3.png"
                   alt="DeFROST Commercial Deployment"
                   className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
-                  onClick={() => setSelectedImage('/wegaw/3_defrost.png')}
+                  onClick={() => setSelectedImage('/wegaw/defrost-screenshot-3.png')}
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('defrost.stages.2.title')}</h3>
@@ -308,10 +308,10 @@ export function WegawPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <CardContent className="p-0">
                 <img
-                  src="/wegaw/DeFROST_SpaceValueAdded_01.png"
+                  src="/wegaw/defrost-space-value-added-01.png"
                   alt="DeFROST Market Expansion"
                   className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
-                  onClick={() => setSelectedImage('/wegaw/DeFROST_SpaceValueAdded_01.png')}
+                  onClick={() => setSelectedImage('/wegaw/defrost-space-value-added-01.png')}
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t('defrost.stages.3.title')}</h3>

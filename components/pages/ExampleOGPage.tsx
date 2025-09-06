@@ -58,7 +58,7 @@ export function ExampleOGPage() {
             <DynamicOGImage
               title="Open Huts Nature Network"
               subtitle="Connecting nature enthusiasts with sustainable mountain experiences worldwide"
-              imageUrl="/open-huts/Hut View.png"
+              imageUrl="/open-huts/hut-view.png"
               projectType="project"
               projectCountry="Global"
               className="mx-auto"

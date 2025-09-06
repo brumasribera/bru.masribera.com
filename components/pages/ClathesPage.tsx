@@ -16,7 +16,7 @@ export function ClathesPage() {
   const imagePaths = [
     '/clathes/vaquita-representation.png',
     '/clathes/vaquita-yellow-hands.png',
-    '/clathes/bio t-shirt.jpg'
+    '/clathes/bio-t-shirt.jpg'
   ]
   
   // Enable keyboard navigation
@@ -56,7 +56,7 @@ export function ClathesPage() {
             <div className="flex justify-center mb-8">
               <div className="bg-white p-4 rounded-3xl shadow-xl">
                 <img 
-                  src="/clathes/Vaquita - profile logo.png" 
+                  src="/clathes/vaquita-profile-logo.png" 
                   alt="Clathes - Vaquita Protection"
                   className="h-24 w-24 object-contain rounded-2xl"
                 />
@@ -389,7 +389,7 @@ export function ClathesPage() {
                <div className="absolute bottom-3 left-3 text-white font-medium">{t('gallery.hands')}</div>
              </div>
              <div className="group relative overflow-hidden rounded-3xl shadow-lg border border-gray-200 dark:border-gray-700 cursor-zoom-in" onClick={() => setSelectedImage(imagePaths[2])} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedImage(imagePaths[2]) } }}>
-               <img src="/clathes/bio t-shirt.jpg" alt="Clathes bio t-shirt" className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" />
+               <img src="/clathes/bio-t-shirt.jpg" alt="Clathes bio t-shirt" className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" />
                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                <div className="absolute bottom-3 left-3 text-white font-medium">{t('gallery.shirts')}</div>
              </div>

@@ -40,9 +40,9 @@ export function OpenHutsPage() {
   
   // Array of all image paths for navigation
   const imagePaths = [
-    '/open-huts/Search View.png',
-    '/open-huts/Hut View.png',
-    '/open-huts/Route View.png'
+    '/open-huts/search-view.png',
+    '/open-huts/hut-view.png',
+    '/open-huts/route-view.png'
   ]
   
   return (
@@ -238,10 +238,10 @@ export function OpenHutsPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <CardContent className="p-0">
                 <img
-                  src="/open-huts/Search View.png"
+                  src="/open-huts/search-view.png"
                   alt="Search Interface"
                   className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
-                  onClick={() => setSelectedImage('/open-huts/Search View.png')}
+                  onClick={() => setSelectedImage('/open-huts/search-view.png')}
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
@@ -257,10 +257,10 @@ export function OpenHutsPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <CardContent className="p-0">
                 <img
-                  src="/open-huts/Hut View.png"
+                  src="/open-huts/hut-view.png"
                   alt="Hut Details"
                   className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
-                  onClick={() => setSelectedImage('/open-huts/Hut View.png')}
+                  onClick={() => setSelectedImage('/open-huts/hut-view.png')}
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
@@ -276,10 +276,10 @@ export function OpenHutsPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <CardContent className="p-0">
                 <img
-                  src="/open-huts/Route View.png"
+                  src="/open-huts/route-view.png"
                   alt="Route Planning"
                   className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
-                  onClick={() => setSelectedImage('/open-huts/Route View.png')}
+                  onClick={() => setSelectedImage('/open-huts/route-view.png')}
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">

@@ -3,7 +3,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 // Get environment from command line or default to development
-const env = process.argv[2] || 'development';
+const env: string = process.argv[2] || 'development';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -22,3 +22,4 @@ if (env === 'production') {
     join(publicDir, 'favicon.svg')
   );
 }
+

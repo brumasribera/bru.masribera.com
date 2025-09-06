@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-async function prepareCvPage(page) {
+async function prepareCvPage(page: puppeteer.Page): Promise<void> {
   // Wait for the CV content to be fully rendered
   await page.waitForSelector('#a4-sheet', { timeout: 10000 });
   // Wait a bit more for any animations or dynamic content to settle
@@ -105,7 +105,7 @@ async function prepareCvPage(page) {
   });
 }
 
-async function generateCvForLanguage(browser, baseUrl, language) {
+async function generateCvForLanguage(browser: puppeteer.Browser, baseUrl: string, language: string): Promise<void> {
   const page = await browser.newPage();
   await page.setViewport({ width: 794, height: 1123 });
 
@@ -140,14 +140,14 @@ async function generateCvForLanguage(browser, baseUrl, language) {
     fs.writeFileSync(pdfPath, pdf);
     await page.close();
     console.log(`✅ Generated ${filename} at ${pdfPath}`);
-  } catch (error) {
+  } catch (error: any) {
     console.error(`❌ Error generating CV for ${language}:`, error.message);
     await page.close();
     throw error;
   }
 }
 
-async function generateAllCvs() {
+async function generateAllCvs(): Promise<void> {
   const baseUrl = process.env.CV_SERVER_URL || 'http://localhost:3000';
   const languages = ['en', 'de', 'fr', 'es', 'ca', 'it', 'pt', 'rm'];
   const browser = await puppeteer.launch();
@@ -164,3 +164,4 @@ generateAllCvs().catch((err) => {
   console.error(err);
   process.exit(1);
 });
+

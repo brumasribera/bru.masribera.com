@@ -1,14 +1,25 @@
-const puppeteer = require('puppeteer');
-const fs = require('fs').promises;
-const path = require('path');
+import puppeteer from 'puppeteer';
+import { promises as fs } from 'fs';
+import path from 'path';
 
 // Configuration
 const OUTPUT_DIR = 'public/og-images';
 const IMAGE_WIDTH = 1200;
 const IMAGE_HEIGHT = 630;
 
+interface ReserveProject {
+  id: string;
+  name: string;
+  country: string;
+  impact: {
+    biodiversity: number;
+    carbon: number;
+    community: number;
+  };
+}
+
 // Reserve projects only
-const RESERVE_PROJECTS = [
+const RESERVE_PROJECTS: ReserveProject[] = [
   { id: 'mx-mangroves', name: 'Mexico Mangroves', country: 'Mexico', impact: { biodiversity: 92, carbon: 88, community: 74 } },
   { id: 'br-amazon', name: 'Brazil Amazon', country: 'Brazil', impact: { biodiversity: 98, carbon: 95, community: 80 } },
   { id: 'id-seagrass', name: 'Indonesia Seagrass', country: 'Indonesia', impact: { biodiversity: 85, carbon: 72, community: 77 } },
@@ -44,7 +55,7 @@ const RESERVE_PROJECTS = [
   { id: 'sa-mangrove', name: 'Saudi Arabia Mangrove', country: 'Saudi Arabia', impact: { biodiversity: 75, carbon: 62, community: 69 } }
 ];
 
-async function ensureDirectoryExists(dirPath) {
+async function ensureDirectoryExists(dirPath: string): Promise<void> {
   try {
     await fs.access(dirPath);
   } catch {
@@ -52,7 +63,7 @@ async function ensureDirectoryExists(dirPath) {
   }
 }
 
-async function generateReserveProjectImage(browser, project) {
+async function generateReserveProjectImage(browser: puppeteer.Browser, project: ReserveProject): Promise<void> {
   const page = await browser.newPage();
   
   try {
@@ -170,14 +181,14 @@ async function generateReserveProjectImage(browser, project) {
     
     console.log(`✅ Generated: ${filename}`);
     
-  } catch (error) {
+  } catch (error: any) {
     console.error(`❌ Error generating reserve-${project.id}:`, error.message);
   } finally {
     await page.close();
   }
 }
 
-async function main() {
+async function main(): Promise<void> {
   console.log('🌱 Generating Reserve project Open Graph images...');
   console.log(`📊 Total projects: ${RESERVE_PROJECTS.length}`);
   
@@ -209,4 +220,5 @@ if (require.main === module) {
   main().catch(console.error);
 }
 
-module.exports = { generateReserveProjectImage, RESERVE_PROJECTS };
+export { generateReserveProjectImage, RESERVE_PROJECTS };
+

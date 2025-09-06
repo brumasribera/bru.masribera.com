@@ -1,8 +1,13 @@
 #!/usr/bin/env node
 
-const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
+import { execSync } from 'child_process';
+import fs from 'fs';
+import path from 'path';
+
+interface VersionInfo {
+  version: string;
+  timestamp: string;
+}
 
 console.log('🚀 Starting automated release process...\n');
 
@@ -13,7 +18,7 @@ try {
   
   // Step 2: Read the new version for commit message
   const versionPath = path.join(__dirname, '..', 'VERSION.json');
-  const versionInfo = JSON.parse(fs.readFileSync(versionPath, 'utf8'));
+  const versionInfo: VersionInfo = JSON.parse(fs.readFileSync(versionPath, 'utf8'));
   
   console.log(`\n✅ Version updated to ${versionInfo.version}`);
   console.log(`📅 Release timestamp: ${versionInfo.timestamp}\n`);
@@ -40,7 +45,8 @@ try {
   console.log(`⏰ Released: ${versionInfo.timestamp}`);
   console.log('\n💡 Next time you want to release, just run: npm run release');
   
-} catch (error) {
+} catch (error: any) {
   console.error('\n❌ Release failed:', error.message);
   process.exit(1);
 }
+

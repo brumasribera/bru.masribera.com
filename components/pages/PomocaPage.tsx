@@ -21,9 +21,9 @@ export function PomocaPage() {
   })
   
   const prototypeImages = [
-    '/pomoca/prototypes/GLR Cutting step.png',
-    '/pomoca/prototypes/QA step.png',
-    '/pomoca/prototypes/Product refinements .png'
+    '/pomoca/prototypes/glr-cutting-step.png',
+    '/pomoca/prototypes/qa-step.png',
+    '/pomoca/prototypes/product-refinements.png'
   ]
   
   return (
@@ -53,7 +53,7 @@ export function PomocaPage() {
             <div className="flex justify-center mb-8">
               <div className="bg-white p-4 rounded-3xl shadow-xl">
                 <img 
-                  src="/logos/oberalp___salewa_group_logo.jpeg" 
+                  src="/logos/oberalp-salewa-group-logo.jpeg" 
                   alt="Pomoca"
                   className="h-24 w-24 object-contain rounded-2xl"
                 />
@@ -343,7 +343,7 @@ export function PomocaPage() {
             {/* Prototype 1 - Cutting */}
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
               <CardContent className="p-0">
-                <img src="/pomoca/prototypes/GLR Cutting step.png" alt="Pomoca Production Interface - Cutting Step" className="w-full h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity" onClick={() => setSelectedImage('/pomoca/prototypes/GLR Cutting step.png')} />
+                <img src="/pomoca/prototypes/glr-cutting-step.png" alt="Pomoca Production Interface - Cutting Step" className="w-full h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity" onClick={() => setSelectedImage('/pomoca/prototypes/glr-cutting-step.png')} />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{t('prototypes.items.0.title')}</h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-4">{t('prototypes.items.0.desc')}</p>
@@ -358,7 +358,7 @@ export function PomocaPage() {
             {/* Prototype 2 - QA */}
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
               <CardContent className="p-0">
-                <img src="/pomoca/prototypes/QA step.png" alt="Pomoca Production Interface - QA Step" className="w-full h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity" onClick={() => setSelectedImage('/pomoca/prototypes/QA step.png')} />
+                <img src="/pomoca/prototypes/qa-step.png" alt="Pomoca Production Interface - QA Step" className="w-full h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity" onClick={() => setSelectedImage('/pomoca/prototypes/qa-step.png')} />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{t('prototypes.items.1.title')}</h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-4">{t('prototypes.items.1.desc')}</p>
@@ -373,7 +373,7 @@ export function PomocaPage() {
             {/* Prototype 3 - Refinements */}
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
               <CardContent className="p-0">
-                <img src="/pomoca/prototypes/Product refinements .png" alt="Pomoca Production Interface - Product Refinements" className="w-full h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity" onClick={() => setSelectedImage('/pomoca/prototypes/Product refinements .png')} />
+                <img src="/pomoca/prototypes/product-refinements.png" alt="Pomoca Production Interface - Product Refinements" className="w-full h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity" onClick={() => setSelectedImage('/pomoca/prototypes/product-refinements.png')} />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{t('prototypes.items.2.title')}</h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-4">{t('prototypes.items.2.desc')}</p>

@@ -1,4 +1,5 @@
-// Timer Service Worker - Version 1.1.50 - Released 2025-09-06 17:36:40// Main Site Service Worker - Version 1.1.45 - Released 2025-09-05 14:53:54
+// Timer Service Worker - Version 1.1.51 - Released 2025-09-06 18:06:57
+// Main Site Service Worker - Version 1.1.50 - Released 2025-09-06 17:36:40
 const CACHE_NAME = 'bru-masribera-v1';
 const OFFLINE_URLS = [
   '/',
@@ -6,7 +7,6 @@ const OFFLINE_URLS = [
   '/apple-touch-icon.png'
 ];
 
-// Main Site Service Worker - Version 1.1.41 - Released 2025-09-05 14:45:44
 
 // Install event - cache essential files
 self.addEventListener('install', (event) => {

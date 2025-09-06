@@ -1,16 +1,25 @@
 // Update version script
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+
+const __dirname = process.cwd();
+
+interface VersionInfo {
+  version: string;
+  timestamp: string;
+  releaseDate: string;
+  releaseTime: string;
+}
 
 // Get current timestamp
 const now = new Date();
 const timestamp = now.toISOString().slice(0, 19).replace('T', ' ');
 
 // Read current version from package.json
-const packagePath = path.join(__dirname, '..', '..', 'package.json');
-const packageJson = JSON.parse(fs.readFileSync(packagePath, 'utf8'));
-const currentVersion = packageJson.version;
+const packagePath = path.join(__dirname, 'package.json');
+const packageJson: any = JSON.parse(fs.readFileSync(packagePath, 'utf8'));
+const currentVersion: string = packageJson.version;
 
 // Parse version components
 const [major, minor, patch] = currentVersion.split('.').map(Number);
@@ -29,7 +38,7 @@ fs.writeFileSync(packagePath, JSON.stringify(packageJson, null, 2) + '\n');
 // Timer app is now external - no need to update timer files
 
 // Update service worker version comment
-const swPath = path.join(__dirname, '..', '..', 'public', 'sw.js');
+const swPath = path.join(__dirname, 'public', 'sw.js');
 let swContent = fs.readFileSync(swPath, 'utf8');
 
 // Add or update version comment at the top
@@ -46,22 +55,22 @@ if (swContent.includes('// Timer Service Worker - Version')) {
 fs.writeFileSync(swPath, swContent);
 
 // Create version info file
-const versionInfo = {
+const versionInfo: VersionInfo = {
   version: newVersion,
   timestamp: timestamp,
   releaseDate: now.toISOString().split('T')[0],
   releaseTime: now.toTimeString().split(' ')[0]
 };
 
-const versionPath = path.join(__dirname, '..', '..', 'VERSION.json');
+const versionPath = path.join(__dirname, 'VERSION.json');
 fs.writeFileSync(versionPath, JSON.stringify(versionInfo, null, 2) + '\n');
 
 // Also update the public folder copy for deployment
-const publicVersionPath = path.join(__dirname, '..', '..', 'public', 'VERSION.json');
+const publicVersionPath = path.join(__dirname, 'public', 'VERSION.json');
 fs.writeFileSync(publicVersionPath, JSON.stringify(versionInfo, null, 2) + '\n');
 
 // Update README with current version
-const readmePath = path.join(__dirname, '..', '..', 'README.md');
+const readmePath = path.join(__dirname, 'README.md');
 let readmeContent = fs.readFileSync(readmePath, 'utf8');
 
 // Update version in README if it exists
@@ -92,3 +101,4 @@ console.log(`   - README.md`);
 // Output the new version for use in commit messages
 console.log(`\n📝 Use this version in your commit message:`);
 console.log(`v${newVersion}: ${timestamp}`);
+

@@ -148,7 +148,7 @@ export function Pix4DPage() {
                 autoPlay
                 preload="metadata"
               >
-                <source src="/pix4d/Recording pix4d.mp4" type="video/mp4" />
+                <source src="/pix4d/pix4d-demo-video.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </CardContent>

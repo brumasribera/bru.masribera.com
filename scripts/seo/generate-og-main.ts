@@ -1,69 +1,81 @@
-const puppeteer = require('puppeteer');
-const fs = require('fs').promises;
-const path = require('path');
+import puppeteer from 'puppeteer';
+import { promises as fs } from 'fs';
+import path from 'path';
 
 // Configuration
 const OUTPUT_DIR = 'public/og-images';
 const IMAGE_WIDTH = 1200;
 const IMAGE_HEIGHT = 630;
 
-// Get command line arguments
-const args = process.argv.slice(2);
-const imageName = args[0] || 'main';
+interface MainPage {
+  name: string;
+  title: string;
+  subtitle: string;
+  imageUrl: string;
+  type: 'main' | 'project';
+}
 
-// Single image configuration
-const IMAGE_CONFIG = {
-  main: {
+// Main page configurations only
+const MAIN_PAGES: MainPage[] = [
+  {
+    name: 'main',
     title: 'Bru Mas Ribera',
     subtitle: 'Frontend & UX Engineer passionate about creating impactful digital experiences',
     imageUrl: '/backgrounds/mountain-background.jpg',
     type: 'main'
   },
-  openhuts: {
+  {
+    name: 'openhuts',
     title: 'Open Huts Nature Network',
     subtitle: 'Connecting nature enthusiasts with sustainable mountain experiences worldwide',
-    imageUrl: '/open-huts/Hut View.png',
+    imageUrl: '/open-huts/hut-view.png',
     type: 'project'
   },
-  reserve: {
+  {
+    name: 'reserve',
     title: 'Reserve - Nature Conservation',
     subtitle: 'Protect and restore ecosystems through community-driven conservation projects',
     imageUrl: '/reserve/project-images/ar-wetlands.jpg',
     type: 'project'
   },
-  clathes: {
+  {
+    name: 'clathes',
     title: 'Clathes - Sustainable Fashion',
     subtitle: 'Eco-friendly clothing brand promoting sustainable fashion practices',
     imageUrl: '/clathes/vaquita-representation.png',
     type: 'project'
   },
-  pix4d: {
+  {
+    name: 'pix4d',
     title: 'Pix4D - 3D Mapping Solutions',
     subtitle: 'Advanced photogrammetry software for professional 3D mapping and modeling',
     imageUrl: '/pix4d/matterhorn-cervin-pix4d-pix4dmapper-switzerland.jpg',
     type: 'project'
   },
-  wegaw: {
+  {
+    name: 'wegaw',
     title: 'Wegaw - Weather Intelligence',
     subtitle: 'AI-powered weather forecasting for renewable energy optimization',
-    imageUrl: '/wegaw/DeFROST_SpaceValueAdded_01.png',
+    imageUrl: '/wegaw/defrost-space-value-added-01.png',
     type: 'project'
   },
-  pomoca: {
+  {
+    name: 'pomoca',
     title: 'Pomoca - Ski Equipment',
     subtitle: 'Innovative ski touring equipment for mountain adventures',
     imageUrl: '/pomoca/steps/gliding.png',
     type: 'project'
   },
-  moodlenet: {
+  {
+    name: 'moodlenet',
     title: 'MoodleNet - Open Education',
     subtitle: 'Decentralized social network for open education and lifelong learning',
     imageUrl: '/moodlenet/moodle1.png',
     type: 'project'
   }
-};
+];
 
-async function ensureDirectoryExists(dirPath) {
+async function ensureDirectoryExists(dirPath: string): Promise<void> {
   try {
     await fs.access(dirPath);
   } catch {
@@ -71,7 +83,7 @@ async function ensureDirectoryExists(dirPath) {
   }
 }
 
-async function generateSingleImage(browser, pageConfig) {
+async function generateMainPageImage(browser: puppeteer.Browser, pageConfig: MainPage): Promise<void> {
   const page = await browser.newPage();
   
   try {
@@ -165,28 +177,22 @@ async function generateSingleImage(browser, pageConfig) {
       omitBackground: false
     });
     
-    const filename = `${imageName}.png`;
+    const filename = `${pageConfig.name}.png`;
     const filepath = path.join(OUTPUT_DIR, filename);
     await fs.writeFile(filepath, screenshot);
     
     console.log(`✅ Generated: ${filename}`);
-    console.log(`📁 Saved to: ${filepath}`);
     
-  } catch (error) {
-    console.error(`❌ Error generating ${imageName}:`, error.message);
+  } catch (error: any) {
+    console.error(`❌ Error generating ${pageConfig.name}:`, error.message);
   } finally {
     await page.close();
   }
 }
 
-async function main() {
-  if (!IMAGE_CONFIG[imageName]) {
-    console.error(`❌ Unknown image name: ${imageName}`);
-    console.log('Available options:', Object.keys(IMAGE_CONFIG).join(', '));
-    process.exit(1);
-  }
-
-  console.log(`🚀 Generating single Open Graph image: ${imageName}`);
+async function main(): Promise<void> {
+  console.log('🚀 Generating main page Open Graph images...');
+  console.log(`📊 Total pages: ${MAIN_PAGES.length}`);
   
   await ensureDirectoryExists(OUTPUT_DIR);
   
@@ -196,8 +202,14 @@ async function main() {
   });
   
   try {
-    await generateSingleImage(browser, IMAGE_CONFIG[imageName]);
-    console.log('\n🎉 Image generated successfully!');
+    for (let i = 0; i < MAIN_PAGES.length; i++) {
+      const page = MAIN_PAGES[i];
+      console.log(`\n🔄 Progress: ${i + 1}/${MAIN_PAGES.length}`);
+      await generateMainPageImage(browser, page);
+    }
+    
+    console.log('\n🎉 All main page images generated successfully!');
+    console.log(`📁 Images saved to: ${OUTPUT_DIR}`);
     
   } catch (error) {
     console.error('❌ Error during generation:', error);
@@ -210,4 +222,4 @@ if (require.main === module) {
   main().catch(console.error);
 }
 
-module.exports = { generateSingleImage, IMAGE_CONFIG };
+export { generateMainPageImage, MAIN_PAGES };

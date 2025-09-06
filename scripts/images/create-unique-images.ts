@@ -4,7 +4,7 @@
  * This utility script generates unique image assignments for all Reserve app projects.
  * It creates a mapping of projects to unique Unsplash images to ensure no duplicates.
  * 
- * Usage: node scripts/create-unique-images.js
+ * Usage: node scripts/create-unique-images.ts
  * 
  * Features:
  * - Maps 33 projects to 33 unique Unsplash images
@@ -16,7 +16,16 @@
 // Create truly unique images for all reserve app projects
 // Using a comprehensive set of unique Unsplash images
 
-const projectImages = [
+interface ProjectImage {
+  id: string;
+  category: string;
+}
+
+interface AssignedImage extends ProjectImage {
+  url: string;
+}
+
+const projectImages: ProjectImage[] = [
   { id: "mx-mangroves", category: "mangroves" },
   { id: "br-amazon", category: "rainforest" },
   { id: "id-seagrass", category: "marine" },
@@ -53,7 +62,7 @@ const projectImages = [
 ];
 
 // Comprehensive set of unique Unsplash images - 33 different images
-const uniqueImageUrls = [
+const uniqueImageUrls: string[] = [
   "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=1200&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1526318472351-c75fcf070305?q=80&w=1200&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1505764706515-aa95265c5abc?q=80&w=1200&auto=format&fit=crop",
@@ -90,7 +99,7 @@ const uniqueImageUrls = [
 ];
 
 // Assign unique images to each project
-const assignedImages = {};
+const assignedImages: Record<string, AssignedImage> = {};
 
 projectImages.forEach((project, index) => {
   assignedImages[project.id] = {
@@ -114,11 +123,12 @@ console.log(`Total projects: ${Object.keys(assignedImages).length}`);
 console.log(`Unique images used: ${uniqueImageUrls.length}`);
 console.log(`No duplicates: ${Object.keys(assignedImages).length === uniqueImageUrls.length ? '✅' : '❌'}`);
 
-// Generate the updated download-images.js content
-console.log('\n📝 Updated download-images.js content:');
+// Generate the updated download-images.ts content
+console.log('\n📝 Updated download-images.ts content:');
 console.log('=====================================');
 console.log('const projectImages = [');
 Object.entries(assignedImages).forEach(([id, project]) => {
   console.log(`  { id: "${id}", url: "${project.url}", category: "${project.category}" },`);
 });
 console.log('];');
+

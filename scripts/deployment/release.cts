@@ -1,13 +1,22 @@
 // Release script
 
-const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
+import { execSync } from 'child_process';
+import fs from 'fs';
+import path from 'path';
+
+const __dirname = process.cwd();
+
+interface VersionInfo {
+  version: string;
+  timestamp: string;
+  releaseDate: string;
+  releaseTime: string;
+}
 
 console.log('🚀 Starting release process...\n');
 
 // Get commit message from command line arguments
-const commitMessage = process.argv[2];
+const commitMessage: string | undefined = process.argv[2];
 
 if (!commitMessage) {
   console.error('❌ Error: Commit message is required');
@@ -22,7 +31,7 @@ try {
   
   // Step 2: Read the new version for reference
   const versionPath = path.join(__dirname, '..', '..', 'VERSION.json');
-  const versionInfo = JSON.parse(fs.readFileSync(versionPath, 'utf8'));
+  const versionInfo: VersionInfo = JSON.parse(fs.readFileSync(versionPath, 'utf8'));
   
   console.log(`\n✅ Version updated to ${versionInfo.version}`);
   console.log(`📅 Release timestamp: ${versionInfo.timestamp}\n`);
@@ -61,7 +70,8 @@ try {
   console.log(`💬 Commit: ${commitMessage}`);
   console.log('\n💡 Next time you want to release, just run: npm run release "your message"');
   
-} catch (error) {
+} catch (error: any) {
   console.error('\n❌ Release failed:', error.message);
   process.exit(1);
 }
+

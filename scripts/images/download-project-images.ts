@@ -5,7 +5,7 @@
  * It uses Unsplash and other image services to generate unique, professional
  * images for each conservation project.
  * 
- * Usage: node scripts/download-project-images.js
+ * Usage: node scripts/download-project-images.ts
  * 
  * Features:
  * - Downloads images with updated keywords for better quality
@@ -23,8 +23,21 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+interface ProjectImage {
+  id: string;
+  url: string;
+  category: string;
+}
+
+interface DownloadResult {
+  success: boolean;
+  skipped?: boolean;
+  downloaded?: boolean;
+  error?: string;
+}
+
 // 33 seed images (will be used only as initial seeds; duplicates will be auto-fixed below)
-const projectImages = [
+const projectImages: ProjectImage[] = [
   { id: "mx-mangroves", url: "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=1200&auto=format&fit=crop", category: "mangroves" },
   { id: "br-amazon", url: "https://images.unsplash.com/photo-1526318472351-c75fcf070305?q=80&w=1200&auto=format&fit=crop", category: "rainforest" },
   { id: "id-seagrass", url: "https://images.unsplash.com/photo-1505764706515-aa95265c5abc?q=80&w=1200&auto=format&fit=crop", category: "marine" },
@@ -61,7 +74,7 @@ const projectImages = [
 ];
 
 // Location/ecosystem-specific keywords to request diversified images per project
-const keywordsById = {
+const keywordsById: Record<string, string> = {
   "mx-mangroves": "mangrove roots yucatan mexico lagoon",
   "br-amazon": "amazon rainforest canopy brazil jungle",
   "id-seagrass": "seagrass meadow indonesia coral triangle underwater",
@@ -106,7 +119,7 @@ if (!fs.existsSync(imagesDir)) {
 }
 
 // Function to validate downloaded image
-function validateImage(filepath) {
+function validateImage(filepath: string): boolean {
   try {
     const stats = fs.statSync(filepath);
     // Check if file exists and has reasonable size (at least 10KB)
@@ -117,7 +130,7 @@ function validateImage(filepath) {
 }
 
 // Generate image using keywords (for force re-download projects)
-async function generateImageWithKeywords(projectId, filename) {
+async function generateImageWithKeywords(projectId: string, filename: string): Promise<DownloadResult> {
   try {
     const keywords = keywordsById[projectId];
     if (!keywords) {
@@ -155,21 +168,21 @@ async function generateImageWithKeywords(projectId, filename) {
         } else {
           console.log(`❌ Image too small: ${stats.size} bytes`);
         }
-      } catch (e) {
+      } catch (e: any) {
         console.log(`❌ Error with ${url}: ${e.message}`);
         continue;
       }
     }
     
     throw new Error('Failed to generate image from any source');
-  } catch (err) {
+  } catch (err: any) {
     console.log(`❌ Failed to generate image for ${projectId}: ${err.message}`);
     return { success: false, error: err.message };
   }
 }
 
 // Optimized download function with better error handling and progress tracking
-async function downloadImage(url, filename) {
+async function downloadImage(url: string, filename: string): Promise<DownloadResult> {
   try {
     // Check if file already exists and is valid
     if (fs.existsSync(filename)) {
@@ -196,7 +209,7 @@ async function downloadImage(url, filename) {
     
     // Downloaded: filename
     return { success: true, downloaded: true }
-  } catch (err) {
+  } catch (err: any) {
     if (err.code === 'ENOENT') {
       // File write error for filename: err.message
       return { success: false, error: err.message }
@@ -213,13 +226,13 @@ async function downloadImage(url, filename) {
 }
 
 // Projects that need to be re-downloaded with new keywords
-const forceRedownload = [
+const forceRedownload: string[] = [
   'ke-savanna', 'ro-delta', 'ru-taiga', 'np-terai', 'pg-png', 
   'mg-madagascar', 'no-bogs', 'ma-seagrass', 'maurit-corals'
 ];
 
 // Download images in batches for better performance
-async function downloadAllImages() {
+async function downloadAllImages(): Promise<void> {
   console.log('🚀 Starting download of all project images...')
   console.log(`📁 Images will be saved to: ${imagesDir}`)
   console.log(`🔄 Force re-downloading: ${forceRedownload.join(', ')}`)
@@ -238,7 +251,7 @@ async function downloadAllImages() {
     }
     
     // Use keyword-based generation for force re-download projects
-    let result;
+    let result: DownloadResult;
     if (forceRedownload.includes(project.id)) {
       console.log(`🎯 Generating new image for ${project.id} with updated keywords...`)
       result = await generateImageWithKeywords(project.id, filename)
@@ -305,7 +318,7 @@ async function downloadAllImages() {
   console.log(`📁 Total files: ${files.length}`)
 }
 
-function computeFileHash(filePath) {
+function computeFileHash(filePath: string): string | null {
   try {
     const buf = fs.readFileSync(filePath);
     return crypto.createHash('sha256').update(buf).digest('hex');
@@ -314,11 +327,11 @@ function computeFileHash(filePath) {
   }
 }
 
-function uniqueSeedFromId(id) {
+function uniqueSeedFromId(id: string): number {
   return parseInt(crypto.createHash('md5').update(id).digest('hex').slice(0, 8), 16);
 }
 
-function buildCandidates(id, attempt) {
+function buildCandidates(id: string, attempt: number): string[] {
   const keywords = (keywordsById[id] || id).trim().replace(/\s+/g, ',');
   const wordsPlus = (keywordsById[id] || id).trim().replace(/\s+/g, '+');
   const sig = attempt + 1;
@@ -335,7 +348,7 @@ function buildCandidates(id, attempt) {
   ];
 }
 
-async function fetchToTemp(url) {
+async function fetchToTemp(url: string): Promise<string> {
   const res = await fetch(url, { redirect: 'follow' });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const buf = Buffer.from(await res.arrayBuffer());
@@ -344,7 +357,7 @@ async function fetchToTemp(url) {
   return tmp;
 }
 
-async function replaceWithUnique(projectId, seenHashes, maxAttempts = 20) {
+async function replaceWithUnique(projectId: string, seenHashes: Set<string>, maxAttempts: number = 20): Promise<boolean> {
   const targetPath = path.join(imagesDir, `${projectId}.jpg`);
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
     const candidates = buildCandidates(projectId, attempt);
@@ -370,12 +383,12 @@ async function replaceWithUnique(projectId, seenHashes, maxAttempts = 20) {
   return false;
 }
 
-async function ensureUniqueImages() {
+async function ensureUniqueImages(): Promise<void> {
   console.log('\n🧪 Checking for duplicate images by content hash...');
   const files = fs.readdirSync(imagesDir).filter(f => f.endsWith('.jpg'));
-  const hashToIds = new Map();
-  const seenHashes = new Set();
-  const idToHash = new Map();
+  const hashToIds = new Map<string, string[]>();
+  const seenHashes = new Set<string>();
+  const idToHash = new Map<string, string>();
 
   for (const f of files) {
     const p = path.join(imagesDir, f);
@@ -384,10 +397,10 @@ async function ensureUniqueImages() {
     const id = path.basename(f, '.jpg');
     idToHash.set(id, h);
     if (!hashToIds.has(h)) hashToIds.set(h, []);
-    hashToIds.get(h).push(id);
+    hashToIds.get(h)!.push(id);
   }
 
-  let duplicates = [];
+  let duplicates: string[] = [];
   for (const [h, ids] of hashToIds.entries()) {
     if (ids.length > 1) {
       // keep first, fix the rest
@@ -420,3 +433,4 @@ downloadAllImages()
   console.error('❌ Fatal error:', error.message);
   process.exit(1);
 });
+

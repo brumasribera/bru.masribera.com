@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 const languages = ['de','fr','es','ca','it','pt','rm'];
 const baseDir = path.join(__dirname, '..', 'src', 'locales');
 
-function flatten(obj, prefix = '') {
+function flatten(obj: any, prefix = ''): Record<string, string> {
 	return Object.keys(obj).reduce((acc, key) => {
 		const value = obj[key];
 		const newKey = prefix ? `${prefix}.${key}` : key;
@@ -18,17 +18,23 @@ function flatten(obj, prefix = '') {
 			acc[newKey] = String(value ?? '');
 		}
 		return acc;
-	}, {});
+	}, {} as Record<string, string>);
 }
 
-function readJson(filePath) {
+function readJson(filePath: string): any {
 	return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 }
 
 const enPath = path.join(baseDir, 'en', 'cv.json');
 const en = flatten(readJson(enPath));
 
-const results = [];
+interface ValidationResult {
+  language: string;
+  missing: boolean;
+  issues: string[];
+}
+
+const results: ValidationResult[] = [];
 for (const lng of languages) {
 	const lngPath = path.join(baseDir, lng, 'cv.json');
 	if (!fs.existsSync(lngPath)) {
@@ -36,7 +42,7 @@ for (const lng of languages) {
 		continue;
 	}
 	const tr = flatten(readJson(lngPath));
-	const issues = [];
+	const issues: string[] = [];
 	for (const key of Object.keys(en)) {
 		const enVal = en[key] ?? '';
 		const trVal = tr[key] ?? '';
@@ -74,3 +80,4 @@ if (!hasProblems) {
 }
 
 process.exit(hasProblems ? 1 : 0);
+

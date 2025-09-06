@@ -8,9 +8,9 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-async function main() {
+async function main(): Promise<void> {
   // Check if commit message was provided
-  const commitMessage = process.argv[2];
+  const commitMessage: string | undefined = process.argv[2];
   if (!commitMessage) {
     console.error('❌ Error: Commit message is required!');
     console.log('\n📝 Usage:');
@@ -50,7 +50,7 @@ async function main() {
     console.log('🎉 Deployment completed successfully!');
     console.log('🌍 Your site should be updated shortly.');
     
-  } catch (error) {
+  } catch (error: any) {
     if (error.message.includes('nothing to commit')) {
       console.log('ℹ️  No changes to deploy. Everything is up to date.');
     } else {
@@ -61,3 +61,4 @@ async function main() {
 }
 
 main();
+

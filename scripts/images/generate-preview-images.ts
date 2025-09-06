@@ -13,8 +13,34 @@ const BASE_URL = 'http://localhost:3000'; // Updated to match your dev server po
 const IMAGE_WIDTH = 1200;
 const IMAGE_HEIGHT = 630;
 
+interface PageConfig {
+  name: string;
+  path: string;
+  title: string;
+  subtitle: string;
+  imageUrl: string;
+  type: 'main' | 'project';
+  country?: string;
+  impact?: {
+    biodiversity: number;
+    carbon: number;
+    community: number;
+  };
+}
+
+interface ReserveProject {
+  id: string;
+  name: string;
+  country: string;
+  impact: {
+    biodiversity: number;
+    carbon: number;
+    community: number;
+  };
+}
+
 // Page configurations
-const PAGES = [
+const PAGES: PageConfig[] = [
   {
     name: 'main',
     path: '/',
@@ -28,7 +54,7 @@ const PAGES = [
     path: '/openhuts',
     title: 'Open Huts Nature Network',
     subtitle: 'Connecting nature enthusiasts with sustainable mountain experiences worldwide',
-    imageUrl: '/open-huts/Hut View.png',
+    imageUrl: '/open-huts/hut-view.png',
     type: 'project'
   },
   {
@@ -60,7 +86,7 @@ const PAGES = [
     path: '/wegaw',
     title: 'Wegaw - Weather Intelligence',
     subtitle: 'AI-powered weather forecasting for renewable energy optimization',
-    imageUrl: '/wegaw/DeFROST_SpaceValueAdded_01.png',
+    imageUrl: '/wegaw/defrost-space-value-added-01.png',
     type: 'project'
   },
   {
@@ -82,9 +108,9 @@ const PAGES = [
 ];
 
 // Reserve projects - just one main image, not individual project images
-const RESERVE_PROJECTS = [];
+const RESERVE_PROJECTS: ReserveProject[] = [];
 
-async function ensureDirectoryExists(dirPath) {
+async function ensureDirectoryExists(dirPath: string): Promise<void> {
   try {
     await fs.access(dirPath);
   } catch {
@@ -92,7 +118,7 @@ async function ensureDirectoryExists(dirPath) {
   }
 }
 
-async function generatePreviewImage(browser, pageConfig) {
+async function generatePreviewImage(browser: puppeteer.Browser, pageConfig: PageConfig): Promise<void> {
   const page = await browser.newPage();
   
   try {
@@ -100,7 +126,7 @@ async function generatePreviewImage(browser, pageConfig) {
     await page.setViewport({ width: IMAGE_WIDTH, height: IMAGE_HEIGHT });
     
     // Create the appropriate background and layout based on page type
-    const getBackgroundStyle = () => {
+    const getBackgroundStyle = (): string => {
       if (pageConfig.type === 'main') {
         return `
           background-image: url('${BASE_URL}/backgrounds/mountain-background.jpg');
@@ -110,7 +136,7 @@ async function generatePreviewImage(browser, pageConfig) {
         `;
       } else {
         // Project-specific gradients matching the actual project pages
-        const gradients = {
+        const gradients: Record<string, string> = {
           'openhuts': 'linear-gradient(45deg, #059669, #10b981, #14b8a6, #0d9488, #0891b2, #06b6d4)',
           'clathes': 'linear-gradient(45deg, #1e3a8a, #1e40af, #0f766e, #0891b2, #06b6d4, #0891b2)',
           'reserve': 'linear-gradient(45deg, #059669, #10b981, #14b8a6, #0d9488, #0891b2, #06b6d4)',
@@ -123,7 +149,7 @@ async function generatePreviewImage(browser, pageConfig) {
       }
     };
 
-    const getOverlayStyle = () => {
+    const getOverlayStyle = (): string => {
       if (pageConfig.type === 'main') {
         return 'bg-gradient-to-b from-white/90 via-white/85 to-white/80';
       } else {
@@ -216,10 +242,10 @@ async function generatePreviewImage(browser, pageConfig) {
                 <div class="bg-white p-6 rounded-3xl shadow-xl">
                   <img src="${BASE_URL}/${pageConfig.name === 'openhuts' ? 'logos/openhuts_logo.jpeg' : 
                     pageConfig.name === 'reserve' ? 'logos/reserve-logo.png' : 
-                    pageConfig.name === 'clathes' ? 'clathes/Vaquita - profile logo.png' : 
+                    pageConfig.name === 'clathes' ? 'clathes/vaquita-profile-logo.png' : 
                     pageConfig.name === 'pix4d' ? 'logos/pix4d_logo.jpeg' : 
                     pageConfig.name === 'wegaw' ? 'logos/wegaw_logo.jpeg' : 
-                    pageConfig.name === 'pomoca' ? 'logos/oberalp___salewa_group_logo.jpeg' : 
+                    pageConfig.name === 'pomoca' ? 'logos/oberalp-salewa-group-logo.jpeg' : 
                     pageConfig.name === 'moodlenet' ? 'logos/moodlenet_logo.png' : 'logos/default_logo.png'}" 
                     alt="Project Logo" class="h-32 w-32 object-contain rounded-2xl">
                 </div>
@@ -256,18 +282,18 @@ async function generatePreviewImage(browser, pageConfig) {
     
     console.log(`✅ Generated: ${filename}`);
     
-  } catch (error) {
+  } catch (error: any) {
     console.error(`❌ Error generating ${pageConfig.name}:`, error.message);
   } finally {
     await page.close();
   }
 }
 
-async function generateReserveProjectImages(browser) {
+async function generateReserveProjectImages(browser: puppeteer.Browser): Promise<void> {
   console.log('\n🌱 Generating Reserve project images...');
   
   for (const project of RESERVE_PROJECTS) {
-    const pageConfig = {
+    const pageConfig: PageConfig = {
       name: `reserve-${project.id}`,
       title: project.name,
       subtitle: `Conservation project in ${project.country}`,
@@ -281,7 +307,7 @@ async function generateReserveProjectImages(browser) {
   }
 }
 
-async function main() {
+async function main(): Promise<void> {
   console.log('🚀 Starting preview image generation...');
   console.log(`📁 Output directory: ${OUTPUT_DIR}`);
   console.log(`🌐 Base URL: ${BASE_URL}`);
@@ -317,7 +343,7 @@ async function main() {
 }
 
 // Run the script
-const targetPage = process.argv[2]; // Allow specifying a single page
+const targetPage: string | undefined = process.argv[2]; // Allow specifying a single page
 if (targetPage) {
   console.log(`🎯 Generating single image for: ${targetPage}`);
   const page = PAGES.find(p => p.name === targetPage);

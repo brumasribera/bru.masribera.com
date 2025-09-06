@@ -5,19 +5,34 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+interface ManifestIcon {
+  src: string;
+  sizes: string;
+  type: string;
+}
+
+interface Manifest {
+  name: string;
+  short_name: string;
+  start_url: string;
+  display: string;
+  scope?: string;
+  icons?: ManifestIcon[];
+}
+
 // Read and validate the timer manifest
-function validateManifest() {
+function validateManifest(): void {
   try {
     const manifestPath = path.join(__dirname, '../public/tools/timer/manifest.webmanifest');
     const manifestContent = fs.readFileSync(manifestPath, 'utf8');
-    const manifest = JSON.parse(manifestContent);
+    const manifest: Manifest = JSON.parse(manifestContent);
     
     console.log('✅ Manifest file loaded successfully');
     console.log('📋 Manifest content:');
     console.log(JSON.stringify(manifest, null, 2));
     
     // Check required fields
-    const requiredFields = ['name', 'short_name', 'start_url', 'display'];
+    const requiredFields: (keyof Manifest)[] = ['name', 'short_name', 'start_url', 'display'];
     const missingFields = requiredFields.filter(field => !manifest[field]);
     
     if (missingFields.length > 0) {
@@ -59,13 +74,13 @@ function validateManifest() {
     
     console.log('\n🔍 Manifest validation complete!');
     
-  } catch (error) {
+  } catch (error: any) {
     console.error('❌ Error validating manifest:', error.message);
   }
 }
 
 // Check if the manifest file exists
-function checkManifestFile() {
+function checkManifestFile(): void {
   const manifestPath = path.join(__dirname, '../public/tools/timer/manifest.webmanifest');
   
   if (fs.existsSync(manifestPath)) {
@@ -86,3 +101,4 @@ function checkManifestFile() {
 }
 
 checkManifestFile();
+

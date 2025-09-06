@@ -16,7 +16,6 @@ export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [showSuccess, setShowSuccess] = useState(false)
-  const [consentGiven, setConsentGiven] = useState(false)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -29,11 +28,6 @@ export function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
-    // Check consent before submitting
-    if (!consentGiven) {
-      setSubmitStatus('error')
-      return
-    }
     
     setIsSubmitting(true)
     setSubmitStatus('idle')
@@ -61,7 +55,6 @@ export function ContactSection() {
         setSubmitStatus('success')
         setShowSuccess(true)
         setFormData({ name: '', email: '', message: '' })
-        setConsentGiven(false) // Reset consent for security
         
         // Start fade-out animation after 3 seconds
         setTimeout(() => {
@@ -166,19 +159,6 @@ export function ContactSection() {
                 />
               </div>
 
-              {/* Consent Checkbox */}
-              <div className="flex items-start space-x-3">
-                <input
-                  type="checkbox"
-                  id="consent"
-                  checked={consentGiven}
-                  onChange={(e) => setConsentGiven(e.target.checked)}
-                  className="mt-1 h-4 w-4 text-emerald-600 focus:ring-emerald-500 border-gray-300 dark:border-gray-600 rounded"
-                />
-                <label htmlFor="consent" className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                  {t('contact.consent')}
-                </label>
-              </div>
 
               <div className="text-center">
                 <button
@@ -218,7 +198,7 @@ export function ContactSection() {
             {submitStatus === 'error' && (
               <div className="p-4 bg-red-100 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-700 dark:text-red-300 text-center">
                 <div className="text-lg font-medium mb-1">
-                  ❌ {!consentGiven ? t('contact.consentRequired') : t('contact.error')}
+                  ❌ {t('contact.error')}
                 </div>
               </div>
             )}

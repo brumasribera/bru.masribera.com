@@ -243,9 +243,7 @@
     "send": "Enviar mensaje",
     "sending": "Enviando...",
     "success": "¡Mensaje enviado exitosamente!",
-    "error": "Error al enviar mensaje. Por favor, inténtalo de nuevo.",
-    "consent": "Consiento el procesamiento de mis datos personales como se describe en la información de privacidad anterior. Estos datos solo se utilizarán para responder a mi consulta.",
-    "consentRequired": "Por favor confirma que consientes el procesamiento de datos antes de enviar tu mensaje."
+    "error": "Error al enviar mensaje. Por favor, inténtalo de nuevo."
   },
   "languages": {
     "title": "Idiomas que conozco",

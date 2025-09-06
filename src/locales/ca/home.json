@@ -243,9 +243,7 @@
     "send": "Enviar missatge",
     "sending": "Enviant...",
     "success": "Missatge enviat amb èxit!",
-    "error": "Error en enviar missatge. Si us plau, torna-ho a provar.",
-    "consent": "Consento el processament de les meves dades personals com es descriu a la informació de privadesa anterior. Aquestes dades només s'utilitzaran per respondre a la meva consulta.",
-    "consentRequired": "Si us plau confirma que consents el processament de dades abans d'enviar el teu missatge."
+    "error": "Error en enviar missatge. Si us plau, torna-ho a provar."
   },
   "languages": {
     "title": "Idiomes que conec",

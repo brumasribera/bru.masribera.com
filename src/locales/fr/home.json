@@ -243,9 +243,7 @@
     "send": "Envoyer le message",
     "sending": "Envoi en cours...",
     "success": "Message envoyé avec succès !",
-    "error": "Erreur lors de l'envoi du message. Veuillez réessayer.",
-    "consent": "Je consens au traitement de mes données personnelles comme décrit dans les informations de confidentialité ci-dessus. Ces données ne seront utilisées que pour répondre à ma demande.",
-    "consentRequired": "Veuillez confirmer que vous consentez au traitement des données avant d'envoyer votre message."
+    "error": "Erreur lors de l'envoi du message. Veuillez réessayer."
   },
   "languages": {
     "title": "Langues que je maîtrise",

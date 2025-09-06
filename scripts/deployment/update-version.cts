@@ -36,23 +36,7 @@ packageJson.version = newVersion;
 fs.writeFileSync(packagePath, JSON.stringify(packageJson, null, 2) + '\n');
 
 // Timer app is now external - no need to update timer files
-
-// Update service worker version comment
-const swPath = path.join(__dirname, 'public', 'sw.js');
-let swContent = fs.readFileSync(swPath, 'utf8');
-
-// Add or update version comment at the top
-const versionComment = `// Timer Service Worker - Version ${newVersion} - Released ${timestamp}\n`;
-if (swContent.includes('// Timer Service Worker - Version')) {
-  swContent = swContent.replace(
-    /\/\/ Timer Service Worker - Version [\d.]+ - Released [\d\-\s:]+/,
-    `// Timer Service Worker - Version ${newVersion} - Released ${timestamp}`
-  );
-} else {
-  swContent = versionComment + swContent;
-}
-
-fs.writeFileSync(swPath, swContent);
+// Service worker is handled by Vite build process - no need to update manually
 
 // Create version info file
 const versionInfo: VersionInfo = {
@@ -94,7 +78,6 @@ console.log(`✅ Version updated to ${newVersion}`);
 console.log(`✅ Timestamp updated to ${timestamp}`);
 console.log(`✅ Files updated:`);
 console.log(`   - package.json`);
-console.log(`   - public/sw.js`);
 console.log(`   - VERSION.json`);
 console.log(`   - README.md`);
 

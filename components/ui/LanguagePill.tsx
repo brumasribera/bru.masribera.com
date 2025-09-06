@@ -35,6 +35,7 @@ export function LanguagePill({ label, level, flag, className = '', isAutoHovered
           levelForStyling === 'Native' || levelForStyling === 'languages.proficiency.native' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300' :
           levelForStyling === 'C2' || levelForStyling === 'languages.proficiency.c2' ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300' :
           levelForStyling === 'C1' || levelForStyling === 'languages.proficiency.c1' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-emerald-300' :
+          levelForStyling === 'B2' || levelForStyling === 'languages.proficiency.b2' ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300' :
           'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300' // B1 level
         }`}>
           {level}

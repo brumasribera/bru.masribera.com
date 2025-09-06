@@ -56,14 +56,14 @@ export function ContactSection() {
         setShowSuccess(true)
         setFormData({ name: '', email: '', message: '' })
         
-        // Start fade-out animation after 3 seconds
+        // Start fade-out animation after 5 seconds
         setTimeout(() => {
           setShowSuccess(false)
           // Hide message completely after animation
           setTimeout(() => {
             setSubmitStatus('idle')
           }, 300)
-        }, 3000)
+        }, 5000)
       } else {
         console.error('EmailJS error:', result)
         setSubmitStatus('error')
@@ -82,14 +82,14 @@ export function ContactSection() {
         setShowSuccess(true)
         setFormData({ name: '', email: '', message: '' })
         
-        // Start fade-out animation after 3 seconds
+        // Start fade-out animation after 5 seconds
         setTimeout(() => {
           setShowSuccess(false)
           // Hide message completely after animation
           setTimeout(() => {
             setSubmitStatus('idle')
           }, 300)
-        }, 3000)
+        }, 5000)
       }
     } finally {
       setIsSubmitting(false)
@@ -137,7 +137,7 @@ export function ContactSection() {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent !bg-white dark:!bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent !bg-white dark:!bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors"
                     placeholder={t('contact.namePlaceholder')}
                   />
                 </div>
@@ -153,7 +153,7 @@ export function ContactSection() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent !bg-white dark:!bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent !bg-white dark:!bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors"
                     placeholder={t('contact.emailPlaceholder')}
                   />
                 </div>
@@ -170,7 +170,7 @@ export function ContactSection() {
                   onChange={handleInputChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent !bg-white dark:!bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent !bg-white dark:!bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors resize-none"
                   placeholder={t('contact.messagePlaceholder')}
                 />
               </div>

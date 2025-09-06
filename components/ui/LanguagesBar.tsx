@@ -12,7 +12,7 @@ export function LanguagesBar() {
     { label: 'languages.languages.french', level: 'languages.proficiency.c2', flag: '/flags/fr.png' },
     { label: 'languages.languages.spanish', level: 'languages.proficiency.native', flag: '/flags/es.png' },
     { label: 'languages.languages.catalan', level: 'languages.proficiency.native', flag: '/flags/ca.png' },
-    { label: 'languages.languages.italian', level: 'languages.proficiency.c1', flag: '/flags/it.png' },
+    { label: 'languages.languages.italian', level: 'languages.proficiency.b2', flag: '/flags/it.png' },
     { label: 'languages.languages.german', level: 'languages.proficiency.b1', flag: '/flags/de.png' },
     { label: 'languages.languages.portuguese', level: 'languages.proficiency.b1', flag: '/flags/pt.png' }
   ]

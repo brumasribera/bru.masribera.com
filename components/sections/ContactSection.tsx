@@ -114,15 +114,6 @@ export function ContactSection() {
               </p>
             </div>
 
-            {/* Privacy Information */}
-            <div className="p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg mb-6">
-              <h4 className="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-2">
-                Privacy Information
-              </h4>
-              <p className="text-sm text-blue-800 dark:text-blue-200">
-                {t('common:privacy.description')}
-              </p>
-            </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

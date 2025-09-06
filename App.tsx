@@ -30,23 +30,7 @@ const PomocaPage = lazy(() => import('./components/pages/PomocaPage').then(modul
 // Loading component for lazy-loaded pages
 const PageLoader = () => null
 
-// Timer redirect component
-const TimerRedirect = () => {
-  useEffect(() => {
-    // Instant redirect - no loading screen
-    if (window.location.hostname === 'localhost') {
-      window.location.replace('http://localhost:3001')
-    } else {
-      window.location.replace('https://stretch-timer-lime.vercel.app')
-    }
-  }, [])
-
-  return (
-    <div className="min-h-screen bg-black">
-      {/* Dark background to prevent white flash during redirect */}
-    </div>
-  )
-}
+// Timer app will be served directly via Vercel proxy
 
 // Home page component (inlined in routes below)
 
@@ -161,7 +145,6 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
             <PomocaPage />
           </Suspense>
         } />
-        <Route path="/tools/timer" element={<TimerRedirect />} />
         <Route path="/cv" element={<CVPage />} />
         <Route path="/legal" element={<LegalPage />} />
         {/* Admin translations (password protected in component) */}
@@ -210,7 +193,6 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
               <PomocaPage />
             </Suspense>
           } />
-          <Route path="tools/timer" element={<TimerRedirect />} />
           <Route path="cv" element={<CVPage />} />
           <Route path="legal" element={<LegalPage />} />
           <Route path="admin/translations" element={<TranslationsAdminPage />} />

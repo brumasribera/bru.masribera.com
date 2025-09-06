@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/tools/timer/:path*",
+      "destination": "https://stretch-timer-lime.vercel.app/:path*"
+    },
+    {
       "source": "/((?!assets/).*)",
       "destination": "/index.html"
     }

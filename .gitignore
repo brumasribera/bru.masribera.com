@@ -2,3 +2,5 @@ node_modules
 .vercel
 public/sw.js
 dist/sw.js
+dist/assets/*.js
+dist/*.js

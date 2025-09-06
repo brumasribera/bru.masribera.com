@@ -53,7 +53,7 @@ export function PomocaPage() {
             <div className="flex justify-center mb-8">
               <div className="bg-white p-4 rounded-3xl shadow-xl">
                 <img 
-                  src="/logos/oberalp-salewa-group-logo.jpeg" 
+                  src="/icons/logos/oberalp-salewa-group-logo.jpeg" 
                   alt="Pomoca"
                   className="h-24 w-24 object-contain rounded-2xl"
                 />

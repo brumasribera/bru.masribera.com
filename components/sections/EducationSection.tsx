@@ -107,31 +107,31 @@ export function EducationSection() {
                         {/* Education logo */}
                         {edu.institution === 'education.degrees.mba.institution' ? (
                           <img 
-                            src="/logos/the-power-logo.jpeg"
+                            src="/icons/logos/the-power-program-logo.jpeg"
                             alt={t(edu.institution)}
                             className="w-16 h-16 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 flex-shrink-0"
                           />
                         ) : edu.institution === 'education.degrees.uxDesigner.institution' ? (
                           <img 
-                            src="/logos/udacity_logo.jpeg"
+                            src="/icons/logos/udacity-education-logo.jpeg"
                             alt={t(edu.institution)}
                             className="w-16 h-16 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 flex-shrink-0"
                           />
                         ) : edu.institution === 'education.degrees.computerEngineering.institution' ? (
                           <img 
-                            src="/logos/university-of-barcelona-logo.jpeg"
+                            src="/icons/logos/university-of-barcelona-logo.jpeg"
                             alt={t(edu.institution)}
                             className="w-16 h-16 rounded-2xl object-cover ring-1 ring-black/5 dark:ring-white/10 bg-white p-2 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 flex-shrink-0"
                           />
                         ) : edu.institution === 'education.degrees.architecture.institution' ? (
                           <img 
-                            src="/logos/upc_logo.jpeg"
+                            src="/icons/logos/upc-university-logo.jpeg"
                             alt={t(edu.institution)}
                             className="w-16 h-16 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 flex-shrink-0"
                           />
                         ) : edu.institution === 'education.degrees.mountainLeader.institution' ? (
                           <img 
-                            src="/logos/icemp_logo.jpeg"
+                            src="/icons/logos/icemp-company-logo.jpeg"
                             alt={t(edu.institution)}
                             className="w-16 h-16 rounded-2xl object-cover ring-1 ring-black/5 dark:ring-white/10 bg-white p-2 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 flex-shrink-0"
                           />

@@ -13,13 +13,13 @@ if (env === 'production') {
   // Copy production favicon
   copyFileSync(
     join(publicDir, 'favicons', 'favicon-prod.svg'),
-    join(publicDir, 'favicon.svg')
+    join(publicDir, 'icons/favicons/favicon.svg')
   );
 } else {
   // Copy development favicon
   copyFileSync(
     join(publicDir, 'favicons', 'favicon-dev.svg'),
-    join(publicDir, 'favicon.svg')
+    join(publicDir, 'icons/favicons/favicon.svg')
   );
 }
 

@@ -240,13 +240,13 @@ async function generatePreviewImage(browser: puppeteer.Browser, pageConfig: Page
               <div class="flex flex-col items-end justify-center space-y-6">
                 <!-- Project Logo Container (like project pages) -->
                 <div class="bg-white p-6 rounded-3xl shadow-xl">
-                  <img src="${BASE_URL}/${pageConfig.name === 'openhuts' ? 'logos/openhuts_logo.jpeg' : 
-                    pageConfig.name === 'reserve' ? 'logos/reserve-logo.png' : 
-                    pageConfig.name === 'clathes' ? 'clathes/vaquita-profile-logo.png' : 
-                    pageConfig.name === 'pix4d' ? 'logos/pix4d_logo.jpeg' : 
-                    pageConfig.name === 'wegaw' ? 'logos/wegaw_logo.jpeg' : 
-                    pageConfig.name === 'pomoca' ? 'logos/oberalp-salewa-group-logo.jpeg' : 
-                    pageConfig.name === 'moodlenet' ? 'logos/moodlenet_logo.png' : 'logos/default_logo.png'}" 
+                  <img src="${BASE_URL}/${pageConfig.name === 'openhuts' ? 'icons/logos/openhuts-platform-logo.jpeg' : 
+                    pageConfig.name === 'reserve' ? 'icons/logos/reserve-conservation-logo.png' : 
+                    pageConfig.name === 'clathes' ? 'icons/logos/projects/clathes-vaquita-logo.png' : 
+                    pageConfig.name === 'pix4d' ? 'icons/logos/pix4d-software-logo.jpeg' : 
+                    pageConfig.name === 'wegaw' ? 'icons/logos/wegaw-weather-logo.jpeg' : 
+                    pageConfig.name === 'pomoca' ? 'icons/logos/oberalp-salewa-group-logo.jpeg' : 
+                    pageConfig.name === 'moodlenet' ? 'icons/logos/moodlenet-network-logo.png' : 'icons/logos/default-logo.png'}" 
                     alt="Project Logo" class="h-32 w-32 object-contain rounded-2xl">
                 </div>
 

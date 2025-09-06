@@ -44,7 +44,7 @@ export function Pix4DPage() {
             <div className="flex justify-center mb-8">
               <div className="bg-white p-4 rounded-3xl shadow-xl">
                 <img 
-                  src="/logos/pix4d_logo.jpeg" 
+                  src="/icons/logos/pix4d-software-logo.jpeg" 
                   alt="Pix4D"
                   className="h-24 w-24 object-contain rounded-2xl"
                 />

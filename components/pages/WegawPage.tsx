@@ -80,7 +80,7 @@ export function WegawPage() {
              <div className="flex justify-center mb-8">
                <div className="bg-white p-4 rounded-3xl shadow-xl">
                  <img 
-                   src="/logos/wegaw_logo.jpeg" 
+                   src="/icons/logos/wegaw-weather-logo.jpeg" 
                    alt="Wegaw"
                    className="h-24 w-24 object-contain rounded-2xl"
                  />

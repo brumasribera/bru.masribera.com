@@ -21,7 +21,7 @@ export function ProjectsSection() {
       impactKey: 'projects.projects.reserve.impact',
       usersKey: 'projects.projects.reserve.users',
       featured: true,
-      image: '/logos/reserve-logo.png'
+      image: '/icons/logos/reserve-conservation-logo.png'
     },
     {
       titleKey: 'projects.projects.openHuts.title',
@@ -32,7 +32,7 @@ export function ProjectsSection() {
       impactKey: 'projects.projects.openHuts.impact',
       usersKey: 'projects.projects.openHuts.users',
       featured: true,
-      image: '/logos/openhuts_logo.jpeg'
+      image: '/icons/logos/openhuts-platform-logo.jpeg'
     },
     {
       titleKey: 'projects.projects.clathes.title',
@@ -54,7 +54,7 @@ export function ProjectsSection() {
       impactKey: 'projects.projects.moodleNet.impact',
       usersKey: 'projects.projects.moodleNet.users',
       featured: true,
-      image: '/logos/moodlenet_logo.png'
+      image: '/icons/logos/moodlenet-network-logo.png'
     },
     {
       titleKey: 'projects.projects.pomoca.title',
@@ -65,7 +65,7 @@ export function ProjectsSection() {
       impactKey: 'projects.projects.pomoca.impact',
       usersKey: 'projects.projects.pomoca.users',
       featured: true,
-      image: '/logos/oberalp-salewa-group-logo.jpeg'
+      image: '/icons/logos/oberalp-salewa-group-logo.jpeg'
     },
     {
       titleKey: 'projects.projects.defrost.title',
@@ -76,7 +76,7 @@ export function ProjectsSection() {
       impactKey: 'projects.projects.defrost.impact',
       usersKey: 'projects.projects.defrost.users',
       featured: true,
-      image: '/logos/wegaw_logo.jpeg'
+      image: '/icons/logos/wegaw-weather-logo.jpeg'
     }
   ]
   

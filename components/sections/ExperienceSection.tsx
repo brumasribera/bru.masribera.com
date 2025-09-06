@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next'
 const experiences = [
   {
     company: 'openHuts',
-    logo: '/logos/openhuts_logo.jpeg',
+    logo: '/icons/logos/openhuts-platform-logo.jpeg',
     position: 'experience.companies.openHuts.position',
     location: 'experience.companies.openHuts.location',
     period: 'experience.companies.openHuts.period',
@@ -16,7 +16,7 @@ const experiences = [
   },
   {
     company: 'moodle',
-    logo: '/logos/moodle_logo.jpeg',
+    logo: '/icons/logos/moodle-platform-logo.jpeg',
     position: 'experience.companies.moodle.position',
     location: 'experience.companies.moodle.location',
     period: 'experience.companies.moodle.period',
@@ -25,7 +25,7 @@ const experiences = [
   },
   {
     company: 'oberalp',
-    logo: '/logos/oberalp-salewa-group-logo.jpeg',
+    logo: '/icons/logos/oberalp-salewa-group-logo.jpeg',
     position: 'experience.companies.oberalp.position',
     location: 'experience.companies.oberalp.location',
     period: 'experience.companies.oberalp.period',
@@ -34,7 +34,7 @@ const experiences = [
   },
   {
     company: 'wegaw',
-    logo: '/logos/wegaw_logo.jpeg',
+    logo: '/icons/logos/wegaw-weather-logo.jpeg',
     position: 'experience.companies.wegaw.position',
     location: 'experience.companies.wegaw.location',
     period: 'experience.companies.wegaw.period',
@@ -43,7 +43,7 @@ const experiences = [
   },
   {
     company: 'pix4d',
-    logo: '/logos/pix4d_logo.jpeg',
+    logo: '/icons/logos/pix4d-software-logo.jpeg',
     position: 'experience.companies.pix4d.position',
     location: 'experience.companies.pix4d.location',
     period: 'experience.companies.pix4d.period',

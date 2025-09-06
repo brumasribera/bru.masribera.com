@@ -30,7 +30,7 @@ try {
   execSync('npm run version:update', { stdio: 'inherit' });
   
   // Step 2: Read the new version for reference
-  const versionPath = path.join(__dirname, '..', '..', 'VERSION.json');
+  const versionPath = path.join(__dirname, 'VERSION.json');
   const versionInfo: VersionInfo = JSON.parse(fs.readFileSync(versionPath, 'utf8'));
   
   console.log(`\n✅ Version updated to ${versionInfo.version}`);

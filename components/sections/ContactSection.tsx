@@ -16,6 +16,7 @@ export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [showSuccess, setShowSuccess] = useState(false)
+  const [consentGiven, setConsentGiven] = useState(false)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -27,6 +28,12 @@ export function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Check consent before submitting
+    if (!consentGiven) {
+      setSubmitStatus('error')
+      return
+    }
     
     setIsSubmitting(true)
     setSubmitStatus('idle')
@@ -47,7 +54,10 @@ export function ContactSection() {
         'Pq1K7CO2PNmSWgNel' // Your EmailJS public key
       )
 
-      if (result.status === 200) {
+      console.log('EmailJS result:', result)
+
+      // EmailJS returns status 200 for success, but let's also check for text property
+      if (result.status === 200 || result.text === 'OK') {
         setSubmitStatus('success')
         setShowSuccess(true)
         setFormData({ name: '', email: '', message: '' })
@@ -62,10 +72,15 @@ export function ContactSection() {
           }, 300)
         }, 3000)
       } else {
+        console.error('EmailJS error:', result)
         setSubmitStatus('error')
       }
     } catch (error) {
       console.error('Email send error:', error)
+      // Check if it's a specific EmailJS error
+      if (error instanceof Error) {
+        console.error('Error details:', error.message)
+      }
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
@@ -96,6 +111,16 @@ export function ContactSection() {
               </h3>
               <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
                 {t('contact.formDescription')}
+              </p>
+            </div>
+
+            {/* Privacy Information */}
+            <div className="p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg mb-6">
+              <h4 className="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-2">
+                Privacy Information
+              </h4>
+              <p className="text-sm text-blue-800 dark:text-blue-200">
+                {t('common:privacy.description')}
               </p>
             </div>
 
@@ -150,7 +175,19 @@ export function ContactSection() {
                 />
               </div>
 
-
+              {/* Consent Checkbox */}
+              <div className="flex items-start space-x-3">
+                <input
+                  type="checkbox"
+                  id="consent"
+                  checked={consentGiven}
+                  onChange={(e) => setConsentGiven(e.target.checked)}
+                  className="mt-1 h-4 w-4 text-emerald-600 focus:ring-emerald-500 border-gray-300 dark:border-gray-600 rounded"
+                />
+                <label htmlFor="consent" className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {t('contact.consent')}
+                </label>
+              </div>
 
               <div className="text-center">
                 <button
@@ -189,7 +226,9 @@ export function ContactSection() {
             )}
             {submitStatus === 'error' && (
               <div className="p-4 bg-red-100 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-700 dark:text-red-300 text-center">
-                <div className="text-lg font-medium mb-1">❌ {t('contact.error')}</div>
+                <div className="text-lg font-medium mb-1">
+                  ❌ {!consentGiven ? t('contact.consentRequired') : t('contact.error')}
+                </div>
               </div>
             )}
           </div>

@@ -1,0 +1,63 @@
+name: Fast Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_message:
+        description: 'Commit message for deployment'
+        required: true
+        default: 'Automated deployment via GitHub Actions'
+      skip_tests:
+        description: 'Skip tests for faster deployment'
+        type: boolean
+        default: false
+
+jobs:
+  fast-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Fetch full history for proper tagging
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run quick validation (if not skipped)
+      if: ${{ !inputs.skip_tests }}
+      run: |
+        npm run lint
+        npm run build:check
+        
+    - name: Update version
+      run: npm run version:update
+      
+    - name: Build project
+      run: npm run build
+      
+    - name: Configure Git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+    - name: Commit and push changes
+      run: |
+        git add .
+        git commit -m "v$(node -p "require('./VERSION.json').version"): ${{ inputs.commit_message }}"
+        git tag -a "v$(node -p "require('./VERSION.json').version")" -m "Release v$(node -p "require('./VERSION.json').version")" --force
+        git push --follow-tags
+        
+    - name: Deploy to Vercel
+      run: npm run deploy
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+        VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}

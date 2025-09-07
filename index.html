@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bru Mas Ribera - Frontend & UX Engineer | Portfolio & Projects</title>
+    <title>Bru Mas Ribera | Frontend & UX Engineer — Portfolio & Nature Tech</title>
     
     <!-- Primary Meta Tags -->
-    <meta name="title" content="Bru Mas Ribera - Frontend & UX Engineer | Portfolio & Projects" />
-    <meta name="description" content="Bru Mas Ribera - Professional Frontend & UX Engineer with 8+ years experience. Expert in React, TypeScript, and modern web technologies. Explore projects like Open Huts, Reserve App, and more." />
+    <meta name="title" content="Bru Mas Ribera | Frontend & UX Engineer — Portfolio & Nature Tech" />
+    <meta name="description" content="Official site of Bru Mas Ribera, Frontend & UX Engineer. Explore nature-tech projects like Open Huts, Reserve App, and more. Based in Switzerland & Catalonia." />
     <meta name="keywords" content="Bru Mas Ribera, bru mas ribera, Frontend Engineer, UX Engineer, React Developer, TypeScript, Web Development, Open Huts, Reserve App, Portfolio, Meiringen Switzerland" />
     <meta name="author" content="Bru Mas Ribera" />
     <meta name="robots" content="index, follow" />
@@ -15,16 +15,16 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://bru.masribera.com/" />
-    <meta property="og:title" content="Bru Mas Ribera - Frontend & UX Engineer | Portfolio & Projects" />
-    <meta property="og:description" content="Bru Mas Ribera - Professional Frontend & UX Engineer with 8+ years experience. Expert in React, TypeScript, and modern web technologies. Explore projects like Open Huts, Reserve App, and more." />
+    <meta property="og:title" content="Bru Mas Ribera | Frontend & UX Engineer — Portfolio & Nature Tech" />
+    <meta property="og:description" content="Official site of Bru Mas Ribera, Frontend & UX Engineer. Explore nature-tech projects like Open Huts, Reserve App, and more. Based in Switzerland & Catalonia." />
     <meta property="og:image" content="https://bru.masribera.com/og-images/main.png" />
     <meta property="og:site_name" content="Bru Mas Ribera Portfolio" />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://bru.masribera.com/" />
-    <meta property="twitter:title" content="Bru Mas Ribera - Frontend & UX Engineer | Portfolio & Projects" />
-    <meta property="twitter:description" content="Bru Mas Ribera - Professional Frontend & UX Engineer with 8+ years experience. Expert in React, TypeScript, and modern web technologies. Explore projects like Open Huts, Reserve App, and more." />
+    <meta property="twitter:title" content="Bru Mas Ribera | Frontend & UX Engineer — Portfolio & Nature Tech" />
+    <meta property="twitter:description" content="Official site of Bru Mas Ribera, Frontend & UX Engineer. Explore nature-tech projects like Open Huts, Reserve App, and more. Based in Switzerland & Catalonia." />
     <meta property="twitter:image" content="https://bru.masribera.com/og-images/main.png" />
     
     <!-- Additional SEO Meta Tags -->
@@ -71,7 +71,7 @@
     <link rel="icon" type="image/x-icon" href="/icons/favicons/favicon.ico" id="favicon-ico">
     
     <!-- Apple Touch Icon -->
-
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/favicons/apple-touch-icon.png">
     
     <!-- Android Chrome Icons -->
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicons/favicon-32x32.png">
@@ -124,6 +124,11 @@
         "@type": "Organization",
         "name": "Freelance",
         "description": "Independent Frontend & UX Engineer"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Bru Mas Ribera",
+        "url": "https://bru.masribera.com"
       },
       "alumniOf": [
         {
@@ -206,7 +211,7 @@
     
     <script>
       // Auto-detect environment and set appropriate favicon
-      (function() {
+      document.addEventListener("DOMContentLoaded", function () {
         const hostname = window.location.hostname;
         const isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1';
         const isDev = hostname.includes('dev') || hostname.includes('staging');
@@ -220,11 +225,16 @@
           faviconPath = '/favicon-prod.svg';
         }
         
-        // Update all favicon links
-        document.getElementById('favicon-svg').href = faviconPath;
-        document.getElementById('favicon-png').href = faviconPath.replace('.svg', '.png');
-        document.getElementById('favicon-ico').href = faviconPath.replace('.svg', '.ico');
-      })();
+        const faviconSvg = document.getElementById('favicon-svg');
+        const faviconPng = document.getElementById('favicon-png');
+        const faviconIco = document.getElementById('favicon-ico');
+        
+        if (faviconSvg && faviconPng && faviconIco) {
+          faviconSvg.href = faviconPath;
+          faviconPng.href = faviconPath.replace('.svg', '.png');
+          faviconIco.href = faviconPath.replace('.svg', '.ico');
+        }
+      });
     </script>
   </head>
   <body>

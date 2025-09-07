@@ -1,5 +1,5 @@
 import { Button } from '../ui/button'
-import { Avatar, AvatarImage, AvatarFallback } from '../ui/avatar'
+import { Avatar, AvatarImage } from '../ui/avatar'
 import { Mail, MapPin, Linkedin, Github } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { AnimatedGradientTitle } from '../ui/AnimatedGradientTitle'
@@ -152,6 +152,8 @@ export function HeroSection() {
 
   return (
     <section id="home" className="relative h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+      {/* SEO Hidden Heading */}
+      <h1 className="sr-only">Bru Mas Ribera - Frontend & UX Engineer Portfolio</h1>
       {/* Background Image with soft overlay */}
       <div className="absolute inset-0 z-0">
         <div
@@ -169,7 +171,13 @@ export function HeroSection() {
           data-profile-image
         >
           <Avatar className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-52 lg:h-52 xl:w-56 xl:h-56 2xl:w-[220px] 2xl:h-[220px] border border-gray-200 dark:border-gray-700 shadow-md">
-            <AvatarImage src="/profile/profile-original.png" alt="Bru Mas Ribera" className="object-cover" />
+            <AvatarImage 
+              src="/assets/images/profile/profile-optimized.jpg" 
+              alt="Bru Mas Ribera - Frontend & UX Engineer" 
+              className="object-cover w-full h-full" 
+              loading="eager"
+              sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, (max-width: 1024px) 192px, (max-width: 1280px) 208px, (max-width: 1536px) 224px, 220px"
+            />
           </Avatar>
         </div>
 

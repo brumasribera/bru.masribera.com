@@ -205,9 +205,20 @@ export function HeroSection() {
         </div>
         
         {/* Prominent total experience pill */}
-        <div className="inline-flex items-center rounded-full px-4 py-2 sm:px-5 sm:py-2.5 shadow-xl ring-1 ring-white/50 dark:ring-white/10 bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 mb-5 sm:mb-6 lg:mb-8">
+        <button 
+          onClick={() => {
+            const experienceSection = document.getElementById('experience')
+            if (experienceSection) {
+              // Scroll with offset to account for fixed navbar height (64px = h-16)
+              const navbarHeight = 64
+              const elementTop = experienceSection.offsetTop - navbarHeight
+              window.scrollTo({ top: elementTop, behavior: 'smooth' })
+            }
+          }}
+          className="inline-flex items-center rounded-full px-4 py-2 sm:px-5 sm:py-2.5 shadow-xl ring-1 ring-white/50 dark:ring-white/10 bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 mb-5 sm:mb-6 lg:mb-8 hover:from-emerald-700 hover:via-teal-600 hover:to-cyan-600 hover:scale-105 transition-all duration-300 cursor-pointer"
+        >
             <span className="text-sm sm:text-base font-bold tracking-wide text-white">{t('hero.yearsExperience')}</span>
-        </div>
+        </button>
 
         {/* Contact Buttons - Closer to subtitle with advanced hover animations */}
         <div className="w-full max-w-xl mx-auto mb-5 sm:mb-6 lg:mb-8 flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-5 justify-center items-center">

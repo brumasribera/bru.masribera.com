@@ -23,3 +23,16 @@ if (env === 'production') {
   );
 }
 
+// Copy manifest file to root for both environments
+const distDir = join(__dirname, '..', '..', 'dist');
+const publicConfigDir = join(__dirname, '..', '..', 'public', 'config');
+const manifestSource = join(publicConfigDir, 'site.webmanifest');
+const manifestDest = join(distDir, 'site.webmanifest');
+
+try {
+  copyFileSync(manifestSource, manifestDest);
+  console.log('✅ Manifest file copied to dist root');
+} catch (error) {
+  console.log('⚠️  Manifest file not found in public/config directory, skipping copy');
+}
+

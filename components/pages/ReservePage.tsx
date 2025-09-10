@@ -5,7 +5,7 @@ import { Footer } from '../layout/Footer'
 import { useProjectNavigation } from '../hooks/useProjectNavigation'
 import { ProjectNavigationButton } from '../navigation/ProjectNavigationButton'
 import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation'
-import ReserveMobileApp from '../ReserveApp'
+import { ReserveAppIframe } from '../ui/ReserveAppIframe'
 
 import { useTranslation } from 'react-i18next'
 
@@ -21,8 +21,19 @@ export function ReservePage() {
 
 	// Function to open app in new tab
 	const openAppInNewTab = () => {
+		// Determine the correct URL based on environment
+		const getReserveAppUrl = () => {
+			// Check if we're in development (localhost)
+			if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+				return 'http://localhost:3002'
+			}
+			
+			// Production URL - Reserve app deployed on Vercel
+			return 'https://reserve-app-chi.vercel.app'
+		}
+		
 		// Open the Reserve app in a new tab at full screen
-		window.open('/reserve-app', '_blank')
+		window.open(getReserveAppUrl(), '_blank')
 	}
 
 	return (
@@ -48,12 +59,12 @@ export function ReservePage() {
 					<div className="text-center">
 						<div className="flex justify-center mb-8">
 							<div className="bg-white p-4 rounded-3xl shadow-xl">
-								<img src="/logos/reserve-logo.png" alt="Reserve" className="h-24 w-24 object-contain rounded-2xl" />
+								<img src="/icons/logos/reserve-conservation-logo.png" alt="Reserve" className="h-24 w-24 object-contain rounded-2xl" />
 							</div>
 						</div>
-						<h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">{t('page.header.title')}</h1>
+						<h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">{t('reserve:page.header.title')}</h1>
 						<p className="text-2xl text-emerald-100 max-w-4xl mx-auto leading-relaxed">
-							{t('page.header.tagline')}
+							{t('reserve:page.header.tagline')}
 						</p>
 					</div>
 				</div>
@@ -64,14 +75,14 @@ export function ReservePage() {
 				<div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
 					<Card className="lg:col-span-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg">
 						<CardHeader>
-							<CardTitle className="text-3xl font-bold text-gray-900 dark:text-white">{t('page.overview.title')}</CardTitle>
+							<CardTitle className="text-3xl font-bold text-gray-900 dark:text-white">{t('reserve:page.overview.title')}</CardTitle>
 						</CardHeader>
 						<CardContent className="space-y-4">
 							<p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-								{t('page.overview.p1')}
+								{t('reserve:page.overview.p1')}
 							</p>
 							<p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-								{t('page.overview.p2')}
+								{t('reserve:page.overview.p2')}
 							</p>
 
 							<div className="flex flex-wrap gap-3 pt-2">
@@ -88,11 +99,14 @@ export function ReservePage() {
 							<CardContent className="p-6">
 								<div className="flex items-center gap-3 mb-4">
 									<Users className="h-6 w-6 text-emerald-600" />
-									<h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('page.cards.targetUsers.title')}</h3>
+									<h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('reserve:page.cards.targetUsers.title')}</h3>
 								</div>
-								{(t('page.cards.targetUsers.users', { returnObjects: true }) as string[]).map((item: string) => (
-									<p key={item} className="text-gray-600 dark:text-gray-400">{item}</p>
-								))}
+								{Array.isArray(t('reserve:page.cards.targetUsers.users')) 
+									? (t('reserve:page.cards.targetUsers.users') as string[]).map((item: string) => (
+										<p key={item} className="text-gray-600 dark:text-gray-400">{item}</p>
+									))
+									: <p className="text-gray-600 dark:text-gray-400">{t('reserve:page.cards.targetUsers.users')}</p>
+								}
 							</CardContent>
 						</Card>
 
@@ -100,11 +114,14 @@ export function ReservePage() {
 							<CardContent className="p-6">
 								<div className="flex items-center gap-3 mb-4">
 									<Shield className="h-6 w-6 text-green-600" />
-									<h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('page.cards.impact.title')}</h3>
+									<h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('reserve:page.cards.impact.title')}</h3>
 								</div>
-								{(t('page.cards.impact.benefits', { returnObjects: true }) as string[]).map((item: string) => (
-									<p key={item} className="text-gray-600 dark:text-gray-400">{item}</p>
-								))}
+								{Array.isArray(t('reserve:page.cards.impact.benefits')) 
+									? (t('reserve:page.cards.impact.benefits') as string[]).map((item: string) => (
+										<p key={item} className="text-gray-600 dark:text-gray-400">{item}</p>
+									))
+									: <p className="text-gray-600 dark:text-gray-400">{t('reserve:page.cards.impact.benefits')}</p>
+								}
 							</CardContent>
 						</Card>
 
@@ -112,16 +129,16 @@ export function ReservePage() {
 							<CardContent className="p-6">
 								<div className="flex items-center gap-3 mb-4">
 									<Globe2 className="h-6 w-6 text-lime-600" />
-									<h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('page.cards.channels.title')}</h3>
+									<h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('reserve:page.cards.channels.title')}</h3>
 								</div>
-								<p className="text-gray-600 dark:text-gray-400 mb-4">{t('page.cards.channels.subtitle')}</p>
+								<p className="text-gray-600 dark:text-gray-400 mb-4">{t('reserve:page.cards.channels.subtitle')}</p>
 								<a href="https://www.instagram.com/reservenatureapp/" target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 hover:from-purple-500 hover:via-pink-400 hover:to-orange-400 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] overflow-hidden text-sm">
 									{/* Shiny overlay effect */}
 									<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
 
 									{/* Instagram icon with hover effect */}
 									<Instagram className="h-4 w-4 group-hover:scale-110 transition-transform duration-200 relative z-10" />
-									<span className="relative z-10">{t('page.cards.channels.instagram')}</span>
+									<span className="relative z-10">{t('reserve:page.cards.channels.instagram')}</span>
 								</a>
 							</CardContent>
 						</Card>
@@ -135,11 +152,11 @@ export function ReservePage() {
 						<div className="max-w-md mx-auto text-center">
 							<div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-3xl p-6 md:p-8 shadow-xl border border-gray-200 dark:border-gray-700">
 								<div className="w-16 h-16 md:w-20 md:h-20 bg-white p-2 rounded-3xl flex items-center justify-center mx-auto mb-4 md:mb-6 shadow-xl">
-									<img src="/logos/reserve-logo.png" alt="Reserve" className="h-full w-full object-contain" />
+									<img src="/icons/logos/reserve-conservation-logo.png" alt="Reserve" className="h-full w-full object-contain" />
 								</div>
-								<h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-3 md:mb-4">{t('page.prototype.ctaTitle')}</h3>
+								<h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-3 md:mb-4">{t('reserve:page.prototype.ctaTitle')}</h3>
 								<p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-6 md:mb-8 leading-relaxed">
-									{t('page.prototype.ctaDesc')}
+									{t('reserve:page.prototype.ctaDesc')}
 								</p>
 								<button
 									onClick={openAppInNewTab}
@@ -149,7 +166,7 @@ export function ReservePage() {
 									<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
 									
 									<ExternalLink className="h-4 w-4 md:h-5 md:w-5 group-hover:scale-110 transition-transform duration-200 relative z-10" />
-									<span className="relative z-10">{t('common:openApp')}</span>
+									<span className="relative z-10">{t('reserve:openApp')}</span>
 								</button>
 							</div>
 						</div>
@@ -161,7 +178,10 @@ export function ReservePage() {
 							<div className="relative w-[330px] h-[600px] rounded-3xl shadow-[0_25px_80px_rgba(0,0,0,0.35)] bg-white dark:bg-gray-900">
 								{/* Screen */}
 								<div className="relative h-full rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-700">
-									<ReserveMobileApp />
+									<ReserveAppIframe
+										className="w-full h-full rounded-3xl border-0"
+										title="Reserve App"
+									/>
 								</div>
 							</div>
 						</div>
@@ -194,7 +214,7 @@ export function ReservePage() {
 							<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
 							
 							<ArrowLeft className="h-5 w-5 group-hover:scale-110 transition-transform duration-200 relative z-10" />
-							<span className="relative z-10">{t('page.nav.backToAll')}</span>
+							<span className="relative z-10">{t('reserve:page.nav.backToAll')}</span>
 						</button>
 					</div>
 				</div>

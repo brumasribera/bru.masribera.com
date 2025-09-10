@@ -25,8 +25,7 @@ if (env === 'production') {
 
 // Copy manifest file to root for both environments
 const distDir = join(__dirname, '..', '..', 'dist');
-const publicConfigDir = join(__dirname, '..', '..', 'public', 'config');
-const manifestSource = join(publicConfigDir, 'site.webmanifest');
+const manifestSource = join(publicDir, 'site.webmanifest');
 const manifestDest = join(distDir, 'site.webmanifest');
 
 try {

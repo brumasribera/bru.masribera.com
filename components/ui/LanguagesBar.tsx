@@ -8,13 +8,13 @@ export function LanguagesBar() {
   const [isPaused, setIsPaused] = useState(false)
 
   const languages = [
-    { label: 'languages.languages.english', level: 'languages.proficiency.c2', flag: '/flags/en.png' },
-    { label: 'languages.languages.french', level: 'languages.proficiency.c2', flag: '/flags/fr.png' },
-    { label: 'languages.languages.spanish', level: 'languages.proficiency.native', flag: '/flags/es.png' },
-    { label: 'languages.languages.catalan', level: 'languages.proficiency.native', flag: '/flags/ca.png' },
-    { label: 'languages.languages.italian', level: 'languages.proficiency.b2', flag: '/flags/it.png' },
-    { label: 'languages.languages.german', level: 'languages.proficiency.b1', flag: '/flags/de.png' },
-    { label: 'languages.languages.portuguese', level: 'languages.proficiency.b1', flag: '/flags/pt.png' }
+    { label: 'languages.languages.english', level: 'languages.proficiency.c2', flag: '/icons/flags/england-flag.png' },
+    { label: 'languages.languages.french', level: 'languages.proficiency.c2', flag: '/icons/flags/france-flag.png' },
+    { label: 'languages.languages.spanish', level: 'languages.proficiency.native', flag: '/icons/flags/spain-flag.png' },
+    { label: 'languages.languages.catalan', level: 'languages.proficiency.native', flag: '/icons/flags/canada-flag.png' },
+    { label: 'languages.languages.italian', level: 'languages.proficiency.b2', flag: '/icons/flags/italy-flag.png' },
+    { label: 'languages.languages.german', level: 'languages.proficiency.b1', flag: '/icons/flags/germany-flag.png' },
+    { label: 'languages.languages.portuguese', level: 'languages.proficiency.b1', flag: '/icons/flags/portugal-flag.png' }
   ]
 
   useEffect(() => {

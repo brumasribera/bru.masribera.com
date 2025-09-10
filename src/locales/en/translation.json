@@ -109,7 +109,48 @@
       "maps": "Location maps",
       "notifications": "Smart notifications"
     },
-    "technologies": "React, TypeScript, Leaflet, Tailwind CSS"
+    "technologies": "React, TypeScript, Leaflet, Tailwind CSS",
+    "page": {
+      "header": {
+        "title": "Reserve",
+        "tagline": "Contribute to habitat restoration and biodiversity protection projects worldwide."
+      },
+      "overview": {
+        "title": "Project Overview",
+        "p1": "Reserve is a nature conservation app that connects users with habitat restoration projects around the world.",
+        "p2": "Users can explore projects on an interactive 3D globe, contribute to conservation efforts, and track their impact."
+      },
+      "cards": {
+        "targetUsers": {
+          "title": "Target Users",
+          "users": [
+            "Environmental enthusiasts",
+            "Conservation supporters", 
+            "Nature lovers"
+          ]
+        },
+        "impact": {
+          "title": "Impact",
+          "benefits": [
+            "Habitat restoration",
+            "Biodiversity protection",
+            "Community engagement"
+          ]
+        },
+        "channels": {
+          "title": "Channels",
+          "subtitle": "Follow our progress",
+          "instagram": "Follow on Instagram"
+        }
+      },
+      "prototype": {
+        "ctaTitle": "Try the App",
+        "ctaDesc": "Experience the full Reserve app in a new tab"
+      },
+      "nav": {
+        "backToAll": "Back to All Projects"
+      }
+    }
   },
   "clathes": {
     "title": "Clathes",

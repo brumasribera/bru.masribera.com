@@ -67,15 +67,12 @@
     
     <!-- Favicon configuration for different environments -->
     <link rel="icon" type="image/svg+xml" href="/icons/favicons/favicon.svg" id="favicon-svg">
-    <link rel="icon" type="image/png" href="/icons/favicons/favicon-192x192.png" id="favicon-png">
-    <link rel="icon" type="image/x-icon" href="/icons/favicons/favicon.ico" id="favicon-ico">
     
     <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/favicons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     
     <!-- Android Chrome Icons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/svg+xml" href="/icons/favicons/favicon.svg">
     
     <!-- Web App Manifest -->
     <link rel="manifest" href="/site.webmanifest">
@@ -217,22 +214,18 @@
         const isDev = hostname.includes('dev') || hostname.includes('staging');
         const isProd = hostname.includes('bru.masribera.com') || hostname.includes('production');
         
-        let faviconPath = '/favicon.svg'; // default
+        let faviconPath = '/icons/favicons/favicon.svg'; // default
         
         if (isLocalhost || isDev) {
-          faviconPath = '/favicon-dev.svg';
+          faviconPath = '/icons/favicons/favicon-development.svg';
         } else if (isProd) {
-          faviconPath = '/favicon-prod.svg';
+          faviconPath = '/icons/favicons/favicon-production.svg';
         }
         
         const faviconSvg = document.getElementById('favicon-svg');
-        const faviconPng = document.getElementById('favicon-png');
-        const faviconIco = document.getElementById('favicon-ico');
         
-        if (faviconSvg && faviconPng && faviconIco) {
+        if (faviconSvg) {
           faviconSvg.href = faviconPath;
-          faviconPng.href = faviconPath.replace('.svg', '.png');
-          faviconIco.href = faviconPath.replace('.svg', '.ico');
         }
       });
     </script>

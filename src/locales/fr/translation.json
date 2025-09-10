@@ -119,6 +119,23 @@
     },
     "technologies": "React, TypeScript, Leaflet, Tailwind CSS"
   },
+  "reserve": {
+    "title": "Reserve",
+    "description": "Système de gestion des réservations pour activités de plein air.",
+    "openApp": "Ouvrir l'app",
+    "openAppSmall": "Ouvrir l'app",
+    "prototype": "Prototype",
+    "loading": "Chargement de l'app Reserve...",
+    "loadingMessage": "Préparation de votre expérience d'aventure en plein air...",
+    "features": {
+      "title": "Fonctionnalités principales",
+      "reservations": "Gestion des réservations",
+      "calendar": "Calendrier interactif",
+      "maps": "Cartes de localisation",
+      "notifications": "Notifications intelligentes"
+    },
+    "technologies": "React, TypeScript, Leaflet, Tailwind CSS"
+  },
   "clathes": {
     "title": "Clathes",
     "description": "Plateforme de mode durable pour vêtements écologiques.",

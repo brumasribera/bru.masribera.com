@@ -67,9 +67,12 @@ function AppWithNavigation() {
   return <App />
 }
 
+// Create root once and reuse it
+const root = ReactDOM.createRoot(document.getElementById('root')!)
+
 // Wait for i18n to be ready before rendering
 i18nReady.then(() => {
-  ReactDOM.createRoot(document.getElementById('root')!).render(
+  root.render(
     <React.StrictMode>
       <AppWithNavigation />
     </React.StrictMode>
@@ -77,7 +80,7 @@ i18nReady.then(() => {
 }).catch((error) => {
   console.error('Failed to initialize i18n:', error)
   // Fallback: render without waiting for i18n
-  ReactDOM.createRoot(document.getElementById('root')!).render(
+  root.render(
     <React.StrictMode>
       <AppWithNavigation />
     </React.StrictMode>

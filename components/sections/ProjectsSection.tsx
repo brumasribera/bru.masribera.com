@@ -17,7 +17,7 @@ export function ProjectsSection() {
       descriptionKey: 'projects.projects.reserve.description',
       technologies: ['projects.technologies.reactNative', 'projects.technologies.typescript', 'projects.technologies.stripe', 'projects.technologies.mongodb', 'projects.technologies.nodejs'],
       github: null,
-      live: 'https://reserve.org',
+      live: 'https://reserve-app.vercel.app',
       impactKey: 'projects.projects.reserve.impact',
       usersKey: 'projects.projects.reserve.users',
       featured: true,
@@ -263,7 +263,6 @@ export function ProjectsSection() {
             </Card>
           ))}
         </div>
-        
 
       </div>
     </section>

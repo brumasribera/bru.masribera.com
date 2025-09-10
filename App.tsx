@@ -13,8 +13,8 @@ import CVPage from './components/pages/CVPage'
 import TranslationsAdminPage from './components/pages/TranslationsAdminPage'
 import { LegalPage } from './components/pages/LegalPage'
 import { useLanguageRouting } from './components/hooks/useLanguageRouting'
-import { useScrollPosition } from './components/hooks/useScrollPosition'
-import { GDPRBanner, useGDPRConsent } from './components/ui/GDPRBanner'
+// import { useScrollPosition } from './components/hooks/useScrollPosition'
+import { GDPRBanner } from './components/ui/GDPRBanner'
 
 // Lazy load project pages to reduce initial bundle size
 const OpenHutsPage = lazy(() => import('./components/pages/OpenHutsPage').then(module => ({ default: module.OpenHutsPage })))
@@ -70,11 +70,15 @@ function App() {
 
 // Separate component to use useLocation hook
 function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDarkMode: () => void }) {
+  // Use the language routing hook properly
   const { getCurrentPathWithoutLanguage } = useLanguageRouting()
-  const { showBanner, acceptConsent } = useGDPRConsent()
   
   // Use scroll position persistence hook
-  useScrollPosition()
+  // useScrollPosition()
+  
+  // Fallback functions for GDPR (temporarily disabled)
+  const showBanner = false
+  const acceptConsent = () => {}
   
   const pathWithoutLang = getCurrentPathWithoutLanguage()
   const shouldShowHeader = pathWithoutLang !== '/cv' && pathWithoutLang !== '/reserve-app' && pathWithoutLang !== '/tools/timer'
@@ -200,7 +204,7 @@ function AppContent({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDar
       </Routes>
       
       {/* GDPR Banner - Hidden on tools pages */}
-      {shouldShowGDPRBanner && <GDPRBanner onAccept={acceptConsent} isVisible={showBanner} />}
+      {shouldShowGDPRBanner && <GDPRBanner onAccept={() => {}} isVisible={false} />}
     </div>
   )
 }

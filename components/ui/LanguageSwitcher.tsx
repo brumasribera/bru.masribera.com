@@ -6,14 +6,14 @@ import { useLanguageRouting } from '../hooks/useLanguageRouting';
 
 // Approximate native+L2 speakers to sort by reach
 const languages = [
-  { code: 'en', flag: '/flags/en.png', speakers: 1500 },
-  { code: 'es', flag: '/flags/es.png', speakers: 560 },
-  { code: 'fr', flag: '/flags/fr.png', speakers: 320 },
-  { code: 'pt', flag: '/flags/pt.png', speakers: 260 },
-  { code: 'de', flag: '/flags/de.png', speakers: 200 },
-  { code: 'it', flag: '/flags/it.png', speakers: 85 },
-  { code: 'ca', flag: '/flags/ca.png', speakers: 10 },
-  { code: 'rm', flag: '/flags/rm.png', speakers: 0.06 },
+  { code: 'en', flag: '/icons/flags/england-flag.png', speakers: 1500 },
+  { code: 'es', flag: '/icons/flags/spain-flag.png', speakers: 560 },
+  { code: 'fr', flag: '/icons/flags/france-flag.png', speakers: 320 },
+  { code: 'pt', flag: '/icons/flags/portugal-flag.png', speakers: 260 },
+  { code: 'de', flag: '/icons/flags/germany-flag.png', speakers: 200 },
+  { code: 'it', flag: '/icons/flags/italy-flag.png', speakers: 85 },
+  { code: 'ca', flag: '/icons/flags/canada-flag.png', speakers: 10 },
+  { code: 'rm', flag: '/icons/flags/romania-flag.png', speakers: 0.06 },
 ].sort((a, b) => b.speakers - a.speakers);
 
 export function LanguageSwitcher() {

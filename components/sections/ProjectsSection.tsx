@@ -43,7 +43,7 @@ export function ProjectsSection() {
       impactKey: 'projects.projects.clathes.impact',
       usersKey: 'projects.projects.clathes.users',
       featured: true,
-      image: '/clathes/vaquita-profile-logo.png'
+      image: '/icons/logos/projects/clathes-vaquita-logo.png'
     },
     {
       titleKey: 'projects.projects.moodleNet.title',

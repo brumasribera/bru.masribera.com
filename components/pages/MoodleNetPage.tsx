@@ -23,11 +23,11 @@ export function MoodleNetPage() {
   })
   
   // Array of all image paths for navigation
-  const imagePaths = [
-    '/moodlenet/moodle1.png',
-    '/moodlenet/moodle2.png',
-    '/moodlenet/moodle3.png'
-  ]
+const imagePaths = [
+  '/assets/images/moodlenet/moodle-screenshot-1.png',
+  '/assets/images/moodlenet/moodle-screenshot-2.png',
+  '/assets/images/moodlenet/moodle-screenshot-3.png'
+]
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
@@ -56,7 +56,7 @@ export function MoodleNetPage() {
             <div className="flex justify-center mb-8">
               <div className="bg-white p-4 rounded-3xl shadow-xl">
                 <img 
-                  src="/logos/moodlenet_logo.png" 
+                  src="/icons/logos/moodlenet-network-logo.png" 
                   alt="MoodleNet Platform"
                   className="h-24 w-24 object-contain rounded-2xl"
                 />
@@ -220,10 +220,10 @@ export function MoodleNetPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <CardContent className="p-0">
                 <img
-                  src="/moodlenet/moodle1.png"
+                  src="/assets/images/moodlenet/moodle-screenshot-1.png"
                   alt="MoodleNet Interface 1"
                   className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
-                  onClick={() => setSelectedImage('/moodlenet/moodle1.png')}
+                  onClick={() => setSelectedImage('/assets/images/moodlenet/moodle-screenshot-1.png')}
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
@@ -239,10 +239,10 @@ export function MoodleNetPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <CardContent className="p-0">
                 <img
-                  src="/moodlenet/moodle2.png"
+                  src="/assets/images/moodlenet/moodle-screenshot-2.png"
                   alt="MoodleNet Interface 2"
                   className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
-                  onClick={() => setSelectedImage('/moodlenet/moodle2.png')}
+                  onClick={() => setSelectedImage('/assets/images/moodlenet/moodle-screenshot-2.png')}
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
@@ -258,10 +258,10 @@ export function MoodleNetPage() {
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <CardContent className="p-0">
                 <img
-                  src="/moodlenet/moodle3.png"
+                  src="/assets/images/moodlenet/moodle-screenshot-3.png"
                   alt="MoodleNet Interface 3"
                   className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
-                  onClick={() => setSelectedImage('/moodlenet/moodle3.png')}
+                  onClick={() => setSelectedImage('/assets/images/moodlenet/moodle-screenshot-3.png')}
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">

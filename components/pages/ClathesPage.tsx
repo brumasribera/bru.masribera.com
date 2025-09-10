@@ -14,9 +14,9 @@ export function ClathesPage() {
   const { t } = useTranslation(['clathes', 'common'])
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const imagePaths = [
-    '/clathes/vaquita-representation.png',
-    '/clathes/vaquita-yellow-hands.png',
-    '/clathes/bio-t-shirt.jpg'
+    '/assets/images/clathes/vaquita-representation.png',
+    '/assets/images/clathes/vaquita-yellow-hands.png',
+    '/assets/images/clathes/bio-t-shirt.jpg'
   ]
   
   // Enable keyboard navigation
@@ -56,7 +56,7 @@ export function ClathesPage() {
             <div className="flex justify-center mb-8">
               <div className="bg-white p-4 rounded-3xl shadow-xl">
                 <img 
-                  src="/clathes/vaquita-profile-logo.png" 
+                  src="/icons/logos/projects/clathes-vaquita-logo.png" 
                   alt="Clathes - Vaquita Protection"
                   className="h-24 w-24 object-contain rounded-2xl"
                 />

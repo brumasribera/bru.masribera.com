@@ -65,7 +65,7 @@ const IMAGE_CONFIG: Record<string, ImageConfig> = {
   moodlenet: {
     title: 'MoodleNet - Open Education',
     subtitle: 'Decentralized social network for open education and lifelong learning',
-    imageUrl: '/moodlenet/moodle1.png',
+    imageUrl: '/assets/images/moodlenet/moodle-screenshot-1.png',
     type: 'project'
   }
 };

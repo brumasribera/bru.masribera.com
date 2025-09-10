@@ -5,16 +5,27 @@ import { Footer } from '../layout/Footer'
 import { useProjectNavigation } from '../hooks/useProjectNavigation'
 import { ProjectNavigationButton } from '../navigation/ProjectNavigationButton'
 import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation'
+import { ImageModal } from '../modals/ImageModal'
 import { useTranslation } from 'react-i18next'
+import { useState } from 'react'
 
 export function Pix4DPage() {
   const { navigateToProject, navigateToHome } = useProjectNavigation()
   const { t } = useTranslation(['pix4d', 'common'])
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  
+  // Array of all image paths for navigation
+  const imagePaths = [
+    '/assets/images/pix4d/matterhorn-demo-3.jpg',
+    '/assets/images/pix4d/matterhorn-demo-12.jpg',
+    '/assets/images/pix4d/matterhorn-cervin-pix4d-mapper-switzerland.jpg'
+  ]
   
   // Enable keyboard navigation
   useKeyboardNavigation({
     prevProjectPath: '/wegaw',
-    nextProjectPath: '/reserve'
+    nextProjectPath: '/reserve',
+    disableNavigation: selectedImage !== null
   })
   
   return (
@@ -148,7 +159,7 @@ export function Pix4DPage() {
                 autoPlay
                 preload="metadata"
               >
-                <source src="/pix4d/pix4d-demo-video.mp4" type="video/mp4" />
+                <source src="/assets/images/pix4d/pix4d-demo-video.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </CardContent>
@@ -183,7 +194,7 @@ export function Pix4DPage() {
         <div id="drone-technology" className="mb-20">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">{t('droneTech.title')}</h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
+            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow">
               <CardHeader className="text-center pb-0">
                 <CardTitle className="text-xl font-bold text-gray-900 dark:text-white">
                   senseFly eBee Drone
@@ -192,34 +203,36 @@ export function Pix4DPage() {
                   Professional mapping drone with 50-minute flight time
                 </p>
               </CardHeader>
-              <CardContent className="p-0 pb-0">
+              <CardContent className="p-0 [&:last-child]:pb-0">
                 <img
-                  src="/pix4d/ebeematterhorn-3.jpg"
+                  src="/assets/images/pix4d/matterhorn-demo-3.jpg"
                   alt="senseFly eBee Drone mapping the Matterhorn"
-                  className="w-full h-64 object-cover rounded-b-3xl"
+                  className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                  onClick={() => setSelectedImage('/assets/images/pix4d/matterhorn-demo-3.jpg')}
                 />
               </CardContent>
             </Card>
 
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
+            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow flex flex-col">
               <CardHeader className="text-center pb-0">
                 <CardTitle className="text-xl font-bold text-gray-900 dark:text-white">
                   Flight Planning & Execution
                 </CardTitle>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Autonomous flight paths from 4,478m summit
+                  Autonomous flight paths from 4,478m summit elevation point
                 </p>
               </CardHeader>
-              <CardContent className="p-0 pb-0">
+              <CardContent className="p-0 [&:last-child]:pb-0 flex-1 flex flex-col">
                 <img
-                  src="/pix4d/ebeematterhorn-12.jpg"
+                  src="/assets/images/pix4d/matterhorn-demo-12.jpg"
                   alt="Flight planning over the Matterhorn"
-                  className="w-full h-64 object-cover rounded-b-3xl"
+                  className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity mt-auto"
+                  onClick={() => setSelectedImage('/assets/images/pix4d/matterhorn-demo-12.jpg')}
                 />
               </CardContent>
             </Card>
 
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
+            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow">
               <CardHeader className="text-center pb-0">
                 <CardTitle className="text-xl font-bold text-gray-900 dark:text-white">
                   Matterhorn 3D Reconstruction
@@ -228,11 +241,12 @@ export function Pix4DPage() {
                   High-density point cloud with 300 million points at 20cm GSD
                 </p>
               </CardHeader>
-              <CardContent className="p-0 pb-0">
+              <CardContent className="p-0 [&:last-child]:pb-0">
                 <img
-                  src="/pix4d/matterhorn-cervin-pix4d-pix4dmapper-switzerland.jpg"
+                  src="/assets/images/pix4d/matterhorn-cervin-pix4d-mapper-switzerland.jpg"
                   alt="Matterhorn 3D point cloud reconstruction"
-                  className="w-full h-64 object-cover rounded-b-3xl"
+                  className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                  onClick={() => setSelectedImage('/assets/images/pix4d/matterhorn-cervin-pix4d-mapper-switzerland.jpg')}
                 />
               </CardContent>
             </Card>
@@ -366,6 +380,14 @@ export function Pix4DPage() {
           </div>
         </div>
       </div>
+      
+      {/* Image Modal */}
+      <ImageModal
+        selectedImage={selectedImage}
+        setSelectedImage={setSelectedImage}
+        imagePaths={imagePaths}
+        altText="Pix4D Project Image"
+      />
       
       <Footer />
     </div>

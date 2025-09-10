@@ -21,9 +21,9 @@ export function PomocaPage() {
   })
   
   const prototypeImages = [
-    '/pomoca/prototypes/glr-cutting-step.png',
-    '/pomoca/prototypes/qa-step.png',
-    '/pomoca/prototypes/product-refinements.png'
+    '/assets/images/pomoca/prototypes/glr-cutting-step.png',
+    '/assets/images/pomoca/prototypes/qa-step.png',
+    '/assets/images/pomoca/prototypes/product-refinements.png'
   ]
   
   return (
@@ -162,7 +162,7 @@ export function PomocaPage() {
               <CardContent className="p-2 sm:p-3 md:p-4">
                 <div className="w-10 h-10 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-2 md:mb-3 p-1 sm:p-1.5 md:p-2 bg-white">
                   <img 
-                    src="/pomoca/steps/material-reception.png" 
+                    src="/assets/images/pomoca/steps/material-reception.png" 
                     alt="Material Reception"
                     className="w-full h-full object-contain"
                   />
@@ -184,7 +184,7 @@ export function PomocaPage() {
               <CardContent className="p-2 sm:p-3 md:p-4">
                 <div className="w-10 h-10 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-2 md:mb-3 p-1 sm:p-1.5 md:p-2 bg-white">
                   <img 
-                    src="/pomoca/steps/storage.png" 
+                    src="/assets/images/pomoca/steps/storage.png" 
                     alt="Storage"
                     className="w-full h-full object-contain"
                   />
@@ -206,7 +206,7 @@ export function PomocaPage() {
               <CardContent className="p-2 sm:p-3 md:p-4">
                 <div className="w-10 h-10 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-2 md:mb-3 p-1 sm:p-1.5 md:p-2 bg-white">
                   <img 
-                    src="/pomoca/steps/cutting.png" 
+                    src="/assets/images/pomoca/steps/cutting.png" 
                     alt="Cutting"
                     className="w-full h-full object-contain"
                   />
@@ -228,7 +228,7 @@ export function PomocaPage() {
               <CardContent className="p-2 sm:p-3 md:p-4">
                 <div className="w-10 h-10 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-2 md:mb-3 p-1 sm:p-1.5 md:p-2 bg-white">
                   <img 
-                    src="/pomoca/steps/gliding.png" 
+                    src="/assets/images/pomoca/steps/gliding.png" 
                     alt="Gliding"
                     className="w-full h-full object-contain"
                   />
@@ -250,7 +250,7 @@ export function PomocaPage() {
               <CardContent className="p-2 sm:p-3 md:p-4">
                 <div className="w-10 h-10 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-2 md:mb-3 p-1 sm:p-1.5 md:p-2 bg-white">
                   <img 
-                    src="/pomoca/steps/marking.png" 
+                    src="/assets/images/pomoca/steps/marking.png" 
                     alt="Marking"
                     className="w-full h-full object-contain"
                   />
@@ -272,7 +272,7 @@ export function PomocaPage() {
               <CardContent className="p-2 sm:p-3 md:p-4">
                 <div className="w-10 h-10 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-2 md:mb-3 p-1 sm:p-1.5 md:p-2 bg-white">
                   <img 
-                    src="/pomoca/steps/adhesive-application.png" 
+                    src="/assets/images/pomoca/steps/adhesive-application.png" 
                     alt="Adhesive Application"
                     className="w-full h-full object-contain"
                   />
@@ -294,7 +294,7 @@ export function PomocaPage() {
               <CardContent className="p-2 sm:p-3 md:p-4">
                 <div className="w-10 h-10 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-2 md:mb-3 p-1 sm:p-1.5 md:p-2 bg-white">
                   <img 
-                    src="/pomoca/steps/qa.png" 
+                    src="/assets/images/pomoca/steps/qa.png" 
                     alt="Quality Assurance"
                     className="w-full h-full object-contain"
                   />
@@ -316,7 +316,7 @@ export function PomocaPage() {
               <CardContent className="p-2 sm:p-3 md:p-4">
                 <div className="w-10 h-10 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-2 md:mb-3 p-1 sm:p-1.5 md:p-2 bg-white">
                   <img 
-                    src="/pomoca/steps/laser-cutting.png" 
+                    src="/assets/images/pomoca/steps/laser-cutting.png" 
                     alt="Laser Cutting"
                     className="w-full h-full object-contain"
                   />
@@ -343,7 +343,7 @@ export function PomocaPage() {
             {/* Prototype 1 - Cutting */}
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
               <CardContent className="p-0">
-                <img src="/pomoca/prototypes/glr-cutting-step.png" alt="Pomoca Production Interface - Cutting Step" className="w-full h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity" onClick={() => setSelectedImage('/pomoca/prototypes/glr-cutting-step.png')} />
+                <img src="/assets/images/pomoca/prototypes/glr-cutting-step.png" alt="Pomoca Production Interface - Cutting Step" className="w-full h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity" onClick={() => setSelectedImage('/assets/images/pomoca/prototypes/glr-cutting-step.png')} />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{t('prototypes.items.0.title')}</h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-4">{t('prototypes.items.0.desc')}</p>
@@ -358,7 +358,7 @@ export function PomocaPage() {
             {/* Prototype 2 - QA */}
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
               <CardContent className="p-0">
-                <img src="/pomoca/prototypes/qa-step.png" alt="Pomoca Production Interface - QA Step" className="w-full h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity" onClick={() => setSelectedImage('/pomoca/prototypes/qa-step.png')} />
+                <img src="/assets/images/pomoca/prototypes/qa-step.png" alt="Pomoca Production Interface - QA Step" className="w-full h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity" onClick={() => setSelectedImage('/assets/images/pomoca/prototypes/qa-step.png')} />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{t('prototypes.items.1.title')}</h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-4">{t('prototypes.items.1.desc')}</p>
@@ -373,7 +373,7 @@ export function PomocaPage() {
             {/* Prototype 3 - Refinements */}
             <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-lg overflow-hidden">
               <CardContent className="p-0">
-                <img src="/pomoca/prototypes/product-refinements.png" alt="Pomoca Production Interface - Product Refinements" className="w-full h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity" onClick={() => setSelectedImage('/pomoca/prototypes/product-refinements.png')} />
+                <img src="/assets/images/pomoca/prototypes/product-refinements.png" alt="Pomoca Production Interface - Product Refinements" className="w-full h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity" onClick={() => setSelectedImage('/assets/images/pomoca/prototypes/product-refinements.png')} />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{t('prototypes.items.2.title')}</h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-4">{t('prototypes.items.2.desc')}</p>

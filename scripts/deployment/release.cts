@@ -68,10 +68,10 @@ try {
   console.log(`⏰ Released: ${versionInfo.timestamp}`);
   console.log(`🏷️ Git tag: v${versionInfo.version}`);
   console.log(`💬 Commit: ${commitMessage}`);
+  
   console.log('\n💡 Next time you want to release, just run: npm run release "your message"');
   
 } catch (error: any) {
   console.error('\n❌ Release failed:', error.message);
   process.exit(1);
 }
-

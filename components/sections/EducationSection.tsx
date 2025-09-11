@@ -87,8 +87,7 @@ export function EducationSection() {
                   !showAll && index === 2 ? 'cursor-pointer' : ''
                 }`}
                 style={{
-                  height: !showAll && index === 2 ? '80px' : 'auto',
-                  overflow: !showAll && index === 2 ? 'hidden' : 'visible'
+                  height: 'auto'
                 }}
                 onClick={!showAll && index === 2 ? () => setShowAll(true) : undefined}
               >
@@ -96,11 +95,11 @@ export function EducationSection() {
                 <div className="hidden sm:block absolute left-2 sm:left-4 top-6 transform -translate-x-1/2 w-4 h-4 rounded-full bg-blue-500 shadow-lg transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-blue-500/20 z-10" />
 
                 <div className="overflow-visible">
-                  <Card className={`group-hover:shadow-2xl group-hover:scale-[1.02] transition-all duration-300 rounded-3xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 relative ${
-                    !showAll && index === 2 ? 'shadow-none group-hover:shadow-none hover:shadow-[0_-8px_25px_-12px_rgba(0,0,0,0.25),8px_0_25px_-12px_rgba(0,0,0,0.25)] hover:scale-[1.01] hover:shadow-blue-500/20 overflow-hidden h-20 !flex !flex-col' : ''
+                  <Card className={`group-hover:shadow-2xl group-hover:scale-[1.02] transition-all duration-300 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 relative ${
+                    !showAll && index === 2 ? 'shadow-none group-hover:shadow-none hover:shadow-[0_-8px_25px_-12px_rgba(0,0,0,0.25),8px_0_25px_-12px_rgba(0,0,0,0.25)] hover:scale-[1.01] hover:shadow-blue-500/20 rounded-t-3xl rounded-b-none' : 'rounded-3xl'
                   } ${showAll && index === education.length - 1 ? 'mb-8' : ''}`}>
                     
-                    <div className={!showAll && index === 2 ? 'overflow-hidden h-20' : ''}>
+                    <div className={!showAll && index === 2 ? 'overflow-hidden max-h-24' : ''}>
                       <CardHeader className="pb-4">
                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                       <div className="flex items-start gap-4 sm:gap-6">

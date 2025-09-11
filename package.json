@@ -1,7 +1,7 @@
 {
   "name": "modern-responsive-resume-website",
   "private": true,
-  "version": "1.1.79",
+  "version": "1.1.80",
   "type": "module",
   "scripts": {
     "dev": "tsx scripts/utilities/switch-favicon.ts development && vite --port 3000",
